@@ -43,19 +43,19 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
-        <div className="bg-white border border-gray-200 p-8">
+        <div className="bg-white border border-gray-200 p-8 pt-0">
           {/* Logo centré */}
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-2 mb-4">
+          <div className="text-center mb-4">
+            <div className="flex items-center justify-center gap-2 -mt-8 -mb-6">
               <Image
                 src="/logo.png"
                 alt="Test Civique France"
-                width={56}
-                height={56}
-                className="w-14 h-14 object-contain"
+                width={200}
+                height={200}
+                className="w-44 h-44 object-contain"
               />
             </div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">
+            <h1 className="text-2xl font-bold text-gray-900 mb-1">
               Connexion
             </h1>
             <p className="text-gray-600">

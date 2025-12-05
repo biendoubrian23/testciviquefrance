@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Check, TrendingUp, Award, Target } from 'lucide-react';
+import { Check, TrendingUp, Award } from 'lucide-react';
 
 // Composant barre de progression animée
 function ProgressBar({ percentage, color = 'primary' }: { percentage: number; color?: string }) {
@@ -162,12 +162,12 @@ export default function ProgressSection() {
               <div className="px-6 py-4 bg-emerald-50 border-t border-emerald-100">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-emerald-500 flex items-center justify-center">
-                      <Target className="w-5 h-5 text-white" />
+                    <div className="w-10 h-10 bg-emerald-600 flex items-center justify-center">
+                      <Check className="w-5 h-5 text-white stroke-[3]" />
                     </div>
                     <div>
                       <div className="text-sm font-semibold text-emerald-800">
-                        Pret pour votre titre de sejour
+                        Prêt pour votre titre de séjour
                       </div>
                       <div className="text-xs text-emerald-600">
                         Carte pluriannuelle ou renouvellement
