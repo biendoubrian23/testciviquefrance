@@ -92,7 +92,7 @@ export default function ProgressSection() {
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Colonne gauche - Carte flottante de progression */}
           <div className="relative order-2 lg:order-1 animate-fade-in-left delay-200">
-            <div className="bg-white border border-gray-200 shadow-xl float-animation">
+            <div className="bg-white border border-gray-200 shadow-xl">
               {/* Header du dashboard */}
               <div className="px-6 py-4 border-b border-gray-100">
                 <div className="flex items-center justify-between">
@@ -185,7 +185,7 @@ export default function ProgressSection() {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -top-4 -left-4 w-32 h-32 bg-primary-100 -z-10 float-reverse"></div>
+            <div className="absolute -top-4 -left-4 w-32 h-32 bg-primary-100 -z-10"></div>
           </div>
 
           {/* Colonne droite - Texte et avantages */}

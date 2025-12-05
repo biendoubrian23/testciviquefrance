@@ -176,10 +176,10 @@ export default function FAQPage() {
               <span className="text-gray-900">FAQ</span>
             </nav>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 animate-fade-in-up">
               Questions fréquentes
             </h1>
-            <p className="text-lg text-gray-600 max-w-2xl">
+            <p className="text-lg text-gray-600 max-w-2xl animate-fade-in-up delay-100">
               Retrouvez ici les réponses aux questions les plus courantes concernant 
               l'examen civique obligatoire depuis le <span className="font-semibold">1er janvier 2026</span> pour 
               les titres de séjour pluriannuels, cartes de résident et la naturalisation.
@@ -189,7 +189,7 @@ export default function FAQPage() {
 
         {/* Sources officielles */}
         <section className="bg-primary-50 border-y border-primary-100">
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 animate-fade-in-up delay-200">
             <p className="text-sm text-primary-800">
               <span className="font-semibold">Sources officielles :</span> Décret n°2025-647 du 15 juillet 2025 • 
               Arrêté du 10 octobre 2025 • Service-public.fr • Article R-413-12-1 du CESEDA
@@ -202,7 +202,7 @@ export default function FAQPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {faqCategories.map((category, categoryIndex) => (
-              <div key={categoryIndex} className="mb-12 last:mb-0">
+              <div key={categoryIndex} className="mb-12 last:mb-0 animate-fade-in-up" style={{ animationDelay: `${(categoryIndex + 1) * 100}ms` }}>
                 <h2 className="text-xl font-semibold text-gray-900 mb-6 pb-2 border-b-2 border-primary-500 inline-block">
                   {category.title}
                 </h2>
@@ -225,13 +225,13 @@ export default function FAQPage() {
         {/* CTA Section */}
         <section className="py-16 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 animate-fade-in-up">
               Vous avez d'autres questions ?
             </h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-600 mb-8 animate-fade-in-up delay-100">
               Notre équipe est disponible pour répondre à toutes vos interrogations.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center px-6 py-3 border border-gray-900 text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-all duration-300"

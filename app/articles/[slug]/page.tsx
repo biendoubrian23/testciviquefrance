@@ -122,7 +122,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
       <Header />
-      <main className="min-h-screen bg-gradient-to-b from-primary-50/30 to-white">
+      <main className="min-h-screen bg-white">
         <ArticleContent article={article} />
       </main>
       <Footer />

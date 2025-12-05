@@ -52,10 +52,10 @@ export default function ContactPage() {
               <span className="text-gray-900">Contact</span>
             </nav>
 
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 drop-shadow-md" style={{ textShadow: '0 2px 4px rgba(255,255,255,0.8)' }}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 drop-shadow-md animate-fade-in-up" style={{ textShadow: '0 2px 4px rgba(255,255,255,0.8)' }}>
               Contactez-nous
             </h1>
-            <p className="text-lg text-gray-800 max-w-2xl drop-shadow-md" style={{ textShadow: '0 1px 3px rgba(255,255,255,0.9)' }}>
+            <p className="text-lg text-gray-800 max-w-2xl drop-shadow-md animate-fade-in-up delay-100" style={{ textShadow: '0 1px 3px rgba(255,255,255,0.9)' }}>
               Une question sur l'examen civique ou notre plateforme ? 
               Notre équipe est là pour vous accompagner dans votre préparation.
             </p>
@@ -68,7 +68,7 @@ export default function ContactPage() {
             <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
               
               {/* Informations de contact */}
-              <div className="lg:col-span-2 space-y-8">
+              <div className="lg:col-span-2 space-y-8 animate-fade-in-left delay-100">
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-6">
                     Comment pouvons-nous vous aider ?
@@ -118,7 +118,7 @@ export default function ContactPage() {
               </div>
 
               {/* Formulaire */}
-              <div className="lg:col-span-3">
+              <div className="lg:col-span-3 animate-fade-in-right delay-200">
                 <div className="bg-white border border-gray-200 p-8 lg:p-10 shadow-sm">
                   {!isSubmitted ? (
                     <>
@@ -256,29 +256,29 @@ export default function ContactPage() {
         {/* Section FAQ rapide */}
         <section className="py-12 lg:py-16 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 animate-fade-in-up">
               Questions fréquentes
             </h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-600 mb-8 animate-fade-in-up delay-100">
               Avant de nous contacter, consultez peut-être notre FAQ pour une réponse immédiate.
             </p>
             
             <div className="grid sm:grid-cols-3 gap-6 mb-8">
-              <div className="bg-white p-6 border border-gray-200">
+              <div className="bg-white p-6 border border-gray-200 animate-fade-in-up delay-100 hover:shadow-md transition-shadow">
                 <h3 className="font-semibold text-gray-900 mb-2">L'examen civique</h3>
                 <p className="text-sm text-gray-600 mb-3">Format, durée, thématiques...</p>
                 <Link href="/faq#examen" className="text-primary-600 text-sm font-medium hover:text-primary-700">
                   En savoir plus →
                 </Link>
               </div>
-              <div className="bg-white p-6 border border-gray-200">
+              <div className="bg-white p-6 border border-gray-200 animate-fade-in-up delay-200 hover:shadow-md transition-shadow">
                 <h3 className="font-semibold text-gray-900 mb-2">Nos tarifs</h3>
                 <p className="text-sm text-gray-600 mb-3">Crédits, Premium, paiement...</p>
                 <Link href="/tarifs" className="text-primary-600 text-sm font-medium hover:text-primary-700">
                   Voir les tarifs →
                 </Link>
               </div>
-              <div className="bg-white p-6 border border-gray-200">
+              <div className="bg-white p-6 border border-gray-200 animate-fade-in-up delay-300 hover:shadow-md transition-shadow">
                 <h3 className="font-semibold text-gray-900 mb-2">Se préparer</h3>
                 <p className="text-sm text-gray-600 mb-3">Conseils, méthodes, durée...</p>
                 <Link href="/faq#preparation" className="text-primary-600 text-sm font-medium hover:text-primary-700">

@@ -4,25 +4,25 @@ import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
-// Images du carrousel avec messages marketing
+// Images du carrousel avec messages marketing (format WebP optimisé)
 const carouselSlides = [
   {
-    image: '/carousselle1.jpg',
+    image: '/carousselle1.webp',
     title: 'Préparation efficace',
     subtitle: 'Des milliers de questions officielles',
   },
   {
-    image: '/carousselle2.jpg',
+    image: '/carousselle2.webp',
     title: 'Prêt pour le jour J',
     subtitle: '95% de taux de réussite',
   },
   {
-    image: '/carousselle3.jpg',
+    image: '/carousselle3.webp',
     title: 'Apprenez à votre rythme',
     subtitle: 'Accessible 24h/24 sur tous vos appareils',
   },
   {
-    image: '/carousselle4.jpeg',
+    image: '/carousselle4.webp',
     title: 'Examens blancs réalistes',
     subtitle: 'Conditions identiques au vrai test',
   },

@@ -29,29 +29,29 @@ export default function ArticlesPage() {
           <div className="absolute inset-0 bg-black/50" />
           
           <div className="relative max-w-6xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              Blog & Ressources
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 animate-fade-in-up">
+              Actualités & Démarches
             </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed">
-              Découvrez nos articles sur l&apos;examen civique, les thématiques officielles,
-              et nos conseils pour réussir votre test de naturalisation.
+            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed animate-fade-in-up delay-100">
+              Restez informé des dernières actualités sur la naturalisation française,
+              le renouvellement des titres de séjour et les évolutions des démarches administratives.
             </p>
             
             {/* Stats */}
-            <div className="flex items-center justify-center gap-8 mt-8">
+            <div className="flex items-center justify-center gap-8 mt-8 animate-fade-in-up delay-200">
               <div className="text-center">
-                <div className="text-3xl font-bold text-white">5+</div>
-                <div className="text-sm text-white/70">Articles</div>
+                <div className="text-3xl font-bold text-white">2025</div>
+                <div className="text-sm text-white/70">Actualités</div>
               </div>
               <div className="w-px h-10 bg-white/20" />
               <div className="text-center">
-                <div className="text-3xl font-bold text-white">5</div>
-                <div className="text-sm text-white/70">Thématiques</div>
+                <div className="text-3xl font-bold text-white">Décret</div>
+                <div className="text-sm text-white/70">2025-647</div>
               </div>
               <div className="w-px h-10 bg-white/20" />
               <div className="text-center">
-                <div className="text-3xl font-bold text-white">100%</div>
-                <div className="text-sm text-white/70">Gratuit</div>
+                <div className="text-3xl font-bold text-white">Mise à jour</div>
+                <div className="text-sm text-white/70">Permanente</div>
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ export default function ArticlesPage() {
           <div className="max-w-7xl mx-auto">
             <div className="flex flex-col lg:flex-row gap-8">
               {/* Sidebar */}
-              <div className="lg:w-72 flex-shrink-0">
+              <div className="lg:w-72 flex-shrink-0 animate-fade-in-left delay-100">
                 <BlogSidebar
                   selectedCategory={selectedCategory}
                   onCategoryChange={setSelectedCategory}
@@ -70,7 +70,7 @@ export default function ArticlesPage() {
               </div>
 
               {/* Articles Content */}
-              <div className="flex-1">
+              <div className="flex-1 animate-fade-in-right delay-200">
                 {/* Tous les articles */}
                 <div>
                   <div className="flex items-center justify-between mb-6">

@@ -5,11 +5,6 @@ export const cadreGeneralContent = {
     content: `L'examen civique est un **test officiel** évaluant les connaissances du candidat sur les **valeurs, institutions et la vie en société en France**.
 
 Il s'applique aux étrangers souhaitant obtenir une **carte de séjour pluriannuelle**, une **carte de résident** ou la **naturalisation française**.`,
-    note: 'Pour une vision complète du dispositif, consultez aussi l\'article principal :',
-    link: {
-      text: 'Tout savoir sur l\'examen civique pour la naturalisation',
-      href: '/articles/tout-savoir-examen-civique-naturalisation',
-    },
   },
   cadreLegal: {
     title: 'Cadre légal',
@@ -126,15 +121,19 @@ Pour vous entraîner dans les meilleures conditions :`,
     },
   },
   articlesAssocies: {
-    title: 'Articles associés',
+    title: 'Sources officielles',
     articles: [
       {
-        text: 'Tout savoir sur l\'examen civique pour la naturalisation',
-        href: '/articles/tout-savoir-examen-civique-naturalisation',
+        text: 'Examen civique : programme et thématiques - Service-Public.fr',
+        href: 'https://www.service-public.fr/particuliers/vosdroits/F35799',
       },
       {
-        text: 'Les thématiques officielles de l\'examen civique en détail',
-        href: '/articles/thematiques-officielles-detail',
+        text: 'Carte de séjour pluriannuelle : conditions - Service-Public.fr',
+        href: 'https://www.service-public.fr/particuliers/vosdroits/F34708',
+      },
+      {
+        text: 'Acquisition de la nationalité française - Service-Public.fr',
+        href: 'https://www.service-public.fr/particuliers/vosdroits/F2213',
       },
     ],
   },

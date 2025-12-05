@@ -83,7 +83,14 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
     <Link href={`/articles/${article.slug}`} className="group block">
       <article className="bg-white shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
         {/* Image */}
-        <div className="relative h-48 bg-gradient-to-br from-primary-100 via-primary-50 to-blue-100 overflow-hidden">
+        <div className="relative h-48 overflow-hidden">
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 group-hover:scale-105"
+            style={{
+              backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800')",
+            }}
+          />
+          <div className="absolute inset-0 bg-black/10" />
           <div className="absolute top-4 left-4">
             <span className={`px-3 py-1 text-xs font-semibold ${categoryBgColors[article.categorySlug] || 'bg-primary-50 text-primary-700'}`}>
               {article.category}
