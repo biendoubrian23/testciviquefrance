@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuth } from '@/contexts/AuthContext';
-import { createClient } from '@/lib/supabase/client';
+import { useSupabase } from '@/hooks/useSupabase';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { 
@@ -38,7 +38,7 @@ interface CategoryProgress {
 
 export default function DashboardPage() {
   const { profile, user } = useAuth();
-  const supabase = createClient();
+  const supabase = useSupabase();
   
   const [stats, setStats] = useState<Stats>({
     questionsRepondues: 0,
@@ -55,12 +55,14 @@ export default function DashboardPage() {
       if (!user) return;
       
       try {
-        // Récupérer les statistiques de l'utilisateur
-        const { data: statsData } = await supabase
+        // Récupérer les statistiques de l'utilisateur (sans .single() pour éviter 406)
+        const { data: statsList } = await supabase
           .from('statistiques')
           .select('*')
           .eq('user_id', user.id)
-          .single();
+          .limit(1);
+
+        const statsData = statsList && statsList.length > 0 ? statsList[0] : null;
 
         if (statsData) {
           const tauxReussite = statsData.total_questions_repondues > 0 
@@ -116,17 +118,24 @@ export default function DashboardPage() {
                 .select('id', { count: 'exact', head: true })
                 .eq('categorie_id', cat.id);
 
-              const { count: bonnesReponses } = await supabase
-                .from('resultats')
-                .select('id', { count: 'exact', head: true })
-                .eq('user_id', user.id)
-                .eq('is_correct', true)
-                .in('question_id', 
-                  supabase
-                    .from('questions')
-                    .select('id')
-                    .eq('categorie_id', cat.id)
-                );
+              // D'abord récupérer les IDs des questions de cette catégorie
+              const { data: questionsInCat } = await supabase
+                .from('questions')
+                .select('id')
+                .eq('categorie_id', cat.id);
+
+              const questionIds = questionsInCat?.map(q => q.id) || [];
+              
+              let bonnesReponses = 0;
+              if (questionIds.length > 0) {
+                const { count } = await supabase
+                  .from('resultats')
+                  .select('id', { count: 'exact', head: true })
+                  .eq('user_id', user.id)
+                  .eq('is_correct', true)
+                  .in('question_id', questionIds);
+                bonnesReponses = count || 0;
+              }
 
               const progress = totalQuestions && totalQuestions > 0 
                 ? Math.round(((bonnesReponses || 0) / totalQuestions) * 100)
@@ -170,26 +179,28 @@ export default function DashboardPage() {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* En-tête de bienvenue */}
-      <div className="bg-primary-600 p-8 text-white">
-        <h1 className="text-3xl font-bold mb-2">
+      <div className="bg-primary-600 p-5 sm:p-8 text-white -mx-4 sm:mx-0">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2">
           Bonjour {profile?.prenom || 'là'}
         </h1>
-        <p className="text-primary-100 mb-6 text-lg">
+        <p className="text-primary-100 mb-5 sm:mb-6 text-base sm:text-lg">
           Prêt à continuer votre préparation à l&apos;examen civique ?
         </p>
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <Link 
             href="/dashboard/entrainement"
-            className="inline-flex items-center gap-2 bg-white text-primary-600 px-5 py-2.5 font-medium hover:bg-primary-50 transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-5 py-3 sm:py-2.5 font-medium hover:bg-primary-50 active:bg-primary-100 transition-colors"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <BookOpen className="w-5 h-5" />
             S&apos;entraîner
           </Link>
           <Link 
             href="/dashboard/examens"
-            className="inline-flex items-center gap-2 bg-primary-700 text-white px-5 py-2.5 font-medium hover:bg-primary-800 transition-colors border border-primary-500"
+            className="inline-flex items-center justify-center gap-2 bg-primary-700 text-white px-5 py-3 sm:py-2.5 font-medium hover:bg-primary-800 active:bg-primary-900 transition-colors border border-primary-500"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <FileQuestion className="w-5 h-5" />
             Examen blanc
@@ -198,44 +209,45 @@ export default function DashboardPage() {
       </div>
 
       {/* Statistiques rapides - Design épuré sans icônes colorées */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white p-5 border border-gray-200">
-          <p className="text-sm text-gray-500 mb-1">Questions répondues</p>
-          <p className="text-3xl font-bold text-gray-900">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+        <div className="bg-white p-4 sm:p-5 border border-gray-200">
+          <p className="text-xs sm:text-sm text-gray-500 mb-1">Questions répondues</p>
+          <p className="text-2xl sm:text-3xl font-bold text-gray-900">
             {loading ? '—' : stats.questionsRepondues}
           </p>
         </div>
 
-        <div className="bg-white p-5 border border-gray-200">
-          <p className="text-sm text-gray-500 mb-1">Taux de réussite</p>
-          <p className="text-3xl font-bold text-gray-900">
+        <div className="bg-white p-4 sm:p-5 border border-gray-200">
+          <p className="text-xs sm:text-sm text-gray-500 mb-1">Taux de réussite</p>
+          <p className="text-2xl sm:text-3xl font-bold text-gray-900">
             {loading ? '—' : `${stats.tauxReussite}%`}
           </p>
         </div>
 
-        <div className="bg-white p-5 border border-gray-200">
-          <p className="text-sm text-gray-500 mb-1">Temps d'étude</p>
-          <p className="text-3xl font-bold text-gray-900">
+        <div className="bg-white p-4 sm:p-5 border border-gray-200">
+          <p className="text-xs sm:text-sm text-gray-500 mb-1">Temps d&apos;étude</p>
+          <p className="text-2xl sm:text-3xl font-bold text-gray-900">
             {loading ? '—' : `${stats.tempsEtude}h`}
           </p>
         </div>
 
-        <div className="bg-white p-5 border border-gray-200">
-          <p className="text-sm text-gray-500 mb-1">Série en cours</p>
-          <p className="text-3xl font-bold text-gray-900">
+        <div className="bg-white p-4 sm:p-5 border border-gray-200">
+          <p className="text-xs sm:text-sm text-gray-500 mb-1">Série en cours</p>
+          <p className="text-2xl sm:text-3xl font-bold text-gray-900">
             {loading ? '—' : `${stats.serieJours} jour${stats.serieJours > 1 ? 's' : ''}`}
           </p>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-6">
+      <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Progression par thème */}
-        <div className="lg:col-span-2 bg-white border border-gray-200 p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-bold text-gray-900">Progression par thème</h2>
+        <div className="lg:col-span-2 bg-white border border-gray-200 p-4 sm:p-6">
+          <div className="flex items-center justify-between mb-4 sm:mb-6">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900">Progression par thème</h2>
             <Link 
               href="/dashboard/statistiques" 
-              className="text-sm text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1"
+              className="text-sm text-primary-600 hover:text-primary-700 active:text-primary-800 font-medium flex items-center gap-1"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               Voir tout <ArrowRight className="w-4 h-4" />
             </Link>
@@ -274,8 +286,8 @@ export default function DashboardPage() {
         </div>
 
         {/* Activité récente */}
-        <div className="bg-white border border-gray-200 p-6">
-          <h2 className="text-xl font-bold text-gray-900 mb-6">Activité récente</h2>
+        <div className="bg-white border border-gray-200 p-4 sm:p-6">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Activité récente</h2>
           {loading ? (
             <div className="space-y-4">
               {[1, 2, 3, 4].map((i) => (
@@ -322,10 +334,11 @@ export default function DashboardPage() {
       </div>
 
       {/* Actions rapides - Design simplifié */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         <Link 
           href="/dashboard/entrainement"
-          className="group bg-white border border-gray-200 p-6 hover:border-primary-600 transition-all"
+          className="group bg-white border border-gray-200 p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 transition-all"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <h3 className="font-bold text-gray-900 mb-2">Entraînement libre</h3>
           <p className="text-sm text-gray-600">Répondez à des questions par thème à votre rythme</p>
@@ -333,15 +346,17 @@ export default function DashboardPage() {
 
         <Link 
           href="/dashboard/examens"
-          className="group bg-white border border-gray-200 p-6 hover:border-primary-600 transition-all"
+          className="group bg-white border border-gray-200 p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 transition-all"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <h3 className="font-bold text-gray-900 mb-2">Examen blanc</h3>
-          <p className="text-sm text-gray-600">Testez-vous dans les conditions réelles (12 questions)</p>
+          <p className="text-sm text-gray-600">Testez-vous dans les conditions réelles (40 questions)</p>
         </Link>
 
         <Link 
-          href="/dashboard/resultats"
-          className="group bg-white border border-gray-200 p-6 hover:border-primary-600 transition-all"
+          href="/dashboard/statistiques"
+          className="group bg-white border border-gray-200 p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 transition-all sm:col-span-2 lg:col-span-1"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <h3 className="font-bold text-gray-900 mb-2">Mes résultats</h3>
           <p className="text-sm text-gray-600">Consultez votre historique et vos performances</p>

@@ -212,18 +212,18 @@ export default function ParametresPage() {
       </div>
 
       {/* Zone dangereuse */}
-      <div className="bg-white border border-gray-200 p-6">
+      <div className="bg-red-600 border border-red-700 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-gray-100 flex items-center justify-center">
-            <Shield className="w-5 h-5 text-gray-600" />
+          <div className="w-10 h-10 bg-red-500 flex items-center justify-center">
+            <Shield className="w-5 h-5 text-white" />
           </div>
           <div>
-            <h2 className="font-bold text-gray-900">Zone dangereuse</h2>
-            <p className="text-sm text-gray-500">Actions irréversibles sur votre compte</p>
+            <h2 className="font-bold text-white">Zone dangereuse</h2>
+            <p className="text-sm text-red-100">Actions irréversibles sur votre compte</p>
           </div>
         </div>
 
-        <button className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-700 font-medium">
+        <button className="inline-flex items-center gap-2 text-white hover:text-red-100 font-medium bg-red-700 px-4 py-2.5 hover:bg-red-800 transition-colors">
           <Trash2 className="w-5 h-5" />
           Supprimer mon compte
         </button>

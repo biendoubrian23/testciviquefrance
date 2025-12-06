@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase/client';
+import { useSupabase } from '@/hooks/useSupabase';
 import { useAuth } from '@/contexts/AuthContext';
 import { ChevronRight, CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import type { OnboardingQuestion, OnboardingAnswer } from '@/types/onboarding';
@@ -105,7 +105,7 @@ const staticQuestions: OnboardingQuestion[] = [
 export default function OnboardingQuizPage() {
   const router = useRouter();
   const { user } = useAuth();
-  const supabase = createClient();
+  const supabase = useSupabase();
   
   const [questions, setQuestions] = useState<OnboardingQuestion[]>(staticQuestions);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -120,9 +120,13 @@ export default function OnboardingQuizPage() {
   const isLastQuestion = currentIndex === questions.length - 1;
 
   useEffect(() => {
-    const loadQuestions = async () => {
+    // Charger immédiatement avec les questions statiques
+    // Puis essayer de charger depuis la BD en arrière-plan
+    setIsLoading(false);
+    
+    const loadQuestionsFromDB = async () => {
       try {
-        const { data, error } = await supabase
+        const { data } = await supabase
           .from('onboarding_questions')
           .select('*')
           .order('ordre');
@@ -131,13 +135,11 @@ export default function OnboardingQuizPage() {
           setQuestions(data as OnboardingQuestion[]);
         }
       } catch (error) {
-        console.log('Utilisation des questions statiques');
-      } finally {
-        setIsLoading(false);
+        // Garder les questions statiques
       }
     };
 
-    loadQuestions();
+    loadQuestionsFromDB();
   }, [supabase]);
 
   const handleSelectOption = (index: number) => {
@@ -244,11 +246,11 @@ export default function OnboardingQuizPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+        <div className="max-w-3xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Évaluez votre niveau</h1>
-              <p className="text-sm text-gray-500">
+              <h1 className="text-lg font-bold text-gray-900">Évaluez votre niveau</h1>
+              <p className="text-xs text-gray-500">
                 Question {currentIndex + 1} sur {questions.length}
               </p>
             </div>
@@ -259,7 +261,7 @@ export default function OnboardingQuizPage() {
             </div>
           </div>
           {/* Progress bar */}
-          <div className="mt-4 h-1 bg-gray-200">
+          <div className="mt-2 h-1 bg-gray-200">
             <div 
               className="h-full bg-primary-600 transition-all duration-300"
               style={{ width: `${progress}%` }}
@@ -269,26 +271,26 @@ export default function OnboardingQuizPage() {
       </header>
 
       {/* Main content */}
-      <main className="max-w-4xl mx-auto px-4 py-8">
+      <main className="max-w-3xl mx-auto px-4 py-4">
         {/* Domain badge */}
-        <div className="mb-6">
-          <span className="inline-block px-3 py-1 bg-primary-50 text-primary-700 text-sm font-medium border border-primary-200">
+        <div className="mb-3">
+          <span className="inline-block px-2 py-0.5 bg-primary-50 text-primary-700 text-xs font-medium border border-primary-200">
             {currentQuestion.domaine}
           </span>
         </div>
 
         {/* Question */}
-        <h2 className="text-2xl font-bold text-gray-900 mb-8">
+        <h2 className="text-lg font-bold text-gray-900 mb-4">
           {currentQuestion.question}
         </h2>
 
         {/* Options */}
-        <div className="space-y-3 mb-8">
+        <div className="space-y-2 mb-4">
           {currentQuestion.options.map((option, index) => {
             const isSelected = selectedOption === index;
             const isCorrect = option.isCorrect;
             
-            let optionClasses = 'w-full p-4 text-left border-2 transition-all duration-200 ';
+            let optionClasses = 'w-full p-3 text-left border-2 transition-all duration-200 text-sm ';
             
             if (showExplanation) {
               if (isCorrect) {
@@ -316,10 +318,10 @@ export default function OnboardingQuizPage() {
                 <div className="flex items-center justify-between">
                   <span className="font-medium">{option.text}</span>
                   {showExplanation && isCorrect && (
-                    <CheckCircle className="w-5 h-5 text-emerald-600" />
+                    <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   )}
                   {showExplanation && isSelected && !isCorrect && (
-                    <XCircle className="w-5 h-5 text-red-600" />
+                    <XCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
                   )}
                 </div>
               </button>
@@ -329,9 +331,9 @@ export default function OnboardingQuizPage() {
 
         {/* Explanation */}
         {showExplanation && (
-          <div className="mb-8 p-6 bg-white border-l-4 border-primary-600">
-            <h3 className="font-bold text-gray-900 mb-2">Explication</h3>
-            <p className="text-gray-600">{currentQuestion.explication}</p>
+          <div className="mb-4 p-3 bg-white border-l-4 border-primary-600">
+            <h3 className="font-bold text-gray-900 text-sm mb-1">Explication</h3>
+            <p className="text-gray-600 text-sm">{currentQuestion.explication}</p>
           </div>
         )}
 
@@ -341,7 +343,7 @@ export default function OnboardingQuizPage() {
             <button
               onClick={handleValidate}
               disabled={selectedOption === null}
-              className={`px-8 py-3 font-semibold transition-all duration-200 flex items-center gap-2 ${
+              className={`px-6 py-2.5 font-semibold text-sm transition-all duration-200 flex items-center gap-2 ${
                 selectedOption !== null
                   ? 'bg-primary-600 text-white hover:bg-primary-700'
                   : 'bg-gray-200 text-gray-400 cursor-not-allowed'
@@ -353,22 +355,22 @@ export default function OnboardingQuizPage() {
             <button
               onClick={handleNext}
               disabled={isSaving}
-              className="px-8 py-3 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200 flex items-center gap-2"
+              className="px-6 py-2.5 bg-primary-600 text-white font-semibold text-sm hover:bg-primary-700 transition-all duration-200 flex items-center gap-2"
             >
               {isSaving ? (
                 <>
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <Loader2 className="w-4 h-4 animate-spin" />
                   Calcul des résultats...
                 </>
               ) : isLastQuestion ? (
                 <>
                   Voir mes résultats
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4" />
                 </>
               ) : (
                 <>
                   Question suivante
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4" />
                 </>
               )}
             </button>

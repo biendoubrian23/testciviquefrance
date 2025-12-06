@@ -89,18 +89,19 @@ export default function TarifsPage() {
                 </Link>
               </div>
 
-              {/* Pack Crédits - Populaire */}
+              {/* Pack Standard - Recommandé */}
               <div className="bg-primary-600 text-white p-8 lg:p-10 animate-fade-in-up delay-200 transition-all duration-300 hover:shadow-2xl hover:bg-primary-700 flex flex-col relative">
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary-600 px-4 py-1.5 text-sm font-medium">
                   Recommandé
                 </div>
                 
                 <div className="mb-8">
-                  <h2 className="text-lg font-medium text-primary-200 mb-2">Pack Crédits</h2>
+                  <h2 className="text-lg font-medium text-primary-200 mb-2">Pack Standard</h2>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-bold">9,99€</span>
+                    <span className="text-5xl font-bold">3,99€</span>
+                    <span className="text-primary-200">/semaine</span>
                   </div>
-                  <p className="text-primary-200 mt-2">25 crédits • Sans expiration</p>
+                  <p className="text-primary-200 mt-2">Accès pendant 7 jours</p>
                 </div>
                 
                 <div className="space-y-4 flex-grow">
@@ -110,15 +111,19 @@ export default function TarifsPage() {
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
-                    <span className="text-primary-100">Examens blancs complets</span>
+                    <span className="text-primary-100">1 examen blanc</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
-                    <span className="text-primary-100">Corrigés détaillés</span>
+                    <span className="text-primary-100">Cours détaillés</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
-                    <span className="text-primary-100">Utilisez à votre rythme</span>
+                    <span className="text-primary-100">Corrigés expliqués</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
+                    <span className="text-primary-100">Suivi de progression</span>
                   </div>
                 </div>
 
@@ -126,7 +131,7 @@ export default function TarifsPage() {
                   href="/signup"
                   className="mt-8 block w-full py-4 text-center bg-white text-primary-600 font-medium hover:bg-primary-50 transition-all duration-300"
                 >
-                  Acheter des crédits
+                  Sélectionner
                 </Link>
               </div>
 
@@ -135,7 +140,7 @@ export default function TarifsPage() {
                 <div className="mb-8">
                   <h2 className="text-lg font-medium text-primary-600 mb-2">Premium</h2>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-bold text-gray-900">13,99€</span>
+                    <span className="text-5xl font-bold text-gray-900">7,99€</span>
                     <span className="text-gray-500">/semaine</span>
                   </div>
                   <p className="text-gray-500 mt-2">Accès illimité pendant 7 jours</p>
@@ -148,7 +153,7 @@ export default function TarifsPage() {
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">Examens blancs illimités</span>
+                    <span className="text-gray-700">3 examens blancs</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
@@ -157,6 +162,10 @@ export default function TarifsPage() {
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
                     <span className="text-gray-700">Révision intelligente</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
+                    <span className="text-gray-700">Support prioritaire</span>
                   </div>
                 </div>
 
@@ -172,129 +181,55 @@ export default function TarifsPage() {
           </div>
         </section>
 
-        {/* Autres offres */}
+        {/* Offre découverte - 2 Examens blancs */}
         <section className="py-16 lg:py-20 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Autres options</h2>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">Envie de tester avant de vous engager ?</h2>
               <p className="text-gray-600 max-w-xl mx-auto">
-                Des formules flexibles pour s'adapter à votre préparation
+                Essayez notre plateforme avec 2 examens blancs complets dans les conditions réelles de l&apos;examen civique.
               </p>
             </div>
-
-            {/* Grille des autres offres */}
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              
-              {/* 2 Examens blancs */}
-              <div className="group bg-white p-6 border border-gray-200 hover:border-gray-900 transition-all duration-300">
-                <div className="text-sm text-gray-500 mb-3">Offre découverte</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">2 Examens blancs</h3>
-                <div className="text-3xl font-bold text-gray-900 mb-4">2,50€</div>
-                <p className="text-sm text-gray-600 mb-6">Testez-vous dans les conditions réelles de l'examen</p>
-                <Link href="/signup" className="text-sm font-medium text-gray-900 flex items-center gap-2 group-hover:gap-3 transition-all">
-                  Choisir <ArrowRight className="w-4 h-4" />
+            
+            <div className="flex justify-center">
+              <div className="group bg-white p-8 border-2 border-primary-200 hover:border-primary-600 transition-all duration-300 hover:shadow-lg text-center">
+                <div className="text-sm text-primary-600 font-medium mb-3">Offre découverte</div>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">2 Examens blancs</h3>
+                <div className="text-5xl font-bold text-gray-900 mb-4">2,50€</div>
+                <p className="text-gray-600 mb-6">Testez-vous dans les conditions réelles</p>
+                <Link href="/signup" className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-all group-hover:gap-3">
+                  Essayer maintenant <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
-
-              {/* 10 crédits */}
-              <div className="group bg-white p-6 border border-gray-200 hover:border-gray-900 transition-all duration-300">
-                <div className="text-sm text-gray-500 mb-3">Pack léger</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">10 crédits</h3>
-                <div className="text-3xl font-bold text-gray-900 mb-4">4,99€</div>
-                <p className="text-sm text-gray-600 mb-6">Pour une préparation progressive</p>
-                <Link href="/signup" className="text-sm font-medium text-gray-900 flex items-center gap-2 group-hover:gap-3 transition-all">
-                  Choisir <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              {/* 50 crédits */}
-              <div className="group bg-white p-6 border border-gray-200 hover:border-gray-900 transition-all duration-300">
-                <div className="text-sm text-gray-500 mb-3">Pack standard</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">50 crédits</h3>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-bold text-gray-900">17,99€</span>
-                  <span className="text-sm text-gray-500 line-through">25€</span>
-                </div>
-                <p className="text-sm text-gray-600 mb-6">Économisez 28% sur ce pack</p>
-                <Link href="/signup" className="text-sm font-medium text-gray-900 flex items-center gap-2 group-hover:gap-3 transition-all">
-                  Choisir <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-              {/* 100 crédits */}
-              <div className="group bg-white p-6 border border-gray-200 hover:border-gray-900 transition-all duration-300">
-                <div className="text-sm text-gray-500 mb-3">Pack complet</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-1">100 crédits</h3>
-                <div className="flex items-baseline gap-2 mb-4">
-                  <span className="text-3xl font-bold text-gray-900">29,99€</span>
-                  <span className="text-sm text-gray-500 line-through">50€</span>
-                </div>
-                <p className="text-sm text-gray-600 mb-6">Meilleur rapport qualité-prix</p>
-                <Link href="/signup" className="text-sm font-medium text-gray-900 flex items-center gap-2 group-hover:gap-3 transition-all">
-                  Choisir <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-
-            </div>
-
-            {/* Offres Premium temporaires */}
-            <div className="mt-12 grid sm:grid-cols-2 gap-6">
-              
-              {/* 48h */}
-              <div className="group bg-white p-8 border border-gray-200 hover:border-gray-900 transition-all duration-300 flex items-center justify-between">
-                <div>
-                  <div className="text-sm text-gray-500 mb-2">Accès illimité</div>
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-1">48 heures</h3>
-                  <p className="text-gray-600">Idéal pour une révision intensive de dernière minute</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-3xl font-bold text-gray-900">7,99€</div>
-                  <Link href="/signup" className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-gray-900 group-hover:gap-3 transition-all">
-                    Choisir <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-
-              {/* 3 semaines */}
-              <div className="group bg-gray-900 text-white p-8 transition-all duration-300 hover:shadow-xl flex items-center justify-between">
-                <div>
-                  <div className="text-sm text-gray-400 mb-2">Accès illimité</div>
-                  <h3 className="text-2xl font-semibold mb-1">3 semaines</h3>
-                  <p className="text-gray-400">La préparation complète avant votre examen</p>
-                </div>
-                <div className="text-right">
-                  <div className="text-3xl font-bold">24,99€</div>
-                  <Link href="/signup" className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-white group-hover:gap-3 transition-all">
-                    Choisir <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-
             </div>
           </div>
         </section>
 
         {/* FAQ */}
-        <section className="py-16 lg:py-20 bg-white">
+        <section className="py-16 lg:py-20 bg-gray-50">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Questions fréquentes</h2>
             
             <div className="space-y-0 border-t border-gray-200">
               <FAQItem 
-                question="Comment fonctionnent les crédits ?"
-                answer="Les crédits vous permettent de débloquer des tests et examens blancs à votre rythme. Une fois achetés, ils n'expirent jamais et restent disponibles sur votre compte."
+                question="Comment fonctionne l'abonnement à la semaine ?"
+                answer="L'abonnement vous donne un accès complet pendant 7 jours à partir de la date d'achat. Vous pouvez utiliser toutes les fonctionnalités incluses dans votre formule sans limitation pendant cette période."
               />
               <FAQItem 
-                question="Quelle est la différence entre crédits et Premium ?"
-                answer="Avec les crédits, vous payez uniquement ce que vous utilisez. L'offre Premium vous donne un accès illimité pendant une durée définie, idéal si vous préparez intensivement votre examen."
+                question="Quelle est la différence entre Pack Standard et Premium ?"
+                answer="Le Pack Standard (3,99€) inclut les tests thématiques, 1 examen blanc et les cours. Le Premium (7,99€) offre des tests illimités, 3 examens blancs, des statistiques avancées et un support prioritaire."
               />
               <FAQItem 
-                question="Les crédits expirent-ils ?"
-                answer="Non, vos crédits n'expirent jamais. Vous pouvez les utiliser quand vous le souhaitez, même si vous souscrivez à une offre Premium entre-temps."
+                question="Les questions sont-elles conformes à l'examen officiel ?"
+                answer="Oui, toutes nos questions sont basées sur le référentiel officiel de l'examen civique français. Elles couvrent les valeurs de la République, l'histoire de France, la géographie et les institutions."
               />
               <FAQItem 
-                question="Comment puis-je payer ?"
-                answer="Nous acceptons les cartes bancaires (Visa, Mastercard) et PayPal. Le paiement est sécurisé et vos données sont protégées."
+                question="Puis-je réviser sur mobile ?"
+                answer="Absolument ! Notre plateforme est entièrement responsive et fonctionne parfaitement sur smartphone, tablette et ordinateur. Révisez où vous voulez, quand vous voulez."
+              />
+              <FAQItem 
+                question="Que se passe-t-il si je n'ai pas réussi en une semaine ?"
+                answer="Pas de panique ! Vous pouvez renouveler votre abonnement à tout moment. De plus, les cours et fiches de révision restent accessibles gratuitement même après expiration de votre formule."
               />
             </div>
           </div>

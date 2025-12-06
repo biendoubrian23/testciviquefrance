@@ -102,10 +102,10 @@ export default function Hero() {
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
-                      className={`transition-all duration-300 ${
+                      className={`rounded-full transition-all duration-300 ${
                         index === currentSlide
-                          ? 'w-6 h-1.5 bg-white'
-                          : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/70'
+                          ? 'w-6 h-2 bg-white'
+                          : 'w-2 h-2 bg-white/50 hover:bg-white/70'
                       }`}
                       aria-label={`Aller à l'image ${index + 1}`}
                     />
@@ -205,7 +205,7 @@ export default function Hero() {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`transition-all duration-300 ${
+                    className={`rounded-full transition-all duration-300 ${
                       index === currentSlide
                         ? 'w-8 h-2 bg-white'
                         : 'w-2 h-2 bg-white/50 hover:bg-white/70'

@@ -67,33 +67,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     let mounted = true;
-    
-    // Timeout de sécurité (3 secondes)
-    const timeoutId = setTimeout(() => {
-      if (mounted && isLoading) {
-        console.warn('Auth timeout - forçage fin chargement');
-        setIsLoading(false);
-      }
-    }, 3000);
 
     const initAuth = async () => {
       try {
-        console.log('initAuth: démarrage...');
-        const { data: { session: currentSession }, error } = await supabase.auth.getSession();
-        
-        if (error) {
-          console.error('Erreur getSession:', error.message);
-        }
-        
-        console.log('initAuth: session obtenue', !!currentSession);
+        // Récupérer la session existante
+        const { data: { session: currentSession } } = await supabase.auth.getSession();
         
         if (!mounted) return;
         
         if (currentSession?.user) {
           setSession(currentSession);
           setUser(currentSession.user);
-          const profileData = await fetchProfile(currentSession.user.id);
-          if (mounted) setProfile(profileData);
+          // Charger le profil en arrière-plan (ne pas bloquer)
+          fetchProfile(currentSession.user.id).then(profileData => {
+            if (mounted) setProfile(profileData);
+          });
         } else {
           setSession(null);
           setUser(null);
@@ -101,10 +89,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       } catch (err) {
         console.error('Erreur initAuth:', err);
+        // En cas d'erreur, on continue quand même
+        setSession(null);
+        setUser(null);
+        setProfile(null);
       } finally {
         if (mounted) {
-          clearTimeout(timeoutId);
-          console.log('initAuth: fin chargement');
           setIsLoading(false);
         }
       }
@@ -134,7 +124,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     return () => {
       mounted = false;
-      clearTimeout(timeoutId);
       subscription.unsubscribe();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

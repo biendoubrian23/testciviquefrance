@@ -1,37 +1,47 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { 
   HelpCircle,
   MessageCircle,
   Book,
   Mail,
-  ChevronRight,
+  ChevronDown,
   ExternalLink
 } from 'lucide-react';
 
-const faqItems = [
-  {
-    question: 'Comment fonctionne le système de crédits ?',
-    answer: 'Chaque question d\'entraînement coûte 1 crédit. Un examen blanc coûte 2 crédits. Vous recevez 5 crédits gratuits à l\'inscription.',
-  },
-  {
-    question: 'Qu\'est-ce que l\'offre Premium ?',
-    answer: 'L\'offre Premium vous donne un accès illimité à toutes les questions et examens blancs pendant 1 semaine, sans consommer de crédits.',
-  },
-  {
-    question: 'Comment se déroule l\'examen civique réel ?',
-    answer: 'L\'examen civique comporte 12 questions à choix multiples. Vous devez obtenir au moins 7 bonnes réponses sur 12 pour réussir.',
-  },
-  {
-    question: 'Puis-je annuler mon abonnement Premium ?',
-    answer: 'Oui, l\'abonnement Premium est sans engagement. Il n\'est pas renouvelé automatiquement.',
-  },
-];
+// Composant FAQ déroulant
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div className="border-b border-gray-200 last:border-b-0">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-4 px-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+      >
+        <span className="font-medium text-gray-900 pr-4">{question}</span>
+        <ChevronDown 
+          className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${
+            isOpen ? 'rotate-180' : ''
+          }`} 
+        />
+      </button>
+      <div 
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+          isOpen ? 'max-h-48 pb-4 px-5' : 'max-h-0'
+        }`}
+      >
+        <p className="text-gray-600">{answer}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function AidePage() {
   return (
-    <div className="space-y-8 max-w-3xl">
+    <div className="space-y-8 max-w-3xl mx-auto">
       {/* En-tête */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Aide</h1>
@@ -87,18 +97,31 @@ export default function AidePage() {
             <h2 className="text-xl font-bold text-gray-900">Questions fréquentes</h2>
           </div>
         </div>
-        <div className="divide-y divide-gray-100">
-          {faqItems.map((item, index) => (
-            <details key={index} className="group">
-              <summary className="p-5 cursor-pointer list-none flex items-center justify-between hover:bg-gray-50 transition-colors">
-                <span className="font-medium text-gray-900">{item.question}</span>
-                <ChevronRight className="w-5 h-5 text-gray-400 transition-transform group-open:rotate-90" />
-              </summary>
-              <div className="px-5 pb-5 text-gray-600">
-                {item.answer}
-              </div>
-            </details>
-          ))}
+        <div>
+          <FAQItem 
+            question="Comment fonctionne la préparation ?"
+            answer="Choisissez une catégorie (Valeurs de la République, Histoire, Géographie, Institutions), puis progressez niveau par niveau. Chaque niveau contient 10 questions avec un timer de 30 secondes. Validez un niveau avec 7/10 pour débloquer le suivant."
+          />
+          <FAQItem 
+            question="Quelles sont les différentes offres disponibles ?"
+            answer="Nous proposons 3 formules : Pack Standard (3,99€/semaine) avec tests thématiques et 1 examen blanc, Premium (7,99€/semaine) avec accès illimité et 3 examens blancs, et Pack Examen (2,50€) pour 2 examens blancs sans expiration."
+          />
+          <FAQItem 
+            question="Comment se déroule l'examen civique réel ?"
+            answer="L'examen civique officiel comporte 12 questions à choix multiples portant sur les valeurs de la République, l'histoire et la géographie de France, et les institutions. Vous devez obtenir au moins 80% de bonnes réponses (soit 10/12 minimum) pour réussir."
+          />
+          <FAQItem 
+            question="Mes examens blancs expirent-ils ?"
+            answer="Non ! Si vous achetez le Pack Examen à 2,50€, vos 2 examens blancs restent disponibles sans limite de temps. Vous pouvez les utiliser quand vous le souhaitez."
+          />
+          <FAQItem 
+            question="Comment suivre ma progression ?"
+            answer="Accédez à la section Statistiques dans le menu pour voir votre progression par catégorie, votre taux de réussite, le nombre de questions répondues et vos points de gamification."
+          />
+          <FAQItem 
+            question="Puis-je réviser sur mobile ?"
+            answer="Absolument ! Notre plateforme est entièrement responsive. Vous pouvez réviser sur smartphone, tablette ou ordinateur, où que vous soyez."
+          />
         </div>
       </div>
 
@@ -109,7 +132,7 @@ export default function AidePage() {
             <MessageCircle className="w-6 h-6 text-primary-600" />
           </div>
           <div>
-            <h3 className="font-bold text-gray-900 mb-1">Besoin d'aide supplémentaire ?</h3>
+            <h3 className="font-bold text-gray-900 mb-1">Besoin d&apos;aide supplémentaire ?</h3>
             <p className="text-gray-600 mb-4">
               Notre équipe est disponible du lundi au dimanche, de 9h à 18h pour répondre à vos questions.
             </p>

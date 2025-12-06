@@ -113,14 +113,17 @@ CREATE POLICY "Les utilisateurs peuvent créer leurs résultats"
 
 -- 6. TABLE EXAMENS_BLANCS (sessions d'examen complet)
 -- =====================================================
+-- L'examen civique officiel comporte 40 questions
+-- Durée : 45 minutes maximum
+-- Seuil de réussite : 32/40 (80%)
 CREATE TABLE IF NOT EXISTS public.examens_blancs (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
   score INTEGER DEFAULT 0,
-  total_questions INTEGER DEFAULT 12,
-  temps_total INTEGER, -- en secondes
+  total_questions INTEGER DEFAULT 40,
+  temps_total INTEGER, -- en secondes (max 2700 = 45 min)
   is_completed BOOLEAN DEFAULT FALSE,
-  passed BOOLEAN,
+  passed BOOLEAN, -- true si score >= 32
   started_at TIMESTAMPTZ DEFAULT NOW(),
   completed_at TIMESTAMPTZ
 );
@@ -347,5 +350,97 @@ BEGIN
 END $$;
 
 -- =====================================================
--- FIN DU SCRIPT
+-- FIN DU SCRIPT DE BASE
+-- =====================================================
+
+-- =====================================================
+-- TABLES POUR L'ENTRAINEMENT PAR NIVEAUX
+-- =====================================================
+
+-- 11. TABLE PROGRESSION_NIVEAUX (progression par niveau et catégorie)
+-- =====================================================
+CREATE TABLE IF NOT EXISTS public.progression_niveaux (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  categorie_id UUID REFERENCES public.categories(id) ON DELETE CASCADE,
+  niveau INTEGER NOT NULL CHECK (niveau BETWEEN 1 AND 10),
+  is_unlocked BOOLEAN DEFAULT FALSE,
+  is_completed BOOLEAN DEFAULT FALSE,
+  meilleur_score INTEGER DEFAULT 0,
+  tentatives INTEGER DEFAULT 0,
+  derniere_tentative TIMESTAMPTZ,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(user_id, categorie_id, niveau)
+);
+
+ALTER TABLE public.progression_niveaux ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Les utilisateurs peuvent voir leur progression" 
+  ON public.progression_niveaux FOR SELECT 
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "Les utilisateurs peuvent créer leur progression" 
+  ON public.progression_niveaux FOR INSERT 
+  WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Les utilisateurs peuvent modifier leur progression" 
+  ON public.progression_niveaux FOR UPDATE 
+  USING (auth.uid() = user_id);
+
+-- 12. TABLE SESSIONS_QUIZ (sessions d'entraînement)
+-- =====================================================
+CREATE TABLE IF NOT EXISTS public.sessions_quiz (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  categorie_id UUID REFERENCES public.categories(id) ON DELETE CASCADE,
+  niveau INTEGER NOT NULL,
+  score INTEGER DEFAULT 0,
+  temps_moyen INTEGER, -- temps moyen par question en secondes
+  completed BOOLEAN DEFAULT FALSE,
+  started_at TIMESTAMPTZ DEFAULT NOW(),
+  completed_at TIMESTAMPTZ
+);
+
+ALTER TABLE public.sessions_quiz ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Les utilisateurs peuvent voir leurs sessions" 
+  ON public.sessions_quiz FOR SELECT 
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "Les utilisateurs peuvent créer leurs sessions" 
+  ON public.sessions_quiz FOR INSERT 
+  WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Les utilisateurs peuvent modifier leurs sessions" 
+  ON public.sessions_quiz FOR UPDATE 
+  USING (auth.uid() = user_id);
+
+-- 13. TABLE GAMIFICATION (points et séries)
+-- =====================================================
+CREATE TABLE IF NOT EXISTS public.gamification (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE UNIQUE,
+  points_total INTEGER DEFAULT 0,
+  streak_jours INTEGER DEFAULT 0,
+  meilleure_serie INTEGER DEFAULT 0,
+  derniere_activite TIMESTAMPTZ DEFAULT NOW(),
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE public.gamification ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Les utilisateurs peuvent voir leur gamification" 
+  ON public.gamification FOR SELECT 
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "Les utilisateurs peuvent créer leur gamification" 
+  ON public.gamification FOR INSERT 
+  WITH CHECK (auth.uid() = user_id);
+
+CREATE POLICY "Les utilisateurs peuvent modifier leur gamification" 
+  ON public.gamification FOR UPDATE 
+  USING (auth.uid() = user_id);
+
+-- =====================================================
+-- FIN DU SCRIPT COMPLET
 -- =====================================================
