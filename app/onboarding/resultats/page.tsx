@@ -149,6 +149,27 @@ export default function OnboardingResultsPage() {
           </div>
         </div>
 
+        {/* Message de motivation + CTA */}
+        <div className="bg-primary-50 border border-primary-200 p-6 mb-8">
+          <h3 className="font-bold text-primary-900 mb-2">
+            {isPassing 
+              ? 'Vous êtes sur la bonne voie !'
+              : 'Ne vous découragez pas !'}
+          </h3>
+          <p className="text-primary-800 mb-4">
+            {isPassing 
+              ? 'Avec un entraînement régulier sur notre plateforme, vous maximiserez vos chances de réussir l\'examen civique officiel (80% requis).'
+              : 'L\'examen civique nécessite 80% de bonnes réponses. Avec notre plateforme de préparation complète, vous pourrez progresser rapidement dans tous les domaines.'}
+          </p>
+          <button
+            onClick={handleContinue}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200"
+          >
+            Découvrir nos offres
+            <ChevronRight className="w-5 h-5" />
+          </button>
+        </div>
+
         {/* Domaines à améliorer - Liste simple */}
         {results.weaknesses.length > 0 && (
           <div className="mb-8">
@@ -166,31 +187,6 @@ export default function OnboardingResultsPage() {
             </ul>
           </div>
         )}
-
-        {/* Message de motivation */}
-        <div className="bg-primary-50 border border-primary-200 p-6 mb-8">
-          <h3 className="font-bold text-primary-900 mb-2">
-            {isPassing 
-              ? 'Vous êtes sur la bonne voie !'
-              : 'Ne vous découragez pas !'}
-          </h3>
-          <p className="text-primary-800">
-            {isPassing 
-              ? 'Avec un entraînement régulier sur notre plateforme, vous maximiserez vos chances de réussir l\'examen civique officiel (80% requis).'
-              : 'L\'examen civique nécessite 80% de bonnes réponses. Avec notre plateforme de préparation complète, vous pourrez progresser rapidement dans tous les domaines.'}
-          </p>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <button
-            onClick={handleContinue}
-            className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200"
-          >
-            Découvrir nos offres
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
       </main>
     </div>
   );
