@@ -15,7 +15,7 @@ export default function DashboardHeader() {
           <input
             type="text"
             placeholder="Rechercher une question, un thème..."
-            className="w-full pl-10 pr-4 py-2 bg-gray-100 border border-transparent rounded-lg focus:bg-white focus:border-primary-300 focus:ring-2 focus:ring-primary-100 outline-none transition-all"
+            className="w-full pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 focus:bg-white focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all"
           />
         </div>
       </div>
@@ -23,9 +23,9 @@ export default function DashboardHeader() {
       {/* Actions droite */}
       <div className="flex items-center gap-4 ml-6">
         {/* Notifications */}
-        <button className="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg transition-colors">
+        <button className="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-colors">
           <Bell className="w-5 h-5" />
-          <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
+          <span className="absolute top-1 right-1 w-2 h-2 bg-primary-600" />
         </button>
 
         {/* Avatar */}
@@ -38,7 +38,7 @@ export default function DashboardHeader() {
               {profile?.is_premium ? 'Membre Premium' : 'Membre gratuit'}
             </p>
           </div>
-          <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center text-primary-600 font-semibold">
+          <div className="w-10 h-10 bg-primary-50 flex items-center justify-center text-primary-600 font-semibold border border-primary-100">
             {profile?.prenom?.[0]?.toUpperCase() || profile?.email?.[0]?.toUpperCase() || 'U'}
           </div>
         </div>

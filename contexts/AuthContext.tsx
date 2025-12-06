@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
 
@@ -29,74 +29,118 @@ type AuthContextType = {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+// Client Supabase singleton
+const supabase = createClient();
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const supabase = createClient();
 
-  const fetchProfile = async (userId: string) => {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('id', userId)
-      .single();
+  // Fonction pour récupérer le profil
+  const fetchProfile = useCallback(async (userId: string): Promise<Profile | null> => {
+    try {
+      const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single();
 
-    if (error) {
-      console.error('Erreur lors de la récupération du profil:', error);
+      if (error) {
+        console.error('Erreur profil:', error.message);
+        return null;
+      }
+      return data as Profile;
+    } catch (err) {
+      console.error('Exception profil:', err);
       return null;
     }
-    return data as Profile;
-  };
+  }, []);
 
-  const refreshProfile = async () => {
+  const refreshProfile = useCallback(async () => {
     if (user) {
       const profileData = await fetchProfile(user.id);
       setProfile(profileData);
     }
-  };
+  }, [user, fetchProfile]);
 
   useEffect(() => {
-    // Récupérer la session initiale
-    const getInitialSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        const profileData = await fetchProfile(session.user.id);
-        setProfile(profileData);
+    let mounted = true;
+    
+    // Timeout de sécurité (3 secondes)
+    const timeoutId = setTimeout(() => {
+      if (mounted && isLoading) {
+        console.warn('Auth timeout - forçage fin chargement');
+        setIsLoading(false);
       }
-      
-      setIsLoading(false);
+    }, 3000);
+
+    const initAuth = async () => {
+      try {
+        console.log('initAuth: démarrage...');
+        const { data: { session: currentSession }, error } = await supabase.auth.getSession();
+        
+        if (error) {
+          console.error('Erreur getSession:', error.message);
+        }
+        
+        console.log('initAuth: session obtenue', !!currentSession);
+        
+        if (!mounted) return;
+        
+        if (currentSession?.user) {
+          setSession(currentSession);
+          setUser(currentSession.user);
+          const profileData = await fetchProfile(currentSession.user.id);
+          if (mounted) setProfile(profileData);
+        } else {
+          setSession(null);
+          setUser(null);
+          setProfile(null);
+        }
+      } catch (err) {
+        console.error('Erreur initAuth:', err);
+      } finally {
+        if (mounted) {
+          clearTimeout(timeoutId);
+          console.log('initAuth: fin chargement');
+          setIsLoading(false);
+        }
+      }
     };
 
-    getInitialSession();
+    initAuth();
 
     // Écouter les changements d'auth
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-
-        if (session?.user) {
-          const profileData = await fetchProfile(session.user.id);
-          setProfile(profileData);
+      async (event: string, newSession: Session | null) => {
+        if (!mounted) return;
+        
+        console.log('Auth event:', event);
+        
+        if (newSession?.user) {
+          setSession(newSession);
+          setUser(newSession.user);
+          const profileData = await fetchProfile(newSession.user.id);
+          if (mounted) setProfile(profileData);
         } else {
+          setSession(null);
+          setUser(null);
           setProfile(null);
         }
-
-        setIsLoading(false);
       }
     );
 
     return () => {
+      mounted = false;
+      clearTimeout(timeoutId);
       subscription.unsubscribe();
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const signUp = async (email: string, password: string, prenom: string, nom: string) => {
+  const signUp = useCallback(async (email: string, password: string, prenom: string, nom: string) => {
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -109,18 +153,18 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
 
     return { error: error as Error | null };
-  };
+  }, []);
 
-  const signIn = async (email: string, password: string) => {
+  const signIn = useCallback(async (email: string, password: string) => {
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
     return { error: error as Error | null };
-  };
+  }, []);
 
-  const signInWithGoogle = async () => {
+  const signInWithGoogle = useCallback(async () => {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
@@ -129,29 +173,29 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
 
     return { error: error as Error | null };
-  };
+  }, []);
 
-  const signOut = async () => {
+  const signOut = useCallback(async () => {
     await supabase.auth.signOut();
     setUser(null);
     setProfile(null);
     setSession(null);
-  };
+  }, []);
+
+  const value = useMemo(() => ({
+    user,
+    profile,
+    session,
+    isLoading,
+    signUp,
+    signIn,
+    signInWithGoogle,
+    signOut,
+    refreshProfile,
+  }), [user, profile, session, isLoading, signUp, signIn, signInWithGoogle, signOut, refreshProfile]);
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        profile,
-        session,
-        isLoading,
-        signUp,
-        signIn,
-        signInWithGoogle,
-        signOut,
-        refreshProfile,
-      }}
-    >
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

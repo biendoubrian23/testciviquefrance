@@ -20,9 +20,9 @@ const categories = [
     name: 'Valeurs de la République', 
     description: 'Liberté, Égalité, Fraternité et les principes fondamentaux',
     icon: Scale,
-    color: 'bg-blue-500',
-    bgColor: 'bg-blue-50',
-    textColor: 'text-blue-600',
+    bgColor: 'bg-primary-50',
+    textColor: 'text-primary-600',
+    barColor: 'bg-primary-600',
     questions: 45,
     progress: 60,
   },
@@ -31,9 +31,9 @@ const categories = [
     name: 'Symboles de la France', 
     description: 'Drapeau, hymne national, devise et emblèmes',
     icon: Flag,
-    color: 'bg-red-500',
-    bgColor: 'bg-red-50',
-    textColor: 'text-red-600',
+    bgColor: 'bg-primary-50',
+    textColor: 'text-primary-600',
+    barColor: 'bg-primary-500',
     questions: 30,
     progress: 80,
   },
@@ -42,9 +42,9 @@ const categories = [
     name: 'Histoire de France', 
     description: 'Les grandes dates et événements historiques',
     icon: BookMarked,
-    color: 'bg-purple-500',
-    bgColor: 'bg-purple-50',
-    textColor: 'text-purple-600',
+    bgColor: 'bg-gray-100',
+    textColor: 'text-gray-600',
+    barColor: 'bg-gray-600',
     questions: 55,
     progress: 45,
   },
@@ -53,9 +53,9 @@ const categories = [
     name: 'Institutions françaises', 
     description: 'Organisation politique et administrative',
     icon: Building2,
-    color: 'bg-cyan-500',
-    bgColor: 'bg-cyan-50',
-    textColor: 'text-cyan-600',
+    bgColor: 'bg-primary-50',
+    textColor: 'text-primary-600',
+    barColor: 'bg-primary-700',
     questions: 40,
     progress: 30,
   },
@@ -64,9 +64,9 @@ const categories = [
     name: 'Droits et devoirs', 
     description: 'Droits fondamentaux et obligations citoyennes',
     icon: Users,
-    color: 'bg-emerald-500',
     bgColor: 'bg-emerald-50',
     textColor: 'text-emerald-600',
+    barColor: 'bg-emerald-600',
     questions: 35,
     progress: 55,
   },
@@ -75,9 +75,9 @@ const categories = [
     name: 'Vie quotidienne', 
     description: 'Culture, traditions et vie en société',
     icon: Home,
-    color: 'bg-amber-500',
-    bgColor: 'bg-amber-50',
-    textColor: 'text-amber-600',
+    bgColor: 'bg-emerald-50',
+    textColor: 'text-emerald-600',
+    barColor: 'bg-emerald-500',
     questions: 25,
     progress: 70,
   },
@@ -85,17 +85,17 @@ const categories = [
 
 export default function EntrainementPage() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* En-tête */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">S'entraîner</h1>
-        <p className="text-gray-600">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">S'entraîner</h1>
+        <p className="text-gray-600 text-lg">
           Choisissez un thème pour commencer votre entraînement
         </p>
       </div>
 
       {/* Grille des catégories */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((category) => {
           const Icon = category.icon;
           
@@ -103,9 +103,9 @@ export default function EntrainementPage() {
             <Link
               key={category.id}
               href={`/dashboard/entrainement/${category.id}`}
-              className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-primary-300 hover:shadow-lg transition-all"
+              className="group bg-white border border-gray-200 p-6 hover:border-primary-600 transition-all"
             >
-              <div className={`w-14 h-14 ${category.bgColor} rounded-xl flex items-center justify-center mb-4`}>
+              <div className={`w-14 h-14 ${category.bgColor} flex items-center justify-center mb-4`}>
                 <Icon className={`w-7 h-7 ${category.textColor}`} />
               </div>
               
@@ -118,12 +118,12 @@ export default function EntrainementPage() {
               
               <div className="flex items-center justify-between text-sm mb-3">
                 <span className="text-gray-500">{category.questions} questions</span>
-                <span className={category.textColor}>{category.progress}% complété</span>
+                <span className="font-semibold text-gray-900">{category.progress}%</span>
               </div>
               
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+              <div className="h-2 bg-gray-100 overflow-hidden">
                 <div 
-                  className={`h-full ${category.color} rounded-full transition-all duration-500`}
+                  className={`h-full ${category.barColor} transition-all duration-500`}
                   style={{ width: `${category.progress}%` }}
                 />
               </div>
@@ -137,9 +137,9 @@ export default function EntrainementPage() {
       </div>
 
       {/* Info sur les crédits */}
-      <div className="bg-primary-50 border border-primary-200 rounded-xl p-6">
+      <div className="bg-gray-50 border border-gray-200 p-6">
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center flex-shrink-0">
+          <div className="w-12 h-12 bg-primary-50 flex items-center justify-center flex-shrink-0">
             <BookOpen className="w-6 h-6 text-primary-600" />
           </div>
           <div>

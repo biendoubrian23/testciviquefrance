@@ -14,7 +14,7 @@ import {
   LogOut,
   CreditCard,
   HelpCircle,
-  Crown
+  ChevronRight
 } from 'lucide-react';
 
 const menuItems = [
@@ -75,26 +75,27 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="fixed left-0 top-0 h-screen w-64 bg-gray-900 text-white flex flex-col z-50">
+    <aside className="fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col z-50">
       {/* Logo */}
-      <div className="p-6 border-b border-gray-800">
-        <Link href="/" className="flex items-center gap-3">
+      <div className="-mt-6 flex justify-center">
+        <Link href="/">
           <Image
             src="/logo.png"
             alt="Test Civique France"
-            width={44}
-            height={44}
-            className="w-11 h-11 object-contain"
+            width={132}
+            height={132}
+            className="w-32 h-32 object-contain"
           />
-          <div>
-            <span className="font-bold text-lg">Test Civique</span>
-            <span className="text-primary-400 font-bold text-lg"> France</span>
-          </div>
         </Link>
       </div>
+      {/* Ligne de séparation */}
+      <div className="border-b border-gray-100 -mt-4"></div>
 
       {/* Menu principal */}
-      <nav className="flex-1 py-6 overflow-y-auto">
+      <nav className="flex-1 pt-1 pb-3 overflow-y-auto">
+        <div className="px-4 mb-1">
+          <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Menu</span>
+        </div>
         <ul className="space-y-1 px-3">
           {menuItems.map((item) => {
             const Icon = item.icon;
@@ -104,14 +105,17 @@ export default function Sidebar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                  className={`flex items-center justify-between px-4 py-3 transition-all duration-150 ${
                     active
-                      ? 'bg-primary-600 text-white'
-                      : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                      ? 'bg-primary-50 text-primary-600 border-l-2 border-primary-600 -ml-px'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
-                  <Icon className="w-5 h-5 flex-shrink-0" />
-                  <span className="font-medium">{item.title}</span>
+                  <div className="flex items-center gap-3">
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    <span className="font-medium">{item.title}</span>
+                  </div>
+                  {active && <ChevronRight className="w-4 h-4" />}
                 </Link>
               </li>
             );
@@ -119,9 +123,12 @@ export default function Sidebar() {
         </ul>
 
         {/* Séparateur */}
-        <div className="my-6 mx-6 border-t border-gray-800" />
+        <div className="my-6 mx-6 border-t border-gray-100" />
 
         {/* Menu secondaire */}
+        <div className="px-4 mb-2">
+          <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Compte</span>
+        </div>
         <ul className="space-y-1 px-3">
           {bottomMenuItems.map((item) => {
             const Icon = item.icon;
@@ -131,14 +138,17 @@ export default function Sidebar() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                  className={`flex items-center justify-between px-4 py-3 transition-all duration-150 ${
                     active
-                      ? 'bg-primary-600 text-white'
-                      : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                      ? 'bg-primary-50 text-primary-600 border-l-2 border-primary-600 -ml-px'
+                      : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
                   }`}
                 >
-                  <Icon className="w-5 h-5 flex-shrink-0" />
-                  <span className="font-medium">{item.title}</span>
+                  <div className="flex items-center gap-3">
+                    <Icon className="w-5 h-5 flex-shrink-0" />
+                    <span className="font-medium">{item.title}</span>
+                  </div>
+                  {active && <ChevronRight className="w-4 h-4" />}
                 </Link>
               </li>
             );
@@ -148,22 +158,21 @@ export default function Sidebar() {
 
       {/* Carte Crédits */}
       <div className="px-4 pb-4">
-        <div className="bg-gradient-to-br from-primary-600 to-primary-700 rounded-lg p-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-primary-100">Vos crédits</span>
+        <div className="bg-gray-50 border border-gray-200 p-4">
+          <div className="flex items-center justify-between mb-3">
+            <span className="text-sm text-gray-500">Vos crédits</span>
             {profile?.is_premium && (
-              <span className="flex items-center gap-1 text-xs bg-yellow-400/20 text-yellow-300 px-2 py-0.5 rounded-full">
-                <Crown className="w-3 h-3" />
+              <span className="text-xs bg-primary-100 text-primary-700 px-2 py-0.5 font-medium">
                 Premium
               </span>
             )}
           </div>
-          <div className="text-3xl font-bold text-white mb-3">
+          <div className="text-3xl font-bold text-gray-900 mb-3">
             {profile?.credits ?? 0}
           </div>
           <Link 
             href="/dashboard/credits"
-            className="block w-full text-center py-2 bg-white/20 hover:bg-white/30 text-white text-sm font-medium rounded transition-colors"
+            className="block w-full text-center py-2 bg-primary-600 hover:bg-primary-700 text-white text-sm font-medium transition-colors"
           >
             Acheter des crédits
           </Link>
@@ -171,23 +180,23 @@ export default function Sidebar() {
       </div>
 
       {/* Profil utilisateur */}
-      <div className="p-4 border-t border-gray-800">
+      <div className="p-4 border-t border-gray-100">
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center text-white font-semibold">
+          <div className="w-10 h-10 bg-primary-100 flex items-center justify-center text-primary-600 font-semibold">
             {profile?.prenom?.[0]?.toUpperCase() || profile?.email?.[0]?.toUpperCase() || 'U'}
           </div>
           <div className="flex-1 min-w-0">
-            <p className="font-medium text-white truncate">
+            <p className="font-medium text-gray-900 truncate">
               {profile?.prenom ? `${profile.prenom} ${profile.nom || ''}`.trim() : 'Utilisateur'}
             </p>
-            <p className="text-sm text-gray-400 truncate">
+            <p className="text-sm text-gray-500 truncate">
               {profile?.email}
             </p>
           </div>
         </div>
         <button
           onClick={() => signOut()}
-          className="flex items-center gap-2 w-full px-4 py-2 text-gray-300 hover:text-white hover:bg-gray-800 rounded-lg transition-colors"
+          className="flex items-center gap-2 w-full px-4 py-2 text-gray-500 hover:text-gray-900 hover:bg-gray-50 transition-colors"
         >
           <LogOut className="w-5 h-5" />
           <span>Déconnexion</span>

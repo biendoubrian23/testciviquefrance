@@ -35,62 +35,62 @@ export default function ResultatsPage() {
   const successRate = totalQuestions > 0 ? Math.round((totalCorrect / totalQuestions) * 100) : 0;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* En-tête */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Mes résultats</h1>
-        <p className="text-gray-600">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Mes résultats</h1>
+        <p className="text-gray-600 text-lg">
           Consultez votre historique et vos performances
         </p>
       </div>
 
       {/* Statistiques de la semaine */}
-      <div className="grid sm:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Calendar className="w-5 h-5 text-blue-600" />
+      <div className="grid sm:grid-cols-4 gap-6">
+        <div className="bg-white border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+              <Calendar className="w-5 h-5 text-primary-600" />
             </div>
             <span className="text-sm text-gray-600">Cette semaine</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900">{totalQuestions}</p>
+          <p className="text-4xl font-bold text-gray-900">{totalQuestions}</p>
           <p className="text-sm text-gray-500">questions</p>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+        <div className="bg-white border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-emerald-50 flex items-center justify-center">
               <CheckCircle2 className="w-5 h-5 text-emerald-600" />
             </div>
             <span className="text-sm text-gray-600">Bonnes réponses</span>
           </div>
-          <p className="text-3xl font-bold text-emerald-600">{totalCorrect}</p>
+          <p className="text-4xl font-bold text-emerald-600">{totalCorrect}</p>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-              <XCircle className="w-5 h-5 text-red-600" />
+        <div className="bg-white border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-gray-100 flex items-center justify-center">
+              <XCircle className="w-5 h-5 text-gray-500" />
             </div>
             <span className="text-sm text-gray-600">Mauvaises réponses</span>
           </div>
-          <p className="text-3xl font-bold text-red-600">{totalIncorrect}</p>
+          <p className="text-4xl font-bold text-gray-500">{totalIncorrect}</p>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+        <div className="bg-white border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
               <TrendingUp className="w-5 h-5 text-primary-600" />
             </div>
             <span className="text-sm text-gray-600">Taux de réussite</span>
           </div>
-          <p className="text-3xl font-bold text-primary-600">{successRate}%</p>
+          <p className="text-4xl font-bold text-primary-600">{successRate}%</p>
         </div>
       </div>
 
       {/* Graphique de la semaine */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
-        <h2 className="text-lg font-bold text-gray-900 mb-6">Activité de la semaine</h2>
+      <div className="bg-white border border-gray-200 p-6">
+        <h2 className="text-xl font-bold text-gray-900 mb-6">Activité de la semaine</h2>
         <div className="flex items-end justify-between gap-2 h-40">
           {weeklyProgress.map((day, index) => {
             const total = day.correct + day.incorrect;
@@ -103,18 +103,18 @@ export default function ResultatsPage() {
                 <div className="w-full flex flex-col items-center justify-end" style={{ height: maxHeight }}>
                   {incorrectHeight > 0 && (
                     <div 
-                      className="w-8 bg-red-400 rounded-t"
+                      className="w-8 bg-gray-300"
                       style={{ height: incorrectHeight }}
                     />
                   )}
                   {correctHeight > 0 && (
                     <div 
-                      className={`w-8 bg-emerald-500 ${incorrectHeight > 0 ? '' : 'rounded-t'} rounded-b`}
+                      className="w-8 bg-primary-600"
                       style={{ height: correctHeight }}
                     />
                   )}
                   {total === 0 && (
-                    <div className="w-8 h-2 bg-gray-200 rounded" />
+                    <div className="w-8 h-2 bg-gray-200" />
                   )}
                 </div>
                 <span className="text-xs text-gray-500">{day.day}</span>
@@ -124,28 +124,28 @@ export default function ResultatsPage() {
         </div>
         <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-100">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-emerald-500 rounded" />
+            <div className="w-3 h-3 bg-primary-600" />
             <span className="text-sm text-gray-600">Bonnes réponses</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-red-400 rounded" />
+            <div className="w-3 h-3 bg-gray-300" />
             <span className="text-sm text-gray-600">Mauvaises réponses</span>
           </div>
         </div>
       </div>
 
       {/* Historique détaillé */}
-      <div className="bg-white rounded-xl border border-gray-200">
+      <div className="bg-white border border-gray-200">
         <div className="p-6 border-b border-gray-200">
-          <h2 className="text-lg font-bold text-gray-900">Historique récent</h2>
+          <h2 className="text-xl font-bold text-gray-900">Historique récent</h2>
         </div>
         <div className="divide-y divide-gray-100">
           {recentResults.map((result) => (
             <div key={result.id} className="p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors">
               {result.correct ? (
-                <CheckCircle2 className="w-6 h-6 text-emerald-500 flex-shrink-0" />
+                <CheckCircle2 className="w-6 h-6 text-emerald-600 flex-shrink-0" />
               ) : (
-                <XCircle className="w-6 h-6 text-red-500 flex-shrink-0" />
+                <XCircle className="w-6 h-6 text-gray-400 flex-shrink-0" />
               )}
               <div className="flex-1 min-w-0">
                 <p className="text-gray-900 truncate">{result.question}</p>

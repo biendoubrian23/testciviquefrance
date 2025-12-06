@@ -11,6 +11,22 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     
     if (!error) {
+      // Vérifier si l'utilisateur a complété l'onboarding
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('has_completed_onboarding')
+          .eq('id', user.id)
+          .single();
+
+        // Si l'utilisateur n'a pas complété l'onboarding, le rediriger vers le quiz
+        if (!profile?.has_completed_onboarding) {
+          return NextResponse.redirect(`${origin}/onboarding/quiz`);
+        }
+      }
+      
       return NextResponse.redirect(`${origin}${next}`);
     }
   }

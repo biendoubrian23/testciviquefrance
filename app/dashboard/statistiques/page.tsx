@@ -34,62 +34,62 @@ export default function StatistiquesPage() {
   const successRate = Math.round((globalStats.totalCorrect / globalStats.totalQuestions) * 100);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* En-tête */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Statistiques</h1>
-        <p className="text-gray-600">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Statistiques</h1>
+        <p className="text-gray-600 text-lg">
           Analysez vos performances et identifiez vos points à améliorer
         </p>
       </div>
 
       {/* Statistiques globales */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Target className="w-5 h-5 text-blue-600" />
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="bg-white border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+              <Target className="w-5 h-5 text-primary-600" />
             </div>
           </div>
-          <p className="text-3xl font-bold text-gray-900">{globalStats.totalQuestions}</p>
+          <p className="text-4xl font-bold text-gray-900">{globalStats.totalQuestions}</p>
           <p className="text-sm text-gray-500">Questions répondues</p>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+        <div className="bg-white border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-emerald-50 flex items-center justify-center">
               <TrendingUp className="w-5 h-5 text-emerald-600" />
             </div>
           </div>
-          <p className="text-3xl font-bold text-emerald-600">{successRate}%</p>
+          <p className="text-4xl font-bold text-emerald-600">{successRate}%</p>
           <p className="text-sm text-gray-500">Taux de réussite global</p>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-              <Clock className="w-5 h-5 text-purple-600" />
+        <div className="bg-white border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-gray-100 flex items-center justify-center">
+              <Clock className="w-5 h-5 text-gray-600" />
             </div>
           </div>
-          <p className="text-3xl font-bold text-gray-900">{globalStats.tempsTotal}h</p>
+          <p className="text-4xl font-bold text-gray-900">{globalStats.tempsTotal}h</p>
           <p className="text-sm text-gray-500">Temps total d'étude</p>
         </div>
 
-        <div className="bg-white rounded-xl border border-gray-200 p-5">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-              <Flame className="w-5 h-5 text-orange-600" />
+        <div className="bg-white border border-gray-200 p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+              <Flame className="w-5 h-5 text-primary-600" />
             </div>
           </div>
-          <p className="text-3xl font-bold text-orange-600">{globalStats.serieActuelle}</p>
+          <p className="text-4xl font-bold text-primary-600">{globalStats.serieActuelle}</p>
           <p className="text-sm text-gray-500">Jours consécutifs</p>
         </div>
       </div>
 
       <div className="grid lg:grid-cols-2 gap-6">
         {/* Performance par catégorie */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-6">Performance par thème</h2>
+        <div className="bg-white border border-gray-200 p-6">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Performance par thème</h2>
           <div className="space-y-5">
             {categoryStats.map((category) => (
               <div key={category.name}>
@@ -97,16 +97,16 @@ export default function StatistiquesPage() {
                   <span className="text-sm font-medium text-gray-700">{category.name}</span>
                   <span className={`text-sm font-bold ${
                     category.percentage >= 80 ? 'text-emerald-600' :
-                    category.percentage >= 60 ? 'text-amber-600' : 'text-red-600'
+                    category.percentage >= 60 ? 'text-primary-600' : 'text-gray-600'
                   }`}>
                     {category.percentage}%
                   </span>
                 </div>
-                <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-100 overflow-hidden">
                   <div 
-                    className={`h-full rounded-full transition-all duration-500 ${
-                      category.percentage >= 80 ? 'bg-emerald-500' :
-                      category.percentage >= 60 ? 'bg-amber-500' : 'bg-red-500'
+                    className={`h-full transition-all duration-500 ${
+                      category.percentage >= 80 ? 'bg-emerald-600' :
+                      category.percentage >= 60 ? 'bg-primary-600' : 'bg-gray-400'
                     }`}
                     style={{ width: `${category.percentage}%` }}
                   />
@@ -120,16 +120,16 @@ export default function StatistiquesPage() {
         </div>
 
         {/* Examens blancs */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-6">Examens blancs</h2>
+        <div className="bg-white border border-gray-200 p-6">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Examens blancs</h2>
           
           <div className="grid grid-cols-2 gap-4 mb-6">
-            <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className="bg-gray-50 p-4 text-center">
               <Award className="w-8 h-8 text-primary-600 mx-auto mb-2" />
               <p className="text-2xl font-bold text-gray-900">{globalStats.examensReussis}/{globalStats.totalExamens}</p>
               <p className="text-sm text-gray-500">Examens réussis</p>
             </div>
-            <div className="bg-gray-50 rounded-lg p-4 text-center">
+            <div className="bg-gray-50 p-4 text-center">
               <BarChart3 className="w-8 h-8 text-emerald-600 mx-auto mb-2" />
               <p className="text-2xl font-bold text-emerald-600">
                 {Math.round((globalStats.examensReussis / globalStats.totalExamens) * 100)}%

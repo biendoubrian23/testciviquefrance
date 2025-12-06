@@ -34,35 +34,35 @@ export default function DashboardPage() {
   ];
 
   const categories = [
-    { name: 'Valeurs de la République', progress: 60, color: 'bg-blue-500' },
-    { name: 'Symboles de la France', progress: 80, color: 'bg-red-500' },
-    { name: 'Histoire de France', progress: 45, color: 'bg-purple-500' },
-    { name: 'Institutions françaises', progress: 30, color: 'bg-cyan-500' },
+    { name: 'Valeurs de la République', progress: 60, color: 'bg-primary-600' },
+    { name: 'Symboles de la France', progress: 80, color: 'bg-primary-500' },
+    { name: 'Histoire de France', progress: 45, color: 'bg-primary-700' },
+    { name: 'Institutions françaises', progress: 30, color: 'bg-emerald-600' },
     { name: 'Droits et devoirs', progress: 55, color: 'bg-emerald-500' },
-    { name: 'Vie quotidienne', progress: 70, color: 'bg-amber-500' },
+    { name: 'Vie quotidienne', progress: 70, color: 'bg-gray-600' },
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* En-tête de bienvenue */}
-      <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-xl p-6 text-white">
-        <h1 className="text-2xl font-bold mb-2">
-          Bonjour {profile?.prenom || 'là'} ! 👋
+      <div className="bg-primary-600 p-8 text-white">
+        <h1 className="text-3xl font-bold mb-2">
+          Bonjour {profile?.prenom || 'là'}
         </h1>
-        <p className="text-primary-100 mb-4">
+        <p className="text-primary-100 mb-6 text-lg">
           Prêt à continuer votre préparation à l'examen civique ?
         </p>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-4">
           <Link 
             href="/dashboard/entrainement"
-            className="inline-flex items-center gap-2 bg-white text-primary-600 px-4 py-2 rounded-lg font-medium hover:bg-primary-50 transition-colors"
+            className="inline-flex items-center gap-2 bg-white text-primary-600 px-5 py-2.5 font-medium hover:bg-primary-50 transition-colors"
           >
             <BookOpen className="w-5 h-5" />
             S'entraîner
           </Link>
           <Link 
             href="/dashboard/examens"
-            className="inline-flex items-center gap-2 bg-primary-500/30 text-white px-4 py-2 rounded-lg font-medium hover:bg-primary-500/40 transition-colors"
+            className="inline-flex items-center gap-2 bg-primary-700 text-white px-5 py-2.5 font-medium hover:bg-primary-800 transition-colors border border-primary-500"
           >
             <FileQuestion className="w-5 h-5" />
             Examen blanc
@@ -71,53 +71,53 @@ export default function DashboardPage() {
       </div>
 
       {/* Statistiques rapides */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="bg-white rounded-xl p-5 border border-gray-200">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Target className="w-5 h-5 text-blue-600" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="bg-white p-6 border border-gray-200">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+              <Target className="w-5 h-5 text-primary-600" />
             </div>
             <span className="text-sm text-gray-600">Questions répondues</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900">{stats.questionsRepondues}</p>
+          <p className="text-4xl font-bold text-gray-900">{stats.questionsRepondues}</p>
         </div>
 
-        <div className="bg-white rounded-xl p-5 border border-gray-200">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+        <div className="bg-white p-6 border border-gray-200">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-emerald-50 flex items-center justify-center">
               <TrendingUp className="w-5 h-5 text-emerald-600" />
             </div>
             <span className="text-sm text-gray-600">Taux de réussite</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900">{stats.tauxReussite}%</p>
+          <p className="text-4xl font-bold text-gray-900">{stats.tauxReussite}%</p>
         </div>
 
-        <div className="bg-white rounded-xl p-5 border border-gray-200">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-              <Clock className="w-5 h-5 text-purple-600" />
+        <div className="bg-white p-6 border border-gray-200">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-gray-100 flex items-center justify-center">
+              <Clock className="w-5 h-5 text-gray-600" />
             </div>
             <span className="text-sm text-gray-600">Temps d'étude</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900">{stats.tempsEtude}h</p>
+          <p className="text-4xl font-bold text-gray-900">{stats.tempsEtude}h</p>
         </div>
 
-        <div className="bg-white rounded-xl p-5 border border-gray-200">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-              <Flame className="w-5 h-5 text-orange-600" />
+        <div className="bg-white p-6 border border-gray-200">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+              <Flame className="w-5 h-5 text-primary-600" />
             </div>
             <span className="text-sm text-gray-600">Série en cours</span>
           </div>
-          <p className="text-3xl font-bold text-gray-900">{stats.serieJours} jours</p>
+          <p className="text-4xl font-bold text-gray-900">{stats.serieJours} jours</p>
         </div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-6">
         {/* Progression par thème */}
-        <div className="lg:col-span-2 bg-white rounded-xl border border-gray-200 p-6">
+        <div className="lg:col-span-2 bg-white border border-gray-200 p-6">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="text-lg font-bold text-gray-900">Progression par thème</h2>
+            <h2 className="text-xl font-bold text-gray-900">Progression par thème</h2>
             <Link 
               href="/dashboard/statistiques" 
               className="text-sm text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1"
@@ -125,16 +125,16 @@ export default function DashboardPage() {
               Voir tout <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {categories.map((category) => (
               <div key={category.name}>
                 <div className="flex items-center justify-between mb-2">
                   <span className="text-sm font-medium text-gray-700">{category.name}</span>
-                  <span className="text-sm text-gray-500">{category.progress}%</span>
+                  <span className="text-sm font-semibold text-gray-900">{category.progress}%</span>
                 </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                <div className="h-2 bg-gray-100 overflow-hidden">
                   <div 
-                    className={`h-full ${category.color} rounded-full transition-all duration-500`}
+                    className={`h-full ${category.color} transition-all duration-500`}
                     style={{ width: `${category.progress}%` }}
                   />
                 </div>
@@ -144,28 +144,28 @@ export default function DashboardPage() {
         </div>
 
         {/* Activité récente */}
-        <div className="bg-white rounded-xl border border-gray-200 p-6">
-          <h2 className="text-lg font-bold text-gray-900 mb-6">Activité récente</h2>
+        <div className="bg-white border border-gray-200 p-6">
+          <h2 className="text-xl font-bold text-gray-900 mb-6">Activité récente</h2>
           <div className="space-y-4">
             {recentActivity.map((activity) => (
-              <div key={activity.id} className="flex items-start gap-3">
+              <div key={activity.id} className="flex items-start gap-3 pb-4 border-b border-gray-100 last:border-0 last:pb-0">
                 {activity.type === 'question' ? (
                   activity.correct ? (
-                    <CheckCircle2 className="w-5 h-5 text-emerald-500 mt-0.5" />
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5" />
                   ) : (
-                    <XCircle className="w-5 h-5 text-red-500 mt-0.5" />
+                    <XCircle className="w-5 h-5 text-gray-400 mt-0.5" />
                   )
                 ) : (
-                  <Trophy className="w-5 h-5 text-amber-500 mt-0.5" />
+                  <Trophy className="w-5 h-5 text-primary-600 mt-0.5" />
                 )}
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-gray-900">
+                  <p className="text-sm font-medium text-gray-900">
                     {activity.type === 'question' 
                       ? activity.theme 
                       : `Examen blanc: ${activity.score}/${activity.total}`
                     }
                   </p>
-                  <p className="text-xs text-gray-500">{activity.time}</p>
+                  <p className="text-xs text-gray-500 mt-1">{activity.time}</p>
                 </div>
               </div>
             ))}
@@ -174,12 +174,12 @@ export default function DashboardPage() {
       </div>
 
       {/* Actions rapides */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <Link 
           href="/dashboard/entrainement"
-          className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-primary-300 hover:shadow-md transition-all"
+          className="group bg-white border border-gray-200 p-6 hover:border-primary-600 transition-all"
         >
-          <div className="w-12 h-12 bg-primary-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary-200 transition-colors">
+          <div className="w-12 h-12 bg-primary-50 flex items-center justify-center mb-4 group-hover:bg-primary-100 transition-colors">
             <BookOpen className="w-6 h-6 text-primary-600" />
           </div>
           <h3 className="font-bold text-gray-900 mb-2">Entraînement libre</h3>
@@ -188,10 +188,10 @@ export default function DashboardPage() {
 
         <Link 
           href="/dashboard/examens"
-          className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-primary-300 hover:shadow-md transition-all"
+          className="group bg-white border border-gray-200 p-6 hover:border-primary-600 transition-all"
         >
-          <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-amber-200 transition-colors">
-            <FileQuestion className="w-6 h-6 text-amber-600" />
+          <div className="w-12 h-12 bg-emerald-50 flex items-center justify-center mb-4 group-hover:bg-emerald-100 transition-colors">
+            <FileQuestion className="w-6 h-6 text-emerald-600" />
           </div>
           <h3 className="font-bold text-gray-900 mb-2">Examen blanc</h3>
           <p className="text-sm text-gray-600">Testez-vous dans les conditions réelles (12 questions)</p>
@@ -199,10 +199,10 @@ export default function DashboardPage() {
 
         <Link 
           href="/dashboard/resultats"
-          className="group bg-white rounded-xl border border-gray-200 p-6 hover:border-primary-300 hover:shadow-md transition-all"
+          className="group bg-white border border-gray-200 p-6 hover:border-primary-600 transition-all"
         >
-          <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mb-4 group-hover:bg-emerald-200 transition-colors">
-            <Trophy className="w-6 h-6 text-emerald-600" />
+          <div className="w-12 h-12 bg-gray-100 flex items-center justify-center mb-4 group-hover:bg-gray-200 transition-colors">
+            <Trophy className="w-6 h-6 text-gray-600" />
           </div>
           <h3 className="font-bold text-gray-900 mb-2">Mes résultats</h3>
           <p className="text-sm text-gray-600">Consultez votre historique et vos performances</p>

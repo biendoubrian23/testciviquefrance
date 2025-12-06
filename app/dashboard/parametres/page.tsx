@@ -41,25 +41,25 @@ export default function ParametresPage() {
   };
 
   return (
-    <div className="space-y-6 max-w-3xl">
+    <div className="space-y-8 max-w-3xl">
       {/* En-tête */}
       <div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Paramètres</h1>
-        <p className="text-gray-600">
+        <h1 className="text-3xl font-bold text-gray-900 mb-2">Paramètres</h1>
+        <p className="text-gray-600 text-lg">
           Gérez votre compte et vos préférences
         </p>
       </div>
 
       {success && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-700 rounded-lg">
+        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-700">
           {success}
         </div>
       )}
 
       {/* Informations personnelles */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
+      <div className="bg-white border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-primary-100 rounded-lg flex items-center justify-center">
+          <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
             <User className="w-5 h-5 text-primary-600" />
           </div>
           <div>
@@ -78,7 +78,7 @@ export default function ParametresPage() {
                 type="text"
                 value={formData.prenom}
                 onChange={(e) => setFormData({ ...formData, prenom: e.target.value })}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                className="w-full px-4 py-2.5 border border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all"
               />
             </div>
             <div>
@@ -89,7 +89,7 @@ export default function ParametresPage() {
                 type="text"
                 value={formData.nom}
                 onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
-                className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                className="w-full px-4 py-2.5 border border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all"
               />
             </div>
           </div>
@@ -102,7 +102,7 @@ export default function ParametresPage() {
               type="email"
               value={formData.email}
               disabled
-              className="w-full px-4 py-2.5 border border-gray-200 rounded-lg bg-gray-50 text-gray-500"
+              className="w-full px-4 py-2.5 border border-gray-200 bg-gray-50 text-gray-500"
             />
             <p className="text-xs text-gray-500 mt-1">L'email ne peut pas être modifié</p>
           </div>
@@ -110,7 +110,7 @@ export default function ParametresPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2.5 rounded-lg font-medium hover:bg-primary-700 transition-colors disabled:opacity-50"
+            className="inline-flex items-center gap-2 bg-primary-600 text-white px-4 py-2.5 font-medium hover:bg-primary-700 transition-colors disabled:opacity-50"
           >
             {isLoading ? <Loader2 className="w-5 h-5 animate-spin" /> : <Save className="w-5 h-5" />}
             Enregistrer
@@ -119,10 +119,10 @@ export default function ParametresPage() {
       </div>
 
       {/* Mot de passe */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
+      <div className="bg-white border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-            <Lock className="w-5 h-5 text-amber-600" />
+          <div className="w-10 h-10 bg-gray-100 flex items-center justify-center">
+            <Lock className="w-5 h-5 text-gray-600" />
           </div>
           <div>
             <h2 className="font-bold text-gray-900">Mot de passe</h2>
@@ -138,7 +138,7 @@ export default function ParametresPage() {
             <input
               type="password"
               placeholder="••••••••"
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+              className="w-full px-4 py-2.5 border border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all"
             />
           </div>
           <div>
@@ -148,20 +148,20 @@ export default function ParametresPage() {
             <input
               type="password"
               placeholder="••••••••"
-              className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+              className="w-full px-4 py-2.5 border border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all"
             />
           </div>
-          <button className="bg-gray-100 text-gray-700 px-4 py-2.5 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+          <button className="bg-gray-100 text-gray-700 px-4 py-2.5 font-medium hover:bg-gray-200 transition-colors">
             Changer le mot de passe
           </button>
         </div>
       </div>
 
       {/* Notifications */}
-      <div className="bg-white rounded-xl border border-gray-200 p-6">
+      <div className="bg-white border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-            <Bell className="w-5 h-5 text-blue-600" />
+          <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+            <Bell className="w-5 h-5 text-primary-600" />
           </div>
           <div>
             <h2 className="font-bold text-gray-900">Notifications</h2>
@@ -170,7 +170,7 @@ export default function ParametresPage() {
         </div>
 
         <div className="space-y-4">
-          <label className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer">
+          <label className="flex items-center justify-between p-4 bg-gray-50 cursor-pointer">
             <div>
               <p className="font-medium text-gray-900">Notifications par email</p>
               <p className="text-sm text-gray-500">Recevez des emails sur votre progression</p>
@@ -179,11 +179,11 @@ export default function ParametresPage() {
               type="checkbox"
               checked={notifications.email}
               onChange={(e) => setNotifications({ ...notifications, email: e.target.checked })}
-              className="w-5 h-5 text-primary-600 rounded focus:ring-primary-500"
+              className="w-5 h-5 text-primary-600 focus:ring-primary-500"
             />
           </label>
 
-          <label className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer">
+          <label className="flex items-center justify-between p-4 bg-gray-50 cursor-pointer">
             <div>
               <p className="font-medium text-gray-900">Rappels d'entraînement</p>
               <p className="text-sm text-gray-500">Rappels quotidiens pour maintenir votre série</p>
@@ -192,11 +192,11 @@ export default function ParametresPage() {
               type="checkbox"
               checked={notifications.rappels}
               onChange={(e) => setNotifications({ ...notifications, rappels: e.target.checked })}
-              className="w-5 h-5 text-primary-600 rounded focus:ring-primary-500"
+              className="w-5 h-5 text-primary-600 focus:ring-primary-500"
             />
           </label>
 
-          <label className="flex items-center justify-between p-4 bg-gray-50 rounded-lg cursor-pointer">
+          <label className="flex items-center justify-between p-4 bg-gray-50 cursor-pointer">
             <div>
               <p className="font-medium text-gray-900">Newsletter</p>
               <p className="text-sm text-gray-500">Actualités sur l'examen civique</p>
@@ -205,17 +205,17 @@ export default function ParametresPage() {
               type="checkbox"
               checked={notifications.newsletter}
               onChange={(e) => setNotifications({ ...notifications, newsletter: e.target.checked })}
-              className="w-5 h-5 text-primary-600 rounded focus:ring-primary-500"
+              className="w-5 h-5 text-primary-600 focus:ring-primary-500"
             />
           </label>
         </div>
       </div>
 
       {/* Zone dangereuse */}
-      <div className="bg-white rounded-xl border border-red-200 p-6">
+      <div className="bg-white border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-            <Shield className="w-5 h-5 text-red-600" />
+          <div className="w-10 h-10 bg-gray-100 flex items-center justify-center">
+            <Shield className="w-5 h-5 text-gray-600" />
           </div>
           <div>
             <h2 className="font-bold text-gray-900">Zone dangereuse</h2>
@@ -223,7 +223,7 @@ export default function ParametresPage() {
           </div>
         </div>
 
-        <button className="inline-flex items-center gap-2 text-red-600 hover:text-red-700 font-medium">
+        <button className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-700 font-medium">
           <Trash2 className="w-5 h-5" />
           Supprimer mon compte
         </button>
