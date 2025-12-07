@@ -130,6 +130,36 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // 5. Mettre à jour les statistiques globales
+    const { data: statsData } = await supabase
+      .from('statistiques')
+      .select('total_questions_repondues, total_bonnes_reponses, temps_total_etude')
+      .eq('user_id', user.id)
+      .single()
+
+    if (statsData) {
+      // Mettre à jour les statistiques existantes
+      await supabase
+        .from('statistiques')
+        .update({
+          total_questions_repondues: (statsData.total_questions_repondues || 0) + totalQuestions,
+          total_bonnes_reponses: (statsData.total_bonnes_reponses || 0) + score,
+          temps_total_etude: (statsData.temps_total_etude || 0) + tempsTotal,
+          updated_at: new Date().toISOString()
+        })
+        .eq('user_id', user.id)
+    } else {
+      // Créer les statistiques si elles n'existent pas
+      await supabase
+        .from('statistiques')
+        .insert({
+          user_id: user.id,
+          total_questions_repondues: totalQuestions,
+          total_bonnes_reponses: score,
+          temps_total_etude: tempsTotal
+        })
+    }
+
     return NextResponse.json({
       success: true,
       pointsGagnes,

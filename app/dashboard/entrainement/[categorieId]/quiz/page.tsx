@@ -62,7 +62,7 @@ export default function QuizPage() {
   const sessionIdRef = useRef<string | null>(null)
   const hasLoadedRef = useRef(false) // Empêcher les appels multiples
 
-  const TIMER_DURATION = 5 // DEV: 5 secondes (PROD: 30)
+  const TIMER_DURATION = 18 // 18 secondes par question
 
   // Mettre à jour les refs quand les états changent
   useEffect(() => {
