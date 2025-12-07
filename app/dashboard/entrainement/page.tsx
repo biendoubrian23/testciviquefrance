@@ -115,7 +115,7 @@ export default function EntrainementPage() {
             <Link
               key={category.id}
               href={`/dashboard/entrainement/${category.id}`}
-              className="group bg-white border border-gray-200 p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 hover:shadow-sm transition-all"
+              className="group bg-white border-2 border-gray-900 rounded-xl p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 hover:shadow-lg transition-all"
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <h3 className="font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">

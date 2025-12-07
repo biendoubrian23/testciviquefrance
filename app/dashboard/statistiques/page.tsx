@@ -96,12 +96,12 @@ export default function StatistiquesPage() {
 
         // Calculer les stats globales
         const totalExamens = examensData?.length || 0;
-        const examensReussis = examensData?.filter(e => e.passed).length || 0;
+        const examensReussis = examensData?.filter((e: { passed: boolean }) => e.passed).length || 0;
         const meilleurScore = examensData?.length 
-          ? Math.max(...examensData.map(e => e.score)) 
+          ? Math.max(...examensData.map((e: { score: number }) => e.score)) 
           : 0;
         const meilleurTemps = examensData?.length
-          ? Math.min(...examensData.filter(e => e.temps_total).map(e => e.temps_total))
+          ? Math.min(...examensData.filter((e: { temps_total: number }) => e.temps_total).map((e: { temps_total: number }) => e.temps_total))
           : null;
 
         setGlobalStats({
@@ -118,7 +118,7 @@ export default function StatistiquesPage() {
 
         // Calculer les stats par catégorie
         if (categoriesData && resultatsData) {
-          const catStats: CategoryStat[] = categoriesData.map(cat => {
+          const catStats: CategoryStat[] = categoriesData.map((cat: { id: string; nom: string }) => {
             const resultsForCat = resultatsData.filter(
               (r: { question: { categorie_id: string } | null }) => 
                 r.question?.categorie_id === cat.id
@@ -134,7 +134,7 @@ export default function StatistiquesPage() {
               correct,
               percentage,
             };
-          }).filter(cat => cat.answered > 0); // Ne montrer que les catégories avec des réponses
+          }).filter((cat: CategoryStat) => cat.answered > 0); // Ne montrer que les catégories avec des réponses
 
           setCategoryStats(catStats);
 

@@ -169,6 +169,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
     setProfile(null);
     setSession(null);
+    // Rediriger vers la page d'accueil après déconnexion
+    window.location.href = '/';
   }, []);
 
   const value = useMemo(() => ({

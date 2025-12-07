@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useSupabase } from '@/hooks/useSupabase'
-import { Lock, CheckCircle, PlayCircle, Star, Trophy, Clock, ArrowLeft } from 'lucide-react'
+import { Lock, CheckCircle, PlayCircle, Star, Trophy, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 
 interface Categorie {
@@ -35,10 +35,10 @@ export default function CategorieDetailPage() {
   const [categorie, setCategorie] = useState<Categorie | null>(null)
   const [niveaux, setNiveaux] = useState<NiveauProgression[]>([])
   const [gamification, setGamification] = useState<Gamification | null>(null)
-  const [niveauxJouesAujourdhui, setNiveauxJouesAujourdhui] = useState(0)
   const [loading, setLoading] = useState(true)
 
-  const LIMITE_NIVEAUX_JOUR = 3
+  // Limite désactivée pour le moment (sera activée avec Stripe)
+  // const LIMITE_NIVEAUX_JOUR = 3
 
   const loadData = useCallback(async () => {
     // Vérifier l'authentification
@@ -68,29 +68,54 @@ export default function CategorieDetailPage() {
     // Charger la progression depuis la BD (sans .single() pour éviter erreur 406)
     const { data: progressionList } = await supabase
       .from('progression_niveaux')
-      .select('niveau_actuel, questions_correctes_niveau, niveau_debloque')
+      .select('niveau_actuel, questions_correctes_niveau, niveau_debloque, niveaux_aujourd_hui')
       .eq('user_id', user.id)
       .eq('categorie_id', categorieId)
       .limit(1)
 
     const progressionData = progressionList && progressionList.length > 0 ? progressionList[0] : null
 
+    // Récupérer les meilleurs scores par niveau depuis sessions_quiz
+    const { data: sessionsData } = await supabase
+      .from('sessions_quiz')
+      .select('niveau, score')
+      .eq('user_id', user.id)
+      .eq('categorie_id', categorieId)
+      .eq('completed', true)
+
+    // Calculer le meilleur score pour chaque niveau
+    const meilleursScoresParNiveau = new Map<number, number>()
+    const tentativesParNiveau = new Map<number, number>()
+    
+    if (sessionsData) {
+      for (const session of sessionsData) {
+        const currentBest = meilleursScoresParNiveau.get(session.niveau) || 0
+        if (session.score > currentBest) {
+          meilleursScoresParNiveau.set(session.niveau, session.score)
+        }
+        tentativesParNiveau.set(session.niveau, (tentativesParNiveau.get(session.niveau) || 0) + 1)
+      }
+    }
+
     // Créer la structure des 10 niveaux basée sur niveau_actuel
     const niveauxStructure: NiveauProgression[] = []
     const niveauActuel = progressionData?.niveau_actuel || 1
     
     for (let i = 1; i <= 10; i++) {
+      const meilleurScore = meilleursScoresParNiveau.get(i) || null
+      const tentatives = tentativesParNiveau.get(i) || 0
+      
       niveauxStructure.push({
         niveau: i,
         is_unlocked: i <= niveauActuel,
         is_completed: i < niveauActuel,
-        meilleur_score: i === niveauActuel ? (progressionData?.questions_correctes_niveau || null) : null,
-        tentatives: 0
+        meilleur_score: meilleurScore,
+        tentatives: tentatives
       })
     }
     setNiveaux(niveauxStructure)
 
-    // Charger la gamification (sans .single() pour éviter 406)
+    // Charger la gamification (points et série)
     const { data: gamificationList } = await supabase
       .from('gamification')
       .select('points_total, streak_jours')
@@ -105,26 +130,10 @@ export default function CategorieDetailPage() {
         serie_jours: gamificationData.streak_jours || 0
       })
     } else {
-      // Créer l'entrée gamification si elle n'existe pas
-      await supabase.from('gamification').insert({
-        user_id: user.id,
-        points_total: 0,
-        streak_jours: 0
-      })
       setGamification({ points_totaux: 0, serie_jours: 0 })
     }
 
-    // Compter les niveaux joués aujourd'hui
-    const aujourdhui = new Date().toISOString().split('T')[0]
-    const { count } = await supabase
-      .from('sessions_quiz')
-      .select('*', { count: 'exact', head: true })
-      .eq('user_id', user.id)
-      .eq('categorie_id', categorieId)
-      .gte('started_at', aujourdhui)
-      .eq('completed', true)
-
-    setNiveauxJouesAujourdhui(count || 0)
+    // Limite désactivée pour le moment
     setLoading(false)
   }, [categorieId, router, supabase])
 
@@ -133,17 +142,91 @@ export default function CategorieDetailPage() {
   }, [loadData])
 
   const getNiveauNom = (niveau: number): string => {
-    const noms = [
-      'Fondamentaux',
-      'Laïcité',
-      'Droits fondamentaux',
-      'Démocratie et citoyenneté',
-      'Égalité et solidarité',
-      'Histoire des valeurs',
-      'Défense des valeurs',
-      'Europe et international',
-      'Cas pratiques',
-      'Maître'
+    // Noms des niveaux selon la catégorie (noms officiels du référentiel)
+    const nomsParCategorie: Record<string, string[]> = {
+      // Thème 1 : Principes et valeurs de la République
+      'Principes et valeurs de la République': [
+        'La devise républicaine',
+        'Les symboles constitutionnels',
+        'La laïcité - Fondements',
+        'La laïcité - Application',
+        'Liberté et ses formes',
+        'Égalité des droits',
+        'Fraternité et solidarité',
+        'Langue française',
+        'Lutte contre les discriminations',
+        'Maître des valeurs'
+      ],
+      // Thème 2 : Symboles de la France
+      'Symboles de la France': [
+        'Le drapeau tricolore',
+        'La Marseillaise',
+        'La devise républicaine',
+        'Marianne',
+        'Le coq gaulois',
+        'Le sceau de la République',
+        'La fête nationale (14 juillet)',
+        'Monuments symboliques',
+        'Lieux de mémoire',
+        'Maître des symboles'
+      ],
+      // Thème 3 : Système institutionnel et politique
+      'Système institutionnel et politique': [
+        'État de droit et démocratie',
+        'Le droit de vote',
+        'Le Président de la République',
+        'Le Gouvernement',
+        'Le Parlement',
+        'La Justice',
+        'Les collectivités territoriales',
+        'L\'Union européenne - Fondements',
+        'L\'Union européenne - Institutions',
+        'Maître des institutions'
+      ],
+      // Thème 4 : Droits et devoirs
+      'Droits et devoirs': [
+        'Droits fondamentaux',
+        'Libertés individuelles',
+        'Droits sociaux et économiques',
+        'Textes garants des droits',
+        'Devoirs et obligations',
+        'Respect des lois',
+        'Fiscalité et cotisations',
+        'Participation citoyenne',
+        'Attitude citoyenne',
+        'Maître citoyen'
+      ],
+      // Thème 5 : Histoire, géographie et culture
+      'Histoire, géographie et culture': [
+        'La monarchie et la Révolution',
+        'Le XIXe siècle',
+        'Les conflits mondiaux',
+        'La Ve République',
+        'Géographie de la France',
+        'Territoires d\'outre-mer',
+        'Patrimoine et monuments',
+        'Artistes et culture',
+        'Gastronomie et traditions',
+        'Maître de l\'Histoire'
+      ],
+      // Thème 6 : Vivre dans la société française
+      'Vivre dans la société française': [
+        'S\'installer en France',
+        'Démarches administratives',
+        'Accès à la nationalité',
+        'Le système de santé',
+        'Travailler en France',
+        'Le droit du travail',
+        'Autorité parentale',
+        'Le système éducatif',
+        'Logement et vie quotidienne',
+        'Maître de la vie en France'
+      ]
+    }
+
+    const noms = nomsParCategorie[categorie?.nom || ''] || [
+      'Niveau 1', 'Niveau 2', 'Niveau 3', 'Niveau 4', 'Niveau 5',
+      'Niveau 6', 'Niveau 7', 'Niveau 8', 'Niveau 9', 'Niveau 10'
     ]
     return noms[niveau - 1] || `Niveau ${niveau}`
   }
@@ -165,9 +248,6 @@ export default function CategorieDetailPage() {
   }
 
   const handleStartQuiz = (niveau: number) => {
-    if (niveauxJouesAujourdhui >= LIMITE_NIVEAUX_JOUR) {
-      return
-    }
     router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`)
   }
 
@@ -205,7 +285,7 @@ export default function CategorieDetailPage() {
       </Link>
 
       {/* Info catégorie */}
-      <div className="bg-white rounded-none border border-gray-200 p-6 mb-6">
+      <div className="bg-white border-2 border-gray-900 p-6 mb-6">
         <h1 className="text-2xl font-bold text-gray-900 mb-2">{categorie.nom}</h1>
         <p className="text-gray-600 mb-4">{categorie.description}</p>
         
@@ -240,47 +320,18 @@ export default function CategorieDetailPage() {
         </div>
       </div>
 
-      {/* Limite journalière */}
-      <div className={`rounded-none border p-4 mb-6 ${
-        niveauxJouesAujourdhui >= LIMITE_NIVEAUX_JOUR 
-          ? 'bg-amber-50 border-amber-200' 
-          : 'bg-primary-50 border-primary-200'
-      }`}>
-        <div className="flex items-center gap-3">
-          <Clock className={`w-5 h-5 ${
-            niveauxJouesAujourdhui >= LIMITE_NIVEAUX_JOUR ? 'text-amber-600' : 'text-primary-600'
-          }`} />
-          <div>
-            <p className={`font-medium ${
-              niveauxJouesAujourdhui >= LIMITE_NIVEAUX_JOUR ? 'text-amber-800' : 'text-primary-800'
-            }`}>
-              {niveauxJouesAujourdhui >= LIMITE_NIVEAUX_JOUR 
-                ? 'Limite atteinte pour aujourd\'hui' 
-                : `${LIMITE_NIVEAUX_JOUR - niveauxJouesAujourdhui} niveau(x) restant(s) aujourd'hui`
-              }
-            </p>
-            <p className="text-sm text-gray-600">
-              {niveauxJouesAujourdhui >= LIMITE_NIVEAUX_JOUR 
-                ? 'Revenez demain pour continuer votre entraînement !' 
-                : 'Maximum 3 niveaux par jour pour une meilleure mémorisation'
-              }
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Grille des niveaux */}
       <div className="grid gap-3">
         {niveaux.map((niveau) => {
-          const canPlay = niveau.is_unlocked && niveauxJouesAujourdhui < LIMITE_NIVEAUX_JOUR
+          const canPlay = niveau.is_unlocked
           
           return (
             <div
               key={niveau.niveau}
-              className={`bg-white rounded-none border p-4 transition-all ${
+              className={`bg-white rounded-xl border-2 p-4 transition-all ${
                 niveau.is_unlocked 
-                  ? 'border-gray-200 hover:border-primary-300' 
-                  : 'border-gray-100 bg-gray-50 opacity-60'
+                  ? 'border-gray-900 hover:border-primary-600' 
+                  : 'border-gray-400 bg-gray-50 opacity-60'
               }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -306,33 +357,33 @@ export default function CategorieDetailPage() {
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="font-semibold text-gray-900">
-                        Niveau {niveau.niveau}: {getNiveauNom(niveau.niveau)}
+                        <span className="font-bold">Niveau</span> {niveau.niveau}: {getNiveauNom(niveau.niveau)}
                       </h3>
                       <span className={`text-xs px-2 py-0.5 rounded-full whitespace-nowrap ${getDifficulteColor(niveau.niveau)}`}>
                         {getDifficulteLabel(niveau.niveau)}
                       </span>
                     </div>
                     <p className="text-sm text-gray-500">
-                      10 questions • 30s par question
+                      10 questions
                     </p>
                     
-                    {/* Affichage du score et tentatives si déjà joué */}
-                    {niveau.tentatives > 0 && (
+                    {/* Affichage du score si niveau joué */}
+                    {niveau.meilleur_score !== null && (
                       <div className="flex flex-wrap items-center gap-3 mt-2">
                         <div className={`text-sm font-medium px-2 py-1 rounded ${
                           niveau.is_completed 
                             ? 'bg-emerald-100 text-emerald-700' 
                             : 'bg-amber-100 text-amber-700'
                         }`}>
-                          Meilleur score : {niveau.meilleur_score}/10 ({niveau.meilleur_score !== null ? niveau.meilleur_score * 10 : 0}%)
+                          {niveau.is_completed ? (
+                            <>✓ Meilleur score : {niveau.meilleur_score}/10 ({niveau.meilleur_score * 10}%)</>
+                          ) : (
+                            <>Meilleur score : {niveau.meilleur_score}/10 ({niveau.meilleur_score * 10}%)</>
+                          )}
                         </div>
-                        <span className="text-xs text-gray-400">
-                          {niveau.tentatives} tentative{niveau.tentatives > 1 ? 's' : ''}
-                        </span>
-                        {niveau.is_completed && (
-                          <span className="text-xs text-emerald-600 flex items-center gap-1">
-                            <CheckCircle className="w-3 h-3" />
-                            Validé
+                        {niveau.tentatives > 0 && (
+                          <span className="text-xs text-gray-400">
+                            {niveau.tentatives} tentative{niveau.tentatives > 1 ? 's' : ''}
                           </span>
                         )}
                       </div>

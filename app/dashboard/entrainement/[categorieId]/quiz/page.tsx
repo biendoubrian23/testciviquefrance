@@ -2,9 +2,11 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
-import { useSupabase } from '@/hooks/useSupabase'
 import { Clock, CheckCircle, XCircle, ArrowRight, Trophy, Star, Gift, Sparkles } from 'lucide-react'
+import Confetti from '@/components/ui/Confetti'
+import CelebrationToast from '@/components/ui/CelebrationToast'
 
+// Interface sécurisée - PAS de is_correct côté client !
 interface Question {
   id: string
   question: string
@@ -15,8 +17,8 @@ interface Question {
 interface Reponse {
   id: string
   texte: string
-  is_correct: boolean
   ordre: number
+  // NOTE: is_correct n'est PLUS ici - sécurité !
 }
 
 interface ReponseUtilisateur {
@@ -24,28 +26,22 @@ interface ReponseUtilisateur {
   reponse_id: string | null
   is_correct: boolean
   temps_reponse: number
+  correct_reponse_id?: string // Ajouté après vérification serveur
 }
 
-interface QuestionDB {
-  id: string
-  question: string
-  explication: string
-  reponses: Reponse[]
-}
-
-type QuizPhase = 'loading' | 'playing' | 'waiting' | 'explanation' | 'results' | 'offer'
+type QuizPhase = 'loading' | 'playing' | 'waiting' | 'verifying' | 'explanation' | 'results' | 'offer'
 
 export default function QuizPage() {
   const params = useParams()
   const searchParams = useSearchParams()
   const router = useRouter()
-  const supabase = useSupabase()
   const categorieId = params.categorieId as string
   const niveau = parseInt(searchParams.get('niveau') || '1')
   
   const [questions, setQuestions] = useState<Question[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
+  const [correctAnswerId, setCorrectAnswerId] = useState<string | null>(null) // Réponse correcte (du serveur)
   const [timeLeft, setTimeLeft] = useState(30)
   const [phase, setPhase] = useState<QuizPhase>('loading')
   const [reponses, setReponses] = useState<ReponseUtilisateur[]>([])
@@ -53,12 +49,18 @@ export default function QuizPage() {
   const [showOffer, setShowOffer] = useState(false)
   const [offerType, setOfferType] = useState<'first10' | 'level45' | null>(null)
   
+  // États pour la célébration (confettis + toast)
+  const [showConfetti, setShowConfetti] = useState(false)
+  const [showCelebration, setShowCelebration] = useState(false)
+  
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const startTimeRef = useRef<number>(0)
   const questionsRef = useRef<Question[]>([])
   const currentIndexRef = useRef(0)
   const selectedAnswerRef = useRef<string | null>(null)
   const phaseRef = useRef<QuizPhase>('loading')
+  const sessionIdRef = useRef<string | null>(null)
+  const hasLoadedRef = useRef(false) // Empêcher les appels multiples
 
   const TIMER_DURATION = 5 // DEV: 5 secondes (PROD: 30)
 
@@ -88,7 +90,37 @@ export default function QuizPage() {
     return newArray
   }
 
-  const handleTimeUp = useCallback(() => {
+  // Fonction pour vérifier une réponse via l'API sécurisée
+  const verifyAnswer = useCallback(async (questionId: string, reponseId: string | null, tempsReponse: number) => {
+    try {
+      const response = await fetch('/api/quiz/verify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          questionId,
+          reponseId,
+          tempsReponse,
+          sessionId: sessionIdRef.current // Utiliser la ref !
+        })
+      })
+      
+      if (!response.ok) {
+        throw new Error('Erreur de vérification')
+      }
+      
+      const data = await response.json()
+      return {
+        isCorrect: data.isCorrect,
+        correctReponseId: data.correctReponseId,
+        explication: data.explication
+      }
+    } catch (error) {
+      console.error('Erreur vérification:', error)
+      return { isCorrect: false, correctReponseId: null, explication: '' }
+    }
+  }, []) // Plus de dépendance à sessionId !
+
+  const handleTimeUp = useCallback(async () => {
     // Si pas de réponse sélectionnée, enregistrer comme non-répondu
     if (phaseRef.current === 'playing') {
       const currentQuestion = questionsRef.current[currentIndexRef.current]
@@ -97,16 +129,24 @@ export default function QuizPage() {
       const tempsReponse = TIMER_DURATION
       const answer = selectedAnswerRef.current
       
+      // Phase de vérification
+      setPhase('verifying')
+      
+      // Vérifier la réponse côté serveur
+      const verification = await verifyAnswer(currentQuestion.id, answer, tempsReponse)
+      
+      setCorrectAnswerId(verification.correctReponseId)
       setReponses(prev => [...prev, {
         question_id: currentQuestion.id,
         reponse_id: answer,
-        is_correct: answer ? currentQuestion.reponses.find(r => r.id === answer)?.is_correct || false : false,
-        temps_reponse: tempsReponse
+        is_correct: verification.isCorrect,
+        temps_reponse: tempsReponse,
+        correct_reponse_id: verification.correctReponseId
       }])
       
       setPhase('explanation')
     }
-  }, [])
+  }, [verifyAnswer])
 
   const startTimer = useCallback(() => {
     setTimeLeft(TIMER_DURATION)
@@ -127,112 +167,113 @@ export default function QuizPage() {
   }, [handleTimeUp])
 
   const loadQuestions = useCallback(async () => {
-    // Vérifier l'authentification
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) {
-      router.push('/login')
+    // Éviter les appels multiples
+    if (hasLoadedRef.current) {
+      console.log('loadQuestions - déjà chargé, skip')
       return
     }
-
-    // Calculer l'offset pour ce niveau (niveau 1 = questions 0-9, niveau 2 = questions 10-19, etc.)
-    const offset = (niveau - 1) * 10
-    console.log('loadQuestions - niveau:', niveau, 'offset:', offset, 'categorieId:', categorieId)
-
-    // Charger 10 questions pour ce niveau spécifique
-    const { data: questionsData, error } = await supabase
-      .from('questions')
-      .select(`
-        id,
-        question,
-        explication,
-        reponses (
-          id,
-          texte,
-          is_correct,
-          ordre
-        )
-      `)
-      .eq('categorie_id', categorieId)
-      .order('created_at')
-      .range(offset, offset + 9) // 10 questions par niveau
-
-    console.log('Questions chargées:', questionsData?.length || 0, 'erreur:', error)
-
-    if (error || !questionsData || questionsData.length === 0) {
-      console.error('Erreur chargement questions:', error)
-      router.push(`/dashboard/entrainement/${categorieId}`)
-      return
-    }
-
-    // S'assurer qu'on a exactement 10 questions maximum
-    const limitedQuestions = questionsData.slice(0, 10)
-    console.log('Questions limitées à:', limitedQuestions.length)
-
-    // Mélanger les réponses de chaque question
-    const questionsWithShuffledAnswers = (limitedQuestions as QuestionDB[]).map((q: QuestionDB) => ({
-      ...q,
-      reponses: shuffleArray([...q.reponses])
-    }))
-
-    setQuestions(questionsWithShuffledAnswers)
+    hasLoadedRef.current = true
     
-    // Créer une session
-    const { data: session } = await supabase
-      .from('sessions_quiz')
-      .insert({
-        user_id: user.id,
-        categorie_id: categorieId,
-        niveau: niveau
-      })
-      .select()
-      .single()
+    // Charger les questions via l'API sécurisée (sans is_correct)
+    try {
+      console.log('loadQuestions - niveau:', niveau, 'categorieId:', categorieId)
 
-    if (session) {
-      setSessionId(session.id)
+      const response = await fetch(`/api/quiz/questions?categorieId=${categorieId}&niveau=${niveau}`)
+      
+      if (!response.ok) {
+        if (response.status === 401) {
+          router.push('/login')
+          return
+        }
+        throw new Error('Erreur chargement questions')
+      }
+
+      const data = await response.json()
+      
+      if (!data.questions || data.questions.length === 0) {
+        console.error('Aucune question trouvée')
+        router.push(`/dashboard/entrainement/${categorieId}`)
+        return
+      }
+
+      console.log('Questions chargées (sécurisé):', data.questions.length)
+
+      // Mélanger les réponses de chaque question
+      const questionsWithShuffledAnswers = data.questions.map((q: Question) => ({
+        ...q,
+        reponses: shuffleArray([...q.reponses])
+      }))
+
+      setQuestions(questionsWithShuffledAnswers)
+      setSessionId(data.sessionId)
+      sessionIdRef.current = data.sessionId // Mettre à jour la ref aussi !
+      
+      setPhase('playing')
+      startTimer()
+      
+    } catch (error) {
+      console.error('Erreur chargement questions:', error)
+      hasLoadedRef.current = false // Permettre un retry en cas d'erreur
+      router.push(`/dashboard/entrainement/${categorieId}`)
     }
-
-    setPhase('playing')
-    startTimer()
   }, [categorieId, niveau, router, startTimer])
 
-  // Charger les questions au démarrage
+  // Charger les questions au démarrage (une seule fois)
   useEffect(() => {
     loadQuestions()
     return () => {
       if (timerRef.current) clearInterval(timerRef.current)
     }
-  }, [loadQuestions])
+  }, []) // Dépendances vides pour n'exécuter qu'une fois !
 
-  const handleSelectAnswer = (reponseId: string) => {
+  const handleSelectAnswer = async (reponseId: string) => {
     if (phase !== 'playing' || selectedAnswer) return
     
     setSelectedAnswer(reponseId)
     const tempsReponse = Math.round((Date.now() - startTimeRef.current) / 1000)
     
-    const currentQuestion = questions[currentIndex]
-    const isCorrect = currentQuestion.reponses.find(r => r.id === reponseId)?.is_correct || false
-    
-    setReponses(prev => [...prev, {
-      question_id: currentQuestion.id,
-      reponse_id: reponseId,
-      is_correct: isCorrect,
-      temps_reponse: tempsReponse
-    }])
-    
     // Passer en mode "attente" jusqu'à la fin du timer
     setPhase('waiting')
+    
+    // La vérification se fera quand le timer atteint 0
   }
 
-  // Quand le timer atteint 0, passer à l'explication
+  // Quand le timer atteint 0, vérifier la réponse côté serveur
   useEffect(() => {
-    if (timeLeft === 0 && (phase === 'playing' || phase === 'waiting')) {
-      if (timerRef.current) clearInterval(timerRef.current)
-      setPhase('explanation')
+    const verifyAndShowExplanation = async () => {
+      if (timeLeft === 0 && (phase === 'playing' || phase === 'waiting')) {
+        if (timerRef.current) clearInterval(timerRef.current)
+        
+        const currentQuestion = questions[currentIndex]
+        if (!currentQuestion) return
+        
+        const tempsReponse = Math.round((Date.now() - startTimeRef.current) / 1000)
+        
+        // Phase de vérification
+        setPhase('verifying')
+        
+        // Vérifier la réponse côté serveur (SÉCURISÉ)
+        const verification = await verifyAnswer(currentQuestion.id, selectedAnswer, tempsReponse)
+        
+        setCorrectAnswerId(verification.correctReponseId)
+        setReponses(prev => [...prev, {
+          question_id: currentQuestion.id,
+          reponse_id: selectedAnswer,
+          is_correct: verification.isCorrect,
+          temps_reponse: tempsReponse,
+          correct_reponse_id: verification.correctReponseId
+        }])
+        
+        setPhase('explanation')
+      }
     }
-  }, [timeLeft, phase])
+    
+    verifyAndShowExplanation()
+  }, [timeLeft, phase, questions, currentIndex, selectedAnswer, verifyAnswer])
 
   const handleNextQuestion = async () => {
     setSelectedAnswer(null)
+    setCorrectAnswerId(null) // Réinitialiser la bonne réponse
     
     // Vérifier si c'est le moment de proposer une offre
     const nextIndex = currentIndex + 1
@@ -275,6 +316,7 @@ export default function QuizPage() {
       finishQuiz()
     } else {
       setCurrentIndex(currentIndex + 1)
+      setCorrectAnswerId(null)
       setPhase('playing')
       startTimer()
     }
@@ -287,138 +329,50 @@ export default function QuizPage() {
 
   const finishQuiz = async () => {
     if (timerRef.current) clearInterval(timerRef.current)
-    
-    const { data: { user } } = await supabase.auth.getUser()
-    if (!user) return
 
     const score = reponses.filter(r => r.is_correct).length
-    const tempsMoyen = Math.round(reponses.reduce((acc, r) => acc + r.temps_reponse, 0) / reponses.length)
+    const tempsTotal = reponses.reduce((acc, r) => acc + r.temps_reponse, 0)
 
-    // Mettre à jour la session
-    if (sessionId) {
-      await supabase
-        .from('sessions_quiz')
-        .update({
+    try {
+      // Appeler l'API sécurisée pour sauvegarder les résultats
+      const response = await fetch('/api/quiz/complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId,
+          categorieId,
+          niveau,
           score,
-          temps_moyen: tempsMoyen,
-          completed: true
+          totalQuestions: questions.length,
+          tempsTotal,
+          reponses: reponses.map(r => ({
+            questionId: r.question_id,
+            reponseId: r.reponse_id,
+            isCorrect: r.is_correct,
+            tempsReponse: r.temps_reponse
+          }))
         })
-        .eq('id', sessionId)
-    }
+      })
 
-    // Mettre à jour ou créer la progression (sans .single() pour éviter 406)
-    const { data: progressList } = await supabase
-      .from('progression_niveaux')
-      .select()
-      .eq('user_id', user.id)
-      .eq('categorie_id', categorieId)
-      .limit(1)
-    
-    const existingProgress = progressList && progressList.length > 0 ? progressList[0] : null
-
-    const isCompleted = score >= 7 // 70% pour valider le niveau
-
-    if (existingProgress) {
-      // Mettre à jour si le score est meilleur ou si on passe au niveau suivant
-      const updateData: Record<string, unknown> = {
-        questions_correctes_niveau: Math.max(existingProgress.questions_correctes_niveau || 0, score),
-        questions_repondues_niveau: (existingProgress.questions_repondues_niveau || 0) + reponses.length,
-        date_dernier_niveau: new Date().toISOString()
+      if (!response.ok) {
+        console.error('Erreur sauvegarde résultats')
       }
-      
-      // Passer au niveau suivant si réussi
-      if (isCompleted && niveau >= (existingProgress.niveau_actuel || 1)) {
-        updateData.niveau_actuel = niveau + 1
-        updateData.niveau_debloque = true
+
+      // Déclencher la célébration si score >= 9/10
+      if (score >= 9) {
+        setShowConfetti(true)
+        setShowCelebration(true)
       }
+
+      setPhase('results')
       
-      await supabase
-        .from('progression_niveaux')
-        .update(updateData)
-        .eq('id', existingProgress.id)
-    } else {
-      // Créer la progression
-      await supabase
-        .from('progression_niveaux')
-        .insert({
-          user_id: user.id,
-          categorie_id: categorieId,
-          niveau_actuel: isCompleted ? niveau + 1 : niveau,
-          questions_correctes_niveau: score,
-          questions_repondues_niveau: reponses.length,
-          niveau_debloque: true,
-          date_dernier_niveau: new Date().toISOString()
-        })
+    } catch (error) {
+      console.error('Erreur finishQuiz:', error)
+      setPhase('results') // Afficher quand même les résultats
     }
-
-    // Mettre à jour la gamification
-    const pointsGagnes = score * 10 + (isCompleted ? 50 : 0)
-    
-    const { data: gamificationList } = await supabase
-      .from('gamification')
-      .select()
-      .eq('user_id', user.id)
-      .limit(1)
-    
-    const gamification = gamificationList && gamificationList.length > 0 ? gamificationList[0] : null
-
-    if (gamification) {
-      // Vérifier la série de jours
-      const lastActive = new Date(gamification.derniere_activite)
-      const today = new Date()
-      const diffDays = Math.floor((today.getTime() - lastActive.getTime()) / (1000 * 60 * 60 * 24))
-      
-      const newSerieJours = diffDays === 1 ? (gamification.streak_jours || 0) + 1 : (diffDays === 0 ? (gamification.streak_jours || 0) : 1)
-      
-      await supabase
-        .from('gamification')
-        .update({
-          points_total: (gamification.points_total || 0) + pointsGagnes,
-          streak_jours: newSerieJours,
-          meilleure_serie: Math.max(gamification.meilleure_serie || 0, newSerieJours),
-          derniere_activite: new Date().toISOString()
-        })
-        .eq('id', gamification.id)
-    } else {
-      await supabase
-        .from('gamification')
-        .insert({
-          user_id: user.id,
-          points_total: pointsGagnes,
-          streak_jours: 1,
-          meilleure_serie: 1
-        })
-    }
-
-    // Mettre à jour les statistiques globales (sans .single() pour éviter 406)
-    const { data: statsList } = await supabase
-      .from('statistiques')
-      .select()
-      .eq('user_id', user.id)
-      .limit(1)
-    
-    const stats = statsList && statsList.length > 0 ? statsList[0] : null
-
-    if (stats) {
-      const newTotalQuestions = (stats.total_questions_repondues || 0) + reponses.length
-      const newBonnesReponses = (stats.total_bonnes_reponses || 0) + score
-      const newTauxReussite = newTotalQuestions > 0 ? Math.round((newBonnesReponses / newTotalQuestions) * 100) : 0
-      
-      await supabase
-        .from('statistiques')
-        .update({
-          total_questions_repondues: newTotalQuestions,
-          total_bonnes_reponses: newBonnesReponses,
-          temps_total_etude: (stats.temps_total_etude || 0) + (tempsMoyen * reponses.length),
-          derniere_activite: new Date().toISOString()
-        })
-        .eq('id', stats.id)
-    }
-
-    setPhase('results')
   }
 
-  // Rendu du timer circulaire
+  // Rendu du timer circulaire avec animation fluide
   const renderTimer = () => {
     const circumference = 2 * Math.PI * 40
     const progress = (timeLeft / TIMER_DURATION) * circumference
@@ -445,7 +399,9 @@ export default function QuizPage() {
             strokeDasharray={circumference}
             strokeDashoffset={circumference - progress}
             strokeLinecap="round"
-            className="transition-all duration-1000"
+            style={{
+              transition: 'stroke-dashoffset 1s linear, stroke 0.3s ease'
+            }}
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
@@ -475,12 +431,23 @@ export default function QuizPage() {
     const isSuccess = percentage >= 70 // 70% minimum pour passer
     
     return (
-      <div className="max-w-md mx-auto px-2 sm:px-4 py-6">
-        <div className="bg-white border border-gray-200 p-5 text-center">
-          {/* Titre du niveau */}
-          <div className="text-xs text-gray-500 mb-2">Niveau {niveau}</div>
+      <>
+        {/* Confettis pour 9/10 ou 10/10 */}
+        <Confetti isActive={showConfetti} duration={5000} />
+        
+        {/* Toast de célébration */}
+        <CelebrationToast 
+          isVisible={showCelebration} 
+          score={score}
+          onHide={() => setShowCelebration(false)}
+        />
+        
+        <div className="max-w-md mx-auto px-2 sm:px-4 py-6">
+          <div className="bg-white border border-gray-200 p-5 text-center">
+            {/* Titre du niveau */}
+            <div className="text-xs text-gray-500 mb-2">Niveau {niveau}</div>
           
-          {/* Icône de résultat */}
+            {/* Icône de résultat */}
           {isSuccess ? (
             <div className="w-14 h-14 mx-auto mb-3 bg-emerald-100 flex items-center justify-center">
               <Trophy className="w-7 h-7 text-emerald-600" />
@@ -601,7 +568,8 @@ export default function QuizPage() {
             </button>
           </div>
         </div>
-      </div>
+        </div>
+      </>
     )
   }
 
@@ -702,19 +670,22 @@ export default function QuizPage() {
       <div className="space-y-2 mb-4">
         {currentQuestion.reponses.map((reponse, index) => {
           const isSelected = selectedAnswer === reponse.id
-          const showResult = phase === 'explanation' || phase === 'waiting'
-          const isCorrect = reponse.is_correct
+          const showResult = phase === 'explanation'
+          // Utiliser correctAnswerId du serveur au lieu de reponse.is_correct (SÉCURISÉ)
+          const isCorrectAnswer = correctAnswerId === reponse.id
           
           let buttonClass = 'bg-white border-gray-200 hover:border-primary-300'
           
-          if (showResult) {
-            if (isCorrect) {
+          if (showResult && correctAnswerId) {
+            if (isCorrectAnswer) {
               buttonClass = 'bg-emerald-50 border-emerald-500'
-            } else if (isSelected && !isCorrect) {
+            } else if (isSelected && !isCorrectAnswer) {
               buttonClass = 'bg-red-50 border-red-500'
             } else {
               buttonClass = 'bg-white border-gray-200 opacity-50'
             }
+          } else if (phase === 'waiting' && isSelected) {
+            buttonClass = 'bg-primary-50 border-primary-500'
           } else if (isSelected) {
             buttonClass = 'bg-primary-50 border-primary-500'
           }
@@ -734,8 +705,8 @@ export default function QuizPage() {
                   <span className="text-gray-800 text-sm sm:text-base">{reponse.texte}</span>
                 </div>
                 
-                {showResult && (
-                  isCorrect ? (
+                {showResult && correctAnswerId && (
+                  isCorrectAnswer ? (
                     <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                   ) : isSelected ? (
                     <XCircle className="w-5 h-5 text-red-600 flex-shrink-0" />
@@ -746,6 +717,14 @@ export default function QuizPage() {
           )
         })}
       </div>
+
+      {/* Indicateur de vérification */}
+      {phase === 'verifying' && (
+        <div className="bg-blue-50 border border-blue-200 rounded-none p-4 mb-6 flex items-center gap-3">
+          <div className="animate-spin rounded-full h-5 w-5 border-2 border-blue-600 border-t-transparent"></div>
+          <span className="text-blue-700">Vérification de la réponse...</span>
+        </div>
+      )}
 
       {/* Explication */}
       {phase === 'explanation' && (

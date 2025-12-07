@@ -120,7 +120,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           </button>
         </div>
 
-        {/* Logo - caché sur mobile car header différent */}
+        {/* Logo - visible uniquement sur desktop */}
         <div className="hidden lg:flex -mt-6 justify-center">
           <Link href="/" onClick={handleLinkClick}>
             <Image
@@ -129,19 +129,6 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
               width={132}
               height={132}
               className="w-32 h-32 object-contain"
-            />
-          </Link>
-        </div>
-        
-        {/* Logo mobile plus petit */}
-        <div className="lg:hidden flex justify-center py-3">
-          <Link href="/" onClick={handleLinkClick}>
-            <Image
-              src="/logo.png"
-              alt="Test Civique France"
-              width={80}
-              height={80}
-              className="w-20 h-20 object-contain"
             />
           </Link>
         </div>

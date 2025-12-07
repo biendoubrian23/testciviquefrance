@@ -127,17 +127,128 @@ export default function SEOContent() {
           <dd>Le coût du test civique est fixé par les organismes agréés.</dd>
           
           <dt>Où passer le test civique ?</dt>
-          <dd>Le test civique se passe auprès des organismes agréés par l'État.</dd>
+          <dd>Le test civique se passe auprès des organismes agréés par l'État, disponibles dans toutes les grandes villes : Paris, Lyon, Marseille, Toulouse, Bordeaux, Nantes, Lille, Strasbourg.</dd>
+          
+          <dt>Où passer mon test civique ?</dt>
+          <dd>Vous pouvez passer votre test civique dans un centre agréé près de chez vous. Contactez votre préfecture pour la liste des centres.</dd>
+
+          <dt>Suis-je éligible au test civique ?</dt>
+          <dd>Vous êtes éligible si vous demandez la naturalisation, une carte de séjour pluriannuelle, une carte de résident ou si vous êtes dans le cadre d'un regroupement familial.</dd>
+
+          <dt>Est-ce que je dois passer le test civique ?</dt>
+          <dd>Le test civique est obligatoire pour la naturalisation française et l'obtention de certains titres de séjour longue durée.</dd>
           
           <dt>Combien de temps dure le test civique ?</dt>
           <dd>Le test civique dure environ 45 minutes à 1 heure.</dd>
           
           <dt>Peut-on repasser le test civique en cas d'échec ?</dt>
-          <dd>Oui, il est possible de repasser le test civique après un délai.</dd>
+          <dd>Oui, il est possible de repasser le test civique. Il n'y a pas de limite de tentatives.</dd>
+
+          <dt>Que faire si on rate le test civique ?</dt>
+          <dd>En cas d'échec, vous pouvez vous réinscrire et repasser le test après un délai. Préparez-vous mieux avec Test Civique France.</dd>
+
+          <dt>Le test civique est-il difficile ?</dt>
+          <dd>Avec une bonne préparation, le test civique est accessible. Notre taux de réussite est de 95%.</dd>
+
+          <dt>Quand passer le test civique en 2025 ?</dt>
+          <dd>Vous pouvez passer le test civique tout au long de l'année 2025 : janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre.</dd>
+
+          <dt>Quand passer le test civique en 2026 ?</dt>
+          <dd>Le test civique 2026 sera disponible dès janvier 2026. Préparez-vous dès maintenant !</dd>
           
           <dt>Comment obtenir l'attestation de réussite ?</dt>
           <dd>L'attestation est délivrée par l'organisme après réussite au test.</dd>
+
+          <dt>Combien de fois peut-on passer le test civique ?</dt>
+          <dd>Il n'y a pas de limite au nombre de tentatives pour le test civique.</dd>
+
+          <dt>Quelle est la durée de validité du test civique ?</dt>
+          <dd>L'attestation de réussite au test civique a une durée de validité. Vérifiez auprès de votre préfecture.</dd>
+
+          <dt>Comment s'inscrire au test civique ?</dt>
+          <dd>L'inscription se fait auprès des centres agréés ou via votre préfecture.</dd>
+
+          <dt>Y a-t-il des cas de dispense du test civique ?</dt>
+          <dd>Certaines personnes peuvent être dispensées pour raisons médicales ou d'âge. Renseignez-vous auprès de votre préfecture.</dd>
         </dl>
+      </section>
+
+      <section>
+        <h2>Test civique par mois 2025</h2>
+        <ul>
+          <li>Test civique janvier 2025 - Préparez-vous dès maintenant</li>
+          <li>Test civique février 2025 - Sessions disponibles</li>
+          <li>Test civique mars 2025 - Inscriptions ouvertes</li>
+          <li>Test civique avril 2025 - Révisez avec nous</li>
+          <li>Test civique mai 2025 - Taux de réussite 95%</li>
+          <li>Test civique juin 2025 - Entraînement gratuit</li>
+          <li>Test civique juillet 2025 - Examens blancs disponibles</li>
+          <li>Test civique août 2025 - Continuez votre préparation</li>
+          <li>Test civique septembre 2025 - Nouvelle rentrée</li>
+          <li>Test civique octobre 2025 - Sessions d'automne</li>
+          <li>Test civique novembre 2025 - Dernières sessions de l'année</li>
+          <li>Test civique décembre 2025 - Préparez 2026</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Test civique par mois 2026</h2>
+        <ul>
+          <li>Test civique janvier 2026 - Nouvelle année, nouveau départ</li>
+          <li>Test civique février 2026 - Sessions d'hiver</li>
+          <li>Test civique mars 2026 - Printemps des naturalisation</li>
+          <li>Test civique avril 2026 - Continuez votre parcours</li>
+          <li>Test civique mai 2026 - Préparation intensive</li>
+          <li>Test civique juin 2026 - Sessions d'été</li>
+          <li>Test civique juillet 2026 - Révisez pendant les vacances</li>
+          <li>Test civique août 2026 - Sessions estivales</li>
+          <li>Test civique septembre 2026 - Rentrée 2026</li>
+          <li>Test civique octobre 2026 - Automne 2026</li>
+          <li>Test civique novembre 2026 - Fin d'année</li>
+          <li>Test civique décembre 2026 - Dernières sessions</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Test civique par ville</h2>
+        <ul>
+          <li>Test civique Paris - Île-de-France</li>
+          <li>Test civique Lyon - Auvergne-Rhône-Alpes</li>
+          <li>Test civique Marseille - Provence-Alpes-Côte d'Azur</li>
+          <li>Test civique Toulouse - Occitanie</li>
+          <li>Test civique Bordeaux - Nouvelle-Aquitaine</li>
+          <li>Test civique Nantes - Pays de la Loire</li>
+          <li>Test civique Lille - Hauts-de-France</li>
+          <li>Test civique Strasbourg - Grand Est</li>
+          <li>Test civique Nice - Côte d'Azur</li>
+          <li>Test civique Montpellier - Hérault</li>
+          <li>Test civique Rennes - Bretagne</li>
+          <li>Test civique Grenoble - Isère</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Éligibilité au test civique</h2>
+        <ul>
+          <li>Naturalisation française - Demande de nationalité</li>
+          <li>Carte de séjour pluriannuelle 4 ans</li>
+          <li>Carte de résident 10 ans</li>
+          <li>Regroupement familial</li>
+          <li>Conjoint de Français</li>
+          <li>Changement de statut étudiant vers salarié</li>
+          <li>Titre de séjour étudiant</li>
+          <li>Passeport talent</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Nouvelle loi immigration 2024-2025</h2>
+        <p>
+          La nouvelle loi immigration 2024 renforce les exigences du test civique. Le décret 2025-647 
+          définit les nouvelles modalités. Depuis 2025, le test civique est obligatoire pour davantage 
+          de démarches d'intégration et de titres de séjour. Préparez-vous avec Test Civique France 
+          pour réussir votre examen conformément aux nouvelles règles.
+        </p>
       </section>
 
       <section>
@@ -150,7 +261,16 @@ export default function SEOContent() {
           valeurs république, institutions françaises, droits devoirs citoyen,
           histoire france, géographie france, culture française, laïcité, Marianne,
           drapeau français, Marseillaise, devise française, décret 2025-647, CESEDA,
-          R.413-12-1, 40 questions, 80 pourcent, 32 bonnes réponses
+          R.413-12-1, 40 questions, 80 pourcent, 32 bonnes réponses,
+          test civique 2025, test civique 2026, examen civique 2025, examen civique 2026,
+          test civique janvier 2025, test civique février 2025, test civique mars 2025,
+          test civique janvier 2026, test civique février 2026, test civique mars 2026,
+          où passer le test civique, où passer mon test civique, suis-je éligible au test civique,
+          comment s'inscrire au test civique, combien coûte le test civique,
+          le test civique est-il difficile, peut-on repasser le test civique,
+          test civique paris, test civique lyon, test civique marseille, test civique toulouse,
+          nouvelle loi immigration, loi immigration 2024, loi immigration 2025,
+          titre de séjour étudiant, étudiant étranger france, regroupement familial
         </p>
       </section>
     </div>

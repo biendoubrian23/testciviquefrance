@@ -30,9 +30,9 @@ export default function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
           <Image
             src="/logo.png"
             alt="Test Civique France"
-            width={110}
-            height={110}
-            className="w-[110px] h-[110px] object-contain"
+            width={115}
+            height={115}
+            className="w-[126px] h-[126px] object-contain"
           />
         </Link>
       </div>

@@ -1,0 +1,73 @@
+
+#	Question	Bonne réponse
+1	Couleurs de gauche à droite ?	Bleu, blanc, rouge
+2	Année d'adoption comme emblème ?	1794
+3	Symbolique du bleu ?	Paris et le peuple
+4	Symbolique du blanc ?	La monarchie et la nation
+5	Symbolique du rouge ?	Paris et le sang versé pour la liberté
+6	Disposition des bandes ?	Verticalement
+7	Où est-il obligatoire ?	Sur les bâtiments publics
+8	Article de la Constitution ?	Article 2
+9	Période du drapeau blanc ?	La Restauration (1814-1830)
+10	Créateur de la cocarde ?	Lafayette
+
+---------------------------------------------------------------------------------------------------------
+
+📚 Niveau 2 : La Marseillaise (10 questions)
+#	Question	Bonne réponse
+1	Qui a composé La Marseillaise ?	Rouget de Lisle
+2	En quelle année a-t-elle été composée ?	1792
+3	Quel était le titre original ?	Chant de guerre pour l'Armée du Rhin
+4	Dans quelle ville a-t-elle été composée ?	Strasbourg
+5	Quand est-elle devenue hymne national pour la 1ère fois ?	1795
+6	Quel est le premier vers ?	Allons enfants de la Patrie
+7	Combien de couplets dans la version complète ?	7 couplets
+8	Quel article de la Constitution la désigne ?	Article 2
+9	Quelle phrase célèbre du refrain ?	Aux armes, citoyens !
+10	Depuis quelle année enseignée à l'école ?	2005
+
+---------------------------------------------------------------------------------------------------------
+
+📚 Niveau 3 : La devise républicaine (10 questions)
+#	Question	Bonne réponse
+1	Quelle est la devise de la République ?	Liberté, Égalité, Fraternité
+2	À quelle période est-elle apparue ?	La Révolution française
+3	Où peut-on la lire ?	Sur les bâtiments publics et pièces de monnaie
+4	Que signifie "Liberté" ?	Le droit d'agir, penser et s'exprimer librement
+5	Que signifie "Égalité" ?	Tous les citoyens ont les mêmes droits devant la loi
+6	Que signifie "Fraternité" ?	La solidarité et l'entraide entre citoyens
+7	Quel article de la Constitution ?	Article 2
+8	Quand est-elle devenue officielle ?	1848
+9	Quel document de 1789 la fonde ?	La Déclaration des droits de l'homme
+10	Associée à quel régime politique ?	La République
+
+---------------------------------------------------------------------------------------------------------
+
+📚 Niveau 4 : Marianne (10 questions uniques)
+#	Question	Réponse
+1	Qui représente Marianne ?	La République française
+2	Quel couvre-chef porte Marianne ?	Le bonnet phrygien
+3	Où peut-on voir un buste de Marianne ?	Dans les mairies
+4	Depuis quand est-elle le symbole ?	Depuis la Révolution (1792)
+5	Pourquoi le prénom "Marianne" ?	Prénoms les plus courants du peuple
+6	Quelle peinture célèbre la représente ?	La Liberté guidant le peuple de Delacroix
+7	Sur quel support officiel la voit-on ?	Les timbres-poste
+8	Quelle actrice a servi de modèle en 1970 ?	Brigitte Bardot
+9	Que symbolise le bonnet phrygien ?	La liberté
+10	Quelle couleur pour le bonnet ?	Rouge
+
+---------------------------------------------------------------------------------------------------------
+
+📚 Niveau 5 : Le coq gaulois (10 questions uniques)
+#	Question	Réponse
+1	Pourquoi le coq est associé à la France ?	"Gallus" = coq et gaulois en latin
+2	Où voir le coq comme symbole officiel ?	Sur la grille du Palais de l'Élysée
+3	À quelle époque est-il devenu symbole ?	Depuis l'Antiquité romaine
+4	Quelle qualité symbolise-t-il ?	La fierté et le courage
+5	Sur quel monument parisien le trouve-t-on ?	Notre-Dame de Paris
+6	Quel roi l'a utilisé comme emblème ?	François Ier
+7	Emblème de quelles équipes sportives ?	Toutes les équipes de France
+8	Quelle caractéristique le rend symbolique ?	Son chant à l'aube (vigilance)
+9	Quand a-t-il été remplacé ?	Sous Napoléon (par l'aigle)
+10	Est-il un symbole officiel ?	Non, populaire mais pas constitutionnel
+

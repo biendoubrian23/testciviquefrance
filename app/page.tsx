@@ -7,45 +7,60 @@ import Features from '@/components/landing/Features';
 import Pricing from '@/components/landing/Pricing';
 
 export const metadata: Metadata = {
-  title: 'Test Civique France - Préparation Examen Civique Naturalisation Française 2025',
-  description: 'Préparez-vous au test civique obligatoire pour la naturalisation française. 800+ questions officielles QCM, 5 thématiques (valeurs républicaines, institutions, droits et devoirs, histoire, vie en société). Seuil 80% - 32/40. Examens blancs gratuits. Conforme décret 2025-647 CESEDA.',
+  title: 'Test Civique France 2025 2026 - Préparation Examen Naturalisation & Titre de Séjour | Où passer le test civique',
+  description: 'Préparez le test civique obligatoire 2025-2026 pour la naturalisation française. Où passer le test civique ? Suis-je éligible ? 800+ questions QCM officielles. Test civique janvier février mars 2025 2026. Gratuit. Taux réussite 95%.',
   keywords: [
-    'test civique', 'test civique france', 'examen civique', 'naturalisation française',
-    'préparation test civique', 'questions test civique', 'QCM naturalisation',
-    'devenir français', 'carte de séjour', 'carte résident', '40 questions test civique',
-    '80 pourcent test civique', 'valeurs république', 'institutions françaises',
+    // Principaux
+    'test civique', 'test civique france', 'test civique 2025', 'test civique 2026', 'examen civique',
+    // Par mois 2025
+    'test civique janvier 2025', 'test civique février 2025', 'test civique mars 2025', 
+    'test civique avril 2025', 'test civique mai 2025', 'test civique juin 2025',
+    'test civique septembre 2025', 'test civique octobre 2025', 'test civique novembre 2025', 'test civique décembre 2025',
+    // Par mois 2026
+    'test civique janvier 2026', 'test civique février 2026', 'test civique mars 2026',
+    'test civique avril 2026', 'test civique mai 2026', 'test civique juin 2026',
+    // Questions utilisateurs
+    'où passer le test civique', 'où passer mon test civique', 'suis-je éligible au test civique',
+    'comment s\'inscrire au test civique', 'combien coûte le test civique', 'le test civique est-il difficile',
+    'quand passer le test civique', 'que faire si on rate le test civique',
+    // Naturalisation et titres
+    'naturalisation française', 'préparation test civique', 'questions test civique', 'QCM naturalisation',
+    'devenir français', 'carte de séjour', 'titre de séjour étudiant', 'nouvelle loi immigration 2024',
+    'loi immigration 2025', 'renouvellement titre séjour', 'regroupement familial',
+    // Villes
+    'test civique paris', 'test civique lyon', 'test civique marseille', 'test civique toulouse',
   ],
   alternates: {
-    canonical: 'https://testciviquefrance.com',
+    canonical: 'https://www.testciviquefrance.fr',
   },
   openGraph: {
-    title: 'Test Civique France - Réussissez votre examen de naturalisation',
-    description: 'Préparation complète au test civique français. 800+ questions, 5 thématiques officielles, examens blancs. Taux de réussite 95%.',
-    url: 'https://testciviquefrance.com',
+    title: 'Test Civique France 2025 2026 - Réussissez votre examen de naturalisation',
+    description: 'Où passer le test civique ? Préparation complète au test civique français. 800+ questions, examens blancs. Test civique janvier février mars 2025 2026. Taux de réussite 95%.',
+    url: 'https://www.testciviquefrance.fr',
     type: 'website',
   },
 };
 
-// JSON-LD pour la page d'accueil
+// JSON-LD pour la page d'accueil - ENRICHI
 const homeJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'WebPage',
-  '@id': 'https://testciviquefrance.com/#webpage',
-  url: 'https://testciviquefrance.com',
-  name: 'Test Civique France - Préparation Examen Civique Naturalisation',
-  description: 'Plateforme de préparation au test civique pour la naturalisation française',
+  '@id': 'https://www.testciviquefrance.fr/#webpage',
+  url: 'https://www.testciviquefrance.fr',
+  name: 'Test Civique France 2025 - Préparation Examen Naturalisation & Titre de Séjour',
+  description: 'Plateforme de préparation au test civique obligatoire pour la naturalisation française, carte de séjour pluriannuelle et titre de séjour étudiant. Conforme nouvelle loi immigration 2024.',
   isPartOf: {
-    '@id': 'https://testciviquefrance.com/#website',
+    '@id': 'https://www.testciviquefrance.fr/#website',
   },
   about: {
     '@type': 'Thing',
-    name: 'Test civique français',
-    description: 'Examen obligatoire de 40 questions QCM pour la naturalisation française',
+    name: 'Test civique français 2025',
+    description: 'Examen obligatoire de 40 questions QCM pour la naturalisation française, la carte de séjour pluriannuelle et le titre de séjour. Conforme à la nouvelle loi immigration.',
   },
   mainEntity: {
     '@type': 'Course',
-    name: 'Préparation Test Civique Français',
-    description: 'Formation complète pour réussir le test civique à 80%',
+    name: 'Préparation Test Civique Français 2025',
+    description: 'Formation complète pour réussir le test civique à 80% (32/40). Naturalisation, carte de séjour, titre de séjour étudiant.',
     provider: {
       '@type': 'Organization',
       name: 'Test Civique France',
@@ -57,7 +72,7 @@ const homeJsonLd = {
   },
   primaryImageOfPage: {
     '@type': 'ImageObject',
-    url: 'https://testciviquefrance.com/og-image.png',
+    url: 'https://www.testciviquefrance.fr/og-image.png',
   },
 };
 

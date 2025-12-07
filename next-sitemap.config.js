@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: 'https://testciviquefrance.com',
+  siteUrl: 'https://www.testciviquefrance.fr',
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   exclude: ['/api/*', '/dashboard/*'],

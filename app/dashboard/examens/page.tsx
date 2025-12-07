@@ -69,9 +69,9 @@ export default function ExamensPage() {
 
           // Calculer les statistiques
           const totalExamens = examens.length;
-          const examensReussis = examens.filter(e => e.passed).length;
+          const examensReussis = examens.filter((e: ExamenBlanc) => e.passed).length;
           const tauxReussite = totalExamens > 0 ? Math.round((examensReussis / totalExamens) * 100) : 0;
-          const meilleurScore = examens.length > 0 ? Math.max(...examens.map(e => e.score)) : 0;
+          const meilleurScore = examens.length > 0 ? Math.max(...examens.map((e: ExamenBlanc) => e.score)) : 0;
 
           setStats({
             totalExamens,

@@ -50,6 +50,21 @@ export default function DashboardPage() {
   const [categories, setCategories] = useState<CategoryProgress[]>([]);
   const [loading, setLoading] = useState(true);
 
+  // Fonction utilitaire pour formater le temps
+  const formatTimeAgo = (date: Date): string => {
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffMins = Math.floor(diffMs / 60000);
+    const diffHours = Math.floor(diffMs / 3600000);
+    const diffDays = Math.floor(diffMs / 86400000);
+
+    if (diffMins < 1) return 'À l\'instant';
+    if (diffMins < 60) return `Il y a ${diffMins} min`;
+    if (diffHours < 24) return `Il y a ${diffHours}h`;
+    if (diffDays === 1) return 'Hier';
+    return `Il y a ${diffDays} jours`;
+  };
+
   useEffect(() => {
     const fetchDashboardData = async () => {
       if (!user) return;
@@ -77,77 +92,69 @@ export default function DashboardPage() {
           });
         }
 
-        // Récupérer l'activité récente (derniers résultats)
-        const { data: resultatsData } = await supabase
-          .from('resultats')
-          .select(`
-            id,
-            is_correct,
-            created_at,
-            questions (
-              question,
-              categories (nom)
-            )
-          `)
+        // Récupérer l'activité récente depuis sessions_quiz (historique des parties)
+        const { data: sessionsData } = await supabase
+          .from('sessions_quiz')
+          .select('id, score, total_questions, niveau, categorie_id, completed, started_at, completed_at')
           .eq('user_id', user.id)
-          .order('created_at', { ascending: false })
-          .limit(5);
+          .eq('completed', true)
+          .order('completed_at', { ascending: false })
+          .limit(10);
 
-        if (resultatsData) {
-          const activities: Activity[] = resultatsData.map((r: any) => ({
-            id: r.id,
-            type: 'question' as const,
-            correct: r.is_correct,
-            theme: r.questions?.categories?.nom || 'Question',
-            time: formatTimeAgo(new Date(r.created_at)),
-          }));
+        if (sessionsData && sessionsData.length > 0) {
+          // Récupérer les noms des catégories
+          const categorieIds = [...new Set(sessionsData.map((s: { categorie_id: string }) => s.categorie_id))];
+          const { data: categoriesInfo } = await supabase
+            .from('categories')
+            .select('id, nom')
+            .in('id', categorieIds);
+
+          const categoriesMap = new Map(categoriesInfo?.map((c: { id: string; nom: string }) => [c.id, c.nom]) || []);
+
+          const activities: Activity[] = sessionsData.slice(0, 5).map((s: { id: string; score: number; total_questions: number; niveau: number; categorie_id: string; completed_at: string; started_at: string }) => {
+            const themeName = categoriesMap.get(s.categorie_id) || 'Entraînement';
+            const isSuccess = s.score >= 7; // 70% pour réussir
+            return {
+              id: s.id,
+              type: 'question' as const,
+              correct: isSuccess,
+              theme: `${themeName} - Niveau ${s.niveau}`,
+              score: s.score,
+              total: s.total_questions,
+              time: formatTimeAgo(new Date(s.completed_at || s.started_at)),
+            };
+          });
           setRecentActivity(activities);
         }
 
-        // Récupérer les catégories et calculer la progression
+        // Récupérer les catégories et calculer la progression basée sur les niveaux
         const { data: categoriesData } = await supabase
           .from('categories')
           .select('id, nom')
           .order('ordre');
 
         if (categoriesData) {
-          const categoriesWithProgress = await Promise.all(
-            categoriesData.map(async (cat: { id: string; nom: string }) => {
-              const { count: totalQuestions } = await supabase
-                .from('questions')
-                .select('id', { count: 'exact', head: true })
-                .eq('categorie_id', cat.id);
+          // Récupérer toutes les progressions de l'utilisateur
+          const { data: progressionsData } = await supabase
+            .from('progression_niveaux')
+            .select('categorie_id, niveau_actuel')
+            .eq('user_id', user.id);
 
-              // D'abord récupérer les IDs des questions de cette catégorie
-              const { data: questionsInCat } = await supabase
-                .from('questions')
-                .select('id')
-                .eq('categorie_id', cat.id);
-
-              const questionIds = questionsInCat?.map(q => q.id) || [];
-              
-              let bonnesReponses = 0;
-              if (questionIds.length > 0) {
-                const { count } = await supabase
-                  .from('resultats')
-                  .select('id', { count: 'exact', head: true })
-                  .eq('user_id', user.id)
-                  .eq('is_correct', true)
-                  .in('question_id', questionIds);
-                bonnesReponses = count || 0;
-              }
-
-              const progress = totalQuestions && totalQuestions > 0 
-                ? Math.round(((bonnesReponses || 0) / totalQuestions) * 100)
-                : 0;
-
-              return {
-                id: cat.id,
-                name: cat.nom,
-                progress: Math.min(progress, 100),
-              };
-            })
+          const progressionsMap = new Map(
+            progressionsData?.map((p: { categorie_id: string; niveau_actuel: number }) => [p.categorie_id, p.niveau_actuel]) || []
           );
+
+          const categoriesWithProgress = categoriesData.map((cat: { id: string; nom: string }) => {
+            // Chaque catégorie a 10 niveaux, donc la progression = (niveau_actuel - 1) * 10%
+            const niveauActuel = (progressionsMap.get(cat.id) as number) || 1;
+            const progress = Math.min(((niveauActuel - 1) / 10) * 100, 100);
+
+            return {
+              id: cat.id,
+              name: cat.nom,
+              progress: Math.round(progress),
+            };
+          });
           setCategories(categoriesWithProgress);
         }
 
@@ -164,19 +171,6 @@ export default function DashboardPage() {
       setLoading(false);
     }
   }, [user, supabase]);
-
-  const formatTimeAgo = (date: Date): string => {
-    const now = new Date();
-    const diffMs = now.getTime() - date.getTime();
-    const diffMins = Math.floor(diffMs / 60000);
-    const diffHours = Math.floor(diffMs / 3600000);
-    const diffDays = Math.floor(diffMs / 86400000);
-
-    if (diffMins < 60) return `Il y a ${diffMins} min`;
-    if (diffHours < 24) return `Il y a ${diffHours}h`;
-    if (diffDays === 1) return 'Hier';
-    return `Il y a ${diffDays} jours`;
-  };
 
   return (
     <div className="space-y-6 sm:space-y-8">
@@ -239,9 +233,9 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 overflow-hidden">
         {/* Progression par thème */}
-        <div className="lg:col-span-2 bg-white border border-gray-200 p-4 sm:p-6">
+        <div className="lg:col-span-2 bg-white border-2 border-gray-900 p-4 sm:p-6 overflow-hidden">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">Progression par thème</h2>
             <Link 
@@ -286,7 +280,7 @@ export default function DashboardPage() {
         </div>
 
         {/* Activité récente */}
-        <div className="bg-white border border-gray-200 p-4 sm:p-6">
+        <div className="bg-white border-2 border-gray-900 p-4 sm:p-6 overflow-hidden">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Activité récente</h2>
           {loading ? (
             <div className="space-y-4">
@@ -304,23 +298,22 @@ export default function DashboardPage() {
             <div className="space-y-4">
               {recentActivity.map((activity) => (
                 <div key={activity.id} className="flex items-start gap-3 pb-4 border-b border-gray-100 last:border-0 last:pb-0">
-                  {activity.type === 'question' ? (
-                    activity.correct ? (
-                      <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    ) : (
-                      <XCircle className="w-5 h-5 text-gray-400 mt-0.5" />
-                    )
+                  {activity.correct ? (
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
                   ) : (
-                    <Trophy className="w-5 h-5 text-primary-600 mt-0.5" />
+                    <XCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                   )}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-gray-900">
-                      {activity.type === 'question' 
-                        ? activity.theme 
-                        : `Examen blanc: ${activity.score}/${activity.total}`
-                      }
+                    <p className="text-sm font-medium text-gray-900 truncate">
+                      {activity.theme}
                     </p>
-                    <p className="text-xs text-gray-500 mt-1">{activity.time}</p>
+                    <div className="flex items-center gap-2 mt-1">
+                      <span className={`text-xs font-medium ${activity.correct ? 'text-emerald-600' : 'text-amber-600'}`}>
+                        {activity.score}/{activity.total} ({Math.round((activity.score || 0) / (activity.total || 1) * 100)}%)
+                      </span>
+                      <span className="text-xs text-gray-400">•</span>
+                      <span className="text-xs text-gray-500">{activity.time}</span>
+                    </div>
                   </div>
                 </div>
               ))}
