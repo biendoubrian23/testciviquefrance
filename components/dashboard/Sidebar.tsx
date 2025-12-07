@@ -134,10 +134,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         </div>
 
         {/* Menu principal */}
-        <nav className="flex-1 pt-1 pb-3 overflow-y-auto min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
-          <div className="px-4 mb-1">
-            <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Menu</span>
-          </div>
+        <nav className="flex-1 pt-4 pb-3 overflow-y-auto min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
           <ul className="space-y-1 px-3">
             {menuItems.map((item) => {
               const Icon = item.icon;
