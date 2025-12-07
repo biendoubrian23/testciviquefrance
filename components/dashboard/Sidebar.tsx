@@ -204,7 +204,18 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
         {/* Profil utilisateur - toujours visible en bas */}
         <div className="p-4 border-t border-gray-100 flex-shrink-0 bg-white">
-          <div className="flex items-center gap-3 mb-3">
+          <button
+            onClick={() => {
+              signOut();
+              if (onClose) onClose();
+            }}
+            className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 active:bg-red-800 transition-colors mb-3"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+          >
+            <LogOut className="w-5 h-5" />
+            <span>Déconnexion</span>
+          </button>
+          <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-primary-100 flex items-center justify-center text-primary-600 font-semibold flex-shrink-0">
               {profile?.prenom?.[0]?.toUpperCase() || profile?.email?.[0]?.toUpperCase() || 'U'}
             </div>
@@ -217,17 +228,6 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
               </p>
             </div>
           </div>
-          <button
-            onClick={() => {
-              signOut();
-              if (onClose) onClose();
-            }}
-            className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 active:bg-red-800 transition-colors"
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-          >
-            <LogOut className="w-5 h-5" />
-            <span>Déconnexion</span>
-          </button>
         </div>
       </aside>
     </>
