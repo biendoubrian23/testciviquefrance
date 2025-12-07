@@ -20,7 +20,7 @@ module.exports = {
     if (path === '/') {
       priority = 1.0;
       changefreq = 'daily';
-    } else if (path.startsWith('/cours')) {
+    } else if (path.startsWith('/articles')) {
       priority = 0.9;
       changefreq = 'weekly';
     } else if (path.startsWith('/tests')) {
