@@ -102,10 +102,10 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
       {/* Sidebar */}
       <aside 
         className={`
-          fixed left-0 top-0 h-screen w-64 bg-white border-r border-gray-200 flex flex-col z-50
+          fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50
           transition-transform duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-          lg:!translate-x-0
+          lg:!translate-x-0 lg:h-screen
         `}
       >
         {/* Header mobile avec bouton fermer */}
@@ -134,7 +134,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         </div>
 
         {/* Menu principal */}
-        <nav className="flex-1 pt-1 pb-3 overflow-y-auto" style={{ WebkitOverflowScrolling: 'touch' }}>
+        <nav className="flex-1 pt-1 pb-3 overflow-y-auto min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
           <div className="px-4 mb-1">
             <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Menu</span>
           </div>
@@ -202,8 +202,8 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           </ul>
         </nav>
 
-        {/* Profil utilisateur */}
-        <div className="p-4 border-t border-gray-100">
+        {/* Profil utilisateur - toujours visible en bas */}
+        <div className="p-4 border-t border-gray-100 flex-shrink-0 bg-white">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 bg-primary-100 flex items-center justify-center text-primary-600 font-semibold flex-shrink-0">
               {profile?.prenom?.[0]?.toUpperCase() || profile?.email?.[0]?.toUpperCase() || 'U'}
@@ -222,7 +222,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
               signOut();
               if (onClose) onClose();
             }}
-            className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 active:bg-red-800 transition-colors"
+            className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 active:bg-red-800 transition-colors"
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <LogOut className="w-5 h-5" />
