@@ -40,9 +40,10 @@ export default function OffresPage() {
     setSelectedOffer(offerId);
   };
 
-  const handlePurchase = () => {
+  const handlePurchase = (offerType?: string) => {
+    const offer = offerType || selectedOffer;
     // TODO: Intégrer Stripe ici
-    alert('Paiement Stripe à intégrer - Offre sélectionnée: ' + selectedOffer);
+    alert('Paiement Stripe à intégrer - Offre sélectionnée: ' + offer);
   };
 
   return (
@@ -78,7 +79,7 @@ export default function OffresPage() {
       {/* 3 Offres */}
       <div className="grid md:grid-cols-3 gap-6">
         
-        {/* Pack Standard - 3,99€/semaine - Recommandé */}
+        {/* Pack Standard - 2,99€/semaine - Recommandé */}
         <div 
           onClick={() => handleSelectOffer('pack_standard')}
           className={`relative cursor-pointer transition-all duration-200 ${
@@ -100,7 +101,7 @@ export default function OffresPage() {
               <h3 className="text-lg font-bold">Pack Standard</h3>
             </div>
             <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-4xl font-bold">3,99€</span>
+              <span className="text-4xl font-bold">2,99€</span>
               <span className="text-primary-200 text-sm">/semaine</span>
             </div>
             <p className="text-primary-100 mb-4 text-sm">Accès pendant 7 jours</p>
@@ -137,7 +138,7 @@ export default function OffresPage() {
           </div>
         </div>
 
-        {/* Pack Premium - 7,99€/semaine */}
+        {/* Pack Premium - 6,99€/semaine */}
         <div 
           onClick={() => handleSelectOffer('pack_premium')}
           className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${
@@ -148,7 +149,7 @@ export default function OffresPage() {
         >
           <h3 className="text-lg font-bold text-primary-600 mb-2">Premium</h3>
           <div className="flex items-baseline gap-1 mb-1">
-            <span className="text-4xl font-bold text-gray-900">7,99€</span>
+            <span className="text-4xl font-bold text-gray-900">6,99€</span>
             <span className="text-gray-500 text-sm">/semaine</span>
           </div>
           <p className="text-gray-500 mb-4 text-sm">Accès illimité pendant 7 jours</p>
@@ -235,13 +236,142 @@ export default function OffresPage() {
         </div>
       </div>
 
+      {/* Micro-transactions en grille 2x2 */}
+      {/* 
+        ==================== RÈGLES BUSINESS IMPORTANTES ====================
+        Ces 4 packs sont LIÉS À UN ABONNEMENT ACTIF :
+        - L'utilisateur DOIT avoir un abonnement (Standard ou Premium) pour acheter ces packs
+        - Si l'abonnement expire, tous les packs achetés seront DÉSACTIVÉS
+        - Les packs ne sont PAS accessibles aux utilisateurs gratuits
+        - À l'expiration de l'abonnement : désactiver l'accès aux fonctionnalités des packs
+        
+        TODO Stripe : 
+        - Vérifier is_premium avant d'autoriser l'achat
+        - Stocker la date d'achat du pack
+        - Désactiver le pack si subscription_end_date < now()
+        ======================================================================
+      */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* 
+          PACK 1: Débloquer niveau suivant
+          - Lié à l'abonnement : OUI
+          - Désactivé si abonnement expiré : OUI
+          - Stripe product_id : À configurer
+        */}
+        {/* Débloquer niveau suivant */}
+        <div className="bg-white border border-gray-200 p-5 hover:border-primary-300 transition-colors">
+          <div className="flex flex-col h-full">
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Débloquer le niveau suivant</h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Continuez votre progression sans avoir à recommencer.
+              </p>
+              <p className="text-xs text-gray-400 mt-2">Valable sur tous les thèmes</p>
+            </div>
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+              <div className="text-2xl font-bold text-gray-900">0,59€</div>
+              <button
+                onClick={() => handlePurchase('unlock_level')}
+                className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors"
+              >
+                Acheter
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* 
+          PACK 2: Mode sans chrono
+          - Lié à l'abonnement : OUI
+          - Désactivé si abonnement expiré : OUI
+          - Stripe product_id : À configurer
+        */}
+        {/* Mode sans chrono */}
+        <div className="bg-white border border-gray-200 p-5 hover:border-gray-400 transition-colors">
+          <div className="flex flex-col h-full">
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Mode sans chrono</h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Répondez à votre rythme, sans pression du temps.
+              </p>
+              <p className="text-xs text-gray-400 mt-2">Par quiz</p>
+            </div>
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+              <div className="text-2xl font-bold text-gray-900">0,69€</div>
+              <button
+                onClick={() => handlePurchase('no_timer')}
+                className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-colors"
+              >
+                Acheter
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* 
+          PACK 3: Flashcards 2 thèmes
+          - Lié à l'abonnement : OUI
+          - Désactivé si abonnement expiré : OUI
+          - Stripe product_id : À configurer
+        */}
+        {/* Flashcards 2 thèmes */}
+        <div className="bg-white border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
+          <div className="flex flex-col h-full">
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Flashcards 2 thèmes</h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Les questions les plus probables à l&apos;examen.
+              </p>
+              <p className="text-xs text-gray-400 mt-2">20 fiches de révision</p>
+            </div>
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+              <div className="text-2xl font-bold text-gray-900">1,20€</div>
+              <button
+                onClick={() => handlePurchase('flashcards_2')}
+                className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors"
+              >
+                Acheter
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* 
+          PACK 4: Flashcards 5 thèmes
+          - Lié à l'abonnement : OUI
+          - Désactivé si abonnement expiré : OUI
+          - Stripe product_id : À configurer
+        */}
+        {/* Flashcards 5 thèmes */}
+        <div className="bg-white border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
+          <div className="flex flex-col h-full">
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Flashcards 5 thèmes</h3>
+              <p className="text-sm text-gray-500 mt-1">
+                Toutes les questions clés pour réussir l&apos;examen.
+              </p>
+              <p className="text-xs text-gray-400 mt-2">50 fiches de révision</p>
+            </div>
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+              <div className="text-2xl font-bold text-gray-900">1,50€</div>
+              <button
+                onClick={() => handlePurchase('flashcards_5')}
+                className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors"
+              >
+                Acheter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* FAQ rapide - déroulante */}
       <div>
         <h3 className="text-lg font-bold text-gray-900 mb-4">Questions fréquentes</h3>
         <div className="border border-gray-200">
           <FAQItem 
             question="Quelle est la différence entre Pack Standard et Premium ?"
-            answer="Le Pack Standard (3,99€) inclut les tests thématiques et 1 examen blanc. Le Premium (7,99€) offre des tests illimités, 3 examens blancs, des statistiques avancées et un support prioritaire."
+            answer="Le Pack Standard (2,99€) inclut les tests thématiques et 1 examen blanc. Le Premium (6,99€) offre des tests illimités, 3 examens blancs, des statistiques avancées et un support prioritaire."
           />
           <FAQItem 
             question="Le Pack Examen expire-t-il ?"

@@ -98,7 +98,7 @@ export default function TarifsPage() {
                 <div className="mb-8">
                   <h2 className="text-lg font-medium text-primary-200 mb-2">Pack Standard</h2>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-bold">3,99€</span>
+                    <span className="text-5xl font-bold">2,99€</span>
                     <span className="text-primary-200">/semaine</span>
                   </div>
                   <p className="text-primary-200 mt-2">Accès pendant 7 jours</p>
@@ -140,7 +140,7 @@ export default function TarifsPage() {
                 <div className="mb-8">
                   <h2 className="text-lg font-medium text-primary-600 mb-2">Premium</h2>
                   <div className="flex items-baseline gap-1">
-                    <span className="text-5xl font-bold text-gray-900">7,99€</span>
+                    <span className="text-5xl font-bold text-gray-900">6,99€</span>
                     <span className="text-gray-500">/semaine</span>
                   </div>
                   <p className="text-gray-500 mt-2">Accès illimité pendant 7 jours</p>
@@ -217,7 +217,7 @@ export default function TarifsPage() {
               />
               <FAQItem 
                 question="Quelle est la différence entre Pack Standard et Premium ?"
-                answer="Le Pack Standard (3,99€) inclut les tests thématiques, 1 examen blanc et les cours. Le Premium (7,99€) offre des tests illimités, 3 examens blancs, des statistiques avancées et un support prioritaire."
+                answer="Le Pack Standard (2,99€) inclut les tests thématiques, 1 examen blanc et les cours. Le Premium (6,99€) offre des tests illimités, 3 examens blancs, des statistiques avancées et un support prioritaire."
               />
               <FAQItem 
                 question="Les questions sont-elles conformes à l'examen officiel ?"

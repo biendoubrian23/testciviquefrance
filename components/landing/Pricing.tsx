@@ -24,7 +24,7 @@ const pricingPlans = [
   {
     name: 'Pack Standard',
     nameColor: 'text-white',
-    price: '3,99€',
+    price: '2,99€',
     period: '/semaine',
     description: 'Accès pendant 7 jours',
     features: [
@@ -42,7 +42,7 @@ const pricingPlans = [
   {
     name: 'Premium',
     nameColor: 'text-primary-600',
-    price: '7,99€',
+    price: '6,99€',
     period: '/semaine',
     description: 'Accès illimité pendant 7 jours',
     features: [

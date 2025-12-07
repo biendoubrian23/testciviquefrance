@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useSupabase } from '@/hooks/useSupabase'
-import { Lock, CheckCircle, PlayCircle, Star, Trophy, ArrowLeft } from 'lucide-react'
+import { Lock, CheckCircle, PlayCircle, Star, Trophy, ArrowLeft, Unlock, Sparkles, X, Loader2 } from 'lucide-react'
 import Link from 'next/link'
 
 interface Categorie {
@@ -26,6 +26,12 @@ interface Gamification {
   serie_jours: number
 }
 
+interface LastSession {
+  niveau: number
+  score: number
+  created_at: string
+}
+
 export default function CategorieDetailPage() {
   const params = useParams()
   const router = useRouter()
@@ -36,6 +42,12 @@ export default function CategorieDetailPage() {
   const [niveaux, setNiveaux] = useState<NiveauProgression[]>([])
   const [gamification, setGamification] = useState<Gamification | null>(null)
   const [loading, setLoading] = useState(true)
+  
+  // États pour le popup de déblocage
+  const [showUnlockPopup, setShowUnlockPopup] = useState(false)
+  const [lastFailedLevel, setLastFailedLevel] = useState<number | null>(null)
+  const [lastScore, setLastScore] = useState<number | null>(null)
+  const [isUnlocking, setIsUnlocking] = useState(false)
 
   // Limite désactivée pour le moment (sera activée avec Stripe)
   // const LIMITE_NIVEAUX_JOUR = 3
@@ -97,6 +109,20 @@ export default function CategorieDetailPage() {
       }
     }
 
+    // Récupérer la dernière session jouée pour cette catégorie
+    const { data: lastSessionData } = await supabase
+      .from('sessions_quiz')
+      .select('niveau, score, created_at')
+      .eq('user_id', user.id)
+      .eq('categorie_id', categorieId)
+      .eq('completed', true)
+      .order('created_at', { ascending: false })
+      .limit(1)
+
+    const lastSession: LastSession | null = lastSessionData && lastSessionData.length > 0 
+      ? lastSessionData[0] 
+      : null
+
     // Créer la structure des 10 niveaux basée sur niveau_actuel
     const niveauxStructure: NiveauProgression[] = []
     const niveauActuel = progressionData?.niveau_actuel || 1
@@ -131,6 +157,27 @@ export default function CategorieDetailPage() {
       })
     } else {
       setGamification({ points_totaux: 0, serie_jours: 0 })
+    }
+
+    // Vérifier si on doit afficher le popup de déblocage
+    // Conditions :
+    // 1. La dernière session existe
+    // 2. Le score était 5, 6 ou 7 (échec proche)
+    // 3. Le niveau joué était le niveau actuel (le plus haut débloqué mais pas encore complété)
+    // 4. Ce n'est pas le niveau 10 (dernier niveau)
+    if (lastSession && niveauActuel < 10) {
+      const { niveau: lastNiveau, score: lastScoreValue } = lastSession
+      
+      // Le niveau actuel est celui qu'on peut jouer mais pas encore validé
+      // Donc si lastNiveau === niveauActuel et score entre 5 et 7, on propose le déblocage
+      if (lastNiveau === niveauActuel && lastScoreValue >= 5 && lastScoreValue <= 7) {
+        setLastFailedLevel(lastNiveau)
+        setLastScore(lastScoreValue)
+        // Afficher le popup après un court délai
+        setTimeout(() => {
+          setShowUnlockPopup(true)
+        }, 1000)
+      }
     }
 
     // Limite désactivée pour le moment
@@ -249,6 +296,26 @@ export default function CategorieDetailPage() {
 
   const handleStartQuiz = (niveau: number) => {
     router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`)
+  }
+
+  // Fonction pour débloquer le niveau suivant (micro-transaction)
+  const handleUnlockNextLevel = async () => {
+    if (!lastFailedLevel) return
+    
+    setIsUnlocking(true)
+    
+    try {
+      // TODO: Intégrer Stripe ici pour le paiement de 0,59€
+      // Pour l'instant, simuler un délai et débloquer directement
+      await new Promise(resolve => setTimeout(resolve, 800))
+      
+      // Fermer le popup et aller directement au niveau suivant
+      setShowUnlockPopup(false)
+      router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${lastFailedLevel + 1}`)
+    } catch (error) {
+      console.error('Erreur déblocage:', error)
+      setIsUnlocking(false)
+    }
   }
 
   if (loading) {
@@ -434,6 +501,84 @@ export default function CategorieDetailPage() {
             Vous avez complété tous les niveaux de cette catégorie. 
             Continuez à vous entraîner pour améliorer vos scores !
           </p>
+        </div>
+      )}
+
+      {/* Popup de déblocage du niveau suivant */}
+      {showUnlockPopup && lastFailedLevel && lastScore && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+          <div className="bg-white rounded-xl max-w-md w-full p-6 relative animate-fade-in shadow-2xl">
+            {/* Bouton fermer */}
+            <button
+              onClick={() => setShowUnlockPopup(false)}
+              className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="text-center">
+              {/* Icône */}
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary-100 to-emerald-100 rounded-full flex items-center justify-center">
+                <Unlock className="w-8 h-8 text-primary-600" />
+              </div>
+              
+              {/* Titre */}
+              <h3 className="text-xl font-bold text-gray-900 mb-2">
+                Vous étiez proche ! 😔
+              </h3>
+              
+              {/* Score */}
+              <div className="inline-block bg-amber-50 border border-amber-200 px-4 py-2 mb-4">
+                <span className="text-amber-700 font-medium">
+                  Niveau {lastFailedLevel} : {lastScore}/10
+                </span>
+              </div>
+              
+              {/* Description */}
+              <p className="text-gray-600 mb-6">
+                Vous avez obtenu <strong>{lastScore}/10</strong> au niveau {lastFailedLevel}.
+                <br />
+                Passez directement au niveau suivant sans recommencer !
+              </p>
+              
+              {/* Prix et bouton */}
+              <div className="bg-gradient-to-r from-primary-50 to-emerald-50 border border-primary-200 p-4 mb-4">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <Sparkles className="w-5 h-5 text-primary-600" />
+                  <span className="text-2xl font-bold text-primary-600">0,59€</span>
+                </div>
+                
+                <button
+                  onClick={handleUnlockNextLevel}
+                  disabled={isUnlocking}
+                  className="w-full bg-primary-600 text-white py-3 px-4 font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
+                >
+                  {isUnlocking ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      <span>Déblocage...</span>
+                    </>
+                  ) : (
+                    <>
+                      <Unlock className="w-5 h-5" />
+                      <span>Débloquer le niveau {lastFailedLevel + 1}</span>
+                    </>
+                  )}
+                </button>
+              </div>
+              
+              {/* Option recommencer */}
+              <button
+                onClick={() => {
+                  setShowUnlockPopup(false)
+                  router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${lastFailedLevel}`)
+                }}
+                className="text-gray-500 hover:text-gray-700 text-sm underline"
+              >
+                Non merci, recommencer le niveau {lastFailedLevel}
+              </button>
+            </div>
+          </div>
         </div>
       )}
     </div>

@@ -104,7 +104,7 @@ export default function OnboardingOffersPage() {
         {/* 3 Offres côte à côte */}
         <div className="grid md:grid-cols-3 gap-6 mb-10">
           
-          {/* Pack Standard - 3,99€/semaine - Recommandé */}
+          {/* Pack Standard - 2,99€/semaine - Recommandé */}
           <div 
             onClick={() => handleSelectOffer('pack_standard')}
             className={`relative cursor-pointer transition-all duration-200 ${
@@ -123,7 +123,7 @@ export default function OnboardingOffersPage() {
             <div className="bg-primary-600 text-white p-6 h-full flex flex-col">
               <h3 className="text-lg font-bold mb-2">Pack Standard</h3>
               <div className="flex items-baseline gap-1 mb-1">
-                <span className="text-4xl font-bold">3,99€</span>
+                <span className="text-4xl font-bold">2,99€</span>
                 <span className="text-primary-200 text-sm">/semaine</span>
               </div>
               <p className="text-primary-100 mb-4 text-sm">Accès pendant 7 jours</p>
@@ -160,7 +160,7 @@ export default function OnboardingOffersPage() {
             </div>
           </div>
 
-          {/* Pack Premium - 7,99€/semaine */}
+          {/* Pack Premium - 6,99€/semaine */}
           <div 
             onClick={() => handleSelectOffer('pack_premium')}
             className={`relative cursor-pointer transition-all duration-200 bg-white border ${
@@ -171,7 +171,7 @@ export default function OnboardingOffersPage() {
           >
             <h3 className="text-lg font-bold text-primary-600 mb-2">Premium</h3>
             <div className="flex items-baseline gap-1 mb-1">
-              <span className="text-4xl font-bold text-gray-900">7,99€</span>
+              <span className="text-4xl font-bold text-gray-900">6,99€</span>
               <span className="text-gray-500 text-sm">/semaine</span>
             </div>
             <p className="text-gray-500 mb-4 text-sm">Accès illimité pendant 7 jours</p>

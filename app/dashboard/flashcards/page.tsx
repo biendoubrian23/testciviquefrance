@@ -1,90 +1,147 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { useSupabase } from '@/hooks/useSupabase';
 import { 
-  Layers, 
   ChevronLeft, 
   ChevronRight, 
   RotateCcw,
   Shuffle,
   Check,
   X,
-  Lock,
-  Sparkles,
-  RotateCw
+  RotateCw,
+  BookOpen,
+  Scale,
+  Landmark,
+  MapPin,
+  Users
 } from 'lucide-react';
 
 interface Flashcard {
   id: string;
   question: string;
   reponse: string;
-  categorie: string;
 }
 
-// Flashcards de démonstration - Questions simples et basiques
-const demoFlashcards: Flashcard[] = [
+interface Theme {
+  id: string;
+  name: string;
+  icon: React.ReactNode;
+  color: string;
+  bgColor: string;
+  borderColor: string;
+  cards: Flashcard[];
+}
+
+// 5 Thèmes avec 10 questions chacun basées sur le référentiel officiel
+const themes: Theme[] = [
   {
-    id: '1',
-    question: 'Quelle est la devise de la République française ?',
-    reponse: 'Liberté, Égalité, Fraternité',
-    categorie: 'Valeurs de la République',
+    id: 'principes',
+    name: 'Principes et valeurs',
+    icon: <BookOpen className="w-5 h-5" />,
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50',
+    borderColor: 'border-blue-500',
+    cards: [
+      { id: 'p1', question: 'Quelle est la devise de la République française ?', reponse: 'Liberté, Égalité, Fraternité' },
+      { id: 'p2', question: 'Quelles sont les trois couleurs du drapeau français (de gauche à droite) ?', reponse: 'Bleu, Blanc, Rouge' },
+      { id: 'p3', question: 'Comment s\'appelle l\'hymne national français ?', reponse: 'La Marseillaise' },
+      { id: 'p4', question: 'Quel est le symbole féminin de la République française ?', reponse: 'Marianne' },
+      { id: 'p5', question: 'Quelle loi de 1905 établit la séparation des Églises et de l\'État ?', reponse: 'La loi du 9 décembre 1905 sur la laïcité' },
+      { id: 'p6', question: 'Quel jour célèbre-t-on la fête nationale française ?', reponse: 'Le 14 juillet' },
+      { id: 'p7', question: 'Quelle est la langue officielle de la République française selon la Constitution ?', reponse: 'Le français (article 2 de la Constitution)' },
+      { id: 'p8', question: 'Que garantit le principe de laïcité ?', reponse: 'La liberté de conscience et l\'égalité de tous les citoyens, quelles que soient leurs croyances' },
+      { id: 'p9', question: 'Quel animal est un symbole coutumier de la France ?', reponse: 'Le coq gaulois' },
+      { id: 'p10', question: 'Selon l\'article 1er de la Constitution, la France est une République...', reponse: 'Indivisible, laïque, démocratique et sociale' },
+    ]
   },
   {
-    id: '2',
-    question: 'Quelles sont les trois couleurs du drapeau français ?',
-    reponse: 'Bleu, Blanc, Rouge',
-    categorie: 'Symboles de la France',
+    id: 'institutions',
+    name: 'Institutions politiques',
+    icon: <Landmark className="w-5 h-5" />,
+    color: 'text-purple-600',
+    bgColor: 'bg-purple-50',
+    borderColor: 'border-purple-500',
+    cards: [
+      { id: 'i1', question: 'Qui est le chef de l\'État en France ?', reponse: 'Le Président de la République' },
+      { id: 'i2', question: 'Quels sont les trois pouvoirs dans une démocratie ?', reponse: 'Législatif, Exécutif et Judiciaire' },
+      { id: 'i3', question: 'Comment s\'appelle le Parlement français ? De quoi est-il composé ?', reponse: 'Le Parlement, composé de l\'Assemblée nationale et du Sénat' },
+      { id: 'i4', question: 'Quelle est la durée du mandat du Président de la République ?', reponse: '5 ans (quinquennat)' },
+      { id: 'i5', question: 'À partir de quel âge peut-on voter en France ?', reponse: '18 ans' },
+      { id: 'i6', question: 'Qui nomme le Premier ministre ?', reponse: 'Le Président de la République' },
+      { id: 'i7', question: 'Quelle est la durée du mandat d\'un député ?', reponse: '5 ans' },
+      { id: 'i8', question: 'Quelle est la durée du mandat d\'un sénateur ?', reponse: '6 ans' },
+      { id: 'i9', question: 'Combien y a-t-il d\'États membres dans l\'Union européenne (2024) ?', reponse: '27 États membres' },
+      { id: 'i10', question: 'Quelles sont les trois principales institutions de l\'Union européenne ?', reponse: 'Le Parlement européen, la Commission européenne et le Conseil de l\'UE' },
+    ]
   },
   {
-    id: '3',
-    question: 'Quel est l\'hymne national français ?',
-    reponse: 'La Marseillaise',
-    categorie: 'Symboles de la France',
+    id: 'droits',
+    name: 'Droits et devoirs',
+    icon: <Scale className="w-5 h-5" />,
+    color: 'text-emerald-600',
+    bgColor: 'bg-emerald-50',
+    borderColor: 'border-emerald-500',
+    cards: [
+      { id: 'd1', question: 'Quel texte de 1789 garantit les droits fondamentaux en France ?', reponse: 'La Déclaration des droits de l\'homme et du citoyen' },
+      { id: 'd2', question: 'La polygamie est-elle autorisée en France ?', reponse: 'Non, la polygamie est interdite en France' },
+      { id: 'd3', question: 'Quelles sont les conditions pour voter en France ?', reponse: 'Avoir la nationalité française, être majeur (18 ans), jouir de ses droits civils et politiques' },
+      { id: 'd4', question: 'Qu\'est-ce que l\'État de droit ?', reponse: 'Un système où la loi s\'applique à tous, y compris aux autorités publiques' },
+      { id: 'd5', question: 'Les impôts sont-ils obligatoires en France ?', reponse: 'Oui, payer ses impôts est une obligation citoyenne' },
+      { id: 'd6', question: 'L\'égalité homme-femme est-elle garantie par la loi ?', reponse: 'Oui, l\'égalité entre les femmes et les hommes est un principe constitutionnel' },
+      { id: 'd7', question: 'Peut-on refuser de scolariser ses enfants en France ?', reponse: 'Non, l\'instruction est obligatoire de 3 à 16 ans' },
+      { id: 'd8', question: 'Qu\'est-ce que la liberté d\'expression ?', reponse: 'Le droit d\'exprimer librement ses opinions, dans le respect de la loi' },
+      { id: 'd9', question: 'La Constitution de la Ve République date de quelle année ?', reponse: '1958' },
+      { id: 'd10', question: 'Qu\'interdit la loi en matière de discrimination ?', reponse: 'Toute discrimination fondée sur l\'origine, le sexe, la religion, l\'orientation sexuelle, etc.' },
+    ]
   },
   {
-    id: '4',
-    question: 'Qui est le chef de l\'État en France ?',
-    reponse: 'Le Président de la République',
-    categorie: 'Institutions',
+    id: 'histoire',
+    name: 'Histoire et géographie',
+    icon: <MapPin className="w-5 h-5" />,
+    color: 'text-amber-600',
+    bgColor: 'bg-amber-50',
+    borderColor: 'border-amber-500',
+    cards: [
+      { id: 'h1', question: 'En quelle année a eu lieu la Révolution française ?', reponse: '1789' },
+      { id: 'h2', question: 'Quand les femmes ont-elles obtenu le droit de vote en France ?', reponse: '1944' },
+      { id: 'h3', question: 'Qui a lancé l\'appel du 18 juin 1940 ?', reponse: 'Le Général de Gaulle' },
+      { id: 'h4', question: 'En quelle année la peine de mort a-t-elle été abolie en France ?', reponse: '1981 (sous François Mitterrand)' },
+      { id: 'h5', question: 'Combien d\'habitants compte la France environ ?', reponse: 'Environ 68 millions d\'habitants' },
+      { id: 'h6', question: 'Quels sont les 4 principaux fleuves français ?', reponse: 'La Seine, la Loire, le Rhône et la Garonne' },
+      { id: 'h7', question: 'Combien y a-t-il de DROM (Départements et Régions d\'Outre-Mer) ?', reponse: '5 : Guadeloupe, Martinique, Guyane, Réunion, Mayotte' },
+      { id: 'h8', question: 'Quelles sont les dates de la Première Guerre mondiale ?', reponse: '1914-1918' },
+      { id: 'h9', question: 'Quelles sont les dates de la Seconde Guerre mondiale ?', reponse: '1939-1945' },
+      { id: 'h10', question: 'En quelle année l\'euro est-il devenu la monnaie de la France ?', reponse: '2002' },
+    ]
   },
   {
-    id: '5',
-    question: 'À partir de quel âge peut-on voter en France ?',
-    reponse: '18 ans',
-    categorie: 'Droits et devoirs',
-  },
-  {
-    id: '6',
-    question: 'Quelle loi de 1905 établit la séparation des Églises et de l\'État ?',
-    reponse: 'La loi du 9 décembre 1905 (loi de laïcité)',
-    categorie: 'Valeurs de la République',
-  },
-  {
-    id: '7',
-    question: 'Comment s\'appelle le symbole féminin de la République ?',
-    reponse: 'Marianne',
-    categorie: 'Symboles de la France',
-  },
-  {
-    id: '8',
-    question: 'Quel jour célèbre-t-on la fête nationale française ?',
-    reponse: 'Le 14 juillet',
-    categorie: 'Symboles de la France',
-  },
+    id: 'societe',
+    name: 'Vivre en France',
+    icon: <Users className="w-5 h-5" />,
+    color: 'text-rose-600',
+    bgColor: 'bg-rose-50',
+    borderColor: 'border-rose-500',
+    cards: [
+      { id: 's1', question: 'Quel numéro appeler en cas d\'urgence médicale (SAMU) ?', reponse: '15 (ou 112 pour les urgences européennes)' },
+      { id: 's2', question: 'L\'assurance responsabilité civile est-elle obligatoire ?', reponse: 'Oui, elle est obligatoire pour couvrir les dommages causés à autrui' },
+      { id: 's3', question: 'Quelle est la durée légale du travail en France ?', reponse: '35 heures par semaine' },
+      { id: 's4', question: 'L\'école est-elle gratuite et obligatoire en France ?', reponse: 'Oui, l\'école publique est gratuite et l\'instruction obligatoire de 3 à 16 ans' },
+      { id: 's5', question: 'Quel organisme aide à la recherche d\'emploi en France ?', reponse: 'France Travail (anciennement Pôle Emploi)' },
+      { id: 's6', question: 'Qu\'est-ce que l\'autorité parentale ?', reponse: 'L\'ensemble des droits et devoirs des parents envers leurs enfants mineurs' },
+      { id: 's7', question: 'Doit-on déclarer ses revenus aux impôts chaque année ?', reponse: 'Oui, la déclaration de revenus est obligatoire chaque année' },
+      { id: 's8', question: 'Qu\'est-ce que la Sécurité sociale ?', reponse: 'Le système de protection sociale qui prend en charge les frais de santé' },
+      { id: 's9', question: 'Peut-on choisir librement son médecin en France ?', reponse: 'Oui, le libre choix du médecin est un droit du patient' },
+      { id: 's10', question: 'Quelles vaccinations sont obligatoires pour les enfants nés après 2018 ?', reponse: '11 vaccins obligatoires (diphtérie, tétanos, polio, coqueluche, etc.)' },
+    ]
+  }
 ];
 
 export default function FlashcardsPage() {
-  const { user } = useAuth();
-  const supabase = useSupabase();
+  useAuth();
   
-  // MODE DEV: Mettre à true pour activer les flashcards sans paiement
-  const DEV_MODE = true;
-  
-  const [hasAccess, setHasAccess] = useState(DEV_MODE);
-  const [showPaywall, setShowPaywall] = useState(!DEV_MODE);
-  const [flashcards, setFlashcards] = useState<Flashcard[]>(demoFlashcards);
+  const [selectedTheme, setSelectedTheme] = useState<Theme>(themes[0]);
+  const [flashcards, setFlashcards] = useState<Flashcard[]>(themes[0].cards);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -97,12 +154,16 @@ export default function FlashcardsPage() {
   const currentCard = currentDeck[currentIndex];
   const progress = currentDeck.length > 0 ? ((currentIndex + 1) / currentDeck.length) * 100 : 0;
 
-  // Fermer le paywall
-  const closePaywall = () => {
-    setShowPaywall(false);
-    if (DEV_MODE) {
-      setHasAccess(true);
-    }
+  // Changer de thème
+  const changeTheme = (theme: Theme) => {
+    setSelectedTheme(theme);
+    setFlashcards(theme.cards);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setKnownCards(new Set());
+    setReviewCards([]);
+    setIsReviewMode(false);
+    setSessionComplete(false);
   };
 
   // Retourner la carte avec animation
@@ -127,18 +188,14 @@ export default function FlashcardsPage() {
   const goToNext = () => {
     if (isAnimating) return;
     
-    // Si on est à la dernière carte
     if (currentIndex >= currentDeck.length - 1) {
       if (isReviewMode) {
-        // Fin de la révision
         setSessionComplete(true);
       } else if (reviewCards.length > 0) {
-        // Proposer de revoir les cartes "À revoir"
         setIsReviewMode(true);
         setCurrentIndex(0);
         setIsFlipped(false);
       } else {
-        // Toutes les cartes sont maîtrisées
         setSessionComplete(true);
       }
       return;
@@ -152,23 +209,20 @@ export default function FlashcardsPage() {
     }, 150);
   };
 
-  // Marquer comme connu - passe à la suivante
+  // Marquer comme connu
   const markAsKnown = () => {
     if (!currentCard || isAnimating) return;
     setKnownCards((prev) => new Set([...prev, currentCard.id]));
-    // Retirer de reviewCards si présent
     setReviewCards((prev) => prev.filter(c => c.id !== currentCard.id));
     goToNext();
   };
 
-  // Marquer à revoir - ajoute à la pile de révision et passe à la suivante
+  // Marquer à revoir
   const markAsReview = () => {
     if (!currentCard || isAnimating) return;
-    // Ajouter à reviewCards si pas déjà présent
     if (!reviewCards.find(c => c.id === currentCard.id)) {
       setReviewCards((prev) => [...prev, currentCard]);
     }
-    // Retirer de knownCards si présent
     setKnownCards((prev) => {
       const newSet = new Set(prev);
       newSet.delete(currentCard.id);
@@ -179,7 +233,7 @@ export default function FlashcardsPage() {
 
   // Mélanger les cartes
   const shuffleCards = () => {
-    const shuffled = [...flashcards].sort(() => Math.random() - 0.5);
+    const shuffled = [...selectedTheme.cards].sort(() => Math.random() - 0.5);
     setFlashcards(shuffled);
     setCurrentIndex(0);
     setIsFlipped(false);
@@ -191,6 +245,7 @@ export default function FlashcardsPage() {
 
   // Réinitialiser
   const resetProgress = () => {
+    setFlashcards(selectedTheme.cards);
     setCurrentIndex(0);
     setIsFlipped(false);
     setKnownCards(new Set());
@@ -199,60 +254,31 @@ export default function FlashcardsPage() {
     setSessionComplete(false);
   };
 
-  // Paywall Modal
-  if (showPaywall) {
-    return (
-      <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-        <div className="bg-white rounded-xl max-w-md w-full p-6 relative">
-          {/* Bouton fermer (croix grise discrète) */}
-          <button
-            onClick={closePaywall}
-            className="absolute top-3 right-3 p-1 text-gray-300 hover:text-gray-400 transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-
-          <div className="text-center">
-            {/* Icône */}
-            <div className="w-16 h-16 bg-primary-50 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Layers className="w-8 h-8 text-primary-600" />
-            </div>
-
-            <h2 className="text-xl font-bold text-gray-900 mb-2">
-              Flashcards de révision
-            </h2>
-            <p className="text-gray-600 mb-6">
-              Mémorisez efficacement avec nos flashcards interactives pour réussir votre examen civique.
-            </p>
-
-            {/* Prix */}
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-              <p className="text-3xl font-bold text-primary-600">1,50 €</p>
-              <p className="text-sm text-gray-500">Accès illimité aux flashcards</p>
-            </div>
-
-            {/* Bouton d'achat */}
-            <button
-              onClick={() => {
-                // TODO: Intégrer le paiement
-                alert('Paiement à intégrer');
-              }}
-              className="w-full bg-primary-600 text-white py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
-            >
-              Débloquer les flashcards
-            </button>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Page principale des flashcards
-  
   // Écran de fin de session
   if (sessionComplete) {
     return (
       <div className="max-w-2xl mx-auto px-2 sm:px-4 py-6">
+        {/* Sélecteur de thèmes */}
+        <div className="mb-6">
+          <h2 className="text-sm font-medium text-gray-500 mb-3">Choisir un thème</h2>
+          <div className="flex flex-wrap gap-2">
+            {themes.map((theme) => (
+              <button
+                key={theme.id}
+                onClick={() => changeTheme(theme)}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                  selectedTheme.id === theme.id
+                    ? `${theme.bgColor} ${theme.color} border-2 ${theme.borderColor}`
+                    : 'bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300'
+                }`}
+              >
+                {theme.icon}
+                <span className="hidden sm:inline">{theme.name}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
         <div className="bg-white border-2 border-gray-900 rounded-xl p-8 text-center">
           <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-emerald-600" />
@@ -260,8 +286,11 @@ export default function FlashcardsPage() {
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
             {isReviewMode ? 'Révision terminée !' : 'Session terminée !'}
           </h2>
+          <p className="text-gray-600 mb-2">
+            Thème : <span className={`font-semibold ${selectedTheme.color}`}>{selectedTheme.name}</span>
+          </p>
           <p className="text-gray-600 mb-6">
-            Vous avez maîtrisé <span className="font-bold text-emerald-600">{knownCards.size}</span> carte{knownCards.size > 1 ? 's' : ''} sur {flashcards.length}
+            Vous avez maîtrisé <span className="font-bold text-emerald-600">{knownCards.size}</span> carte{knownCards.size > 1 ? 's' : ''} sur {selectedTheme.cards.length}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -277,7 +306,7 @@ export default function FlashcardsPage() {
               className="flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-colors"
             >
               <Shuffle className="w-5 h-5" />
-              Mélanger et recommencer
+              Mélanger
             </button>
           </div>
         </div>
@@ -296,7 +325,7 @@ export default function FlashcardsPage() {
   return (
     <div className="max-w-2xl mx-auto px-2 sm:px-4 py-6">
       {/* En-tête */}
-      <div className="mb-6">
+      <div className="mb-4">
         <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
           {isReviewMode ? '🔄 Révision' : 'Flashcards'}
         </h1>
@@ -306,6 +335,27 @@ export default function FlashcardsPage() {
             : 'Cliquez sur la carte pour révéler la réponse'
           }
         </p>
+      </div>
+
+      {/* Sélecteur de thèmes */}
+      <div className="mb-6">
+        <h2 className="text-sm font-medium text-gray-500 mb-3">Choisir un thème</h2>
+        <div className="flex flex-wrap gap-2">
+          {themes.map((theme) => (
+            <button
+              key={theme.id}
+              onClick={() => changeTheme(theme)}
+              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                selectedTheme.id === theme.id
+                  ? `${theme.bgColor} ${theme.color} border-2 ${theme.borderColor}`
+                  : 'bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300'
+              }`}
+            >
+              {theme.icon}
+              <span className="hidden sm:inline">{theme.name}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Stats rapides */}
@@ -332,7 +382,13 @@ export default function FlashcardsPage() {
         </div>
         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
           <div 
-            className="h-full bg-primary-600 transition-all duration-300"
+            className={`h-full transition-all duration-300 ${
+              selectedTheme.id === 'principes' ? 'bg-blue-500' :
+              selectedTheme.id === 'institutions' ? 'bg-purple-500' :
+              selectedTheme.id === 'droits' ? 'bg-emerald-500' :
+              selectedTheme.id === 'histoire' ? 'bg-amber-500' :
+              'bg-rose-500'
+            }`}
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -361,8 +417,8 @@ export default function FlashcardsPage() {
           >
             {/* Catégorie */}
             <div className="flex justify-between items-start mb-4">
-              <span className="text-xs text-gray-500 bg-gray-100 px-3 py-1 rounded-full">
-                {currentCard.categorie}
+              <span className={`text-xs ${selectedTheme.color} ${selectedTheme.bgColor} px-3 py-1 rounded-full font-medium`}>
+                {selectedTheme.name}
               </span>
               <span className="text-xs text-gray-400 flex items-center gap-1">
                 <RotateCw className="w-3 h-3" />
@@ -385,7 +441,7 @@ export default function FlashcardsPage() {
 
           {/* Face arrière - Réponse */}
           <div 
-            className="absolute inset-0 bg-gradient-to-br from-primary-50 to-primary-100 border-2 border-primary-500 rounded-xl p-6 sm:p-8 flex flex-col"
+            className={`absolute inset-0 ${selectedTheme.bgColor} border-2 ${selectedTheme.borderColor} rounded-xl p-6 sm:p-8 flex flex-col`}
             style={{ 
               backfaceVisibility: 'hidden',
               WebkitBackfaceVisibility: 'hidden',
@@ -394,10 +450,10 @@ export default function FlashcardsPage() {
           >
             {/* Catégorie */}
             <div className="flex justify-between items-start mb-4">
-              <span className="text-xs text-primary-600 bg-primary-200 px-3 py-1 rounded-full">
-                {currentCard.categorie}
+              <span className={`text-xs ${selectedTheme.color} bg-white/50 px-3 py-1 rounded-full font-medium`}>
+                {selectedTheme.name}
               </span>
-              <span className="text-xs text-primary-500 flex items-center gap-1">
+              <span className={`text-xs ${selectedTheme.color} flex items-center gap-1`}>
                 <Check className="w-3 h-3" />
                 Réponse
               </span>
@@ -405,13 +461,13 @@ export default function FlashcardsPage() {
 
             {/* Réponse */}
             <div className="flex-1 flex items-center justify-center">
-              <p className="text-2xl sm:text-3xl font-bold text-primary-700 text-center leading-relaxed">
+              <p className={`text-2xl sm:text-3xl font-bold ${selectedTheme.color} text-center leading-relaxed`}>
                 {currentCard.reponse}
               </p>
             </div>
 
             {/* Instruction */}
-            <p className="text-center text-sm text-primary-400 mt-4">
+            <p className={`text-center text-sm ${selectedTheme.color} opacity-60 mt-4`}>
               👆 Touchez pour revoir la question
             </p>
           </div>

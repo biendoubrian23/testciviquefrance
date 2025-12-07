@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
-import { Clock, CheckCircle, XCircle, ArrowRight, Trophy, Star, Gift, Sparkles } from 'lucide-react'
+import { Clock, CheckCircle, XCircle, ArrowRight, Trophy, Star, Gift, Sparkles, Unlock, Loader2 } from 'lucide-react'
 import Confetti from '@/components/ui/Confetti'
 import CelebrationToast from '@/components/ui/CelebrationToast'
 
@@ -53,6 +53,10 @@ export default function QuizPage() {
   const [showConfetti, setShowConfetti] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
   
+  // États pour le mur de paiement "Débloquer niveau suivant"
+  const [showPaywall, setShowPaywall] = useState(false)
+  const [isUnlocking, setIsUnlocking] = useState(false)
+  
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const startTimeRef = useRef<number>(0)
   const questionsRef = useRef<Question[]>([])
@@ -62,7 +66,7 @@ export default function QuizPage() {
   const sessionIdRef = useRef<string | null>(null)
   const hasLoadedRef = useRef(false) // Empêcher les appels multiples
 
-  const TIMER_DURATION = 18 // 18 secondes par question
+  const TIMER_DURATION = 5 // 5 secondes par question (temporaire pour tests)
 
   // Mettre à jour les refs quand les états changent
   useEffect(() => {
@@ -201,13 +205,15 @@ export default function QuizPage() {
   }, []) // Dépendances vides pour n'exécuter qu'une fois !
 
   const handleSelectAnswer = async (reponseId: string) => {
-    if (phase !== 'playing' || selectedAnswer) return
+    // Permettre de changer de réponse tant qu'on n'est pas en phase de correction
+    if (phase !== 'playing' && phase !== 'waiting') return
     
     setSelectedAnswer(reponseId)
-    const tempsReponse = Math.round((Date.now() - startTimeRef.current) / 1000)
     
-    // Passer en mode "attente" jusqu'à la fin du timer
-    setPhase('waiting')
+    // Passer en mode "attente" (mais on peut encore changer d'avis)
+    if (phase === 'playing') {
+      setPhase('waiting')
+    }
     
     // La vérification se fera quand le timer atteint 0
   }
@@ -336,6 +342,13 @@ export default function QuizPage() {
       if (score >= 9) {
         setShowConfetti(true)
         setShowCelebration(true)
+      }
+      
+      // Afficher le paywall après 5 secondes si score entre 5 et 7
+      if (score >= 5 && score <= 7 && niveau < 10) {
+        setTimeout(() => {
+          setShowPaywall(true)
+        }, 5000)
       }
 
       setPhase('results')
@@ -502,6 +515,50 @@ export default function QuizPage() {
             </span>
           </div>
           
+          {/* Mur de paiement - Débloquer niveau suivant (scores 5, 6, 7) */}
+          {showPaywall && !isSuccess && niveau < 10 && (
+            <div className="bg-gradient-to-br from-primary-50 to-emerald-50 border-2 border-primary-200 p-4 mb-4 animate-fade-in">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-primary-100 flex items-center justify-center flex-shrink-0">
+                  <Unlock className="w-5 h-5 text-primary-600" />
+                </div>
+                <div>
+                  <h4 className="font-bold text-gray-900 text-sm">Vous étiez proche !</h4>
+                  <p className="text-xs text-gray-600">Passez directement au niveau suivant</p>
+                </div>
+              </div>
+              
+              <button
+                onClick={async () => {
+                  setIsUnlocking(true)
+                  // Simuler un délai (futur: appel Stripe)
+                  await new Promise(resolve => setTimeout(resolve, 800))
+                  // Passer au niveau suivant
+                  window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
+                }}
+                disabled={isUnlocking}
+                className="w-full bg-primary-600 text-white py-3 px-4 font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
+              >
+                {isUnlocking ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Déblocage...</span>
+                  </>
+                ) : (
+                  <>
+                    <Sparkles className="w-4 h-4" />
+                    <span>Débloquer le niveau suivant</span>
+                    <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">0,59€</span>
+                  </>
+                )}
+              </button>
+              
+              <p className="text-center text-xs text-gray-500 mt-2">
+                Continuez votre progression sans attendre
+              </p>
+            </div>
+          )}
+          
           {/* Boutons d'action */}
           <div className="flex flex-col gap-2">
             {/* Bouton niveau suivant - activé seulement si réussi */}
@@ -658,18 +715,19 @@ export default function QuizPage() {
             } else {
               buttonClass = 'bg-white border-gray-200 opacity-50'
             }
-          } else if (phase === 'waiting' && isSelected) {
-            buttonClass = 'bg-primary-50 border-primary-500'
-          } else if (isSelected) {
+          } else if ((phase === 'waiting' || phase === 'playing') && isSelected) {
             buttonClass = 'bg-primary-50 border-primary-500'
           }
+          
+          // Permettre de cliquer tant qu'on n'est pas en phase de correction
+          const canClick = phase === 'playing' || phase === 'waiting'
           
           return (
             <button
               key={reponse.id}
               onClick={() => handleSelectAnswer(reponse.id)}
-              disabled={phase !== 'playing' || selectedAnswer !== null}
-              className={`w-full py-3 px-4 rounded-none border-2 text-left transition-all ${buttonClass}`}
+              disabled={!canClick}
+              className={`w-full py-3 px-4 rounded-none border-2 text-left transition-all ${buttonClass} ${canClick ? 'cursor-pointer' : 'cursor-not-allowed'}`}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">

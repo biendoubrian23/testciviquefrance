@@ -104,7 +104,7 @@ export default function AidePage() {
           />
           <FAQItem 
             question="Quelles sont les différentes offres disponibles ?"
-            answer="Nous proposons 3 formules : Pack Standard (3,99€/semaine) avec tests thématiques et 1 examen blanc, Premium (7,99€/semaine) avec accès illimité et 3 examens blancs, et Pack Examen (2,50€) pour 2 examens blancs sans expiration."
+            answer="Nous proposons 3 formules : Pack Standard (2,99€/semaine) avec tests thématiques et 1 examen blanc, Premium (6,99€/semaine) avec accès illimité et 3 examens blancs, et Pack Examen (2,50€) pour 2 examens blancs sans expiration."
           />
           <FAQItem 
             question="Comment se déroule l'examen civique réel ?"

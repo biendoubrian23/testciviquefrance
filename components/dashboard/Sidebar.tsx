@@ -9,7 +9,6 @@ import {
   BookOpen, 
   FileQuestion, 
   Trophy, 
-  BarChart3, 
   Settings,
   LogOut,
   CreditCard,
@@ -39,11 +38,6 @@ const menuItems = [
     title: 'Flashcards',
     icon: Layers,
     href: '/dashboard/flashcards',
-  },
-  {
-    title: 'Statistiques',
-    icon: BarChart3,
-    href: '/dashboard/statistiques',
   },
 ];
 

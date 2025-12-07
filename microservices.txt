@@ -1,0 +1,92 @@
+OPTIMAL
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+🎯 4. Débloquer le niveau suivant - 1,49€
+Moment : Quand l'utilisateur échoue à un niveau (< 8/10)
+Contexte : Au lieu de recommencer, il peut passer directement au suivant
+Score : 6/10 - Niveau non validé 😔
+
+Vous étiez proche ! Deux options :
+
+[Recommencer gratuitement]
+
+✨ Débloquer le niveau suivant
+   Continuez votre progression sans attendre
+   [1,49€]
+Pourquoi ça marche : Impatience + frustration de devoir recommencer
+
+##########################################################################################################################################################################################
+
+🎯 5. Pack "Révision Express" - 1,99€
+Moment : Avant un examen blanc
+Contexte : L'utilisateur s'apprête à faire un examen, il a peur d'échouer
+Prêt pour l'examen blanc ?
+
+📚 Pack Révision Express
+   • 20 questions les plus ratées par les autres
+   • Fiches mémo des pièges classiques
+   • Valable 24h
+   [1,99€]
+Pourquoi ça marche : Anxiété pré-examen + FOMO
+
+##########################################################################################################################################################################################
+
+🎯 9. Mode "Sans chrono" - 0,69€ par quiz
+Moment : Au lancement d'un quiz
+Contexte : Certains utilisateurs stressent avec le timer
+
+Pourquoi ça marche : Réduction du stress = meilleure expérience
+
+##########################################################################################################################################################################################
+
+🎯 8. Fiche mémo du thème (FLASHCARD)- 0,99€
+Moment : Après avoir terminé un thème avec un score moyen
+Contexte : L'utilisateur a eu 7/10, il veut s'améliorer
+
+Pourquoi ça marche : Valeur tangible + téléchargeable
+
+
+
+
+
+
+
+
+
+
+_____________________ 
+|   PAS OPTIMAL      |
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. Débloquer la correction détaillée - 0,99€
+Moment : Juste après avoir échoué une question
+Contexte : L'utilisateur vient de se tromper, il veut comprendre POURQUOI
+
+Pourquoi ça marche : Frustration immédiate + curiosité = conversion
+
+🎯 2. Seconde chance - 0,49€
+Moment : Quand le temps expire sur une question
+Contexte : L'utilisateur connaissait peut-être la réponse mais n'a pas eu le temps
+
+Pourquoi ça marche : Très petit prix + sentiment d'injustice
+
+🎯 3. Passer une question difficile - 0,29€
+Moment : Pendant un quiz, sur une question où l'utilisateur hésite
+Contexte : Bouton discret "Passer" qui apparaît après 5 secondes
+
+Pourquoi ça marche : Prix dérisoire + évite la frustration
+
+🎯 7. Indice sur une question - 0,19€
+Moment : Pendant le quiz, bouton "💡 Indice"
+Contexte : L'utilisateur hésite entre 2 réponses
+
+Pourquoi ça marche : Prix ridicule + aide immédiate
+
+
+
+A voir dans la table statistiques
+----------------------------------
+🎯 6. Voir le classement complet - 0,79€
+Moment : Après un quiz, dans les statistiques
+Contexte : L'utilisateur voit juste "Vous êtes dans le top 30%"
+
+Pourquoi ça marche : Curiosité + compétition
