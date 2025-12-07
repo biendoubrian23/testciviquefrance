@@ -115,35 +115,35 @@ export default function CelebrationToast({ isVisible, score, onHide }: Celebrati
 
   return (
     <div 
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-[60] transition-all duration-500 ease-out ${
+      className={`fixed top-2 sm:top-4 left-2 right-2 sm:left-1/2 sm:right-auto sm:transform sm:-translate-x-1/2 z-[60] transition-all duration-500 ease-out ${
         show 
           ? 'translate-y-0 opacity-100 scale-100' 
           : '-translate-y-full opacity-0 scale-95'
       }`}
     >
       <div className={`
-        px-6 py-4 rounded-2xl shadow-2xl border-2
+        px-3 py-2 sm:px-5 sm:py-3 rounded-xl sm:rounded-2xl shadow-xl sm:shadow-2xl border-2
         ${score === 10 
           ? 'bg-gradient-to-r from-amber-400 via-yellow-400 to-amber-400 border-amber-500 text-amber-900' 
           : 'bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-400 border-emerald-500 text-emerald-900'
         }
         animate-pulse-slow
       `}>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center justify-center gap-2 sm:gap-3">
           <div className={`
-            p-2 rounded-full 
+            p-1.5 sm:p-2 rounded-full flex-shrink-0
             ${score === 10 ? 'bg-amber-200/50' : 'bg-emerald-200/50'}
           `}>
-            <IconComponent className="w-6 h-6 animate-bounce" />
+            <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 animate-bounce" />
           </div>
-          <span className="font-bold text-lg whitespace-nowrap">
+          <span className="font-bold text-sm sm:text-base text-center leading-tight">
             {message}
           </span>
           <div className={`
-            p-2 rounded-full 
+            p-1.5 sm:p-2 rounded-full flex-shrink-0 hidden sm:block
             ${score === 10 ? 'bg-amber-200/50' : 'bg-emerald-200/50'}
           `}>
-            <IconComponent className="w-6 h-6 animate-bounce" style={{ animationDelay: '0.2s' }} />
+            <IconComponent className="w-4 h-4 sm:w-5 sm:h-5 animate-bounce" style={{ animationDelay: '0.2s' }} />
           </div>
         </div>
       </div>

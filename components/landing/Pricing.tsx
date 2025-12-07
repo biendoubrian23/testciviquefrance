@@ -6,55 +6,56 @@ import { Check } from 'lucide-react';
 const pricingPlans = [
   {
     name: 'Gratuit',
+    nameColor: 'text-emerald-600',
     price: '0€',
     period: '',
     description: 'Pour découvrir la plateforme',
     features: [
-      'Tous les cours gratuits',
+      'Accès à tous les cours',
       'Questions gratuites',
-      'Accès aux résumés',
+      'Fiches de révision',
     ],
-    limitations: [
-      'Pas de mini-test',
-      'Pas de test thématique',
-      'Pas d\'examen blanc',
-    ],
-    cta: 'Commencer',
+    limitations: [],
+    cta: 'Commencer gratuitement',
     ctaLink: '/signup',
     highlighted: false,
+    ctaStyle: 'border border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white',
   },
   {
-    name: 'Pack Crédits',
-    price: '9,99€',
-    period: '25 crédits',
-    description: 'Le plus populaire',
+    name: 'Pack Standard',
+    nameColor: 'text-white',
+    price: '3,99€',
+    period: '/semaine',
+    description: 'Accès pendant 7 jours',
     features: [
-      'Tests thématiques illimités',
-      '3 examens blancs',
-      'Révision intelligente',
-      'Corrigés détaillés',
-      'Statistiques de progression',
+      'Tests thématiques',
+      '1 examen blanc',
+      'Cours détaillés',
+      'Corrigés expliqués',
+      'Suivi de progression',
     ],
-    cta: 'Acheter',
+    cta: 'Sélectionner',
     ctaLink: '/signup',
     highlighted: true,
-    badge: 'POPULAIRE',
+    badge: 'Recommandé',
   },
   {
     name: 'Premium',
-    price: '13,99€',
-    period: '/ semaine',
-    description: 'Accès illimité',
+    nameColor: 'text-primary-600',
+    price: '7,99€',
+    period: '/semaine',
+    description: 'Accès illimité pendant 7 jours',
     features: [
       'Tests illimités',
-      'Examens blancs illimités',
-      'Corrigés détaillés',
+      '3 examens blancs',
       'Statistiques avancées',
+      'Révision intelligente',
       'Support prioritaire',
     ],
-    cta: 'Choisir Premium',
+    cta: 'Démarrer Premium',
     ctaLink: '/signup',
     highlighted: false,
+    ctaStyle: 'border border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white',
   },
 ];
 
@@ -77,38 +78,40 @@ export default function Pricing() {
             return (
             <div
               key={index}
-              className={`bg-white p-8 relative animate-fade-in-up ${delayClass} transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col ${
+              className={`relative animate-fade-in-up ${delayClass} transition-all duration-300 hover:shadow-xl hover:-translate-y-2 flex flex-col p-8 ${
                 plan.highlighted
-                  ? 'border-2 border-primary-500 shadow-lg'
-                  : 'border-2 border-gray-200 hover:border-primary-300'
+                  ? 'bg-primary-600 text-white'
+                  : 'bg-white border-2 border-gray-200 hover:border-primary-300'
               }`}
             >
               {plan.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-500 text-white px-4 py-1 text-sm font-medium">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary-600 px-4 py-1.5 text-sm font-medium">
                   {plan.badge}
                 </div>
               )}
 
               <div className="mb-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className={`text-lg font-medium mb-2 ${
+                  plan.highlighted ? 'text-primary-200' : plan.nameColor
+                }`}>
                   {plan.name}
                 </h3>
                 <div className="mb-2">
-                  <span className="text-4xl font-bold text-gray-900">
+                  <span className={`text-5xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900'}`}>
                     {plan.price}
                   </span>
                   {plan.period && (
-                    <span className="text-gray-600 ml-2">{plan.period}</span>
+                    <span className={plan.highlighted ? 'text-primary-200 ml-1' : 'text-gray-500 ml-1'}>{plan.period}</span>
                   )}
                 </div>
-                <p className="text-sm text-gray-600">{plan.description}</p>
+                <p className={plan.highlighted ? 'text-primary-200' : 'text-gray-500'}>{plan.description}</p>
               </div>
 
-              <ul className="space-y-3 mb-8 flex-grow">
+              <ul className="space-y-4 mb-8 flex-grow">
                 {plan.features.map((feature, featureIndex) => (
                   <li key={featureIndex} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-success mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{feature}</span>
+                    <Check className={`w-5 h-5 mt-0.5 flex-shrink-0 ${plan.highlighted ? 'text-white' : 'text-emerald-500'}`} />
+                    <span className={plan.highlighted ? 'text-primary-100' : 'text-gray-700'}>{feature}</span>
                   </li>
                 ))}
                 {plan.limitations?.map((limitation, limitationIndex) => (
@@ -124,10 +127,10 @@ export default function Pricing() {
 
               <Link
                 href={plan.ctaLink}
-                className={`block w-full py-3 text-center font-medium transition-colors mt-auto ${
+                className={`block w-full py-4 text-center font-medium transition-all duration-300 mt-auto ${
                   plan.highlighted
-                    ? 'bg-primary-600 text-white hover:bg-primary-700'
-                    : 'border-2 border-gray-300 text-gray-700 hover:bg-gray-50'
+                    ? 'bg-white text-primary-600 hover:bg-primary-50'
+                    : plan.ctaStyle || 'border-2 border-gray-300 text-gray-700 hover:bg-gray-50'
                 }`}
               >
                 {plan.cta}
@@ -136,24 +139,6 @@ export default function Pricing() {
           );})}
         </div>
 
-        {/* Autres packs de crédits */}
-        <div className="mt-12 text-center animate-fade-in-up delay-500">
-          <p className="text-gray-600 mb-6">Autres packs de crédits disponibles</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <div className="px-6 py-3 bg-white border border-gray-200">
-              <span className="font-semibold text-gray-900">10 crédits</span>
-              <span className="text-gray-600 ml-2">→ 4,99€</span>
-            </div>
-            <div className="px-6 py-3 bg-white border border-gray-200">
-              <span className="font-semibold text-gray-900">50 crédits</span>
-              <span className="text-gray-600 ml-2">→ 17,99€</span>
-            </div>
-            <div className="px-6 py-3 bg-white border border-gray-200">
-              <span className="font-semibold text-gray-900">100 crédits</span>
-              <span className="text-gray-600 ml-2">→ 29,99€</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

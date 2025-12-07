@@ -17,6 +17,67 @@ interface Category {
   progress?: number;
 }
 
+// Couleurs élégantes inspirées de la France - réparties pour alterner haut/bas
+const themeColors: Record<number, { 
+  border: string; 
+  bg: string; 
+  accent: string; 
+  progress: string;
+  text: string;
+}> = {
+  1: { // Principes et valeurs - Bleu Marine (couleur officielle)
+    border: 'border-[#002395]',
+    bg: 'bg-[#002395]/10',
+    accent: 'text-[#002395]',
+    progress: 'bg-[#002395]',
+    text: 'group-hover:text-[#002395]',
+  },
+  2: { // Vivre en société - Rouge France
+    border: 'border-[#C8102E]',
+    bg: 'bg-[#C8102E]/10',
+    accent: 'text-[#C8102E]',
+    progress: 'bg-[#C8102E]',
+    text: 'group-hover:text-[#C8102E]',
+  },
+  3: { // Histoire - Violet Impérial
+    border: 'border-[#7C3AED]',
+    bg: 'bg-[#7C3AED]/10',
+    accent: 'text-[#7C3AED]',
+    progress: 'bg-[#7C3AED]',
+    text: 'group-hover:text-[#7C3AED]',
+  },
+  4: { // Institutions - Bleu Océan
+    border: 'border-[#0369A1]',
+    bg: 'bg-[#0369A1]/10',
+    accent: 'text-[#0369A1]',
+    progress: 'bg-[#0369A1]',
+    text: 'group-hover:text-[#0369A1]',
+  },
+  5: { // Droits et devoirs - Or/Doré
+    border: 'border-[#B45309]',
+    bg: 'bg-[#B45309]/10',
+    accent: 'text-[#B45309]',
+    progress: 'bg-[#B45309]',
+    text: 'group-hover:text-[#B45309]',
+  },
+  6: { // Symboles - Vert Émeraude
+    border: 'border-[#059669]',
+    bg: 'bg-[#059669]/10',
+    accent: 'text-[#059669]',
+    progress: 'bg-[#059669]',
+    text: 'group-hover:text-[#059669]',
+  },
+};
+
+// Couleur par défaut
+const defaultColor = {
+  border: 'border-gray-900',
+  bg: 'bg-gray-100',
+  accent: 'text-primary-600',
+  progress: 'bg-primary-600',
+  text: 'group-hover:text-primary-600',
+};
+
 export default function EntrainementPage() {
   const { user } = useAuth();
   const supabase = useSupabase();
@@ -111,50 +172,53 @@ export default function EntrainementPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {categories.map((category) => (
-            <Link
-              key={category.id}
-              href={`/dashboard/entrainement/${category.id}`}
-              className="group bg-white border-2 border-gray-900 rounded-xl p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 hover:shadow-lg transition-all"
-              style={{ WebkitTapHighlightColor: 'transparent' }}
-            >
-              <h3 className="font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors">
-                {category.nom}
-              </h3>
-              <p className="text-sm text-gray-500 mb-4">
-                {category.description}
-              </p>
-              
-              <div className="flex items-center justify-between text-sm mb-3">
-                <span className="text-gray-500">
-                  {category.questionsCount} question{category.questionsCount !== 1 ? 's' : ''}
-                </span>
-                {user && (
-                  <span className="font-medium text-gray-700 flex items-center gap-1">
-                    {category.niveauxCompletes === 10 && (
-                      <CheckCircle className="w-4 h-4 text-emerald-500" />
-                    )}
-                    {category.niveauxCompletes}/{category.totalNiveaux} niveaux
+          {categories.map((category) => {
+            const colors = themeColors[category.ordre] || defaultColor;
+            return (
+              <Link
+                key={category.id}
+                href={`/dashboard/entrainement/${category.id}`}
+                className={`group ${colors.bg} border-2 ${colors.border} rounded-xl p-5 sm:p-6 hover:shadow-lg active:opacity-90 transition-all`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
+              >
+                <h3 className={`font-bold text-gray-900 mb-2 ${colors.text} transition-colors`}>
+                  {category.nom}
+                </h3>
+                <p className="text-sm text-gray-900 mb-4">
+                  {category.description}
+                </p>
+                
+                <div className="flex items-center justify-between text-sm mb-3">
+                  <span className="text-gray-700 font-medium">
+                    {category.questionsCount} question{category.questionsCount !== 1 ? 's' : ''}
                   </span>
-                )}
-              </div>
-              
-              {user && (
-                <div className="h-1.5 bg-gray-100 overflow-hidden">
-                  <div 
-                    className={`h-full transition-all duration-500 ${
-                      category.niveauxCompletes === 10 ? 'bg-emerald-500' : 'bg-primary-600'
-                    }`}
-                    style={{ width: `${category.progress}%` }}
-                  />
+                  {user && (
+                    <span className="font-semibold text-gray-900 flex items-center gap-1">
+                      {category.niveauxCompletes === 10 && (
+                        <CheckCircle className="w-4 h-4 text-emerald-500" />
+                      )}
+                      {category.niveauxCompletes}/{category.totalNiveaux} niveaux
+                    </span>
+                  )}
                 </div>
-              )}
-              
-              <div className="mt-4 flex items-center text-primary-600 font-medium text-sm group-hover:opacity-100 sm:opacity-0 transition-opacity">
-                Commencer <ArrowRight className="w-4 h-4 ml-1" />
-              </div>
-            </Link>
-          ))}
+                
+                {user && (
+                  <div className="h-2 bg-white/60 rounded-full overflow-hidden">
+                    <div 
+                      className={`h-full transition-all duration-500 rounded-full ${
+                        category.niveauxCompletes === 10 ? 'bg-emerald-500' : colors.progress
+                      }`}
+                      style={{ width: `${category.progress}%` }}
+                    />
+                  </div>
+                )}
+                
+                <div className={`mt-4 flex items-center ${colors.accent} font-medium text-sm group-hover:opacity-100 sm:opacity-0 transition-opacity`}>
+                  Commencer <ArrowRight className="w-4 h-4 ml-1" />
+                </div>
+              </Link>
+            );
+          })}
         </div>
       )}
 

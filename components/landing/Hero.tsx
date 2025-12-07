@@ -114,14 +114,31 @@ export default function Hero() {
               </div>
             </div>
 
+            {/* CTA Buttons - Version mobile (après carrousel) */}
+            <div className="flex flex-col gap-4 lg:hidden animate-fade-in-up delay-300">
+              <Link
+                href="/signup"
+                className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg inline-flex items-center justify-center gap-2"
+              >
+                Commencer gratuitement
+                <ArrowRight className="w-5 h-5" />
+              </Link>
+              <Link
+                href="/cours"
+                className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg hover:border-gray-400 hover:bg-gray-50 transition-colors inline-flex items-center justify-center"
+              >
+                Voir les cours
+              </Link>
+            </div>
+
             <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up delay-200 lg:delay-100">
               Préparez-vous efficacement pour obtenir votre titre de séjour 
               pluriannuel ou son renouvellement. Des centaines de questions 
               officielles, des cours complets et des examens blancs.
             </p>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up delay-300 lg:delay-200">
+            {/* CTA Buttons - Version desktop */}
+            <div className="hidden lg:flex flex-row gap-4 justify-start animate-fade-in-up delay-200">
               <Link
                 href="/signup"
                 className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg inline-flex items-center justify-center gap-2"

@@ -120,33 +120,7 @@ export default function QuizPage() {
     }
   }, []) // Plus de dépendance à sessionId !
 
-  const handleTimeUp = useCallback(async () => {
-    // Si pas de réponse sélectionnée, enregistrer comme non-répondu
-    if (phaseRef.current === 'playing') {
-      const currentQuestion = questionsRef.current[currentIndexRef.current]
-      if (!currentQuestion) return
-      
-      const tempsReponse = TIMER_DURATION
-      const answer = selectedAnswerRef.current
-      
-      // Phase de vérification
-      setPhase('verifying')
-      
-      // Vérifier la réponse côté serveur
-      const verification = await verifyAnswer(currentQuestion.id, answer, tempsReponse)
-      
-      setCorrectAnswerId(verification.correctReponseId)
-      setReponses(prev => [...prev, {
-        question_id: currentQuestion.id,
-        reponse_id: answer,
-        is_correct: verification.isCorrect,
-        temps_reponse: tempsReponse,
-        correct_reponse_id: verification.correctReponseId
-      }])
-      
-      setPhase('explanation')
-    }
-  }, [verifyAnswer])
+  // Note: La gestion du temps écoulé est faite dans le useEffect avec timeLeft === 0
 
   const startTimer = useCallback(() => {
     setTimeLeft(TIMER_DURATION)
@@ -158,13 +132,13 @@ export default function QuizPage() {
       setTimeLeft(prev => {
         if (prev <= 1) {
           clearInterval(timerRef.current!)
-          handleTimeUp()
+          // Ne PAS appeler handleTimeUp ici - le useEffect avec timeLeft === 0 s'en charge
           return 0
         }
         return prev - 1
       })
     }, 1000)
-  }, [handleTimeUp])
+  }, []) // Retirer handleTimeUp des dépendances
 
   const loadQuestions = useCallback(async () => {
     // Éviter les appels multiples

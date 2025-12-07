@@ -29,72 +29,41 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  // Rafraîchir la session si expirée
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  // IMPORTANT: On rafraîchit juste la session, on ne bloque PAS
+  // Le client gérera la redirection si nécessaire
+  try {
+    await supabase.auth.getUser();
+  } catch {
+    // Erreur silencieuse - le client gérera
+    console.warn('Middleware: Impossible de vérifier l\'utilisateur');
+  }
 
-  // Routes protégées - rediriger vers login si non connecté
-  const protectedRoutes = ['/dashboard'];
+  // Routes protégées - vérification SIMPLE sans appel DB
+  const protectedRoutes = ['/dashboard', '/onboarding'];
   const isProtectedRoute = protectedRoutes.some((route) =>
     request.nextUrl.pathname.startsWith(route)
   );
 
-  // Routes onboarding (accessibles uniquement si connecté)
-  const onboardingRoutes = ['/onboarding'];
-  const isOnboardingRoute = onboardingRoutes.some((route) =>
-    request.nextUrl.pathname.startsWith(route)
+  // Vérifier UNIQUEMENT la présence du cookie de session (rapide)
+  const hasAuthCookie = request.cookies.getAll().some(
+    cookie => cookie.name.includes('auth-token') || cookie.name.includes('sb-')
   );
 
-  if (isProtectedRoute && !user) {
+  // Si route protégée et PAS de cookie → redirection login
+  // (Le client vérifiera plus finement ensuite)
+  if (isProtectedRoute && !hasAuthCookie) {
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     return NextResponse.redirect(url);
   }
 
-  if (isOnboardingRoute && !user) {
-    const url = request.nextUrl.clone();
-    url.pathname = '/login';
-    return NextResponse.redirect(url);
-  }
-
-  // Si l'utilisateur est connecté et accède au dashboard,
-  // vérifier s'il a complété l'onboarding
-  if (isProtectedRoute && user) {
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('has_completed_onboarding')
-      .eq('id', user.id)
-      .single();
-
-    // Si l'onboarding n'est pas complété, rediriger vers le quiz
-    if (profile && !profile.has_completed_onboarding) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/onboarding/quiz';
-      return NextResponse.redirect(url);
-    }
-  }
-
-  // Rediriger vers dashboard si déjà connecté et sur login/signup
+  // Si sur login/signup AVEC cookie → redirection dashboard
   const authRoutes = ['/login', '/signup'];
   const isAuthRoute = authRoutes.includes(request.nextUrl.pathname);
-
-  if (isAuthRoute && user) {
-    // Vérifier si l'onboarding est complété
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('has_completed_onboarding')
-      .eq('id', user.id)
-      .single();
-
+  
+  if (isAuthRoute && hasAuthCookie) {
     const url = request.nextUrl.clone();
-    
-    if (profile && !profile.has_completed_onboarding) {
-      url.pathname = '/onboarding/quiz';
-    } else {
-      url.pathname = '/dashboard';
-    }
-    
+    url.pathname = '/dashboard';
     return NextResponse.redirect(url);
   }
 

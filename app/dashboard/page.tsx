@@ -34,7 +34,19 @@ interface CategoryProgress {
   id: string;
   name: string;
   progress: number;
+  ordre?: number;
 }
+
+// Couleurs élégantes inspirées de la France pour les barres de progression
+// Réparties pour alterner (couleurs différentes entre haut et bas)
+const progressColors: Record<number, string> = {
+  1: 'bg-[#002395]', // Bleu Marine (Principes)
+  2: 'bg-[#C8102E]', // Rouge France (Vivre en société)
+  3: 'bg-[#7C3AED]', // Violet Impérial (Histoire)
+  4: 'bg-[#0369A1]', // Bleu Océan (Institutions)
+  5: 'bg-[#B45309]', // Or/Ambre (Droits)
+  6: 'bg-[#059669]', // Vert Émeraude (Symboles)
+};
 
 export default function DashboardPage() {
   const { profile, user } = useAuth();
@@ -71,11 +83,27 @@ export default function DashboardPage() {
       
       try {
         // Récupérer les statistiques de l'utilisateur (sans .single() pour éviter 406)
-        const { data: statsList } = await supabase
+        let { data: statsList, error: statsError } = await supabase
           .from('statistiques')
           .select('*')
           .eq('user_id', user.id)
           .limit(1);
+
+        // Si pas de statistiques, les créer automatiquement (pour les anciens comptes)
+        if ((!statsList || statsList.length === 0) && !statsError) {
+          console.log('Création des statistiques pour l\'utilisateur...');
+          const { data: newStats, error: insertError } = await supabase
+            .from('statistiques')
+            .insert({ user_id: user.id })
+            .select()
+            .single();
+          
+          if (!insertError && newStats) {
+            statsList = [newStats];
+          } else {
+            console.error('Erreur création statistiques:', insertError?.message);
+          }
+        }
 
         const statsData = statsList && statsList.length > 0 ? statsList[0] : null;
 
@@ -130,7 +158,7 @@ export default function DashboardPage() {
         // Récupérer les catégories et calculer la progression basée sur les niveaux
         const { data: categoriesData } = await supabase
           .from('categories')
-          .select('id, nom')
+          .select('id, nom, ordre')
           .order('ordre');
 
         if (categoriesData) {
@@ -144,7 +172,7 @@ export default function DashboardPage() {
             progressionsData?.map((p: { categorie_id: string; niveau_actuel: number }) => [p.categorie_id, p.niveau_actuel]) || []
           );
 
-          const categoriesWithProgress = categoriesData.map((cat: { id: string; nom: string }) => {
+          const categoriesWithProgress = categoriesData.map((cat: { id: string; nom: string; ordre: number }) => {
             // Chaque catégorie a 10 niveaux, donc la progression = (niveau_actuel - 1) * 10%
             const niveauActuel = (progressionsMap.get(cat.id) as number) || 1;
             const progress = Math.min(((niveauActuel - 1) / 10) * 100, 100);
@@ -153,6 +181,7 @@ export default function DashboardPage() {
               id: cat.id,
               name: cat.nom,
               progress: Math.round(progress),
+              ordre: cat.ordre,
             };
           });
           setCategories(categoriesWithProgress);
@@ -257,20 +286,23 @@ export default function DashboardPage() {
             </div>
           ) : categories.length > 0 ? (
             <div className="space-y-5">
-              {categories.map((category) => (
-                <div key={category.id}>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-gray-700">{category.name}</span>
-                    <span className="text-sm font-semibold text-gray-900">{category.progress}%</span>
+              {categories.map((category, index) => {
+                const colorClass = progressColors[category.ordre || (index + 1)] || 'bg-primary-600';
+                return (
+                  <div key={category.id}>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="text-sm font-medium text-gray-700">{category.name}</span>
+                      <span className="text-sm font-semibold text-gray-900">{category.progress}%</span>
+                    </div>
+                    <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
+                      <div 
+                        className={`h-full ${colorClass} rounded-full transition-all duration-500`}
+                        style={{ width: `${category.progress}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="h-2 bg-gray-100 overflow-hidden">
-                    <div 
-                      className="h-full bg-primary-600 transition-all duration-500"
-                      style={{ width: `${category.progress}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           ) : (
             <p className="text-gray-500 text-center py-8">
