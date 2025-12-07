@@ -15,26 +15,13 @@ export default function DashboardLayout({
   const { isLoading, user } = useAuth();
   const router = useRouter();
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [forceReady, setForceReady] = useState(false);
-
-  // Timeout de sécurité - après 5 secondes, on force l'affichage
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (isLoading) {
-        console.warn('Auth loading timeout - forcing ready state');
-        setForceReady(true);
-      }
-    }, 5000);
-    
-    return () => clearTimeout(timeout);
-  }, [isLoading]);
 
   // Rediriger vers login si pas d'utilisateur après le chargement
   useEffect(() => {
-    if ((!isLoading || forceReady) && !user) {
+    if (!isLoading && !user) {
       router.push('/login');
     }
-  }, [isLoading, user, router, forceReady]);
+  }, [isLoading, user, router]);
 
   // Fermer la sidebar quand on redimensionne vers desktop
   useEffect(() => {
@@ -60,7 +47,7 @@ export default function DashboardLayout({
     };
   }, [sidebarOpen]);
 
-  if (isLoading && !forceReady) {
+  if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
