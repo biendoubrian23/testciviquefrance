@@ -73,6 +73,26 @@ export default function OffresPage() {
     setSelectedOffer(offerId);
   };
 
+  // Fonction pour rediriger vers Stripe pour les achats ponctuels
+  const redirectToStripeCheckout = async (planKey: 'examen' | 'flashcards2Themes' | 'flashcards5Themes') => {
+    try {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user || !user.email) {
+        alert('Vous devez être connecté pour effectuer un achat');
+        return;
+      }
+
+      const plan = STRIPE_PLANS[planKey];
+      const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`;
+      window.location.href = checkoutUrl;
+    } catch (err) {
+      console.error('Erreur redirection Stripe:', err);
+      alert('Une erreur est survenue');
+    }
+  };
+
   // Fonction pour activer un achat (simulation - plus tard Stripe)
   const activatePurchase = async (productType: string) => {
     setIsLoading(productType);
@@ -557,17 +577,21 @@ export default function OffresPage() {
             </div>
             <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
               <div className="text-2xl font-bold text-gray-900">1,20€</div>
-              <button
-                onClick={() => handlePurchase('flashcards_2')}
-                disabled={isLoading === 'flashcards_2' || extendedProfile?.flashcards_2_themes}
-                className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center gap-2"
-              >
-                {isLoading === 'flashcards_2' ? (
-                  <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
-                ) : extendedProfile?.flashcards_2_themes ? (
-                  <><CheckCircle className="w-4 h-4" /> Activé</>
-                ) : 'Acheter'}
-              </button>
+              {extendedProfile?.flashcards_2_themes ? (
+                <button
+                  disabled
+                  className="bg-emerald-100 text-emerald-700 px-4 py-2 text-sm font-medium border-2 border-emerald-600 cursor-not-allowed flex items-center gap-2"
+                >
+                  <CheckCircle className="w-4 h-4" /> Activé
+                </button>
+              ) : (
+                <button
+                  onClick={() => redirectToStripeCheckout('flashcards2Themes')}
+                  className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                >
+                  Acheter
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -590,41 +614,89 @@ export default function OffresPage() {
             </div>
             <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
               <div className="text-2xl font-bold text-gray-900">1,50€</div>
+              {extendedProfile?.flashcards_5_themes ? (
+                <button
+                  disabled
+                  className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2"
+                >
+                  <CheckCircle className="w-4 h-4" /> Activé
+                </button>
+              ) : (
+                <button
+                  onClick={() => redirectToStripeCheckout('flashcards5Themes')}
+                  className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                >
+                  Acheter
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Section Pack Examen */}
+        <h2 className="text-xl font-bold text-gray-900 mt-10 mb-4 flex items-center gap-2">
+          📝 Pack Examen Blanc
+        </h2>
+
+        {/* Pack Examen */}
+        <div className="bg-white border border-gray-200 p-5 hover:border-primary-300 transition-colors">
+          <div className="flex flex-col h-full">
+            <div className="flex-1">
+              <h3 className="font-semibold text-gray-900">Pack Examen</h3>
+              <p className="text-sm text-gray-500 mt-1">
+                2 examens blancs complets pour vous entraîner.
+              </p>
+              <ul className="mt-3 space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                  <span>2 examens blancs complets</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                  <span>Conditions réelles d&apos;examen</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                  <span>Corrigés détaillés</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
+                  <span>Score et analyse</span>
+                </li>
+              </ul>
+            </div>
+            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
+              <div className="text-2xl font-bold text-gray-900">2,50€</div>
               <button
-                onClick={() => handlePurchase('flashcards_5')}
-                disabled={isLoading === 'flashcards_5' || extendedProfile?.flashcards_5_themes}
-                className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+                onClick={() => redirectToStripeCheckout('examen')}
+                className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors flex items-center gap-2"
               >
-                {isLoading === 'flashcards_5' ? (
-                  <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
-                ) : extendedProfile?.flashcards_5_themes ? (
-                  <><CheckCircle className="w-4 h-4" /> Activé</>
-                ) : 'Acheter'}
+                Acheter
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* FAQ rapide - déroulante */}
-      <div>
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Questions fréquentes</h3>
-        <div className="border border-gray-200">
+      {/* Section FAQ */}
+      <div className="mt-12">
+        <h2 className="text-2xl font-bold text-gray-900 mb-6">Questions fréquentes</h2>
+        <div className="bg-white border border-gray-200">
           <FAQItem 
-            question="Quelle est la différence entre Pack Standard et Premium ?"
-            answer="Le Pack Standard (2,99€) inclut les tests thématiques et 1 examen blanc. Le Premium (6,99€) offre des tests illimités, 3 examens blancs, des statistiques avancées et un support prioritaire."
+            question="Comment fonctionne l'abonnement ?" 
+            answer="L'abonnement est hebdomadaire et se renouvelle automatiquement. Vous pouvez l'annuler à tout moment depuis votre espace membre."
           />
           <FAQItem 
-            question="Le Pack Examen expire-t-il ?"
-            answer="Non, le Pack Examen à 2,50€ n'expire jamais. Vos 2 examens blancs restent disponibles jusqu'à ce que vous les utilisiez."
+            question="Puis-je annuler mon abonnement ?" 
+            answer="Oui, vous pouvez annuler à tout moment depuis la section 'Gérer mon abonnement'. L'accès reste actif jusqu'à la fin de la période payée."
           />
           <FAQItem 
-            question="Comment voir mes factures ?"
-            answer="Si vous avez un abonnement actif, cliquez sur le bouton 'Gérer mon abonnement' ci-dessus. Vous accéderez au portail Stripe où vous pourrez consulter et télécharger toutes vos factures dans la section 'Historique des factures'."
+            question="Les achats ponctuels expirent-ils ?" 
+            answer="Non, les achats ponctuels (Débloquer niveau, Mode sans chrono, Pack Examen) restent actifs tant que vous avez un abonnement actif."
           />
           <FAQItem 
-            question="Quels moyens de paiement acceptez-vous ?"
-            answer="Nous acceptons les cartes bancaires (Visa, Mastercard, Amex) via notre partenaire de paiement sécurisé Stripe."
+            question="Que se passe-t-il si mon abonnement expire ?" 
+            answer="Si votre abonnement expire, vous perdez l'accès aux fonctionnalités premium, mais vos achats ponctuels restent enregistrés et seront réactivés si vous vous réabonnez."
           />
         </div>
       </div>
