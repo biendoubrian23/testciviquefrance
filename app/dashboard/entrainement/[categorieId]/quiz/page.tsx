@@ -2,34 +2,50 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { useParams, useRouter, useSearchParams } from 'next/navigation'
-import { Clock, CheckCircle, XCircle, ArrowRight, Trophy, Star, Gift, Sparkles, Unlock, Loader2 } from 'lucide-react'
+import { Clock, CheckCircle, XCircle, ArrowRight, Trophy, Gift, Sparkles, Unlock, Loader2 } from 'lucide-react'
 import Confetti from '@/components/ui/Confetti'
 import CelebrationToast from '@/components/ui/CelebrationToast'
+import { createClient } from '@/lib/supabase/client'
 
-// Interface sécurisée - PAS de is_correct côté client !
-interface Question {
-  id: string
-  question: string
-  explication: string
-  reponses: Reponse[]
-}
+// Import des questions locales (hashées) - Principes et valeurs
+import { 
+  getQuestionsForLevel as getQuestionsPrincipesValeurs,
+  type QuizQuestion,
+  CATEGORIE_PRINCIPES_VALEURS_ID
+} from '@/lib/data/quiz-principes-valeurs'
 
-interface Reponse {
-  id: string
-  texte: string
-  ordre: number
-  // NOTE: is_correct n'est PLUS ici - sécurité !
+// Import des questions locales (hashées) - Vivre dans la société française
+import { 
+  getQuestionsVivreSociete,
+  CATEGORIE_VIVRE_SOCIETE_ID
+} from '@/lib/data/quiz-vivre-societe'
+
+// Import des questions locales (hashées) - Histoire, géographie et culture
+import { 
+  getQuestionsHistoireGeoCulture,
+  CATEGORIE_HISTOIRE_GEO_CULTURE_ID
+} from '@/lib/data/quiz-histoire-geo-culture'
+
+// Interface pour les questions avec options mélangées
+interface ShuffledQuestion extends QuizQuestion {
+  shuffledOptions: string[]
+  shuffledCorrectIndex: number
 }
 
 interface ReponseUtilisateur {
   question_id: string
-  reponse_id: string | null
+  reponse_index: number | null
   is_correct: boolean
   temps_reponse: number
-  correct_reponse_id?: string // Ajouté après vérification serveur
 }
 
-type QuizPhase = 'loading' | 'playing' | 'waiting' | 'verifying' | 'explanation' | 'results' | 'offer'
+// Interface profil étendu avec les achats
+interface UserProfile {
+  unlock_level_count?: number
+  no_timer_enabled?: boolean
+}
+
+type QuizPhase = 'loading' | 'playing' | 'waiting' | 'explanation' | 'results' | 'offer'
 
 export default function QuizPage() {
   const params = useParams()
@@ -38,16 +54,25 @@ export default function QuizPage() {
   const categorieId = params.categorieId as string
   const niveau = parseInt(searchParams.get('niveau') || '1')
   
-  const [questions, setQuestions] = useState<Question[]>([])
+  // Clé unique pour la persistance de ce quiz
+  const STORAGE_KEY = `quiz_entrainement_${categorieId}_niveau_${niveau}`
+  
+  const [questions, setQuestions] = useState<ShuffledQuestion[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null)
-  const [correctAnswerId, setCorrectAnswerId] = useState<string | null>(null) // Réponse correcte (du serveur)
-  const [timeLeft, setTimeLeft] = useState(30)
+  const [selectedAnswerIndex, setSelectedAnswerIndex] = useState<number | null>(null)
   const [phase, setPhase] = useState<QuizPhase>('loading')
   const [reponses, setReponses] = useState<ReponseUtilisateur[]>([])
-  const [sessionId, setSessionId] = useState<string | null>(null)
   const [showOffer, setShowOffer] = useState(false)
   const [offerType, setOfferType] = useState<'first10' | 'level45' | null>(null)
+  
+  // États pour les achats utilisateur
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(null)
+  const [noTimerMode, setNoTimerMode] = useState(false)
+  const [unlockLevelCount, setUnlockLevelCount] = useState(0)
+  
+  // Timer - peut être désactivé si mode sans chrono
+  const DEFAULT_TIMER = 5 // 5 secondes par défaut
+  const [timeLeft, setTimeLeft] = useState(DEFAULT_TIMER)
   
   // États pour la célébration (confettis + toast)
   const [showConfetti, setShowConfetti] = useState(false)
@@ -59,32 +84,104 @@ export default function QuizPage() {
   
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const startTimeRef = useRef<number>(0)
-  const questionsRef = useRef<Question[]>([])
-  const currentIndexRef = useRef(0)
-  const selectedAnswerRef = useRef<string | null>(null)
-  const phaseRef = useRef<QuizPhase>('loading')
-  const sessionIdRef = useRef<string | null>(null)
-  const hasLoadedRef = useRef(false) // Empêcher les appels multiples
+  const hasLoadedRef = useRef(false)
+  const timerStartRef = useRef<number>(0) // Pour l'animation fluide
+  const isRestoringRef = useRef(false) // Pour éviter de sauvegarder pendant la restauration
 
-  const TIMER_DURATION = 5 // 5 secondes par question (temporaire pour tests)
+  // Charger le profil utilisateur pour les achats
+  useEffect(() => {
+    const loadUserProfile = async () => {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('unlock_level_count, no_timer_enabled')
+          .eq('id', user.id)
+          .single()
+        
+        if (profile) {
+          setUserProfile(profile)
+          setNoTimerMode(profile.no_timer_enabled || false)
+          setUnlockLevelCount(profile.unlock_level_count || 0)
+        }
+      }
+    }
+    
+    loadUserProfile()
+  }, [])
 
-  // Mettre à jour les refs quand les états changent
-  useEffect(() => {
-    questionsRef.current = questions
-  }, [questions])
-  
-  useEffect(() => {
-    currentIndexRef.current = currentIndex
-  }, [currentIndex])
-  
-  useEffect(() => {
-    selectedAnswerRef.current = selectedAnswer
-  }, [selectedAnswer])
-  
-  useEffect(() => {
-    phaseRef.current = phase
-  }, [phase])
+  // Interface pour l'état persisté
+  interface PersistedQuizState {
+    questions: ShuffledQuestion[]
+    currentIndex: number
+    reponses: ReponseUtilisateur[]
+    phase: QuizPhase
+    timestamp: number
+  }
 
+  // Sauvegarder l'état du quiz dans localStorage
+  const saveQuizState = useCallback((currentPhase?: QuizPhase) => {
+    if (isRestoringRef.current) return // Ne pas sauvegarder pendant la restauration
+    if (questions.length === 0) return
+    
+    const state: PersistedQuizState = {
+      questions,
+      currentIndex,
+      reponses,
+      phase: currentPhase || phase,
+      timestamp: Date.now()
+    }
+    
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
+      console.log('Quiz sauvegardé - question', currentIndex + 1, '- phase:', currentPhase || phase)
+    } catch (e) {
+      console.error('Erreur sauvegarde quiz:', e)
+    }
+  }, [STORAGE_KEY, questions, currentIndex, reponses, phase])
+
+  // Effacer l'état sauvegardé (fin du quiz)
+  const clearQuizState = useCallback(() => {
+    try {
+      localStorage.removeItem(STORAGE_KEY)
+      console.log('État du quiz effacé')
+    } catch (e) {
+      console.error('Erreur effacement état quiz:', e)
+    }
+  }, [STORAGE_KEY])
+
+  // Restaurer l'état du quiz depuis localStorage
+  const restoreQuizState = useCallback((): PersistedQuizState | null => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY)
+      if (!saved) return null
+      
+      const state: PersistedQuizState = JSON.parse(saved)
+      
+      // Vérifier que l'état n'est pas trop vieux (max 1 heure)
+      const maxAge = 60 * 60 * 1000 // 1 heure
+      if (Date.now() - state.timestamp > maxAge) {
+        clearQuizState()
+        return null
+      }
+      
+      // Vérifier que l'état est valide
+      if (!state.questions || state.questions.length === 0) {
+        clearQuizState()
+        return null
+      }
+      
+      return state
+    } catch (e) {
+      console.error('Erreur restauration quiz:', e)
+      clearQuizState()
+      return null
+    }
+  }, [STORAGE_KEY, clearQuizState])
+
+  // Fonction pour mélanger un tableau
   const shuffleArray = <T,>(array: T[]): T[] => {
     const newArray = [...array]
     for (let i = newArray.length - 1; i > 0; i--) {
@@ -94,186 +191,250 @@ export default function QuizPage() {
     return newArray
   }
 
-  // Fonction pour vérifier une réponse via l'API sécurisée
-  const verifyAnswer = useCallback(async (questionId: string, reponseId: string | null, tempsReponse: number) => {
-    try {
-      const response = await fetch('/api/quiz/verify', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          questionId,
-          reponseId,
-          tempsReponse,
-          sessionId: sessionIdRef.current // Utiliser la ref !
-        })
-      })
-      
-      if (!response.ok) {
-        throw new Error('Erreur de vérification')
-      }
-      
-      const data = await response.json()
-      return {
-        isCorrect: data.isCorrect,
-        correctReponseId: data.correctReponseId,
-        explication: data.explication
-      }
-    } catch (error) {
-      console.error('Erreur vérification:', error)
-      return { isCorrect: false, correctReponseId: null, explication: '' }
+  // Timer fluide avec animation continue
+  // Ref pour savoir quand le timer a démarré pour cette question
+  const timerStartedForQuestionRef = useRef(-1)
+  const intervalRef = useRef<NodeJS.Timeout | null>(null)
+  
+  // Durée du timer (infinie si mode sans chrono)
+  const TIMER_DURATION = noTimerMode ? 9999 : DEFAULT_TIMER
+  
+  // Démarrer le timer quand on passe à une nouvelle question
+  useEffect(() => {
+    // Seulement quand on commence une nouvelle question
+    if (phase === 'playing' && timerStartedForQuestionRef.current !== currentIndex) {
+      timerStartedForQuestionRef.current = currentIndex
+      timerStartRef.current = Date.now()
+      setTimeLeft(noTimerMode ? 9999 : DEFAULT_TIMER)
     }
-  }, []) // Plus de dépendance à sessionId !
-
-  // Note: La gestion du temps écoulé est faite dans le useEffect avec timeLeft === 0
-
-  const startTimer = useCallback(() => {
-    setTimeLeft(TIMER_DURATION)
-    startTimeRef.current = Date.now()
-    
-    if (timerRef.current) clearInterval(timerRef.current)
-    
-    timerRef.current = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          clearInterval(timerRef.current!)
-          // Ne PAS appeler handleTimeUp ici - le useEffect avec timeLeft === 0 s'en charge
-          return 0
-        }
-        return prev - 1
-      })
-    }, 1000)
-  }, []) // Retirer handleTimeUp des dépendances
-
-  const loadQuestions = useCallback(async () => {
-    // Éviter les appels multiples
-    if (hasLoadedRef.current) {
-      console.log('loadQuestions - déjà chargé, skip')
+  }, [phase, currentIndex, noTimerMode])
+  
+  // L'intervalle tourne tant qu'on est en phase playing ou waiting (sauf mode sans chrono)
+  useEffect(() => {
+    // Mode sans chrono : pas de timer automatique
+    if (noTimerMode) {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+        intervalRef.current = null
+      }
       return
     }
+    
+    if (phase !== 'playing' && phase !== 'waiting') {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+        intervalRef.current = null
+      }
+      return
+    }
+    
+    // Créer l'intervalle s'il n'existe pas
+    if (!intervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        const elapsed = (Date.now() - timerStartRef.current) / 1000
+        const remaining = Math.max(0, DEFAULT_TIMER - elapsed)
+        setTimeLeft(remaining)
+        
+        if (remaining <= 0 && intervalRef.current) {
+          clearInterval(intervalRef.current)
+          intervalRef.current = null
+        }
+      }, 50)
+    }
+    
+    return () => {
+      // Ne PAS clear l'intervalle ici si on passe juste de playing à waiting
+    }
+  }, [phase, noTimerMode])
+  
+  // Cleanup à la fin
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+      }
+    }
+  }, [])
+  
+  // Reset quand on change de question (pour le prochain timer)
+  useEffect(() => {
+    if (phase === 'explanation' || phase === 'results') {
+      timerStartedForQuestionRef.current = -1
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current)
+        intervalRef.current = null
+      }
+    }
+  }, [phase])
+
+  const startTimer = useCallback(() => {
+    setTimeLeft(noTimerMode ? 9999 : DEFAULT_TIMER)
+    startTimeRef.current = Date.now()
+  }, [noTimerMode])
+
+  // Fonction pour charger les questions selon la catégorie
+  const getQuestionsForCategory = useCallback((catId: string, niv: number): QuizQuestion[] => {
+    // Vérifier si c'est la catégorie "Vivre dans la société française"
+    if (catId === CATEGORIE_VIVRE_SOCIETE_ID || catId === '5a452914-91fc-4e4d-aa3f-5318eb95fb0a') {
+      console.log('Chargement questions Vivre dans la société française')
+      return getQuestionsVivreSociete(niv)
+    }
+    
+    // Vérifier si c'est la catégorie "Histoire, géographie et culture"
+    if (catId === CATEGORIE_HISTOIRE_GEO_CULTURE_ID || catId === '98ce105f-bfc6-425c-a1d9-b841ddae4016') {
+      console.log('Chargement questions Histoire, géographie et culture')
+      return getQuestionsHistoireGeoCulture(niv)
+    }
+    
+    // Par défaut: Principes et valeurs de la République
+    console.log('Chargement questions Principes et valeurs')
+    return getQuestionsPrincipesValeurs(niv)
+  }, [])
+
+  // Charger les questions locales (ou restaurer depuis localStorage)
+  const loadQuestions = useCallback(() => {
+    if (hasLoadedRef.current) return
     hasLoadedRef.current = true
     
-    // Charger les questions via l'API sécurisée (sans is_correct)
-    try {
-      console.log('loadQuestions - niveau:', niveau, 'categorieId:', categorieId)
+    console.log('Chargement questions locales - catégorie:', categorieId, '- niveau:', niveau)
 
-      const response = await fetch(`/api/quiz/questions?categorieId=${categorieId}&niveau=${niveau}`)
+    // Essayer de restaurer un quiz en cours
+    const savedState = restoreQuizState()
+    if (savedState) {
+      console.log('Restauration du quiz en cours - question', savedState.currentIndex + 1)
+      isRestoringRef.current = true
       
-      if (!response.ok) {
-        if (response.status === 401) {
-          router.push('/login')
-          return
-        }
-        throw new Error('Erreur chargement questions')
+      setQuestions(savedState.questions)
+      setCurrentIndex(savedState.currentIndex)
+      setReponses(savedState.reponses)
+      
+      // Restaurer la phase (si c'est 'results', rester sur les résultats)
+      if (savedState.phase === 'results') {
+        setPhase('results')
+        console.log('Restauration des résultats du quiz')
+      } else {
+        setPhase('playing')
+        startTimer()
       }
-
-      const data = await response.json()
       
-      if (!data.questions || data.questions.length === 0) {
-        console.error('Aucune question trouvée')
+      // Permettre la sauvegarde après la restauration
+      setTimeout(() => {
+        isRestoringRef.current = false
+      }, 100)
+      return
+    }
+
+    try {
+      // Charger les questions selon la catégorie
+      const localQs = getQuestionsForCategory(categorieId, niveau)
+      
+      if (!localQs || localQs.length === 0) {
+        console.error('Aucune question trouvée pour catégorie', categorieId, 'niveau', niveau)
         router.push(`/dashboard/entrainement/${categorieId}`)
         return
       }
 
-      console.log('Questions chargées (sécurisé):', data.questions.length)
+      console.log('Questions chargées:', localQs.length)
 
-      // Mélanger les réponses de chaque question
-      const questionsWithShuffledAnswers = data.questions.map((q: Question) => ({
-        ...q,
-        reponses: shuffleArray([...q.reponses])
-      }))
+      // Mélanger les questions
+      const shuffledQuestions = shuffleArray([...localQs])
 
-      setQuestions(questionsWithShuffledAnswers)
-      setSessionId(data.sessionId)
-      sessionIdRef.current = data.sessionId // Mettre à jour la ref aussi !
-      
+      // Mélanger les options de chaque question
+      const questionsWithShuffledOptions: ShuffledQuestion[] = shuffledQuestions.map(q => {
+        const indices = [0, 1, 2, 3]
+        const shuffledIndices = shuffleArray(indices)
+        const shuffledOptions = shuffledIndices.map(i => q.options[i])
+        // La bonne réponse est toujours à l'index 0 dans les options originales
+        const newCorrectIndex = shuffledIndices.indexOf(0)
+        
+        return {
+          ...q,
+          shuffledOptions,
+          shuffledCorrectIndex: newCorrectIndex
+        }
+      })
+
+      setQuestions(questionsWithShuffledOptions)
       setPhase('playing')
       startTimer()
       
     } catch (error) {
       console.error('Erreur chargement questions:', error)
-      hasLoadedRef.current = false // Permettre un retry en cas d'erreur
+      hasLoadedRef.current = false
       router.push(`/dashboard/entrainement/${categorieId}`)
     }
-  }, [categorieId, niveau, router, startTimer])
+  }, [categorieId, niveau, router, startTimer, restoreQuizState, getQuestionsForCategory])
 
-  // Charger les questions au démarrage (une seule fois)
+  // Charger les questions au démarrage
   useEffect(() => {
     loadQuestions()
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-    }
-  }, []) // Dépendances vides pour n'exécuter qu'une fois !
+  }, [loadQuestions])
 
-  const handleSelectAnswer = async (reponseId: string) => {
-    // Permettre de changer de réponse tant qu'on n'est pas en phase de correction
+  // Sélectionner une réponse
+  const handleSelectAnswer = (index: number) => {
     if (phase !== 'playing' && phase !== 'waiting') return
     
-    setSelectedAnswer(reponseId)
+    setSelectedAnswerIndex(index)
     
-    // Passer en mode "attente" (mais on peut encore changer d'avis)
     if (phase === 'playing') {
       setPhase('waiting')
     }
-    
-    // La vérification se fera quand le timer atteint 0
   }
 
-  // Quand le timer atteint 0, vérifier la réponse côté serveur
-  useEffect(() => {
-    const verifyAndShowExplanation = async () => {
-      if (timeLeft === 0 && (phase === 'playing' || phase === 'waiting')) {
-        if (timerRef.current) clearInterval(timerRef.current)
-        
-        const currentQuestion = questions[currentIndex]
-        if (!currentQuestion) return
-        
-        const tempsReponse = Math.round((Date.now() - startTimeRef.current) / 1000)
-        
-        // Phase de vérification
-        setPhase('verifying')
-        
-        // Vérifier la réponse côté serveur (SÉCURISÉ)
-        const verification = await verifyAnswer(currentQuestion.id, selectedAnswer, tempsReponse)
-        
-        setCorrectAnswerId(verification.correctReponseId)
-        setReponses(prev => [...prev, {
-          question_id: currentQuestion.id,
-          reponse_id: selectedAnswer,
-          is_correct: verification.isCorrect,
-          temps_reponse: tempsReponse,
-          correct_reponse_id: verification.correctReponseId
-        }])
-        
-        setPhase('explanation')
-      }
-    }
+  // Valider manuellement (mode sans chrono)
+  const handleValidateAnswer = () => {
+    if (phase !== 'waiting' || selectedAnswerIndex === null) return
     
-    verifyAndShowExplanation()
-  }, [timeLeft, phase, questions, currentIndex, selectedAnswer, verifyAnswer])
+    const currentQ = questions[currentIndex]
+    if (!currentQ) return
+    
+    const tempsReponse = Math.round((Date.now() - startTimeRef.current) / 1000)
+    
+    // Vérification locale instantanée
+    const isCorrect = selectedAnswerIndex === currentQ.shuffledCorrectIndex
+    
+    setReponses(prev => [...prev, {
+      question_id: String(currentQ.id),
+      reponse_index: selectedAnswerIndex,
+      is_correct: isCorrect,
+      temps_reponse: tempsReponse
+    }])
+    
+    setPhase('explanation')
+  }
 
+  // Quand le timer atteint 0, vérifier la réponse (sauf mode sans chrono)
+  useEffect(() => {
+    // En mode sans chrono, on ne valide pas automatiquement
+    if (noTimerMode) return
+    
+    if (timeLeft <= 0 && (phase === 'playing' || phase === 'waiting')) {
+      if (timerRef.current) clearInterval(timerRef.current)
+      
+      const currentQ = questions[currentIndex]
+      if (!currentQ) return
+      
+      const tempsReponse = Math.round((Date.now() - startTimeRef.current) / 1000)
+      
+      // Vérification locale instantanée
+      const isCorrect = selectedAnswerIndex === currentQ.shuffledCorrectIndex
+      
+      setReponses(prev => [...prev, {
+        question_id: String(currentQ.id),
+        reponse_index: selectedAnswerIndex,
+        is_correct: isCorrect,
+        temps_reponse: tempsReponse
+      }])
+      
+      setPhase('explanation')
+    }
+  }, [timeLeft, phase, questions, currentIndex, selectedAnswerIndex, noTimerMode])
+
+  // Passer à la question suivante
   const handleNextQuestion = async () => {
-    setSelectedAnswer(null)
-    setCorrectAnswerId(null) // Réinitialiser la bonne réponse
+    setSelectedAnswerIndex(null)
     
-    // Vérifier si c'est le moment de proposer une offre
     const nextIndex = currentIndex + 1
-    
-    console.log('handleNextQuestion - nextIndex:', nextIndex, 'questions.length:', questions.length)
-    
-    // NOTE: Offres désactivées temporairement pour debug
-    // Offre après la 10ème question (index 9) du premier niveau
-    // if (nextIndex === 10 && niveau === 1) {
-    //   setOfferType('first10')
-    //   setShowOffer(true)
-    //   return
-    // }
-    
-    // Offre au niveau 5 (environ question 45 sur l'ensemble)
-    // if (nextIndex === 5 && niveau === 5) {
-    //   setOfferType('level45')
-    //   setShowOffer(true)
-    //   return
-    // }
     
     // Si on a fini toutes les questions
     if (nextIndex >= questions.length) {
@@ -281,119 +442,255 @@ export default function QuizPage() {
       return
     }
     
-    // Passer à la question suivante
     setCurrentIndex(nextIndex)
     setPhase('playing')
     startTimer()
   }
 
+  // Sauvegarder l'état après chaque changement de question
+  useEffect(() => {
+    if (phase === 'playing' && questions.length > 0 && currentIndex > 0) {
+      saveQuizState()
+    }
+  }, [currentIndex, phase, questions.length, saveQuizState])
+
   const handleDeclineOffer = () => {
     setShowOffer(false)
     setOfferType(null)
     
-    // Continuer le quiz
     if (currentIndex + 1 >= questions.length) {
       finishQuiz()
     } else {
       setCurrentIndex(currentIndex + 1)
-      setCorrectAnswerId(null)
       setPhase('playing')
       startTimer()
     }
   }
 
   const handleAcceptOffer = () => {
-    // Rediriger vers la page des offres
     router.push('/dashboard/credits')
   }
 
+  // Utiliser un déblocage de niveau pour passer au suivant
+  const handleUseUnlockLevel = async () => {
+    if (unlockLevelCount <= 0) {
+      router.push('/dashboard/credits')
+      return
+    }
+    
+    setIsUnlocking(true)
+    
+    try {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (!user) {
+        alert('Vous devez être connecté')
+        return
+      }
+      
+      // Appeler la fonction SQL pour utiliser un déblocage
+      const { data, error } = await supabase.rpc('use_unlock_level', {
+        p_user_id: user.id
+      })
+      
+      if (error) {
+        console.error('Erreur déblocage:', error)
+        alert('Erreur lors du déblocage')
+        return
+      }
+      
+      if (data) {
+        // Mettre à jour le compteur local
+        setUnlockLevelCount(prev => prev - 1)
+        
+        // Effacer l'état et passer au niveau suivant
+        clearQuizState()
+        window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
+      }
+    } catch (err) {
+      console.error('Erreur:', err)
+    } finally {
+      setIsUnlocking(false)
+    }
+  }
+
+  // Terminer le quiz et sauvegarder les résultats
   const finishQuiz = async () => {
     if (timerRef.current) clearInterval(timerRef.current)
+    if (intervalRef.current) clearInterval(intervalRef.current)
 
     const score = reponses.filter(r => r.is_correct).length
     const tempsTotal = reponses.reduce((acc, r) => acc + r.temps_reponse, 0)
 
+    console.log('=== finishQuiz appelé ===')
+    console.log('Score:', score, '/', questions.length)
+    console.log('Temps total:', tempsTotal)
+    console.log('Catégorie ID:', categorieId)
+    console.log('Niveau:', niveau)
+
+    // Sauvegarder les résultats dans la base de données
     try {
-      // Appeler l'API sécurisée pour sauvegarder les résultats
-      const response = await fetch('/api/quiz/complete', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          sessionId,
-          categorieId,
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      console.log('User:', user?.id || 'NON CONNECTÉ')
+      
+      if (user) {
+        // Sauvegarder la session de quiz pour l'historique du dashboard et les scores
+        const sessionData = {
+          user_id: user.id,
+          categorie_id: categorieId,
           niveau,
           score,
-          totalQuestions: questions.length,
-          tempsTotal,
-          reponses: reponses.map(r => ({
-            questionId: r.question_id,
-            reponseId: r.reponse_id,
-            isCorrect: r.is_correct,
-            tempsReponse: r.temps_reponse
-          }))
-        })
-      })
+          total_questions: questions.length,
+          temps_total: tempsTotal,
+          completed: true,
+          started_at: new Date(Date.now() - tempsTotal * 1000).toISOString(),
+          completed_at: new Date().toISOString()
+        }
+        console.log('Insertion sessions_quiz:', sessionData)
+        
+        const { data: insertedSession, error: sessionError } = await supabase
+          .from('sessions_quiz')
+          .insert(sessionData)
+          .select()
+        
+        if (sessionError) {
+          console.error('❌ Erreur insert sessions_quiz:', sessionError)
+        } else {
+          console.log('✅ Session insérée:', insertedSession)
+        }
 
-      if (!response.ok) {
-        console.error('Erreur sauvegarde résultats')
-      }
+        // Mettre à jour les statistiques utilisateur (colonnes correctes)
+        const { data: stats, error: statsSelectError } = await supabase
+          .from('statistiques')
+          .select('*')
+          .eq('user_id', user.id)
+          .single()
 
-      // Déclencher la célébration si score >= 9/10
-      if (score >= 9) {
-        setShowConfetti(true)
-        setShowCelebration(true)
-      }
-      
-      // Afficher le paywall après 5 secondes si score entre 5 et 7
-      if (score >= 5 && score <= 7 && niveau < 10) {
-        setTimeout(() => {
-          setShowPaywall(true)
-        }, 5000)
-      }
+        if (statsSelectError) {
+          console.error('Erreur select statistiques:', statsSelectError)
+          // Créer les statistiques si elles n'existent pas
+          const { error: createStatsError } = await supabase
+            .from('statistiques')
+            .insert({
+              user_id: user.id,
+              total_questions_repondues: questions.length,
+              total_bonnes_reponses: score,
+              temps_total_etude: tempsTotal,
+              derniere_activite: new Date().toISOString()
+            })
+          if (createStatsError) console.error('Erreur création statistiques:', createStatsError)
+        } else if (stats) {
+          const { error: updateStatsError } = await supabase
+            .from('statistiques')
+            .update({
+              total_questions_repondues: (stats.total_questions_repondues || 0) + questions.length,
+              total_bonnes_reponses: (stats.total_bonnes_reponses || 0) + score,
+              temps_total_etude: (stats.temps_total_etude || 0) + tempsTotal,
+              derniere_activite: new Date().toISOString(),
+              updated_at: new Date().toISOString()
+            })
+            .eq('user_id', user.id)
+          if (updateStatsError) console.error('Erreur update statistiques:', updateStatsError)
+        }
 
-      setPhase('results')
-      
+        // Si le quiz est réussi (score >= 7/10), débloquer le niveau suivant
+        if (score >= 7 && niveau < 10) {
+          // Vérifier si une progression existe déjà pour cette catégorie
+          const { data: existingProgression } = await supabase
+            .from('progression_niveaux')
+            .select('niveau_actuel')
+            .eq('user_id', user.id)
+            .eq('categorie_id', categorieId)
+            .single()
+
+          if (existingProgression) {
+            // Mettre à jour seulement si le nouveau niveau est plus élevé
+            if (niveau >= existingProgression.niveau_actuel) {
+              const { error: progressionError } = await supabase
+                .from('progression_niveaux')
+                .update({ 
+                  niveau_actuel: niveau + 1,
+                  updated_at: new Date().toISOString()
+                })
+                .eq('user_id', user.id)
+                .eq('categorie_id', categorieId)
+              if (progressionError) console.error('Erreur update progression:', progressionError)
+            }
+          } else {
+            // Créer la progression pour cette catégorie
+            const { error: createProgressionError } = await supabase
+              .from('progression_niveaux')
+              .insert({
+                user_id: user.id,
+                categorie_id: categorieId,
+                niveau_actuel: niveau + 1
+              })
+            if (createProgressionError) console.error('Erreur création progression:', createProgressionError)
+          }
+        }
+      }
     } catch (error) {
-      console.error('Erreur finishQuiz:', error)
-      setPhase('results') // Afficher quand même les résultats
+      console.error('Erreur sauvegarde résultats:', error)
     }
+
+    // Déclencher la célébration si score >= 9/10
+    if (score >= 9) {
+      setShowConfetti(true)
+      setShowCelebration(true)
+    }
+    
+    // Afficher le paywall après 5 secondes si score entre 5 et 7
+    if (score >= 5 && score <= 7 && niveau < 10) {
+      setTimeout(() => {
+        setShowPaywall(true)
+      }, 5000)
+    }
+
+    setPhase('results')
+    
+    // Sauvegarder l'état avec la phase 'results' pour persister le récapitulatif
+    saveQuizState('results')
   }
 
-  // Rendu du timer circulaire avec animation fluide
+  // Rendu du timer circulaire fluide (ou icône pause en mode sans chrono)
   const renderTimer = () => {
+    // Mode sans chrono : afficher une icône "pause" ou "∞"
+    if (noTimerMode) {
+      return (
+        <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+          <svg className="w-full h-full" viewBox="0 0 88 88">
+            <circle cx="44" cy="44" r="40" fill="none" stroke="#10b981" strokeWidth="5" />
+          </svg>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-xl sm:text-2xl font-bold text-emerald-500">∞</span>
+          </div>
+        </div>
+      )
+    }
+    
     const circumference = 2 * Math.PI * 40
-    const progress = (timeLeft / TIMER_DURATION) * circumference
-    const timerColor = timeLeft > 10 ? '#2563eb' : timeLeft > 5 ? '#f59e0b' : '#ef4444'
+    const progress = (timeLeft / DEFAULT_TIMER) * circumference
+    // Couleurs adaptées pour 5 secondes : bleu > 3s, orange > 1s, rouge <= 1s
+    const timerColor = timeLeft > 3 ? '#2563eb' : timeLeft > 1 ? '#f59e0b' : '#ef4444'
+    const displayTime = Math.ceil(timeLeft) // Afficher le temps arrondi au supérieur
     
     return (
       <div className="relative w-16 h-16 sm:w-20 sm:h-20">
         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 88 88">
+          <circle cx="44" cy="44" r="40" fill="none" stroke="#e5e7eb" strokeWidth="5" />
           <circle
-            cx="44"
-            cy="44"
-            r="40"
-            fill="none"
-            stroke="#e5e7eb"
-            strokeWidth="5"
-          />
-          <circle
-            cx="44"
-            cy="44"
-            r="40"
-            fill="none"
-            stroke={timerColor}
-            strokeWidth="5"
+            cx="44" cy="44" r="40" fill="none" stroke={timerColor} strokeWidth="5"
             strokeDasharray={circumference}
             strokeDashoffset={circumference - progress}
             strokeLinecap="round"
-            style={{
-              transition: 'stroke-dashoffset 1s linear, stroke 0.3s ease'
-            }}
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
           <span className="text-xl sm:text-2xl font-bold" style={{ color: timerColor }}>
-            {timeLeft}
+            {displayTime}
           </span>
         </div>
       </div>
@@ -415,190 +712,171 @@ export default function QuizPage() {
     const totalQuestions = reponses.length
     const score = reponses.filter(r => r.is_correct).length
     const percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0
-    const isSuccess = percentage >= 70 // 70% minimum pour passer
+    const isSuccess = percentage >= 70
     
     return (
       <>
-        {/* Confettis pour 9/10 ou 10/10 */}
         <Confetti isActive={showConfetti} duration={5000} />
-        
-        {/* Toast de célébration */}
-        <CelebrationToast 
-          isVisible={showCelebration} 
-          score={score}
-          onHide={() => setShowCelebration(false)}
-        />
+        <CelebrationToast isVisible={showCelebration} score={score} onHide={() => setShowCelebration(false)} />
         
         <div className="max-w-md mx-auto px-2 sm:px-4 py-6">
           <div className="bg-white border border-gray-200 p-5 text-center">
-            {/* Titre du niveau */}
             <div className="text-xs text-gray-500 mb-2">Niveau {niveau}</div>
           
-            {/* Icône de résultat */}
-          {isSuccess ? (
-            <div className="w-14 h-14 mx-auto mb-3 bg-emerald-100 flex items-center justify-center">
-              <Trophy className="w-7 h-7 text-emerald-600" />
-            </div>
-          ) : (
-            <div className="w-14 h-14 mx-auto mb-3 bg-red-100 flex items-center justify-center">
-              <XCircle className="w-7 h-7 text-red-500" />
-            </div>
-          )}
+            {isSuccess ? (
+              <div className="w-14 h-14 mx-auto mb-3 bg-emerald-100 flex items-center justify-center">
+                <Trophy className="w-7 h-7 text-emerald-600" />
+              </div>
+            ) : (
+              <div className="w-14 h-14 mx-auto mb-3 bg-red-100 flex items-center justify-center">
+                <XCircle className="w-7 h-7 text-red-500" />
+              </div>
+            )}
           
-          {/* Titre */}
-          <h2 className="text-xl font-bold text-gray-900 mb-1">
-            {isSuccess ? 'Niveau réussi !' : 'Niveau non validé'}
-          </h2>
+            <h2 className="text-xl font-bold text-gray-900 mb-1">
+              {isSuccess ? 'Niveau réussi !' : 'Niveau non validé'}
+            </h2>
           
-          {/* Message */}
-          <p className="text-gray-600 text-sm mb-4">
-            {isSuccess 
-              ? 'Félicitations ! Vous avez atteint les 70% requis.'
-              : 'Vous devez obtenir au moins 70% pour valider ce niveau.'
-            }
-          </p>
+            <p className="text-gray-600 text-sm mb-4">
+              {isSuccess 
+                ? 'Félicitations ! Vous avez atteint les 70% requis.'
+                : 'Vous devez obtenir au moins 70% pour valider ce niveau.'
+              }
+            </p>
           
-          {/* Score principal */}
-          <div className={`inline-block px-6 py-3 mb-4 ${
-            isSuccess ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'
-          }`}>
-            <div className={`text-4xl font-bold ${isSuccess ? 'text-emerald-600' : 'text-red-500'}`}>
-              {percentage}%
+            <div className={`inline-block px-6 py-3 mb-4 ${
+              isSuccess ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'
+            }`}>
+              <div className={`text-4xl font-bold ${isSuccess ? 'text-emerald-600' : 'text-red-500'}`}>
+                {percentage}%
+              </div>
+              <div className="text-xs text-gray-600 mt-1">
+                {score}/{totalQuestions} bonnes réponses
+              </div>
             </div>
-            <div className="text-xs text-gray-600 mt-1">
-              {score}/{totalQuestions} bonnes réponses
-            </div>
-          </div>
 
-          {/* Barre de progression vers 70% */}
-          <div className="mb-4">
-            <div className="flex justify-between text-xs mb-1">
-              <span className="text-gray-500">Votre score</span>
-              <span className="text-gray-500">Objectif : 70%</span>
+            <div className="mb-4">
+              <div className="flex justify-between text-xs mb-1">
+                <span className="text-gray-500">Votre score</span>
+                <span className="text-gray-500">Objectif : 70%</span>
+              </div>
+              <div className="h-2 bg-gray-200 overflow-hidden relative">
+                <div className="absolute top-0 bottom-0 w-0.5 bg-gray-400" style={{ left: '70%' }} />
+                <div 
+                  className={`h-full transition-all duration-500 ${isSuccess ? 'bg-emerald-500' : 'bg-red-400'}`}
+                  style={{ width: `${percentage}%` }}
+                />
+              </div>
             </div>
-            <div className="h-2 bg-gray-200 overflow-hidden relative">
-              {/* Indicateur 70% */}
-              <div className="absolute top-0 bottom-0 w-0.5 bg-gray-400" style={{ left: '70%' }} />
-              {/* Barre de score */}
-              <div 
-                className={`h-full transition-all duration-500 ${
-                  isSuccess ? 'bg-emerald-500' : 'bg-red-400'
-                }`}
-                style={{ width: `${percentage}%` }}
-              />
-            </div>
-          </div>
           
-          {/* Détail des réponses */}
-          <div className="bg-gray-50 p-3 mb-4">
-            <h3 className="font-medium text-gray-800 mb-2 text-xs">Détail des réponses</h3>
-            <div className="flex justify-center gap-1 flex-wrap">
-              {reponses.map((r, i) => (
-                <div
-                  key={i}
-                  className={`w-6 h-6 flex items-center justify-center text-xs font-bold ${
-                    r.is_correct 
-                      ? 'bg-emerald-500 text-white' 
-                      : 'bg-red-500 text-white'
+            <div className="bg-gray-50 p-3 mb-4">
+              <h3 className="font-medium text-gray-800 mb-2 text-xs">Détail des réponses</h3>
+              <div className="flex justify-center gap-1 flex-wrap">
+                {reponses.map((r, i) => (
+                  <div
+                    key={i}
+                    className={`w-6 h-6 flex items-center justify-center text-xs font-bold ${
+                      r.is_correct ? 'bg-emerald-500 text-white' : 'bg-red-500 text-white'
+                    }`}
+                  >
+                    {i + 1}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="text-center mb-4">
+              <span className="text-amber-600 font-bold text-sm">
+                +{score * 10 + (isSuccess ? 50 : 0)} points
+              </span>
+            </div>
+          
+            {showPaywall && !isSuccess && niveau < 10 && (
+              <div className="bg-gradient-to-br from-primary-50 to-emerald-50 border-2 border-primary-200 p-4 mb-4 animate-fade-in">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-primary-100 flex items-center justify-center flex-shrink-0">
+                    <Unlock className="w-5 h-5 text-primary-600" />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-900 text-sm">Vous étiez proche !</h4>
+                    <p className="text-xs text-gray-600">
+                      {unlockLevelCount > 0 
+                        ? `Vous avez ${unlockLevelCount} déblocage(s) disponible(s)`
+                        : 'Passez directement au niveau suivant'}
+                    </p>
+                  </div>
+                </div>
+              
+                <button
+                  onClick={handleUseUnlockLevel}
+                  disabled={isUnlocking}
+                  className="w-full bg-primary-600 text-white py-3 px-4 font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
+                >
+                  {isUnlocking ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Déblocage...</span>
+                    </>
+                  ) : unlockLevelCount > 0 ? (
+                    <>
+                      <Sparkles className="w-4 h-4" />
+                      <span>Utiliser un déblocage</span>
+                      <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">Gratuit</span>
+                    </>
+                  ) : (
+                    <>
+                      <Sparkles className="w-4 h-4" />
+                      <span>Acheter un déblocage</span>
+                      <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">0,59€</span>
+                    </>
+                  )}
+                </button>
+              
+                <p className="text-center text-xs text-gray-500 mt-2">
+                  Continuez votre progression sans attendre
+                </p>
+              </div>
+            )}
+          
+            <div className="flex flex-col gap-2">
+              {niveau < 10 && (
+                <button
+                  onClick={() => {
+                    clearQuizState()
+                    window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
+                  }}
+                  disabled={!isSuccess}
+                  className={`w-full py-2.5 px-4 font-semibold transition-colors ${
+                    isSuccess 
+                      ? 'bg-primary-600 text-white hover:bg-primary-700' 
+                      : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   }`}
                 >
-                  {i + 1}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Points gagnés */}
-          <div className="text-center mb-4">
-            <span className="text-amber-600 font-bold text-sm">
-              +{score * 10 + (isSuccess ? 50 : 0)} points
-            </span>
-          </div>
-          
-          {/* Mur de paiement - Débloquer niveau suivant (scores 5, 6, 7) */}
-          {showPaywall && !isSuccess && niveau < 10 && (
-            <div className="bg-gradient-to-br from-primary-50 to-emerald-50 border-2 border-primary-200 p-4 mb-4 animate-fade-in">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-primary-100 flex items-center justify-center flex-shrink-0">
-                  <Unlock className="w-5 h-5 text-primary-600" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-gray-900 text-sm">Vous étiez proche !</h4>
-                  <p className="text-xs text-gray-600">Passez directement au niveau suivant</p>
-                </div>
-              </div>
-              
-              <button
-                onClick={async () => {
-                  setIsUnlocking(true)
-                  // Simuler un délai (futur: appel Stripe)
-                  await new Promise(resolve => setTimeout(resolve, 800))
-                  // Passer au niveau suivant
-                  window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
-                }}
-                disabled={isUnlocking}
-                className="w-full bg-primary-600 text-white py-3 px-4 font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
-              >
-                {isUnlocking ? (
-                  <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
-                    <span>Déblocage...</span>
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="w-4 h-4" />
-                    <span>Débloquer le niveau suivant</span>
-                    <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">0,59€</span>
-                  </>
-                )}
-              </button>
-              
-              <p className="text-center text-xs text-gray-500 mt-2">
-                Continuez votre progression sans attendre
-              </p>
-            </div>
-          )}
-          
-          {/* Boutons d'action */}
-          <div className="flex flex-col gap-2">
-            {/* Bouton niveau suivant - activé seulement si réussi */}
-            {niveau < 10 && (
+                  {isSuccess ? 'Passer au niveau suivant' : 'Niveau suivant (70% requis)'}
+                </button>
+              )}
+            
               <button
                 onClick={() => {
-                  // Aller au niveau suivant (nouvelle série de 10 questions)
-                  window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
+                  clearQuizState()
+                  window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`
                 }}
-                disabled={!isSuccess}
-                className={`w-full py-2.5 px-4 font-semibold transition-colors ${
-                  isSuccess 
-                    ? 'bg-primary-600 text-white hover:bg-primary-700' 
-                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                }`}
+                className="w-full bg-gray-100 text-gray-700 py-2.5 px-4 font-medium hover:bg-gray-200 transition-colors"
               >
-                {isSuccess ? 'Passer au niveau suivant' : 'Niveau suivant (70% requis)'}
+                Recommencer ce niveau
               </button>
-            )}
             
-            {/* Bouton recommencer */}
-            <button
-              onClick={() => {
-                // Recommencer ce niveau (question 1 du même niveau)
-                window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`
-              }}
-              className="w-full bg-gray-100 text-gray-700 py-2.5 px-4 font-medium hover:bg-gray-200 transition-colors"
-            >
-              Recommencer ce niveau
-            </button>
-            
-            {/* Bouton retour */}
-            <button
-              onClick={() => router.push(`/dashboard/entrainement/${categorieId}`)}
-              className="w-full text-gray-500 py-1.5 text-sm hover:text-gray-700 transition-colors"
-            >
-              Retour aux niveaux
-            </button>
+              <button
+                onClick={() => {
+                  clearQuizState()
+                  router.push(`/dashboard/entrainement/${categorieId}`)
+                }}
+                className="w-full text-gray-500 py-1.5 text-sm hover:text-gray-700 transition-colors"
+              >
+                Retour aux niveaux
+              </button>
+            </div>
           </div>
-        </div>
         </div>
       </>
     )
@@ -609,7 +887,6 @@ export default function QuizPage() {
     return (
       <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
         <div className="bg-white rounded-xl max-w-md w-full p-6 relative">
-          {/* Bouton fermer (croix grise discrète) */}
           <button
             onClick={handleDeclineOffer}
             className="absolute top-3 right-3 p-1 text-gray-300 hover:text-gray-400 transition-colors"
@@ -627,10 +904,7 @@ export default function QuizPage() {
             </div>
             
             <h3 className="text-xl font-bold text-gray-900 mb-2">
-              {offerType === 'first10' 
-                ? 'Bravo ! Vous progressez bien !' 
-                : 'Vous êtes à mi-chemin !'
-              }
+              {offerType === 'first10' ? 'Bravo ! Vous progressez bien !' : 'Vous êtes à mi-chemin !'}
             </h3>
             
             <p className="text-gray-600 mb-6">
@@ -641,12 +915,8 @@ export default function QuizPage() {
             </p>
             
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
-              <div className="text-3xl font-bold text-primary-600 mb-1">
-                1,50 €
-              </div>
-              <div className="text-sm text-gray-500">
-                Accès illimité aux flashcards
-              </div>
+              <div className="text-3xl font-bold text-primary-600 mb-1">1,50 €</div>
+              <div className="text-sm text-gray-500">Accès illimité aux flashcards</div>
             </div>
             
             <button
@@ -661,8 +931,9 @@ export default function QuizPage() {
     )
   }
 
-  const currentQuestion = questions[currentIndex]
-  if (!currentQuestion) return null
+  // ==================== RENDU QUIZ (MODE LOCAL HASH) ====================
+  const currentQ = questions[currentIndex]
+  if (!currentQ) return null
 
   return (
     <div className="max-w-2xl mx-auto px-2 sm:px-4 py-6">
@@ -694,20 +965,19 @@ export default function QuizPage() {
       {/* Question */}
       <div className="bg-white rounded-none border border-gray-200 p-4 sm:p-6 mb-4">
         <div className="text-sm text-gray-500 mb-2">Question {currentIndex + 1}/10</div>
-        <h2 className="text-lg sm:text-xl font-semibold text-gray-900">{currentQuestion.question}</h2>
+        <h2 className="text-lg sm:text-xl font-semibold text-gray-900">{currentQ.question}</h2>
       </div>
 
       {/* Réponses */}
       <div className="space-y-2 mb-4">
-        {currentQuestion.reponses.map((reponse, index) => {
-          const isSelected = selectedAnswer === reponse.id
+        {currentQ.shuffledOptions.map((option, index) => {
+          const isSelected = selectedAnswerIndex === index
           const showResult = phase === 'explanation'
-          // Utiliser correctAnswerId du serveur au lieu de reponse.is_correct (SÉCURISÉ)
-          const isCorrectAnswer = correctAnswerId === reponse.id
+          const isCorrectAnswer = index === currentQ.shuffledCorrectIndex
           
           let buttonClass = 'bg-white border-gray-200 hover:border-primary-300'
           
-          if (showResult && correctAnswerId) {
+          if (showResult) {
             if (isCorrectAnswer) {
               buttonClass = 'bg-emerald-50 border-emerald-500'
             } else if (isSelected && !isCorrectAnswer) {
@@ -719,13 +989,12 @@ export default function QuizPage() {
             buttonClass = 'bg-primary-50 border-primary-500'
           }
           
-          // Permettre de cliquer tant qu'on n'est pas en phase de correction
           const canClick = phase === 'playing' || phase === 'waiting'
           
           return (
             <button
-              key={reponse.id}
-              onClick={() => handleSelectAnswer(reponse.id)}
+              key={index}
+              onClick={() => handleSelectAnswer(index)}
               disabled={!canClick}
               className={`w-full py-3 px-4 rounded-none border-2 text-left transition-all ${buttonClass} ${canClick ? 'cursor-pointer' : 'cursor-not-allowed'}`}
             >
@@ -734,10 +1003,10 @@ export default function QuizPage() {
                   <span className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-600 flex-shrink-0">
                     {String.fromCharCode(65 + index)}
                   </span>
-                  <span className="text-gray-800 text-sm sm:text-base">{reponse.texte}</span>
+                  <span className="text-gray-800 text-sm sm:text-base">{option}</span>
                 </div>
                 
-                {showResult && correctAnswerId && (
+                {showResult && (
                   isCorrectAnswer ? (
                     <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
                   ) : isSelected ? (
@@ -750,19 +1019,11 @@ export default function QuizPage() {
         })}
       </div>
 
-      {/* Indicateur de vérification */}
-      {phase === 'verifying' && (
-        <div className="bg-blue-50 border border-blue-200 rounded-none p-4 mb-6 flex items-center gap-3">
-          <div className="animate-spin rounded-full h-5 w-5 border-2 border-blue-600 border-t-transparent"></div>
-          <span className="text-blue-700">Vérification de la réponse...</span>
-        </div>
-      )}
-
       {/* Explication */}
       {phase === 'explanation' && (
         <div className="bg-primary-50 border border-primary-200 rounded-none p-4 mb-6">
           <h3 className="font-semibold text-primary-800 mb-2">Explication</h3>
-          <p className="text-primary-700 text-sm">{currentQuestion.explication}</p>
+          <p className="text-primary-700 text-sm">{currentQ.explication}</p>
         </div>
       )}
 
@@ -786,11 +1047,29 @@ export default function QuizPage() {
         </button>
       )}
 
-      {/* Message d'attente pendant le timer */}
-      {phase === 'waiting' && (
+      {/* Bouton Valider pour mode sans chrono */}
+      {noTimerMode && phase === 'waiting' && selectedAnswerIndex !== null && (
+        <button
+          onClick={handleValidateAnswer}
+          className="w-full bg-emerald-600 text-white py-3 px-4 rounded-none font-semibold hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 mb-4"
+        >
+          <CheckCircle className="w-5 h-5" />
+          <span>Valider ma réponse</span>
+        </button>
+      )}
+
+      {/* Message d'attente pendant le timer (seulement si pas mode sans chrono) */}
+      {phase === 'waiting' && !noTimerMode && (
         <div className="text-center text-gray-500 py-4">
           <Clock className="w-5 h-5 inline-block mr-2" />
           Attendez la fin du timer pour voir l&apos;explication...
+        </div>
+      )}
+
+      {/* Message pour sélectionner une réponse (mode sans chrono) */}
+      {noTimerMode && phase === 'playing' && (
+        <div className="text-center text-emerald-600 py-4">
+          <span className="text-sm">⏱️ Mode sans chrono activé - Prenez votre temps</span>
         </div>
       )}
     </div>

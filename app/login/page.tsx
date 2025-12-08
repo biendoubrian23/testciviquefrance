@@ -7,18 +7,87 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Loader2 } from 'lucide-react';
 
+// Validation email stricte
+const isValidEmail = (email: string): boolean => {
+  // Regex plus stricte : domaine avec au moins 2 caractères après le point
+  // et extension de 2-6 caractères (com, fr, org, etc.)
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailRegex.test(email)) return false;
+  
+  // Vérifier que le domaine a au moins 3 caractères avant le point
+  const domain = email.split('@')[1];
+  const domainParts = domain.split('.');
+  const domainName = domainParts[0];
+  
+  // Rejeter les domaines trop courts ou avec des caractères répétitifs suspects
+  if (domainName.length < 3) return false;
+  
+  // Vérifier si le domaine contient trop de consonnes consécutives (signe de spam)
+  const hasValidPattern = !/[bcdfghjklmnpqrstvwxz]{5,}/i.test(domainName);
+  
+  return hasValidPattern;
+};
+
+// Validation mot de passe (min 8 caractères, au moins une lettre et un chiffre)
+const isValidPassword = (password: string): boolean => {
+  const hasMinLength = password.length >= 8;
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  return hasMinLength && hasLetter && hasNumber;
+};
+
 export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const { signIn, signInWithGoogle } = useAuth();
   const router = useRouter();
 
+  // Validation en temps réel de l'email
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
+    if (value && !isValidEmail(value)) {
+      setEmailError('Format d\'email invalide');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  // Validation en temps réel du mot de passe
+  const handlePasswordChange = (value: string) => {
+    setPassword(value);
+    if (value && !isValidPassword(value)) {
+      if (value.length < 8) {
+        setPasswordError('Minimum 8 caractères');
+      } else if (!/[a-zA-Z]/.test(value)) {
+        setPasswordError('Doit contenir au moins une lettre');
+      } else if (!/[0-9]/.test(value)) {
+        setPasswordError('Doit contenir au moins un chiffre');
+      }
+    } else {
+      setPasswordError('');
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    // Validation finale
+    if (!isValidEmail(email)) {
+      setError('Veuillez entrer un email valide');
+      return;
+    }
+
+    if (!isValidPassword(password)) {
+      setError('Le mot de passe doit contenir au moins 8 caractères, une lettre et un chiffre');
+      return;
+    }
+
     setIsLoading(true);
 
     const { error } = await signIn(email, password);
@@ -118,11 +187,14 @@ export default function LoginPage() {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                onChange={(e) => handleEmailChange(e.target.value)}
+                className={`w-full px-4 py-3 border ${emailError ? 'border-red-500' : 'border-gray-300'} focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all`}
                 placeholder="votre@email.fr"
                 required
               />
+              {emailError && (
+                <p className="mt-1 text-xs text-red-500">{emailError}</p>
+              )}
             </div>
 
             <div>
@@ -132,11 +204,14 @@ export default function LoginPage() {
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                onChange={(e) => handlePasswordChange(e.target.value)}
+                className={`w-full px-4 py-3 border ${passwordError ? 'border-red-500' : 'border-gray-300'} focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all`}
                 placeholder="••••••••"
                 required
               />
+              {passwordError && (
+                <p className="mt-1 text-xs text-red-500">{passwordError}</p>
+              )}
             </div>
 
             <div className="flex items-center justify-between text-sm">

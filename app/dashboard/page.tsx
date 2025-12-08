@@ -121,13 +121,18 @@ export default function DashboardPage() {
         }
 
         // Récupérer l'activité récente depuis sessions_quiz (historique des parties)
-        const { data: sessionsData } = await supabase
+        const { data: sessionsData, error: sessionsError } = await supabase
           .from('sessions_quiz')
           .select('id, score, total_questions, niveau, categorie_id, completed, started_at, completed_at')
           .eq('user_id', user.id)
           .eq('completed', true)
-          .order('completed_at', { ascending: false })
+          .order('completed_at', { ascending: false, nullsFirst: false })
           .limit(10);
+
+        console.log('=== Sessions récupérées ===')
+        console.log('Erreur:', sessionsError)
+        console.log('Nombre de sessions:', sessionsData?.length)
+        console.log('Sessions:', sessionsData)
 
         if (sessionsData && sessionsData.length > 0) {
           // Récupérer les noms des catégories
@@ -142,40 +147,54 @@ export default function DashboardPage() {
           const activities: Activity[] = sessionsData.slice(0, 5).map((s: { id: string; score: number; total_questions: number; niveau: number; categorie_id: string; completed_at: string; started_at: string }) => {
             const themeName = categoriesMap.get(s.categorie_id) || 'Entraînement';
             const isSuccess = s.score >= 7; // 70% pour réussir
+            // Utiliser total_questions de la base, sinon fallback basé sur niveau
+            const totalQuestions = s.total_questions || (s.niveau <= 5 ? 10 : 5);
             return {
               id: s.id,
               type: 'question' as const,
               correct: isSuccess,
               theme: `${themeName} - Niveau ${s.niveau}`,
               score: s.score,
-              total: s.total_questions,
+              total: totalQuestions,
               time: formatTimeAgo(new Date(s.completed_at || s.started_at)),
             };
           });
           setRecentActivity(activities);
         }
 
-        // Récupérer les catégories et calculer la progression basée sur les niveaux
+        // Récupérer les catégories et calculer la progression basée sur les sessions réussies
         const { data: categoriesData } = await supabase
           .from('categories')
           .select('id, nom, ordre')
           .order('ordre');
 
         if (categoriesData) {
-          // Récupérer toutes les progressions de l'utilisateur
-          const { data: progressionsData } = await supabase
-            .from('progression_niveaux')
-            .select('categorie_id, niveau_actuel')
-            .eq('user_id', user.id);
+          // Récupérer toutes les sessions réussies de l'utilisateur
+          const { data: sessionsData } = await supabase
+            .from('sessions_quiz')
+            .select('categorie_id, niveau, score')
+            .eq('user_id', user.id)
+            .eq('completed', true);
 
-          const progressionsMap = new Map(
-            progressionsData?.map((p: { categorie_id: string; niveau_actuel: number }) => [p.categorie_id, p.niveau_actuel]) || []
-          );
+          // Calculer le nombre de niveaux complétés par catégorie (score >= 7)
+          const niveauxCompletesParCategorie = new Map<string, number>();
+          if (sessionsData) {
+            for (const session of sessionsData) {
+              if (session.score >= 7) {
+                const current = niveauxCompletesParCategorie.get(session.categorie_id) || 0;
+                // Stocker le niveau max complété
+                niveauxCompletesParCategorie.set(
+                  session.categorie_id, 
+                  Math.max(current, session.niveau)
+                );
+              }
+            }
+          }
 
           const categoriesWithProgress = categoriesData.map((cat: { id: string; nom: string; ordre: number }) => {
-            // Chaque catégorie a 10 niveaux, donc la progression = (niveau_actuel - 1) * 10%
-            const niveauActuel = (progressionsMap.get(cat.id) as number) || 1;
-            const progress = Math.min(((niveauActuel - 1) / 10) * 100, 100);
+            // Le nombre de niveaux complétés = niveau max réussi
+            const niveauxCompletes = niveauxCompletesParCategorie.get(cat.id) || 0;
+            const progress = Math.min((niveauxCompletes / 10) * 100, 100);
 
             return {
               id: cat.id,

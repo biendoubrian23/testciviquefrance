@@ -5,7 +5,36 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Check, X } from 'lucide-react';
+
+// Validation email stricte
+const isValidEmail = (email: string): boolean => {
+  // Regex plus stricte : domaine avec au moins 2 caractères après le point
+  // et extension de 2-6 caractères (com, fr, org, etc.)
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailRegex.test(email)) return false;
+  
+  // Vérifier que le domaine a au moins 3 caractères avant le point
+  const domain = email.split('@')[1];
+  const domainParts = domain.split('.');
+  const domainName = domainParts[0];
+  
+  // Rejeter les domaines trop courts ou avec des caractères répétitifs suspects
+  if (domainName.length < 3) return false;
+  
+  // Vérifier si le domaine contient trop de consonnes consécutives (signe de spam)
+  const hasValidPattern = !/[bcdfghjklmnpqrstvwxz]{5,}/i.test(domainName);
+  
+  return hasValidPattern;
+};
+
+// Validation mot de passe (min 8 caractères, au moins une lettre et un chiffre)
+const isValidPassword = (password: string): boolean => {
+  const hasMinLength = password.length >= 8;
+  const hasLetter = /[a-zA-Z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  return hasMinLength && hasLetter && hasNumber;
+};
 
 export default function SignupPage() {
   const [prenom, setPrenom] = useState('');
@@ -14,10 +43,28 @@ export default function SignupPage() {
   const [password, setPassword] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [error, setError] = useState('');
+  const [emailError, setEmailError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const { signUp, signInWithGoogle } = useAuth();
   const router = useRouter();
+
+  // Critères du mot de passe
+  const passwordCriteria = {
+    minLength: password.length >= 8,
+    hasLetter: /[a-zA-Z]/.test(password),
+    hasNumber: /[0-9]/.test(password),
+  };
+
+  // Validation en temps réel de l'email
+  const handleEmailChange = (value: string) => {
+    setEmail(value);
+    if (value && !isValidEmail(value)) {
+      setEmailError('Format d\'email invalide');
+    } else {
+      setEmailError('');
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,8 +75,15 @@ export default function SignupPage() {
       return;
     }
 
-    if (password.length < 8) {
-      setError('Le mot de passe doit contenir au moins 8 caractères');
+    // Validation email
+    if (!isValidEmail(email)) {
+      setError('Veuillez entrer un email valide');
+      return;
+    }
+
+    // Validation mot de passe
+    if (!isValidPassword(password)) {
+      setError('Le mot de passe doit contenir au moins 8 caractères, une lettre et un chiffre');
       return;
     }
 
@@ -166,11 +220,16 @@ export default function SignupPage() {
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                onChange={(e) => handleEmailChange(e.target.value)}
+                className={`w-full px-4 py-3 border ${
+                  emailError ? 'border-red-500' : email && isValidEmail(email) ? 'border-green-500' : 'border-gray-300'
+                } focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all`}
                 placeholder="votre@email.fr"
                 required
               />
+              {emailError && (
+                <p className="mt-1 text-xs text-red-500">{emailError}</p>
+              )}
             </div>
 
             <div>
@@ -181,14 +240,53 @@ export default function SignupPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
+                className={`w-full px-4 py-3 border ${
+                  password && !isValidPassword(password) ? 'border-red-500' : password && isValidPassword(password) ? 'border-green-500' : 'border-gray-300'
+                } focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all`}
                 placeholder="••••••••"
                 required
                 minLength={8}
               />
-              <p className="mt-2 text-xs text-gray-500">
-                Minimum 8 caractères
-              </p>
+              {/* Indicateurs de critères du mot de passe */}
+              {password && (
+                <div className="mt-2 space-y-1">
+                  <div className="flex items-center gap-2 text-xs">
+                    {passwordCriteria.minLength ? (
+                      <Check className="w-3 h-3 text-green-500" />
+                    ) : (
+                      <X className="w-3 h-3 text-red-500" />
+                    )}
+                    <span className={passwordCriteria.minLength ? 'text-green-600' : 'text-red-500'}>
+                      Minimum 8 caractères
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs">
+                    {passwordCriteria.hasLetter ? (
+                      <Check className="w-3 h-3 text-green-500" />
+                    ) : (
+                      <X className="w-3 h-3 text-red-500" />
+                    )}
+                    <span className={passwordCriteria.hasLetter ? 'text-green-600' : 'text-red-500'}>
+                      Au moins une lettre
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs">
+                    {passwordCriteria.hasNumber ? (
+                      <Check className="w-3 h-3 text-green-500" />
+                    ) : (
+                      <X className="w-3 h-3 text-red-500" />
+                    )}
+                    <span className={passwordCriteria.hasNumber ? 'text-green-600' : 'text-red-500'}>
+                      Au moins un chiffre
+                    </span>
+                  </div>
+                </div>
+              )}
+              {!password && (
+                <p className="mt-2 text-xs text-gray-500">
+                  Minimum 8 caractères, une lettre et un chiffre
+                </p>
+              )}
             </div>
 
             <div className="flex items-start gap-2">

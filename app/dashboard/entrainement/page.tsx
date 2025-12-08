@@ -112,16 +112,23 @@ export default function EntrainementPage() {
             
             if (user) {
               try {
-                // Récupérer la progression (sans .single() pour éviter l'erreur 406)
-                const { data: progressionData } = await supabase
-                  .from('progression_niveaux')
-                  .select('niveau_actuel')
+                // Récupérer les sessions réussies pour calculer la progression
+                const { data: sessionsData } = await supabase
+                  .from('sessions_quiz')
+                  .select('niveau, score')
                   .eq('user_id', user.id)
                   .eq('categorie_id', cat.id)
-                  .limit(1);
+                  .eq('completed', true);
 
-                if (progressionData && progressionData.length > 0) {
-                  niveauxCompletes = Math.max(0, (progressionData[0].niveau_actuel || 1) - 1);
+                if (sessionsData && sessionsData.length > 0) {
+                  // Compter les niveaux réussis (score >= 7)
+                  const niveauxReussis = new Set<number>();
+                  for (const session of sessionsData) {
+                    if (session.score >= 7) {
+                      niveauxReussis.add(session.niveau);
+                    }
+                  }
+                  niveauxCompletes = niveauxReussis.size;
                 }
               } catch {
                 // Pas de progression pour cette catégorie

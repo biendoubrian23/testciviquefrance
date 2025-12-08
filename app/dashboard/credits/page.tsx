@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import { Check, Crown, ChevronDown } from 'lucide-react';
+import { createClient } from '@/lib/supabase/client';
+import { Check, Crown, ChevronDown, Loader2, CheckCircle } from 'lucide-react';
 
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -32,22 +33,106 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   );
 }
 
+// Type pour le profil étendu avec les nouveaux champs
+interface ExtendedProfile {
+  id: string;
+  email: string;
+  prenom?: string;
+  nom?: string;
+  credits: number;
+  is_premium: boolean;
+  premium_expires_at?: string;
+  unlock_level_count?: number;
+  no_timer_enabled?: boolean;
+  flashcards_2_themes?: boolean;
+  flashcards_5_themes?: boolean;
+}
+
 export default function OffresPage() {
-  const { profile } = useAuth();
+  const { profile, refreshProfile } = useAuth();
   const [selectedOffer, setSelectedOffer] = useState<string | null>('pack_standard');
+  const [isLoading, setIsLoading] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  // Cast du profil pour accéder aux nouveaux champs
+  const extendedProfile = profile as ExtendedProfile | null;
 
   const handleSelectOffer = (offerId: string) => {
     setSelectedOffer(offerId);
   };
 
+  // Fonction pour activer un achat (simulation - plus tard Stripe)
+  const activatePurchase = async (productType: string) => {
+    setIsLoading(productType);
+    setSuccessMessage(null);
+    
+    try {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        alert('Vous devez être connecté pour effectuer un achat');
+        return;
+      }
+
+      // Appeler la fonction SQL pour activer l'achat
+      const { data, error } = await supabase.rpc('activate_purchase', {
+        p_user_id: user.id,
+        p_product_type: productType,
+        p_stripe_payment_id: null // Pour le moment, pas de Stripe
+      });
+
+      if (error) {
+        console.error('Erreur activation achat:', error);
+        alert('Erreur lors de l\'activation: ' + error.message);
+        return;
+      }
+
+      if (data) {
+        // Rafraîchir le profil pour voir les changements
+        if (refreshProfile) {
+          await refreshProfile();
+        }
+        
+        // Message de succès
+        const messages: Record<string, string> = {
+          'unlock_level': '🎉 Déblocage de niveau ajouté !',
+          'no_timer': '⏱️ Mode sans chrono activé !',
+          'flashcards_2': '📚 Flashcards 2 thèmes débloquées !',
+          'flashcards_5': '📚 Flashcards 5 thèmes débloquées !',
+          'pack_standard': '🌟 Pack Standard activé pour 7 jours !',
+          'pack_premium': '👑 Pack Premium activé pour 7 jours !',
+          'pack_examen': '📝 2 examens blancs ajoutés !'
+        };
+        
+        setSuccessMessage(messages[productType] || 'Achat activé !');
+        setTimeout(() => setSuccessMessage(null), 3000);
+      }
+    } catch (err) {
+      console.error('Erreur:', err);
+      alert('Une erreur est survenue');
+    } finally {
+      setIsLoading(null);
+    }
+  };
+
   const handlePurchase = (offerType?: string) => {
     const offer = offerType || selectedOffer;
-    // TODO: Intégrer Stripe ici
-    alert('Paiement Stripe à intégrer - Offre sélectionnée: ' + offer);
+    if (offer) {
+      activatePurchase(offer);
+    }
   };
 
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
+      {/* Message de succès */}
+      {successMessage && (
+        <div className="fixed top-4 right-4 z-50 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-pulse">
+          <CheckCircle className="w-5 h-5" />
+          {successMessage}
+        </div>
+      )}
+
       {/* En-tête */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Nos Offres</h1>
@@ -56,22 +141,54 @@ export default function OffresPage() {
         </p>
       </div>
 
-      {/* Statut actuel */}
+      {/* Statut actuel + Achats */}
       <div className="bg-gray-50 border border-gray-200 p-6">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between mb-4">
           <div>
             <p className="text-sm text-gray-500 mb-1">Votre statut</p>
             <p className="text-xl font-bold text-gray-900">
-              {profile?.is_premium ? 'Premium' : 'Gratuit'}
+              {extendedProfile?.is_premium ? 'Premium' : 'Gratuit'}
             </p>
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
               <p className="text-sm text-gray-500">Niveaux restants</p>
               <p className="text-2xl font-bold text-primary-600">
-                {profile?.is_premium ? '∞' : '3'}/jour
+                {extendedProfile?.is_premium ? '∞' : '3'}/jour
               </p>
             </div>
+          </div>
+        </div>
+        
+        {/* Afficher les achats actifs */}
+        <div className="border-t border-gray-200 pt-4 mt-4">
+          <p className="text-sm font-medium text-gray-700 mb-2">Vos achats actifs :</p>
+          <div className="flex flex-wrap gap-2">
+            {(extendedProfile?.unlock_level_count ?? 0) > 0 && (
+              <span className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                🔓 {extendedProfile?.unlock_level_count} déblocage(s) niveau
+              </span>
+            )}
+            {extendedProfile?.no_timer_enabled && (
+              <span className="inline-flex items-center px-3 py-1 bg-amber-100 text-amber-800 text-sm rounded-full">
+                ⏱️ Mode sans chrono
+              </span>
+            )}
+            {extendedProfile?.flashcards_5_themes && (
+              <span className="inline-flex items-center px-3 py-1 bg-emerald-100 text-emerald-800 text-sm rounded-full">
+                📚 Flashcards 5 thèmes
+              </span>
+            )}
+            {extendedProfile?.flashcards_2_themes && !extendedProfile?.flashcards_5_themes && (
+              <span className="inline-flex items-center px-3 py-1 bg-emerald-100 text-emerald-800 text-sm rounded-full">
+                📚 Flashcards 2 thèmes
+              </span>
+            )}
+            {!(extendedProfile?.unlock_level_count ?? 0) && 
+             !extendedProfile?.no_timer_enabled && 
+             !extendedProfile?.flashcards_2_themes && (
+              <span className="text-gray-400 text-sm">Aucun achat pour le moment</span>
+            )}
           </div>
         </div>
       </div>
@@ -272,9 +389,12 @@ export default function OffresPage() {
               <div className="text-2xl font-bold text-gray-900">0,59€</div>
               <button
                 onClick={() => handlePurchase('unlock_level')}
-                className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors"
+                disabled={isLoading === 'unlock_level'}
+                className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 flex items-center gap-2"
               >
-                Acheter
+                {isLoading === 'unlock_level' ? (
+                  <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
+                ) : 'Acheter'}
               </button>
             </div>
           </div>
@@ -300,9 +420,14 @@ export default function OffresPage() {
               <div className="text-2xl font-bold text-gray-900">0,69€</div>
               <button
                 onClick={() => handlePurchase('no_timer')}
-                className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-colors"
+                disabled={isLoading === 'no_timer' || extendedProfile?.no_timer_enabled}
+                className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-colors disabled:opacity-50 flex items-center gap-2"
               >
-                Acheter
+                {isLoading === 'no_timer' ? (
+                  <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
+                ) : extendedProfile?.no_timer_enabled ? (
+                  <><CheckCircle className="w-4 h-4" /> Activé</>
+                ) : 'Acheter'}
               </button>
             </div>
           </div>
@@ -328,9 +453,14 @@ export default function OffresPage() {
               <div className="text-2xl font-bold text-gray-900">1,20€</div>
               <button
                 onClick={() => handlePurchase('flashcards_2')}
-                className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors"
+                disabled={isLoading === 'flashcards_2' || extendedProfile?.flashcards_2_themes}
+                className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center gap-2"
               >
-                Acheter
+                {isLoading === 'flashcards_2' ? (
+                  <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
+                ) : extendedProfile?.flashcards_2_themes ? (
+                  <><CheckCircle className="w-4 h-4" /> Activé</>
+                ) : 'Acheter'}
               </button>
             </div>
           </div>
@@ -356,9 +486,14 @@ export default function OffresPage() {
               <div className="text-2xl font-bold text-gray-900">1,50€</div>
               <button
                 onClick={() => handlePurchase('flashcards_5')}
-                className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors"
+                disabled={isLoading === 'flashcards_5' || extendedProfile?.flashcards_5_themes}
+                className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors disabled:opacity-50 flex items-center gap-2"
               >
-                Acheter
+                {isLoading === 'flashcards_5' ? (
+                  <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
+                ) : extendedProfile?.flashcards_5_themes ? (
+                  <><CheckCircle className="w-4 h-4" /> Activé</>
+                ) : 'Acheter'}
               </button>
             </div>
           </div>

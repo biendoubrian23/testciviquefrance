@@ -112,29 +112,47 @@ export default function CategorieDetailPage() {
     // Récupérer la dernière session jouée pour cette catégorie
     const { data: lastSessionData } = await supabase
       .from('sessions_quiz')
-      .select('niveau, score, created_at')
+      .select('niveau, score, completed_at')
       .eq('user_id', user.id)
       .eq('categorie_id', categorieId)
       .eq('completed', true)
-      .order('created_at', { ascending: false })
+      .order('completed_at', { ascending: false })
       .limit(1)
 
     const lastSession: LastSession | null = lastSessionData && lastSessionData.length > 0 
       ? lastSessionData[0] 
       : null
 
-    // Créer la structure des 10 niveaux basée sur niveau_actuel
+    // Calculer le niveau maximum débloqué basé sur les scores réussis (>= 7/10)
+    // Un niveau N+1 est débloqué si le niveau N a été réussi avec >= 70%
+    let niveauMaxDebloque = 1 // Niveau 1 toujours débloqué
+    for (let i = 1; i <= 10; i++) {
+      const scoreNiveau = meilleursScoresParNiveau.get(i) || 0
+      // Si le niveau i a été réussi (score >= 7), débloquer le niveau i+1
+      if (scoreNiveau >= 7) {
+        niveauMaxDebloque = Math.max(niveauMaxDebloque, i + 1)
+      }
+    }
+    // Ne pas dépasser le niveau 10
+    niveauMaxDebloque = Math.min(niveauMaxDebloque, 10)
+
+    // Utiliser le max entre progression_niveaux et le calcul basé sur les scores
+    const niveauActuelFromDB = progressionData?.niveau_actuel || 1
+    const niveauActuel = Math.max(niveauActuelFromDB, niveauMaxDebloque)
+
+    // Créer la structure des 10 niveaux
     const niveauxStructure: NiveauProgression[] = []
-    const niveauActuel = progressionData?.niveau_actuel || 1
     
     for (let i = 1; i <= 10; i++) {
       const meilleurScore = meilleursScoresParNiveau.get(i) || null
       const tentatives = tentativesParNiveau.get(i) || 0
+      // Un niveau est complété si on a obtenu >= 7/10
+      const isCompleted = meilleurScore !== null && meilleurScore >= 7
       
       niveauxStructure.push({
         niveau: i,
         is_unlocked: i <= niveauActuel,
-        is_completed: i < niveauActuel,
+        is_completed: isCompleted,
         meilleur_score: meilleurScore,
         tentatives: tentatives
       })
@@ -294,6 +312,20 @@ export default function CategorieDetailPage() {
     return 'text-red-600 bg-red-50'
   }
 
+  // Retourne le nombre de questions selon la catégorie et le niveau
+  const getNombreQuestions = (niveau: number): number => {
+    // Pour "Vivre dans la société française", les niveaux 5-10 ont 5 questions
+    if (categorie?.nom === 'Vivre dans la société française' && niveau >= 5) {
+      return 5
+    }
+    // Pour "Histoire, géographie et culture", les niveaux 6-10 ont 5 questions
+    if (categorie?.nom === 'Histoire, géographie et culture' && niveau >= 6) {
+      return 5
+    }
+    // Par défaut : 10 questions
+    return 10
+  }
+
   const handleStartQuiz = (niveau: number) => {
     router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`)
   }
@@ -431,7 +463,7 @@ export default function CategorieDetailPage() {
                       </span>
                     </div>
                     <p className="text-sm text-gray-500">
-                      10 questions
+                      {getNombreQuestions(niveau.niveau)} questions
                     </p>
                     
                     {/* Affichage du score si niveau joué */}
@@ -442,11 +474,15 @@ export default function CategorieDetailPage() {
                             ? 'bg-emerald-100 text-emerald-700' 
                             : 'bg-amber-100 text-amber-700'
                         }`}>
-                          {niveau.is_completed ? (
-                            <>✓ Meilleur score : {niveau.meilleur_score}/10 ({niveau.meilleur_score * 10}%)</>
-                          ) : (
-                            <>Meilleur score : {niveau.meilleur_score}/10 ({niveau.meilleur_score * 10}%)</>
-                          )}
+                          {(() => {
+                            const nbQuestions = getNombreQuestions(niveau.niveau)
+                            const pourcentage = Math.round((niveau.meilleur_score / nbQuestions) * 100)
+                            return niveau.is_completed ? (
+                              <>✓ Meilleur score : {niveau.meilleur_score}/{nbQuestions} ({pourcentage}%)</>
+                            ) : (
+                              <>Meilleur score : {niveau.meilleur_score}/{nbQuestions} ({pourcentage}%)</>
+                            )
+                          })()}
                         </div>
                         {niveau.tentatives > 0 && (
                           <span className="text-xs text-gray-400">
