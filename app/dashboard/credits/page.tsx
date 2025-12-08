@@ -164,9 +164,9 @@ export default function OffresPage() {
         <div className="border-t border-gray-200 pt-4 mt-4">
           <p className="text-sm font-medium text-gray-700 mb-2">Vos achats actifs :</p>
           <div className="flex flex-wrap gap-2">
-            {(extendedProfile?.unlock_level_count ?? 0) > 0 && (
+            {extendedProfile?.all_levels_unlocked && (
               <span className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
-                🔓 {extendedProfile?.unlock_level_count} déblocage(s) niveau
+                🔓 Déblocage niveaux activé
               </span>
             )}
             {extendedProfile?.no_timer_enabled && (
@@ -184,7 +184,7 @@ export default function OffresPage() {
                 📚 Flashcards 2 thèmes
               </span>
             )}
-            {!(extendedProfile?.unlock_level_count ?? 0) && 
+            {!extendedProfile?.all_levels_unlocked && 
              !extendedProfile?.no_timer_enabled && 
              !extendedProfile?.flashcards_2_themes && (
               <span className="text-gray-400 text-sm">Aucun achat pour le moment</span>
