@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   XCircle
 } from 'lucide-react';
+import { CATEGORIES, getCategoryName } from '@/lib/data/categories';
 
 interface Stats {
   questionsRepondues: number;
@@ -82,18 +83,102 @@ export default function DashboardPage() {
       if (!user) return;
       
       try {
+        // OPTIMISATION: Utiliser la fonction RPC pour récupérer toutes les données en une seule requête
+        const { data: dashboardData, error: rpcError } = await supabase
+          .rpc('get_dashboard_data', { p_user_id: user.id });
+
+        if (rpcError) {
+          // Fallback: si la fonction RPC n'existe pas encore, utiliser l'ancienne méthode
+          console.error('RPC non disponible, fallback:', rpcError.message);
+          await fetchDashboardDataLegacy();
+          return;
+        }
+
+        if (dashboardData) {
+          // Statistiques
+          const statsData = dashboardData.statistiques;
+          if (statsData) {
+            const tauxReussite = statsData.total_questions_repondues > 0 
+              ? Math.round((statsData.total_bonnes_reponses / statsData.total_questions_repondues) * 100)
+              : 0;
+            
+            setStats({
+              questionsRepondues: statsData.total_questions_repondues || 0,
+              tauxReussite,
+              tempsEtude: Math.round((statsData.temps_total_etude || 0) / 3600 * 10) / 10,
+              serieJours: statsData.serie_actuelle || 0,
+            });
+          }
+
+          // Activité récente - utiliser le cache des catégories au lieu de requêtes DB
+          if (dashboardData.sessions_recentes && dashboardData.sessions_recentes.length > 0) {
+            const activities: Activity[] = dashboardData.sessions_recentes.slice(0, 5).map((s: { id: string; score: number; total_questions: number; niveau: number; categorie_id: string; completed_at: string }) => {
+              const themeName = getCategoryName(s.categorie_id); // Cache local au lieu de DB
+              // Seuil de validation : 8/10 (80%)
+              const isSuccess = s.score >= 8;
+              const totalQuestions = s.total_questions || (s.niveau <= 4 ? 10 : 5);
+              return {
+                id: s.id,
+                type: 'question' as const,
+                correct: isSuccess,
+                theme: `${themeName} - Niveau ${s.niveau}`,
+                score: s.score,
+                total: totalQuestions,
+                time: formatTimeAgo(new Date(s.completed_at)),
+              };
+            });
+            setRecentActivity(activities);
+          }
+
+          // Progression par catégorie - utiliser le cache des catégories
+          const meilleursScores = dashboardData.meilleurs_scores || [];
+          const niveauxCompletesParCategorie = new Map<string, number>();
+          
+          for (const score of meilleursScores) {
+            // Seuil de validation : 8/10 (80%)
+            if (score.meilleur_score >= 8) {
+              const current = niveauxCompletesParCategorie.get(score.categorie_id) || 0;
+              niveauxCompletesParCategorie.set(score.categorie_id, Math.max(current, score.niveau));
+            }
+          }
+
+          const categoriesWithProgress = CATEGORIES.map((cat) => {
+            const niveauxCompletes = niveauxCompletesParCategorie.get(cat.id) || 0;
+            const progress = Math.min((niveauxCompletes / 10) * 100, 100);
+            return {
+              id: cat.id,
+              name: cat.nom,
+              progress: Math.round(progress),
+              ordre: cat.ordre,
+            };
+          });
+          setCategories(categoriesWithProgress);
+        }
+
+      } catch (error) {
+        console.error('Erreur chargement dashboard:', error);
+        // Fallback en cas d'erreur
+        await fetchDashboardDataLegacy();
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    // Méthode legacy (fallback si RPC non disponible)
+    const fetchDashboardDataLegacy = async () => {
+      try {
         // Récupérer les statistiques de l'utilisateur (sans .single() pour éviter 406)
         let { data: statsList, error: statsError } = await supabase
           .from('statistiques')
           .select('*')
-          .eq('user_id', user.id)
+          .eq('user_id', user!.id)
           .limit(1);
 
         // Si pas de statistiques, les créer automatiquement (pour les anciens comptes)
         if ((!statsList || statsList.length === 0) && !statsError) {
           const { data: newStats, error: insertError } = await supabase
             .from('statistiques')
-            .insert({ user_id: user.id })
+            .insert({ user_id: user!.id })
             .select()
             .single();
           
@@ -120,29 +205,21 @@ export default function DashboardPage() {
         }
 
         // Récupérer l'activité récente depuis sessions_quiz (historique des parties)
-        const { data: sessionsData, error: sessionsError } = await supabase
+        const { data: sessionsData } = await supabase
           .from('sessions_quiz')
           .select('id, score, total_questions, niveau, categorie_id, completed, started_at, completed_at')
-          .eq('user_id', user.id)
+          .eq('user_id', user!.id)
           .eq('completed', true)
           .order('completed_at', { ascending: false, nullsFirst: false })
           .limit(10);
 
         if (sessionsData && sessionsData.length > 0) {
-          // Récupérer les noms des catégories
-          const categorieIds = [...new Set(sessionsData.map((s: { categorie_id: string }) => s.categorie_id))];
-          const { data: categoriesInfo } = await supabase
-            .from('categories')
-            .select('id, nom')
-            .in('id', categorieIds);
-
-          const categoriesMap = new Map(categoriesInfo?.map((c: { id: string; nom: string }) => [c.id, c.nom]) || []);
-
+          // Utiliser le cache des catégories au lieu d'une requête DB
           const activities: Activity[] = sessionsData.slice(0, 5).map((s: { id: string; score: number; total_questions: number; niveau: number; categorie_id: string; completed_at: string; started_at: string }) => {
-            const themeName = categoriesMap.get(s.categorie_id) || 'Entraînement';
-            const isSuccess = s.score >= 7; // 70% pour réussir
-            // Utiliser total_questions de la base, sinon fallback basé sur niveau
-            const totalQuestions = s.total_questions || (s.niveau <= 5 ? 10 : 5);
+            const themeName = getCategoryName(s.categorie_id); // Cache local
+            // Seuil de validation : 8/10 (80%)
+            const isSuccess = s.score >= 8;
+            const totalQuestions = s.total_questions || (s.niveau <= 4 ? 10 : 5);
             return {
               id: s.id,
               type: 'question' as const,
@@ -156,54 +233,39 @@ export default function DashboardPage() {
           setRecentActivity(activities);
         }
 
-        // Récupérer les catégories et calculer la progression basée sur les sessions réussies
-        const { data: categoriesData } = await supabase
-          .from('categories')
-          .select('id, nom, ordre')
-          .order('ordre');
+        // Utiliser le cache des catégories au lieu d'une requête DB
+        // Récupérer les sessions pour calculer la progression
+        const { data: allSessionsData } = await supabase
+          .from('sessions_quiz')
+          .select('categorie_id, niveau, score')
+          .eq('user_id', user!.id)
+          .eq('completed', true);
 
-        if (categoriesData) {
-          // Récupérer toutes les sessions réussies de l'utilisateur
-          const { data: sessionsData } = await supabase
-            .from('sessions_quiz')
-            .select('categorie_id, niveau, score')
-            .eq('user_id', user.id)
-            .eq('completed', true);
-
-          // Calculer le nombre de niveaux complétés par catégorie (score >= 7)
-          const niveauxCompletesParCategorie = new Map<string, number>();
-          if (sessionsData) {
-            for (const session of sessionsData) {
-              if (session.score >= 7) {
-                const current = niveauxCompletesParCategorie.get(session.categorie_id) || 0;
-                // Stocker le niveau max complété
-                niveauxCompletesParCategorie.set(
-                  session.categorie_id, 
-                  Math.max(current, session.niveau)
-                );
-              }
+        const niveauxCompletesParCategorie = new Map<string, number>();
+        if (allSessionsData) {
+          for (const session of allSessionsData) {
+            // Seuil de validation : 8/10 (80%)
+            if (session.score >= 8) {
+              const current = niveauxCompletesParCategorie.get(session.categorie_id) || 0;
+              niveauxCompletesParCategorie.set(session.categorie_id, Math.max(current, session.niveau));
             }
           }
-
-          const categoriesWithProgress = categoriesData.map((cat: { id: string; nom: string; ordre: number }) => {
-            // Le nombre de niveaux complétés = niveau max réussi
-            const niveauxCompletes = niveauxCompletesParCategorie.get(cat.id) || 0;
-            const progress = Math.min((niveauxCompletes / 10) * 100, 100);
-
-            return {
-              id: cat.id,
-              name: cat.nom,
-              progress: Math.round(progress),
-              ordre: cat.ordre,
-            };
-          });
-          setCategories(categoriesWithProgress);
         }
 
+        const categoriesWithProgress = CATEGORIES.map((cat) => {
+          const niveauxCompletes = niveauxCompletesParCategorie.get(cat.id) || 0;
+          const progress = Math.min((niveauxCompletes / 10) * 100, 100);
+          return {
+            id: cat.id,
+            name: cat.nom,
+            progress: Math.round(progress),
+            ordre: cat.ordre,
+          };
+        });
+        setCategories(categoriesWithProgress);
+
       } catch (error) {
-        console.error('Erreur chargement dashboard:', error);
-      } finally {
-        setLoading(false);
+        console.error('Erreur chargement dashboard (legacy):', error);
       }
     };
 

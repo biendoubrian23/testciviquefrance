@@ -1,5 +1,6 @@
 import { createClient } from '@/lib/supabase/server'
 import { NextRequest, NextResponse } from 'next/server'
+import { checkRateLimit, RATE_LIMITS, rateLimitResponse, getIdentifier } from '@/lib/utils/rate-limit'
 
 interface VerifyRequest {
   questionId: string
@@ -15,6 +16,14 @@ interface VerifyResponse {
 }
 
 export async function POST(request: NextRequest) {
+  // Rate limiting - 100 requêtes par minute
+  const identifier = getIdentifier(request);
+  const rateLimitResult = checkRateLimit(identifier, RATE_LIMITS.quizVerify);
+  
+  if (!rateLimitResult.success) {
+    return rateLimitResponse(rateLimitResult.resetTime);
+  }
+
   try {
     const body: VerifyRequest = await request.json()
     const { questionId, reponseId, tempsReponse, sessionId } = body

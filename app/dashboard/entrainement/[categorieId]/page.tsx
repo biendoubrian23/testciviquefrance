@@ -48,6 +48,7 @@ export default function CategorieDetailPage() {
   const [lastFailedLevel, setLastFailedLevel] = useState<number | null>(null)
   const [lastScore, setLastScore] = useState<number | null>(null)
   const [isUnlocking, setIsUnlocking] = useState(false)
+  const [allLevelsUnlocked, setAllLevelsUnlocked] = useState(false)
 
   // Limite désactivée pour le moment (sera activée avec Stripe)
   // const LIMITE_NIVEAUX_JOUR = 3
@@ -59,6 +60,16 @@ export default function CategorieDetailPage() {
       router.push('/login')
       return
     }
+
+    // Charger le profil pour savoir si l'utilisateur a débloqué tous les niveaux
+    const { data: profileData } = await supabase
+      .from('profiles')
+      .select('all_levels_unlocked')
+      .eq('id', user.id)
+      .single()
+    
+    const hasAllLevelsUnlocked = profileData?.all_levels_unlocked || false
+    setAllLevelsUnlocked(hasAllLevelsUnlocked)
 
     // Charger la catégorie (sans .single() pour éviter 406)
     const { data: categorieList } = await supabase
@@ -123,13 +134,13 @@ export default function CategorieDetailPage() {
       ? lastSessionData[0] 
       : null
 
-    // Calculer le niveau maximum débloqué basé sur les scores réussis (>= 7/10)
+    // Calculer le niveau maximum débloqué basé sur les scores réussis (>= 8/10)
     // Un niveau N+1 est débloqué si le niveau N a été réussi avec >= 70%
     let niveauMaxDebloque = 1 // Niveau 1 toujours débloqué
     for (let i = 1; i <= 10; i++) {
       const scoreNiveau = meilleursScoresParNiveau.get(i) || 0
-      // Si le niveau i a été réussi (score >= 7), débloquer le niveau i+1
-      if (scoreNiveau >= 7) {
+      // Si le niveau i a été réussi (score >= 8), débloquer le niveau i+1
+      if (scoreNiveau >= 8) {
         niveauMaxDebloque = Math.max(niveauMaxDebloque, i + 1)
       }
     }
@@ -146,11 +157,12 @@ export default function CategorieDetailPage() {
     for (let i = 1; i <= 10; i++) {
       const meilleurScore = meilleursScoresParNiveau.get(i) || null
       const tentatives = tentativesParNiveau.get(i) || 0
-      // Un niveau est complété si on a obtenu >= 7/10
-      const isCompleted = meilleurScore !== null && meilleurScore >= 7
+      // Un niveau est complété si on a obtenu >= 8/10
+      const isCompleted = meilleurScore !== null && meilleurScore >= 8
       
       niveauxStructure.push({
         niveau: i,
+        // Débloqué selon la progression normale (l'achat permet juste de passer avec 5-7/10)
         is_unlocked: i <= niveauActuel,
         is_completed: isCompleted,
         meilleur_score: meilleurScore,
@@ -312,34 +324,65 @@ export default function CategorieDetailPage() {
     return 'text-red-600 bg-red-50'
   }
 
-  // Retourne le nombre de questions selon la catégorie et le niveau
+  // Retourne le nombre de questions selon le niveau
+  // Niveaux 1-4 : 10 questions, Niveaux 5-10 : 5 questions
   const getNombreQuestions = (niveau: number): number => {
-    // Pour "Vivre dans la société française", les niveaux 5-10 ont 5 questions
-    if (categorie?.nom === 'Vivre dans la société française' && niveau >= 5) {
-      return 5
-    }
-    // Pour "Histoire, géographie et culture", les niveaux 6-10 ont 5 questions
-    if (categorie?.nom === 'Histoire, géographie et culture' && niveau >= 6) {
-      return 5
-    }
-    // Par défaut : 10 questions
-    return 10
+    return niveau <= 4 ? 10 : 5
   }
 
   const handleStartQuiz = (niveau: number) => {
     router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`)
   }
 
-  // Fonction pour débloquer le niveau suivant (micro-transaction)
+  // Fonction pour débloquer le niveau suivant (micro-transaction ou utilisation de l'achat)
   const handleUnlockNextLevel = async () => {
     if (!lastFailedLevel) return
+    
+    // Si l'utilisateur n'a pas l'achat, rediriger vers la page d'achat
+    if (!allLevelsUnlocked) {
+      router.push('/dashboard/credits')
+      return
+    }
     
     setIsUnlocking(true)
     
     try {
-      // TODO: Intégrer Stripe ici pour le paiement de 0,59€
-      // Pour l'instant, simuler un délai et débloquer directement
-      await new Promise(resolve => setTimeout(resolve, 800))
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (!user) {
+        alert('Vous devez être connecté')
+        setIsUnlocking(false)
+        return
+      }
+      
+      // Mettre à jour la progression dans la base de données
+      const { data: existingProgression } = await supabase
+        .from('progression_niveaux')
+        .select('niveau_actuel')
+        .eq('user_id', user.id)
+        .eq('categorie_id', categorieId)
+        .single()
+
+      if (existingProgression) {
+        if (lastFailedLevel >= existingProgression.niveau_actuel) {
+          await supabase
+            .from('progression_niveaux')
+            .update({ 
+              niveau_actuel: lastFailedLevel + 1,
+              updated_at: new Date().toISOString()
+            })
+            .eq('user_id', user.id)
+            .eq('categorie_id', categorieId)
+        }
+      } else {
+        await supabase
+          .from('progression_niveaux')
+          .insert({
+            user_id: user.id,
+            categorie_id: categorieId,
+            niveau_actuel: lastFailedLevel + 1
+          })
+      }
       
       // Fermer le popup et aller directement au niveau suivant
       setShowUnlockPopup(false)
@@ -579,10 +622,12 @@ export default function CategorieDetailPage() {
               
               {/* Prix et bouton */}
               <div className="bg-gradient-to-r from-primary-50 to-emerald-50 border border-primary-200 p-4 mb-4">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <Sparkles className="w-5 h-5 text-primary-600" />
-                  <span className="text-2xl font-bold text-primary-600">0,59€</span>
-                </div>
+                {!allLevelsUnlocked && (
+                  <div className="flex items-center justify-center gap-2 mb-3">
+                    <Sparkles className="w-5 h-5 text-primary-600" />
+                    <span className="text-2xl font-bold text-primary-600">0,99€</span>
+                  </div>
+                )}
                 
                 <button
                   onClick={handleUnlockNextLevel}
@@ -594,13 +639,24 @@ export default function CategorieDetailPage() {
                       <Loader2 className="w-5 h-5 animate-spin" />
                       <span>Déblocage...</span>
                     </>
+                  ) : allLevelsUnlocked ? (
+                    <>
+                      <Unlock className="w-5 h-5" />
+                      <span>Passer au niveau {lastFailedLevel + 1}</span>
+                    </>
                   ) : (
                     <>
                       <Unlock className="w-5 h-5" />
-                      <span>Débloquer le niveau {lastFailedLevel + 1}</span>
+                      <span>Acheter le déblocage</span>
                     </>
                   )}
                 </button>
+                
+                {allLevelsUnlocked && (
+                  <p className="text-xs text-center text-primary-600 mt-2">
+                    Inclus dans votre achat
+                  </p>
+                )}
               </div>
               
               {/* Option recommencer */}

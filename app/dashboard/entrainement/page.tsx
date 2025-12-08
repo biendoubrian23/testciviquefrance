@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useAuth } from '@/contexts/AuthContext';
 import { useSupabase } from '@/hooks/useSupabase';
 import { ArrowRight, CheckCircle } from 'lucide-react';
+import { CATEGORIES as CACHED_CATEGORIES } from '@/lib/data/categories';
 
 interface Category {
   id: string;
@@ -90,65 +91,58 @@ export default function EntrainementPage() {
 
   const fetchCategories = async () => {
     try {
-      // Récupérer les catégories
-      const { data: categoriesData } = await supabase
-        .from('categories')
-        .select('*')
-        .order('ordre');
+      // OPTIMISATION: Utiliser le cache des catégories au lieu d'une requête DB
+      const categoriesData = CACHED_CATEGORIES;
 
-      if (categoriesData) {
-        // Pour chaque catégorie, compter les questions et calculer la progression par niveaux
-        const categoriesWithStats = await Promise.all(
-          categoriesData.map(async (cat: { id: string; nom: string; description: string; ordre: number }) => {
-            // Compter les questions de cette catégorie
-            const { count: questionsCount } = await supabase
-              .from('questions')
-              .select('id', { count: 'exact', head: true })
-              .eq('categorie_id', cat.id);
+      // Pour chaque catégorie, calculer la progression par niveaux
+      const categoriesWithStats = await Promise.all(
+        categoriesData.map(async (cat) => {
+          // Calculer la progression par niveaux si l'utilisateur est connecté
+          let niveauxCompletes = 0;
+          const totalNiveaux = 10;
+          
+          if (user) {
+            try {
+              // Récupérer les sessions réussies pour calculer la progression
+              const { data: sessionsData } = await supabase
+                .from('sessions_quiz')
+                .select('niveau, score')
+                .eq('user_id', user.id)
+                .eq('categorie_id', cat.id)
+                .eq('completed', true);
 
-            // Calculer la progression par niveaux si l'utilisateur est connecté
-            let niveauxCompletes = 0;
-            const totalNiveaux = 10;
-            
-            if (user) {
-              try {
-                // Récupérer les sessions réussies pour calculer la progression
-                const { data: sessionsData } = await supabase
-                  .from('sessions_quiz')
-                  .select('niveau, score')
-                  .eq('user_id', user.id)
-                  .eq('categorie_id', cat.id)
-                  .eq('completed', true);
-
-                if (sessionsData && sessionsData.length > 0) {
-                  // Compter les niveaux réussis (score >= 7)
-                  const niveauxReussis = new Set<number>();
-                  for (const session of sessionsData) {
-                    if (session.score >= 7) {
-                      niveauxReussis.add(session.niveau);
-                    }
+              if (sessionsData && sessionsData.length > 0) {
+                // Compter les niveaux réussis (score >= 8 soit 80%)
+                const niveauxReussis = new Set<number>();
+                for (const session of sessionsData) {
+                  if (session.score >= 8) {
+                    niveauxReussis.add(session.niveau);
                   }
-                  niveauxCompletes = niveauxReussis.size;
                 }
-              } catch {
-                // Pas de progression pour cette catégorie
+                niveauxCompletes = niveauxReussis.size;
               }
+            } catch {
+              // Pas de progression pour cette catégorie
             }
+          }
 
-            const progress = Math.round((niveauxCompletes / totalNiveaux) * 100);
+          const progress = Math.round((niveauxCompletes / totalNiveaux) * 100);
 
-            return {
-              ...cat,
-              questionsCount: questionsCount || 0,
-              niveauxCompletes,
-              totalNiveaux,
-              progress,
-            };
-          })
-        );
+          return {
+            id: cat.id,
+            nom: cat.nom,
+            description: cat.description,
+            ordre: cat.ordre,
+            questionsCount: 70, // 4 niveaux x 10 questions + 6 niveaux x 5 questions = 70
+            niveauxCompletes,
+            totalNiveaux,
+            progress,
+          };
+        })
+      );
 
-        setCategories(categoriesWithStats);
-      }
+      setCategories(categoriesWithStats);
+      setCategories(categoriesWithStats);
     } catch (error) {
       console.error('Erreur chargement catégories:', error);
     } finally {
@@ -220,7 +214,7 @@ export default function EntrainementPage() {
                   </div>
                 )}
                 
-                <div className={`mt-4 flex items-center ${colors.accent} font-medium text-sm group-hover:opacity-100 sm:opacity-0 transition-opacity`}>
+                <div className={`mt-4 flex items-center ${colors.accent} font-medium text-sm`}>
                   Commencer <ArrowRight className="w-4 h-4 ml-1" />
                 </div>
               </Link>
@@ -229,12 +223,13 @@ export default function EntrainementPage() {
         </div>
       )}
 
-      {/* Info sur les crédits */}
+      {/* Info sur le fonctionnement */}
       <div className="bg-gray-50 border border-gray-200 p-5 sm:p-6">
         <h3 className="font-bold text-gray-900 mb-2">Comment fonctionne l&apos;entraînement ?</h3>
         <p className="text-gray-600 text-sm">
-          Chaque question répondue coûte 1 crédit. Vous recevez l&apos;explication détaillée après chaque réponse.
-          Les membres Premium ont un accès illimité à toutes les questions.
+          Chaque thème comporte 10 niveaux de difficulté croissante. Pour valider un niveau et débloquer le suivant, 
+          vous devez obtenir au moins <strong>8 bonnes réponses sur 10</strong> (80%). 
+          Une explication détaillée est fournie après chaque question pour vous aider à progresser.
         </p>
       </div>
     </div>

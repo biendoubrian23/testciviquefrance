@@ -26,6 +26,21 @@ const carouselSlides = [
     title: 'Examens blancs réalistes',
     subtitle: 'Conditions identiques au vrai test',
   },
+  // {
+  //   image: '/carousselle5.webp',
+  //   title: 'Devenez citoyen français',
+  //   subtitle: 'Votre parcours vers la citoyenneté commence ici',
+  // },
+  // {
+  //   image: '/carousselle6.webp',
+  //   title: 'La France vous attend',
+  //   subtitle: 'Maîtrisez les valeurs de la République',
+  // },
+  {
+    image: '/carousselle7.webp',
+    title: 'Réussissez du premier coup',
+    subtitle: 'Une méthode éprouvée par des milliers de candidats',
+  },
 ];
 
 export default function Hero() {
@@ -133,7 +148,7 @@ export default function Hero() {
 
             <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up delay-200 lg:delay-100">
               Préparez-vous efficacement pour obtenir votre titre de séjour 
-              pluriannuel ou son renouvellement. Des centaines de questions 
+              pluriannuel, son renouvellement ou votre naturalisation. Des centaines de questions 
               officielles, des cours complets et des examens blancs.
             </p>
 

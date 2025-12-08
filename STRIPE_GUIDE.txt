@@ -1,0 +1,233 @@
+===============================================================================
+                    GUIDE STRIPE - PAIEMENTS RÉCURRENTS & UNIQUES
+                    Basé sur les meilleures pratiques (vidéo YouTube)
+===============================================================================
+
+📋 RÉSUMÉ
+---------
+Méthode simple pour accepter des paiements avec Stripe en utilisant :
+- Payment Links (liens de paiement hébergés par Stripe)
+- Webhooks (notifications automatiques)
+- Customer Portal (gestion des abonnements par le client)
+
+===============================================================================
+
+🛠️ CONFIGURATION STRIPE (Dashboard)
+====================================
+
+1. CRÉER UN PRODUIT
+   - Aller sur Stripe Dashboard > Product Catalog
+   - "Add a new product"
+   - Nom : "Déblocage niveaux - Test Civique"
+   - Prix : 0,99€ (paiement unique)
+
+2. CRÉER UN PAYMENT LINK
+   - Sélectionner le produit > "Create payment link"
+   - ✅ Cocher "Allow business customers to provide tax ID" (pour TVA)
+   - After payment > Custom message :
+     "Merci pour votre achat ! Retournez sur l'application et rafraîchissez la page."
+   - Copier le Payment Link URL
+   - Copier le Price ID (commence par price_...)
+
+3. RÉCUPÉRER LES CLÉS API
+   - Developer > API Keys
+   - Copier la "Secret Key" (sk_test_... ou sk_live_...)
+   - ⚠️ Ne JAMAIS exposer côté client !
+
+===============================================================================
+
+🔗 INTÉGRATION PAYMENT LINK (Frontend)
+======================================
+
+// Quand l'utilisateur clique sur "Acheter"
+const handlePurchase = () => {
+  const paymentLink = "https://buy.stripe.com/votre_link"
+  const userEmail = user.email
+  
+  // Ouvrir Stripe avec l'email pré-rempli
+  window.open(`${paymentLink}?prefilled_email=${encodeURIComponent(userEmail)}`)
+}
+
+✅ Avantages :
+- Zéro code backend pour le paiement
+- Page sécurisée hébergée par Stripe
+- Supporte cartes, Apple Pay, Google Pay
+
+===============================================================================
+
+🪝 WEBHOOKS - CONFIGURATION
+===========================
+
+1. EN DÉVELOPPEMENT LOCAL
+   - Installer Stripe CLI : https://stripe.com/docs/stripe-cli
+   - Terminal 1 : stripe login
+   - Terminal 2 : stripe listen --forward-to localhost:3000/api/webhook/stripe
+   - Copier le Webhook Signing Secret (whsec_...)
+
+2. EN PRODUCTION
+   - Dashboard > Developers > Webhooks > Add endpoint
+   - URL : https://votredomaine.com/api/webhook/stripe
+   - Événements à écouter :
+     ✅ checkout.session.completed (paiement réussi)
+     ✅ customer.subscription.deleted (abonnement annulé)
+
+===============================================================================
+
+🪝 WEBHOOKS - CODE API (Next.js)
+================================
+
+// app/api/webhook/stripe/route.ts
+
+import Stripe from 'stripe'
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
+
+export async function POST(req: Request) {
+  const body = await req.text()
+  const signature = req.headers.get('stripe-signature')!
+
+  let event: Stripe.Event
+
+  // Vérifier que le webhook vient bien de Stripe
+  try {
+    event = stripe.webhooks.constructEvent(body, signature, webhookSecret)
+  } catch (err) {
+    return new Response('Webhook signature verification failed', { status: 400 })
+  }
+
+  // Traiter les événements
+  switch (event.type) {
+    case 'checkout.session.completed':
+      // Paiement réussi → Activer l'accès
+      const session = event.data.object as Stripe.Checkout.Session
+      const customerEmail = session.customer_details?.email
+      
+      // Mettre à jour la base de données
+      await activateUserAccess(customerEmail)
+      break
+
+    case 'customer.subscription.deleted':
+      // Abonnement annulé → Révoquer l'accès
+      const subscription = event.data.object as Stripe.Subscription
+      const customerId = subscription.customer as string
+      
+      await revokeUserAccess(customerId)
+      break
+  }
+
+  return new Response('OK', { status: 200 })
+}
+
+===============================================================================
+
+📧 ÉVÉNEMENTS STRIPE UTILES
+===========================
+
+ESSENTIELS :
+- checkout.session.completed  → Paiement réussi, donner accès
+- customer.subscription.deleted → Fin abonnement, révoquer accès
+
+OPTIONNELS (marketing/avancé) :
+- checkout.session.expired → Client a quitté sans payer
+  → Envoyer email "Vous avez oublié ? -20% avec ce code"
+  
+- invoice.payment_failed → Carte refusée
+  → Attendre fin du cycle avant de couper l'accès (plus friendly)
+  
+- invoice.paid → Paiement mensuel réussi
+  → Utile si vous coupez l'accès immédiatement après échec
+
+===============================================================================
+
+👤 CUSTOMER PORTAL (Gestion abonnement)
+=======================================
+
+1. CONFIGURATION
+   - Dashboard > Settings > Billing > Customer portal
+   - Activer les options souhaitées (annulation, upgrade, etc.)
+   - Copier le lien du Customer Portal
+
+2. INTÉGRATION
+   const customerPortalLink = "https://billing.stripe.com/p/login/votre_link"
+   
+   // Bouton "Gérer mon abonnement"
+   <a href={`${customerPortalLink}?prefilled_email=${user.email}`}>
+     Gérer mon abonnement
+   </a>
+
+✅ Le client peut :
+- Télécharger ses factures PDF
+- Changer de carte bancaire
+- Annuler son abonnement
+- Modifier son plan
+
+===============================================================================
+
+🚀 CHECKLIST PRODUCTION
+=======================
+
+□ Désactiver le mode test sur Stripe
+□ Remplacer les clés API test par les clés live
+□ Créer le webhook en production (URL réelle)
+□ Tester un vrai paiement avec une vraie carte
+□ Vérifier les emails de confirmation Stripe
+□ Configurer les emails automatiques (Settings > Emails)
+
+===============================================================================
+
+💡 CONSEILS DE L'EXPERT
+=======================
+
+1. PAIEMENT UNIQUE vs ABONNEMENT
+   "Quand vous débutez, un paiement unique (ex: 99€ à vie) est 
+   BEAUCOUP plus facile à vendre qu'un abonnement (ex: 19€/mois).
+   Ça vous motive car vous faites des ventes rapidement."
+
+2. PRÉ-REMPLIR L'EMAIL
+   Toujours passer l'email de l'utilisateur connecté dans l'URL
+   → ?prefilled_email=user@example.com
+   → Évite les erreurs et facilite le matching dans la DB
+
+3. MESSAGE POST-PAIEMENT
+   Toujours dire au client de "rafraîchir la page" ou "retourner 
+   sur l'app" après le paiement pour voir ses accès.
+
+4. EMAIL DE BIENVENUE
+   Après le webhook checkout.session.completed, envoyer un email
+   avec le lien de connexion en cas où le client ferme l'onglet.
+
+5. GESTION DES ÉCHECS DE PAIEMENT
+   Ne pas couper l'accès immédiatement si la carte est refusée.
+   Attendre la fin du cycle de facturation (plus friendly).
+
+===============================================================================
+
+📁 VARIABLES D'ENVIRONNEMENT NÉCESSAIRES
+========================================
+
+# .env.local
+STRIPE_SECRET_KEY=sk_test_... (ou sk_live_... en prod)
+STRIPE_WEBHOOK_SECRET=whsec_...
+STRIPE_PAYMENT_LINK=https://buy.stripe.com/...
+STRIPE_PRICE_ID=price_...
+
+===============================================================================
+
+🎯 POUR NOTRE CAS (Test Civique France)
+=======================================
+
+Notre cas est SIMPLE : paiement unique de 0,99€
+
+1. Créer le produit "Déblocage niveaux" sur Stripe (0,99€, one-time)
+2. Créer un Payment Link
+3. Créer le webhook qui écoute checkout.session.completed
+4. Dans le webhook : appeler activate_purchase(user_id) sur Supabase
+5. L'utilisateur a maintenant all_levels_unlocked = true
+
+Pas besoin de :
+- Customer Portal (pas d'abonnement à gérer)
+- customer.subscription.deleted (pas d'abonnement)
+- Factures complexes (Stripe envoie le reçu automatiquement)
+
+===============================================================================

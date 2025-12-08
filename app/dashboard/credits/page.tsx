@@ -42,7 +42,7 @@ interface ExtendedProfile {
   credits: number;
   is_premium: boolean;
   premium_expires_at?: string;
-  unlock_level_count?: number;
+  all_levels_unlocked?: boolean; // Déblocage universel de tous les niveaux
   no_timer_enabled?: boolean;
   flashcards_2_themes?: boolean;
   flashcards_5_themes?: boolean;
@@ -96,7 +96,7 @@ export default function OffresPage() {
         
         // Message de succès
         const messages: Record<string, string> = {
-          'unlock_level': '🎉 Déblocage de niveau ajouté !',
+          'unlock_level': '🎉 Tous les niveaux sont maintenant débloqués !',
           'no_timer': '⏱️ Mode sans chrono activé !',
           'flashcards_2': '📚 Flashcards 2 thèmes débloquées !',
           'flashcards_5': '📚 Flashcards 5 thèmes débloquées !',
@@ -383,17 +383,19 @@ export default function OffresPage() {
               <p className="text-sm text-gray-500 mt-1">
                 Continuez votre progression sans avoir à recommencer.
               </p>
-              <p className="text-xs text-gray-400 mt-2">Valable sur tous les thèmes</p>
+              <p className="text-xs text-gray-400 mt-2">Valable si score entre 5/10 et 7/10</p>
             </div>
             <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-              <div className="text-2xl font-bold text-gray-900">0,59€</div>
+              <div className="text-2xl font-bold text-gray-900">0,99€</div>
               <button
                 onClick={() => handlePurchase('unlock_level')}
-                disabled={isLoading === 'unlock_level'}
+                disabled={isLoading === 'unlock_level' || extendedProfile?.all_levels_unlocked}
                 className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 flex items-center gap-2"
               >
                 {isLoading === 'unlock_level' ? (
                   <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
+                ) : extendedProfile?.all_levels_unlocked ? (
+                  <><CheckCircle className="w-4 h-4" /> Activé</>
                 ) : 'Acheter'}
               </button>
             </div>

@@ -100,7 +100,7 @@ export default function AidePage() {
         <div>
           <FAQItem 
             question="Comment fonctionne la préparation ?"
-            answer="Choisissez une catégorie (Valeurs de la République, Histoire, Géographie, Institutions), puis progressez niveau par niveau. Chaque niveau contient 10 questions avec un timer de 30 secondes. Validez un niveau avec 7/10 pour débloquer le suivant."
+            answer="Choisissez une catégorie (Valeurs de la République, Histoire, Géographie, Institutions), puis progressez niveau par niveau. Chaque niveau contient 10 questions avec un timer de 30 secondes. Validez un niveau avec 8/10 pour débloquer le suivant."
           />
           <FAQItem 
             question="Quelles sont les différentes offres disponibles ?"

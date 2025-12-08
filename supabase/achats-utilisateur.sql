@@ -13,7 +13,7 @@ ADD COLUMN IF NOT EXISTS flashcards_5_themes BOOLEAN DEFAULT FALSE,
 ADD COLUMN IF NOT EXISTS last_purchase_at TIMESTAMPTZ;
 
 -- Commentaires pour documenter les colonnes
-COMMENT ON COLUMN public.profiles.unlock_level_count IS 'Nombre de déblocages de niveau disponibles (0,59€ chacun)';
+COMMENT ON COLUMN public.profiles.unlock_level_count IS 'Nombre de déblocages de niveau disponibles (0,99€ chacun)';
 COMMENT ON COLUMN public.profiles.no_timer_enabled IS 'Mode sans chrono activé (0,69€)';
 COMMENT ON COLUMN public.profiles.flashcards_2_themes IS 'Accès aux flashcards 2 thèmes (1,20€)';
 COMMENT ON COLUMN public.profiles.flashcards_5_themes IS 'Accès aux flashcards 5 thèmes (1,50€)';

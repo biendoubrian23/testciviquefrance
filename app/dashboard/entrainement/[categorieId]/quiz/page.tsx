@@ -26,6 +26,30 @@ import {
   CATEGORIE_HISTOIRE_GEO_CULTURE_ID
 } from '@/lib/data/quiz-histoire-geo-culture'
 
+// Import des questions locales (hashées) - Système institutionnel et politique
+import { 
+  getQuestionsInstitutions,
+} from '@/lib/data/quiz-institutions'
+
+// Import des questions locales (hashées) - Droits et devoirs
+import { 
+  getQuestionsDroitsDevoirs,
+} from '@/lib/data/quiz-droits-devoirs'
+
+// Import des questions locales (hashées) - Symboles de la France
+import { 
+  getQuestionsSymboles,
+} from '@/lib/data/quiz-symboles'
+
+// ID de la catégorie Institutions
+const CATEGORIE_INSTITUTIONS_ID = '1631db93-aa8a-451b-ab61-9f5c30c0248f';
+
+// ID de la catégorie Droits et devoirs
+const CATEGORIE_DROITS_DEVOIRS_ID = '664907da-cad7-47e1-ade1-d7f4044c83db';
+
+// ID de la catégorie Symboles de la France
+const CATEGORIE_SYMBOLES_ID = '85fffbbc-168f-4aa9-9e0d-361a758afff3';
+
 // Interface pour les questions avec options mélangées
 interface ShuffledQuestion extends QuizQuestion {
   shuffledOptions: string[]
@@ -68,7 +92,7 @@ export default function QuizPage() {
   // États pour les achats utilisateur
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null)
   const [noTimerMode, setNoTimerMode] = useState(false)
-  const [unlockLevelCount, setUnlockLevelCount] = useState(0)
+  const [allLevelsUnlocked, setAllLevelsUnlocked] = useState(false) // Débloque TOUS les niveaux
   
   // Timer - peut être désactivé si mode sans chrono
   const DEFAULT_TIMER = 5 // 5 secondes par défaut
@@ -97,14 +121,14 @@ export default function QuizPage() {
       if (user) {
         const { data: profile } = await supabase
           .from('profiles')
-          .select('unlock_level_count, no_timer_enabled')
+          .select('all_levels_unlocked, no_timer_enabled')
           .eq('id', user.id)
           .single()
         
         if (profile) {
           setUserProfile(profile)
           setNoTimerMode(profile.no_timer_enabled || false)
-          setUnlockLevelCount(profile.unlock_level_count || 0)
+          setAllLevelsUnlocked(profile.all_levels_unlocked || false)
         }
       }
     }
@@ -280,6 +304,21 @@ export default function QuizPage() {
     // Vérifier si c'est la catégorie "Histoire, géographie et culture"
     if (catId === CATEGORIE_HISTOIRE_GEO_CULTURE_ID || catId === '98ce105f-bfc6-425c-a1d9-b841ddae4016') {
       return getQuestionsHistoireGeoCulture(niv)
+    }
+    
+    // Vérifier si c'est la catégorie "Système institutionnel et politique"
+    if (catId === CATEGORIE_INSTITUTIONS_ID || catId === '1631db93-aa8a-451b-ab61-9f5c30c0248f') {
+      return getQuestionsInstitutions(niv)
+    }
+    
+    // Vérifier si c'est la catégorie "Droits et devoirs"
+    if (catId === CATEGORIE_DROITS_DEVOIRS_ID || catId === '664907da-cad7-47e1-ade1-d7f4044c83db') {
+      return getQuestionsDroitsDevoirs(niv)
+    }
+    
+    // Vérifier si c'est la catégorie "Symboles de la France"
+    if (catId === CATEGORIE_SYMBOLES_ID || catId === '85fffbbc-168f-4aa9-9e0d-361a758afff3') {
+      return getQuestionsSymboles(niv)
     }
     
     // Par défaut: Principes et valeurs de la République
@@ -460,9 +499,10 @@ export default function QuizPage() {
     router.push('/dashboard/credits')
   }
 
-  // Utiliser un déblocage de niveau pour passer au suivant
+  // Utiliser le déblocage (achat) pour passer au niveau suivant avec un score de 5-7/10
   const handleUseUnlockLevel = async () => {
-    if (unlockLevelCount <= 0) {
+    // Si l'utilisateur n'a pas l'achat, rediriger vers la page d'achat
+    if (!allLevelsUnlocked) {
       router.push('/dashboard/credits')
       return
     }
@@ -475,30 +515,49 @@ export default function QuizPage() {
       
       if (!user) {
         alert('Vous devez être connecté')
+        setIsUnlocking(false)
         return
       }
       
-      // Appeler la fonction SQL pour utiliser un déblocage
-      const { data, error } = await supabase.rpc('use_unlock_level', {
-        p_user_id: user.id
-      })
-      
-      if (error) {
-        console.error('Erreur déblocage:', error)
-        alert('Erreur lors du déblocage')
-        return
+      // Mettre à jour la progression dans la base de données
+      // Vérifier si une progression existe déjà pour cette catégorie
+      const { data: existingProgression } = await supabase
+        .from('progression_niveaux')
+        .select('niveau_actuel')
+        .eq('user_id', user.id)
+        .eq('categorie_id', categorieId)
+        .single()
+
+      if (existingProgression) {
+        // Mettre à jour seulement si le nouveau niveau est plus élevé
+        if (niveau >= existingProgression.niveau_actuel) {
+          await supabase
+            .from('progression_niveaux')
+            .update({ 
+              niveau_actuel: niveau + 1,
+              updated_at: new Date().toISOString()
+            })
+            .eq('user_id', user.id)
+            .eq('categorie_id', categorieId)
+        }
+      } else {
+        // Créer la progression pour cette catégorie
+        await supabase
+          .from('progression_niveaux')
+          .insert({
+            user_id: user.id,
+            categorie_id: categorieId,
+            niveau_actuel: niveau + 1
+          })
       }
       
-      if (data) {
-        // Mettre à jour le compteur local
-        setUnlockLevelCount(prev => prev - 1)
-        
-        // Effacer l'état et passer au niveau suivant
-        clearQuizState()
-        window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
-      }
+      // Passer au niveau suivant
+      clearQuizState()
+      window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
+      
     } catch (err) {
       console.error('Erreur:', err)
+      alert('Une erreur est survenue')
     } finally {
       setIsUnlocking(false)
     }
@@ -574,8 +633,8 @@ export default function QuizPage() {
           if (updateStatsError) console.error('Erreur update statistiques:', updateStatsError)
         }
 
-        // Si le quiz est réussi (score >= 7/10), débloquer le niveau suivant
-        if (score >= 7 && niveau < 10) {
+        // Si le quiz est réussi (score >= 8/10), débloquer le niveau suivant
+        if (score >= 8 && niveau < 10) {
           // Vérifier si une progression existe déjà pour cette catégorie
           const { data: existingProgression } = await supabase
             .from('progression_niveaux')
@@ -620,7 +679,7 @@ export default function QuizPage() {
       setShowCelebration(true)
     }
     
-    // Afficher le paywall après 5 secondes si score entre 5 et 7
+    // Afficher le paywall après 5 secondes si score entre 5 et 7 (pas assez pour passer à 8/10)
     if (score >= 5 && score <= 7 && niveau < 10) {
       setTimeout(() => {
         setShowPaywall(true)
@@ -690,7 +749,7 @@ export default function QuizPage() {
     const totalQuestions = reponses.length
     const score = reponses.filter(r => r.is_correct).length
     const percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0
-    const isSuccess = percentage >= 70
+    const isSuccess = percentage >= 80 // 8/10 requis pour passer
     
     return (
       <>
@@ -778,9 +837,9 @@ export default function QuizPage() {
                   <div>
                     <h4 className="font-bold text-gray-900 text-sm">Vous étiez proche !</h4>
                     <p className="text-xs text-gray-600">
-                      {unlockLevelCount > 0 
-                        ? `Vous avez ${unlockLevelCount} déblocage(s) disponible(s)`
-                        : 'Passez directement au niveau suivant'}
+                      {allLevelsUnlocked 
+                        ? 'Passez au niveau suivant grâce à votre achat'
+                        : 'Débloquez le niveau suivant sans recommencer'}
                     </p>
                   </div>
                 </div>
@@ -795,23 +854,25 @@ export default function QuizPage() {
                       <Loader2 className="w-4 h-4 animate-spin" />
                       <span>Déblocage...</span>
                     </>
-                  ) : unlockLevelCount > 0 ? (
+                  ) : allLevelsUnlocked ? (
                     <>
                       <Sparkles className="w-4 h-4" />
-                      <span>Utiliser un déblocage</span>
-                      <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">Gratuit</span>
+                      <span>Passer au niveau suivant</span>
+                      <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">Inclus</span>
                     </>
                   ) : (
                     <>
                       <Sparkles className="w-4 h-4" />
-                      <span>Acheter un déblocage</span>
-                      <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">0,59€</span>
+                      <span>Débloquer le niveau suivant</span>
+                      <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">0,99€</span>
                     </>
                   )}
                 </button>
               
                 <p className="text-center text-xs text-gray-500 mt-2">
-                  Continuez votre progression sans attendre
+                  {allLevelsUnlocked 
+                    ? 'Valable pour tous vos scores entre 5 et 7/10' 
+                    : 'Achat unique - valable sur tous les thèmes'}
                 </p>
               </div>
             )}
@@ -830,7 +891,7 @@ export default function QuizPage() {
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   }`}
                 >
-                  {isSuccess ? 'Passer au niveau suivant' : 'Niveau suivant (70% requis)'}
+                  {isSuccess ? 'Passer au niveau suivant' : 'Niveau suivant (80% requis)'}
                 </button>
               )}
             
