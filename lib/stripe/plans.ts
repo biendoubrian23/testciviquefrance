@@ -41,6 +41,7 @@ export const STRIPE_PLANS = {
     productId: 'prod_TZCGcvKKQk8sr8',
     price: 2.50,
     interval: 'one_time' as const,
+    requiresSubscription: false,
     features: [
       '2 examens blancs complets',
       'Conditions réelles d\'examen',
@@ -81,6 +82,40 @@ export const STRIPE_PLANS = {
       'Droits et devoirs',
       'Vivre en France',
       'Accès complet'
+    ]
+  },
+  noTimer: {
+    name: 'Mode sans chrono',
+    priceId: process.env.NODE_ENV === 'development'
+      ? 'price_1ScD3jEuT9agNbEUr6pPpLW5'
+      : 'price_1ScD3jEuT9agNbEUr6pPpLW5',
+    paymentLink: 'https://buy.stripe.com/test_eVq4gze7J6aE9015Oh0Ny05',
+    productId: 'prod_TZLl2IH0BChI0e',
+    price: 0.69,
+    interval: 'one_time' as const,
+    requiresSubscription: true,
+    features: [
+      'Répondez sans pression',
+      'Pas de limite de temps',
+      'Par quiz',
+      'Achat unique'
+    ]
+  },
+  unlockLevel: {
+    name: 'Débloquer niveau suivant',
+    priceId: process.env.NODE_ENV === 'development'
+      ? 'price_1ScD38EuT9agNbEUOUHjdZi2'
+      : 'price_1ScD38EuT9agNbEUOUHjdZi2',
+    paymentLink: 'https://buy.stripe.com/test_aFa4gzgfR1UodghccF0Ny06',
+    productId: 'prod_TZLkq1450VAwyu',
+    price: 0.99,
+    interval: 'one_time' as const,
+    requiresSubscription: true,
+    features: [
+      'Continuez votre progression',
+      'Sans recommencer',
+      'Valable si score 5-7/10',
+      'Achat unique'
     ]
   }
 };

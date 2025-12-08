@@ -73,8 +73,8 @@ export default function OffresPage() {
     setSelectedOffer(offerId);
   };
 
-  // Fonction pour rediriger vers Stripe pour les achats ponctuels
-  const redirectToStripeCheckout = async (planKey: 'examen' | 'flashcards2Themes' | 'flashcards5Themes') => {
+  // Fonction pour rediriger vers Stripe pour les achats ponctuels (avec ou sans vérification abonnement)
+  const redirectToStripeCheckout = async (planKey: 'examen' | 'flashcards2Themes' | 'flashcards5Themes' | 'noTimer' | 'unlockLevel') => {
     try {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
@@ -84,7 +84,13 @@ export default function OffresPage() {
         return;
       }
 
+      // Vérifier si ce produit nécessite un abonnement
       const plan = STRIPE_PLANS[planKey];
+      if (plan.requiresSubscription && extendedProfile?.subscription_status !== 'active') {
+        alert('⚠️ Cet achat nécessite un abonnement actif (Standard ou Premium).\n\nVeuillez d\'abord souscrire à un abonnement.');
+        return;
+      }
+
       const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`;
       window.location.href = checkoutUrl;
     } catch (err) {
@@ -93,60 +99,7 @@ export default function OffresPage() {
     }
   };
 
-  // Fonction pour activer un achat (simulation - plus tard Stripe)
-  const activatePurchase = async (productType: string) => {
-    setIsLoading(productType);
-    setSuccessMessage(null);
-    
-    try {
-      const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        alert('Vous devez être connecté pour effectuer un achat');
-        return;
-      }
 
-      // Appeler la fonction SQL pour activer l'achat
-      const { data, error } = await supabase.rpc('activate_purchase', {
-        p_user_id: user.id,
-        p_product_type: productType,
-        p_stripe_payment_id: null // Pour le moment, pas de Stripe
-      });
-
-      if (error) {
-        console.error('Erreur activation achat:', error);
-        alert('Erreur lors de l\'activation: ' + error.message);
-        return;
-      }
-
-      if (data) {
-        // Rafraîchir le profil pour voir les changements
-        if (refreshProfile) {
-          await refreshProfile();
-        }
-        
-        // Message de succès
-        const messages: Record<string, string> = {
-          'unlock_level': '🎉 Tous les niveaux sont maintenant débloqués !',
-          'no_timer': '⏱️ Mode sans chrono activé !',
-          'flashcards_2': '📚 Flashcards 2 thèmes débloquées !',
-          'flashcards_5': '📚 Flashcards 5 thèmes débloquées !',
-          'pack_standard': '🌟 Pack Standard activé pour 7 jours !',
-          'pack_premium': '👑 Pack Premium activé pour 7 jours !',
-          'pack_examen': '📝 2 examens blancs ajoutés !'
-        };
-        
-        setSuccessMessage(messages[productType] || 'Achat activé !');
-        setTimeout(() => setSuccessMessage(null), 3000);
-      }
-    } catch (err) {
-      console.error('Erreur:', err);
-      alert('Une erreur est survenue');
-    } finally {
-      setIsLoading(null);
-    }
-  };
 
   // Fonction pour les abonnements Stripe (Standard, Premium, Examen)
   const handleStripePurchase = async (planType: 'standard' | 'premium' | 'examen') => {
@@ -162,56 +115,6 @@ export default function OffresPage() {
     // Rediriger vers Stripe avec l'email pré-rempli
     const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email || '')}`;
     window.location.href = checkoutUrl;
-  };
-
-  // Fonction pour les micro-transactions (ancien système)
-  const handlePurchase = async (productType: string) => {
-    setIsLoading(productType);
-    setSuccessMessage(null);
-    
-    try {
-      const supabase = createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      
-      if (!user) {
-        alert('Vous devez être connecté pour effectuer un achat');
-        return;
-      }
-
-      // Appeler la fonction SQL pour activer l'achat
-      const { data, error } = await supabase.rpc('activate_purchase', {
-        p_user_id: user.id,
-        p_product_type: productType,
-        p_stripe_payment_id: null
-      });
-
-      if (error) {
-        console.error('Erreur activation achat:', error);
-        alert('Erreur lors de l\'activation: ' + error.message);
-        return;
-      }
-
-      if (data) {
-        if (refreshProfile) {
-          await refreshProfile();
-        }
-        
-        const messages: Record<string, string> = {
-          'unlock_level': '🎉 Tous les niveaux sont maintenant débloqués !',
-          'no_timer': '⏱️ Mode sans chrono activé !',
-          'flashcards_2': '📚 Flashcards 2 thèmes débloquées !',
-          'flashcards_5': '📚 Flashcards 5 thèmes débloquées !'
-        };
-        
-        setSuccessMessage(messages[productType] || 'Achat activé !');
-        setTimeout(() => setSuccessMessage(null), 3000);
-      }
-    } catch (err) {
-      console.error('Erreur:', err);
-      alert('Une erreur est survenue');
-    } finally {
-      setIsLoading(null);
-    }
   };
 
   return (
@@ -511,17 +414,21 @@ export default function OffresPage() {
             </div>
             <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
               <div className="text-2xl font-bold text-gray-900">0,99€</div>
-              <button
-                onClick={() => handlePurchase('unlock_level')}
-                disabled={isLoading === 'unlock_level' || extendedProfile?.all_levels_unlocked}
-                className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors disabled:opacity-50 flex items-center gap-2"
-              >
-                {isLoading === 'unlock_level' ? (
-                  <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
-                ) : extendedProfile?.all_levels_unlocked ? (
-                  <><CheckCircle className="w-4 h-4" /> Activé</>
-                ) : 'Acheter'}
-              </button>
+              {extendedProfile?.all_levels_unlocked ? (
+                <button
+                  disabled
+                  className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2"
+                >
+                  <CheckCircle className="w-4 h-4" /> Activé
+                </button>
+              ) : (
+                <button
+                  onClick={() => redirectToStripeCheckout('unlockLevel')}
+                  className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors flex items-center gap-2"
+                >
+                  Acheter
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -544,17 +451,21 @@ export default function OffresPage() {
             </div>
             <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
               <div className="text-2xl font-bold text-gray-900">0,69€</div>
-              <button
-                onClick={() => handlePurchase('no_timer')}
-                disabled={isLoading === 'no_timer' || extendedProfile?.no_timer_enabled}
-                className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-colors disabled:opacity-50 flex items-center gap-2"
-              >
-                {isLoading === 'no_timer' ? (
-                  <><Loader2 className="w-4 h-4 animate-spin" /> Activation...</>
-                ) : extendedProfile?.no_timer_enabled ? (
-                  <><CheckCircle className="w-4 h-4" /> Activé</>
-                ) : 'Acheter'}
-              </button>
+              {extendedProfile?.no_timer_enabled ? (
+                <button
+                  disabled
+                  className="bg-gray-100 text-gray-700 px-4 py-2 text-sm font-medium border-2 border-gray-600 cursor-not-allowed flex items-center gap-2"
+                >
+                  <CheckCircle className="w-4 h-4" /> Activé
+                </button>
+              ) : (
+                <button
+                  onClick={() => redirectToStripeCheckout('noTimer')}
+                  className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-colors flex items-center gap-2"
+                >
+                  Acheter
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -629,50 +540,6 @@ export default function OffresPage() {
                   Acheter
                 </button>
               )}
-            </div>
-          </div>
-        </div>
-
-        {/* Section Pack Examen */}
-        <h2 className="text-xl font-bold text-gray-900 mt-10 mb-4 flex items-center gap-2">
-          📝 Pack Examen Blanc
-        </h2>
-
-        {/* Pack Examen */}
-        <div className="bg-white border border-gray-200 p-5 hover:border-primary-300 transition-colors">
-          <div className="flex flex-col h-full">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Pack Examen</h3>
-              <p className="text-sm text-gray-500 mt-1">
-                2 examens blancs complets pour vous entraîner.
-              </p>
-              <ul className="mt-3 space-y-2 text-sm text-gray-600">
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
-                  <span>2 examens blancs complets</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
-                  <span>Conditions réelles d&apos;examen</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
-                  <span>Corrigés détaillés</span>
-                </li>
-                <li className="flex items-center gap-2">
-                  <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
-                  <span>Score et analyse</span>
-                </li>
-              </ul>
-            </div>
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-              <div className="text-2xl font-bold text-gray-900">2,50€</div>
-              <button
-                onClick={() => redirectToStripeCheckout('examen')}
-                className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors flex items-center gap-2"
-              >
-                Acheter
-              </button>
             </div>
           </div>
         </div>

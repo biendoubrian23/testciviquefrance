@@ -397,4 +397,90 @@ async function handleOneTimePayment(
       console.error('❌ Erreur enregistrement achat:', achatError);
     }
   }
+  // Vérifier si c'est Mode sans chrono
+  else if (priceId === STRIPE_PLANS.noTimer.priceId) {
+    console.log('⏱️ Mode sans chrono acheté');
+
+    // Vérifier si l'utilisateur a un abonnement actif
+    if (profile.subscription_status !== 'active') {
+      console.error('❌ Achat Mode sans chrono refusé - Pas d\'abonnement actif');
+      return;
+    }
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({
+        no_timer_enabled: true,
+        last_purchase_at: new Date().toISOString(),
+        stripe_customer_id: profile.stripe_customer_id || customerId,
+      })
+      .eq('email', customerEmail);
+
+    if (updateError) {
+      console.error('❌ Erreur activation Mode sans chrono:', updateError);
+    } else {
+      console.log('✅ Mode sans chrono activé');
+    }
+
+    // Enregistrer l'achat
+    const { error: achatError } = await supabase
+      .from('achats')
+      .insert({
+        user_id: profile.id,
+        product_type: 'no_timer',
+        amount: 0.69,
+        currency: 'EUR',
+        stripe_payment_id: session.payment_intent as string,
+        stripe_customer_id: customerId,
+        status: 'completed',
+        completed_at: new Date().toISOString(),
+      });
+
+    if (achatError) {
+      console.error('❌ Erreur enregistrement achat:', achatError);
+    }
+  }
+  // Vérifier si c'est Débloquer niveau suivant
+  else if (priceId === STRIPE_PLANS.unlockLevel.priceId) {
+    console.log('🔓 Débloquer niveau suivant acheté');
+
+    // Vérifier si l'utilisateur a un abonnement actif
+    if (profile.subscription_status !== 'active') {
+      console.error('❌ Achat Débloquer niveau refusé - Pas d\'abonnement actif');
+      return;
+    }
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({
+        all_levels_unlocked: true,
+        last_purchase_at: new Date().toISOString(),
+        stripe_customer_id: profile.stripe_customer_id || customerId,
+      })
+      .eq('email', customerEmail);
+
+    if (updateError) {
+      console.error('❌ Erreur activation Débloquer niveau:', updateError);
+    } else {
+      console.log('✅ Débloquer niveau suivant activé');
+    }
+
+    // Enregistrer l'achat
+    const { error: achatError } = await supabase
+      .from('achats')
+      .insert({
+        user_id: profile.id,
+        product_type: 'unlock_level',
+        amount: 0.99,
+        currency: 'EUR',
+        stripe_payment_id: session.payment_intent as string,
+        stripe_customer_id: customerId,
+        status: 'completed',
+        completed_at: new Date().toISOString(),
+      });
+
+    if (achatError) {
+      console.error('❌ Erreur enregistrement achat:', achatError);
+    }
+  }
 }
