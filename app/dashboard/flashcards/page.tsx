@@ -369,6 +369,17 @@ export default function FlashcardsPage() {
   if (!hasSubscription) {
     return (
       <div className="max-w-2xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
+        {/* Lien retour vers les offres */}
+        <a
+          href="/tarifs"
+          className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors"
+        >
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span className="text-sm sm:text-base font-medium">Voir les offres</span>
+        </a>
+        
         <div className="bg-white border-2 border-amber-500 p-6 sm:p-8 text-center">
           <div className="flex justify-center mb-4 sm:mb-6">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-amber-100 flex items-center justify-center">
