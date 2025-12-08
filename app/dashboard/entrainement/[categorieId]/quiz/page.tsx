@@ -136,7 +136,6 @@ export default function QuizPage() {
     
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state))
-      console.log('Quiz sauvegardé - question', currentIndex + 1, '- phase:', currentPhase || phase)
     } catch (e) {
       console.error('Erreur sauvegarde quiz:', e)
     }
@@ -146,7 +145,6 @@ export default function QuizPage() {
   const clearQuizState = useCallback(() => {
     try {
       localStorage.removeItem(STORAGE_KEY)
-      console.log('État du quiz effacé')
     } catch (e) {
       console.error('Erreur effacement état quiz:', e)
     }
@@ -276,18 +274,15 @@ export default function QuizPage() {
   const getQuestionsForCategory = useCallback((catId: string, niv: number): QuizQuestion[] => {
     // Vérifier si c'est la catégorie "Vivre dans la société française"
     if (catId === CATEGORIE_VIVRE_SOCIETE_ID || catId === '5a452914-91fc-4e4d-aa3f-5318eb95fb0a') {
-      console.log('Chargement questions Vivre dans la société française')
       return getQuestionsVivreSociete(niv)
     }
     
     // Vérifier si c'est la catégorie "Histoire, géographie et culture"
     if (catId === CATEGORIE_HISTOIRE_GEO_CULTURE_ID || catId === '98ce105f-bfc6-425c-a1d9-b841ddae4016') {
-      console.log('Chargement questions Histoire, géographie et culture')
       return getQuestionsHistoireGeoCulture(niv)
     }
     
     // Par défaut: Principes et valeurs de la République
-    console.log('Chargement questions Principes et valeurs')
     return getQuestionsPrincipesValeurs(niv)
   }, [])
 
@@ -295,13 +290,10 @@ export default function QuizPage() {
   const loadQuestions = useCallback(() => {
     if (hasLoadedRef.current) return
     hasLoadedRef.current = true
-    
-    console.log('Chargement questions locales - catégorie:', categorieId, '- niveau:', niveau)
 
     // Essayer de restaurer un quiz en cours
     const savedState = restoreQuizState()
     if (savedState) {
-      console.log('Restauration du quiz en cours - question', savedState.currentIndex + 1)
       isRestoringRef.current = true
       
       setQuestions(savedState.questions)
@@ -311,7 +303,6 @@ export default function QuizPage() {
       // Restaurer la phase (si c'est 'results', rester sur les résultats)
       if (savedState.phase === 'results') {
         setPhase('results')
-        console.log('Restauration des résultats du quiz')
       } else {
         setPhase('playing')
         startTimer()
@@ -333,8 +324,6 @@ export default function QuizPage() {
         router.push(`/dashboard/entrainement/${categorieId}`)
         return
       }
-
-      console.log('Questions chargées:', localQs.length)
 
       // Mélanger les questions
       const shuffledQuestions = shuffleArray([...localQs])
@@ -523,18 +512,10 @@ export default function QuizPage() {
     const score = reponses.filter(r => r.is_correct).length
     const tempsTotal = reponses.reduce((acc, r) => acc + r.temps_reponse, 0)
 
-    console.log('=== finishQuiz appelé ===')
-    console.log('Score:', score, '/', questions.length)
-    console.log('Temps total:', tempsTotal)
-    console.log('Catégorie ID:', categorieId)
-    console.log('Niveau:', niveau)
-
     // Sauvegarder les résultats dans la base de données
     try {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
-      
-      console.log('User:', user?.id || 'NON CONNECTÉ')
       
       if (user) {
         // Sauvegarder la session de quiz pour l'historique du dashboard et les scores
@@ -549,7 +530,6 @@ export default function QuizPage() {
           started_at: new Date(Date.now() - tempsTotal * 1000).toISOString(),
           completed_at: new Date().toISOString()
         }
-        console.log('Insertion sessions_quiz:', sessionData)
         
         const { data: insertedSession, error: sessionError } = await supabase
           .from('sessions_quiz')
@@ -557,9 +537,7 @@ export default function QuizPage() {
           .select()
         
         if (sessionError) {
-          console.error('❌ Erreur insert sessions_quiz:', sessionError)
-        } else {
-          console.log('✅ Session insérée:', insertedSession)
+          console.error('Erreur insert sessions_quiz:', sessionError)
         }
 
         // Mettre à jour les statistiques utilisateur (colonnes correctes)

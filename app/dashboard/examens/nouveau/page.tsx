@@ -599,7 +599,6 @@ export default function NouvelExamenPage() {
 
         if (existingExam && !fetchError) {
           // Reprendre l'examen existant
-          console.log('Reprise examen existant:', existingExam.id);
           setSessionId(existingExam.id);
           
           // Restaurer les réponses
@@ -618,7 +617,6 @@ export default function NouvelExamenPage() {
           }
         } else {
           // Créer une nouvelle session
-          console.log('Création nouvelle session');
           const initialAnswers = QUESTIONS_EXAMEN.map(q => ({ questionId: q.id, selectedIndex: null }));
           
           const { data: newExam, error: insertError } = await supabase

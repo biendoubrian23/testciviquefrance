@@ -91,7 +91,6 @@ export default function DashboardPage() {
 
         // Si pas de statistiques, les créer automatiquement (pour les anciens comptes)
         if ((!statsList || statsList.length === 0) && !statsError) {
-          console.log('Création des statistiques pour l\'utilisateur...');
           const { data: newStats, error: insertError } = await supabase
             .from('statistiques')
             .insert({ user_id: user.id })
@@ -128,11 +127,6 @@ export default function DashboardPage() {
           .eq('completed', true)
           .order('completed_at', { ascending: false, nullsFirst: false })
           .limit(10);
-
-        console.log('=== Sessions récupérées ===')
-        console.log('Erreur:', sessionsError)
-        console.log('Nombre de sessions:', sessionsData?.length)
-        console.log('Sessions:', sessionsData)
 
         if (sessionsData && sessionsData.length > 0) {
           // Récupérer les noms des catégories
