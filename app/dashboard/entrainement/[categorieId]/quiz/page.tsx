@@ -633,8 +633,12 @@ export default function QuizPage() {
           if (updateStatsError) console.error('Erreur update statistiques:', updateStatsError)
         }
 
-        // Si le quiz est réussi (score >= 8/10), débloquer le niveau suivant
-        if (score >= 8 && niveau < 10) {
+        // Débloquer le niveau suivant si :
+        // - Score >= 8/10 (normal), OU
+        // - Score >= 5/10 ET l'utilisateur a all_levels_unlocked
+        const canUnlockNext = score >= 8 || (score >= 5 && allLevelsUnlocked)
+
+        if (canUnlockNext && niveau < 10) {
           // Vérifier si une progression existe déjà pour cette catégorie
           const { data: existingProgression } = await supabase
             .from('progression_niveaux')

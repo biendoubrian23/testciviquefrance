@@ -134,13 +134,18 @@ export default function CategorieDetailPage() {
       ? lastSessionData[0] 
       : null
 
-    // Calculer le niveau maximum débloqué basé sur les scores réussis (>= 8/10)
-    // Un niveau N+1 est débloqué si le niveau N a été réussi avec >= 70%
+    // Calculer le niveau maximum débloqué basé sur les scores réussis
+    // - Score >= 8/10 : déblocage normal
+    // - Score >= 5/10 ET all_levels_unlocked : déblocage avec achat
     let niveauMaxDebloque = 1 // Niveau 1 toujours débloqué
     for (let i = 1; i <= 10; i++) {
       const scoreNiveau = meilleursScoresParNiveau.get(i) || 0
       // Si le niveau i a été réussi (score >= 8), débloquer le niveau i+1
       if (scoreNiveau >= 8) {
+        niveauMaxDebloque = Math.max(niveauMaxDebloque, i + 1)
+      }
+      // Si l'utilisateur a all_levels_unlocked et score >= 5, débloquer aussi
+      else if (allLevelsUnlocked && scoreNiveau >= 5) {
         niveauMaxDebloque = Math.max(niveauMaxDebloque, i + 1)
       }
     }

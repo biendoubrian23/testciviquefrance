@@ -130,25 +130,49 @@ export default function DashboardPage() {
             setRecentActivity(activities);
           }
 
-          // Progression par catégorie - utiliser le cache des catégories
+          // Progression par catégorie - calculer la moyenne des pourcentages
           const meilleursScores = dashboardData.meilleurs_scores || [];
-          const niveauxCompletesParCategorie = new Map<string, number>();
+          const scoresParCategorie = new Map<string, Map<number, number>>();
           
+          // Regrouper les scores par catégorie et niveau
           for (const score of meilleursScores) {
-            // Seuil de validation : 8/10 (80%)
-            if (score.meilleur_score >= 8) {
-              const current = niveauxCompletesParCategorie.get(score.categorie_id) || 0;
-              niveauxCompletesParCategorie.set(score.categorie_id, Math.max(current, score.niveau));
+            if (!scoresParCategorie.has(score.categorie_id)) {
+              scoresParCategorie.set(score.categorie_id, new Map());
             }
+            const niveauxMap = scoresParCategorie.get(score.categorie_id)!;
+            // Garder le meilleur score pour chaque niveau
+            const currentBest = niveauxMap.get(score.niveau) || 0;
+            niveauxMap.set(score.niveau, Math.max(currentBest, score.meilleur_score));
           }
 
           const categoriesWithProgress = CATEGORIES.map((cat) => {
-            const niveauxCompletes = niveauxCompletesParCategorie.get(cat.id) || 0;
-            const progress = Math.min((niveauxCompletes / 10) * 100, 100);
+            const niveauxMap = scoresParCategorie.get(cat.id);
+            if (!niveauxMap || niveauxMap.size === 0) {
+              return {
+                id: cat.id,
+                name: cat.nom,
+                progress: 0,
+                ordre: cat.ordre,
+              };
+            }
+
+            // Calculer la moyenne des pourcentages des niveaux joués
+            let totalPourcentage = 0;
+            let niveauxJoues = 0;
+            
+            for (const [niveau, score] of niveauxMap.entries()) {
+              const nbQuestions = niveau <= 4 ? 10 : 5;
+              const pourcentage = Math.round((score / nbQuestions) * 100);
+              totalPourcentage += pourcentage;
+              niveauxJoues++;
+            }
+
+            const moyennePourcentage = niveauxJoues > 0 ? Math.round(totalPourcentage / niveauxJoues) : 0;
+
             return {
               id: cat.id,
               name: cat.nom,
-              progress: Math.round(progress),
+              progress: moyennePourcentage,
               ordre: cat.ordre,
             };
           });
@@ -274,24 +298,47 @@ export default function DashboardPage() {
           .eq('user_id', user!.id)
           .eq('completed', true);
 
-        const niveauxCompletesParCategorie = new Map<string, number>();
+        const scoresParCategorie = new Map<string, Map<number, number>>();
         if (allSessionsData) {
           for (const session of allSessionsData) {
-            // Seuil de validation : 8/10 (80%)
-            if (session.score >= 8) {
-              const current = niveauxCompletesParCategorie.get(session.categorie_id) || 0;
-              niveauxCompletesParCategorie.set(session.categorie_id, Math.max(current, session.niveau));
+            if (!scoresParCategorie.has(session.categorie_id)) {
+              scoresParCategorie.set(session.categorie_id, new Map());
             }
+            const niveauxMap = scoresParCategorie.get(session.categorie_id)!;
+            // Garder le meilleur score pour chaque niveau
+            const currentBest = niveauxMap.get(session.niveau) || 0;
+            niveauxMap.set(session.niveau, Math.max(currentBest, session.score));
           }
         }
 
         const categoriesWithProgress = CATEGORIES.map((cat) => {
-          const niveauxCompletes = niveauxCompletesParCategorie.get(cat.id) || 0;
-          const progress = Math.min((niveauxCompletes / 10) * 100, 100);
+          const niveauxMap = scoresParCategorie.get(cat.id);
+          if (!niveauxMap || niveauxMap.size === 0) {
+            return {
+              id: cat.id,
+              name: cat.nom,
+              progress: 0,
+              ordre: cat.ordre,
+            };
+          }
+
+          // Calculer la moyenne des pourcentages des niveaux joués
+          let totalPourcentage = 0;
+          let niveauxJoues = 0;
+          
+          for (const [niveau, score] of niveauxMap.entries()) {
+            const nbQuestions = niveau <= 4 ? 10 : 5;
+            const pourcentage = Math.round((score / nbQuestions) * 100);
+            totalPourcentage += pourcentage;
+            niveauxJoues++;
+          }
+
+          const moyennePourcentage = niveauxJoues > 0 ? Math.round(totalPourcentage / niveauxJoues) : 0;
+
           return {
             id: cat.id,
             name: cat.nom,
-            progress: Math.round(progress),
+            progress: moyennePourcentage,
             ordre: cat.ordre,
           };
         });

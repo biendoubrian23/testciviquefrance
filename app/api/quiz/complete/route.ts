@@ -105,8 +105,19 @@ export async function POST(request: NextRequest) {
         })
     }
 
-    // 4. Mettre à jour la progression si score >= 8/10
-    if (score >= 8) {
+    // 4. Mettre à jour la progression
+    // Débloquer le niveau suivant si :
+    // - Score >= 8/10 (normal), OU
+    // - Score >= 5/10 ET l'utilisateur a all_levels_unlocked
+    const { data: profileData } = await supabase
+      .from('profiles')
+      .select('all_levels_unlocked')
+      .eq('id', user.id)
+      .single()
+
+    const canUnlockNext = score >= 8 || (score >= 5 && profileData?.all_levels_unlocked)
+
+    if (canUnlockNext) {
       const { data: progression } = await supabase
         .from('progression_niveaux')
         .select('niveau_actuel')
@@ -133,7 +144,7 @@ export async function POST(request: NextRequest) {
           .insert({
             user_id: user.id,
             categorie_id: categorieId,
-            niveau_actuel: niveau >= 8 ? niveau + 1 : niveau,
+            niveau_actuel: canUnlockNext ? niveau + 1 : niveau,
             questions_correctes_niveau: score
           })
       }
