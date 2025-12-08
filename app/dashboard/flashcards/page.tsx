@@ -371,7 +371,7 @@ export default function FlashcardsPage() {
       <div className="max-w-2xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
         {/* Lien retour vers les offres */}
         <a
-          href="/tarifs"
+          href="/dashboard/credits"
           className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-4 transition-colors"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
