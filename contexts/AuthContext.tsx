@@ -16,6 +16,21 @@ type Profile = {
   credits: number;
   is_premium: boolean;
   premium_expires_at: string | null;
+  // Champs Stripe
+  stripe_customer_id: string | null;
+  stripe_subscription_id: string | null;
+  stripe_price_id: string | null;
+  subscription_status: string | null;
+  subscription_start_date: string | null;
+  subscription_end_date: string | null;
+  // Pack Examen
+  exam_credits: number | null;
+  subscription_exams_used: number | null;
+  last_purchase_at: string | null;
+  // Flashcards
+  flashcards_2_themes?: boolean;
+  flashcards_5_themes?: boolean;
+  flashcards_purchased_at?: string;
 };
 
 type AuthContextType = {

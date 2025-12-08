@@ -15,6 +15,7 @@ import {
   Home,
   Loader2
 } from 'lucide-react';
+import { consumeExamCredit } from '@/lib/utils/examCredits';
 
 // =====================================================
 // SÉCURITÉ PAR HASH - Les réponses correctes sont hashées
@@ -639,6 +640,12 @@ export default function NouvelExamenPage() {
             setUserAnswers(initialAnswers);
             setCurrentQuestionIndex(0);
             setTimeRemaining(45 * 60);
+
+            // Consommer un crédit d'examen
+            const creditConsumed = await consumeExamCredit(userId);
+            if (!creditConsumed) {
+              console.warn('⚠️ Impossible de consommer un crédit d\'examen');
+            }
           } else {
             console.error('Erreur création session:', insertError);
           }

@@ -78,7 +78,19 @@ export default function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
               {profile?.prenom ? `${profile.prenom} ${profile.nom || ''}`.trim() : 'Utilisateur'}
             </p>
             <p className="text-xs text-gray-500">
-              {profile?.is_premium ? 'Membre Premium' : 'Membre gratuit'}
+              {(() => {
+                const extendedProfile = profile as any;
+                if (!extendedProfile?.is_premium) return 'Membre gratuit';
+                
+                // Différencier selon le plan souscrit
+                if (extendedProfile?.stripe_price_id === 'price_1Sc3rPEuT9agNbEU65mDE4RP') {
+                  return 'Membre Premium'; // Plan à 6,99€
+                } else if (extendedProfile?.stripe_price_id === 'price_1Sc3qxEuT9agNbEUdX0RkLM4') {
+                  return 'Membre Standard'; // Plan à 2,99€
+                } else {
+                  return 'Membre Premium'; // Par défaut si is_premium = true
+                }
+              })()}
             </p>
           </div>
           <div className="w-9 h-9 sm:w-10 sm:h-10 bg-primary-50 flex items-center justify-center text-primary-600 font-semibold border border-primary-100 flex-shrink-0">

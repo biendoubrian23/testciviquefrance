@@ -1,7 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
+import { useSupabase } from '@/hooks/useSupabase';
+import FlashcardsUpgradeModal from '@/components/dashboard/FlashcardsUpgradeModal';
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -14,7 +16,9 @@ import {
   Scale,
   Landmark,
   MapPin,
-  Users
+  Users,
+  Lock,
+  ArrowRight
 } from 'lucide-react';
 
 interface Flashcard {
@@ -138,7 +142,8 @@ const themes: Theme[] = [
 ];
 
 export default function FlashcardsPage() {
-  useAuth();
+  const { user } = useAuth();
+  const supabase = useSupabase();
   
   const [selectedTheme, setSelectedTheme] = useState<Theme>(themes[0]);
   const [flashcards, setFlashcards] = useState<Flashcard[]>(themes[0].cards);
@@ -149,10 +154,48 @@ export default function FlashcardsPage() {
   const [reviewCards, setReviewCards] = useState<Flashcard[]>([]);
   const [isReviewMode, setIsReviewMode] = useState(false);
   const [sessionComplete, setSessionComplete] = useState(false);
+  
+  // États pour le contrôle d'accès
+  const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [hasSubscription, setHasSubscription] = useState(false);
+  const [hasFlashcards2, setHasFlashcards2] = useState(false);
+  const [hasFlashcards5, setHasFlashcards5] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const currentDeck = isReviewMode ? reviewCards : flashcards;
   const currentCard = currentDeck[currentIndex];
   const progress = currentDeck.length > 0 ? ((currentIndex + 1) / currentDeck.length) * 100 : 0;
+
+  // Charger les informations d'accès
+  useEffect(() => {
+    async function loadAccessInfo() {
+      if (!user) return;
+
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('subscription_status, flashcards_2_themes, flashcards_5_themes')
+        .eq('id', user.id)
+        .single();
+
+      if (profile) {
+        const subscriptionActive = profile.subscription_status === 'active';
+        setHasSubscription(subscriptionActive);
+        setHasFlashcards2(profile.flashcards_2_themes || false);
+        setHasFlashcards5(profile.flashcards_5_themes || false);
+      }
+      
+      setIsLoading(false);
+    }
+
+    loadAccessInfo();
+  }, [user, supabase]);
+
+  // Vérifier si un thème est accessible
+  const isThemeUnlocked = (themeId: string): boolean => {
+    if (hasFlashcards5) return true;
+    if (hasFlashcards2 && (themeId === 'principes' || themeId === 'histoire')) return true;
+    return false;
+  };
 
   // Changer de thème
   const changeTheme = (theme: Theme) => {
@@ -322,6 +365,53 @@ export default function FlashcardsPage() {
     );
   }
 
+  // Page verrouillée pour les membres gratuits
+  if (!hasSubscription) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-12">
+        <div className="bg-white border-2 border-amber-500 rounded-2xl p-8 text-center">
+          <div className="flex justify-center mb-6">
+            <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center">
+              <Lock className="w-10 h-10 text-amber-600" />
+            </div>
+          </div>
+          
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+            Flashcards réservés aux membres
+          </h1>
+          
+          <p className="text-lg text-gray-600 mb-6 max-w-md mx-auto">
+            Accédez à des centaines de flashcards interactifs pour réviser efficacement 
+            les thèmes clés de l'examen civique.
+          </p>
+          
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
+            <p className="text-sm text-amber-800 font-medium">
+              ⚡ Fonctionnalité disponible avec l'abonnement Standard ou Premium
+            </p>
+          </div>
+          
+          <button
+            onClick={() => setShowUpgradeModal(true)}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all"
+          >
+            <span>Débloquer les Flashcards</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
+        
+        {/* Modal d'upgrade */}
+        <FlashcardsUpgradeModal
+          isOpen={showUpgradeModal}
+          onClose={() => setShowUpgradeModal(false)}
+          hasSubscription={hasSubscription}
+          hasFlashcards2Themes={hasFlashcards2}
+          hasFlashcards5Themes={hasFlashcards5}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="max-w-2xl mx-auto px-2 sm:px-4 py-6">
       {/* En-tête */}
@@ -341,21 +431,45 @@ export default function FlashcardsPage() {
       <div className="mb-6">
         <h2 className="text-sm font-medium text-gray-500 mb-3">Choisir un thème</h2>
         <div className="flex flex-wrap gap-2">
-          {themes.map((theme) => (
-            <button
-              key={theme.id}
-              onClick={() => changeTheme(theme)}
-              className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
-                selectedTheme.id === theme.id
-                  ? `${theme.bgColor} ${theme.color} border-2 ${theme.borderColor}`
-                  : 'bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300'
-              }`}
-            >
-              {theme.icon}
-              <span className="hidden sm:inline">{theme.name}</span>
-            </button>
-          ))}
+          {themes.map((theme) => {
+            const isUnlocked = isThemeUnlocked(theme.id);
+            return (
+              <button
+                key={theme.id}
+                onClick={() => {
+                  if (isUnlocked) {
+                    changeTheme(theme);
+                  } else {
+                    setShowUpgradeModal(true);
+                  }
+                }}
+                className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
+                  selectedTheme.id === theme.id
+                    ? `${theme.bgColor} ${theme.color} border-2 ${theme.borderColor}`
+                    : isUnlocked
+                      ? 'bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300'
+                      : 'bg-gray-100 border-2 border-gray-300 text-gray-400 cursor-pointer hover:border-amber-400'
+                }`}
+              >
+                {!isUnlocked && <Lock className="w-4 h-4" />}
+                {theme.icon}
+                <span className="hidden sm:inline">{theme.name}</span>
+              </button>
+            );
+          })}
         </div>
+        
+        {/* Info pack flashcards */}
+        {!hasFlashcards5 && (
+          <div className="mt-3 text-xs text-gray-500 flex items-center gap-1">
+            <Lock className="w-3 h-3" />
+            {hasFlashcards2 ? (
+              <span>3 thèmes supplémentaires disponibles avec le pack 5 thèmes</span>
+            ) : (
+              <span>Pack 2 thèmes : Principes & Histoire · Pack 5 thèmes : tous les thèmes</span>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Stats rapides */}
@@ -394,19 +508,60 @@ export default function FlashcardsPage() {
         </div>
       </div>
 
-      {/* Carte avec animation 3D */}
-      <div 
-        className="relative mb-6 cursor-pointer"
-        onClick={flipCard}
-        style={{ perspective: '1000px' }}
-      >
+      {/* Carte verrouillée si thème non accessible */}
+      {!isThemeUnlocked(selectedTheme.id) ? (
+        <div className="mb-6 bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-300 rounded-xl p-8 text-center">
+          <div className="flex justify-center mb-4">
+            <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center">
+              <Lock className="w-8 h-8 text-amber-600" />
+            </div>
+          </div>
+          
+          <h3 className="text-xl font-bold text-gray-900 mb-3">
+            Thème verrouillé
+          </h3>
+          
+          <p className="text-gray-600 mb-4">
+            Ce thème nécessite l&apos;achat d&apos;un pack Flashcards
+          </p>
+          
+          <div className="bg-white border border-gray-200 rounded-lg p-4 mb-4 text-sm text-left">
+            {hasFlashcards2 ? (
+              <div>
+                <p className="font-medium text-gray-900 mb-2">✓ Pack 2 thèmes débloqué</p>
+                <p className="text-gray-600">Débloquez 3 thèmes supplémentaires avec le pack 5 thèmes</p>
+              </div>
+            ) : (
+              <div>
+                <p className="font-medium text-gray-900 mb-2">📦 Packs disponibles :</p>
+                <p className="text-gray-600">• Pack 2 thèmes (€1.20) : Principes + Histoire</p>
+                <p className="text-gray-600">• Pack 5 thèmes (€1.50) : Tous les thèmes</p>
+              </div>
+            )}
+          </div>
+          
+          <button
+            onClick={() => setShowUpgradeModal(true)}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all"
+          >
+            <span>Débloquer ce thème</span>
+            <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
+      ) : (
+        /* Carte avec animation 3D */
         <div 
-          className="relative w-full min-h-[280px] sm:min-h-[320px] transition-transform duration-500"
-          style={{ 
-            transformStyle: 'preserve-3d',
-            transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
-          }}
+          className="relative mb-6 cursor-pointer"
+          onClick={flipCard}
+          style={{ perspective: '1000px' }}
         >
+          <div 
+            className="relative w-full min-h-[280px] sm:min-h-[320px] transition-transform duration-500"
+            style={{ 
+              transformStyle: 'preserve-3d',
+              transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+            }}
+          >
           {/* Face avant - Question */}
           <div 
             className="absolute inset-0 bg-white border-2 border-gray-900 rounded-xl p-6 sm:p-8 flex flex-col"
@@ -472,33 +627,34 @@ export default function FlashcardsPage() {
             </p>
           </div>
         </div>
-      </div>
+        </div>
+      )}
 
-      {/* Boutons Je sais / À revoir */}
+      {/* Boutons Je sais / À revoir - désactivés si thème verrouillé */}
       <div className="grid grid-cols-2 gap-4 mb-6">
         <button
           onClick={markAsReview}
-          disabled={isAnimating}
-          className="flex items-center justify-center gap-2 py-4 bg-amber-50 border-2 border-amber-400 text-amber-700 rounded-xl font-semibold hover:bg-amber-100 active:scale-[0.98] transition-all disabled:opacity-50"
+          disabled={isAnimating || !isThemeUnlocked(selectedTheme.id)}
+          className="flex items-center justify-center gap-2 py-4 bg-amber-50 border-2 border-amber-400 text-amber-700 rounded-xl font-semibold hover:bg-amber-100 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <X className="w-5 h-5" />
           <span>À revoir</span>
         </button>
         <button
           onClick={markAsKnown}
-          disabled={isAnimating}
-          className="flex items-center justify-center gap-2 py-4 bg-emerald-50 border-2 border-emerald-500 text-emerald-700 rounded-xl font-semibold hover:bg-emerald-100 active:scale-[0.98] transition-all disabled:opacity-50"
+          disabled={isAnimating || !isThemeUnlocked(selectedTheme.id)}
+          className="flex items-center justify-center gap-2 py-4 bg-emerald-50 border-2 border-emerald-500 text-emerald-700 rounded-xl font-semibold hover:bg-emerald-100 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Check className="w-5 h-5" />
           <span>Je sais !</span>
         </button>
       </div>
 
-      {/* Navigation */}
+      {/* Navigation - désactivée si thème verrouillé */}
       <div className="flex items-center justify-between">
         <button
           onClick={goToPrevious}
-          disabled={currentIndex === 0 || isAnimating}
+          disabled={currentIndex === 0 || isAnimating || !isThemeUnlocked(selectedTheme.id)}
           className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <ChevronLeft className="w-5 h-5 text-gray-600" />
@@ -507,14 +663,16 @@ export default function FlashcardsPage() {
         <div className="flex gap-2">
           <button
             onClick={shuffleCards}
-            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+            disabled={!isThemeUnlocked(selectedTheme.id)}
+            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Shuffle className="w-4 h-4" />
             <span className="hidden sm:inline">Mélanger</span>
           </button>
           <button
             onClick={resetProgress}
-            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm"
+            disabled={!isThemeUnlocked(selectedTheme.id)}
+            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <RotateCcw className="w-4 h-4" />
             <span className="hidden sm:inline">Recommencer</span>
@@ -523,8 +681,8 @@ export default function FlashcardsPage() {
 
         <button
           onClick={goToNext}
-          disabled={isAnimating}
-          className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-30"
+          disabled={isAnimating || !isThemeUnlocked(selectedTheme.id)}
+          className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <ChevronRight className="w-5 h-5 text-gray-600" />
         </button>
@@ -538,6 +696,15 @@ export default function FlashcardsPage() {
           </p>
         </div>
       )}
+      
+      {/* Modal d'upgrade pour débloquer des thèmes */}
+      <FlashcardsUpgradeModal
+        isOpen={showUpgradeModal}
+        onClose={() => setShowUpgradeModal(false)}
+        hasSubscription={hasSubscription}
+        hasFlashcards2Themes={hasFlashcards2}
+        hasFlashcards5Themes={hasFlashcards5}
+      />
     </div>
   );
 }

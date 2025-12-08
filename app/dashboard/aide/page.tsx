@@ -104,23 +104,43 @@ export default function AidePage() {
           />
           <FAQItem 
             question="Quelles sont les différentes offres disponibles ?"
-            answer="Nous proposons 3 formules : Pack Standard (2,99€/semaine) avec tests thématiques et 1 examen blanc, Premium (6,99€/semaine) avec accès illimité et 3 examens blancs, et Pack Examen (2,50€) pour 2 examens blancs sans expiration."
+            answer="Nous proposons 3 offres : Pack Standard à 2,99€/semaine (1 examen blanc + tests thématiques + cours), Pack Premium à 6,99€/semaine (3 examens blancs + tests illimités + statistiques avancées + révision intelligente), et Pack Examen à 2,50€ l'unité (2 examens blancs sans expiration, sans tests thématiques). Les cours restent gratuits pour tous."
+          />
+          <FAQItem 
+            question="Comment fonctionnent les examens blancs inclus dans les abonnements ?"
+            answer="Le Pack Standard inclut 1 examen blanc par semaine d'abonnement actif. Le Pack Premium inclut 3 examens blancs par semaine. Ces examens se renouvellent chaque semaine. Si vous n'utilisez pas vos examens, ils ne s'accumulent pas. C'est pourquoi le Pack Examen (achat unique) peut être intéressant si vous voulez garder des examens pour plus tard."
+          />
+          <FAQItem 
+            question="Le Pack Examen expire-t-il ?"
+            answer="Non, le Pack Examen est sans expiration. Vous achetez 2 examens blancs pour 2,50€ et vous pouvez les utiliser quand vous voulez, même des mois plus tard. C'est idéal si vous voulez vous tester ponctuellement ou garder des examens pour réviser avant votre examen officiel. Attention : ce pack ne donne pas accès aux tests thématiques."
+          />
+          <FAQItem 
+            question="Puis-je annuler mon abonnement ?"
+            answer="Oui, vous pouvez annuler votre abonnement à tout moment depuis la section 'Mon abonnement'. L'annulation prend effet immédiatement et aucun renouvellement ne sera effectué. Vous gardez l'accès à votre abonnement jusqu'à la fin de la période déjà payée."
+          />
+          <FAQItem 
+            question="Que se passe-t-il si j'épuise mes examens blancs ?"
+            answer="Si vous avez utilisé tous vos examens blancs (1 pour Standard, 3 pour Premium) de la semaine en cours, vous pouvez soit attendre le renouvellement hebdomadaire, soit acheter le Pack Examen (2,50€ pour 2 examens supplémentaires), soit passer au Pack Premium si vous êtes en Standard. Le Pack Examen est cumulable avec tous les abonnements."
+          />
+          <FAQItem 
+            question="Les abonnements se renouvellent-ils automatiquement ?"
+            answer="Oui, les abonnements Standard et Premium se renouvellent automatiquement chaque semaine. Vous serez facturé le même montant (2,99€ ou 6,99€) jusqu'à l'annulation. Vous pouvez annuler à tout moment sans frais depuis votre espace client. Le Pack Examen est un achat unique qui ne se renouvelle pas."
           />
           <FAQItem 
             question="Comment se déroule l'examen civique réel ?"
-            answer="L'examen civique officiel comporte 12 questions à choix multiples portant sur les valeurs de la République, l'histoire et la géographie de France, et les institutions. Vous devez obtenir au moins 80% de bonnes réponses (soit 10/12 minimum) pour réussir."
-          />
-          <FAQItem 
-            question="Mes examens blancs expirent-ils ?"
-            answer="Non ! Si vous achetez le Pack Examen à 2,50€, vos 2 examens blancs restent disponibles sans limite de temps. Vous pouvez les utiliser quand vous le souhaitez."
+            answer="L'examen civique officiel comporte 40 questions QCM en 45 minutes. Il couvre 5 thématiques : principes et valeurs de la République, institutions, droits et devoirs, histoire/géographie/culture, et vie en France. Vous devez obtenir au moins 80% de bonnes réponses (32/40) pour réussir."
           />
           <FAQItem 
             question="Comment suivre ma progression ?"
-            answer="Accédez à la section Statistiques dans le menu pour voir votre progression par catégorie, votre taux de réussite, le nombre de questions répondues et vos points de gamification."
+            answer="Accédez au Tableau de bord pour voir vos statistiques : questions répondues, taux de réussite, temps d'étude, série de jours consécutifs. La section 'Progression par thème' affiche votre avancement dans chaque catégorie. L'activité récente montre vos dernières sessions et examens blancs."
           />
           <FAQItem 
             question="Puis-je réviser sur mobile ?"
-            answer="Absolument ! Notre plateforme est entièrement responsive. Vous pouvez réviser sur smartphone, tablette ou ordinateur, où que vous soyez."
+            answer="Absolument ! Notre plateforme est entièrement responsive. Vous pouvez réviser sur smartphone, tablette ou ordinateur, où que vous soyez. L'interface s'adapte automatiquement à la taille de votre écran."
+          />
+          <FAQItem 
+            question="Quels moyens de paiement acceptez-vous ?"
+            answer="Nous acceptons toutes les cartes bancaires (Visa, Mastercard, American Express) via notre partenaire de paiement sécurisé Stripe. Tous les paiements sont cryptés et vos données bancaires ne sont jamais stockées sur nos serveurs. Les paiements sont instantanés et vous recevez un reçu par email."
           />
         </div>
       </div>

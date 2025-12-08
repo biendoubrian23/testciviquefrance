@@ -129,6 +129,43 @@ const faqCategories = [
     ]
   },
   {
+    title: "Abonnements et tarifs",
+    questions: [
+      {
+        question: "Quelles sont les différentes offres disponibles ?",
+        answer: "Nous proposons 3 offres : Pack Standard à 2,99€/semaine (1 examen blanc + tests thématiques + cours), Pack Premium à 6,99€/semaine (3 examens blancs + tests illimités + statistiques avancées + révision intelligente), et Pack Examen à 2,50€ l'unité (2 examens blancs sans expiration, sans tests thématiques). Les cours restent gratuits pour tous."
+      },
+      {
+        question: "Comment fonctionnent les examens blancs inclus dans les abonnements ?",
+        answer: "Le Pack Standard inclut 1 examen blanc par semaine d'abonnement actif. Le Pack Premium inclut 3 examens blancs par semaine. Ces examens se renouvellent chaque semaine. Si vous n'utilisez pas vos examens, ils ne s'accumulent pas. C'est pourquoi le Pack Examen (achat unique) peut être intéressant si vous voulez garder des examens pour plus tard."
+      },
+      {
+        question: "Le Pack Examen expire-t-il ?",
+        answer: "Non, le Pack Examen est sans expiration. Vous achetez 2 examens blancs pour 2,50€ et vous pouvez les utiliser quand vous voulez, même des mois plus tard. C'est idéal si vous voulez vous tester ponctuellement ou garder des examens pour réviser avant votre examen officiel. Attention : ce pack ne donne pas accès aux tests thématiques."
+      },
+      {
+        question: "Puis-je annuler mon abonnement ?",
+        answer: "Oui, vous pouvez annuler votre abonnement à tout moment depuis votre espace client. L'annulation prend effet immédiatement et aucun renouvellement ne sera effectué. Vous gardez l'accès à votre abonnement jusqu'à la fin de la période déjà payée."
+      },
+      {
+        question: "Que se passe-t-il si j'épuise mes examens blancs ?",
+        answer: "Si vous avez utilisé tous vos examens blancs (1 pour Standard, 3 pour Premium) de la semaine en cours, vous pouvez soit attendre le renouvellement hebdomadaire, soit acheter le Pack Examen (2,50€ pour 2 examens supplémentaires), soit passer au Pack Premium si vous êtes en Standard. Le Pack Examen est cumulable avec tous les abonnements."
+      },
+      {
+        question: "Y a-t-il une période d'essai gratuite ?",
+        answer: "Tous nos cours et fiches de révision sont gratuits et accessibles sans limite. Vous pouvez étudier tout le contenu des 5 thématiques officielles gratuitement. Seuls les tests d'entraînement et examens blancs nécessitent un abonnement ou l'achat du Pack Examen. Cela vous permet de découvrir la qualité de notre contenu avant tout achat."
+      },
+      {
+        question: "Puis-je passer d'un abonnement à un autre ?",
+        answer: "Oui, vous pouvez passer du Pack Standard au Pack Premium à tout moment. La différence de prix sera calculée au prorata. Si vous passez du Premium au Standard, le changement prendra effet à la fin de votre période Premium en cours. Contactez notre support pour toute question sur le changement d'abonnement."
+      },
+      {
+        question: "Les abonnements se renouvellent-ils automatiquement ?",
+        answer: "Oui, les abonnements Standard et Premium se renouvellent automatiquement chaque semaine. Vous serez facturé le même montant (2,99€ ou 6,99€) jusqu'à l'annulation. Vous pouvez annuler à tout moment sans frais depuis votre espace client. Le Pack Examen est un achat unique qui ne se renouvelle pas."
+      },
+    ]
+  },
+  {
     title: "Compte et paiement",
     questions: [
       {
@@ -136,16 +173,20 @@ const faqCategories = [
         answer: "La création de compte est simple et gratuite. Cliquez sur 'Inscription' en haut de la page, renseignez votre email et créez un mot de passe. Vous aurez immédiatement accès à tous les cours gratuits couvrant les 5 thématiques officielles de l'examen."
       },
       {
-        question: "Comment fonctionne le système de crédits ?",
-        answer: "Les crédits vous permettent de débloquer des tests et examens blancs à la carte. Vous achetez un pack de crédits (10, 25, 50 ou 100) et vous les utilisez quand vous le souhaitez. Les crédits n'expirent jamais et restent sur votre compte. Exemple : un examen blanc de 40 questions coûte environ 2 crédits."
-      },
-      {
-        question: "Quelle est la différence entre crédits et Premium ?",
-        answer: "Avec les crédits, vous payez uniquement ce que vous utilisez, idéal pour quelques tests ponctuels. L'offre Premium vous donne un accès illimité à tous les tests et examens blancs pendant une durée définie (48h, 1 semaine ou 3 semaines), parfait pour une préparation intensive avant votre examen officiel."
-      },
-      {
         question: "Quels moyens de paiement acceptez-vous ?",
-        answer: "Nous acceptons les cartes bancaires (Visa, Mastercard, American Express) et PayPal. Tous les paiements sont sécurisés et vos données bancaires ne sont jamais stockées sur nos serveurs."
+        answer: "Nous acceptons toutes les cartes bancaires (Visa, Mastercard, American Express) via notre partenaire de paiement sécurisé Stripe. Tous les paiements sont cryptés et vos données bancaires ne sont jamais stockées sur nos serveurs. Les paiements sont instantanés et vous recevez un reçu par email."
+      },
+      {
+        question: "Puis-je obtenir un remboursement ?",
+        answer: "Étant donné que nos cours sont gratuits et que vous pouvez tester leur qualité avant tout achat, nous n'offrons généralement pas de remboursement. Cependant, si vous rencontrez un problème technique ou si vous n'avez pas pu accéder au service, contactez-nous immédiatement. Nous étudions chaque cas individuellement."
+      },
+      {
+        question: "Comment modifier mes informations de paiement ?",
+        answer: "Vous pouvez gérer vos informations de paiement et vos abonnements depuis votre espace client, section 'Mon abonnement'. Vous y trouverez un lien vers le portail client Stripe où vous pourrez mettre à jour votre carte bancaire, consulter votre historique de paiements et télécharger vos factures."
+      },
+      {
+        question: "Mes données sont-elles sécurisées ?",
+        answer: "Oui, la sécurité de vos données est notre priorité. Nous utilisons le cryptage SSL pour toutes les communications. Les paiements sont traités par Stripe, certifié PCI DSS niveau 1 (le plus haut niveau de sécurité). Vos informations bancaires ne transitent jamais par nos serveurs. Nous ne partageons jamais vos données personnelles avec des tiers."
       },
     ]
   },

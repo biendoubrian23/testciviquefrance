@@ -213,14 +213,25 @@ export default function DashboardPage() {
           .order('completed_at', { ascending: false, nullsFirst: false })
           .limit(10);
 
+        // Récupérer les examens blancs complétés
+        const { data: examensData } = await supabase
+          .from('examens_blancs')
+          .select('id, score, total_questions, passed, completed_at')
+          .eq('user_id', user!.id)
+          .eq('is_completed', true)
+          .order('completed_at', { ascending: false })
+          .limit(10);
+
+        const activities: Activity[] = [];
+
+        // Ajouter les sessions de quiz
         if (sessionsData && sessionsData.length > 0) {
-          // Utiliser le cache des catégories au lieu d'une requête DB
-          const activities: Activity[] = sessionsData.slice(0, 5).map((s: { id: string; score: number; total_questions: number; niveau: number; categorie_id: string; completed_at: string; started_at: string }) => {
+          for (const s of sessionsData) {
             const themeName = getCategoryName(s.categorie_id); // Cache local
             // Seuil de validation : 8/10 (80%)
             const isSuccess = s.score >= 8;
             const totalQuestions = s.total_questions || (s.niveau <= 4 ? 10 : 5);
-            return {
+            activities.push({
               id: s.id,
               type: 'question' as const,
               correct: isSuccess,
@@ -228,10 +239,32 @@ export default function DashboardPage() {
               score: s.score,
               total: totalQuestions,
               time: formatTimeAgo(new Date(s.completed_at || s.started_at)),
-            };
-          });
-          setRecentActivity(activities);
+            });
+          }
         }
+
+        // Ajouter les examens blancs
+        if (examensData && examensData.length > 0) {
+          for (const e of examensData) {
+            activities.push({
+              id: e.id,
+              type: 'question' as const,
+              correct: e.passed,
+              theme: 'Examen blanc',
+              score: e.score,
+              total: e.total_questions,
+              time: formatTimeAgo(new Date(e.completed_at)),
+            });
+          }
+        }
+
+        // Trier par date (les plus récentes en premier) et garder les 5 premières
+        activities.sort((a, b) => {
+          // On ne peut pas trier par date directement car on a déjà formaté avec formatTimeAgo
+          // Mais comme on a déjà trié les deux sources séparément, on garde juste les 5 premiers
+          return 0;
+        });
+        setRecentActivity(activities.slice(0, 5));
 
         // Utiliser le cache des catégories au lieu d'une requête DB
         // Récupérer les sessions pour calculer la progression

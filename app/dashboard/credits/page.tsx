@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { createClient } from '@/lib/supabase/client';
 import { Check, Crown, ChevronDown, Loader2, CheckCircle } from 'lucide-react';
+import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import ManageSubscriptionButton from '@/components/dashboard/ManageSubscriptionButton';
 
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -46,6 +48,16 @@ interface ExtendedProfile {
   no_timer_enabled?: boolean;
   flashcards_2_themes?: boolean;
   flashcards_5_themes?: boolean;
+  // Champs Stripe
+  stripe_customer_id?: string | null;
+  stripe_subscription_id?: string | null;
+  stripe_price_id?: string | null;
+  subscription_status?: string | null;
+  subscription_start_date?: string | null;
+  subscription_end_date?: string | null;
+  // Pack Examen
+  exam_credits?: number | null;
+  last_purchase_at?: string | null;
 }
 
 export default function OffresPage() {
@@ -116,10 +128,69 @@ export default function OffresPage() {
     }
   };
 
-  const handlePurchase = (offerType?: string) => {
-    const offer = offerType || selectedOffer;
-    if (offer) {
-      activatePurchase(offer);
+  // Fonction pour les abonnements Stripe (Standard, Premium, Examen)
+  const handleStripePurchase = async (planType: 'standard' | 'premium' | 'examen') => {
+    const supabase = createClient();
+    const plan = STRIPE_PLANS[planType];
+    const { data: { user } } = await supabase.auth.getUser();
+    
+    if (!user) {
+      alert('Vous devez être connecté pour effectuer un achat');
+      return;
+    }
+
+    // Rediriger vers Stripe avec l'email pré-rempli
+    const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email || '')}`;
+    window.location.href = checkoutUrl;
+  };
+
+  // Fonction pour les micro-transactions (ancien système)
+  const handlePurchase = async (productType: string) => {
+    setIsLoading(productType);
+    setSuccessMessage(null);
+    
+    try {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user) {
+        alert('Vous devez être connecté pour effectuer un achat');
+        return;
+      }
+
+      // Appeler la fonction SQL pour activer l'achat
+      const { data, error } = await supabase.rpc('activate_purchase', {
+        p_user_id: user.id,
+        p_product_type: productType,
+        p_stripe_payment_id: null
+      });
+
+      if (error) {
+        console.error('Erreur activation achat:', error);
+        alert('Erreur lors de l\'activation: ' + error.message);
+        return;
+      }
+
+      if (data) {
+        if (refreshProfile) {
+          await refreshProfile();
+        }
+        
+        const messages: Record<string, string> = {
+          'unlock_level': '🎉 Tous les niveaux sont maintenant débloqués !',
+          'no_timer': '⏱️ Mode sans chrono activé !',
+          'flashcards_2': '📚 Flashcards 2 thèmes débloquées !',
+          'flashcards_5': '📚 Flashcards 5 thèmes débloquées !'
+        };
+        
+        setSuccessMessage(messages[productType] || 'Achat activé !');
+        setTimeout(() => setSuccessMessage(null), 3000);
+      }
+    } catch (err) {
+      console.error('Erreur:', err);
+      alert('Une erreur est survenue');
+    } finally {
+      setIsLoading(null);
     }
   };
 
@@ -162,8 +233,28 @@ export default function OffresPage() {
         
         {/* Afficher les achats actifs */}
         <div className="border-t border-gray-200 pt-4 mt-4">
-          <p className="text-sm font-medium text-gray-700 mb-2">Vos achats actifs :</p>
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-sm font-medium text-gray-700">Vos achats actifs :</p>
+            {extendedProfile?.is_premium && (
+              <div className="flex gap-2">
+                <ManageSubscriptionButton />
+              </div>
+            )}
+          </div>
           <div className="flex flex-wrap gap-2">
+            {/* Afficher l'abonnement Stripe actif */}
+            {extendedProfile?.subscription_status === 'active' && extendedProfile?.stripe_price_id && (
+              <span className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-semibold">
+                {extendedProfile.stripe_price_id === STRIPE_PLANS.standard.priceId && '👑 Pack Standard (2,99€/semaine)'}
+                {extendedProfile.stripe_price_id === STRIPE_PLANS.premium.priceId && '⭐ Pack Premium (6,99€/semaine)'}
+              </span>
+            )}
+            {/* Afficher les crédits d'examens blancs disponibles */}
+            {extendedProfile?.exam_credits && extendedProfile.exam_credits > 0 && (
+              <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full font-semibold">
+                📝 {extendedProfile.exam_credits} examen{extendedProfile.exam_credits > 1 ? 's' : ''} blanc{extendedProfile.exam_credits > 1 ? 's' : ''} disponible{extendedProfile.exam_credits > 1 ? 's' : ''}
+              </span>
+            )}
             {extendedProfile?.all_levels_unlocked && (
               <span className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
                 🔓 Déblocage niveaux activé
@@ -184,7 +275,8 @@ export default function OffresPage() {
                 📚 Flashcards 2 thèmes
               </span>
             )}
-            {!extendedProfile?.all_levels_unlocked && 
+            {!extendedProfile?.is_premium && 
+             !extendedProfile?.all_levels_unlocked && 
              !extendedProfile?.no_timer_enabled && 
              !extendedProfile?.flashcards_2_themes && (
               <span className="text-gray-400 text-sm">Aucun achat pour le moment</span>
@@ -246,18 +338,24 @@ export default function OffresPage() {
               </li>
             </ul>
 
-            <button 
-              onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
-              className="w-full py-3 bg-white text-primary-600 font-semibold hover:bg-gray-50 transition-colors"
-            >
-              Sélectionner
-            </button>
+            {extendedProfile?.stripe_price_id === STRIPE_PLANS.standard.priceId && extendedProfile?.subscription_status === 'active' ? (
+              <div className="w-full py-3 bg-white text-primary-600 font-semibold text-center border-2 border-primary-600">
+                ✓ Plan actuel
+              </div>
+            ) : (
+              <button 
+                onClick={(e) => { e.stopPropagation(); handleStripePurchase('standard'); }}
+                className="w-full py-3 bg-white text-primary-600 font-semibold hover:bg-gray-50 transition-colors"
+              >
+                Sélectionner
+              </button>
+            )}
           </div>
         </div>
 
         {/* Pack Premium - 6,99€/semaine */}
         <div 
-          onClick={() => handleSelectOffer('pack_premium')}
+          onClick={() => setSelectedOffer('pack_premium')}
           className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${
             selectedOffer === 'pack_premium' 
               ? 'border-primary-600 ring-2 ring-primary-600' 
@@ -294,21 +392,27 @@ export default function OffresPage() {
             </li>
           </ul>
 
-          <button 
-            onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
-            className={`w-full py-3 font-semibold transition-colors border-2 ${
-              selectedOffer === 'pack_premium'
-                ? 'bg-primary-600 text-white border-primary-600'
-                : 'border-primary-600 text-primary-600 hover:bg-primary-50'
-            }`}
-          >
-            Sélectionner
-          </button>
+          {extendedProfile?.stripe_price_id === STRIPE_PLANS.premium.priceId && extendedProfile?.subscription_status === 'active' ? (
+            <div className="w-full py-3 font-semibold text-center border-2 bg-primary-600 text-white border-primary-600">
+              ✓ Plan actuel
+            </div>
+          ) : (
+            <button 
+              onClick={(e) => { e.stopPropagation(); handleStripePurchase('premium'); }}
+              className={`w-full py-3 font-semibold transition-colors border-2 ${
+                selectedOffer === 'pack_premium'
+                  ? 'bg-primary-600 text-white border-primary-600'
+                  : 'border-primary-600 text-primary-600 hover:bg-primary-50'
+              }`}
+            >
+              Sélectionner
+            </button>
+          )}
         </div>
 
         {/* Pack Examen - 2,50€ à l'unité */}
         <div 
-          onClick={() => handleSelectOffer('pack_examen')}
+          onClick={() => setSelectedOffer('pack_examen')}
           className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${
             selectedOffer === 'pack_examen' 
               ? 'border-primary-600 ring-2 ring-primary-600' 
@@ -341,7 +445,7 @@ export default function OffresPage() {
           </ul>
 
           <button 
-            onClick={(e) => { e.stopPropagation(); handlePurchase(); }}
+            onClick={(e) => { e.stopPropagation(); handleStripePurchase('examen'); }}
             className={`w-full py-3 font-semibold transition-colors border-2 ${
               selectedOffer === 'pack_examen'
                 ? 'bg-primary-600 text-white border-primary-600'
@@ -513,6 +617,10 @@ export default function OffresPage() {
           <FAQItem 
             question="Le Pack Examen expire-t-il ?"
             answer="Non, le Pack Examen à 2,50€ n'expire jamais. Vos 2 examens blancs restent disponibles jusqu'à ce que vous les utilisiez."
+          />
+          <FAQItem 
+            question="Comment voir mes factures ?"
+            answer="Si vous avez un abonnement actif, cliquez sur le bouton 'Gérer mon abonnement' ci-dessus. Vous accéderez au portail Stripe où vous pourrez consulter et télécharger toutes vos factures dans la section 'Historique des factures'."
           />
           <FAQItem 
             question="Quels moyens de paiement acceptez-vous ?"

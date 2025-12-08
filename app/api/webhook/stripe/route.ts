@@ -1,0 +1,396 @@
+import { NextRequest, NextResponse } from 'next/server';
+import Stripe from 'stripe';
+import { createClient } from '@supabase/supabase-js';
+import { STRIPE_PLANS } from '@/lib/stripe/plans';
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2025-02-24.acacia',
+});
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
+
+export async function POST(req: NextRequest) {
+  const body = await req.text();
+  const signature = req.headers.get('stripe-signature')!;
+
+  let event: Stripe.Event;
+
+  try {
+    event = stripe.webhooks.constructEvent(
+      body,
+      signature,
+      process.env.STRIPE_WEBHOOK_SECRET!
+    );
+  } catch (err: any) {
+    console.error(`❌ Erreur de signature webhook: ${err.message}`);
+    return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
+  }
+
+  console.log(`📨 Event reçu: ${event.type}`);
+
+  try {
+    switch (event.type) {
+      case 'checkout.session.completed': {
+        const session = event.data.object as Stripe.Checkout.Session;
+        await handleCheckoutCompleted(session);
+        break;
+      }
+
+      case 'customer.subscription.updated': {
+        const subscription = event.data.object as Stripe.Subscription;
+        await handleSubscriptionUpdated(subscription);
+        break;
+      }
+
+      case 'customer.subscription.deleted': {
+        const subscription = event.data.object as Stripe.Subscription;
+        await handleSubscriptionDeleted(subscription);
+        break;
+      }
+
+      case 'invoice.paid': {
+        const invoice = event.data.object as Stripe.Invoice;
+        await handleInvoicePaid(invoice);
+        break;
+      }
+
+      case 'invoice.payment_failed': {
+        const invoice = event.data.object as Stripe.Invoice;
+        await handleInvoicePaymentFailed(invoice);
+        break;
+      }
+
+      default:
+        console.log(`⚠️ Event non géré: ${event.type}`);
+    }
+
+    return NextResponse.json({ received: true });
+  } catch (error) {
+    console.error('❌ Erreur traitement webhook:', error);
+    return NextResponse.json(
+      { error: 'Webhook handler failed' },
+      { status: 500 }
+    );
+  }
+}
+
+// Gérer la création d'abonnement après paiement
+async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+  console.log('✅ Checkout completed:', session.id);
+
+  const customerEmail = session.customer_details?.email;
+  if (!customerEmail) {
+    console.error('❌ Pas d\'email client trouvé');
+    return;
+  }
+
+  const customerId = session.customer as string;
+
+  // Vérifier si c'est un abonnement ou un paiement unique
+  if (session.mode === 'payment') {
+    // Paiement unique (Pack Examen)
+    await handleOneTimePayment(session, customerEmail, customerId);
+    return;
+  }
+
+  // Récupérer l'abonnement
+  const subscriptionId = session.subscription as string;
+  const subscription = await stripe.subscriptions.retrieve(subscriptionId);
+  
+  const priceId = subscription.items.data[0].price.id;
+
+  // Trouver le plan correspondant
+  const planKey = Object.keys(STRIPE_PLANS).find(
+    key => STRIPE_PLANS[key as keyof typeof STRIPE_PLANS].priceId === priceId
+  );
+
+  if (!planKey) {
+    console.error('❌ Plan non trouvé pour price_id:', priceId);
+    return;
+  }
+
+  console.log(`💰 Abonnement créé - Plan: ${planKey}, Email: ${customerEmail}`);
+
+  // Mettre à jour le profil dans Supabase
+  const { data: profile, error: fetchError } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('email', customerEmail)
+    .single();
+
+  if (fetchError) {
+    console.error('❌ Erreur récupération profil:', fetchError);
+    return;
+  }
+
+  const { error: updateError } = await supabase
+    .from('profiles')
+    .update({
+      stripe_customer_id: customerId,
+      stripe_subscription_id: subscriptionId,
+      stripe_price_id: priceId,
+      subscription_status: subscription.status,
+      subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
+      subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
+      is_premium: true,
+    })
+    .eq('email', customerEmail);
+
+  if (updateError) {
+    console.error('❌ Erreur mise à jour profil:', updateError);
+  } else {
+    console.log('✅ Profil mis à jour avec succès');
+  }
+}
+
+// Gérer la mise à jour d'abonnement (renouvellement, changement de plan)
+async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
+  console.log('🔄 Subscription updated:', subscription.id);
+
+  const customerId = subscription.customer as string;
+  const priceId = subscription.items.data[0].price.id;
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({
+      stripe_subscription_id: subscription.id,
+      stripe_price_id: priceId,
+      subscription_status: subscription.status,
+      subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
+      subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
+      is_premium: subscription.status === 'active',
+    })
+    .eq('stripe_customer_id', customerId);
+
+  if (error) {
+    console.error('❌ Erreur mise à jour subscription:', error);
+  } else {
+    console.log('✅ Subscription mise à jour');
+  }
+}
+
+// Gérer l'annulation d'abonnement
+async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
+  console.log('🗑️ Subscription deleted:', subscription.id);
+
+  const customerId = subscription.customer as string;
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({
+      subscription_status: 'canceled',
+      is_premium: false,
+      stripe_subscription_id: null,
+      stripe_price_id: null,
+    })
+    .eq('stripe_customer_id', customerId);
+
+  if (error) {
+    console.error('❌ Erreur annulation subscription:', error);
+  } else {
+    console.log('✅ Accès révoqué');
+  }
+}
+
+// Gérer le paiement réussi d'une facture (renouvellement)
+async function handleInvoicePaid(invoice: Stripe.Invoice) {
+  console.log('💳 Invoice paid:', invoice.id);
+
+  if (!invoice.subscription) return;
+
+  const customerId = invoice.customer as string;
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({
+      subscription_status: 'active',
+      is_premium: true,
+    })
+    .eq('stripe_customer_id', customerId);
+
+  if (error) {
+    console.error('❌ Erreur après paiement:', error);
+  } else {
+    console.log('✅ Paiement confirmé');
+  }
+}
+
+// Gérer l'échec de paiement
+async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
+  console.log('❌ Invoice payment failed:', invoice.id);
+
+  if (!invoice.subscription) return;
+
+  const customerId = invoice.customer as string;
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({
+      subscription_status: 'past_due',
+    })
+    .eq('stripe_customer_id', customerId);
+
+  if (error) {
+    console.error('❌ Erreur marquage paiement échoué:', error);
+  } else {
+    console.log('⚠️ Statut mis à jour: past_due');
+  }
+}
+
+// Gérer les paiements uniques (Pack Examen)
+async function handleOneTimePayment(
+  session: Stripe.Checkout.Session,
+  customerEmail: string,
+  customerId: string
+) {
+  console.log('💳 Paiement unique détecté');
+
+  // Récupérer les items achetés
+  const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
+  
+  if (!lineItems.data || lineItems.data.length === 0) {
+    console.error('❌ Aucun item trouvé dans la session');
+    return;
+  }
+
+  const priceId = lineItems.data[0].price?.id;
+  
+  // Récupérer le profil
+  const { data: profile, error: fetchError } = await supabase
+    .from('profiles')
+    .select('id, exam_credits, stripe_customer_id, subscription_status')
+    .eq('email', customerEmail)
+    .single();
+
+  if (fetchError || !profile) {
+    console.error('❌ Erreur récupération profil:', fetchError);
+    return;
+  }
+
+  // Vérifier si c'est le Pack Examen
+  if (priceId === STRIPE_PLANS.examen.priceId) {
+    console.log('📝 Pack Examen acheté - Ajout de 2 examens blancs');
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({
+        exam_credits: (profile.exam_credits || 0) + 2, // Ajouter 2 examens blancs
+        stripe_customer_id: profile.stripe_customer_id || customerId,
+        last_purchase_at: new Date().toISOString(),
+      })
+      .eq('email', customerEmail);
+
+    if (updateError) {
+      console.error('❌ Erreur mise à jour crédits:', updateError);
+    } else {
+      console.log('✅ 2 examens blancs ajoutés au profil');
+    }
+
+    // Enregistrer l'achat dans la table achats
+    const { error: achatError } = await supabase
+      .from('achats')
+      .insert({
+        user_id: profile.id,
+        product_type: 'pack_examen',
+        amount: 2.50,
+        currency: 'EUR',
+        stripe_payment_id: session.payment_intent as string,
+        stripe_customer_id: customerId,
+        status: 'completed',
+        completed_at: new Date().toISOString(),
+      });
+
+    if (achatError) {
+      console.error('❌ Erreur enregistrement achat:', achatError);
+    }
+  }
+  // Vérifier si c'est Flashcards 2 thèmes
+  else if (priceId === STRIPE_PLANS.flashcards2Themes.priceId) {
+    console.log('🃏 Flashcards 2 thèmes acheté');
+
+    // Vérifier si l'utilisateur a un abonnement actif
+    if (profile.subscription_status !== 'active') {
+      console.error('❌ Achat Flashcards refusé - Pas d\'abonnement actif');
+      return;
+    }
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({
+        flashcards_2_themes: true,
+        flashcards_purchased_at: new Date().toISOString(),
+        stripe_customer_id: profile.stripe_customer_id || customerId,
+      })
+      .eq('email', customerEmail);
+
+    if (updateError) {
+      console.error('❌ Erreur activation Flashcards 2 thèmes:', updateError);
+    } else {
+      console.log('✅ Flashcards 2 thèmes activés (Principes + Histoire)');
+    }
+
+    // Enregistrer l'achat
+    const { error: achatError } = await supabase
+      .from('achats')
+      .insert({
+        user_id: profile.id,
+        product_type: 'flashcards_2_themes',
+        amount: 1.20,
+        currency: 'EUR',
+        stripe_payment_id: session.payment_intent as string,
+        stripe_customer_id: customerId,
+        status: 'completed',
+        completed_at: new Date().toISOString(),
+      });
+
+    if (achatError) {
+      console.error('❌ Erreur enregistrement achat:', achatError);
+    }
+  }
+  // Vérifier si c'est Flashcards 5 thèmes
+  else if (priceId === STRIPE_PLANS.flashcards5Themes.priceId) {
+    console.log('🃏 Flashcards 5 thèmes acheté');
+
+    // Vérifier si l'utilisateur a un abonnement actif
+    if (profile.subscription_status !== 'active') {
+      console.error('❌ Achat Flashcards refusé - Pas d\'abonnement actif');
+      return;
+    }
+
+    const { error: updateError } = await supabase
+      .from('profiles')
+      .update({
+        flashcards_5_themes: true,
+        flashcards_purchased_at: new Date().toISOString(),
+        stripe_customer_id: profile.stripe_customer_id || customerId,
+      })
+      .eq('email', customerEmail);
+
+    if (updateError) {
+      console.error('❌ Erreur activation Flashcards 5 thèmes:', updateError);
+    } else {
+      console.log('✅ Flashcards 5 thèmes activés (Tous les thèmes)');
+    }
+
+    // Enregistrer l'achat
+    const { error: achatError } = await supabase
+      .from('achats')
+      .insert({
+        user_id: profile.id,
+        product_type: 'flashcards_5_themes',
+        amount: 1.50,
+        currency: 'EUR',
+        stripe_payment_id: session.payment_intent as string,
+        stripe_customer_id: customerId,
+        status: 'completed',
+        completed_at: new Date().toISOString(),
+      });
+
+    if (achatError) {
+      console.error('❌ Erreur enregistrement achat:', achatError);
+    }
+  }
+}
