@@ -3,16 +3,19 @@ import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder', {
   apiVersion: '2025-02-24.acacia',
 });
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+function getSupabaseClient() {
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL || '',
+    process.env.SUPABASE_SERVICE_ROLE_KEY || ''
+  );
+}
 
 export async function POST(req: NextRequest) {
+  const supabase = getSupabaseClient();
   const body = await req.text();
   const signature = req.headers.get('stripe-signature')!;
 
@@ -35,31 +38,31 @@ export async function POST(req: NextRequest) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
-        await handleCheckoutCompleted(session);
+        await handleCheckoutCompleted(session, supabase);
         break;
       }
 
       case 'customer.subscription.updated': {
         const subscription = event.data.object as Stripe.Subscription;
-        await handleSubscriptionUpdated(subscription);
+        await handleSubscriptionUpdated(subscription, supabase);
         break;
       }
 
       case 'customer.subscription.deleted': {
         const subscription = event.data.object as Stripe.Subscription;
-        await handleSubscriptionDeleted(subscription);
+        await handleSubscriptionDeleted(subscription, supabase);
         break;
       }
 
       case 'invoice.paid': {
         const invoice = event.data.object as Stripe.Invoice;
-        await handleInvoicePaid(invoice);
+        await handleInvoicePaid(invoice, supabase);
         break;
       }
 
       case 'invoice.payment_failed': {
         const invoice = event.data.object as Stripe.Invoice;
-        await handleInvoicePaymentFailed(invoice);
+        await handleInvoicePaymentFailed(invoice, supabase);
         break;
       }
 
@@ -78,7 +81,7 @@ export async function POST(req: NextRequest) {
 }
 
 // Gérer la création d'abonnement après paiement
-async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('✅ Checkout completed:', session.id);
 
   const customerEmail = session.customer_details?.email;
@@ -92,7 +95,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   // Vérifier si c'est un abonnement ou un paiement unique
   if (session.mode === 'payment') {
     // Paiement unique (Pack Examen)
-    await handleOneTimePayment(session, customerEmail, customerId);
+    await handleOneTimePayment(session, customerEmail, customerId, supabase);
     return;
   }
 
@@ -147,7 +150,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
 }
 
 // Gérer la mise à jour d'abonnement (renouvellement, changement de plan)
-async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
+async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('🔄 Subscription updated:', subscription.id);
 
   const customerId = subscription.customer as string;
@@ -173,7 +176,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
 }
 
 // Gérer l'annulation d'abonnement
-async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
+async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('🗑️ Subscription deleted:', subscription.id);
 
   const customerId = subscription.customer as string;
@@ -196,7 +199,7 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
 }
 
 // Gérer le paiement réussi d'une facture (renouvellement)
-async function handleInvoicePaid(invoice: Stripe.Invoice) {
+async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('💳 Invoice paid:', invoice.id);
 
   if (!invoice.subscription) return;
@@ -219,7 +222,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice) {
 }
 
 // Gérer l'échec de paiement
-async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
+async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('❌ Invoice payment failed:', invoice.id);
 
   if (!invoice.subscription) return;
@@ -244,7 +247,8 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice) {
 async function handleOneTimePayment(
   session: Stripe.Checkout.Session,
   customerEmail: string,
-  customerId: string
+  customerId: string,
+  supabase: ReturnType<typeof getSupabaseClient>
 ) {
   console.log('💳 Paiement unique détecté');
 

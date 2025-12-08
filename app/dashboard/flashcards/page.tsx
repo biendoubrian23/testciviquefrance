@@ -368,32 +368,32 @@ export default function FlashcardsPage() {
   // Page verrouillée pour les membres gratuits
   if (!hasSubscription) {
     return (
-      <div className="max-w-2xl mx-auto px-4 py-12">
-        <div className="bg-white border-2 border-amber-500 rounded-2xl p-8 text-center">
-          <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center">
-              <Lock className="w-10 h-10 text-amber-600" />
+      <div className="max-w-2xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
+        <div className="bg-white border-2 border-amber-500 p-6 sm:p-8 text-center">
+          <div className="flex justify-center mb-4 sm:mb-6">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-amber-100 flex items-center justify-center">
+              <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-amber-600" />
             </div>
           </div>
           
-          <h1 className="text-3xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
             Flashcards réservés aux membres
           </h1>
           
-          <p className="text-lg text-gray-600 mb-6 max-w-md mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 max-w-md mx-auto">
             Accédez à des centaines de flashcards interactifs pour réviser efficacement 
             les thèmes clés de l'examen civique.
           </p>
           
-          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-6">
-            <p className="text-sm text-amber-800 font-medium">
+          <div className="bg-amber-50 border border-amber-200 p-3 sm:p-4 mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm text-amber-800 font-medium">
               ⚡ Fonctionnalité disponible avec l'abonnement Standard ou Premium
             </p>
           </div>
           
           <button
             onClick={() => setShowUpgradeModal(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all"
           >
             <span>Débloquer les Flashcards</span>
             <ArrowRight className="w-5 h-5" />
