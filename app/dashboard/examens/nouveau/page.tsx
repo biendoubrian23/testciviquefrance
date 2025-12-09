@@ -624,6 +624,7 @@ export default function NouvelExamenPage() {
             .from('examens_blancs')
             .insert({
               user_id: userId,
+              exam_number: 1,
               score: 0,
               total_questions: 40,
               is_completed: false,
