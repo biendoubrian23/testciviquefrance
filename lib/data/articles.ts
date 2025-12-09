@@ -61,12 +61,27 @@ export const categories: Category[] = [
     name: 'Conseils pratiques',
     slug: 'conseils',
     icon: '',
-    count: 0,
+    count: 1,
     color: 'orange',
   },
 ];
 
 export const articles: Article[] = [
+  {
+    id: '2',
+    slug: 'centres-agrees-examen-civique-2026',
+    title: 'Liste officielle des centres agréés pour l\'examen civique 2026 : où passer votre test de naturalisation',
+    excerpt: 'Découvrez la liste complète des centres d\'examen agréés pour le test civique 2026 en France. Inscription, horaires, localisation : tout ce qu\'il faut savoir pour réserver votre session d\'examen.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Équipe Le Test Civique',
+    date: '09/12/2025',
+    readTime: 10,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070',
+    featured: true,
+  },
   {
     id: '1',
     slug: 'cadre-general-examen-civique',
@@ -79,7 +94,7 @@ export const articles: Article[] = [
     date: '01/11/2025',
     readTime: 8,
     views: 1250,
-    image: '/images/blog/examen-civique.jpg',
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070',
     featured: true,
   },
 ];

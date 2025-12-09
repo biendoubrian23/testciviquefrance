@@ -87,7 +87,7 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-300 group-hover:scale-105"
             style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=800')",
+              backgroundImage: `url('${article.image}')`,
             }}
           />
           <div className="absolute inset-0 bg-black/10" />

@@ -5,6 +5,7 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
 import { StructuredData, getOrganizationSchema, getWebSiteSchema } from '@/components/seo/StructuredData';
+import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -754,6 +755,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased">
+        <AnnouncementBanner />
         <AuthProvider>{children}</AuthProvider>
         <Analytics />
       </body>

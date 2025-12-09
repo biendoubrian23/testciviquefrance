@@ -5,6 +5,7 @@ import { Calendar, Clock, User, ArrowLeft, Share2, Bookmark, ChevronRight } from
 import { Article, getPopularArticles } from '@/lib/data/articles';
 import { cadreGeneralContent } from '@/lib/data/article-content';
 import ArticleCard from './ArticleCard';
+import CentresExamen2026Article from './CentresExamen2026Article';
 
 interface ArticleContentProps {
   article: Article;
@@ -16,16 +17,30 @@ export default function ArticleContent({ article }: ArticleContentProps) {
 
   // Pour l'article principal sur le cadre général
   const isMainArticle = article.slug === 'cadre-general-examen-civique';
+  const isCentres2026Article = article.slug === 'centres-agrees-examen-civique-2026';
+
+  // Choisir l'image de fond selon l'article avec article.image en priorité
+  const getHeaderImage = () => {
+    // Toujours utiliser l'image de l'article si disponible
+    if (article.image && article.image.includes('unsplash')) {
+      return `url('${article.image}')`;
+    }
+    // Fallback selon le slug
+    if (isCentres2026Article) {
+      return "url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070')";
+    }
+    return "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070')";
+  };
 
   return (
     <article className="pb-20">
       {/* Hero avec image de fond */}
       <header className="relative text-white py-20 px-4">
-        {/* Image de fond - Justice/Droit */}
+        {/* Image de fond dynamique */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070')",
+            backgroundImage: getHeaderImage(),
           }}
         />
         {/* Overlay sombre */}
@@ -90,7 +105,9 @@ export default function ArticleContent({ article }: ArticleContentProps) {
 
         {/* Article Content */}
         <div className="mt-10">
-          {isMainArticle ? (
+          {isCentres2026Article ? (
+            <CentresExamen2026Article />
+          ) : isMainArticle ? (
             <>
               {/* Introduction - Style éditorial */}
               <section className="mb-14">
