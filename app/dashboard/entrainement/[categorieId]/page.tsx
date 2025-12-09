@@ -49,6 +49,7 @@ export default function CategorieDetailPage() {
   const [lastScore, setLastScore] = useState<number | null>(null)
   const [isUnlocking, setIsUnlocking] = useState(false)
   const [allLevelsUnlocked, setAllLevelsUnlocked] = useState(false)
+  const [hasActiveSubscription, setHasActiveSubscription] = useState(false)
 
   // Limite désactivée pour le moment (sera activée avec Stripe)
   // const LIMITE_NIVEAUX_JOUR = 3
@@ -61,15 +62,17 @@ export default function CategorieDetailPage() {
       return
     }
 
-    // Charger le profil pour savoir si l'utilisateur a débloqué tous les niveaux
+    // Charger le profil pour savoir si l'utilisateur a débloqué tous les niveaux ET son statut d'abonnement
     const { data: profileData } = await supabase
       .from('profiles')
-      .select('all_levels_unlocked')
+      .select('all_levels_unlocked, subscription_status')
       .eq('id', user.id)
       .single()
     
     const hasAllLevelsUnlocked = profileData?.all_levels_unlocked || false
+    const hasActiveSubscription = profileData?.subscription_status === 'active'
     setAllLevelsUnlocked(hasAllLevelsUnlocked)
+    setHasActiveSubscription(hasActiveSubscription)
 
     // Charger la catégorie (sans .single() pour éviter 406)
     const { data: categorieList } = await supabase
@@ -159,16 +162,28 @@ export default function CategorieDetailPage() {
     // Créer la structure des 10 niveaux
     const niveauxStructure: NiveauProgression[] = []
     
+    // Déterminer si l'utilisateur a accès premium (abonnement actif OU achat complet)
+    const hasPremiumAccess = hasActiveSubscription || hasAllLevelsUnlocked
+    
     for (let i = 1; i <= 10; i++) {
       const meilleurScore = meilleursScoresParNiveau.get(i) || null
       const tentatives = tentativesParNiveau.get(i) || 0
       // Un niveau est complété si on a obtenu >= 8/10
       const isCompleted = meilleurScore !== null && meilleurScore >= 8
       
+      // NOUVELLE LOGIQUE : Membres gratuits = niveau 1 uniquement
+      let isUnlocked: boolean
+      if (hasPremiumAccess) {
+        // Utilisateurs premium : déblocage progressif normal
+        isUnlocked = i <= niveauActuel
+      } else {
+        // Utilisateurs gratuits : seulement niveau 1
+        isUnlocked = i === 1
+      }
+      
       niveauxStructure.push({
         niveau: i,
-        // Débloqué selon la progression normale (l'achat permet juste de passer avec 5-7/10)
-        is_unlocked: i <= niveauActuel,
+        is_unlocked: isUnlocked,
         is_completed: isCompleted,
         meilleur_score: meilleurScore,
         tentatives: tentatives
@@ -336,6 +351,15 @@ export default function CategorieDetailPage() {
   }
 
   const handleStartQuiz = (niveau: number) => {
+    // Vérifier si l'utilisateur a accès premium
+    const hasPremiumAccess = hasActiveSubscription || allLevelsUnlocked
+    
+    // Si membre gratuit essaie d'accéder aux niveaux 2+, rediriger vers credits
+    if (!hasPremiumAccess && niveau > 1) {
+      router.push('/dashboard/credits')
+      return
+    }
+    
     router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`)
   }
 
@@ -430,6 +454,31 @@ export default function CategorieDetailPage() {
         <ArrowLeft className="w-4 h-4" />
         <span>Retour aux catégories</span>
       </Link>
+
+      {/* Message info pour membres gratuits */}
+      {!hasActiveSubscription && !allLevelsUnlocked && (
+        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 p-4 mb-6">
+          <div className="flex items-start gap-3">
+            <Lock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-amber-900 mb-1">
+                Membre gratuit - Accès limité au niveau 1
+              </h3>
+              <p className="text-sm text-amber-800 mb-3">
+                En tant que membre gratuit, vous avez accès au niveau 1 de toutes les thématiques. 
+                Pour débloquer les niveaux 2 à 10, souscrivez à l'abonnement hebdomadaire et profitez également des flashcards, statistiques et temps illimité !
+              </p>
+              <button
+                onClick={() => router.push('/dashboard/credits')}
+                className="inline-flex items-center gap-2 bg-amber-600 text-white px-4 py-2 text-sm font-medium hover:bg-amber-700 transition-colors"
+              >
+                <Sparkles className="w-4 h-4" />
+                Voir les abonnements
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Info catégorie */}
       <div className="bg-white border-2 border-gray-900 p-6 mb-6">
@@ -549,7 +598,9 @@ export default function CategorieDetailPage() {
                   className={`w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:py-2 rounded-none font-medium transition-colors ${
                     canPlay
                       ? 'bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800'
-                      : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                      : !hasActiveSubscription && !allLevelsUnlocked && niveau.niveau > 1
+                        ? 'bg-amber-100 text-amber-700 hover:bg-amber-200 border-2 border-amber-300 cursor-pointer'
+                        : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                   }`}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
@@ -562,6 +613,12 @@ export default function CategorieDetailPage() {
                     <>
                       <PlayCircle className="w-4 h-4" />
                       <span>Commencer</span>
+                    </>
+                  ) : !hasActiveSubscription && !allLevelsUnlocked && niveau.niveau > 1 ? (
+                    <>
+                      <Lock className="w-4 h-4" />
+                      <span className="hidden sm:inline">S'abonner pour débloquer</span>
+                      <span className="sm:hidden">S'abonner</span>
                     </>
                   ) : (
                     <>

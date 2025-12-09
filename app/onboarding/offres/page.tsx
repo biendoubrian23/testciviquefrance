@@ -8,35 +8,47 @@ import {
   Check, 
   ChevronRight
 } from 'lucide-react';
+import { STRIPE_PLANS } from '@/lib/stripe/plans';
 
 export default function OnboardingOffersPage() {
   const router = useRouter();
   const { user } = useAuth();
   const supabase = useSupabase();
-  const [selectedOffer, setSelectedOffer] = useState<string | null>('pack_standard');
   const [isProcessing, setIsProcessing] = useState(false);
 
-  const handleSelectOffer = (offerId: string) => {
-    setSelectedOffer(offerId);
-  };
-
-  // Fonction pour sélectionner une offre et aller au dashboard
-  const handleSelectAndGo = async () => {
-    setIsProcessing(true);
-    if (user) {
-      try {
-        await supabase
-          .from('profiles')
-          .update({ has_completed_onboarding: true })
-          .eq('id', user.id);
-      } catch (error) {
-        console.error('Erreur mise à jour profil:', error);
-      }
+  // Rediriger vers le checkout Stripe avec le lien de paiement approprié
+  const handleCheckout = async (planKey: 'standard' | 'premium' | 'examen') => {
+    if (!user?.email) {
+      router.push('/login');
+      return;
     }
-    // Forcer la redirection vers le dashboard
-    window.location.href = '/dashboard';
+
+    setIsProcessing(true);
+    
+    // Marquer l'onboarding comme complété avant la redirection
+    try {
+      await supabase
+        .from('profiles')
+        .update({ has_completed_onboarding: true })
+        .eq('id', user.id);
+    } catch (error) {
+      console.error('Erreur mise à jour profil:', error);
+    }
+
+    // Construire l'URL de checkout avec l'email pré-rempli
+    const plan = STRIPE_PLANS[planKey];
+    const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`;
+    
+    // Rediriger vers Stripe Checkout
+    window.location.href = checkoutUrl;
   };
 
+  // Continuer avec l'offre par défaut (Premium 6.99€)
+  const handleContinueWithOffer = () => {
+    handleCheckout('premium');
+  };
+
+  // Passer et aller au dashboard en tant que membre gratuit
   const handleSkip = async () => {
     if (user) {
       try {
@@ -82,10 +94,10 @@ export default function OnboardingOffersPage() {
             vous pourrez progresser rapidement dans tous les domaines.
           </p>
           <button
-            onClick={handleSelectAndGo}
-            disabled={!selectedOffer || isProcessing}
+            onClick={handleContinueWithOffer}
+            disabled={isProcessing}
             className={`inline-flex items-center gap-2 px-8 py-3 font-semibold transition-all duration-200 ${
-              selectedOffer && !isProcessing
+              !isProcessing
                 ? 'bg-primary-600 text-white hover:bg-primary-700'
                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
             }`}
@@ -106,12 +118,7 @@ export default function OnboardingOffersPage() {
           
           {/* Pack Standard - 2,99€/semaine - Recommandé */}
           <div 
-            onClick={() => handleSelectOffer('pack_standard')}
-            className={`relative cursor-pointer transition-all duration-200 ${
-              selectedOffer === 'pack_standard' 
-                ? 'ring-2 ring-primary-600' 
-                : ''
-            }`}
+            className="relative cursor-pointer transition-all duration-200 hover:ring-2 hover:ring-primary-600"
           >
             {/* Badge Recommandé */}
             <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 z-10">
@@ -152,22 +159,18 @@ export default function OnboardingOffersPage() {
               </ul>
 
               <button 
-                onClick={(e) => { e.stopPropagation(); handleSelectAndGo(); }}
+                onClick={() => handleCheckout('standard')}
+                disabled={isProcessing}
                 className="w-full py-2.5 bg-white text-primary-600 font-semibold hover:bg-gray-50 transition-colors text-sm"
               >
-                Sélectionner
+                {isProcessing ? 'Traitement...' : 'Sélectionner'}
               </button>
             </div>
           </div>
 
           {/* Pack Premium - 6,99€/semaine */}
           <div 
-            onClick={() => handleSelectOffer('pack_premium')}
-            className={`relative cursor-pointer transition-all duration-200 bg-white border ${
-              selectedOffer === 'pack_premium' 
-                ? 'border-primary-600 ring-2 ring-primary-600' 
-                : 'border-gray-200'
-            } p-6 h-full flex flex-col`}
+            className="relative cursor-pointer transition-all duration-200 bg-white border border-gray-200 hover:border-primary-600 hover:ring-2 hover:ring-primary-600 p-6 h-full flex flex-col"
           >
             <h3 className="text-lg font-bold text-primary-600 mb-2">Premium</h3>
             <div className="flex items-baseline gap-1 mb-1">
@@ -200,25 +203,17 @@ export default function OnboardingOffersPage() {
             </ul>
 
             <button 
-              onClick={(e) => { e.stopPropagation(); handleSelectAndGo(); }}
-              className={`w-full py-2.5 font-semibold transition-colors border-2 text-sm ${
-                selectedOffer === 'pack_premium'
-                  ? 'bg-primary-600 text-white border-primary-600'
-                  : 'border-primary-600 text-primary-600 hover:bg-primary-50'
-              }`}
+              onClick={() => handleCheckout('premium')}
+              disabled={isProcessing}
+              className="w-full py-2.5 font-semibold transition-colors border-2 text-sm border-primary-600 text-primary-600 hover:bg-primary-50"
             >
-              Sélectionner
+              {isProcessing ? 'Traitement...' : 'Sélectionner'}
             </button>
           </div>
 
           {/* Pack Examen - 2,50€ à l'unité */}
           <div 
-            onClick={() => handleSelectOffer('pack_examen')}
-            className={`relative cursor-pointer transition-all duration-200 bg-white border ${
-              selectedOffer === 'pack_examen' 
-                ? 'border-primary-600 ring-2 ring-primary-600' 
-                : 'border-gray-200'
-            } p-6 h-full flex flex-col`}
+            className="relative cursor-pointer transition-all duration-200 bg-white border border-gray-200 hover:border-primary-600 hover:ring-2 hover:ring-primary-600 p-6 h-full flex flex-col"
           >
             <h3 className="text-lg font-bold text-primary-600 mb-2">Pack Examen</h3>
             <div className="flex items-baseline gap-1 mb-1">
@@ -246,14 +241,11 @@ export default function OnboardingOffersPage() {
             </ul>
 
             <button 
-              onClick={(e) => { e.stopPropagation(); handleSelectAndGo(); }}
-              className={`w-full py-2.5 font-semibold transition-colors border-2 text-sm ${
-                selectedOffer === 'pack_examen'
-                  ? 'bg-primary-600 text-white border-primary-600'
-                  : 'border-primary-600 text-primary-600 hover:bg-primary-50'
-              }`}
+              onClick={() => handleCheckout('examen')}
+              disabled={isProcessing}
+              className="w-full py-2.5 font-semibold transition-colors border-2 text-sm border-primary-600 text-primary-600 hover:bg-primary-50"
             >
-              Sélectionner
+              {isProcessing ? 'Traitement...' : 'Sélectionner'}
             </button>
           </div>
         </div>

@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Loader2, Check, X } from 'lucide-react';
+import LegalModal from '@/components/ui/LegalModal';
+import { conditionsUtilisation, politiqueConfidentialite } from '@/lib/data/legal-content';
 
 // Validation email stricte
 const isValidEmail = (email: string): boolean => {
@@ -46,6 +48,8 @@ export default function SignupPage() {
   const [emailError, setEmailError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [showCGU, setShowCGU] = useState(false);
+  const [showPolitique, setShowPolitique] = useState(false);
   const { signUp, signInWithGoogle } = useAuth();
   const router = useRouter();
 
@@ -292,25 +296,29 @@ export default function SignupPage() {
             <div className="flex items-start gap-2">
               <input
                 type="checkbox"
+                id="accept-terms"
                 checked={acceptTerms}
                 onChange={(e) => setAcceptTerms(e.target.checked)}
-                className="w-4 h-4 mt-1"
+                className="w-4 h-4 mt-1 border-gray-300 focus:ring-primary-500"
+                required
               />
-              <label className="text-sm text-gray-700">
+              <label htmlFor="accept-terms" className="text-sm text-gray-700">
                 J&apos;accepte les{' '}
-                <Link
-                  href="/cgu"
-                  className="text-primary-600 hover:text-primary-700"
+                <button
+                  type="button"
+                  onClick={() => setShowCGU(true)}
+                  className="text-primary-600 hover:text-primary-700 font-semibold underline"
                 >
                   conditions d&apos;utilisation
-                </Link>
+                </button>
                 {' '}et la{' '}
-                <Link
-                  href="/politique-confidentialite"
-                  className="text-primary-600 hover:text-primary-700"
+                <button
+                  type="button"
+                  onClick={() => setShowPolitique(true)}
+                  className="text-primary-600 hover:text-primary-700 font-semibold underline"
                 >
                   politique de confidentialité
-                </Link>
+                </button>
               </label>
             </div>
 
@@ -344,6 +352,23 @@ export default function SignupPage() {
           </Link>
         </div>
       </div>
+
+      {/* Modals légaux */}
+      <LegalModal
+        isOpen={showCGU}
+        onClose={() => setShowCGU(false)}
+        title={conditionsUtilisation.title}
+        lastUpdate={conditionsUtilisation.lastUpdate}
+        sections={conditionsUtilisation.sections}
+      />
+      
+      <LegalModal
+        isOpen={showPolitique}
+        onClose={() => setShowPolitique(false)}
+        title={politiqueConfidentialite.title}
+        lastUpdate={politiqueConfidentialite.lastUpdate}
+        sections={politiqueConfidentialite.sections}
+      />
     </div>
   );
 }

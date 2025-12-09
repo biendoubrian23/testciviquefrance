@@ -7,107 +7,12 @@ import { useAuth } from '@/contexts/AuthContext';
 import { ChevronRight, CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import type { OnboardingQuestion, OnboardingAnswer } from '@/types/onboarding';
 
-// Questions statiques pour l'onboarding (fallback si la DB n'est pas configurée)
-const staticQuestions: OnboardingQuestion[] = [
-  {
-    id: '1',
-    domaine: 'Principes et valeurs de la République',
-    question: 'Selon l\'article 1er de la Constitution, la France est une République :',
-    options: [
-      { text: 'Indivisible, laïque, démocratique et sociale', isCorrect: true },
-      { text: 'Fédérale, laïque et démocratique', isCorrect: false },
-      { text: 'Indivisible, catholique et démocratique', isCorrect: false },
-      { text: 'Divisible, laïque et monarchique', isCorrect: false },
-    ],
-    explication: 'L\'article 1er de la Constitution de 1958 définit la France comme une République indivisible, laïque, démocratique et sociale.',
-    ordre: 1,
-  },
-  {
-    id: '2',
-    domaine: 'Principes et valeurs de la République',
-    question: 'La loi de séparation des Églises et de l\'État, fondement de la laïcité française, date de :',
-    options: [
-      { text: '1789', isCorrect: false },
-      { text: '1905', isCorrect: true },
-      { text: '1958', isCorrect: false },
-      { text: '1848', isCorrect: false },
-    ],
-    explication: 'La loi du 9 décembre 1905 établit la séparation des Églises et de l\'État.',
-    ordre: 2,
-  },
-  {
-    id: '3',
-    domaine: 'Système institutionnel et politique',
-    question: 'Qui promulgue les lois en France ?',
-    options: [
-      { text: 'Le Premier ministre', isCorrect: false },
-      { text: 'Le Président de l\'Assemblée nationale', isCorrect: false },
-      { text: 'Le Président de la République', isCorrect: true },
-      { text: 'Le Conseil constitutionnel', isCorrect: false },
-    ],
-    explication: 'Selon l\'article 10 de la Constitution, le Président de la République promulgue les lois.',
-    ordre: 3,
-  },
-  {
-    id: '4',
-    domaine: 'Droits et devoirs',
-    question: 'À partir de quel âge le vote devient-il un droit en France ?',
-    options: [
-      { text: '16 ans', isCorrect: false },
-      { text: '18 ans', isCorrect: true },
-      { text: '21 ans', isCorrect: false },
-      { text: '25 ans', isCorrect: false },
-    ],
-    explication: 'Depuis 1974, tout citoyen français âgé de 18 ans ou plus dispose du droit de vote.',
-    ordre: 4,
-  },
-  {
-    id: '5',
-    domaine: 'Histoire, géographie et culture',
-    question: 'La Déclaration des Droits de l\'Homme et du Citoyen a été adoptée en :',
-    options: [
-      { text: '1789', isCorrect: true },
-      { text: '1848', isCorrect: false },
-      { text: '1958', isCorrect: false },
-      { text: '1945', isCorrect: false },
-    ],
-    explication: 'La DDHC a été adoptée le 26 août 1789 par l\'Assemblée nationale constituante.',
-    ordre: 5,
-  },
-  {
-    id: '6',
-    domaine: 'Histoire, géographie et culture',
-    question: 'Combien de régions administratives la France métropolitaine compte-t-elle depuis 2016 ?',
-    options: [
-      { text: '18', isCorrect: false },
-      { text: '13', isCorrect: true },
-      { text: '22', isCorrect: false },
-      { text: '27', isCorrect: false },
-    ],
-    explication: 'Depuis la réforme territoriale de 2015, la France métropolitaine compte 13 régions.',
-    ordre: 6,
-  },
-  {
-    id: '7',
-    domaine: 'Vivre dans la société française',
-    question: 'L\'école est obligatoire en France pour les enfants âgés de :',
-    options: [
-      { text: '6 à 16 ans', isCorrect: false },
-      { text: '3 à 16 ans', isCorrect: true },
-      { text: '5 à 18 ans', isCorrect: false },
-      { text: '6 à 18 ans', isCorrect: false },
-    ],
-    explication: 'Depuis 2019, l\'instruction est obligatoire de 3 à 16 ans.',
-    ordre: 7,
-  },
-];
-
 export default function OnboardingQuizPage() {
   const router = useRouter();
   const { user } = useAuth();
   const supabase = useSupabase();
   
-  const [questions, setQuestions] = useState<OnboardingQuestion[]>(staticQuestions);
+  const [questions, setQuestions] = useState<OnboardingQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOption, setSelectedOption] = useState<number | null>(null);
   const [showExplanation, setShowExplanation] = useState(false);
@@ -116,30 +21,31 @@ export default function OnboardingQuizPage() {
   const [isSaving, setIsSaving] = useState(false);
 
   const currentQuestion = questions[currentIndex];
-  const progress = ((currentIndex + 1) / questions.length) * 100;
+  const progress = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
   const isLastQuestion = currentIndex === questions.length - 1;
 
+  // Charger les questions depuis la base de données
   useEffect(() => {
-    // Charger immédiatement avec les questions statiques
-    // Puis essayer de charger depuis la BD en arrière-plan
-    setIsLoading(false);
-    
-    const loadQuestionsFromDB = async () => {
+    const loadQuestions = async () => {
       try {
-        const { data } = await supabase
+        const { data, error } = await supabase
           .from('onboarding_questions')
           .select('*')
           .order('ordre');
+
+        if (error) throw error;
 
         if (data && data.length > 0) {
           setQuestions(data as OnboardingQuestion[]);
         }
       } catch (error) {
-        // Garder les questions statiques
+        console.error('Erreur chargement questions:', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    loadQuestionsFromDB();
+    loadQuestions();
   }, [supabase]);
 
   const handleSelectOption = (index: number) => {
@@ -148,9 +54,9 @@ export default function OnboardingQuizPage() {
   };
 
   const handleValidate = () => {
-    if (selectedOption === null) return;
+    if (selectedOption === null || !currentQuestion) return;
     
-    const isCorrect = currentQuestion.options[selectedOption].isCorrect;
+    const isCorrect = currentQuestion.options[selectedOption].isCorrect === true;
     
     const answer: OnboardingAnswer = {
       questionId: currentQuestion.id,
@@ -231,12 +137,24 @@ export default function OnboardingQuizPage() {
     }
   };
 
+  // Afficher le loader pendant le chargement
   if (isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
           <Loader2 className="w-10 h-10 animate-spin text-primary-600 mx-auto mb-4" />
           <p className="text-gray-600">Chargement du quiz...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Si pas de questions chargées
+  if (questions.length === 0) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-gray-600">Aucune question disponible.</p>
         </div>
       </div>
     );
@@ -288,14 +206,14 @@ export default function OnboardingQuizPage() {
         <div className="space-y-2 mb-4">
           {currentQuestion.options.map((option, index) => {
             const isSelected = selectedOption === index;
-            const isCorrect = option.isCorrect;
+            const isCorrectOption = option.isCorrect === true;
             
             let optionClasses = 'w-full p-3 text-left border-2 transition-all duration-200 text-sm ';
             
             if (showExplanation) {
-              if (isCorrect) {
+              if (isCorrectOption) {
                 optionClasses += 'border-emerald-500 bg-emerald-50 text-emerald-900';
-              } else if (isSelected && !isCorrect) {
+              } else if (isSelected && !isCorrectOption) {
                 optionClasses += 'border-red-500 bg-red-50 text-red-900';
               } else {
                 optionClasses += 'border-gray-200 bg-gray-50 text-gray-500';
@@ -317,10 +235,10 @@ export default function OnboardingQuizPage() {
               >
                 <div className="flex items-center justify-between">
                   <span className="font-medium">{option.text}</span>
-                  {showExplanation && isCorrect && (
+                  {showExplanation && isCorrectOption && (
                     <CheckCircle className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                   )}
-                  {showExplanation && isSelected && !isCorrect && (
+                  {showExplanation && isSelected && !isCorrectOption && (
                     <XCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
                   )}
                 </div>

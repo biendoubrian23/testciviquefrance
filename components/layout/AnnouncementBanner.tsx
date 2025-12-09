@@ -6,11 +6,8 @@ import { useState, useEffect } from 'react';
 
 export default function AnnouncementBanner() {
   const [isVisible, setIsVisible] = useState(true);
-  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
-    // Vérifier si la bannière a été fermée précédemment
     const closed = localStorage.getItem('announcement-banner-closed');
     if (closed === 'true') {
       setIsVisible(false);
@@ -22,8 +19,7 @@ export default function AnnouncementBanner() {
     localStorage.setItem('announcement-banner-closed', 'true');
   };
 
-  // Ne rien afficher pendant le SSR pour éviter l'erreur d'hydratation
-  if (!isMounted || !isVisible) return null;
+  if (!isVisible) return null;
 
   return (
     <div className="relative bg-gradient-to-r from-pink-50 via-pink-100 to-pink-50 border-b border-pink-200">

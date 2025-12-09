@@ -11,7 +11,8 @@ export interface OnboardingQuestion {
 
 export interface OnboardingOption {
   text: string;
-  isCorrect: boolean;
+  isCorrect?: boolean; // Optionnel pour compatibilité
+  hash?: string; // Hash de la réponse pour vérification
 }
 
 export interface OnboardingAnswer {

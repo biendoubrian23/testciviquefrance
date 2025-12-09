@@ -393,6 +393,43 @@ export default function QuizPage() {
     }
   }, [categorieId, niveau, router, startTimer, restoreQuizState, getQuestionsForCategory])
 
+  // Vérifier l'accès au niveau (membres gratuits = niveau 1 uniquement)
+  useEffect(() => {
+    const checkAccess = async () => {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (!user) {
+        router.push('/login')
+        return
+      }
+      
+      // Charger le profil pour vérifier l'abonnement et all_levels_unlocked
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('all_levels_unlocked, subscription_status, no_timer_enabled')
+        .eq('id', user.id)
+        .single()
+      
+      if (profileData) {
+        const hasAllLevelsUnlocked = profileData.all_levels_unlocked || false
+        const hasActiveSubscription = profileData.subscription_status === 'active'
+        const hasPremiumAccess = hasActiveSubscription || hasAllLevelsUnlocked
+        
+        setAllLevelsUnlocked(hasAllLevelsUnlocked)
+        setNoTimerMode(profileData.no_timer_enabled || false)
+        
+        // RESTRICTION : Membres gratuits = niveau 1 uniquement
+        if (!hasPremiumAccess && niveau > 1) {
+          router.push('/dashboard/credits')
+          return
+        }
+      }
+    }
+    
+    checkAccess()
+  }, [niveau, router])
+
   // Charger les questions au démarrage
   useEffect(() => {
     loadQuestions()
