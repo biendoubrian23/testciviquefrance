@@ -11,6 +11,11 @@ export async function GET(request: Request) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
     
     if (!error) {
+      // Si c'est une réinitialisation de mot de passe, rediriger directement
+      if (next.includes('reinitialiser-mot-de-passe')) {
+        return NextResponse.redirect(`${origin}${next}`);
+      }
+      
       // Vérifier si l'utilisateur a complété l'onboarding
       const { data: { user } } = await supabase.auth.getUser();
       

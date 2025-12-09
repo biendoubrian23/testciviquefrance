@@ -65,6 +65,7 @@ export default function OffresPage() {
   const [selectedOffer, setSelectedOffer] = useState<string | null>('pack_standard');
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [showMicroservices, setShowMicroservices] = useState(false);
 
   // Cast du profil pour accéder aux nouveaux champs
   const extendedProfile = profile as ExtendedProfile | null;
@@ -380,166 +381,195 @@ export default function OffresPage() {
         </div>
       </div>
 
-      {/* Micro-transactions en grille 2x2 */}
-      {/* 
-        ==================== RÈGLES BUSINESS IMPORTANTES ====================
-        Ces 4 packs sont LIÉS À UN ABONNEMENT ACTIF :
-        - L'utilisateur DOIT avoir un abonnement (Standard ou Premium) pour acheter ces packs
-        - Si l'abonnement expire, tous les packs achetés seront DÉSACTIVÉS
-        - Les packs ne sont PAS accessibles aux utilisateurs gratuits
-        - À l'expiration de l'abonnement : désactiver l'accès aux fonctionnalités des packs
+      {/* Micro-transactions - Accordéon déroulant */}
+      <div className="bg-white border border-gray-200">
+        {/* En-tête cliquable */}
+        <button
+          onClick={() => setShowMicroservices(!showMicroservices)}
+          className="w-full py-5 px-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+        >
+          <div>
+            <h3 className="text-lg font-bold text-gray-900">Services annexes</h3>
+            <p className="text-sm text-gray-500 mt-1">
+              Options supplémentaires pour personnaliser votre expérience
+            </p>
+          </div>
+          <ChevronDown 
+            className={`w-6 h-6 text-gray-500 flex-shrink-0 transition-transform duration-300 ${
+              showMicroservices ? 'rotate-180' : ''
+            }`} 
+          />
+        </button>
         
-        TODO Stripe : 
-        - Vérifier is_premium avant d'autoriser l'achat
-        - Stocker la date d'achat du pack
-        - Désactiver le pack si subscription_end_date < now()
-        ======================================================================
-      */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {/* 
-          PACK 1: Débloquer niveau suivant
-          - Lié à l'abonnement : OUI
-          - Désactivé si abonnement expiré : OUI
-          - Stripe product_id : À configurer
-        */}
-        {/* Débloquer niveau suivant */}
-        <div className="bg-white border border-gray-200 p-5 hover:border-primary-300 transition-colors">
-          <div className="flex flex-col h-full">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Débloquer le niveau suivant</h3>
-              <p className="text-sm text-gray-500 mt-1">
-                Continuez votre progression sans avoir à recommencer.
-              </p>
-              <p className="text-xs text-gray-400 mt-2">Valable si score entre 5/10 et 7/10</p>
-            </div>
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-              <div className="text-2xl font-bold text-gray-900">0,99€</div>
-              {extendedProfile?.all_levels_unlocked ? (
-                <button
-                  disabled
-                  className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2"
-                >
-                  <CheckCircle className="w-4 h-4" /> Activé
-                </button>
-              ) : (
-                <button
-                  onClick={() => redirectToStripeCheckout('unlockLevel')}
-                  className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors flex items-center gap-2"
-                >
-                  Acheter
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
+        {/* Contenu déroulant */}
+        <div 
+          className={`overflow-hidden transition-all duration-500 ease-in-out ${
+            showMicroservices ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+          }`}
+        >
+          <div className="px-6 pb-6 pt-2">
+            {/* 
+              ==================== RÈGLES BUSINESS IMPORTANTES ====================
+              Ces 4 packs sont LIÉS À UN ABONNEMENT ACTIF :
+              - L'utilisateur DOIT avoir un abonnement (Standard ou Premium) pour acheter ces packs
+              - Si l'abonnement expire, tous les packs achetés seront DÉSACTIVÉS
+              - Les packs ne sont PAS accessibles aux utilisateurs gratuits
+              - À l'expiration de l'abonnement : désactiver l'accès aux fonctionnalités des packs
+              
+              TODO Stripe : 
+              - Vérifier is_premium avant d'autoriser l'achat
+              - Stocker la date d'achat du pack
+              - Désactiver le pack si subscription_end_date < now()
+              ======================================================================
+            */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* 
+                PACK 1: Débloquer niveau suivant
+                - Lié à l'abonnement : OUI
+                - Désactivé si abonnement expiré : OUI
+                - Stripe product_id : À configurer
+              */}
+              {/* Débloquer niveau suivant */}
+              <div className="bg-gray-50 border border-gray-200 p-5 hover:border-primary-300 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-900">Débloquer le niveau suivant</h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Continuez votre progression sans avoir à recommencer.
+                    </p>
+                    <p className="text-xs text-gray-400 mt-2">Valable si score entre 5/10 et 7/10</p>
+                  </div>
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                    <div className="text-2xl font-bold text-gray-900">0,99€</div>
+                    {extendedProfile?.all_levels_unlocked ? (
+                      <button
+                        disabled
+                        className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2"
+                      >
+                        <CheckCircle className="w-4 h-4" /> Activé
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => redirectToStripeCheckout('unlockLevel')}
+                        className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors flex items-center gap-2"
+                      >
+                        Acheter
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
 
-        {/* 
-          PACK 2: Mode sans chrono
-          - Lié à l'abonnement : OUI
-          - Désactivé si abonnement expiré : OUI
-          - Stripe product_id : À configurer
-        */}
-        {/* Mode sans chrono */}
-        <div className="bg-white border border-gray-200 p-5 hover:border-gray-400 transition-colors">
-          <div className="flex flex-col h-full">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Mode sans chrono</h3>
-              <p className="text-sm text-gray-500 mt-1">
-                Répondez à votre rythme, sans pression du temps.
-              </p>
-              <p className="text-xs text-gray-400 mt-2">Par quiz</p>
-            </div>
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-              <div className="text-2xl font-bold text-gray-900">0,69€</div>
-              {extendedProfile?.no_timer_enabled ? (
-                <button
-                  disabled
-                  className="bg-gray-100 text-gray-700 px-4 py-2 text-sm font-medium border-2 border-gray-600 cursor-not-allowed flex items-center gap-2"
-                >
-                  <CheckCircle className="w-4 h-4" /> Activé
-                </button>
-              ) : (
-                <button
-                  onClick={() => redirectToStripeCheckout('noTimer')}
-                  className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-colors flex items-center gap-2"
-                >
-                  Acheter
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
+              {/* 
+                PACK 2: Mode sans chrono
+                - Lié à l'abonnement : OUI
+                - Désactivé si abonnement expiré : OUI
+                - Stripe product_id : À configurer
+              */}
+              {/* Mode sans chrono */}
+              <div className="bg-gray-50 border border-gray-200 p-5 hover:border-gray-400 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-900">Mode sans chrono</h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Répondez à votre rythme, sans pression du temps.
+                    </p>
+                    <p className="text-xs text-gray-400 mt-2">Par quiz</p>
+                  </div>
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                    <div className="text-2xl font-bold text-gray-900">0,69€</div>
+                    {extendedProfile?.no_timer_enabled ? (
+                      <button
+                        disabled
+                        className="bg-gray-100 text-gray-700 px-4 py-2 text-sm font-medium border-2 border-gray-600 cursor-not-allowed flex items-center gap-2"
+                      >
+                        <CheckCircle className="w-4 h-4" /> Activé
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => redirectToStripeCheckout('noTimer')}
+                        className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-colors flex items-center gap-2"
+                      >
+                        Acheter
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
 
-        {/* 
-          PACK 3: Flashcards 2 thèmes
-          - Lié à l'abonnement : OUI
-          - Désactivé si abonnement expiré : OUI
-          - Stripe product_id : À configurer
-        */}
-        {/* Flashcards 2 thèmes */}
-        <div className="bg-white border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
-          <div className="flex flex-col h-full">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Flashcards 2 thèmes</h3>
-              <p className="text-sm text-gray-500 mt-1">
-                Les questions les plus probables à l&apos;examen.
-              </p>
-              <p className="text-xs text-gray-400 mt-2">20 fiches de révision</p>
-            </div>
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-              <div className="text-2xl font-bold text-gray-900">1,20€</div>
-              {extendedProfile?.flashcards_2_themes ? (
-                <button
-                  disabled
-                  className="bg-emerald-100 text-emerald-700 px-4 py-2 text-sm font-medium border-2 border-emerald-600 cursor-not-allowed flex items-center gap-2"
-                >
-                  <CheckCircle className="w-4 h-4" /> Activé
-                </button>
-              ) : (
-                <button
-                  onClick={() => redirectToStripeCheckout('flashcards2Themes')}
-                  className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
-                >
-                  Acheter
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
+              {/* 
+                PACK 3: Flashcards 2 thèmes
+                - Lié à l'abonnement : OUI
+                - Désactivé si abonnement expiré : OUI
+                - Stripe product_id : À configurer
+              */}
+              {/* Flashcards 2 thèmes */}
+              <div className="bg-gray-50 border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-900">Flashcards 2 thèmes</h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Les questions les plus probables à l&apos;examen.
+                    </p>
+                    <p className="text-xs text-gray-400 mt-2">20 fiches de révision</p>
+                  </div>
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                    <div className="text-2xl font-bold text-gray-900">1,20€</div>
+                    {extendedProfile?.flashcards_2_themes ? (
+                      <button
+                        disabled
+                        className="bg-emerald-100 text-emerald-700 px-4 py-2 text-sm font-medium border-2 border-emerald-600 cursor-not-allowed flex items-center gap-2"
+                      >
+                        <CheckCircle className="w-4 h-4" /> Activé
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => redirectToStripeCheckout('flashcards2Themes')}
+                        className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                      >
+                        Acheter
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
 
-        {/* 
-          PACK 4: Flashcards 5 thèmes
-          - Lié à l'abonnement : OUI
-          - Désactivé si abonnement expiré : OUI
-          - Stripe product_id : À configurer
-        */}
-        {/* Flashcards 5 thèmes */}
-        <div className="bg-white border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
-          <div className="flex flex-col h-full">
-            <div className="flex-1">
-              <h3 className="font-semibold text-gray-900">Flashcards 5 thèmes</h3>
-              <p className="text-sm text-gray-500 mt-1">
-                Toutes les questions clés pour réussir l&apos;examen.
-              </p>
-              <p className="text-xs text-gray-400 mt-2">50 fiches de révision</p>
-            </div>
-            <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-100">
-              <div className="text-2xl font-bold text-gray-900">1,50€</div>
-              {extendedProfile?.flashcards_5_themes ? (
-                <button
-                  disabled
-                  className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2"
-                >
-                  <CheckCircle className="w-4 h-4" /> Activé
-                </button>
-              ) : (
-                <button
-                  onClick={() => redirectToStripeCheckout('flashcards5Themes')}
-                  className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
-                >
-                  Acheter
-                </button>
-              )}
+              {/* 
+                PACK 4: Flashcards 5 thèmes
+                - Lié à l'abonnement : OUI
+                - Désactivé si abonnement expiré : OUI
+                - Stripe product_id : À configurer
+              */}
+              {/* Flashcards 5 thèmes */}
+              <div className="bg-gray-50 border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
+                <div className="flex flex-col h-full">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-900">Flashcards 5 thèmes</h3>
+                    <p className="text-sm text-gray-500 mt-1">
+                      Toutes les questions clés pour réussir l&apos;examen.
+                    </p>
+                    <p className="text-xs text-gray-400 mt-2">50 fiches de révision</p>
+                  </div>
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                    <div className="text-2xl font-bold text-gray-900">1,50€</div>
+                    {extendedProfile?.flashcards_5_themes ? (
+                      <button
+                        disabled
+                        className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2"
+                      >
+                        <CheckCircle className="w-4 h-4" /> Activé
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => redirectToStripeCheckout('flashcards5Themes')}
+                        className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                      >
+                        Acheter
+                      </button>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
