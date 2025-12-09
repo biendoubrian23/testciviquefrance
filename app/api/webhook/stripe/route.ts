@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { checkRateLimit, RATE_LIMITS, rateLimitResponse, getIdentifier } from '@/lib/utils/rate-limit';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder', {
   apiVersion: '2025-02-24.acacia',
@@ -15,9 +16,30 @@ function getSupabaseClient() {
 }
 
 export async function POST(req: NextRequest) {
+  // 🚦 PROTECTION 1 : Rate limiting (100 requêtes/min par IP)
+  const identifier = getIdentifier(req);
+  const rateLimitResult = checkRateLimit(identifier, RATE_LIMITS.stripeWebhook);
+  
+  if (!rateLimitResult.success) {
+    console.warn(`⚠️ Rate limit dépassé pour IP: ${identifier}`);
+    return rateLimitResponse(rateLimitResult.resetTime);
+  }
+
   const supabase = getSupabaseClient();
   const body = await req.text();
-  const signature = req.headers.get('stripe-signature')!;
+  const signature = req.headers.get('stripe-signature');
+
+  // 🔒 PROTECTION 2 : Vérification de la signature Stripe (CRITIQUE)
+  if (!signature) {
+    console.error('❌ Tentative webhook sans signature');
+    return NextResponse.json({ error: 'Missing signature' }, { status: 400 });
+  }
+
+  // Vérifier que la clé secrète webhook est configurée
+  if (!process.env.STRIPE_WEBHOOK_SECRET) {
+    console.error('❌ STRIPE_WEBHOOK_SECRET non configuré !');
+    return NextResponse.json({ error: 'Server configuration error' }, { status: 500 });
+  }
 
   let event: Stripe.Event;
 
@@ -25,12 +47,14 @@ export async function POST(req: NextRequest) {
     event = stripe.webhooks.constructEvent(
       body,
       signature,
-      process.env.STRIPE_WEBHOOK_SECRET!
+      process.env.STRIPE_WEBHOOK_SECRET
     );
   } catch (err: any) {
-    console.error(`❌ Erreur de signature webhook: ${err.message}`);
+    console.error(`❌ Signature invalide de ${identifier}: ${err.message}`);
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
+
+  // ✅ Signature valide, on peut traiter l'événement en toute sécurité
 
   console.log(`📨 Event reçu: ${event.type}`);
 

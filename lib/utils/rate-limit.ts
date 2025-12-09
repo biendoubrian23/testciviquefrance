@@ -93,6 +93,9 @@ export const RATE_LIMITS = {
   
   // Auth - 10 requêtes par minute (anti brute-force)
   auth: { windowMs: 60 * 1000, max: 10 },
+  
+  // Webhook Stripe - 100 requêtes par minute par IP (protection DDoS)
+  stripeWebhook: { windowMs: 60 * 1000, max: 100 },
 } as const;
 
 /**

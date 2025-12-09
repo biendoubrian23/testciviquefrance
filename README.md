@@ -1,106 +1,74 @@
-# Test Civique France
+# 🇫🇷 Test Civique France
 
-Plateforme professionnelle de préparation au test civique français pour la naturalisation.
+Plateforme d'apprentissage et de préparation à l'examen civique français.
 
-## 🚀 Technologies
-
-- **Next.js 14** - Framework React avec App Router
-- **TypeScript** - Typage statique
-- **Tailwind CSS** - Design system professionnel
-- **PWA** - Application Progressive Web App
-- **Supabase** - Base de données et authentification
-- **Stripe** - Paiements sécurisés
-
-## 📋 Prérequis
-
-- Node.js 18+
-- npm ou yarn
-
-## 🛠️ Installation
+## 🚀 Démarrage rapide
 
 ```bash
-# Installer les dépendances
+# Installation des dépendances
 npm install
 
-# Copier le fichier d'environnement
-cp .env.example .env.local
-
-# Configurer les variables d'environnement
-# Modifier .env.local avec vos clés Supabase et Stripe
-```
-
-## 🏃 Développement
-
-```bash
-# Lancer le serveur de développement
+# Lancer en développement
 npm run dev
 
-# Ouvrir http://localhost:3000
-```
-
-## 🏗️ Build Production
-
-```bash
-# Build l'application
+# Build production
 npm run build
-
-# Démarrer en production
-npm start
 ```
-
-## 📁 Structure du Projet
-
-```
-testciviquefrance/
-├── app/                    # Pages Next.js (App Router)
-│   ├── login/             # Page connexion
-│   ├── signup/            # Page inscription
-│   ├── offline/           # Page hors ligne (PWA)
-│   ├── layout.tsx         # Layout principal
-│   └── page.tsx           # Landing page
-├── components/            # Composants réutilisables
-│   ├── layout/           # Header, Footer
-│   └── landing/          # Hero, Features, Pricing
-├── lib/                  # Utilitaires et helpers
-├── public/               # Assets statiques
-│   ├── icons/           # Icons PWA
-│   └── manifest.json    # Manifest PWA
-└── styles/              # Styles globaux
-```
-
-## 🎨 Design System
-
-### Couleurs
-- **Primary**: Bleu (#3B82F6)
-- **Background**: Blanc (#FFFFFF)
-- **Text**: Gris foncé (#111827)
-
-### Règles de Design
-- ❌ Pas d'emojis
-- ✅ Angles droits privilégiés
-- ✅ Border radius max 8px
-- ✅ Fond blanc/gris clair
-- ✅ Mobile-first responsive
-
-## 📱 PWA Features
-
-- ✅ Installation sur écran d'accueil
-- ✅ Mode offline
-- ✅ Cache intelligent
-- ✅ Notifications push (à venir)
-
-## 🔒 Variables d'Environnement
-
-Voir `.env.example` pour la liste complète des variables requises.
 
 ## 📚 Documentation
 
-Consulter `SPECIFICATIONS_TECHNIQUES.md` pour les détails complets de l'architecture et des spécifications.
+Toute la documentation est disponible dans le dossier **[`docs/`](docs/)** :
 
-## 🤝 Contribution
+- **[Guide de démarrage](docs/GUIDE_DEMARRAGE.md)** - Configuration complète du projet
+- **[Audit de sécurité](docs/AUDIT_SITE_CIVIQUE.md)** - Analyse de sécurité et optimisations
+- **[Sécurité Webhook Stripe](docs/SECURITE_WEBHOOK_STRIPE.md)** - Protection des webhooks
+- **[Système d'examens](docs/SYSTEME_EXAMENS.md)** - Fonctionnement des 5 examens
+- **[Configuration Stripe](docs/GUIDE_CONFIGURATION_STRIPE.md)** - Paiements et abonnements
 
-Ce projet est privé. Pour toute question, contacter l'équipe de développement.
+👉 **[Voir l'index complet de la documentation](docs/README_DOCS.md)**
 
-## 📄 Licence
+## 🛠️ Stack technique
 
-Propriétaire - Tous droits réservés
+- **Framework** : Next.js 14.2.33 (App Router, TypeScript)
+- **Base de données** : Supabase (PostgreSQL)
+- **Paiement** : Stripe
+- **Styling** : Tailwind CSS
+- **Déploiement** : Vercel
+
+## 🔑 Variables d'environnement
+
+Copier `.env.example` vers `.env.local` et remplir les valeurs :
+
+```bash
+cp .env.example .env.local
+```
+
+Variables nécessaires :
+- Supabase (URL, clés anon et service)
+- Stripe (clés publique, secrète, webhook secret)
+- URL de l'application
+
+## 📂 Structure du projet
+
+```
+testciviquefrance/
+├── app/                # Pages Next.js (App Router)
+├── components/         # Composants React
+├── lib/               # Utilitaires, data, services
+├── supabase/          # Scripts SQL et migrations
+├── docs/              # 📚 Documentation complète
+├── public/            # Assets statiques
+└── scripts/           # Scripts d'optimisation
+```
+
+## 🚀 Déploiement
+
+Le projet se déploie automatiquement sur Vercel à chaque push sur `main`.
+
+Configuration requise sur Vercel :
+- Ajouter toutes les variables d'environnement
+- Configurer le webhook Stripe en production
+
+## 📝 Licence
+
+© 2025 Test Civique France. Tous droits réservés.
