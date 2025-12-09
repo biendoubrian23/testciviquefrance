@@ -519,7 +519,9 @@ export default function CategorieDetailPage() {
       {/* Grille des niveaux */}
       <div className="grid gap-3">
         {niveaux.map((niveau) => {
-          const canPlay = niveau.is_unlocked
+          // Permettre le clic sur les niveaux verrouillés pour rediriger vers la page credits
+          const isLockedForFreeUser = !hasActiveSubscription && !allLevelsUnlocked && niveau.niveau > 1
+          const canPlay = niveau.is_unlocked || isLockedForFreeUser
           
           return (
             <div
