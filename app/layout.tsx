@@ -4,11 +4,14 @@ import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
+import { StructuredData, getOrganizationSchema, getWebSiteSchema } from '@/components/seo/StructuredData';
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-inter',
+  preload: true,
+  fallback: ['system-ui', 'arial'],
 });
 
 export const viewport: Viewport = {
@@ -690,15 +693,27 @@ export default function RootLayout({
   return (
     <html lang="fr" className={inter.variable}>
       <head>
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        {/* Préchargement polices critiques pour LCP */}
+        <link
+          rel="preload"
+          href="/_next/static/media/inter-latin-400.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/_next/static/media/inter-latin-600.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
         />
         
         {/* Préconnexions pour performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         
         {/* Favicons multiples */}
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -728,6 +743,15 @@ export default function RootLayout({
         <meta name="geo.region" content="FR" />
         <meta name="geo.placename" content="France" />
         <meta name="ICBM" content="46.227638, 2.213749" />
+        {/* JSON-LD Structured Data - Organisation et WebSite */}
+        <StructuredData data={getOrganizationSchema()} />
+        <StructuredData data={getWebSiteSchema()} />
+        
+        {/* JSON-LD Structured Data supplémentaire (FAQ, Course, etc.) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </head>
       <body className="antialiased">
         <AuthProvider>{children}</AuthProvider>

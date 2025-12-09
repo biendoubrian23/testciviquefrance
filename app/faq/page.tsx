@@ -5,6 +5,9 @@ import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ChevronDown } from 'lucide-react';
+import { StructuredData, getFAQSchema, getBreadcrumbSchema } from '@/components/seo/StructuredData';
+import OptimizedBackgroundImage from '@/components/ui/OptimizedBackgroundImage';
+import InternalLinks from '@/components/ui/InternalLinks';
 
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -193,23 +196,29 @@ const faqCategories = [
 ];
 
 export default function FAQPage() {
+  // Préparer toutes les FAQ pour le JSON-LD
+  const allFAQs = faqCategories.flatMap(category => category.questions);
+  
+  // Breadcrumb pour JSON-LD
+  const breadcrumbItems = [
+    { name: 'Accueil', url: 'https://www.testciviquefrance.fr' },
+    { name: 'FAQ', url: 'https://www.testciviquefrance.fr/faq' },
+  ];
+
   return (
     <>
+      <StructuredData data={getFAQSchema(allFAQs)} />
+      <StructuredData data={getBreadcrumbSchema(breadcrumbItems)} />
       <Header />
       <main className="bg-white min-h-screen">
-        {/* Hero Section avec image de fond */}
-        <section className="py-12 lg:py-16 relative overflow-hidden">
-          {/* Image de fond */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: "url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073')",
-            }}
-          />
-          {/* Overlay avec dégradé */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/80 to-white/70" />
-          
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Hero Section avec image de fond optimisée */}
+        <OptimizedBackgroundImage
+          src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073"
+          alt="Questions fréquentes sur le test civique français"
+          priority={true}
+          className="py-12 lg:py-16"
+        >
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
             <nav className="text-sm text-gray-500 mb-6">
               <Link href="/" className="hover:text-primary-600 transition-colors">Accueil</Link>
@@ -226,7 +235,7 @@ export default function FAQPage() {
               les titres de séjour pluriannuels, cartes de résident et la naturalisation.
             </p>
           </div>
-        </section>
+        </OptimizedBackgroundImage>
 
         {/* Sources officielles */}
         <section className="bg-primary-50 border-y border-primary-100">
@@ -288,6 +297,9 @@ export default function FAQPage() {
             </div>
           </div>
         </section>
+
+        {/* Maillage interne */}
+        <InternalLinks currentPage="faq" />
       </main>
       <Footer />
     </>
