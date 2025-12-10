@@ -73,7 +73,6 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 an
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
-    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   
   // Headers pour cache et sécurité

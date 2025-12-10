@@ -1,4 +1,5 @@
 import { ExamenBlanc } from './types';
+import { EXAMEN_1 } from './examen-1';
 import { EXAMEN_2 } from './examen-2';
 import { EXAMEN_3 } from './examen-3';
 import { EXAMEN_4 } from './examen-4';
@@ -10,16 +11,13 @@ import { EXAMEN_5 } from './examen-5';
 // =====================================================
 
 /**
- * IMPORTANT : Examen #1 reste dans le fichier d'origine
- * app/dashboard/examens/nouveau/page.tsx pour compatibilité
- * 
- * Les examens 2-5 sont disponibles dans le nouveau système
+ * Tous les 5 examens blancs sont maintenant dans le nouveau système unifié
+ * L'utilisateur peut choisir l'examen qu'il souhaite passer via la modal
  */
 
 // Map de tous les examens disponibles (5 examens au total)
 const EXAMENS_MAP: Map<number, ExamenBlanc> = new Map([
-  // Examen #1 : géré dans l'ancien système (rétro-compatibilité)
-  // [1, EXAMEN_1],
+  [1, EXAMEN_1],
   [2, EXAMEN_2],
   [3, EXAMEN_3],
   [4, EXAMEN_4],
@@ -30,7 +28,16 @@ const EXAMENS_MAP: Map<number, ExamenBlanc> = new Map([
  * Récupérer un examen par son numéro
  */
 export function getExamen(numero: number): ExamenBlanc | undefined {
-  return EXAMENS_MAP.get(numero);
+  console.log('🔍 [getExamen] Demande examen numéro:', numero);
+  console.log('🔍 [getExamen] Type de numero:', typeof numero);
+  console.log('🔍 [getExamen] EXAMENS_MAP contient:', Array.from(EXAMENS_MAP.keys()));
+  
+  const examen = EXAMENS_MAP.get(numero);
+  
+  console.log('🔍 [getExamen] Examen trouvé:', examen?.numero, examen?.titre);
+  console.log('🔍 [getExamen] Première question:', examen?.questions[0]?.question?.substring(0, 50));
+  
+  return examen;
 }
 
 /**
@@ -44,7 +51,7 @@ export function getAllExamens(): ExamenBlanc[] {
  * Récupérer le nombre total d'examens disponibles
  */
 export function getTotalExamens(): number {
-  return 5; // 5 examens : 1 dans l'ancien système + 4 dans le nouveau
+  return 5; // 5 examens dans le système unifié
 }
 
 /**
@@ -118,10 +125,6 @@ export async function getNextExamenForUser(userId: string, supabase: any): Promi
     for (let i = 1; i <= totalExamens; i++) {
       if (!numerosPassés.has(i) && i !== dernierExamen) {
         // Examen trouvé qui n'a pas encore été fait
-        // Pour l'examen 1, retourner null (géré par l'ancien système)
-        if (i === 1) {
-          return null; // L'utilisateur sera redirigé vers /examens/nouveau
-        }
         return getExamen(i) || null;
       }
     }
@@ -131,16 +134,12 @@ export async function getNextExamenForUser(userId: string, supabase: any): Promi
     for (let i = 1; i <= totalExamens; i++) {
       if (i !== dernierExamen) {
         console.log(`♻️ Rotation complète : retour à l'examen ${i}`);
-        // Pour l'examen 1, retourner null (géré par l'ancien système)
-        if (i === 1) {
-          return null;
-        }
         return getExamen(i) || null;
       }
     }
 
-    // Dernier recours : retourner null pour redirection vers l'examen 1
-    return null;
+    // Dernier recours : retourner l'examen 1
+    return getExamen(1) || null;
   } catch (err) {
     console.error('Erreur getNextExamenForUser:', err);
     return null;
@@ -149,4 +148,4 @@ export async function getNextExamenForUser(userId: string, supabase: any): Promi
 
 // Export des types et fonctions utiles
 export * from './types';
-export { EXAMEN_2, EXAMEN_3, EXAMEN_4, EXAMEN_5 };
+export { EXAMEN_1, EXAMEN_2, EXAMEN_3, EXAMEN_4, EXAMEN_5 };

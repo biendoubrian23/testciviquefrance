@@ -18,6 +18,7 @@ import {
 } from 'lucide-react';
 import { getExamCreditsInfo, type ExamCreditsInfo } from '@/lib/utils/examCredits';
 import UpgradeModal from '@/components/dashboard/UpgradeModal';
+import ExamSelectionModal from '@/components/dashboard/ExamSelectionModal';
 
 interface ExamenBlanc {
   id: string;
@@ -26,6 +27,7 @@ interface ExamenBlanc {
   temps_total: number;
   passed: boolean;
   completed_at: string;
+  exam_number?: number;
 }
 
 interface ExamenStats {
@@ -46,6 +48,7 @@ export default function ExamensPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [examCredits, setExamCredits] = useState<ExamCreditsInfo | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [showExamSelectionModal, setShowExamSelectionModal] = useState(false);
 
   // Charger les examens et statistiques depuis Supabase
   useEffect(() => {
@@ -125,12 +128,12 @@ export default function ExamensPage() {
   const handleStartExam = () => {
     if (!examCredits) return;
 
-    // Si membre gratuit ou plus d'examens disponibles, afficher la modal
+    // Si membre gratuit ou plus d'examens disponibles, afficher la modal d'upgrade
     if (examCredits.isFree || examCredits.totalAvailable === 0) {
       setShowUpgradeModal(true);
     } else {
-      // Rediriger vers la page de l'examen
-      window.location.href = '/dashboard/examens/nouveau';
+      // Afficher la modal de sélection d'examen
+      setShowExamSelectionModal(true);
     }
   };
 
@@ -152,6 +155,19 @@ export default function ExamensPage() {
         onClose={() => setShowUpgradeModal(false)}
         userType={getUserType()}
       />
+
+      {/* Modal de sélection d'examen */}
+      {user && examCredits && !isLoading && (
+        <ExamSelectionModal
+          isOpen={showExamSelectionModal}
+          onClose={() => setShowExamSelectionModal(false)}
+          examCredits={examCredits.totalAvailable}
+          examensHistory={examensHistory.map(e => ({
+            exam_number: e.exam_number || 1,
+            passed: e.passed
+          }))}
+        />
+      )}
 
       {/* En-tête */}
       <div>
@@ -245,11 +261,101 @@ export default function ExamensPage() {
                     <ArrowRight className="w-5 h-5" />
                   </button>
                 )}
+                
+                {/* Bouton Test Examen 2 - Pour vérifier le fonctionnement */}
+                <Link
+                  href="/dashboard/examens/test-examen-2"
+                  className="inline-flex items-center justify-center gap-2 bg-orange-500 text-white px-6 py-3 font-bold hover:bg-orange-600 transition-colors"
+                >
+                  🧪 Test Examen 2
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
               </div>
             </div>
           </div>
         </>
       )}
+
+      {/* Boutons pour lancer les examens - TOUJOURS VISIBLES */}
+      <div>
+        <h2 className="text-xl font-bold text-gray-900 mb-4">🎯 Choisissez votre examen</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+          {/* Examen 1 - Bleu */}
+          <Link
+            href="/dashboard/examens/nouveau?exam=1"
+            className="bg-blue-100 border-2 border-blue-400 p-4 hover:bg-blue-200 transition-colors group"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <span className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg">1</span>
+              <h3 className="font-bold text-blue-800">Examen #1</h3>
+            </div>
+            <p className="text-sm text-blue-600">40 questions • 45 min</p>
+            <div className="mt-3 text-center bg-blue-600 text-white py-2 font-bold group-hover:bg-blue-700">
+              Lancer →
+            </div>
+          </Link>
+
+          {/* Examen 2 - Orange */}
+          <Link
+            href="/dashboard/examens/nouveau?exam=2"
+            className="bg-orange-100 border-2 border-orange-400 p-4 hover:bg-orange-200 transition-colors group"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <span className="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold text-lg">2</span>
+              <h3 className="font-bold text-orange-800">Examen #2</h3>
+            </div>
+            <p className="text-sm text-orange-600">40 questions • 45 min</p>
+            <div className="mt-3 text-center bg-orange-500 text-white py-2 font-bold group-hover:bg-orange-600">
+              Lancer →
+            </div>
+          </Link>
+
+          {/* Examen 3 - Vert */}
+          <Link
+            href="/dashboard/examens/nouveau?exam=3"
+            className="bg-green-100 border-2 border-green-400 p-4 hover:bg-green-200 transition-colors group"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <span className="w-10 h-10 bg-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg">3</span>
+              <h3 className="font-bold text-green-800">Examen #3</h3>
+            </div>
+            <p className="text-sm text-green-600">40 questions • 45 min</p>
+            <div className="mt-3 text-center bg-green-600 text-white py-2 font-bold group-hover:bg-green-700">
+              Lancer →
+            </div>
+          </Link>
+
+          {/* Examen 4 - Violet */}
+          <Link
+            href="/dashboard/examens/nouveau?exam=4"
+            className="bg-purple-100 border-2 border-purple-400 p-4 hover:bg-purple-200 transition-colors group"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <span className="w-10 h-10 bg-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg">4</span>
+              <h3 className="font-bold text-purple-800">Examen #4</h3>
+            </div>
+            <p className="text-sm text-purple-600">40 questions • 45 min</p>
+            <div className="mt-3 text-center bg-purple-600 text-white py-2 font-bold group-hover:bg-purple-700">
+              Lancer →
+            </div>
+          </Link>
+
+          {/* Examen 5 - Rose */}
+          <Link
+            href="/dashboard/examens/nouveau?exam=5"
+            className="bg-pink-100 border-2 border-pink-400 p-4 hover:bg-pink-200 transition-colors group"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <span className="w-10 h-10 bg-pink-600 text-white rounded-full flex items-center justify-center font-bold text-lg">5</span>
+              <h3 className="font-bold text-pink-800">Examen #5</h3>
+            </div>
+            <p className="text-sm text-pink-600">40 questions • 45 min</p>
+            <div className="mt-3 text-center bg-pink-600 text-white py-2 font-bold group-hover:bg-pink-700">
+              Lancer →
+            </div>
+          </Link>
+        </div>
+      </div>
 
       {/* Statistiques - Visibles pour tous sauf gratuits sans historique */}
       {!examCredits?.isFree || examensHistory.length > 0 ? (
