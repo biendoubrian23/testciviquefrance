@@ -13,11 +13,11 @@ import {
   ArrowRight,
   CheckCircle2,
   Award,
-  Loader2,
-  Lock
+  Loader2
 } from 'lucide-react';
 import { getExamCreditsInfo, type ExamCreditsInfo } from '@/lib/utils/examCredits';
 import UpgradeModal from '@/components/dashboard/UpgradeModal';
+import ExamSelectionModal from '@/components/dashboard/ExamSelectionModal';
 
 interface ExamenBlanc {
   id: string;
@@ -46,6 +46,7 @@ export default function ExamensPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [examCredits, setExamCredits] = useState<ExamCreditsInfo | null>(null);
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
+  const [showExamSelectionModal, setShowExamSelectionModal] = useState(false);
 
   // Charger les examens et statistiques depuis Supabase
   useEffect(() => {
@@ -123,15 +124,9 @@ export default function ExamensPage() {
 
   // Gérer le clic sur "Commencer l'examen"
   const handleStartExam = () => {
-    if (!examCredits) return;
-
-    // Si membre gratuit ou plus d'examens disponibles, afficher la modal
-    if (examCredits.isFree || examCredits.totalAvailable === 0) {
-      setShowUpgradeModal(true);
-    } else {
-      // Rediriger vers la page de l'examen
-      window.location.href = '/dashboard/examens/nouveau';
-    }
+    // Toujours afficher la modal de sélection d'examens
+    // La gestion des crédits se fait dans la modal
+    setShowExamSelectionModal(true);
   };
 
   // Déterminer le type d'utilisateur pour la modal
@@ -153,6 +148,17 @@ export default function ExamensPage() {
         userType={getUserType()}
       />
 
+      {/* Modal de sélection d'examens */}
+      <ExamSelectionModal 
+        isOpen={showExamSelectionModal}
+        onClose={() => setShowExamSelectionModal(false)}
+        examCredits={examCredits?.totalAvailable || 0}
+        onNeedCredits={() => {
+          setShowExamSelectionModal(false);
+          setShowUpgradeModal(true);
+        }}
+      />
+
       {/* En-tête */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Examens blancs</h1>
@@ -161,24 +167,8 @@ export default function ExamensPage() {
         </p>
       </div>
 
-      {/* Affichage pour membres gratuits - Page verrouillée */}
-      {examCredits?.isFree ? (
-        <div className="bg-gray-50 border-2 border-gray-200 p-12 text-center">
-          <Lock className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-          <h2 className="text-2xl font-bold text-gray-900 mb-2">Examens blancs réservés aux membres</h2>
-          <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-            Les examens blancs sont accessibles avec un abonnement ou via le Pack Examen. 
-            Choisissez l'offre qui vous convient pour débloquer cette fonctionnalité.
-          </p>
-          <button
-            onClick={() => setShowUpgradeModal(true)}
-            className="inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3 font-bold hover:bg-primary-700 transition-colors"
-          >
-            Voir les offres
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      ) : (
+      {/* Card principale - Lancer un examen (accessible à tous) */}
+      {examCredits && (
         <>
           {/* Card principale - Lancer un examen */}
           <div className="bg-primary-600 p-8 text-white">
@@ -228,31 +218,21 @@ export default function ExamensPage() {
                 </div>
               </div>
               <div className="flex flex-col gap-3">
-                {examCredits && examCredits.totalAvailable > 0 ? (
-                  <button
-                    onClick={handleStartExam}
-                    className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-6 py-3 font-bold hover:bg-primary-50 transition-colors"
-                  >
-                    Commencer l&apos;examen
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setShowUpgradeModal(true)}
-                    className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-6 py-3 font-bold hover:bg-primary-50 transition-colors"
-                  >
-                    Obtenir des examens
-                    <ArrowRight className="w-5 h-5" />
-                  </button>
-                )}
+                <button
+                  onClick={handleStartExam}
+                  className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-6 py-3 font-bold hover:bg-primary-50 transition-colors"
+                >
+                  Commencer l&apos;examen
+                  <ArrowRight className="w-5 h-5" />
+                </button>
               </div>
             </div>
           </div>
         </>
       )}
 
-      {/* Statistiques - Visibles pour tous sauf gratuits sans historique */}
-      {!examCredits?.isFree || examensHistory.length > 0 ? (
+      {/* Statistiques - Visibles pour tous */}
+      {examCredits && (
         <div className="grid sm:grid-cols-3 gap-6">
           <div className="bg-white border border-gray-200 p-6">
             <div className="flex items-center gap-3 mb-4">
@@ -298,7 +278,7 @@ export default function ExamensPage() {
             )}
           </div>
         </div>
-      ) : null}
+      )}
 
       {/* Historique des examens - Accessible pour tous ceux qui ont un historique */}
       {examensHistory.length > 0 && (

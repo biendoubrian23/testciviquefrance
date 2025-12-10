@@ -587,19 +587,21 @@ export default function NouvelExamenPage() {
     async function loadOrCreateSession() {
       setIsLoading(true);
       
+      const EXAM_NUMBER = 1; // Examen blanc 1
+      
       try {
-        // 1. Chercher un examen en cours non terminé
+        // 1. Chercher un examen en cours non terminé POUR CET EXAMEN SPÉCIFIQUE
         const { data: existingExam, error: fetchError } = await supabase
           .from('examens_blancs')
           .select('id, current_answers, current_question_index, time_remaining, is_completed')
           .eq('user_id', userId)
+          .eq('exam_number', EXAM_NUMBER)
           .eq('is_completed', false)
-          .order('started_at', { ascending: false })
-          .limit(1)
-          .single();
+          .maybeSingle();
 
         if (existingExam && !fetchError) {
           // Reprendre l'examen existant
+          console.log(`📖 Reprise de l'examen ${EXAM_NUMBER} en cours (session ${existingExam.id})`);
           setSessionId(existingExam.id);
           
           // Restaurer les réponses
@@ -615,23 +617,28 @@ export default function NouvelExamenPage() {
           // Restaurer le temps restant
           if (typeof existingExam.time_remaining === 'number' && existingExam.time_remaining > 0) {
             setTimeRemaining(existingExam.time_remaining);
+          } else {
+            // Si le temps est écoulé, le laisser à 0
+            setTimeRemaining(0);
           }
         } else {
-          // Créer une nouvelle session
+          // Créer une nouvelle session pour cet examen
+          console.log(`✨ Création d'une nouvelle session pour l'examen ${EXAM_NUMBER}`);
           const initialAnswers = QUESTIONS_EXAMEN.map(q => ({ questionId: q.id, selectedIndex: null }));
           
           const { data: newExam, error: insertError } = await supabase
             .from('examens_blancs')
             .insert({
               user_id: userId,
-              exam_number: 1,
+              exam_number: EXAM_NUMBER,
               score: 0,
               total_questions: 40,
               is_completed: false,
               current_answers: initialAnswers,
               current_question_index: 0,
               time_remaining: 45 * 60,
-              started_at: new Date().toISOString()
+              started_at: new Date().toISOString(),
+              last_saved_at: new Date().toISOString()
             })
             .select('id')
             .single();
@@ -642,7 +649,8 @@ export default function NouvelExamenPage() {
             setCurrentQuestionIndex(0);
             setTimeRemaining(45 * 60);
 
-            // Consommer un crédit d'examen
+            // Consommer un crédit d'examen UNIQUEMENT pour la nouvelle session
+            console.log(`💳 Consommation d'un crédit pour l'examen ${EXAM_NUMBER}`);
             const creditConsumed = await consumeExamCredit(userId);
             if (!creditConsumed) {
               console.warn('⚠️ Impossible de consommer un crédit d\'examen');
@@ -671,7 +679,8 @@ export default function NouvelExamenPage() {
         .update({
           current_answers: userAnswers,
           current_question_index: currentQuestionIndex,
-          time_remaining: timeRemaining
+          time_remaining: timeRemaining,
+          last_saved_at: new Date().toISOString()
         })
         .eq('id', sessionId);
     } catch (error) {
