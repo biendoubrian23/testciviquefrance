@@ -33,6 +33,21 @@ export default function CGUPage() {
                   à l'examen civique en France, en mettant à leur disposition des outils pédagogiques interactifs, 
                   des quiz thématiques, des examens blancs et des ressources documentaires.
                 </p>
+
+                <div className="mt-4 p-4 bg-blue-50 border-l-4 border-blue-600">
+                  <p className="font-medium text-blue-900 mb-2">
+                    Important : Nature du service
+                  </p>
+                  <p className="text-blue-800">
+                    Test Civique France est un organisme de formation privé indépendant. Nous ne sommes pas affiliés 
+                    à l'État français ni à aucune administration publique. La réussite à l'examen civique officiel 
+                    dépend de nombreux facteurs et ne peut être garantie.
+                  </p>
+                  <p className="text-blue-800 mt-2">
+                    Notre plateforme vous prépare au test civique officiel mais ne remplace pas l'examen lui-même. 
+                    Vous devrez passer l'examen auprès d'un organisme agréé par l'État.
+                  </p>
+                </div>
                 
                 <p className="mt-4">
                   L'accès et l'utilisation de la plateforme impliquent l'acceptation pleine et entière des présentes CGU 
