@@ -12,6 +12,46 @@ export interface Question {
   explication: string;
 }
 
+// =====================================================
+// ENCODAGE/DÉCODAGE - Protection du contenu
+// =====================================================
+
+/**
+ * Encode une chaîne en Base64 pour la protéger
+ */
+export function encodeStr(str: string): string {
+  return Buffer.from(str).toString('base64');
+}
+
+/**
+ * Décode une chaîne Base64
+ */
+export function decodeStr(encoded: string): string {
+  return Buffer.from(encoded, 'base64').toString('utf-8');
+}
+
+/**
+ * Décode une question complète (question, options, explication)
+ */
+export function decodeQuestion(q: Question): Question {
+  return {
+    ...q,
+    question: decodeStr(q.question),
+    options: q.options.map(opt => decodeStr(opt)),
+    explication: decodeStr(q.explication)
+  };
+}
+
+/**
+ * Décode toutes les questions d'un examen
+ */
+export function decodeExamen(examen: ExamenBlanc): ExamenBlanc {
+  return {
+    ...examen,
+    questions: examen.questions.map(q => decodeQuestion(q))
+  };
+}
+
 export interface ExamenBlanc {
   numero: number;
   titre: string;

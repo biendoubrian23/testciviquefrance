@@ -1,8 +1,10 @@
 'use client';
 
-import { X, AlertTriangle, ShoppingCart } from 'lucide-react';
+import { X, AlertTriangle, ShoppingCart, Loader2 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useAuth } from '@/contexts/AuthContext';
+import { consumeExamCredit } from '@/lib/utils/examCredits';
 
 interface ExamSelectionModalProps {
   isOpen: boolean;
@@ -13,8 +15,10 @@ interface ExamSelectionModalProps {
 
 export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNeedCredits }: ExamSelectionModalProps) {
   const router = useRouter();
+  const { user } = useAuth();
   const [showWarning, setShowWarning] = useState(false);
   const [selectedExam, setSelectedExam] = useState<number | null>(null);
+  const [isConsuming, setIsConsuming] = useState(false);
 
   if (!isOpen) return null;
 
@@ -32,10 +36,21 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
     setShowWarning(true);
   };
 
-  const handleConfirmStart = () => {
-    if (selectedExam === null) return;
+  const handleConfirmStart = async () => {
+    if (selectedExam === null || !user) return;
 
-    // Rediriger vers l'examen sélectionné
+    // 🔐 DÉBITER LE CRÉDIT IMMÉDIATEMENT
+    setIsConsuming(true);
+    console.log(`💳 Consommation d'un crédit pour l'examen ${selectedExam}`);
+    const creditConsumed = await consumeExamCredit(user.id);
+    
+    if (!creditConsumed) {
+      alert('❌ Impossible de consommer un crédit d\'examen. Veuillez réessayer.');
+      setIsConsuming(false);
+      return;
+    }
+
+    // ✅ Crédit consommé, on redirige vers l'examen
     if (selectedExam === 1) {
       router.push('/dashboard/examens/nouveau');
     } else if (selectedExam === 2) {
@@ -190,9 +205,17 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
               </button>
               <button
                 onClick={handleConfirmStart}
-                className="flex-1 px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold transition-colors"
+                disabled={isConsuming}
+                className="flex-1 px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
-                J&apos;ai compris, commencer
+                {isConsuming ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Démarrage...
+                  </>
+                ) : (
+                  "J'ai compris, commencer"
+                )}
               </button>
             </div>
           </div>

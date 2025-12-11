@@ -15,7 +15,6 @@ import {
   Home,
   Loader2
 } from 'lucide-react';
-import { consumeExamCredit } from '@/lib/utils/examCredits';
 import { EXAMEN_5, verifyAnswerExam5, findCorrectIndexExam5 } from '@/lib/data/examens/examen5';
 
 // ==================== EXAMEN BLANC #5 ====================
@@ -107,12 +106,8 @@ export default function NouvelExamen5Page() {
             setUserAnswers(initialAnswers);
             setCurrentQuestionIndex(0);
             setTimeRemaining(45 * 60);
-
-            console.log(`💳 Consommation d'un crédit pour l'examen ${EXAM_NUMBER}`);
-            const creditConsumed = await consumeExamCredit(userId);
-            if (!creditConsumed) {
-              console.warn('⚠️ Impossible de consommer un crédit d\'examen');
-            }
+            // ✅ Le crédit a déjà été débité dans ExamSelectionModal
+            console.log(`✅ Session créée pour l'examen ${EXAM_NUMBER}`);
           } else {
             console.error('Erreur création session:', insertError);
           }
