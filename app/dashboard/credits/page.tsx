@@ -173,10 +173,10 @@ export default function OffresPage() {
                 {extendedProfile.stripe_price_id === STRIPE_PLANS.premium.priceId && '⭐ Pack Premium (6,99€/semaine)'}
               </span>
             )}
-            {/* Afficher les crédits d'examens blancs disponibles */}
+            {/* Afficher les crédits de sessions d'examens blancs disponibles */}
             {extendedProfile?.exam_credits && extendedProfile.exam_credits > 0 && (
               <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 text-sm rounded-full font-semibold">
-                📝 {extendedProfile.exam_credits} examen{extendedProfile.exam_credits > 1 ? 's' : ''} blanc{extendedProfile.exam_credits > 1 ? 's' : ''} disponible{extendedProfile.exam_credits > 1 ? 's' : ''}
+                📝 {extendedProfile.exam_credits} session{extendedProfile.exam_credits > 1 ? 's' : ''} d&apos;examen blanc{extendedProfile.exam_credits > 1 ? 's' : ''} disponible{extendedProfile.exam_credits > 1 ? 's' : ''}
               </span>
             )}
             {extendedProfile?.all_levels_unlocked && (
@@ -246,7 +246,7 @@ export default function OffresPage() {
               </li>
               <li className="flex items-center gap-2">
                 <Check className="w-4 h-4 flex-shrink-0" />
-                <span>1 examen blanc</span>
+                <span>1 session d&apos;examen blanc</span>
               </li>
               <li className="flex items-center gap-2">
                 <Check className="w-4 h-4 flex-shrink-0" />
@@ -300,7 +300,7 @@ export default function OffresPage() {
             </li>
             <li className="flex items-center gap-2 text-gray-700">
               <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
-              <span>3 examens blancs</span>
+              <span>3 sessions d&apos;examen blanc</span>
             </li>
             <li className="flex items-center gap-2 text-gray-700">
               <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
@@ -352,7 +352,7 @@ export default function OffresPage() {
           <ul className="space-y-2 mb-6 flex-grow text-sm">
             <li className="flex items-center gap-2 text-gray-700">
               <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
-              <span>2 examens blancs complets</span>
+              <span>2 sessions d&apos;examen blanc</span>
             </li>
             <li className="flex items-center gap-2 text-gray-700">
               <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />

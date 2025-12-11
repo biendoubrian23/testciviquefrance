@@ -1049,7 +1049,7 @@ export default function NouvelExamenPage() {
               </h1>
               <p className="text-gray-600 mb-8">
                 {passed 
-                  ? 'Vous avez réussi l\'examen blanc !' 
+                  ? 'Vous avez réussi cette session d\'examen blanc !' 
                   : 'Vous devez obtenir au moins 32/40 (80%) pour réussir.'}
               </p>
 

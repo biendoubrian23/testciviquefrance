@@ -111,7 +111,7 @@ export default function TarifsPage() {
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
-                    <span className="text-primary-100">1 examen blanc</span>
+                    <span className="text-primary-100">1 session d&apos;examen blanc</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
@@ -153,7 +153,7 @@ export default function TarifsPage() {
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">3 examens blancs</span>
+                    <span className="text-gray-700">3 sessions d&apos;examen blanc</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
@@ -181,20 +181,20 @@ export default function TarifsPage() {
           </div>
         </section>
 
-        {/* Offre découverte - 2 Examens blancs */}
+        {/* Offre découverte - 2 Sessions d'examen blanc */}}
         <section className="py-16 lg:py-20 bg-gray-50">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-10">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">Envie de tester avant de vous engager ?</h2>
               <p className="text-gray-600 max-w-xl mx-auto">
-                Essayez notre plateforme avec 2 examens blancs complets dans les conditions réelles de l&apos;examen civique.
+                Essayez notre plateforme avec 2 sessions d&apos;examen blanc dans les conditions réelles de l&apos;examen civique.
               </p>
             </div>
             
             <div className="flex justify-center">
               <div className="group bg-white p-8 border-2 border-primary-200 hover:border-primary-600 transition-all duration-300 hover:shadow-lg text-center">
                 <div className="text-sm text-primary-600 font-medium mb-3">Offre découverte</div>
-                <h3 className="text-2xl font-semibold text-gray-900 mb-2">2 Examens blancs</h3>
+                <h3 className="text-2xl font-semibold text-gray-900 mb-2">2 Sessions d&apos;examen blanc</h3>
                 <div className="text-5xl font-bold text-gray-900 mb-4">2,50€</div>
                 <p className="text-gray-600 mb-6">Testez-vous dans les conditions réelles</p>
                 <Link href="/signup" className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-all group-hover:gap-3">
@@ -217,7 +217,7 @@ export default function TarifsPage() {
               />
               <FAQItem 
                 question="Quelle est la différence entre Pack Standard et Premium ?"
-                answer="Le Pack Standard (2,99€) inclut les tests thématiques, 1 examen blanc et les cours. Le Premium (6,99€) offre des tests illimités, 3 examens blancs, des statistiques avancées et un support prioritaire."
+                answer="Le Pack Standard (2,99€) inclut les tests thématiques, 1 session d&apos;examen blanc et les cours. Le Premium (6,99€) offre des tests illimités, 3 sessions d&apos;examen blanc, des statistiques avancées et un support prioritaire."
               />
               <FAQItem 
                 question="Les questions sont-elles conformes à l'examen officiel ?"

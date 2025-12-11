@@ -16,11 +16,11 @@ import {
   Loader2
 } from 'lucide-react';
 import { consumeExamCredit } from '@/lib/utils/examCredits';
-import { EXAMEN_1, verifyAnswerExam1, findCorrectIndexExam1 } from '@/lib/data/examens/examen1';
+import { EXAMEN_3, verifyAnswerExam3, findCorrectIndexExam3 } from '@/lib/data/examens/examen3';
 
-// ==================== EXAMEN BLANC #1 ====================
-const EXAM_NUMBER = 1;
-const QUESTIONS_EXAMEN = EXAMEN_1.questions;
+// ==================== EXAMEN BLANC #3 ====================
+const EXAM_NUMBER = 3;
+const QUESTIONS_EXAMEN = EXAMEN_3.questions;
 
 type ExamenPhase = 'en_cours' | 'termine' | 'revision';
 
@@ -29,7 +29,7 @@ interface UserAnswer {
   selectedIndex: number | null;
 }
 
-export default function NouvelExamen1Page() {
+export default function NouvelExamen3Page() {
   const router = useRouter();
   const { user } = useAuth();
   const supabase = useSupabase();
@@ -203,7 +203,7 @@ export default function NouvelExamen1Page() {
   const calculateScore = useCallback(() => {
     return userAnswers.reduce((acc, answer, idx) => {
       const question = QUESTIONS_EXAMEN[idx];
-      if (answer.selectedIndex !== null && verifyAnswerExam1(question.id, answer.selectedIndex, question.correctHash)) {
+      if (answer.selectedIndex !== null && verifyAnswerExam3(question.id, answer.selectedIndex, question.correctHash)) {
         return acc + 1;
       }
       return acc;
@@ -284,7 +284,7 @@ export default function NouvelExamen1Page() {
       <div className="max-w-2xl mx-auto px-4 py-12">
         <div className="bg-white border border-gray-200 p-8 text-center">
           <Loader2 className="w-12 h-12 animate-spin text-primary-600 mx-auto mb-4" />
-          <h2 className="text-lg font-semibold text-gray-900 mb-2">Chargement de l&apos;examen 1...</h2>
+          <h2 className="text-lg font-semibold text-gray-900 mb-2">Chargement de l&apos;examen 3...</h2>
           <p className="text-gray-500 text-sm">
             Récupération de votre progression en cours
           </p>
@@ -534,7 +534,7 @@ export default function NouvelExamen1Page() {
   if (phase === 'revision') {
     const currentQuestion = QUESTIONS_EXAMEN[revisionQuestionIndex];
     const currentAnswer = userAnswers[revisionQuestionIndex];
-    const correctIndex = findCorrectIndexExam1(currentQuestion.id, currentQuestion.correctHash);
+    const correctIndex = findCorrectIndexExam3(currentQuestion.id, currentQuestion.correctHash);
     const isCorrect = currentAnswer.selectedIndex === correctIndex;
     const wasAnswered = currentAnswer.selectedIndex !== null;
 
@@ -637,7 +637,7 @@ export default function NouvelExamen1Page() {
             <div className="flex flex-wrap justify-center gap-1 mb-4">
               {QUESTIONS_EXAMEN.map((q, idx) => {
                 const answer = userAnswers[idx];
-                const qCorrectIndex = findCorrectIndexExam1(q.id, q.correctHash);
+                const qCorrectIndex = findCorrectIndexExam3(q.id, q.correctHash);
                 const correct = answer.selectedIndex === qCorrectIndex;
                 
                 return (

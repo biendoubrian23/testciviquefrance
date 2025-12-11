@@ -29,7 +29,7 @@ const pricingPlans = [
     description: 'Accès pendant 7 jours',
     features: [
       'Tests thématiques',
-      '1 examen blanc',
+      '1 session d\'examen blanc',
       'Cours détaillés',
       'Corrigés expliqués',
       'Suivi de progression',
@@ -47,7 +47,7 @@ const pricingPlans = [
     description: 'Accès illimité pendant 7 jours',
     features: [
       'Tests illimités',
-      '3 examens blancs',
+      '3 sessions d\'examen blanc',
       'Statistiques avancées',
       'Révision intelligente',
       'Support prioritaire',

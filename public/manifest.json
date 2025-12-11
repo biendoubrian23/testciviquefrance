@@ -48,9 +48,9 @@
       "url": "/dashboard/entrainement"
     },
     {
-      "name": "Examen blanc",
+      "name": "Session d'examen blanc",
       "short_name": "Examen",
-      "description": "Passer un examen blanc en conditions réelles",
+      "description": "Passer une session d'examen blanc en conditions réelles",
       "url": "/dashboard/examens"
     },
     {

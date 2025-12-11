@@ -28,9 +28,16 @@ export interface ExamenBlanc {
 /**
  * Fonction de hash djb2 - Rapide et suffisant pour hacher les réponses
  * Impossible de deviner la bonne réponse sans bruteforce
+ * 
+ * ATTENTION: L'examen 1 utilise un pattern différent (sans préfixe "exam1")
+ * pour des raisons historiques
  */
 export function hashAnswer(examNumber: number, questionId: number, answerIndex: number): string {
-  const str = `exam${examNumber}_q${questionId}_a${answerIndex}_civique2024`;
+  // L'examen 1 utilise un pattern sans préfixe d'examen
+  const str = examNumber === 1 
+    ? `q${questionId}_a${answerIndex}_civique2024`
+    : `exam${examNumber}_q${questionId}_a${answerIndex}_civique2024`;
+  
   let hash = 5381;
   for (let i = 0; i < str.length; i++) {
     hash = ((hash << 5) + hash) + str.charCodeAt(i);

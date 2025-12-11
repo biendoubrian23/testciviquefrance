@@ -24,14 +24,18 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
       return;
     }
 
+    // Rediriger vers l'examen sélectionné
     if (examNumber === 1) {
-      // Rediriger vers l'examen blanc 1
       router.push('/dashboard/examens/nouveau');
     } else if (examNumber === 2) {
-      // Rediriger vers l'examen blanc 2
       router.push('/dashboard/examens/nouveau2');
+    } else if (examNumber === 3) {
+      router.push('/dashboard/examens/nouveau3');
+    } else if (examNumber === 4) {
+      router.push('/dashboard/examens/nouveau4');
+    } else if (examNumber === 5) {
+      router.push('/dashboard/examens/nouveau5');
     }
-    // Pour les examens 3-5, ne rien faire pour le moment
   };
 
   return (
@@ -61,7 +65,7 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
             <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-medium text-amber-800">
-                Vous n&apos;avez pas de crédit d&apos;examen blanc
+                Vous n&apos;avez pas de crédit de session d&apos;examen blanc
               </p>
               <p className="text-xs text-amber-600 mt-1">
                 Achetez un pack ou un abonnement pour accéder aux examens
@@ -70,17 +74,16 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
           </div>
         )}
 
-        {/* Compteur de crédits */}
-        <div className="mx-6 mt-4 p-3 bg-gray-50 border border-gray-200">
-          <p className="text-sm text-gray-600 text-center">
-            <span className="font-bold text-gray-900">{examCredits}</span> examen{examCredits !== 1 ? 's' : ''} blanc{examCredits !== 1 ? 's' : ''} disponible{examCredits !== 1 ? 's' : ''}
-          </p>
-        </div>
+          <div className="mx-6 mt-4 p-3 bg-gray-50 border border-gray-200">
+            <p className="text-sm text-gray-600 text-center">
+              <span className="font-bold text-gray-900">{examCredits}</span> session{examCredits !== 1 ? 's' : ''} d&apos;examen blanc{examCredits !== 1 ? 's' : ''} disponible{examCredits !== 1 ? 's' : ''}
+            </p>
+          </div>
 
         {/* Content */}
         <div className="p-6 space-y-3">
           {[1, 2, 3, 4, 5].map((examNumber) => {
-            const isAvailable = examNumber === 1 || examNumber === 2;
+            const isAvailable = examNumber >= 1 && examNumber <= 5;
             const isDisabled = !isAvailable;
             
             return (
@@ -117,7 +120,7 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
         <div className="p-6 border-t border-gray-200 bg-gray-50">
           {hasCredits ? (
             <p className="text-sm text-gray-600 text-center">
-              Les examens blancs 1 et 2 sont actuellement disponibles
+              Les examens blancs 1 à 5 sont actuellement disponibles
             </p>
           ) : (
             <button
@@ -125,7 +128,7 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
               className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-3 font-bold hover:bg-primary-700 transition-colors"
             >
               <ShoppingCart className="w-5 h-5" />
-              Obtenir des examens blancs
+              Obtenir des sessions d&apos;examen blanc
             </button>
           )}
         </div>

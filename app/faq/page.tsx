@@ -136,7 +136,7 @@ const faqCategories = [
     questions: [
       {
         question: "Quelles sont les différentes offres disponibles ?",
-        answer: "Nous proposons 3 offres : Pack Standard à 2,99€/semaine (1 examen blanc + tests thématiques + cours), Pack Premium à 6,99€/semaine (3 examens blancs + tests illimités + statistiques avancées + révision intelligente), et Pack Examen à 2,50€ l'unité (2 examens blancs sans expiration, sans tests thématiques). Les cours restent gratuits pour tous."
+        answer: "Nous proposons 3 offres : Pack Standard à 2,99€/semaine (1 session d&apos;examen blanc + tests thématiques + cours), Pack Premium à 6,99€/semaine (3 sessions d&apos;examen blanc + tests illimités + statistiques avancées + révision intelligente), et Pack Examen à 2,50€ l&apos;unité (2 sessions d&apos;examen blanc sans expiration, sans tests thématiques). Les cours restent gratuits pour tous."
       },
       {
         question: "Comment fonctionnent les examens blancs inclus dans les abonnements ?",

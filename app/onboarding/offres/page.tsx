@@ -142,7 +142,7 @@ export default function OnboardingOffersPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 flex-shrink-0" />
-                  <span>1 examen blanc</span>
+                  <span>1 session d&apos;examen blanc</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 flex-shrink-0" />
@@ -186,7 +186,7 @@ export default function OnboardingOffersPage() {
               </li>
               <li className="flex items-center gap-2 text-gray-700">
                 <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
-                <span>3 examens blancs</span>
+                <span>3 sessions d&apos;examen blanc</span>
               </li>
               <li className="flex items-center gap-2 text-gray-700">
                 <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
@@ -224,7 +224,7 @@ export default function OnboardingOffersPage() {
             <ul className="space-y-2 mb-6 flex-grow text-sm">
               <li className="flex items-center gap-2 text-gray-700">
                 <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
-                <span>2 examens blancs complets</span>
+                <span>2 sessions d&apos;examen blanc</span>
               </li>
               <li className="flex items-center gap-2 text-gray-700">
                 <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />

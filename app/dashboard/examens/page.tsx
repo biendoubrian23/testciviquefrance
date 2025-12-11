@@ -174,7 +174,7 @@ export default function ExamensPage() {
           <div className="bg-primary-600 p-8 text-white">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
               <div>
-                <h2 className="text-2xl font-bold mb-3">Prêt pour un examen blanc ?</h2>
+                <h2 className="text-2xl font-bold mb-3">Prêt pour une session d&apos;examen blanc ?</h2>
                 <p className="text-primary-100 mb-4 max-w-xl">
                   L&apos;examen civique officiel comporte 40 questions. Vous devez obtenir au moins 32 bonnes réponses (80%) pour réussir.
                   Testez-vous dans les mêmes conditions !
@@ -186,7 +186,7 @@ export default function ExamensPage() {
                     <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg text-green-100">
                       <Trophy className="w-5 h-5" />
                       <span className="font-semibold">
-                        {examCredits.totalAvailable} examen{examCredits.totalAvailable > 1 ? 's' : ''} disponible{examCredits.totalAvailable > 1 ? 's' : ''}
+                        {examCredits.totalAvailable} session{examCredits.totalAvailable > 1 ? 's' : ''} d&apos;examen blanc{examCredits.totalAvailable > 1 ? 's' : ''} disponible{examCredits.totalAvailable > 1 ? 's' : ''}
                       </span>
                       {examCredits.examCredits > 0 && (
                         <span className="text-green-200 text-sm">

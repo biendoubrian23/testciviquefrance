@@ -78,7 +78,7 @@ export default function FlashcardsUpgradeModal({
                   <ul className="space-y-3 mb-6 flex-grow">
                     <li className="flex items-center gap-2 text-sm">
                       <span className="text-primary-600">✓</span>
-                      <span>1 examen blanc</span>
+                      <span>1 session d&apos;examen blanc</span>
                     </li>
                     <li className="flex items-center gap-2 text-sm">
                       <span className="text-primary-600">✓</span>

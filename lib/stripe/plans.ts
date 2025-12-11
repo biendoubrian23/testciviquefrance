@@ -10,7 +10,7 @@ export const STRIPE_PLANS = {
     interval: 'week' as const,
     features: [
       'Tests thématiques',
-      '1 examen blanc',
+      '1 session d\'examen blanc',
       'Cours détaillés',
       'Corrigés expliqués',
       'Suivi de progression'
@@ -26,7 +26,7 @@ export const STRIPE_PLANS = {
     interval: 'week' as const,
     features: [
       'Tests illimités',
-      '3 examens blancs',
+      '3 sessions d\'examen blanc',
       'Statistiques avancées',
       'Révision intelligente',
       'Support prioritaire'
@@ -43,7 +43,7 @@ export const STRIPE_PLANS = {
     interval: 'one_time' as const,
     requiresSubscription: false,
     features: [
-      '2 examens blancs complets',
+      '2 sessions d\'examen blanc',
       'Conditions réelles d\'examen',
       'Corrigés détaillés',
       'Score et analyse'

@@ -1,25 +1,18 @@
 import { ExamenBlanc } from './types';
+import { EXAMEN_1 } from './examen1';
 import { EXAMEN_2 } from './examen-2';
-import { EXAMEN_3 } from './examen-3';
-import { EXAMEN_4 } from './examen-4';
-import { EXAMEN_5 } from './examen-5';
+import { EXAMEN_3 } from './examen3';
+import { EXAMEN_4 } from './examen4';
+import { EXAMEN_5 } from './examen5';
 
 // =====================================================
 // INDEX DES EXAMENS BLANCS
 // Gestion centralisée de tous les examens disponibles
 // =====================================================
 
-/**
- * IMPORTANT : Examen #1 reste dans le fichier d'origine
- * app/dashboard/examens/nouveau/page.tsx pour compatibilité
- * 
- * Les examens 2-5 sont disponibles dans le nouveau système
- */
-
 // Map de tous les examens disponibles (5 examens au total)
 const EXAMENS_MAP: Map<number, ExamenBlanc> = new Map([
-  // Examen #1 : géré dans l'ancien système (rétro-compatibilité)
-  // [1, EXAMEN_1],
+  [1, EXAMEN_1],
   [2, EXAMEN_2],
   [3, EXAMEN_3],
   [4, EXAMEN_4],

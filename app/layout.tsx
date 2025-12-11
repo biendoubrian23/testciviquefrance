@@ -148,6 +148,7 @@ export const metadata: Metadata = {
     'inscription test civique',
     
     // EXAMENS BLANCS
+    'session examen blanc test civique',
     'examen blanc test civique',
     'simulation test civique',
     'test blanc naturalisation',
