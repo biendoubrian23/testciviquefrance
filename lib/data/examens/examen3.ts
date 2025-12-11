@@ -31,8 +31,8 @@ const questions: Question[] = [
     sousCategorie: "Devise et symboles",
     question: "Quelle fleur est traditionnellement associée à la République française ?",
     options: ["La rose", "Le lys", "L'iris", "La tulipe"],
-    correctHash: hashAnswer(1, 2),
-    explication: "L'iris est traditionnellement associé à la République française. Il a remplacé le lys royal après la Révolution française et figure sur de nombreux monuments."
+    correctHash: hashAnswer(1, 1),
+    explication: "Le lys est traditionnellement associé à la République française. Il symbolise la royauté française et a été repris comme symbole de la nation."
   },
   {
     id: 2,
