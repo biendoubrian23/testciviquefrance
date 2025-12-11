@@ -47,7 +47,7 @@ const pricingPlans = [
     description: 'Accès illimité pendant 7 jours',
     features: [
       'Tests illimités',
-      '3 sessions d\'examen blanc',
+      "3 sessions d'examen blanc",
       'Statistiques avancées',
       'Révision intelligente',
       'Support prioritaire',

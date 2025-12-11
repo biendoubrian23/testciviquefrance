@@ -103,70 +103,29 @@ export default function EntrainementPage() {
           
           if (user) {
             try {
-              // Récupérer toutes les sessions pour calculer la progression et le niveau actuel
-              const { data: sessionsData } = await supabase
-                .from('sessions_quiz')
-                .select('niveau, score')
+              // Récupérer la progression depuis progression_niveaux
+              const { data: progressionData } = await supabase
+                .from('progression_niveaux')
+                .select('niveau_actuel')
                 .eq('user_id', user.id)
                 .eq('categorie_id', cat.id)
-                .eq('completed', true);
+                .single();
 
-              if (sessionsData && sessionsData.length > 0) {
-                // Calculer le meilleur score par niveau
-                const scoresParNiveau = new Map<number, number>();
-                for (const session of sessionsData) {
-                  const currentBest = scoresParNiveau.get(session.niveau) || 0;
-                  scoresParNiveau.set(session.niveau, Math.max(currentBest, session.score));
-                }
-
-                // Calculer le niveau actuel (plus haut niveau débloqué)
-                let niveauActuel = 1;
-                for (let i = 1; i <= 10; i++) {
-                  const score = scoresParNiveau.get(i) || 0;
-                  if (score >= 8) {
-                    niveauActuel = Math.min(i + 1, 10);
-                  }
-                }
-                niveauxCompletes = niveauActuel;
-
+              if (progressionData) {
+                // Le niveau actuel représente le prochain niveau débloqué
+                // Donc si niveau_actuel = 3, on a complété les niveaux 1 et 2
+                niveauxCompletes = Math.min(progressionData.niveau_actuel, 10);
               }
             } catch {
               // Pas de progression pour cette catégorie
+              niveauxCompletes = 0;
             }
           }
 
-          let progress = 0;
-          if (user) {
-            try {
-              // Recalculer la moyenne pour la barre de progression
-              const { data: sessionsData } = await supabase
-                .from('sessions_quiz')
-                .select('niveau, score')
-                .eq('user_id', user.id)
-                .eq('categorie_id', cat.id)
-                .eq('completed', true);
-
-              if (sessionsData && sessionsData.length > 0) {
-                const scoresParNiveau = new Map<number, number>();
-                for (const session of sessionsData) {
-                  const currentBest = scoresParNiveau.get(session.niveau) || 0;
-                  scoresParNiveau.set(session.niveau, Math.max(currentBest, session.score));
-                }
-
-                let totalPourcentage = 0;
-                let niveauxJoues = 0;
-                for (const [niveau, score] of scoresParNiveau.entries()) {
-                  const nbQuestions = niveau <= 4 ? 10 : 5;
-                  const pourcentage = Math.round((score / nbQuestions) * 100);
-                  totalPourcentage += pourcentage;
-                  niveauxJoues++;
-                }
-                progress = niveauxJoues > 0 ? Math.round(totalPourcentage / niveauxJoues) : 0;
-              }
-            } catch {
-              // Pas de progression
-            }
-          }
+          // Calculer le pourcentage de progression basé sur les niveaux débloqués
+          const progress = user && niveauxCompletes > 0 
+            ? Math.round((niveauxCompletes / totalNiveaux) * 100) 
+            : 0;
 
           return {
             id: cat.id,

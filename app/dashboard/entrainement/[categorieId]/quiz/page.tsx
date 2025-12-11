@@ -6,6 +6,7 @@ import { Clock, CheckCircle, XCircle, ArrowRight, Trophy, Gift, Sparkles, Unlock
 import Confetti from '@/components/ui/Confetti'
 import CelebrationToast from '@/components/ui/CelebrationToast'
 import { createClient } from '@/lib/supabase/client'
+import { STRIPE_PLANS } from '@/lib/stripe/plans'
 
 // Import des questions locales (hashées) - Principes et valeurs
 import { 
@@ -93,6 +94,7 @@ export default function QuizPage() {
   const [userProfile, setUserProfile] = useState<UserProfile | null>(null)
   const [noTimerMode, setNoTimerMode] = useState(false)
   const [allLevelsUnlocked, setAllLevelsUnlocked] = useState(false) // Débloque TOUS les niveaux
+  const [hasActiveSubscription, setHasActiveSubscription] = useState(false) // Abonnement actif (standard/premium)
   
   // Timer - peut être désactivé si mode sans chrono
   const DEFAULT_TIMER = 5 // 5 secondes par défaut
@@ -101,10 +103,6 @@ export default function QuizPage() {
   // États pour la célébration (confettis + toast)
   const [showConfetti, setShowConfetti] = useState(false)
   const [showCelebration, setShowCelebration] = useState(false)
-  
-  // États pour le mur de paiement "Débloquer niveau suivant"
-  const [showPaywall, setShowPaywall] = useState(false)
-  const [isUnlocking, setIsUnlocking] = useState(false)
   
   const timerRef = useRef<NodeJS.Timeout | null>(null)
   const startTimeRef = useRef<number>(0)
@@ -417,6 +415,7 @@ export default function QuizPage() {
         const hasPremiumAccess = hasActiveSubscription || hasAllLevelsUnlocked
         
         setAllLevelsUnlocked(hasAllLevelsUnlocked)
+        setHasActiveSubscription(hasActiveSubscription)
         setNoTimerMode(profileData.no_timer_enabled || false)
         
         // RESTRICTION : Membres gratuits = niveau 1 uniquement
@@ -434,6 +433,13 @@ export default function QuizPage() {
   useEffect(() => {
     loadQuestions()
   }, [loadQuestions])
+
+  // Sauvegarder automatiquement l'état du récapitulatif
+  useEffect(() => {
+    if (phase === 'results' && questions.length > 0) {
+      saveQuizState('results')
+    }
+  }, [phase, questions.length, saveQuizState])
 
   // Sélectionner une réponse
   const handleSelectAnswer = (index: number) => {
@@ -536,67 +542,49 @@ export default function QuizPage() {
     router.push('/dashboard/credits')
   }
 
-  // Utiliser le déblocage (achat) pour passer au niveau suivant avec un score de 5-7/10
-  const handleUseUnlockLevel = async () => {
-    // Si l'utilisateur n'a pas l'achat, rediriger vers la page d'achat
-    if (!allLevelsUnlocked) {
-      router.push('/dashboard/credits')
-      return
-    }
-    
-    setIsUnlocking(true)
-    
+  // Rediriger vers Stripe pour acheter le mode sans chrono
+  const handleNoTimerPurchase = async () => {
     try {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       
-      if (!user) {
-        alert('Vous devez être connecté')
-        setIsUnlocking(false)
+      if (!user || !user.email) {
+        alert('Vous devez être connecté pour effectuer un achat')
         return
       }
-      
-      // Mettre à jour la progression dans la base de données
-      // Vérifier si une progression existe déjà pour cette catégorie
-      const { data: existingProgression } = await supabase
-        .from('progression_niveaux')
-        .select('niveau_actuel')
-        .eq('user_id', user.id)
-        .eq('categorie_id', categorieId)
-        .single()
 
-      if (existingProgression) {
-        // Mettre à jour seulement si le nouveau niveau est plus élevé
-        if (niveau >= existingProgression.niveau_actuel) {
-          await supabase
-            .from('progression_niveaux')
-            .update({ 
-              niveau_actuel: niveau + 1,
-              updated_at: new Date().toISOString()
-            })
-            .eq('user_id', user.id)
-            .eq('categorie_id', categorieId)
-        }
-      } else {
-        // Créer la progression pour cette catégorie
-        await supabase
-          .from('progression_niveaux')
-          .insert({
-            user_id: user.id,
-            categorie_id: categorieId,
-            niveau_actuel: niveau + 1
-          })
-      }
-      
-      // Passer au niveau suivant
-      clearQuizState()
-      window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
-      
+      // Récupérer le plan depuis la configuration centralisée
+      const noTimerPlan = STRIPE_PLANS.noTimer
+
+      // Redirection directe vers Stripe avec email pré-rempli
+      const checkoutUrl = `${noTimerPlan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`
+      window.location.href = checkoutUrl
     } catch (err) {
-      console.error('Erreur:', err)
+      console.error('Erreur redirection Stripe:', err)
       alert('Une erreur est survenue')
-    } finally {
-      setIsUnlocking(false)
+    }
+  }
+
+  // Rediriger vers Stripe pour acheter le déblocage (0,99€)
+  const handleUseUnlockLevel = async () => {
+    try {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+      
+      if (!user || !user.email) {
+        alert('Vous devez être connecté pour effectuer un achat')
+        return
+      }
+
+      // Récupérer le plan depuis la configuration centralisée
+      const unlockPlan = STRIPE_PLANS.unlockLevel
+
+      // Redirection directe vers Stripe avec email pré-rempli
+      const checkoutUrl = `${unlockPlan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`
+      window.location.href = checkoutUrl
+    } catch (err) {
+      console.error('Erreur redirection Stripe:', err)
+      alert('Une erreur est survenue')
     }
   }
 
@@ -720,12 +708,8 @@ export default function QuizPage() {
       setShowCelebration(true)
     }
     
-    // Afficher le paywall après 5 secondes si score entre 5 et 7 (pas assez pour passer à 8/10)
-    if (score >= 5 && score <= 7 && niveau < 10) {
-      setTimeout(() => {
-        setShowPaywall(true)
-      }, 5000)
-    }
+    // Le bouton de déblocage s'affiche directement dans les actions
+    // si score entre 5 et 7 et que l'utilisateur est abonné
 
     setPhase('results')
     
@@ -738,12 +722,12 @@ export default function QuizPage() {
     // Mode sans chrono : afficher une icône "pause" ou "∞"
     if (noTimerMode) {
       return (
-        <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+        <div className="relative w-12 h-12 sm:w-14 sm:h-14">
           <svg className="w-full h-full" viewBox="0 0 88 88">
             <circle cx="44" cy="44" r="40" fill="none" stroke="#10b981" strokeWidth="5" />
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-xl sm:text-2xl font-bold text-emerald-500">∞</span>
+            <span className="text-lg sm:text-xl font-bold text-emerald-500">∞</span>
           </div>
         </div>
       )
@@ -756,7 +740,7 @@ export default function QuizPage() {
     const displayTime = Math.ceil(timeLeft) // Afficher le temps arrondi au supérieur
     
     return (
-      <div className="relative w-16 h-16 sm:w-20 sm:h-20">
+      <div className="relative w-12 h-12 sm:w-14 sm:h-14">
         <svg className="w-full h-full transform -rotate-90" viewBox="0 0 88 88">
           <circle cx="44" cy="44" r="40" fill="none" stroke="#e5e7eb" strokeWidth="5" />
           <circle
@@ -767,7 +751,7 @@ export default function QuizPage() {
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-xl sm:text-2xl font-bold" style={{ color: timerColor }}>
+          <span className="text-lg sm:text-xl font-bold" style={{ color: timerColor }}>
             {displayTime}
           </span>
         </div>
@@ -869,70 +853,37 @@ export default function QuizPage() {
               </span>
             </div>
           
-            {showPaywall && !isSuccess && niveau < 10 && (
-              <div className="bg-gradient-to-br from-primary-50 to-emerald-50 border-2 border-primary-200 p-4 mb-4 animate-fade-in">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-primary-100 flex items-center justify-center flex-shrink-0">
-                    <Unlock className="w-5 h-5 text-primary-600" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-gray-900 text-sm">Vous étiez proche !</h4>
-                    <p className="text-xs text-gray-600">
-                      {allLevelsUnlocked 
-                        ? 'Passez au niveau suivant grâce à votre achat'
-                        : 'Débloquez le niveau suivant sans recommencer'}
-                    </p>
-                  </div>
-                </div>
-              
+            <div className="flex flex-col gap-2">
+              {/* Bouton déblocage - uniquement pour membres abonnés avec score 5-7 ET qui n'ont PAS encore l'achat */}
+              {hasActiveSubscription && !allLevelsUnlocked && !isSuccess && score >= 5 && score <= 7 && niveau < 10 && (
                 <button
                   onClick={handleUseUnlockLevel}
-                  disabled={isUnlocking}
-                  className="w-full bg-primary-600 text-white py-3 px-4 font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-amber-600 text-white py-2.5 px-4 font-semibold hover:bg-amber-700 transition-colors flex items-center justify-center gap-2"
                 >
-                  {isUnlocking ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      <span>Déblocage...</span>
-                    </>
-                  ) : allLevelsUnlocked ? (
-                    <>
-                      <Sparkles className="w-4 h-4" />
-                      <span>Passer au niveau suivant</span>
-                      <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">Inclus</span>
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="w-4 h-4" />
-                      <span>Débloquer le niveau suivant</span>
-                      <span className="bg-white/20 px-2 py-0.5 text-xs ml-1">0,99€</span>
-                    </>
-                  )}
+                  <Sparkles className="w-4 h-4" />
+                  <span>Débloquer le niveau suivant</span>
+                  <span className="bg-white/20 px-2 py-0.5 text-xs rounded">0,99€</span>
                 </button>
+              )}
               
-                <p className="text-center text-xs text-gray-500 mt-2">
-                  {allLevelsUnlocked 
-                    ? 'Valable pour tous vos scores entre 5 et 7/10' 
-                    : 'Achat unique - valable sur tous les thèmes'}
-                </p>
-              </div>
-            )}
-          
-            <div className="flex flex-col gap-2">
               {niveau < 10 && (
                 <button
                   onClick={() => {
                     clearQuizState()
                     window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
                   }}
-                  disabled={!isSuccess}
+                  disabled={!isSuccess && !(allLevelsUnlocked && score >= 5 && score <= 7)}
                   className={`w-full py-2.5 px-4 font-semibold transition-colors ${
-                    isSuccess 
+                    isSuccess || (allLevelsUnlocked && score >= 5 && score <= 7)
                       ? 'bg-primary-600 text-white hover:bg-primary-700' 
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   }`}
                 >
-                  {isSuccess ? 'Passer au niveau suivant' : 'Niveau suivant (80% requis)'}
+                  {isSuccess 
+                    ? 'Passer au niveau suivant' 
+                    : allLevelsUnlocked && score >= 5 && score <= 7
+                      ? 'Passer au niveau suivant (déblocage actif)'
+                      : 'Niveau suivant (80% requis)'}
                 </button>
               )}
             
@@ -1037,8 +988,20 @@ export default function QuizPage() {
           </div>
         </div>
         
-        <div className="ml-3 flex-shrink-0">
+        <div className="ml-3 flex-shrink-0 relative">
           {renderTimer()}
+          
+          {/* Badge "Retirer le chrono" - uniquement pour abonnés Standard/Premium et si pas déjà en mode sans chrono */}
+          {hasActiveSubscription && !noTimerMode && (
+            <button
+              onClick={handleNoTimerPurchase}
+              className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-amber-500 hover:bg-amber-600 text-white text-[8px] px-1 py-[1px] rounded shadow-sm transition-all hover:scale-105 flex items-center gap-0.5 whitespace-nowrap"
+              title="Supprimez le chrono pour répondre sans stress"
+            >
+              <Clock className="w-2 h-2" />
+              <span>Retirer chrono</span>
+            </button>
+          )}
         </div>
       </div>
 

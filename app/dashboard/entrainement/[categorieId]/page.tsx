@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import { useSupabase } from '@/hooks/useSupabase'
-import { Lock, CheckCircle, PlayCircle, Star, Trophy, ArrowLeft, Unlock, Sparkles, X, Loader2 } from 'lucide-react'
+import { Lock, CheckCircle, PlayCircle, Star, Trophy, ArrowLeft, Sparkles } from 'lucide-react'
 import Link from 'next/link'
 
 interface Categorie {
@@ -43,11 +43,7 @@ export default function CategorieDetailPage() {
   const [gamification, setGamification] = useState<Gamification | null>(null)
   const [loading, setLoading] = useState(true)
   
-  // États pour le popup de déblocage
-  const [showUnlockPopup, setShowUnlockPopup] = useState(false)
-  const [lastFailedLevel, setLastFailedLevel] = useState<number | null>(null)
-  const [lastScore, setLastScore] = useState<number | null>(null)
-  const [isUnlocking, setIsUnlocking] = useState(false)
+  // États pour les restrictions d'accès
   const [allLevelsUnlocked, setAllLevelsUnlocked] = useState(false)
   const [hasActiveSubscription, setHasActiveSubscription] = useState(false)
 
@@ -171,11 +167,15 @@ export default function CategorieDetailPage() {
       // Un niveau est complété si on a obtenu >= 8/10
       const isCompleted = meilleurScore !== null && meilleurScore >= 8
       
+      // Vérifier si le niveau précédent a un score de 5-10/10 (condition pour utiliser l'achat)
+      const previousLevelScore = i > 1 ? (meilleursScoresParNiveau.get(i - 1) || null) : null
+      const canUnlockWithPurchase = hasAllLevelsUnlocked && i > 1 && !isCompleted && previousLevelScore !== null && previousLevelScore >= 5
+      
       // NOUVELLE LOGIQUE : Membres gratuits = niveau 1 uniquement
       let isUnlocked: boolean
       if (hasPremiumAccess) {
-        // Utilisateurs premium : déblocage progressif normal
-        isUnlocked = i <= niveauActuel
+        // Utilisateurs premium : déblocage progressif normal OU déblocable avec l'achat
+        isUnlocked = i <= niveauActuel || canUnlockWithPurchase
       } else {
         // Utilisateurs gratuits : seulement niveau 1
         isUnlocked = i === 1
@@ -209,26 +209,9 @@ export default function CategorieDetailPage() {
       setGamification({ points_totaux: 0, serie_jours: 0 })
     }
 
-    // Vérifier si on doit afficher le popup de déblocage
-    // Conditions :
-    // 1. La dernière session existe
-    // 2. Le score était 5, 6 ou 7 (échec proche)
-    // 3. Le niveau joué était le niveau actuel (le plus haut débloqué mais pas encore complété)
-    // 4. Ce n'est pas le niveau 10 (dernier niveau)
-    if (lastSession && niveauActuel < 10) {
-      const { niveau: lastNiveau, score: lastScoreValue } = lastSession
-      
-      // Le niveau actuel est celui qu'on peut jouer mais pas encore validé
-      // Donc si lastNiveau === niveauActuel et score entre 5 et 7, on propose le déblocage
-      if (lastNiveau === niveauActuel && lastScoreValue >= 5 && lastScoreValue <= 7) {
-        setLastFailedLevel(lastNiveau)
-        setLastScore(lastScoreValue)
-        // Afficher le popup après un court délai
-        setTimeout(() => {
-          setShowUnlockPopup(true)
-        }, 1000)
-      }
-    }
+    // NOTE : Le système de déblocage de niveau suivant (0,99€) s'affiche UNIQUEMENT
+    // dans le récapitulatif du quiz après avoir terminé un niveau avec score 5-7/10.
+    // Il ne s'affiche PAS sur cette page de liste des niveaux.
 
     // Limite désactivée pour le moment
     setLoading(false)
@@ -363,65 +346,6 @@ export default function CategorieDetailPage() {
     router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`)
   }
 
-  // Fonction pour débloquer le niveau suivant (micro-transaction ou utilisation de l'achat)
-  const handleUnlockNextLevel = async () => {
-    if (!lastFailedLevel) return
-    
-    // Si l'utilisateur n'a pas l'achat, rediriger vers la page d'achat
-    if (!allLevelsUnlocked) {
-      router.push('/dashboard/credits')
-      return
-    }
-    
-    setIsUnlocking(true)
-    
-    try {
-      const { data: { user } } = await supabase.auth.getUser()
-      
-      if (!user) {
-        alert('Vous devez être connecté')
-        setIsUnlocking(false)
-        return
-      }
-      
-      // Mettre à jour la progression dans la base de données
-      const { data: existingProgression } = await supabase
-        .from('progression_niveaux')
-        .select('niveau_actuel')
-        .eq('user_id', user.id)
-        .eq('categorie_id', categorieId)
-        .single()
-
-      if (existingProgression) {
-        if (lastFailedLevel >= existingProgression.niveau_actuel) {
-          await supabase
-            .from('progression_niveaux')
-            .update({ 
-              niveau_actuel: lastFailedLevel + 1,
-              updated_at: new Date().toISOString()
-            })
-            .eq('user_id', user.id)
-            .eq('categorie_id', categorieId)
-        }
-      } else {
-        await supabase
-          .from('progression_niveaux')
-          .insert({
-            user_id: user.id,
-            categorie_id: categorieId,
-            niveau_actuel: lastFailedLevel + 1
-          })
-      }
-      
-      // Fermer le popup et aller directement au niveau suivant
-      setShowUnlockPopup(false)
-      router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${lastFailedLevel + 1}`)
-    } catch (error) {
-      console.error('Erreur déblocage:', error)
-      setIsUnlocking(false)
-    }
-  }
-
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
@@ -443,6 +367,9 @@ export default function CategorieDetailPage() {
 
   const niveauxCompletes = niveaux.filter(n => n.is_completed).length
   const progressionPourcentage = (niveauxCompletes / 10) * 100
+  
+  // Calculer le niveau actuel (le plus haut niveau débloqué)
+  const niveauActuel = Math.max(...niveaux.filter(n => n.is_unlocked).map(n => n.niveau), 0)
 
   return (
     <div className="max-w-4xl mx-auto px-0 sm:px-4 py-6">
@@ -489,12 +416,12 @@ export default function CategorieDetailPage() {
         <div className="mb-4">
           <div className="flex justify-between text-sm text-gray-600 mb-1">
             <span>Progression</span>
-            <span>{niveauxCompletes}/10 niveaux</span>
+            <span>{niveauActuel}/10 niveaux</span>
           </div>
           <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
             <div 
               className="h-full bg-primary-600 transition-all duration-500"
-              style={{ width: `${progressionPourcentage}%` }}
+              style={{ width: `${(niveauActuel / 10) * 100}%` }}
             />
           </div>
         </div>
@@ -560,6 +487,19 @@ export default function CategorieDetailPage() {
                       <span className={`text-xs px-2 py-0.5 rounded-full whitespace-nowrap ${getDifficulteColor(niveau.niveau)}`}>
                         {getDifficulteLabel(niveau.niveau)}
                       </span>
+                      
+                      {/* Badge "Déblocable avec achat" - COMMENTÉ POUR SIMPLIFIER L'UI
+                      {(() => {
+                        const previousLevelScore = niveau.niveau > 1 ? (niveaux.find(n => n.niveau === niveau.niveau - 1)?.meilleur_score || null) : null
+                        const canUnlockWithPurchase = allLevelsUnlocked && niveau.niveau > 1 && !niveau.is_completed && previousLevelScore !== null && previousLevelScore >= 5
+                        return canUnlockWithPurchase && (
+                          <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-300 whitespace-nowrap flex items-center gap-1">
+                            <Sparkles className="w-3 h-3" />
+                            Déblocable
+                          </span>
+                        )
+                      })()}
+                      */}
                     </div>
                     <p className="text-sm text-gray-500">
                       {getNombreQuestions(niveau.niveau)} questions
@@ -647,96 +587,8 @@ export default function CategorieDetailPage() {
         </div>
       )}
 
-      {/* Popup de déblocage du niveau suivant */}
-      {showUnlockPopup && lastFailedLevel && lastScore && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-xl max-w-md w-full p-6 relative animate-fade-in shadow-2xl">
-            {/* Bouton fermer */}
-            <button
-              onClick={() => setShowUnlockPopup(false)}
-              className="absolute top-3 right-3 p-2 text-gray-400 hover:text-gray-600 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            <div className="text-center">
-              {/* Icône */}
-              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-primary-100 to-emerald-100 rounded-full flex items-center justify-center">
-                <Unlock className="w-8 h-8 text-primary-600" />
-              </div>
-              
-              {/* Titre */}
-              <h3 className="text-xl font-bold text-gray-900 mb-2">
-                Vous étiez proche ! 😔
-              </h3>
-              
-              {/* Score */}
-              <div className="inline-block bg-amber-50 border border-amber-200 px-4 py-2 mb-4">
-                <span className="text-amber-700 font-medium">
-                  Niveau {lastFailedLevel} : {lastScore}/10
-                </span>
-              </div>
-              
-              {/* Description */}
-              <p className="text-gray-600 mb-6">
-                Vous avez obtenu <strong>{lastScore}/10</strong> au niveau {lastFailedLevel}.
-                <br />
-                Passez directement au niveau suivant sans recommencer !
-              </p>
-              
-              {/* Prix et bouton */}
-              <div className="bg-gradient-to-r from-primary-50 to-emerald-50 border border-primary-200 p-4 mb-4">
-                {!allLevelsUnlocked && (
-                  <div className="flex items-center justify-center gap-2 mb-3">
-                    <Sparkles className="w-5 h-5 text-primary-600" />
-                    <span className="text-2xl font-bold text-primary-600">0,99€</span>
-                  </div>
-                )}
-                
-                <button
-                  onClick={handleUnlockNextLevel}
-                  disabled={isUnlocking}
-                  className="w-full bg-primary-600 text-white py-3 px-4 font-semibold hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
-                >
-                  {isUnlocking ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin" />
-                      <span>Déblocage...</span>
-                    </>
-                  ) : allLevelsUnlocked ? (
-                    <>
-                      <Unlock className="w-5 h-5" />
-                      <span>Passer au niveau {lastFailedLevel + 1}</span>
-                    </>
-                  ) : (
-                    <>
-                      <Unlock className="w-5 h-5" />
-                      <span>Acheter le déblocage</span>
-                    </>
-                  )}
-                </button>
-                
-                {allLevelsUnlocked && (
-                  <p className="text-xs text-center text-primary-600 mt-2">
-                    Inclus dans votre achat
-                  </p>
-                )}
-              </div>
-              
-              {/* Option recommencer */}
-              <button
-                onClick={() => {
-                  setShowUnlockPopup(false)
-                  router.push(`/dashboard/entrainement/${categorieId}/quiz?niveau=${lastFailedLevel}`)
-                }}
-                className="text-gray-500 hover:text-gray-700 text-sm underline"
-              >
-                Non merci, recommencer le niveau {lastFailedLevel}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {/* NOTE : Le popup de déblocage de niveau a été supprimé de cette page.
+          Il s'affiche UNIQUEMENT dans le récapitulatif du quiz (après avoir terminé un niveau). */}
     </div>
   )
 }

@@ -274,7 +274,7 @@ export default function DashboardPage() {
               id: e.id,
               type: 'question' as const,
               correct: e.passed,
-              theme: 'Session d&apos;examen blanc',
+              theme: "Session d'examen blanc",
               score: e.score,
               total: e.total_questions,
               time: formatTimeAgo(new Date(e.completed_at)),
@@ -529,7 +529,7 @@ export default function DashboardPage() {
           className="group bg-white border border-gray-200 p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 transition-all"
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          <h3 className="font-bold text-gray-900 mb-2">Session d&apos;examen blanc</h3>
+          <h3 className="font-bold text-gray-900 mb-2">Session d'examen blanc</h3>
           <p className="text-sm text-gray-600">Testez-vous dans les conditions réelles (40 questions)</p>
         </Link>
 

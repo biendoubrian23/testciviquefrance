@@ -153,7 +153,7 @@ export default function TarifsPage() {
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">3 sessions d&apos;examen blanc</span>
+                    <span className="text-gray-700">3 sessions d'examen blanc</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
