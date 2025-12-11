@@ -138,8 +138,8 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* Bouton Google */}
-          <button
+          {/* Bouton Google - Commenté car pas encore configuré */}
+          {/* <button
             type="button"
             onClick={handleGoogleSignIn}
             disabled={isGoogleLoading}
@@ -177,7 +177,7 @@ export default function LoginPage() {
             <div className="relative flex justify-center text-sm">
               <span className="px-4 bg-white text-gray-500">ou</span>
             </div>
-          </div>
+          </div> */}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
