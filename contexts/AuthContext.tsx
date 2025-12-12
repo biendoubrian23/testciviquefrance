@@ -107,24 +107,30 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     try {
       // Récupérer la session avec TIMEOUT
+      // On utilise getUser() pour vérifier que l'utilisateur existe toujours côté serveur
+      // (cas où la DB a été formatée mais le token local est encore valide)
       const sessionResult = await Promise.race([
-        supabase.auth.getSession(),
-        new Promise<{ data: { session: Session | null } }>((resolve) => 
-          setTimeout(() => resolve({ data: { session: null } }), AUTH_TIMEOUT_MS)
+        supabase.auth.getUser(),
+        new Promise<{ data: { user: User | null }, error: any }>((resolve) => 
+          setTimeout(() => resolve({ data: { user: null }, error: { message: 'Timeout' } }), AUTH_TIMEOUT_MS)
         )
       ]);
       
-      const currentSession = sessionResult.data?.session;
+      const currentUser = sessionResult.data?.user;
       
-      if (currentSession?.user) {
-        setSession(currentSession);
-        setUser(currentSession.user);
+      if (currentUser) {
+        // Si l'utilisateur existe, on récupère la session complète
+        const { data: { session } } = await supabase.auth.getSession();
+        setSession(session);
+        setUser(currentUser);
         // Charger le profil en arrière-plan (NE PAS BLOQUER)
-        fetchProfile(currentSession.user.id).then(profileData => {
+        fetchProfile(currentUser.id).then(profileData => {
           setProfile(profileData);
         });
       } else {
-        // Pas de session = utilisateur non connecté (NORMAL)
+        // Pas d'utilisateur valide côté serveur
+        // On nettoie tout pour éviter les états incohérents
+        await supabase.auth.signOut();
         setSession(null);
         setUser(null);
         setProfile(null);
