@@ -6,6 +6,7 @@ import { createClient } from '@/lib/supabase/client';
 import { Check, Crown, ChevronDown, Loader2, CheckCircle } from 'lucide-react';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
 import ManageSubscriptionButton from '@/components/dashboard/ManageSubscriptionButton';
+import ErrorModal from '@/components/ui/ErrorModal';
 
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -66,6 +67,10 @@ export default function OffresPage() {
   const [isLoading, setIsLoading] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [showMicroservices, setShowMicroservices] = useState(false);
+  const [errorModal, setErrorModal] = useState<{ isOpen: boolean; message: string }>({
+    isOpen: false,
+    message: ''
+  });
 
   // Cast du profil pour accéder aux nouveaux champs
   const extendedProfile = profile as ExtendedProfile | null;
@@ -76,27 +81,59 @@ export default function OffresPage() {
 
   // Fonction pour rediriger vers Stripe pour les achats ponctuels (avec ou sans vérification abonnement)
   const redirectToStripeCheckout = async (planKey: 'examen' | 'flashcards2Themes' | 'flashcards5Themes' | 'noTimer' | 'unlockLevel') => {
+    setIsLoading(planKey);
     try {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
       
       if (!user || !user.email) {
-        alert('Vous devez être connecté pour effectuer un achat');
+        setErrorModal({
+          isOpen: true,
+          message: 'Vous devez être connecté pour effectuer un achat.'
+        });
         return;
       }
 
       // Vérifier si ce produit nécessite un abonnement
       const plan = STRIPE_PLANS[planKey];
       if (plan.requiresSubscription && extendedProfile?.subscription_status !== 'active') {
-        alert('⚠️ Cet achat nécessite un abonnement actif (Standard ou Premium).\n\nVeuillez d\'abord souscrire à un abonnement.');
+        setErrorModal({
+          isOpen: true,
+          message: 'Cet achat nécessite un abonnement actif (Standard ou Premium). Veuillez d\'abord souscrire à un abonnement.'
+        });
         return;
       }
 
-      const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`;
-      window.location.href = checkoutUrl;
+      // ✅ Vérifier la connexion Stripe avant de rediriger
+      const response = await fetch('/api/verify-stripe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          planKey,
+          userEmail: user.email
+        })
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        setErrorModal({
+          isOpen: true,
+          message: data.error || 'Une erreur est survenue lors de la vérification du service de paiement.'
+        });
+        return;
+      }
+
+      // ✅ Tout est OK, rediriger vers Stripe
+      window.location.href = data.checkoutUrl;
     } catch (err) {
       console.error('Erreur redirection Stripe:', err);
-      alert('Une erreur est survenue');
+      setErrorModal({
+        isOpen: true,
+        message: 'Une erreur inattendue est survenue. Veuillez réessayer dans quelques instants.'
+      });
+    } finally {
+      setIsLoading(null);
     }
   };
 
@@ -104,18 +141,50 @@ export default function OffresPage() {
 
   // Fonction pour les abonnements Stripe (Standard, Premium, Examen)
   const handleStripePurchase = async (planType: 'standard' | 'premium' | 'examen') => {
-    const supabase = createClient();
-    const plan = STRIPE_PLANS[planType];
-    const { data: { user } } = await supabase.auth.getUser();
-    
-    if (!user) {
-      alert('Vous devez être connecté pour effectuer un achat');
-      return;
-    }
+    setIsLoading(planType);
+    try {
+      const supabase = createClient();
+      const { data: { user } } = await supabase.auth.getUser();
+      
+      if (!user || !user.email) {
+        setErrorModal({
+          isOpen: true,
+          message: 'Vous devez être connecté pour effectuer un achat.'
+        });
+        return;
+      }
 
-    // Rediriger vers Stripe avec l'email pré-rempli
-    const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email || '')}`;
-    window.location.href = checkoutUrl;
+      // ✅ Vérifier la connexion Stripe avant de rediriger
+      const response = await fetch('/api/verify-stripe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          planKey: planType,
+          userEmail: user.email
+        })
+      });
+
+      const data = await response.json();
+
+      if (!data.success) {
+        setErrorModal({
+          isOpen: true,
+          message: data.error || 'Une erreur est survenue lors de la vérification du service de paiement.'
+        });
+        return;
+      }
+
+      // ✅ Tout est OK, rediriger vers Stripe
+      window.location.href = data.checkoutUrl;
+    } catch (err) {
+      console.error('Erreur redirection Stripe:', err);
+      setErrorModal({
+        isOpen: true,
+        message: 'Une erreur inattendue est survenue. Veuillez réessayer dans quelques instants.'
+      });
+    } finally {
+      setIsLoading(null);
+    }
   };
 
   return (
@@ -597,6 +666,13 @@ export default function OffresPage() {
           />
         </div>
       </div>
+
+      {/* Modal d'erreur */}
+      <ErrorModal
+        isOpen={errorModal.isOpen}
+        onClose={() => setErrorModal({ isOpen: false, message: '' })}
+        message={errorModal.message}
+      />
     </div>
   );
 }

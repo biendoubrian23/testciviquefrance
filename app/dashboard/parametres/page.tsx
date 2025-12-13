@@ -118,45 +118,6 @@ export default function ParametresPage() {
         </form>
       </div>
 
-      {/* Mot de passe */}
-      <div className="bg-white border border-gray-200 p-6">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="w-10 h-10 bg-gray-100 flex items-center justify-center">
-            <Lock className="w-5 h-5 text-gray-600" />
-          </div>
-          <div>
-            <h2 className="font-bold text-gray-900">Mot de passe</h2>
-            <p className="text-sm text-gray-500">Modifiez votre mot de passe</p>
-          </div>
-        </div>
-
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Mot de passe actuel
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="w-full px-4 py-2.5 border border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Nouveau mot de passe
-            </label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              className="w-full px-4 py-2.5 border border-gray-300 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 outline-none transition-all"
-            />
-          </div>
-          <button className="bg-gray-100 text-gray-700 px-4 py-2.5 font-medium hover:bg-gray-200 transition-colors">
-            Changer le mot de passe
-          </button>
-        </div>
-      </div>
-
       {/* Notifications */}
       <div className="bg-white border border-gray-200 p-6">
         <div className="flex items-center gap-3 mb-6">

@@ -5,6 +5,7 @@ import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { Clock, CheckCircle, XCircle, ArrowRight, Trophy, Gift, Sparkles, Unlock, Loader2 } from 'lucide-react'
 import Confetti from '@/components/ui/Confetti'
 import CelebrationToast from '@/components/ui/CelebrationToast'
+import ErrorModal from '@/components/ui/ErrorModal'
 import { createClient } from '@/lib/supabase/client'
 import { STRIPE_PLANS } from '@/lib/stripe/plans'
 
@@ -95,6 +96,11 @@ export default function QuizPage() {
   const [noTimerMode, setNoTimerMode] = useState(false)
   const [allLevelsUnlocked, setAllLevelsUnlocked] = useState(false) // Débloque TOUS les niveaux
   const [hasActiveSubscription, setHasActiveSubscription] = useState(false) // Abonnement actif (standard/premium)
+  const [errorModal, setErrorModal] = useState<{ isOpen: boolean; message: string }>({
+    isOpen: false,
+    message: ''
+  })
+  const [isLoadingPurchase, setIsLoadingPurchase] = useState(false)
   
   // Timer - peut être désactivé si mode sans chrono
   const DEFAULT_TIMER = 5 // 5 secondes par défaut
@@ -544,47 +550,97 @@ export default function QuizPage() {
 
   // Rediriger vers Stripe pour acheter le mode sans chrono
   const handleNoTimerPurchase = async () => {
+    setIsLoadingPurchase(true)
     try {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       
       if (!user || !user.email) {
-        alert('Vous devez être connecté pour effectuer un achat')
+        setErrorModal({
+          isOpen: true,
+          message: 'Vous devez être connecté pour effectuer un achat.'
+        })
         return
       }
 
-      // Récupérer le plan depuis la configuration centralisée
-      const noTimerPlan = STRIPE_PLANS.noTimer
+      // ✅ Vérifier la connexion Stripe avant de rediriger
+      const response = await fetch('/api/verify-stripe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          planKey: 'noTimer',
+          userEmail: user.email
+        })
+      })
 
-      // Redirection directe vers Stripe avec email pré-rempli
-      const checkoutUrl = `${noTimerPlan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`
-      window.location.href = checkoutUrl
+      const data = await response.json()
+
+      if (!data.success) {
+        setErrorModal({
+          isOpen: true,
+          message: data.error || 'Une erreur est survenue lors de la vérification du service de paiement.'
+        })
+        return
+      }
+
+      // ✅ Tout est OK, rediriger vers Stripe
+      window.location.href = data.checkoutUrl
     } catch (err) {
       console.error('Erreur redirection Stripe:', err)
-      alert('Une erreur est survenue')
+      setErrorModal({
+        isOpen: true,
+        message: 'Une erreur inattendue est survenue. Veuillez réessayer dans quelques instants.'
+      })
+    } finally {
+      setIsLoadingPurchase(false)
     }
   }
 
   // Rediriger vers Stripe pour acheter le déblocage (0,99€)
   const handleUseUnlockLevel = async () => {
+    setIsLoadingPurchase(true)
     try {
       const supabase = createClient()
       const { data: { user } } = await supabase.auth.getUser()
       
       if (!user || !user.email) {
-        alert('Vous devez être connecté pour effectuer un achat')
+        setErrorModal({
+          isOpen: true,
+          message: 'Vous devez être connecté pour effectuer un achat.'
+        })
         return
       }
 
-      // Récupérer le plan depuis la configuration centralisée
-      const unlockPlan = STRIPE_PLANS.unlockLevel
+      // ✅ Vérifier la connexion Stripe avant de rediriger
+      const response = await fetch('/api/verify-stripe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          planKey: 'unlockLevel',
+          userEmail: user.email
+        })
+      })
 
-      // Redirection directe vers Stripe avec email pré-rempli
-      const checkoutUrl = `${unlockPlan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`
-      window.location.href = checkoutUrl
+      const data = await response.json()
+
+      if (!data.success) {
+        setErrorModal({
+          isOpen: true,
+          message: data.error || 'Une erreur est survenue lors de la vérification du service de paiement.'
+        })
+        return
+      }
+
+      // ✅ Tout est OK, rediriger vers Stripe
+      window.location.href = data.checkoutUrl
     } catch (err) {
       console.error('Erreur redirection Stripe:', err)
-      alert('Une erreur est survenue')
+      setErrorModal({
+        isOpen: true,
+        message: 'Une erreur inattendue est survenue. Veuillez réessayer dans quelques instants.'
+      })
+    } finally {
+      setIsLoadingPurchase(false)
     }
   }
 
@@ -1115,6 +1171,13 @@ export default function QuizPage() {
           <span className="text-sm">⏱️ Mode sans chrono activé - Prenez votre temps</span>
         </div>
       )}
+
+      {/* Modal d'erreur */}
+      <ErrorModal
+        isOpen={errorModal.isOpen}
+        onClose={() => setErrorModal({ isOpen: false, message: '' })}
+        message={errorModal.message}
+      />
     </div>
   )
 }
