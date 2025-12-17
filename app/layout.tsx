@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     'test civique naturalisation',
     'examen civique naturalisation',
     'test civique gratuit',
-    
+
     // NOUVELLE LOI IMMIGRATION 2024-2025
     'loi immigration 2024',
     'loi immigration 2025',
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     'article R.413-12-1',
     'conditions naturalisation 2025',
     'nouvelles règles naturalisation',
-    
+
     // NATURALISATION
     'naturalisation française',
     'naturalisation france 2025',
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     'nationalité française conditions',
     'procédure naturalisation',
     'délai naturalisation france',
-    
+
     // TITRE DE SÉJOUR - CARTE DE SÉJOUR
     'titre de séjour',
     'titre de séjour france',
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     'titre séjour 4 ans',
     'titre séjour 10 ans',
     'carte séjour vie privée familiale',
-    
+
     // ÉTUDIANTS ÉTRANGERS
     'titre séjour étudiant',
     'visa étudiant france',
@@ -91,21 +91,21 @@ export const metadata: Metadata = {
     'doctorat france étranger',
     'campus france test civique',
     'études supérieures france étranger',
-    
+
     // REGROUPEMENT FAMILIAL
     'regroupement familial france',
     'regroupement familial 2025',
     'visa conjoint français',
     'carte séjour conjoint',
     'titre séjour famille',
-    
+
     // TRAVAIL ET IMMIGRATION
     'travail france étranger',
     'contrat travail étranger france',
     'permis travail france',
     'autorisation travail france',
     'salarié étranger france',
-    
+
     // QUESTIONS ET PRÉPARATION
     'questions test civique',
     'questions examen civique',
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
     'exercices test civique',
     'annales test civique',
     'corrigé test civique',
-    
+
     // THÉMATIQUES OFFICIELLES
     'valeurs république française',
     'principes républicains',
@@ -136,7 +136,7 @@ export const metadata: Metadata = {
     'Marianne symbole france',
     'drapeau français bleu blanc rouge',
     'hymne national Marseillaise',
-    
+
     // ASPECTS PRATIQUES EXAMEN
     '40 questions test civique',
     '80 pourcent test civique',
@@ -146,14 +146,14 @@ export const metadata: Metadata = {
     'où passer test civique',
     'prix test civique',
     'inscription test civique',
-    
+
     // EXAMENS BLANCS
     'session examen blanc test civique',
     'examen blanc test civique',
     'simulation test civique',
     'test blanc naturalisation',
     'entrainement gratuit test civique',
-    
+
     // ===== TEST CIVIQUE PAR MOIS 2025 =====
     'test civique janvier 2025',
     'test civique février 2025',
@@ -167,7 +167,7 @@ export const metadata: Metadata = {
     'test civique octobre 2025',
     'test civique novembre 2025',
     'test civique décembre 2025',
-    
+
     // ===== TEST CIVIQUE PAR MOIS 2026 =====
     'test civique 2026',
     'test civique janvier 2026',
@@ -182,7 +182,7 @@ export const metadata: Metadata = {
     'test civique octobre 2026',
     'test civique novembre 2026',
     'test civique décembre 2026',
-    
+
     // ===== EXAMEN CIVIQUE PAR MOIS 2025-2026 =====
     'examen civique 2026',
     'examen civique janvier 2026',
@@ -190,7 +190,7 @@ export const metadata: Metadata = {
     'naturalisation 2026',
     'naturalisation janvier 2026',
     'naturalisation février 2026',
-    
+
     // ===== QUESTIONS UTILISATEURS - OÙ PASSER =====
     'où passer le test civique',
     'où passer mon test civique',
@@ -207,7 +207,7 @@ export const metadata: Metadata = {
     'test civique nantes',
     'test civique lille',
     'test civique strasbourg',
-    
+
     // ===== QUESTIONS UTILISATEURS - ÉLIGIBILITÉ =====
     'suis-je éligible au test civique',
     'suis je eligible test civique',
@@ -219,7 +219,7 @@ export const metadata: Metadata = {
     'cas dispense test civique',
     'dois-je passer le test civique',
     'est-ce que je dois passer le test civique',
-    
+
     // ===== QUESTIONS UTILISATEURS - COMMENT =====
     'comment s\'inscrire au test civique',
     'comment réviser le test civique',
@@ -228,7 +228,7 @@ export const metadata: Metadata = {
     'comment avoir le test civique',
     'comment obtenir le test civique',
     'comment passer le test civique',
-    
+
     // ===== QUESTIONS UTILISATEURS - QUAND =====
     'quand passer le test civique',
     'quand dois-je passer le test civique',
@@ -237,14 +237,14 @@ export const metadata: Metadata = {
     'prochaine session test civique',
     'calendrier test civique 2025',
     'calendrier test civique 2026',
-    
+
     // ===== QUESTIONS UTILISATEURS - COMBIEN =====
     'combien coûte le test civique',
     'prix test civique 2025',
     'tarif test civique',
     'test civique gratuit ou payant',
     'coût inscription test civique',
-    
+
     // ===== QUESTIONS UTILISATEURS - DIFFICULTÉ =====
     'le test civique est-il difficile',
     'test civique difficile',
@@ -253,7 +253,7 @@ export const metadata: Metadata = {
     'peut-on rater le test civique',
     'taux échec test civique',
     'pourcentage réussite test civique',
-    
+
     // ===== QUESTIONS UTILISATEURS - EN CAS D\'ÉCHEC =====
     'que faire si on rate le test civique',
     'échec test civique que faire',
@@ -261,7 +261,7 @@ export const metadata: Metadata = {
     'combien de fois peut-on passer le test civique',
     'délai entre deux test civique',
     'rattrapage test civique',
-    
+
     // ===== QUESTIONS UTILISATEURS - RÉSULTATS =====
     'résultat test civique',
     'quand reçoit-on les résultats test civique',
@@ -270,7 +270,7 @@ export const metadata: Metadata = {
     'certificat test civique',
     'validité test civique',
     'durée validité test civique',
-    
+
     // ===== QUESTIONS UTILISATEURS - CONTENU =====
     'quelles questions au test civique',
     'que faut-il savoir pour le test civique',
@@ -280,7 +280,7 @@ export const metadata: Metadata = {
     'révisions test civique',
     'fiches test civique',
     'cours test civique',
-    
+
     // ===== PRÉPARATION SPÉCIFIQUE =====
     's\'entraîner au test civique en ligne',
     'test civique en ligne gratuit',
@@ -290,7 +290,7 @@ export const metadata: Metadata = {
     'annales test civique 2025',
     'corrigés test civique',
     'questions types test civique',
-    
+
     // VARIANTES ET RECHERCHES LONGUE TRAÎNE
     'comment réussir test civique',
     'comment préparer test civique',
@@ -301,14 +301,14 @@ export const metadata: Metadata = {
     'résultats test civique',
     'attestation test civique',
     'certificat test civique',
-    
+
     // PRÉFECTURE ET ADMINISTRATION
     'préfecture naturalisation',
     'rdv préfecture titre séjour',
     'documents naturalisation',
     'pièces justificatives naturalisation',
     'formulaire naturalisation',
-    
+
     // ANGLAIS POUR RÉFÉRENCEMENT INTERNATIONAL
     'french citizenship test',
     'france citizenship exam',
@@ -677,6 +677,18 @@ const jsonLd = {
         },
       ],
     },
+    {
+      '@type': 'SiteNavigationElement',
+      '@id': 'https://www.testciviquefrance.fr/#navigation',
+      name: ['Connexion', 'Inscription', 'Tarifs', 'Articles', 'FAQ'],
+      url: [
+        'https://www.testciviquefrance.fr/login',
+        'https://www.testciviquefrance.fr/signup',
+        'https://www.testciviquefrance.fr/tarifs',
+        'https://www.testciviquefrance.fr/articles',
+        'https://www.testciviquefrance.fr/faq'
+      ],
+    },
   ],
 };
 
@@ -694,19 +706,19 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        
+
         {/* Favicons multiples */}
         <link rel="icon" type="image/png" href="/fav.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/fav.png" />
         <link rel="manifest" href="/manifest.json" />
-        
+
         {/* Meta tags supplémentaires pour SEO */}
         <meta name="application-name" content="Test Civique France" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="default" />
         <meta name="apple-mobile-web-app-title" content="Test Civique" />
         <meta name="mobile-web-app-capable" content="yes" />
-        
+
         {/* Dublin Core Metadata */}
         <meta name="DC.title" content="Test Civique France - Préparation Examen Naturalisation" />
         <meta name="DC.creator" content="Test Civique France" />
@@ -716,7 +728,7 @@ export default function RootLayout({
         <meta name="DC.language" content="fr" />
         <meta name="DC.coverage" content="France" />
         <meta name="DC.rights" content="Copyright Test Civique France" />
-        
+
         {/* Geo tags */}
         <meta name="geo.region" content="FR" />
         <meta name="geo.placename" content="France" />
@@ -724,7 +736,7 @@ export default function RootLayout({
         {/* JSON-LD Structured Data - Organisation et WebSite */}
         <StructuredData data={getOrganizationSchema()} />
         <StructuredData data={getWebSiteSchema()} />
-        
+
         {/* JSON-LD Structured Data supplémentaire (FAQ, Course, etc.) */}
         <script
           type="application/ld+json"

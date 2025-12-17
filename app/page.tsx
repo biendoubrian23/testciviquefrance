@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     // Principaux
     'test civique', 'test civique france', 'test civique 2025', 'test civique 2026', 'examen civique',
     // Par mois 2025
-    'test civique janvier 2025', 'test civique février 2025', 'test civique mars 2025', 
+    'test civique janvier 2025', 'test civique février 2025', 'test civique mars 2025',
     'test civique avril 2025', 'test civique mai 2025', 'test civique juin 2025',
     'test civique septembre 2025', 'test civique octobre 2025', 'test civique novembre 2025', 'test civique décembre 2025',
     // Par mois 2026
@@ -57,23 +57,50 @@ const homeJsonLd = {
     name: 'Test civique français 2025',
     description: 'Examen obligatoire de 40 questions QCM pour la naturalisation française, la carte de séjour pluriannuelle et le titre de séjour. Conforme à la nouvelle loi immigration.',
   },
-  mainEntity: {
-    '@type': 'Course',
-    name: 'Préparation Test Civique Français 2025',
-    description: 'Formation complète pour réussir le test civique à 80% (32/40). Naturalisation, carte de séjour, titre de séjour étudiant.',
-    provider: {
-      '@type': 'Organization',
-      name: 'Test Civique France',
+  mainEntity: [
+    {
+      '@type': 'Course',
+      name: 'Préparation Test Civique Français 2025',
+      description: 'Formation complète pour réussir le test civique à 80% (32/40). Naturalisation, carte de séjour, titre de séjour étudiant.',
+      provider: {
+        '@type': 'Organization',
+        name: 'Test Civique France',
+      },
     },
-  },
-  speakable: {
-    '@type': 'SpeakableSpecification',
-    cssSelector: ['h1', 'h2', '.hero-description'],
-  },
-  primaryImageOfPage: {
-    '@type': 'ImageObject',
-    url: 'https://www.testciviquefrance.fr/og-image.png',
-  },
+    {
+      '@type': 'ItemList',
+      itemListElement: [
+        {
+          '@type': 'SiteNavigationElement',
+          position: 1,
+          name: 'Connexion',
+          description: 'Accéder à votre compte et vos tests',
+          url: 'https://www.testciviquefrance.fr/login',
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 2,
+          name: 'Inscription Gratuit',
+          description: 'Créer un compte pour commencer les tests gratuits',
+          url: 'https://www.testciviquefrance.fr/signup',
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 3,
+          name: 'Nos Tarifs',
+          description: 'Voir les offres Premium et Pack Examen',
+          url: 'https://www.testciviquefrance.fr/tarifs',
+        },
+        {
+          '@type': 'SiteNavigationElement',
+          position: 4,
+          name: 'Guides & Articles',
+          description: 'Toute l\'actualité sur l\'examen civique et la naturalisation',
+          url: 'https://www.testciviquefrance.fr/articles',
+        },
+      ],
+    },
+  ],
 };
 
 import SEOContent from '@/components/seo/SEOContent';
