@@ -111,13 +111,13 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // (cas où la DB a été formatée mais le token local est encore valide)
       const sessionResult = await Promise.race([
         supabase.auth.getUser(),
-        new Promise<{ data: { user: User | null }, error: any }>((resolve) => 
+        new Promise<{ data: { user: User | null }, error: any }>((resolve) =>
           setTimeout(() => resolve({ data: { user: null }, error: { message: 'Timeout' } }), AUTH_TIMEOUT_MS)
         )
       ]);
-      
+
       const currentUser = sessionResult.data?.user;
-      
+
       if (currentUser) {
         // Si l'utilisateur existe, on récupère la session complète
         const { data: { session } } = await supabase.auth.getSession();
@@ -163,10 +163,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event: string, newSession: Session | null) => {
         if (!mounted) return;
-        
+
         console.log('Auth event:', event);
         setAuthError(null); // Reset erreur sur nouvel event
-        
+
         if (newSession?.user) {
           setSession(newSession);
           setUser(newSession.user);
@@ -179,7 +179,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setUser(null);
           setProfile(null);
         }
-        
+
         // Si on reçoit un event, le loading est fini
         setIsLoading(false);
       }
@@ -202,6 +202,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
       },
     });
+
+    // Si l'inscription est réussie, ajouter le contact à Brevo
+    if (!error) {
+      try {
+        await fetch('/api/brevo/subscribe', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            email,
+            prenom,
+            nom,
+          }),
+        });
+        console.log('✅ Contact ajouté à la liste Brevo');
+      } catch (brevoError) {
+        // Ne pas bloquer l'inscription si Brevo échoue
+        console.warn('⚠️ Erreur Brevo (non bloquante):', brevoError);
+      }
+    }
 
     return { error: error as Error | null };
   }, []);
