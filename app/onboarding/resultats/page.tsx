@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { 
+import {
   AlertTriangle,
   XCircle,
   CheckCircle,
@@ -86,7 +86,7 @@ export default function OnboardingResultsPage() {
                 </h2>
               </div>
               <p className={`text-lg ${isPassing ? 'text-emerald-700' : 'text-amber-700'}`}>
-                {isPassing 
+                {isPassing
                   ? 'Excellent ! Vous avez un bon niveau de base.'
                   : 'Vous avez besoin de vous préparer davantage.'}
               </p>
@@ -95,10 +95,10 @@ export default function OnboardingResultsPage() {
               {percentage}%
             </div>
           </div>
-          
+
           {/* Barre de progression */}
           <div className="mt-6 h-3 bg-gray-200">
-            <div 
+            <div
               className={`h-full transition-all duration-500 ${isPassing ? 'bg-emerald-500' : 'bg-amber-500'}`}
               style={{ width: `${percentage}%` }}
             />
@@ -113,22 +113,30 @@ export default function OnboardingResultsPage() {
         {/* Message de motivation + CTA */}
         <div className="bg-primary-50 border border-primary-200 p-6 mb-8">
           <h3 className="font-bold text-primary-900 mb-2">
-            {isPassing 
+            {isPassing
               ? 'Vous êtes sur la bonne voie !'
               : 'Ne vous découragez pas !'}
           </h3>
           <p className="text-primary-800 mb-4">
-            {isPassing 
+            {isPassing
               ? 'Avec un entraînement régulier sur notre plateforme, vous maximiserez vos chances de réussir l\'examen civique officiel (80% requis).'
               : 'L\'examen civique nécessite 80% de bonnes réponses. Avec notre plateforme de préparation complète, vous pourrez progresser rapidement dans tous les domaines.'}
           </p>
-          <button
-            onClick={handleContinue}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200"
-          >
-            Découvrir nos offres
-            <ChevronRight className="w-5 h-5" />
-          </button>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={handleContinue}
+              className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200 shadow-md hover:shadow-lg"
+            >
+              Découvrir nos offres
+              <ChevronRight className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => router.push('/dashboard')}
+              className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-white text-gray-700 font-semibold border border-gray-300 hover:bg-gray-50 transition-all duration-200"
+            >
+              Continuer au Dashboard
+            </button>
+          </div>
         </div>
 
         {/* Détail par domaine */}
@@ -137,12 +145,12 @@ export default function OnboardingResultsPage() {
             <BarChart3 className="w-5 h-5 text-primary-600" />
             <h3 className="text-lg font-bold text-gray-900">Performance par domaine</h3>
           </div>
-          
+
           <div className="space-y-4">
             {Object.entries(domainScores).map(([domain, score]) => {
               const domainPercentage = Math.round((score.correct / score.total) * 100);
               const isGood = domainPercentage >= 50;
-              
+
               return (
                 <div key={domain} className="border-b border-gray-100 pb-4 last:border-0 last:pb-0">
                   <div className="flex items-center justify-between mb-2">
@@ -159,7 +167,7 @@ export default function OnboardingResultsPage() {
                     </span>
                   </div>
                   <div className="h-2 bg-gray-100">
-                    <div 
+                    <div
                       className={`h-full ${isGood ? 'bg-emerald-500' : 'bg-red-500'}`}
                       style={{ width: `${domainPercentage}%` }}
                     />
