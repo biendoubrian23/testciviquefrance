@@ -206,7 +206,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     // Si l'inscription est réussie, ajouter le contact à Brevo
     if (!error) {
       try {
-        await fetch('/api/brevo/subscribe', {
+        const response = await fetch('/api/brevo/subscribe', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -217,10 +217,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             nom,
           }),
         });
-        console.log('✅ Contact ajouté à la liste Brevo');
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error('❌ Erreur Brevo (API):', response.status, errorText);
+        } else {
+          console.log('✅ Contact ajouté à la liste Brevo avec succès');
+        }
+
       } catch (brevoError) {
         // Ne pas bloquer l'inscription si Brevo échoue
-        console.warn('⚠️ Erreur Brevo (non bloquante):', brevoError);
+        console.warn('⚠️ Erreur Brevo (Réseau/Client):', brevoError);
       }
     }
 

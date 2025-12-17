@@ -7,12 +7,15 @@ export async function POST(request: NextRequest) {
   try {
     // Vérifier que la clé API est configurée
     if (!BREVO_API_KEY) {
-      console.error('BREVO_API_KEY non configurée');
+      console.error('❌ ERREUR CRITIQUE : BREVO_API_KEY non configurée dans les variables d\'environnement');
       return NextResponse.json(
         { error: 'Configuration Brevo manquante' },
         { status: 500 }
       );
     }
+
+    // Log pour debugging (masqué)
+    console.log(`📝 Tentative d'ajout Brevo. Key présente: ${!!BREVO_API_KEY}, ListID: ${BREVO_LIST_ID}`);
 
     const body = await request.json();
     const { email, prenom, nom } = body;
@@ -53,13 +56,13 @@ export async function POST(request: NextRequest) {
     // Gérer le cas où le contact existe déjà (400 avec message spécifique)
     if (brevoResponse.status === 400) {
       const errorData = await brevoResponse.json();
-      
+
       // Si c'est juste un doublon, on considère que c'est un succès
       if (errorData.code === 'duplicate_parameter') {
         console.log(`ℹ️ Contact déjà existant sur Brevo: ${email}`);
         return NextResponse.json({ success: true, message: 'Contact déjà existant' });
       }
-      
+
       console.error('Erreur Brevo (400):', errorData);
       return NextResponse.json(
         { error: 'Erreur lors de l\'ajout du contact', details: errorData },
