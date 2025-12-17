@@ -151,7 +151,7 @@ Pour la première fois, les **dates et lieux d'examen sont accessibles en ligne*
 
 Que vous soyez étudiant en fin de cursus, salarié souhaitant obtenir une carte de résident, ou en cours de procédure de naturalisation, ce guide complet vous accompagne dans toutes les étapes : **de la recherche du centre le plus proche jusqu'à la réussite de votre examen**.`,
   },
-  
+
   nouveautes2026: {
     title: 'Les nouveautés 2026',
     content: `L'année 2026 apporte plusieurs changements majeurs dans l'organisation de l'examen civique :`,

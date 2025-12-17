@@ -6,6 +6,7 @@ import { Article, getPopularArticles } from '@/lib/data/articles';
 import { cadreGeneralContent } from '@/lib/data/article-content';
 import ArticleCard from './ArticleCard';
 import CentresExamen2026Article from './CentresExamen2026Article';
+import ToutSavoirExamen2026Article from './ToutSavoirExamen2026Article';
 
 interface ArticleContentProps {
   article: Article;
@@ -18,6 +19,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
   // Pour l'article principal sur le cadre général
   const isMainArticle = article.slug === 'cadre-general-examen-civique';
   const isCentres2026Article = article.slug === 'centres-agrees-examen-civique-2026';
+  const isToutSavoir2026Article = article.slug === 'tout-savoir-examen-civique-2026';
 
   // Choisir l'image de fond selon l'article avec article.image en priorité
   const getHeaderImage = () => {
@@ -29,6 +31,9 @@ export default function ArticleContent({ article }: ArticleContentProps) {
     if (isCentres2026Article) {
       return "url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070')";
     }
+    if (isToutSavoir2026Article) {
+      return "url('https://images.unsplash.com/photo-1471623320832-752e8bbf8413?q=80&w=2055')";
+    }
     return "url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070')";
   };
 
@@ -37,7 +42,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
       {/* Hero avec image de fond */}
       <header className="relative text-white py-20 px-4">
         {/* Image de fond dynamique */}
-        <div 
+        <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
             backgroundImage: getHeaderImage(),
@@ -45,7 +50,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
         />
         {/* Overlay sombre */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/80" />
-        
+
         <div className="max-w-4xl mx-auto relative z-10">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-gray-300 mb-8 animate-fade-in-up">
@@ -107,6 +112,8 @@ export default function ArticleContent({ article }: ArticleContentProps) {
         <div className="mt-10">
           {isCentres2026Article ? (
             <CentresExamen2026Article />
+          ) : isToutSavoir2026Article ? (
+            <ToutSavoirExamen2026Article />
           ) : isMainArticle ? (
             <>
               {/* Introduction - Style éditorial */}
@@ -114,8 +121,8 @@ export default function ArticleContent({ article }: ArticleContentProps) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-primary-500 inline-block">
                   {content.introduction.title}
                 </h2>
-                <p className="text-lg text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ 
-                  __html: content.introduction.content.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900 font-semibold">$1</strong>').replace(/\n/g, '<br/>') 
+                <p className="text-lg text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{
+                  __html: content.introduction.content.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900 font-semibold">$1</strong>').replace(/\n/g, '<br/>')
                 }} />
               </section>
 
@@ -125,8 +132,8 @@ export default function ArticleContent({ article }: ArticleContentProps) {
                   <h2 className="text-2xl font-bold mb-4">
                     {content.cadreLegal.title}
                   </h2>
-                  <p className="text-primary-100 leading-relaxed" dangerouslySetInnerHTML={{ 
-                    __html: content.cadreLegal.content.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') 
+                  <p className="text-primary-100 leading-relaxed" dangerouslySetInnerHTML={{
+                    __html: content.cadreLegal.content.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>')
                   }} />
                 </div>
                 <p className="text-gray-700 font-medium mb-4">Ces textes définissent :</p>
@@ -136,8 +143,8 @@ export default function ArticleContent({ article }: ArticleContentProps) {
                       <span className="w-6 h-6 bg-primary-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
                         {index + 1}
                       </span>
-                      <span className="text-base" dangerouslySetInnerHTML={{ 
-                        __html: point.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') 
+                      <span className="text-base" dangerouslySetInnerHTML={{
+                        __html: point.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>')
                       }} />
                     </li>
                   ))}
@@ -153,14 +160,14 @@ export default function ArticleContent({ article }: ArticleContentProps) {
                   {content.titresConcernes.items.map((item, index) => (
                     <li key={index} className="flex items-center gap-4 text-gray-700 py-2 border-b border-gray-100 last:border-0">
                       <span className="w-2 h-2 bg-primary-600 flex-shrink-0" />
-                      <span className="text-base" dangerouslySetInnerHTML={{ 
-                        __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') 
+                      <span className="text-base" dangerouslySetInnerHTML={{
+                        __html: item.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>')
                       }} />
                     </li>
                   ))}
                 </ul>
-                <p className="text-sm text-gray-500 italic pl-6 border-l-2 border-gray-300" dangerouslySetInnerHTML={{ 
-                  __html: content.titresConcernes.note.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary-600">$1</strong>') 
+                <p className="text-sm text-gray-500 italic pl-6 border-l-2 border-gray-300" dangerouslySetInnerHTML={{
+                  __html: content.titresConcernes.note.replace(/\*\*(.*?)\*\*/g, '<strong class="text-primary-600">$1</strong>')
                 }} />
               </section>
 
@@ -228,7 +235,7 @@ export default function ArticleContent({ article }: ArticleContentProps) {
                     <div key={index} className="border border-gray-200 overflow-hidden">
                       <div className="bg-gray-100 px-6 py-4 border-b border-gray-200">
                         <h3 className="text-lg font-bold text-gray-900">
-                          <span className="text-primary-600">{index + 1}.</span> {theme.title} 
+                          <span className="text-primary-600">{index + 1}.</span> {theme.title}
                           <span className="ml-2 text-sm font-normal text-gray-500">({theme.total} questions)</span>
                         </h3>
                       </div>
@@ -255,8 +262,8 @@ export default function ArticleContent({ article }: ArticleContentProps) {
                     {content.modalitesNotation.rules.map((rule, index) => (
                       <li key={index} className="flex items-start gap-3 text-gray-700">
                         <span className="w-1.5 h-1.5 bg-amber-600 flex-shrink-0 mt-2" />
-                        <span dangerouslySetInnerHTML={{ 
-                          __html: rule.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>') 
+                        <span dangerouslySetInnerHTML={{
+                          __html: rule.replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900">$1</strong>')
                         }} />
                       </li>
                     ))}
@@ -269,8 +276,8 @@ export default function ArticleContent({ article }: ArticleContentProps) {
                 <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-primary-500 inline-block">
                   {content.bienSePreparer.title}
                 </h2>
-                <p className="text-gray-700 text-lg leading-relaxed mb-8" dangerouslySetInnerHTML={{ 
-                  __html: content.bienSePreparer.content.replace(/\n/g, '<br/>') 
+                <p className="text-gray-700 text-lg leading-relaxed mb-8" dangerouslySetInnerHTML={{
+                  __html: content.bienSePreparer.content.replace(/\n/g, '<br/>')
                 }} />
                 <Link
                   href={content.bienSePreparer.cta.href}
@@ -289,9 +296,9 @@ export default function ArticleContent({ article }: ArticleContentProps) {
                 <ul className="space-y-3">
                   {content.articlesAssocies.articles.map((a, index) => (
                     <li key={index}>
-                      <a 
-                        href={a.href} 
-                        target="_blank" 
+                      <a
+                        href={a.href}
+                        target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary-600 hover:text-primary-700 font-medium hover:underline flex items-center gap-2"
                       >

@@ -97,6 +97,21 @@ export const articles: Article[] = [
     image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070',
     featured: true,
   },
+  {
+    id: '3',
+    slug: 'tout-savoir-examen-civique-2026',
+    title: 'Tout savoir sur l’examen civique 2026 : Guide complet et nouveautés',
+    excerpt: 'Le guide ultime pour comprendre la réforme 2026 : nouveau décret, niveau B2, format QCM, et conseils de préparation pour réussir du premier coup.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Équipe Le Test Civique',
+    date: '17/12/2025',
+    readTime: 12,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1471623320832-752e8bbf8413?q=80&w=2055',
+    featured: true,
+  },
 ];
 
 export const getArticleBySlug = (slug: string): Article | undefined => {
