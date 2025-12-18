@@ -1,4 +1,3 @@
-import { createClient } from '@/lib/supabase';
 import { getSubscriptionStats } from '@/lib/actions/subscriptions';
 import ProjectionsClient from './ProjectionsClient';
 

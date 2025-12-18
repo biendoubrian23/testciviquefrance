@@ -154,7 +154,7 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
               value={stats.totalStandard} 
               max={stats.totalActive || 1} 
               variant="warning"
-              showLabel
+              showPercentage
               label={`${Math.round((stats.totalStandard / (stats.totalActive || 1)) * 100)}%`}
             />
           </div>
@@ -173,7 +173,7 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
               value={stats.totalPremium} 
               max={stats.totalActive || 1} 
               variant="success"
-              showLabel
+              showPercentage
               label={`${Math.round((stats.totalPremium / (stats.totalActive || 1)) * 100)}%`}
             />
           </div>

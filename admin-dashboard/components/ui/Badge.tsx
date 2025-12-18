@@ -1,4 +1,4 @@
-type BadgeVariant = 'success' | 'warning' | 'error' | 'info' | 'neutral';
+type BadgeVariant = 'success' | 'warning' | 'error' | 'info' | 'neutral' | 'primary' | 'danger' | 'default';
 
 interface BadgeProps {
   children: React.ReactNode;
@@ -11,6 +11,9 @@ const variantClasses: Record<BadgeVariant, string> = {
   error: 'badge-error',
   info: 'badge-info',
   neutral: 'badge-neutral',
+  primary: 'badge-primary',
+  danger: 'badge-error',
+  default: 'badge-neutral',
 };
 
 export function Badge({ children, variant = 'neutral' }: BadgeProps) {

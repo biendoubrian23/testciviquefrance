@@ -15,7 +15,7 @@ import {
   User,
   Calendar
 } from 'lucide-react';
-import { ServiceStats, ServiceUser, ServiceFilter, SERVICE_CONFIG } from '@/lib/actions/services';
+import { ServiceStats, ServiceUser, ServiceFilter, ServiceType, SERVICE_CONFIG } from '@/lib/actions/services';
 
 interface AchatsAnnexesClientProps {
   initialStats: ServiceStats[];
@@ -208,7 +208,7 @@ export default function AchatsAnnexesClient({
               <label className="block text-sm font-medium mb-1">Type de service</label>
               <select
                 value={filters.serviceType || ''}
-                onChange={(e) => setFilters({ ...filters, serviceType: e.target.value || undefined })}
+                onChange={(e) => setFilters({ ...filters, serviceType: (e.target.value as ServiceType) || undefined })}
                 className="px-3 py-2 border border-gray-300 min-w-[200px]"
               >
                 <option value="">Tous les services</option>
