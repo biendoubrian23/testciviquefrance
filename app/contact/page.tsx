@@ -4,7 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Mail, MessageSquare, Clock, Send, MapPin, Phone, CheckCircle } from 'lucide-react';
+import { Mail, MessageSquare, Clock, Send, MapPin, Phone, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
+
+// Fonction de validation d'email
+const validateEmail = (email: string): boolean => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -14,18 +20,72 @@ export default function ContactPage() {
     message: '',
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [submitError, setSubmitError] = useState('');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulation d'envoi
-    setIsSubmitted(true);
+    
+    // Validation de l'email avant envoi
+    if (!validateEmail(formData.email)) {
+      setEmailError('Veuillez entrer une adresse email valide');
+      return;
+    }
+
+    setIsLoading(true);
+    setSubmitError('');
+
+    try {
+      // Envoi direct à Web3Forms depuis le client
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '365199e4-66dc-49b4-843f-d7426aae0e18',
+          to: 'clarkybrian@outlook.fr',
+          from_name: formData.nom,
+          email: formData.email,
+          subject: `[TestCiviqueFrance] ${formData.sujet}`,
+          message: formData.message,
+          nom: formData.nom,
+          sujet: formData.sujet,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(data.message || 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.');
+      }
+    } catch (error) {
+      setSubmitError('Une erreur est survenue. Veuillez vérifier votre connexion et réessayer.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
+
+    // Validation en temps réel de l'email
+    if (name === 'email') {
+      if (value && !validateEmail(value)) {
+        setEmailError('Veuillez entrer une adresse email valide');
+      } else {
+        setEmailError('');
+      }
+    }
   };
 
   return (
@@ -126,7 +186,12 @@ export default function ContactPage() {
                         Envoyez-nous un message
                       </h2>
                       
-                      <form onSubmit={handleSubmit} className="space-y-6">
+                      <form 
+                        onSubmit={handleSubmit} 
+                        method="POST"
+                        action=""
+                        className="space-y-6"
+                      >
                         <div className="grid sm:grid-cols-2 gap-6">
                           <div>
                             <label htmlFor="nom" className="block text-sm font-medium text-gray-700 mb-2">
@@ -154,9 +219,15 @@ export default function ContactPage() {
                               value={formData.email}
                               onChange={handleChange}
                               required
-                              className="w-full px-4 py-3 border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition-all"
+                              className={`w-full px-4 py-3 border ${emailError ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' : 'border-gray-300 focus:border-primary-500 focus:ring-primary-500/20'} focus:ring-2 outline-none transition-all`}
                               placeholder="votre@email.com"
                             />
+                            {emailError && (
+                              <p className="mt-1 text-sm text-red-600 flex items-center gap-1">
+                                <AlertCircle className="w-4 h-4" />
+                                {emailError}
+                              </p>
+                            )}
                           </div>
                         </div>
 
@@ -214,12 +285,29 @@ export default function ContactPage() {
                           </label>
                         </div>
 
+                        {submitError && (
+                          <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-sm flex items-center gap-2">
+                            <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                            {submitError}
+                          </div>
+                        )}
+
                         <button
                           type="submit"
-                          className="w-full sm:w-auto px-8 py-4 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-all duration-300 flex items-center justify-center gap-2"
+                          disabled={isLoading || !!emailError}
+                          className="w-full sm:w-auto px-8 py-4 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
-                          Envoyer le message
-                          <Send className="w-4 h-4" />
+                          {isLoading ? (
+                            <>
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                              Envoi en cours...
+                            </>
+                          ) : (
+                            <>
+                              Envoyer le message
+                              <Send className="w-4 h-4" />
+                            </>
+                          )}
                         </button>
                       </form>
                     </>
