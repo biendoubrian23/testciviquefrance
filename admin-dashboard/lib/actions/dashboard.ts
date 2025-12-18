@@ -1,7 +1,27 @@
 import { createAdminClient } from '@/lib/supabase/admin';
 import { DashboardStats } from '@/types';
 
-export async function getDashboardStats(): Promise<DashboardStats> {
+// Prix des abonnements par semaine
+const STANDARD_PRICE = 2.99;
+const PREMIUM_PRICE = 6.99;
+
+// Price IDs pour différencier Standard vs Premium
+const PREMIUM_PRICE_IDS = [
+  'price_1Sc3rPEuT9agNbEU65mDE4RP', // Premium TEST
+  'price_1Sc3BYIUG5GUejFZaWexcxzz', // Premium PRODUCTION
+];
+const STANDARD_PRICE_IDS = [
+  'price_1Sc3qxEuT9agNbEUdX0RkLM4', // Standard TEST
+  'price_1Sc3AqIUG5GUejFZagJyV8HC', // Standard PRODUCTION
+];
+
+export type SubscriptionFilter = 'all' | 'premium' | 'standard';
+
+export async function getDashboardStats(subscriptionFilter: SubscriptionFilter = 'all'): Promise<DashboardStats & { 
+  standardUsers: number;
+  standardRevenue: number;
+  premiumRevenue: number;
+}> {
   const supabase = createAdminClient();
   
   const now = new Date();
@@ -11,7 +31,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
   const [
     { count: totalUsers },
     { count: newUsersThisMonth },
-    { count: premiumUsers },
+    { count: premiumUsersCount },
+    { count: standardUsersCount },
     { count: totalQuestions },
     { count: totalCategories },
     { count: totalExamens },
@@ -26,9 +47,14 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     // Nouveaux ce mois
     supabase.from('profiles').select('*', { count: 'exact', head: true })
       .gte('created_at', startOfMonth.toISOString()),
-    // Utilisateurs premium
+    // Utilisateurs premium (is_premium + price_id premium)
     supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .eq('is_premium', true),
+      .eq('is_premium', true)
+      .in('stripe_price_id', PREMIUM_PRICE_IDS),
+    // Utilisateurs standard (is_premium + price_id standard)
+    supabase.from('profiles').select('*', { count: 'exact', head: true })
+      .eq('is_premium', true)
+      .in('stripe_price_id', STANDARD_PRICE_IDS),
     // Total questions
     supabase.from('questions').select('*', { count: 'exact', head: true }),
     // Total categories
@@ -42,9 +68,9 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     // Total sessions quiz completees
     supabase.from('sessions_quiz').select('*', { count: 'exact', head: true })
       .eq('completed', true),
-    // Revenus totaux (tous les achats completes)
+    // Revenus totaux (achats completes)
     supabase.from('achats').select('amount').eq('status', 'completed'),
-    // Revenus ce mois
+    // Revenus ce mois (achats)
     supabase.from('achats').select('amount')
       .eq('status', 'completed')
       .gte('created_at', startOfMonth.toISOString()),
@@ -52,8 +78,23 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     supabase.from('statistiques').select('total_questions_repondues, temps_total_etude'),
   ]);
 
-  const totalRevenus = achatsData?.reduce((sum, a) => sum + (a.amount || 0), 0) || 0;
-  const revenusThisMonth = achatsThisMonth?.reduce((sum, a) => sum + (a.amount || 0), 0) || 0;
+  // Calculer les revenus basés sur les abonnements actifs
+  const standardUsers = standardUsersCount || 0;
+  const premiumUsers = premiumUsersCount || 0;
+  
+  // Revenus des abonnements (par semaine)
+  const standardRevenue = standardUsers * STANDARD_PRICE;
+  const premiumRevenue = premiumUsers * PREMIUM_PRICE;
+  const subscriptionRevenue = standardRevenue + premiumRevenue;
+  
+  // Revenus des achats ponctuels
+  const achatsRevenue = achatsData?.reduce((sum, a) => sum + (a.amount || 0), 0) || 0;
+  const achatsThisMonthRevenue = achatsThisMonth?.reduce((sum, a) => sum + (a.amount || 0), 0) || 0;
+  
+  // Total revenus = abonnements + achats ponctuels
+  const totalRevenus = subscriptionRevenue + achatsRevenue;
+  const revenusThisMonth = subscriptionRevenue + achatsThisMonthRevenue;
+  
   const questionsRepondues = statsData?.reduce((sum, s) => sum + (s.total_questions_repondues || 0), 0) || 0;
   const tempsEtudeTotal = statsData?.reduce((sum, s) => sum + (s.temps_total_etude || 0), 0) || 0;
 
@@ -61,12 +102,21 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     ? Math.round(((examensReussis || 0) / totalExamens) * 100) 
     : 0;
 
+  // Appliquer le filtre pour les stats affichées
+  let displayedPremiumUsers = premiumUsers + standardUsers; // Par défaut: tous les payants
+  if (subscriptionFilter === 'premium') {
+    displayedPremiumUsers = premiumUsers;
+  } else if (subscriptionFilter === 'standard') {
+    displayedPremiumUsers = standardUsers;
+  }
+
   return {
     totalUsers: totalUsers || 0,
     newUsersToday: 0,
     newUsersThisWeek: 0,
     newUsersThisMonth: newUsersThisMonth || 0,
-    premiumUsers: premiumUsers || 0,
+    premiumUsers: displayedPremiumUsers, // Affiche selon le filtre
+    standardUsers,
     activeUsersToday: 0,
     totalQuestions: totalQuestions || 0,
     totalCategories: totalCategories || 0,
@@ -76,6 +126,8 @@ export async function getDashboardStats(): Promise<DashboardStats> {
     totalSessions: totalSessions || 0,
     totalRevenus,
     revenusThisMonth,
+    standardRevenue,
+    premiumRevenue,
     totalAchats: achatsData?.length || 0,
     questionsRepondues,
     tempsEtudeTotal,
@@ -132,28 +184,51 @@ export async function getRevenueData(days: number = 30) {
   const startDate = new Date();
   startDate.setDate(startDate.getDate() - days);
   
-  const { data: achats } = await supabase
-    .from('achats')
-    .select('amount, created_at')
-    .eq('status', 'completed')
-    .gte('created_at', startDate.toISOString());
+  // Récupérer les abonnements actifs avec leur date de début
+  const [
+    { data: subscriptions },
+    { data: achats },
+  ] = await Promise.all([
+    supabase
+      .from('profiles')
+      .select('stripe_price_id, subscription_start_date')
+      .eq('is_premium', true)
+      .not('subscription_start_date', 'is', null)
+      .gte('subscription_start_date', startDate.toISOString()),
+    supabase
+      .from('achats')
+      .select('amount, created_at')
+      .eq('status', 'completed')
+      .gte('created_at', startDate.toISOString()),
+  ]);
 
-  // Grouper par jour cote client
+  // Grouper par jour
   const data = [];
   for (let i = days - 1; i >= 0; i--) {
     const date = new Date();
     date.setDate(date.getDate() - i);
     const dayStr = date.toISOString().split('T')[0];
 
+    // Revenus des abonnements démarrés ce jour
+    const daySubscriptions = subscriptions?.filter(s => 
+      s.subscription_start_date?.startsWith(dayStr)
+    ) || [];
+    
+    const subscriptionRevenue = daySubscriptions.reduce((sum, s) => {
+      const isPremium = s.stripe_price_id && PREMIUM_PRICE_IDS.includes(s.stripe_price_id);
+      return sum + (isPremium ? PREMIUM_PRICE : STANDARD_PRICE);
+    }, 0);
+
+    // Revenus des achats ponctuels (pack examen, etc.)
     const dayAchats = achats?.filter(a => 
       a.created_at?.startsWith(dayStr)
     ) || [];
     
-    const amount = dayAchats.reduce((sum, a) => sum + (a.amount || 0), 0);
+    const achatsRevenue = dayAchats.reduce((sum, a) => sum + (a.amount || 0), 0);
 
     data.push({
       date: date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' }),
-      amount,
+      amount: subscriptionRevenue + achatsRevenue,
     });
   }
 

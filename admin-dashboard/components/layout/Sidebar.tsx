@@ -9,7 +9,7 @@ import {
   GraduationCap,
   CreditCard,
   BookOpen,
-  HelpCircle,
+  Trophy,
   BarChart3,
   Settings,
   TrendingUp,
@@ -49,7 +49,7 @@ const sidebarSections: SidebarSection[] = [
     items: [
       { label: 'Examens blancs', href: '/examens', icon: GraduationCap },
       { label: 'Sessions de quiz', href: '/sessions', icon: FileText },
-      { label: 'Questions', href: '/questions', icon: HelpCircle },
+      { label: 'Classement', href: '/classement', icon: Trophy },
       { label: 'Categories', href: '/categories', icon: BookOpen },
     ],
   },
@@ -57,7 +57,7 @@ const sidebarSections: SidebarSection[] = [
     title: 'Monetisation',
     items: [
       { label: 'Revenus', href: '/revenus', icon: CreditCard },
-      { label: 'Achats', href: '/achats', icon: CreditCard },
+      { label: 'Achats Annexes', href: '/achats-annexes', icon: CreditCard },
     ],
   },
   {

@@ -1,8 +1,9 @@
 import { Header } from '@/components/layout';
 import { StatCard, Card, Badge, DataTable } from '@/components/ui';
-import { getAllUsers, getUserActivityStats } from '@/lib/actions/users';
-import { Users, UserCheck, UserPlus, Activity } from 'lucide-react';
+import { getAllUsers, getUserActivityStats, getUserSubscriptionStats } from '@/lib/actions/users';
+import { Users, UserCheck, UserPlus, Crown, Star, User } from 'lucide-react';
 import { Profile } from '@/types';
+import { getUserSubscriptionType, getUserSubscriptionLabel, getUserSubscriptionBadgeVariant } from '@/lib/utils/subscription';
 import Link from 'next/link';
 
 export const dynamic = 'force-dynamic';
@@ -15,11 +16,12 @@ export default async function UsersPage({
   const params = await searchParams;
   const page = parseInt(params.page || '1');
   const search = params.search || '';
-  const filter = (params.filter || 'all') as 'all' | 'premium' | 'free';
+  const filter = (params.filter || 'all') as 'all' | 'premium' | 'standard' | 'free';
 
-  const [{ users, total }, activityStats] = await Promise.all([
+  const [{ users, total }, activityStats, subscriptionStats] = await Promise.all([
     getAllUsers(page, 20, search, filter),
     getUserActivityStats(),
+    getUserSubscriptionStats(),
   ]);
 
   const totalPages = Math.ceil(total / 20);
@@ -54,17 +56,19 @@ export default async function UsersPage({
     },
     {
       key: 'status',
-      header: 'Status',
+      header: 'Abonnement',
       className: 'text-center',
-      render: (user: Profile) => (
-        <div className="flex justify-center">
-          {user.is_premium ? (
-            <Badge variant="success">Premium</Badge>
-          ) : (
-            <Badge variant="neutral">Gratuit</Badge>
-          )}
-        </div>
-      ),
+      render: (user: Profile) => {
+        const subscriptionType = getUserSubscriptionType(user);
+        const label = getUserSubscriptionLabel(subscriptionType);
+        const variant = getUserSubscriptionBadgeVariant(subscriptionType);
+        
+        return (
+          <div className="flex justify-center">
+            <Badge variant={variant}>{label}</Badge>
+          </div>
+        );
+      },
     },
     {
       key: 'credits',
@@ -117,7 +121,32 @@ export default async function UsersPage({
       />
 
       <div className="p-8">
-        {/* Stats */}
+        {/* Stats par abonnement */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+          <StatCard
+            title="Utilisateurs Gratuit"
+            value={subscriptionStats.gratuit}
+            subtitle={`${Math.round((subscriptionStats.gratuit / total) * 100)}% du total`}
+            icon={User}
+            variant="primary"
+          />
+          <StatCard
+            title="Utilisateurs Standard"
+            value={subscriptionStats.standard}
+            subtitle={`${Math.round((subscriptionStats.standard / total) * 100)}% du total`}
+            icon={Star}
+            variant="warning"
+          />
+          <StatCard
+            title="Utilisateurs Premium"
+            value={subscriptionStats.premium}
+            subtitle={`${Math.round((subscriptionStats.premium / total) * 100)}% du total`}
+            icon={Crown}
+            variant="success"
+          />
+        </div>
+
+        {/* Stats activité */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <StatCard
             title="Utilisateurs totaux"
@@ -128,7 +157,7 @@ export default async function UsersPage({
           <StatCard
             title="Actifs (24h)"
             value={activityStats.active24h}
-            icon={Activity}
+            icon={UserCheck}
             variant="success"
           />
           <StatCard
@@ -162,6 +191,7 @@ export default async function UsersPage({
             >
               <option value="all">Tous</option>
               <option value="premium">Premium</option>
+              <option value="standard">Standard</option>
               <option value="free">Gratuit</option>
             </select>
             <button type="submit" className="btn-primary">

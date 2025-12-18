@@ -5,10 +5,20 @@ export async function getAllUsers(
   page: number = 1, 
   limit: number = 20,
   search?: string,
-  filter?: 'all' | 'premium' | 'free'
+  filter?: 'all' | 'premium' | 'standard' | 'free'
 ): Promise<{ users: Profile[]; total: number }> {
   const supabase = createAdminClient();
   const offset = (page - 1) * limit;
+
+  // Price IDs pour différencier Standard vs Premium
+  const PREMIUM_PRICE_IDS = [
+    'price_1Sc3rPEuT9agNbEU65mDE4RP', // Premium TEST
+    'price_1Sc3BYIUG5GUejFZaWexcxzz', // Premium PRODUCTION
+  ];
+  const STANDARD_PRICE_IDS = [
+    'price_1Sc3qxEuT9agNbEUdX0RkLM4', // Standard TEST
+    'price_1Sc3AqIUG5GUejFZagJyV8HC', // Standard PRODUCTION
+  ];
 
   let query = supabase
     .from('profiles')
@@ -19,7 +29,9 @@ export async function getAllUsers(
   }
 
   if (filter === 'premium') {
-    query = query.eq('is_premium', true);
+    query = query.eq('is_premium', true).in('stripe_price_id', PREMIUM_PRICE_IDS);
+  } else if (filter === 'standard') {
+    query = query.eq('is_premium', true).in('stripe_price_id', STANDARD_PRICE_IDS);
   } else if (filter === 'free') {
     query = query.eq('is_premium', false);
   }
@@ -62,16 +74,108 @@ export async function getUserDetails(userId: string): Promise<UserWithStats | nu
   };
 }
 
-export async function getPremiumUsers(): Promise<Profile[]> {
+// Prix des abonnements par semaine
+const STANDARD_PRICE = 2.99;
+const PREMIUM_PRICE = 6.99;
+
+// Price IDs globaux pour différencier Standard vs Premium
+const PREMIUM_PRICE_IDS = [
+  'price_1Sc3rPEuT9agNbEU65mDE4RP', // Premium TEST
+  'price_1Sc3BYIUG5GUejFZaWexcxzz', // Premium PRODUCTION
+];
+const STANDARD_PRICE_IDS = [
+  'price_1Sc3qxEuT9agNbEUdX0RkLM4', // Standard TEST
+  'price_1Sc3AqIUG5GUejFZagJyV8HC', // Standard PRODUCTION
+];
+
+export type PaidUserFilter = 'all' | 'premium' | 'standard';
+
+export type PaidUserWithType = Profile & {
+  subscription_type: 'standard' | 'premium';
+  subscription_price: number;
+};
+
+export async function getPremiumUsers(filter: PaidUserFilter = 'all'): Promise<PaidUserWithType[]> {
   const supabase = createAdminClient();
 
-  const { data } = await supabase
+  let query = supabase
     .from('profiles')
     .select('*')
-    .eq('is_premium', true)
-    .order('premium_expires_at', { ascending: true });
+    .eq('is_premium', true);
 
-  return data || [];
+  if (filter === 'premium') {
+    query = query.in('stripe_price_id', PREMIUM_PRICE_IDS);
+  } else if (filter === 'standard') {
+    query = query.in('stripe_price_id', STANDARD_PRICE_IDS);
+  }
+
+  const { data } = await query.order('premium_expires_at', { ascending: true });
+
+  if (!data) return [];
+
+  return data.map(user => {
+    const isPremiumPlan = user.stripe_price_id && PREMIUM_PRICE_IDS.includes(user.stripe_price_id);
+    return {
+      ...user,
+      subscription_type: isPremiumPlan ? 'premium' as const : 'standard' as const,
+      subscription_price: isPremiumPlan ? PREMIUM_PRICE : STANDARD_PRICE,
+    };
+  });
+}
+
+export async function getPaidUsersStats() {
+  const supabase = createAdminClient();
+
+  const [
+    { count: totalStandard },
+    { count: totalPremium },
+    { data: standardUsers },
+    { data: premiumUsers },
+  ] = await Promise.all([
+    supabase.from('profiles').select('*', { count: 'exact', head: true })
+      .eq('is_premium', true)
+      .in('stripe_price_id', STANDARD_PRICE_IDS),
+    supabase.from('profiles').select('*', { count: 'exact', head: true })
+      .eq('is_premium', true)
+      .in('stripe_price_id', PREMIUM_PRICE_IDS),
+    supabase.from('profiles').select('premium_expires_at')
+      .eq('is_premium', true)
+      .in('stripe_price_id', STANDARD_PRICE_IDS),
+    supabase.from('profiles').select('premium_expires_at')
+      .eq('is_premium', true)
+      .in('stripe_price_id', PREMIUM_PRICE_IDS),
+  ]);
+
+  const now = new Date();
+  const oneDay = 24 * 60 * 60 * 1000;
+  const oneWeek = 7 * oneDay;
+
+  const getDaysRemaining = (expiresAt: string | null) => {
+    if (!expiresAt) return 0;
+    const expires = new Date(expiresAt);
+    return Math.max(0, Math.ceil((expires.getTime() - now.getTime()) / oneDay));
+  };
+
+  const standardExpiringThisWeek = standardUsers?.filter(u => getDaysRemaining(u.premium_expires_at) <= 7).length || 0;
+  const premiumExpiringThisWeek = premiumUsers?.filter(u => getDaysRemaining(u.premium_expires_at) <= 7).length || 0;
+
+  const standardExpiringToday = standardUsers?.filter(u => getDaysRemaining(u.premium_expires_at) <= 1).length || 0;
+  const premiumExpiringToday = premiumUsers?.filter(u => getDaysRemaining(u.premium_expires_at) <= 1).length || 0;
+
+  return {
+    totalStandard: totalStandard || 0,
+    totalPremium: totalPremium || 0,
+    standardExpiringToday,
+    premiumExpiringToday,
+    standardExpiringThisWeek,
+    premiumExpiringThisWeek,
+    // Revenus actuels par semaine
+    standardRevenue: (totalStandard || 0) * STANDARD_PRICE,
+    premiumRevenue: (totalPremium || 0) * PREMIUM_PRICE,
+    // Revenus potentiels si renouvellement
+    potentialStandardRevenue: standardExpiringThisWeek * STANDARD_PRICE,
+    potentialPremiumRevenue: premiumExpiringThisWeek * PREMIUM_PRICE,
+  };
 }
 
 export async function getUsersWithProgression() {
@@ -142,5 +246,39 @@ export async function getUserActivityStats() {
     active24h: active24h || 0,
     active7d: active7d || 0,
     active30d: active30d || 0,
+  };
+}
+
+export async function getUserSubscriptionStats() {
+  const supabase = createAdminClient();
+
+  const PREMIUM_PRICE_IDS = [
+    'price_1Sc3rPEuT9agNbEU65mDE4RP',
+    'price_1Sc3BYIUG5GUejFZaWexcxzz',
+  ];
+  const STANDARD_PRICE_IDS = [
+    'price_1Sc3qxEuT9agNbEUdX0RkLM4',
+    'price_1Sc3AqIUG5GUejFZagJyV8HC',
+  ];
+
+  const [
+    { count: totalFree },
+    { count: totalStandard },
+    { count: totalPremium },
+  ] = await Promise.all([
+    supabase.from('profiles').select('*', { count: 'exact', head: true })
+      .eq('is_premium', false),
+    supabase.from('profiles').select('*', { count: 'exact', head: true })
+      .eq('is_premium', true)
+      .in('stripe_price_id', STANDARD_PRICE_IDS),
+    supabase.from('profiles').select('*', { count: 'exact', head: true })
+      .eq('is_premium', true)
+      .in('stripe_price_id', PREMIUM_PRICE_IDS),
+  ]);
+
+  return {
+    gratuit: totalFree || 0,
+    standard: totalStandard || 0,
+    premium: totalPremium || 0,
   };
 }

@@ -6,9 +6,14 @@ export interface Profile {
   prenom: string | null;
   nom: string | null;
   avatar_url: string | null;
-  credits: number;
+  credits: number; // Ancien système - à ignorer
+  exam_credits: number; // Crédits examens achetés via Pack Examen
+  subscription_exams_used: number; // Examens utilisés de l'abonnement cette semaine
   is_premium: boolean;
   premium_expires_at: string | null;
+  stripe_price_id: string | null;
+  stripe_customer_id: string | null;
+  subscription_status: string | null;
   unlock_level_count: number;
   no_timer_enabled: boolean;
   flashcards_2_themes: boolean;
