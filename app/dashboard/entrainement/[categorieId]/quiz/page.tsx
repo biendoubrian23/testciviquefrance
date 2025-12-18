@@ -103,7 +103,7 @@ export default function QuizPage() {
   const [isLoadingPurchase, setIsLoadingPurchase] = useState(false)
   
   // Timer - peut être désactivé si mode sans chrono
-  const DEFAULT_TIMER = 5 // 5 secondes par défaut
+  const DEFAULT_TIMER = 15 // 15 secondes par défaut
   const [timeLeft, setTimeLeft] = useState(DEFAULT_TIMER)
   
   // États pour la célébration (confettis + toast)
