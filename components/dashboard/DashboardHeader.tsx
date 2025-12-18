@@ -82,10 +82,19 @@ export default function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
                 const extendedProfile = profile as any;
                 if (!extendedProfile?.is_premium) return 'Membre gratuit';
                 
-                // Différencier selon le plan souscrit
-                if (extendedProfile?.stripe_price_id === 'price_1Sc3rPEuT9agNbEU65mDE4RP') {
+                // Différencier selon le plan souscrit (TEST + PRODUCTION)
+                const premiumPriceIds = [
+                  'price_1Sc3rPEuT9agNbEU65mDE4RP', // Premium TEST
+                  'price_1Sc3BYIUG5GUejFZaWexcxzz', // Premium PRODUCTION
+                ];
+                const standardPriceIds = [
+                  'price_1Sc3qxEuT9agNbEUdX0RkLM4', // Standard TEST
+                  'price_1Sc3AqIUG5GUejFZagJyV8HC', // Standard PRODUCTION
+                ];
+                
+                if (premiumPriceIds.includes(extendedProfile?.stripe_price_id)) {
                   return 'Membre Premium'; // Plan à 6,99€
-                } else if (extendedProfile?.stripe_price_id === 'price_1Sc3qxEuT9agNbEUdX0RkLM4') {
+                } else if (standardPriceIds.includes(extendedProfile?.stripe_price_id)) {
                   return 'Membre Standard'; // Plan à 2,99€
                 } else {
                   return 'Membre Premium'; // Par défaut si is_premium = true
