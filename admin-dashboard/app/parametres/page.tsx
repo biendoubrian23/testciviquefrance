@@ -10,7 +10,7 @@ export default function ParametresPage() {
         subtitle="Configuration du dashboard"
       />
 
-      <div className="p-8">
+      <div className="p-4 lg:p-8">
         <div className="max-w-4xl">
           {/* Connexion BDD */}
           <Card className="mb-6">

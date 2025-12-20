@@ -95,3 +95,40 @@
 ::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
 }
+
+/* Scrollbar fine pour les tableaux */
+.scrollbar-thin::-webkit-scrollbar {
+  height: 4px;
+}
+
+/* Responsive utilities */
+@layer utilities {
+  .text-truncate {
+    @apply overflow-hidden text-ellipsis whitespace-nowrap;
+  }
+
+  /* Safe area pour les mobiles avec notch */
+  .safe-area-inset {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Amélioration de l'expérience touch sur mobile */
+@media (max-width: 1024px) {
+  .sidebar-item {
+    @apply py-3.5;
+  }
+
+  /* Rendre les éléments cliquables plus grands sur mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Réduire les paddings généraux */
+  .stat-card {
+    @apply p-3;
+  }
+}

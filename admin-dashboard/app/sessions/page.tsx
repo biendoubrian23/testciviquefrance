@@ -18,7 +18,7 @@ export default async function SessionsPage() {
         subtitle="Historique des entrainements par niveau"
       />
 
-      <div className="p-8">
+      <div className="p-4 lg:p-8">
         <SessionsClient
           initialStats={stats}
           initialSessions={recentSessions}

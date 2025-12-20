@@ -155,7 +155,7 @@ export function ActivityClient({
   }, [signupsPeriod, fetchSignups]);
 
   return (
-    <div className="p-8">
+    <div className="p-4 lg:p-8">
       {/* Stats avec filtre */}
       <div className="mb-6">
         <div className="flex items-center justify-between mb-4">

@@ -3,6 +3,9 @@ interface DataTableColumn<T> {
   header: string;
   render?: (item: T) => React.ReactNode;
   className?: string;
+  hideOnMobile?: boolean;
+  truncate?: boolean;
+  minWidth?: string;
 }
 
 interface DataTableProps<T> {
@@ -29,8 +32,8 @@ export function DataTable<T>({
             <div key={i} className="h-16 border-t border-gray-100">
               <div className="flex items-center gap-4 p-4">
                 <div className="h-4 bg-gray-200 flex-1"></div>
-                <div className="h-4 bg-gray-200 w-24"></div>
-                <div className="h-4 bg-gray-200 w-32"></div>
+                <div className="h-4 bg-gray-200 w-24 hidden sm:block"></div>
+                <div className="h-4 bg-gray-200 w-32 hidden md:block"></div>
               </div>
             </div>
           ))}
@@ -49,14 +52,19 @@ export function DataTable<T>({
 
   return (
     <div className="bg-white border border-gray-200 overflow-hidden">
-      <div className="overflow-x-auto">
-        <table className="w-full">
+      <div className="overflow-x-auto scrollbar-thin">
+        <table className="w-full min-w-[600px]">
           <thead>
             <tr className="table-header">
               {columns.map((column) => (
                 <th 
                   key={column.key.toString()} 
-                  className={`px-6 py-3 ${column.className || ''}`}
+                  className={`
+                    px-3 lg:px-6 py-3 whitespace-nowrap
+                    ${column.hideOnMobile ? 'hidden md:table-cell' : ''}
+                    ${column.minWidth ? `min-w-[${column.minWidth}]` : ''}
+                    ${column.className || ''}
+                  `}
                 >
                   {column.header}
                 </th>
@@ -69,12 +77,19 @@ export function DataTable<T>({
                 {columns.map((column) => (
                   <td 
                     key={column.key.toString()} 
-                    className={`px-6 py-4 text-sm ${column.className || ''}`}
+                    className={`
+                      px-3 lg:px-6 py-3 lg:py-4 text-sm
+                      ${column.hideOnMobile ? 'hidden md:table-cell' : ''}
+                      ${column.truncate ? 'max-w-[150px] lg:max-w-[200px]' : ''}
+                      ${column.className || ''}
+                    `}
                   >
-                    {column.render 
-                      ? column.render(item) 
-                      : String((item as Record<string, unknown>)[column.key as string] ?? '-')
-                    }
+                    <div className={column.truncate ? 'truncate' : ''}>
+                      {column.render 
+                        ? column.render(item) 
+                        : String((item as Record<string, unknown>)[column.key as string] ?? '-')
+                      }
+                    </div>
                   </td>
                 ))}
               </tr>

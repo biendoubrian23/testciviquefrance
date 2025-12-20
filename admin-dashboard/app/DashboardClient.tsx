@@ -90,25 +90,28 @@ export function DashboardClient({
 
   return (
     <div className={isPending ? 'opacity-60' : ''}>
-      {/* Filtre abonnement */}
-      <div className="mb-6 flex items-center gap-4 p-4 bg-gray-50 border border-gray-200">
-        <Filter className="w-5 h-5 text-text-muted" />
-        <span className="text-sm font-medium">Afficher les stats pour:</span>
+      {/* Filtre abonnement - responsive */}
+      <div className="mb-4 lg:mb-6 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-3 lg:p-4 bg-gray-50 border border-gray-200">
+        <div className="flex items-center gap-2">
+          <Filter className="w-4 h-4 lg:w-5 lg:h-5 text-text-muted flex-shrink-0" />
+          <span className="text-xs lg:text-sm font-medium whitespace-nowrap">Stats pour:</span>
+        </div>
         <select
           value={filter}
           onChange={(e) => handleFilterChange(e.target.value as SubscriptionFilter)}
-          className="px-4 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+          className="flex-1 px-3 py-2 border border-gray-300 bg-white text-xs lg:text-sm focus:outline-none focus:ring-2 focus:ring-primary-500 min-w-0"
+          aria-label="Filtrer par type d'abonnement"
         >
-          <option value="all">Tous les abonnes (Standard + Premium)</option>
-          <option value="standard">Standard uniquement (2.99€/sem)</option>
-          <option value="premium">Premium uniquement (6.99€/sem)</option>
+          <option value="all">Tous (Standard + Premium)</option>
+          <option value="standard">Standard (2.99€/sem)</option>
+          <option value="premium">Premium (6.99€/sem)</option>
         </select>
       </div>
 
-      {/* Stats principales */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      {/* Stats principales - grille 2 cols sur mobile */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-8">
         <StatCard
-          title="Utilisateurs totaux"
+          title="Utilisateurs"
           value={stats.totalUsers.toLocaleString('fr-FR')}
           subtitle={`+${stats.newUsersThisMonth} ce mois`}
           icon={Users}
@@ -116,62 +119,62 @@ export function DashboardClient({
           trend={{ value: stats.newUsersThisMonth, isPositive: true }}
         />
         <StatCard
-          title={`Utilisateurs ${getFilterLabel()}`}
+          title={`${getFilterLabel()}`}
           value={stats.premiumUsers.toLocaleString('fr-FR')}
           subtitle={filter === 'all' 
-            ? `${stats.standardUsers} Standard + ${stats.premiumUsers - stats.standardUsers} Premium`
-            : `${((stats.premiumUsers / Math.max(stats.totalUsers, 1)) * 100).toFixed(1)}% du total`
+            ? `${stats.standardUsers} Std + ${stats.premiumUsers - stats.standardUsers} Prem`
+            : `${((stats.premiumUsers / Math.max(stats.totalUsers, 1)) * 100).toFixed(1)}%`
           }
           icon={Award}
           variant="success"
         />
         <StatCard
-          title={`Revenus ${getFilterLabel()}`}
-          value={`${getDisplayedRevenue().toFixed(2)} €`}
+          title={`Revenus`}
+          value={`${getDisplayedRevenue().toFixed(2)}€`}
           subtitle={filter === 'all' 
-            ? `${stats.standardRevenue.toFixed(2)}€ Std + ${stats.premiumRevenue.toFixed(2)}€ Prem /sem`
-            : 'par semaine'
+            ? `${stats.standardRevenue.toFixed(0)}€ + ${stats.premiumRevenue.toFixed(0)}€`
+            : '/semaine'
           }
           icon={CreditCard}
           variant="success"
         />
         <StatCard
-          title="Examens completes"
+          title="Examens"
           value={stats.totalExamens.toLocaleString('fr-FR')}
-          subtitle={`${stats.tauxReussiteExamens}% de reussite`}
+          subtitle={`${stats.tauxReussiteExamens}% réussite`}
           icon={GraduationCap}
           variant="primary"
         />
       </div>
 
-      {/* Stats secondaires */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      {/* Stats secondaires - grille 2 cols sur mobile */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-8">
         <StatCard
-          title="Questions totales"
+          title="Questions"
           value={stats.totalQuestions.toLocaleString('fr-FR')}
-          subtitle={`${stats.totalCategories} categories`}
+          subtitle={`${stats.totalCategories} catég.`}
           icon={HelpCircle}
         />
         <StatCard
-          title="Sessions de quiz"
+          title="Sessions"
           value={stats.totalSessions.toLocaleString('fr-FR')}
           icon={Target}
         />
         <StatCard
-          title="Questions repondues"
+          title="Répondues"
           value={stats.questionsRepondues.toLocaleString('fr-FR')}
           icon={TrendingUp}
         />
         <StatCard
-          title="Temps d'etude total"
+          title="Temps étude"
           value={formatStudyTime(stats.tempsEtudeTotal)}
           icon={Clock}
         />
       </div>
 
       {/* Graphiques principaux */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <Card title="Activite des utilisateurs" subtitle="14 derniers jours">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-4 lg:mb-8">
+        <Card title="Activité" subtitle="14 derniers jours">
           <ActivityChart data={activityData} />
         </Card>
         <Card title="Revenus" subtitle="30 derniers jours">
@@ -180,21 +183,21 @@ export function DashboardClient({
       </div>
 
       {/* Graphiques secondaires */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-        <Card title="Resultats des examens" subtitle="14 derniers jours">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-4 lg:mb-8">
+        <Card title="Examens" subtitle="14 derniers jours">
           <ExamSuccessChart data={examSuccessData} />
         </Card>
-        <Card title="Questions par categorie">
+        <Card title="Par catégorie">
           <CategoryDistribution data={categoryStats} />
         </Card>
       </div>
 
       {/* Table des utilisateurs recents */}
       <Card 
-        title="Utilisateurs recents" 
+        title="Utilisateurs récents" 
         subtitle="Derniers inscrits"
         actions={
-          <a href="/utilisateurs" className="text-sm text-primary-600 hover:text-primary-700">
+          <a href="/utilisateurs" className="text-xs lg:text-sm text-primary-600 hover:text-primary-700">
             Voir tout
           </a>
         }

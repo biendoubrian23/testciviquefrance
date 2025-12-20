@@ -33,10 +33,10 @@ export default async function DashboardPage() {
     <div className="min-h-screen bg-background-light">
       <Header 
         title="Vue d'ensemble" 
-        subtitle={`Derniere mise a jour: ${new Date().toLocaleString('fr-FR')}`}
+        subtitle={`Mise à jour: ${new Date().toLocaleString('fr-FR')}`}
       />
 
-      <div className="p-8">
+      <div className="p-4 lg:p-8">
         <DashboardClient
           initialStats={stats}
           activityData={activityData}

@@ -115,7 +115,7 @@ export default async function ProgressionPage() {
         subtitle="Statistiques d'apprentissage detaillees"
       />
 
-      <div className="p-8">
+      <div className="p-4 lg:p-8">
         {/* Stats */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <StatCard

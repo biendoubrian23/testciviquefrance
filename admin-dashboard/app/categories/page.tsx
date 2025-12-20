@@ -17,7 +17,7 @@ export default async function CategoriesPage() {
         subtitle={`${categories.length} categories disponibles`}
       />
 
-      <div className="p-8">
+      <div className="p-4 lg:p-8">
         <CategoriesClient
           initialCategories={categories}
           initialStats={stats}

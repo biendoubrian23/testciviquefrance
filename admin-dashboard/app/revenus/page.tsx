@@ -14,11 +14,11 @@ export default async function RevenusPage() {
   return (
     <div className="min-h-screen bg-background-light">
       <Header 
-        title="Revenus & Abonnements" 
-        subtitle="Suivi en temps réel des abonnements et revenus"
+        title="Revenus" 
+        subtitle="Suivi des abonnements"
       />
 
-      <div className="p-8">
+      <div className="p-4 lg:p-8">
         <RevenusClient 
           initialSubscriptions={subscriptions}
           initialStats={stats}

@@ -19,7 +19,7 @@ export default async function PremiumUsersPage() {
         subtitle={`${totalPaid} abonnes actifs (${stats.totalStandard} Standard + ${stats.totalPremium} Premium)`}
       />
 
-      <div className="p-8">
+      <div className="p-4 lg:p-8">
         <PremiumClient
           initialUsers={users}
           initialStats={stats}
