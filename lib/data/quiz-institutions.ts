@@ -24,137 +24,137 @@ export interface QuizQuestion {
   explication: string;
 }
 
-// ==================== NIVEAU 1 : LE PRÉSIDENT DE LA RÉPUBLIQUE ====================
+// ==================== NIVEAU 1 : LE SYSTÈME INSTITUTIONNEL AVANCÉ ====================
 const NIVEAU_1: QuizQuestion[] = [
   {
     id: 1001,
     niveau: 1,
-    question: "Qui est le chef de l'État en France ?",
+    question: "Quel principe constitutionnel organise la répartition des pouvoirs en France ?",
     options: [
-      "Le Président de la République",
-      "Le Premier ministre",
-      "Le Président de l'Assemblée nationale",
-      "Le Roi"
+      "La séparation des pouvoirs (exécutif, législatif, judiciaire)",
+      "La concentration des pouvoirs au Parlement",
+      "La fusion des pouvoirs au profit du Président",
+      "L'absence de hiérarchie entre les pouvoirs"
     ],
     correctHash: hashAnswer(1001, 0),
-    explication: "Le Président de la République est le chef de l'État français. Il est élu au suffrage universel direct pour un mandat de 5 ans (quinquennat) depuis la réforme de 2000."
+    explication: "La séparation des pouvoirs, théorisée par Montesquieu, distingue le pouvoir exécutif (Président et Gouvernement), le pouvoir législatif (Parlement) et le pouvoir judiciaire (tribunaux). Elle garantit l'équilibre démocratique."
   },
   {
     id: 1002,
     niveau: 1,
-    question: "Pour combien d'années le Président de la République est-il élu ?",
+    question: "Qu'est-ce qui caractérise la Ve République par rapport aux régimes précédents ?",
     options: [
-      "5 ans",
-      "4 ans",
-      "6 ans",
-      "7 ans"
+      "Un exécutif fort avec un Président élu au suffrage universel direct",
+      "La suprématie absolue du Parlement",
+      "L'absence de Constitution écrite",
+      "L'élection du Premier ministre au suffrage direct"
     ],
     correctHash: hashAnswer(1002, 0),
-    explication: "Depuis le référendum de 2000, le Président de la République est élu pour un mandat de 5 ans appelé quinquennat. Avant, le mandat était de 7 ans (septennat)."
+    explication: "La Ve République, fondée en 1958 par de Gaulle, renforce considérablement le pouvoir exécutif. Depuis 1962, le Président est élu directement par le peuple, ce qui lui confère une légitimité démocratique forte."
   },
   {
     id: 1003,
     niveau: 1,
-    question: "Comment le Président de la République est-il élu ?",
+    question: "Quels sont les pouvoirs propres du Président de la République selon la Constitution ?",
     options: [
-      "Au suffrage universel direct par les citoyens",
-      "Par le Parlement",
-      "Par les maires",
-      "Par le Conseil constitutionnel"
+      "Dissolution de l'Assemblée, nomination du Premier ministre, pouvoirs exceptionnels (art. 16), référendum",
+      "Voter les lois et fixer les impôts",
+      "Nommer les juges et rendre la justice",
+      "Décider seul du budget de l'État"
     ],
     correctHash: hashAnswer(1003, 0),
-    explication: "Depuis 1962, le Président de la République est élu au suffrage universel direct. Tous les citoyens français de 18 ans et plus peuvent voter pour élire le Président."
+    explication: "Les pouvoirs propres du Président, exercés sans contreseing, incluent : la nomination du Premier ministre (art. 8), la dissolution de l'Assemblée (art. 12), le référendum (art. 11), les pouvoirs exceptionnels (art. 16) et la saisine du Conseil constitutionnel (art. 54 et 61)."
   },
   {
     id: 1004,
     niveau: 1,
-    question: "Qui nomme le Premier ministre en France ?",
+    question: "Quelle est la différence entre la motion de censure et la question de confiance ?",
     options: [
-      "Le Président de la République",
-      "L'Assemblée nationale",
-      "Le Sénat",
-      "Le peuple par référendum"
+      "La motion de censure est initiée par les députés, la question de confiance par le Premier ministre",
+      "Ce sont deux procédures identiques",
+      "La motion de censure concerne le Président, la question de confiance le Premier ministre",
+      "La motion de censure est votée par le Sénat"
     ],
     correctHash: hashAnswer(1004, 0),
-    explication: "Le Président de la République nomme le Premier ministre. C'est l'une de ses attributions principales selon l'article 8 de la Constitution."
+    explication: "La motion de censure (art. 49-2) permet aux députés de renverser le Gouvernement. La question de confiance (art. 49-1) est posée par le Premier ministre sur son programme. Si elle est rejetée, le Gouvernement doit démissionner."
   },
   {
     id: 1005,
     niveau: 1,
-    question: "Où réside officiellement le Président de la République ?",
+    question: "Qu'est-ce que la cohabitation dans le système politique français ?",
     options: [
-      "Au Palais de l'Élysée",
-      "À Matignon",
-      "À l'Assemblée nationale",
-      "Au Château de Versailles"
+      "La situation où le Président et le Premier ministre sont de partis politiques opposés",
+      "Le partage du pouvoir entre le Parlement et le Gouvernement",
+      "L'alliance entre partis pour former une coalition",
+      "Le dialogue entre l'Assemblée nationale et le Sénat"
     ],
     correctHash: hashAnswer(1005, 0),
-    explication: "Le Palais de l'Élysée, situé à Paris, est la résidence officielle du Président de la République française depuis 1848."
+    explication: "La cohabitation survient lorsque le Président doit nommer un Premier ministre d'un parti opposé, car sa majorité parlementaire a été perdue. Il y a eu trois cohabitations : 1986-88, 1993-95 et 1997-2002."
   },
   {
     id: 1006,
     niveau: 1,
-    question: "Quel est le rôle principal du Président de la République ?",
+    question: "Quel est le rôle du Conseil constitutionnel dans le processus législatif ?",
     options: [
-      "Garantir le respect de la Constitution",
-      "Voter les lois",
-      "Rendre la justice",
-      "Percevoir les impôts"
+      "Vérifier la conformité des lois à la Constitution avant ou après leur promulgation",
+      "Rédiger les projets de loi",
+      "Voter les lois au nom du peuple",
+      "Nommer les ministres"
     ],
     correctHash: hashAnswer(1006, 0),
-    explication: "Le Président de la République veille au respect de la Constitution. Il est le garant de l'indépendance nationale et de l'intégrité du territoire."
+    explication: "Le Conseil constitutionnel contrôle la constitutionnalité des lois. Il peut être saisi avant promulgation (contrôle a priori) ou après par QPC (contrôle a posteriori). Il peut censurer les dispositions non conformes à la Constitution."
   },
   {
     id: 1007,
     niveau: 1,
-    question: "Combien de fois maximum une personne peut-elle être élue Président de la République ?",
+    question: "Comment s'opère le bicamérisme en France et quel est le rôle spécifique du Sénat ?",
     options: [
-      "2 mandats consécutifs maximum",
-      "1 seul mandat",
-      "3 mandats consécutifs maximum",
-      "Aucune limite"
+      "Le Sénat représente les collectivités territoriales et peut bloquer les révisions constitutionnelles",
+      "Le Sénat a exactement les mêmes pouvoirs que l'Assemblée nationale",
+      "Le Sénat peut renverser le Gouvernement",
+      "Le Sénat élit le Président de la République"
     ],
     correctHash: hashAnswer(1007, 0),
-    explication: "Depuis la révision constitutionnelle de 2008, nul ne peut exercer plus de deux mandats consécutifs de Président de la République."
+    explication: "Le bicamérisme français distingue l'Assemblée (élue au suffrage direct, représente le peuple) et le Sénat (élu au suffrage indirect, représente les collectivités). Le Sénat ne peut pas renverser le Gouvernement mais peut bloquer une révision constitutionnelle."
   },
   {
     id: 1008,
     niveau: 1,
-    question: "Quel âge minimum faut-il avoir pour être élu Président de la République ?",
+    question: "Qu'est-ce que l'article 49-3 de la Constitution ?",
     options: [
-      "18 ans",
-      "21 ans",
-      "25 ans",
-      "35 ans"
+      "Une procédure permettant au Gouvernement de faire adopter une loi sans vote, sauf motion de censure",
+      "L'article définissant les pouvoirs du Président",
+      "La procédure de dissolution de l'Assemblée",
+      "L'article sur le référendum"
     ],
     correctHash: hashAnswer(1008, 0),
-    explication: "Depuis 2011, il faut avoir au moins 18 ans pour se présenter à l'élection présidentielle (contre 23 ans auparavant)."
+    explication: "L'article 49-3 permet au Premier ministre d'engager la responsabilité du Gouvernement sur un texte. Celui-ci est considéré comme adopté sans vote, sauf si une motion de censure est déposée et adoptée dans les 24 heures."
   },
   {
     id: 1009,
     niveau: 1,
-    question: "Le Président de la République est-il le chef des armées ?",
+    question: "Quelle est la procédure de révision de la Constitution selon l'article 89 ?",
     options: [
-      "Oui",
-      "Non, c'est le Premier ministre",
-      "Non, c'est le ministre de la Défense",
-      "Non, c'est le Parlement"
+      "Vote identique des deux chambres puis référendum ou Congrès (3/5e des voix)",
+      "Décision du Président seul",
+      "Vote de l'Assemblée nationale à la majorité simple",
+      "Approbation du Conseil constitutionnel"
     ],
     correctHash: hashAnswer(1009, 0),
-    explication: "Oui, selon l'article 15 de la Constitution, le Président de la République est le chef des armées. Il préside les conseils de défense."
+    explication: "La révision constitutionnelle (art. 89) requiert le vote du texte identique par l'Assemblée et le Sénat, puis soit un référendum, soit l'approbation du Congrès (Parlement réuni) à la majorité des 3/5e."
   },
   {
     id: 1010,
     niveau: 1,
-    question: "Qui peut dissoudre l'Assemblée nationale ?",
+    question: "Qui assure l'intérim de la présidence en cas de vacance ou d'empêchement du Président ?",
     options: [
-      "Le Président de la République",
+      "Le Président du Sénat",
       "Le Premier ministre",
-      "Le Sénat",
-      "Le Conseil constitutionnel"
+      "Le Président de l'Assemblée nationale",
+      "Le Président du Conseil constitutionnel"
     ],
     correctHash: hashAnswer(1010, 0),
-    explication: "Le Président de la République peut dissoudre l'Assemblée nationale (article 12 de la Constitution). Cela entraîne de nouvelles élections législatives."
+    explication: "Selon l'article 7 de la Constitution, en cas de vacance ou d'empêchement du Président, l'intérim est assuré par le Président du Sénat. Pendant l'intérim, il ne peut ni dissoudre l'Assemblée ni organiser de référendum."
   },
 ];
 

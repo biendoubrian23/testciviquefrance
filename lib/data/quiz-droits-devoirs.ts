@@ -24,137 +24,137 @@ export interface QuizQuestion {
   explication: string;
 }
 
-// ==================== NIVEAU 1 : LES DROITS FONDAMENTAUX ====================
+// ==================== NIVEAU 1 : LES DROITS FONDAMENTAUX AVANCÉS ====================
 const NIVEAU_1: QuizQuestion[] = [
   {
     id: 2001,
     niveau: 1,
-    question: "Quel texte fondamental proclame les droits de l'homme en France ?",
+    question: "Quels sont les textes qui composent le bloc de constitutionnalité en matière de droits fondamentaux ?",
     options: [
-      "La Déclaration des droits de l'homme et du citoyen de 1789",
-      "Le Code civil de 1804",
-      "La Constitution de 1958",
-      "Le traité de Versailles"
+      "La DDHC de 1789, le Préambule de 1946, la Constitution de 1958 et la Charte de l'environnement",
+      "Uniquement la Déclaration des droits de l'homme de 1789",
+      "Le Code civil et le Code pénal",
+      "Les traités européens uniquement"
     ],
     correctHash: hashAnswer(2001, 0),
-    explication: "La Déclaration des droits de l'homme et du citoyen du 26 août 1789 est le texte fondateur des droits de l'homme en France. Elle fait partie du bloc de constitutionnalité."
+    explication: "Le bloc de constitutionnalité comprend la Déclaration de 1789 (droits civils et politiques), le Préambule de 1946 (droits économiques et sociaux), la Constitution de 1958 et la Charte de l'environnement de 2004."
   },
   {
     id: 2002,
     niveau: 1,
-    question: "Tous les êtres humains naissent :",
+    question: "Qu'est-ce que la Question Prioritaire de Constitutionnalité (QPC) ?",
     options: [
-      "Libres et égaux en droits",
-      "Avec des droits différents selon leur origine",
-      "Sans aucun droit",
-      "Avec des devoirs uniquement"
+      "Un moyen pour tout justiciable de contester la constitutionnalité d'une loi devant le Conseil constitutionnel",
+      "Une question posée au Président de la République",
+      "Un référendum constitutionnel",
+      "Une procédure réservée aux députés"
     ],
     correctHash: hashAnswer(2002, 0),
-    explication: "L'article 1er de la Déclaration des droits de l'homme affirme que « Les hommes naissent et demeurent libres et égaux en droits ». C'est un principe universel."
+    explication: "La QPC, créée en 2008, permet à tout citoyen de saisir indirectement le Conseil constitutionnel, via une juridiction, pour contester une loi qui porterait atteinte aux droits et libertés garantis par la Constitution."
   },
   {
     id: 2003,
     niveau: 1,
-    question: "Qu'est-ce que la liberté d'expression ?",
+    question: "Quels sont les critères de discrimination interdits par la loi française ?",
     options: [
-      "Le droit de dire et d'écrire ce que l'on pense dans le respect de la loi",
-      "Le droit de dire n'importe quoi sans limite",
-      "Le droit réservé aux journalistes",
-      "L'interdiction de critiquer le gouvernement"
+      "Plus de 25 critères : origine, sexe, âge, handicap, religion, orientation sexuelle, apparence physique, etc.",
+      "Seulement le sexe et l'origine",
+      "Uniquement 5 critères principaux",
+      "Cela dépend des secteurs d'activité"
     ],
     correctHash: hashAnswer(2003, 0),
-    explication: "La liberté d'expression permet à chacun d'exprimer ses opinions, mais elle est encadrée par la loi (interdiction de la diffamation, de l'incitation à la haine, etc.)."
+    explication: "L'article 225-1 du Code pénal liste plus de 25 critères de discrimination interdits, incluant l'origine, le sexe, la situation de famille, la grossesse, l'apparence physique, le patronyme, le lieu de résidence, l'état de santé, le handicap, les opinions politiques, etc."
   },
   {
     id: 2004,
     niveau: 1,
-    question: "La liberté de religion en France signifie que :",
+    question: "Quel principe juridique empêche de punir une personne pour un acte qui n'était pas interdit au moment des faits ?",
     options: [
-      "Chacun peut pratiquer la religion de son choix ou ne pas en avoir",
-      "Tout le monde doit être catholique",
-      "La religion est interdite",
-      "Seules certaines religions sont autorisées"
+      "Le principe de non-rétroactivité de la loi pénale",
+      "La présomption d'innocence",
+      "Le droit au silence",
+      "L'habeas corpus"
     ],
     correctHash: hashAnswer(2004, 0),
-    explication: "La liberté de conscience et de religion permet à chacun de croire ou de ne pas croire, et de pratiquer librement sa religion dans le respect de l'ordre public."
+    explication: "Le principe de non-rétroactivité de la loi pénale, issu de l'article 8 de la DDHC, interdit de condamner une personne pour un acte qui n'était pas légalement interdit au moment où elle l'a commis."
   },
   {
     id: 2005,
     niveau: 1,
-    question: "Le droit à l'éducation en France signifie que :",
+    question: "Qui est le Défenseur des droits et quelle est sa fonction principale ?",
     options: [
-      "L'école est obligatoire et gratuite pour tous les enfants",
-      "Seuls les riches peuvent aller à l'école",
-      "L'école est facultative",
-      "L'éducation est réservée aux garçons"
+      "Une autorité indépendante qui protège les droits des citoyens face à l'administration et lutte contre les discriminations",
+      "Le ministre de la Justice",
+      "Un avocat commis d'office",
+      "Le Président du Conseil constitutionnel"
     ],
     correctHash: hashAnswer(2005, 0),
-    explication: "En France, l'instruction est obligatoire de 3 à 16 ans. L'école publique est gratuite et laïque. C'est un droit fondamental pour tous les enfants."
+    explication: "Le Défenseur des droits est une autorité constitutionnelle indépendante créée en 2011. Il peut être saisi par tout citoyen qui s'estime lésé par une administration ou victime de discrimination."
   },
   {
     id: 2006,
     niveau: 1,
-    question: "Le droit de propriété est-il protégé en France ?",
+    question: "Qu'est-ce que l'obligation de non-assistance à personne en danger prévue par le Code pénal ?",
     options: [
-      "Oui, c'est un droit fondamental",
-      "Non, tout appartient à l'État",
-      "Seulement pour les citoyens français",
-      "Non, la propriété privée n'existe pas"
+      "Un délit puni de 5 ans de prison et 75 000 € d'amende pour celui qui n'aide pas une personne en péril",
+      "Un simple conseil moral sans conséquence légale",
+      "Un devoir applicable uniquement aux professionnels de santé",
+      "Une règle sans sanction pénale"
     ],
     correctHash: hashAnswer(2006, 0),
-    explication: "Le droit de propriété est un droit fondamental inscrit dans la Déclaration de 1789 (article 17). Nul ne peut en être privé sauf nécessité publique avec juste indemnité."
+    explication: "L'article 223-6 du Code pénal punit la non-assistance à personne en péril de 5 ans d'emprisonnement et 75 000 € d'amende. C'est un devoir citoyen de porter assistance ou d'alerter les secours."
   },
   {
     id: 2007,
     niveau: 1,
-    question: "Le droit à la vie privée protège :",
+    question: "Qu'est-ce que la Charte de l'environnement de 2004 a introduit dans le droit français ?",
     options: [
-      "La vie personnelle, familiale et le domicile de chacun",
-      "Uniquement les personnes célèbres",
-      "Seulement les communications téléphoniques",
-      "Rien, il n'existe pas"
+      "Le droit de vivre dans un environnement sain et le devoir de préserver l'environnement",
+      "L'interdiction des véhicules polluants",
+      "La création du ministère de l'Écologie",
+      "Le recyclage obligatoire"
     ],
     correctHash: hashAnswer(2007, 0),
-    explication: "Le droit à la vie privée protège l'intimité de chacun : sa vie familiale, son domicile, sa correspondance, son image. C'est un droit constitutionnel."
+    explication: "La Charte de l'environnement, à valeur constitutionnelle depuis 2005, consacre le droit à un environnement équilibré et le principe de précaution. Elle crée aussi un devoir pour chacun de participer à la préservation de l'environnement."
   },
   {
     id: 2008,
     niveau: 1,
-    question: "Le droit au travail signifie que :",
+    question: "Quelle est la durée maximale de la garde à vue en droit commun ?",
     options: [
-      "Chacun a le droit de chercher un emploi et de travailler",
-      "L'État doit donner un emploi à tout le monde",
-      "Le travail est obligatoire pour tous",
-      "Seuls les hommes peuvent travailler"
+      "24 heures, renouvelable une fois (48 heures maximum)",
+      "72 heures sans renouvellement",
+      "12 heures maximum",
+      "1 semaine"
     ],
     correctHash: hashAnswer(2008, 0),
-    explication: "Le droit au travail reconnu par le préambule de 1946 signifie que chacun peut chercher un emploi librement. L'État doit favoriser l'accès à l'emploi."
+    explication: "En droit commun, la garde à vue dure 24 heures, renouvelable une fois sur autorisation du procureur (48h au total). Elle peut être prolongée à 96h ou 144h pour des infractions spécifiques (terrorisme, criminalité organisée)."
   },
   {
     id: 2009,
     niveau: 1,
-    question: "Le droit de vote est :",
+    question: "Qu'est-ce que le principe d'égal accès aux emplois publics garanti par l'article 6 de la DDHC ?",
     options: [
-      "Un droit civique fondamental pour participer à la démocratie",
-      "Réservé aux personnes riches",
-      "Obligatoire sous peine de prison",
-      "Réservé aux hommes de plus de 30 ans"
+      "Le droit pour tout citoyen de postuler aux emplois publics sans autre distinction que ses capacités et talents",
+      "L'obligation d'embaucher 50% d'hommes et 50% de femmes",
+      "Le recrutement réservé aux personnes diplômées",
+      "L'accès automatique aux emplois publics"
     ],
     correctHash: hashAnswer(2009, 0),
-    explication: "Le droit de vote permet à chaque citoyen de participer aux décisions politiques. C'est le fondement de la démocratie. En France, il n'est pas obligatoire."
+    explication: "L'article 6 de la DDHC garantit que tous les citoyens sont également admissibles aux dignités, places et emplois publics, selon leurs capacités et sans autre distinction que leurs vertus et talents. C'est le fondement du concours administratif."
   },
   {
     id: 2010,
     niveau: 1,
-    question: "Le droit à la santé signifie que :",
+    question: "Quel texte a instauré la contribution aux charges publiques selon les capacités de chacun ?",
     options: [
-      "Chacun a droit à la protection de sa santé et à des soins",
-      "Les soins sont gratuits pour tout le monde",
-      "Seuls les travailleurs ont droit aux soins",
-      "La santé est une affaire privée sans aide de l'État"
+      "L'article 13 de la Déclaration des droits de l'homme de 1789",
+      "Le Code général des impôts de 1950",
+      "La Constitution de 1958",
+      "Le traité de Maastricht"
     ],
     correctHash: hashAnswer(2010, 0),
-    explication: "Le droit à la protection de la santé est garanti par le préambule de 1946. La Sécurité sociale permet à tous d'accéder aux soins."
+    explication: "L'article 13 de la DDHC de 1789 établit que « la contribution commune doit être également répartie entre tous les citoyens, en raison de leurs facultés ». C'est le fondement de l'impôt progressif et de la solidarité nationale."
   },
 ];
 

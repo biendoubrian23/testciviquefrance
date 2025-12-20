@@ -23,137 +23,137 @@ export interface QuizQuestion {
   explication: string;
 }
 
-// ==================== NIVEAU 1 : S'INSTALLER EN FRANCE ====================
+// ==================== NIVEAU 1 : INTÉGRATION ET CITOYENNETÉ ====================
 const NIVEAU_1: QuizQuestion[] = [
   {
     id: 1001,
     niveau: 1,
-    question: "Quel document est indispensable pour un étranger souhaitant résider légalement en France plus de 3 mois ?",
+    question: "Quel est le contenu obligatoire du Contrat d'Intégration Républicaine (CIR) signé avec l'OFII ?",
     options: [
-      "Un titre de séjour",
-      "Un permis de conduire",
-      "Une carte de bibliothèque",
-      "Un abonnement téléphonique"
+      "Une formation civique et une formation linguistique si le niveau B1 n'est pas atteint",
+      "Uniquement un test de français",
+      "Un cours d'histoire de France de 6 mois",
+      "Un examen médical et une déclaration de revenus"
     ],
     correctHash: hashAnswer(1001, 0),
-    explication: "Le titre de séjour est obligatoire pour tout étranger (hors UE) souhaitant résider en France plus de 3 mois. Il existe différents types selon la situation (travail, famille, études...)."
+    explication: "Le CIR comprend une formation civique obligatoire sur les principes et valeurs de la République, et une formation linguistique pour atteindre le niveau A1 (avec objectif B1 pour la naturalisation)."
   },
   {
     id: 1002,
     niveau: 1,
-    question: "Quelle administration délivre les titres de séjour en France ?",
+    question: "Quelle condition de résidence est généralement requise pour demander la naturalisation française ?",
     options: [
-      "La préfecture",
-      "La mairie",
-      "La CAF",
-      "La Poste"
+      "5 ans de résidence régulière et continue en France",
+      "10 ans de résidence en France",
+      "2 ans de résidence en France",
+      "Aucune durée minimale de résidence"
     ],
     correctHash: hashAnswer(1002, 0),
-    explication: "La préfecture ou sous-préfecture est l'administration compétente pour délivrer les titres de séjour. Les démarches peuvent aussi se faire en ligne sur le site de l'ANEF."
+    explication: "La naturalisation nécessite en général 5 ans de résidence régulière en France. Ce délai peut être réduit dans certains cas (mariage avec un Français, services exceptionnels, niveau d'études...)."
   },
   {
     id: 1003,
     niveau: 1,
-    question: "Comment s'appelle le contrat signé par tout nouvel arrivant en France avec l'État ?",
+    question: "Quel niveau de français est exigé pour la naturalisation depuis les réformes récentes ?",
     options: [
-      "Le Contrat d'Intégration Républicaine (CIR)",
-      "Le Contrat de Travail",
-      "Le Contrat de Bail",
-      "Le Contrat de Mariage"
+      "Niveau B1 oral et écrit du CECRL",
+      "Niveau A1 oral uniquement",
+      "Niveau C1 universitaire",
+      "Aucun niveau n'est requis"
     ],
     correctHash: hashAnswer(1003, 0),
-    explication: "Le Contrat d'Intégration Républicaine (CIR) est signé avec l'OFII. Il prévoit des formations civiques et linguistiques pour faciliter l'intégration."
+    explication: "Le niveau B1 du Cadre Européen Commun de Référence pour les Langues (CECRL) est requis à l'oral et à l'écrit. Il correspond à un niveau intermédiaire permettant de s'exprimer de façon autonome."
   },
   {
     id: 1004,
     niveau: 1,
-    question: "Quelle est la durée de validité d'un visa long séjour valant titre de séjour (VLS-TS) ?",
+    question: "Comment un enfant né en France de parents étrangers acquiert-il la nationalité française ?",
     options: [
-      "1 an maximum",
-      "6 mois",
-      "5 ans",
-      "10 ans"
+      "Automatiquement à 18 ans s'il a résidé 5 ans en France depuis l'âge de 11 ans",
+      "Automatiquement à la naissance (droit du sol absolu)",
+      "Uniquement par demande des parents avant 13 ans",
+      "Jamais, il reste étranger toute sa vie"
     ],
     correctHash: hashAnswer(1004, 0),
-    explication: "Le VLS-TS (Visa Long Séjour valant Titre de Séjour) est valable 1 an maximum. Il doit être validé dans les 3 mois suivant l'arrivée en France."
+    explication: "C'est le droit du sol différé. L'enfant né en France de parents étrangers devient français automatiquement à 18 ans s'il a vécu en France au moins 5 ans depuis ses 11 ans. Il peut aussi demander la nationalité dès 16 ans ou ses parents dès 13 ans."
   },
   {
     id: 1005,
     niveau: 1,
-    question: "Où peut-on s'inscrire sur les listes électorales en France ?",
+    question: "Quelle est la différence entre naturalisation et acquisition par déclaration ?",
     options: [
-      "À la mairie de son domicile",
-      "À la préfecture",
-      "À la CAF",
-      "À l'ambassade"
+      "La naturalisation est discrétionnaire, la déclaration est un droit si les conditions sont remplies",
+      "Ce sont deux termes synonymes",
+      "La déclaration concerne uniquement les mineurs",
+      "La naturalisation est automatique, la déclaration nécessite une demande"
     ],
     correctHash: hashAnswer(1005, 0),
-    explication: "L'inscription sur les listes électorales se fait à la mairie de votre commune de résidence, en ligne sur service-public.fr, ou automatiquement à 18 ans pour les personnes de nationalité française."
+    explication: "La naturalisation est une décision de l'État qui peut être refusée même si les conditions sont remplies. L'acquisition par déclaration (ex: conjoint de Français) est un droit : l'État ne peut pas la refuser si les conditions légales sont respectées."
   },
   {
     id: 1006,
     niveau: 1,
-    question: "Quel organisme accompagne les étrangers dans leur parcours d'intégration en France ?",
+    question: "Qu'est-ce que la carte de résident de 10 ans et quelles sont les conditions pour l'obtenir ?",
     options: [
-      "L'OFII (Office Français de l'Immigration et de l'Intégration)",
-      "Pôle Emploi",
-      "La CAF",
-      "L'URSSAF"
+      "Un titre de séjour longue durée après 5 ans de résidence régulière avec conditions d'intégration",
+      "Une carte d'identité française",
+      "Un visa touristique de longue durée",
+      "Un permis de travail permanent"
     ],
     correctHash: hashAnswer(1006, 0),
-    explication: "L'OFII est l'opérateur principal de l'État en matière d'intégration des étrangers en France. Il gère le CIR, les formations civiques et linguistiques."
+    explication: "La carte de résident est un titre de séjour de 10 ans renouvelable. Elle est accordée après 5 ans de séjour régulier, sous conditions d'intégration républicaine et de ressources. Elle donne le droit de travailler sans restriction."
   },
   {
     id: 1007,
     niveau: 1,
-    question: "Quel numéro permet d'identifier une personne auprès des organismes sociaux en France ?",
+    question: "Quel organisme gère le premier accueil des étrangers et le Contrat d'Intégration Républicaine ?",
     options: [
-      "Le numéro de sécurité sociale (NIR)",
-      "Le numéro de téléphone",
-      "Le numéro de passeport",
-      "Le code postal"
+      "L'OFII (Office Français de l'Immigration et de l'Intégration)",
+      "La préfecture uniquement",
+      "Pôle Emploi / France Travail",
+      "La CAF (Caisse d'Allocations Familiales)"
     ],
     correctHash: hashAnswer(1007, 0),
-    explication: "Le numéro de sécurité sociale (NIR - Numéro d'Inscription au Répertoire) est composé de 15 chiffres. Il permet d'identifier chaque personne auprès des organismes sociaux."
+    explication: "L'OFII est l'opérateur principal de l'État en matière d'intégration. Il fait passer la visite médicale, organise les formations civiques et linguistiques, et assure le suivi du CIR pendant 1 an."
   },
   {
     id: 1008,
     niveau: 1,
-    question: "Combien de temps faut-il résider en France pour pouvoir demander une carte de résident ?",
+    question: "Quels documents constituent le « bloc de preuves » pour une demande de naturalisation ?",
     options: [
-      "5 ans en général",
-      "1 an",
-      "3 mois",
-      "10 ans"
+      "Justificatifs de résidence, d'intégration, de ressources, casier judiciaire vierge, attestation de niveau B1",
+      "Uniquement le passeport et un justificatif de domicile",
+      "Le diplôme du baccalauréat français",
+      "Un certificat de l'ambassade du pays d'origine"
     ],
     correctHash: hashAnswer(1008, 0),
-    explication: "En règle générale, il faut 5 ans de résidence régulière en France pour obtenir une carte de résident de 10 ans, sauf cas particuliers (conjoint de Français, réfugié...)."
+    explication: "Le dossier de naturalisation comprend : preuves de résidence (5 ans), certificat de niveau B1, casier judiciaire, justificatifs de ressources stables, attestation d'assimilation aux principes républicains, et preuve de connaissance de l'histoire et la culture française."
   },
   {
     id: 1009,
     niveau: 1,
-    question: "Comment s'appelle la carte d'identité européenne permettant de bénéficier des soins dans l'UE ?",
+    question: "Qu'est-ce que FranceConnect et quel est son rôle dans les démarches administratives ?",
     options: [
-      "La Carte Européenne d'Assurance Maladie (CEAM)",
-      "La Carte Vitale",
-      "La Carte Bleue",
-      "La Carte de Séjour"
+      "Un système d'authentification unique pour accéder aux services publics en ligne",
+      "Un réseau social officiel du gouvernement",
+      "Une application de traduction pour les étrangers",
+      "Un formulaire papier obligatoire"
     ],
     correctHash: hashAnswer(1009, 0),
-    explication: "La CEAM permet aux ressortissants européens de bénéficier de soins médicaux dans un autre pays de l'UE. Elle est gratuite et valable 2 ans."
+    explication: "FranceConnect est le système d'identification numérique de l'État. Il permet de se connecter à tous les services publics en ligne (impôts, CAF, Ameli, ANTS...) avec un seul compte, sécurisé par une identité vérifiée."
   },
   {
     id: 1010,
     niveau: 1,
-    question: "Quel document prouve votre domicile en France ?",
+    question: "Quelle est la procédure pour valider un VLS-TS (Visa Long Séjour valant Titre de Séjour) à l'arrivée en France ?",
     options: [
-      "Un justificatif de domicile (facture, quittance de loyer)",
-      "Une carte d'identité",
-      "Un diplôme",
-      "Un billet d'avion"
+      "Validation en ligne sur le site de l'ANEF dans les 3 mois suivant l'arrivée",
+      "Se présenter à la préfecture le jour de l'arrivée",
+      "Aucune validation n'est nécessaire",
+      "Obtenir un tampon à l'aéroport"
     ],
     correctHash: hashAnswer(1010, 0),
-    explication: "Le justificatif de domicile (facture EDF, téléphone, quittance de loyer, avis d'imposition) est demandé pour de nombreuses démarches administratives."
+    explication: "Le VLS-TS doit être validé en ligne sur le portail de l'ANEF (Administration Numérique pour les Étrangers en France) dans les 3 mois suivant l'arrivée. Cette validation active le titre de séjour et permet de payer la taxe de séjour."
   }
 ];
 

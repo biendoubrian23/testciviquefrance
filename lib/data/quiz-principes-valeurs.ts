@@ -23,138 +23,138 @@ export interface QuizQuestion {
   explication: string;
 }
 
-// ==================== NIVEAU 1 : FONDAMENTAUX ====================
-// Thème: La devise républicaine
+// ==================== NIVEAU 1 : FONDAMENTAUX AVANCÉS ====================
+// Thème: Les principes constitutionnels et valeurs républicaines
 const NIVEAU_1: QuizQuestion[] = [
   {
     id: 1,
     niveau: 1,
-    question: "Quelle est la devise de la République française ?",
+    question: "Quel article de la Constitution de 1958 définit les caractéristiques fondamentales de la République française ?",
     options: [
-      "Liberté, Égalité, Fraternité",
-      "Unité, Force, Progrès",
-      "Travail, Famille, Patrie",
-      "Paix, Justice, Solidarité"
+      "L'article 1er",
+      "L'article 2",
+      "L'article 89",
+      "Le Préambule"
     ],
     correctHash: hashAnswer(1, 0),
-    explication: "La devise « Liberté, Égalité, Fraternité » est apparue pendant la Révolution française. Elle est inscrite dans l'article 2 de la Constitution de 1958 et figure sur les frontons des bâtiments publics, les pièces de monnaie et les timbres."
+    explication: "L'article 1er de la Constitution de 1958 affirme que « La France est une République indivisible, laïque, démocratique et sociale ». C'est le fondement de l'identité constitutionnelle française."
   },
   {
     id: 2,
     niveau: 1,
-    question: "Selon l'article 1er de la Constitution, la France est une République :",
+    question: "Quelle loi fondamentale a établi la séparation des Églises et de l'État en France ?",
     options: [
-      "Indivisible, laïque, démocratique et sociale",
-      "Fédérale, laïque et démocratique",
-      "Indivisible, catholique et démocratique",
-      "Divisible, laïque et monarchique"
+      "La loi du 9 décembre 1905",
+      "La loi du 14 juillet 1789",
+      "Le Code civil de 1804",
+      "La Constitution de 1958"
     ],
     correctHash: hashAnswer(2, 0),
-    explication: "L'article 1er de la Constitution de 1958 définit la France comme « une République indivisible, laïque, démocratique et sociale ». Ces quatre caractéristiques sont les piliers fondamentaux de notre République."
+    explication: "La loi du 9 décembre 1905 établit la séparation des Églises et de l'État. Elle garantit la liberté de conscience et le libre exercice des cultes, tout en affirmant que la République ne reconnaît, ne salarie ni ne subventionne aucun culte."
   },
   {
     id: 3,
     niveau: 1,
-    question: "Que signifie le principe de laïcité en France ?",
+    question: "Qu'est-ce que le « bloc de constitutionnalité » en droit français ?",
     options: [
-      "La séparation des Églises et de l'État et la neutralité religieuse",
-      "L'interdiction de toutes les religions",
-      "La religion catholique comme religion d'État",
-      "L'obligation d'être athée"
+      "L'ensemble des textes à valeur constitutionnelle (Constitution, DDHC 1789, Préambule 1946, Charte environnement)",
+      "Uniquement la Constitution de 1958",
+      "Les décisions du Conseil constitutionnel",
+      "Les traités européens"
     ],
     correctHash: hashAnswer(3, 0),
-    explication: "La laïcité garantit la liberté de conscience et de culte, la séparation des Églises et de l'État, et la neutralité de l'État vis-à-vis des religions. Elle permet à chacun de croire ou de ne pas croire."
+    explication: "Le bloc de constitutionnalité comprend la Constitution de 1958, la Déclaration des droits de l'homme de 1789, le Préambule de 1946 et la Charte de l'environnement de 2004. Ces textes ont tous une valeur constitutionnelle."
   },
   {
     id: 4,
     niveau: 1,
-    question: "Que garantit le principe d'égalité en France ?",
+    question: "Selon la Déclaration des droits de l'homme de 1789, qu'est-ce que la Liberté ?",
     options: [
-      "Tous les citoyens sont égaux devant la loi",
-      "Tout le monde a le même salaire",
-      "Les riches ont plus de droits",
-      "Seuls les hommes ont des droits"
+      "Pouvoir faire tout ce qui ne nuit pas à autrui",
+      "Faire tout ce que l'on veut sans limite",
+      "Le droit de ne pas respecter les lois",
+      "L'absence de toute contrainte légale"
     ],
     correctHash: hashAnswer(4, 0),
-    explication: "Le principe d'égalité signifie que tous les citoyens sont égaux devant la loi, sans distinction d'origine, de race ou de religion. C'est un droit fondamental inscrit dans la Déclaration des droits de l'homme de 1789."
+    explication: "L'article 4 de la DDHC définit la liberté comme « pouvoir faire tout ce qui ne nuit pas à autrui ». Les limites de cette liberté sont déterminées par la loi, qui protège les droits d'autrui."
   },
   {
     id: 5,
     niveau: 1,
-    question: "Quel document fondateur proclame que « les hommes naissent libres et égaux en droits » ?",
+    question: "Quelle institution veille au respect de la Constitution et contrôle la constitutionnalité des lois ?",
     options: [
-      "La Déclaration des droits de l'homme et du citoyen de 1789",
-      "Le Code civil de 1804",
-      "La Constitution de 1958",
-      "Le Traité de Versailles"
+      "Le Conseil constitutionnel",
+      "Le Conseil d'État",
+      "La Cour de cassation",
+      "Le Parlement"
     ],
     correctHash: hashAnswer(5, 0),
-    explication: "L'article 1er de la Déclaration des droits de l'homme et du citoyen de 1789 proclame ce principe fondamental. Ce texte fait partie du bloc de constitutionnalité français."
+    explication: "Le Conseil constitutionnel, créé en 1958, vérifie la conformité des lois à la Constitution. Depuis 2008, les citoyens peuvent le saisir via la Question Prioritaire de Constitutionnalité (QPC)."
   },
   {
     id: 6,
     niveau: 1,
-    question: "La République française est-elle un État laïque ?",
+    question: "Qu'implique le caractère « indivisible » de la République française ?",
     options: [
-      "Oui, depuis la loi de 1905",
-      "Non, c'est un État catholique",
-      "Oui, depuis 1958",
-      "Non, c'est un État athée"
+      "L'unité du peuple, du territoire et de la loi qui s'applique uniformément",
+      "L'impossibilité de modifier la Constitution",
+      "L'interdiction des partis politiques régionaux",
+      "La centralisation absolue du pouvoir à Paris"
     ],
     correctHash: hashAnswer(6, 0),
-    explication: "Oui, la France est un État laïque depuis la loi de séparation des Églises et de l'État de 1905. Ce principe est inscrit dans l'article 1er de la Constitution."
+    explication: "L'indivisibilité signifie que la France forme un tout : un seul peuple, un seul territoire, une seule loi. Cela n'empêche pas la décentralisation mais exclut le fédéralisme et garantit l'égalité des citoyens."
   },
   {
     id: 7,
     niveau: 1,
-    question: "Que signifie « Fraternité » dans la devise républicaine ?",
+    question: "Qu'est-ce que la laïcité garantit aux citoyens français ?",
     options: [
-      "La solidarité et l'entraide entre citoyens",
-      "L'obligation d'avoir des frères",
-      "Le respect de l'autorité",
-      "La hiérarchie sociale"
+      "La liberté de conscience et le libre exercice des cultes",
+      "L'obligation de pratiquer une religion",
+      "L'interdiction de toute pratique religieuse",
+      "La supériorité d'une religion sur les autres"
     ],
     correctHash: hashAnswer(7, 0),
-    explication: "La fraternité exprime l'idée de solidarité entre les citoyens, l'entraide et le vivre-ensemble. Elle implique que les citoyens se considèrent comme membres d'une même communauté nationale."
+    explication: "La laïcité garantit à chacun la liberté de croire ou de ne pas croire, et de pratiquer sa religion librement. L'État reste neutre vis-à-vis de toutes les religions sans en favoriser aucune."
   },
   {
     id: 8,
     niveau: 1,
-    question: "Quelle est la valeur qui permet à chacun de penser et d'agir selon sa volonté ?",
+    question: "Quel principe républicain est directement issu de l'article 1er de la DDHC de 1789 ?",
     options: [
-      "La Liberté",
-      "L'Égalité",
-      "La Fraternité",
-      "La Laïcité"
+      "L'égalité devant la loi sans distinction d'origine, de race ou de religion",
+      "La laïcité de l'État",
+      "Le suffrage universel",
+      "La liberté de la presse"
     ],
     correctHash: hashAnswer(8, 0),
-    explication: "La Liberté est le premier terme de la devise républicaine. Elle comprend la liberté d'expression, de conscience, de circulation, d'association, etc. Elle s'exerce dans le respect des lois et des droits d'autrui."
+    explication: "L'article 1er de la DDHC proclame que « Les hommes naissent et demeurent libres et égaux en droits ». Ce principe d'égalité est repris dans l'article 1er de la Constitution de 1958."
   },
   {
     id: 9,
     niveau: 1,
-    question: "En France, la souveraineté appartient à :",
+    question: "Qu'est-ce que la « République sociale » mentionnée dans la Constitution ?",
     options: [
-      "Au peuple",
-      "Au Président de la République",
-      "Au Parlement",
-      "Au Gouvernement"
+      "L'État garantit la protection sociale et la solidarité nationale",
+      "La France est un pays socialiste",
+      "Les entreprises appartiennent à l'État",
+      "Tous les citoyens ont le même revenu"
     ],
     correctHash: hashAnswer(9, 0),
-    explication: "Selon l'article 3 de la Constitution, « la souveraineté nationale appartient au peuple qui l'exerce par ses représentants et par la voie du référendum ». C'est le principe de la démocratie."
+    explication: "Le caractère social de la République implique que l'État assure la protection sociale des citoyens : santé, retraite, chômage, famille. C'est le fondement de la Sécurité sociale créée en 1945."
   },
   {
     id: 10,
     niveau: 1,
-    question: "Quel est le régime politique de la France ?",
+    question: "Quel texte constitutionnel a introduit les droits économiques et sociaux en France ?",
     options: [
-      "Une République",
-      "Une Monarchie",
-      "Une Dictature",
-      "Un Empire"
+      "Le Préambule de la Constitution de 1946",
+      "La Déclaration des droits de l'homme de 1789",
+      "La Constitution de 1958",
+      "La Charte de l'environnement de 2004"
     ],
     correctHash: hashAnswer(10, 0),
-    explication: "La France est une République, c'est-à-dire un régime politique où le pouvoir est exercé par des représentants élus par le peuple. Depuis 1958, c'est la Ve République."
+    explication: "Le Préambule de 1946 a consacré les droits économiques et sociaux : droit au travail, droit syndical, droit de grève, protection de la santé, droit à l'éducation. Il fait partie du bloc de constitutionnalité."
   }
 ];
 

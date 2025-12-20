@@ -24,137 +24,137 @@ export interface QuizQuestion {
   explication: string;
 }
 
-// ==================== NIVEAU 1 : LA MONARCHIE ET LA RÉVOLUTION (10 questions) ====================
+// ==================== NIVEAU 1 : HISTOIRE CONSTITUTIONNELLE ET POLITIQUE (10 questions) ====================
 const NIVEAU_1: QuizQuestion[] = [
   {
     id: 2001,
     niveau: 1,
-    question: "En quelle année a eu lieu la Révolution française ?",
+    question: "Quelle rupture fondamentale la Révolution française de 1789 a-t-elle opérée dans l'organisation du pouvoir ?",
     options: [
-      "1789",
-      "1792",
-      "1804",
-      "1815"
+      "Le passage de la souveraineté royale à la souveraineté nationale",
+      "Le renforcement du pouvoir absolu du roi",
+      "La création de l'Union européenne",
+      "L'instauration d'une théocratie"
     ],
     correctHash: hashAnswer(2001, 0),
-    explication: "La Révolution française a débuté en 1789 avec la prise de la Bastille le 14 juillet. Elle marque la fin de la monarchie absolue."
+    explication: "La Révolution a transféré la souveraineté du roi au peuple/nation. L'article 3 de la DDHC proclame que « le principe de toute souveraineté réside essentiellement dans la Nation ». C'est le fondement de la démocratie française."
   },
   {
     id: 2002,
     niveau: 1,
-    question: "Quel événement s'est produit le 14 juillet 1789 ?",
+    question: "Quels droits fondamentaux la Déclaration des droits de l'homme et du citoyen de 1789 consacre-t-elle ?",
     options: [
-      "La prise de la Bastille",
-      "L'exécution de Louis XVI",
-      "Le sacre de Napoléon",
-      "La fin de la Première Guerre mondiale"
+      "La liberté, la propriété, la sûreté et la résistance à l'oppression",
+      "Uniquement le droit de vote",
+      "Les droits sociaux comme la retraite",
+      "Le droit à l'emploi garanti"
     ],
     correctHash: hashAnswer(2002, 0),
-    explication: "Le 14 juillet 1789, le peuple de Paris a pris d'assaut la Bastille, une prison royale. Cette date est devenue la fête nationale française."
+    explication: "L'article 2 de la DDHC énumère les droits naturels et imprescriptibles de l'homme : la liberté, la propriété, la sûreté et la résistance à l'oppression. Ces droits de première génération restent le socle des libertés fondamentales."
   },
   {
     id: 2003,
     niveau: 1,
-    question: "Qui était le roi de France au moment de la Révolution française ?",
+    question: "Quel texte a codifié le droit civil français et reste encore en vigueur aujourd'hui ?",
     options: [
-      "Louis XVI",
-      "Louis XIV",
-      "Napoléon Bonaparte",
-      "Charles de Gaulle"
+      "Le Code civil de 1804, dit Code Napoléon",
+      "La Constitution de 1791",
+      "Le Code du travail de 1910",
+      "La Déclaration des droits de l'homme de 1789"
     ],
     correctHash: hashAnswer(2003, 0),
-    explication: "Louis XVI était roi de France en 1789. Il a été guillotiné en 1793 pendant la Révolution."
+    explication: "Le Code civil de 1804, voulu par Napoléon, a unifié le droit privé français. Il régit encore aujourd'hui les personnes, la famille, les biens et les contrats. Il a influencé de nombreux systèmes juridiques dans le monde."
   },
   {
     id: 2004,
     niveau: 1,
-    question: "Comment appelle-t-on le régime politique où le roi a tous les pouvoirs ?",
+    question: "Quelles sont les lois fondatrices de l'école républicaine votées sous la IIIe République ?",
     options: [
-      "La monarchie absolue",
-      "La République",
-      "La démocratie",
-      "Le communisme"
+      "Les lois Jules Ferry (1881-1882) instaurant l'école gratuite, laïque et obligatoire",
+      "Les lois Guizot de 1833",
+      "Les lois Debré de 1959",
+      "La loi Haby de 1975"
     ],
     correctHash: hashAnswer(2004, 0),
-    explication: "La monarchie absolue est un régime où le roi concentre tous les pouvoirs. Louis XIV en est l'exemple le plus célèbre avec sa phrase 'L'État, c'est moi'."
+    explication: "Les lois Jules Ferry ont imposé l'instruction primaire obligatoire (6-13 ans), gratuite et laïque. Elles ont fondé le modèle de l'école républicaine française qui vise à former des citoyens éclairés."
   },
   {
     id: 2005,
     niveau: 1,
-    question: "Quel document a été adopté le 26 août 1789 ?",
+    question: "Quelle loi a définitivement établi la séparation des Églises et de l'État ?",
     options: [
-      "La Déclaration des droits de l'homme et du citoyen",
-      "La Constitution de la Ve République",
-      "Le Code civil",
-      "Le Traité de Versailles"
+      "La loi du 9 décembre 1905",
+      "Le Concordat de 1801",
+      "La Constitution de 1958",
+      "La loi Combes de 1901"
     ],
     correctHash: hashAnswer(2005, 0),
-    explication: "La Déclaration des droits de l'homme et du citoyen a été adoptée le 26 août 1789. Elle proclame les droits fondamentaux comme la liberté et l'égalité."
+    explication: "La loi de 1905 proclame que « La République assure la liberté de conscience » et « ne reconnaît, ne salarie ni ne subventionne aucun culte ». Elle reste le fondement juridique de la laïcité en France."
   },
   {
     id: 2006,
     niveau: 1,
-    question: "Quel roi français était surnommé 'le Roi-Soleil' ?",
+    question: "Quand et par qui les femmes ont-elles obtenu le droit de vote en France ?",
     options: [
-      "Louis XIV",
-      "Louis XVI",
-      "Louis XV",
-      "Henri IV"
+      "En 1944 par ordonnance du Gouvernement provisoire du général de Gaulle",
+      "En 1789 avec la Révolution française",
+      "En 1848 avec le suffrage universel masculin",
+      "En 1958 avec la Ve République"
     ],
     correctHash: hashAnswer(2006, 0),
-    explication: "Louis XIV (1643-1715) était surnommé le Roi-Soleil. Il a fait construire le château de Versailles et a régné 72 ans."
+    explication: "L'ordonnance du 21 avril 1944 a accordé le droit de vote et d'éligibilité aux femmes. Elles ont voté pour la première fois aux élections municipales d'avril 1945. La France était en retard par rapport à d'autres démocraties."
   },
   {
     id: 2007,
     niveau: 1,
-    question: "Qui a fait construire le château de Versailles ?",
+    question: "Quel programme le Conseil National de la Résistance a-t-il élaboré en 1944 ?",
     options: [
-      "Louis XIV",
-      "Napoléon Bonaparte",
-      "Louis XVI",
-      "François Ier"
+      "Un programme de réformes sociales incluant la Sécurité sociale, les nationalisations et les comités d'entreprise",
+      "Un plan de reconstruction des villes bombardées",
+      "Un traité de paix avec l'Allemagne",
+      "La Constitution de la IVe République"
     ],
     correctHash: hashAnswer(2007, 0),
-    explication: "Louis XIV a transformé le pavillon de chasse de son père en un somptueux château, symbole de la monarchie absolue."
+    explication: "Le programme du CNR (15 mars 1944), intitulé « Les Jours Heureux », prévoyait la création de la Sécurité sociale, les nationalisations, le droit de vote des femmes et les comités d'entreprise. Il a façonné le modèle social français."
   },
   {
     id: 2008,
     niveau: 1,
-    question: "Quelle était la devise révolutionnaire de 1789 ?",
+    question: "Quelle crise a conduit au retour du général de Gaulle et à la fondation de la Ve République en 1958 ?",
     options: [
-      "Liberté, Égalité, Fraternité",
-      "Travail, Famille, Patrie",
-      "Unité et Progrès",
-      "Paix et Prospérité"
+      "La crise algérienne et l'instabilité de la IVe République",
+      "La Seconde Guerre mondiale",
+      "Mai 68",
+      "La crise économique de 1929"
     ],
     correctHash: hashAnswer(2008, 0),
-    explication: "La devise 'Liberté, Égalité, Fraternité' est née pendant la Révolution française. Elle est devenue la devise officielle de la République."
+    explication: "La guerre d'Algérie (1954-1962) et le putsch des généraux ont précipité la chute de la IVe République. De Gaulle est rappelé au pouvoir en mai 1958 et fait adopter une nouvelle Constitution renforçant l'exécutif."
   },
   {
     id: 2009,
     niveau: 1,
-    question: "Qu'est-ce que la Bastille avant 1789 ?",
+    question: "Quel référendum a instauré l'élection du Président au suffrage universel direct ?",
     options: [
-      "Une prison royale",
-      "Un château royal",
-      "Une église",
-      "Un parlement"
+      "Le référendum de 1962 proposé par le général de Gaulle",
+      "Le référendum de 1958 sur la Constitution",
+      "Le référendum de 2000 sur le quinquennat",
+      "Le référendum de 2005 sur la Constitution européenne"
     ],
     correctHash: hashAnswer(2009, 0),
-    explication: "La Bastille était une forteresse et une prison d'État où le roi pouvait enfermer ses opposants. Sa prise symbolise la fin de l'arbitraire royal."
+    explication: "Le référendum du 28 octobre 1962 a modifié la Constitution pour instaurer l'élection du Président au suffrage universel direct. Cette réforme, contestée dans sa procédure, a renforcé la légitimité présidentielle."
   },
   {
     id: 2010,
     niveau: 1,
-    question: "Qu'est-ce que le Tiers État avant la Révolution ?",
+    question: "Quelle date historique est associée à l'Appel du 18 juin 1940 ?",
     options: [
-      "Le peuple (ni noblesse, ni clergé)",
-      "Les nobles",
-      "Le clergé",
-      "La famille royale"
+      "L'appel à la résistance lancé par le général de Gaulle depuis Londres",
+      "La signature de l'armistice avec l'Allemagne",
+      "La libération de Paris",
+      "Le débarquement en Normandie"
     ],
     correctHash: hashAnswer(2010, 0),
-    explication: "Le Tiers État représentait 98% de la population (bourgeois, paysans, artisans). Il n'avait pas les mêmes privilèges que la noblesse et le clergé."
+    explication: "Le 18 juin 1940, le général de Gaulle lance depuis Londres un appel à continuer le combat contre l'Allemagne nazie. Cet appel fonde la France Libre et la Résistance. Il est devenu un symbole de refus de la défaite."
   }
 ];
 
