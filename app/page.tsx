@@ -5,6 +5,14 @@ import Hero from '@/components/landing/Hero';
 import ProgressSection from '@/components/landing/ProgressSection';
 import Features from '@/components/landing/Features';
 import Pricing from '@/components/landing/Pricing';
+import SEOContent from '@/components/seo/SEOContent';
+import { 
+  getOrganizationSchema, 
+  getWebSiteSchema, 
+  getCourseSchema, 
+  getFAQSchema 
+} from '@/lib/seo/schemas';
+import { SEO_CONFIG, FAQ_RICH_SNIPPETS } from '@/lib/seo/constants';
 
 export const metadata: Metadata = {
   title: 'Test Civique France 2025 2026 - Préparation Examen Naturalisation & Titre de Séjour | Où passer le test civique',
@@ -103,15 +111,31 @@ const homeJsonLd = {
   ],
 };
 
-import SEOContent from '@/components/seo/SEOContent';
+// Schémas JSON-LD additionnels pour la page d'accueil
+const organizationSchema = getOrganizationSchema();
+const websiteSchema = getWebSiteSchema();
+const courseSchema = getCourseSchema({
+  name: 'Préparation Complète au Test Civique Français 2025',
+  description: 'Formation complète pour réussir le test civique à 80% (32/40). Plus de 800 questions QCM, cours complets, examens blancs. Préparation pour la naturalisation, carte de séjour pluriannuelle et titre de séjour étudiant.',
+  url: 'https://www.testciviquefrance.fr/cours',
+  duration: 'P4W',
+  level: 'Beginner',
+});
+const faqSchema = getFAQSchema(FAQ_RICH_SNIPPETS);
+
+// Combiner tous les schémas
+const allHomeSchemas = [homeJsonLd, organizationSchema, websiteSchema, courseSchema, faqSchema];
 
 export default function HomePage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }}
-      />
+      {allHomeSchemas.map((schema, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       <Header />
       <main>
         <Hero />

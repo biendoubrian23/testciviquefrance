@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { TarifsSchemas } from './TarifsSchemas';
 
 export const metadata: Metadata = {
   title: 'Tarifs - Test Civique France 2025 | Préparation Gratuite Naturalisation & Titre Séjour',
@@ -20,6 +21,20 @@ export const metadata: Metadata = {
     url: 'https://www.testciviquefrance.fr/tarifs',
     type: 'website',
     siteName: 'Test Civique France',
+    images: [
+      {
+        url: 'https://www.testciviquefrance.fr/images/og-tarifs.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Tarifs Test Civique France - Préparation naturalisation',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tarifs - Test Civique France 2025',
+    description: 'Préparation gratuite et premium au test civique français.',
+    images: ['https://www.testciviquefrance.fr/images/og-tarifs.jpg'],
   },
 };
 
@@ -28,5 +43,11 @@ export default function TarifsLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return children;
+  return (
+    <>
+      {/* Schémas JSON-LD pour les produits/offres */}
+      <TarifsSchemas />
+      {children}
+    </>
+  );
 }

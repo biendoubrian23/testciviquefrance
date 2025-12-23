@@ -1,12 +1,12 @@
 import { MetadataRoute } from 'next';
-import { articles } from '@/lib/data/articles';
+import { allArticles } from '@/lib/data/articles';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.testciviquefrance.fr';
   const currentDate = new Date().toISOString();
 
-  // Générer les entrées pour tous les articles dynamiquement
-  const articleEntries: MetadataRoute.Sitemap = articles.map((article) => ({
+  // Générer les entrées pour tous les articles dynamiquement (incluant les articles SEO)
+  const articleEntries: MetadataRoute.Sitemap = allArticles.map((article) => ({
     url: `${baseUrl}/articles/${article.slug}`,
     lastModified: article.date ? new Date(article.date.split('/').reverse().join('-')).toISOString() : currentDate,
     changeFrequency: 'monthly' as const,

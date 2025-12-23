@@ -5,9 +5,19 @@ import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { ChevronDown } from 'lucide-react';
-import { StructuredData, getFAQSchema, getBreadcrumbSchema } from '@/components/seo/StructuredData';
+import { getFAQSchema, getBreadcrumbSchema } from '@/lib/seo/schemas';
 import OptimizedBackgroundImage from '@/components/ui/OptimizedBackgroundImage';
 import InternalLinks from '@/components/ui/InternalLinks';
+
+// Helper component for JSON-LD in client component
+function StructuredData({ data }: { data: object }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+    />
+  );
+}
 
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {

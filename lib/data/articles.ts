@@ -114,19 +114,45 @@ export const articles: Article[] = [
   },
 ];
 
+// Import des articles SEO
+import { seoArticles } from './seo-articles';
+
+// Fusionner tous les articles
+export const allArticles: Article[] = [...articles, ...seoArticles];
+
 export const getArticleBySlug = (slug: string): Article | undefined => {
-  return articles.find((article) => article.slug === slug);
+  return allArticles.find((article) => article.slug === slug);
 };
 
 export const getArticlesByCategory = (categorySlug: string): Article[] => {
-  if (categorySlug === 'tous') return articles;
-  return articles.filter((article) => article.categorySlug === categorySlug);
+  if (categorySlug === 'tous') return allArticles;
+  return allArticles.filter((article) => article.categorySlug === categorySlug);
 };
 
 export const getFeaturedArticles = (): Article[] => {
-  return articles.filter((article) => article.featured);
+  return allArticles.filter((article) => article.featured);
 };
 
 export const getPopularArticles = (limit: number = 3): Article[] => {
-  return [...articles].sort((a, b) => b.views - a.views).slice(0, limit);
+  return [...allArticles].sort((a, b) => b.views - a.views).slice(0, limit);
+};
+
+/**
+ * Récupère les articles liés (même catégorie ou featured)
+ */
+export const getRelatedArticles = (currentSlug: string, limit: number = 3): Article[] => {
+  const current = getArticleBySlug(currentSlug);
+  if (!current) return getPopularArticles(limit);
+  
+  // Articles de la même catégorie d'abord
+  const sameCategory = allArticles.filter(
+    (a) => a.categorySlug === current.categorySlug && a.slug !== currentSlug
+  );
+  
+  // Compléter avec d'autres articles si nécessaire
+  const others = allArticles.filter(
+    (a) => a.categorySlug !== current.categorySlug && a.slug !== currentSlug
+  );
+  
+  return [...sameCategory, ...others].slice(0, limit);
 };
