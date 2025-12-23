@@ -29,7 +29,7 @@ export const categories: Category[] = [
     name: 'Tous les articles',
     slug: 'tous',
     icon: '',
-    count: 1,
+    count: 21,
     color: 'primary',
   },
   {
@@ -37,7 +37,7 @@ export const categories: Category[] = [
     name: 'Cadre légal',
     slug: 'cadre-legal',
     icon: '',
-    count: 1,
+    count: 7,
     color: 'blue',
   },
   {
@@ -45,7 +45,7 @@ export const categories: Category[] = [
     name: 'Thématiques officielles',
     slug: 'thematiques',
     icon: '',
-    count: 0,
+    count: 9,
     color: 'green',
   },
   {
@@ -53,7 +53,7 @@ export const categories: Category[] = [
     name: 'Préparation',
     slug: 'preparation',
     icon: '',
-    count: 0,
+    count: 2,
     color: 'purple',
   },
   {
@@ -61,7 +61,7 @@ export const categories: Category[] = [
     name: 'Conseils pratiques',
     slug: 'conseils',
     icon: '',
-    count: 1,
+    count: 3,
     color: 'orange',
   },
 ];

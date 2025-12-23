@@ -128,7 +128,7 @@ export default function AchatsAnnexesClient({
         subtitle="Services additionnels achetés par les utilisateurs"
       />
 
-      <div className="p-4 lg:p-8">
+      <div className="p-8">
         {/* Stats globales */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <StatCard

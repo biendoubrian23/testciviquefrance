@@ -1,16 +1,20 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ArticleCard from '@/components/blog/ArticleCard';
 import BlogSidebar from '@/components/blog/BlogSidebar';
-import { getArticlesByCategory } from '@/lib/data/articles';
+import { allArticles } from '@/lib/data/articles';
 
 export default function ArticlesPage() {
   const [selectedCategory, setSelectedCategory] = useState('tous');
 
-  const sortedArticles = getArticlesByCategory(selectedCategory);
+  // Filtrage réactif des articles basé sur la catégorie sélectionnée
+  const sortedArticles = useMemo(() => {
+    if (selectedCategory === 'tous') return allArticles;
+    return allArticles.filter((article) => article.categorySlug === selectedCategory);
+  }, [selectedCategory]);
 
   return (
     <>
