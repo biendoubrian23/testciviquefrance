@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/contexts/AuthContext';
+import { createClient } from '@/lib/supabase/client';
 import {
   AlertTriangle,
   XCircle,
@@ -25,16 +27,29 @@ interface QuizResults {
 
 export default function OnboardingResultsPage() {
   const router = useRouter();
+  const { user } = useAuth();
   const [results, setResults] = useState<QuizResults | null>(null);
 
   useEffect(() => {
     const stored = sessionStorage.getItem('onboardingResults');
     if (stored) {
       setResults(JSON.parse(stored));
+      
+      // Marquer l'onboarding comme complété dès qu'on voit les résultats
+      const markOnboardingComplete = async () => {
+        if (user) {
+          const supabase = createClient();
+          await supabase
+            .from('profiles')
+            .update({ has_completed_onboarding: true })
+            .eq('id', user.id);
+        }
+      };
+      markOnboardingComplete();
     } else {
       router.push('/onboarding/quiz');
     }
-  }, [router]);
+  }, [router, user]);
 
   if (!results) {
     return (

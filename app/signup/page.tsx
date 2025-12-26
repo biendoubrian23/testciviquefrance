@@ -145,8 +145,8 @@ export default function SignupPage() {
             </div>
           )}
 
-          {/* Bouton Google - Commenté car pas encore configuré */}
-          {/* <button
+          {/* Bouton Google */}
+          <button
             type="button"
             onClick={handleGoogleSignIn}
             disabled={isGoogleLoading}
@@ -184,7 +184,7 @@ export default function SignupPage() {
             <div className="relative flex justify-center text-sm">
               <span className="px-4 bg-white text-gray-500">ou</span>
             </div>
-          </div> */}
+          </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div className="grid grid-cols-2 gap-4">

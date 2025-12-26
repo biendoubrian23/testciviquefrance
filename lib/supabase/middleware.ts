@@ -29,39 +29,35 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  // IMPORTANT: On rafraîchit juste la session, on ne bloque PAS
-  // Le client gérera la redirection si nécessaire
+  // IMPORTANT: Vérifier si l'utilisateur est VRAIMENT connecté
+  let isAuthenticated = false;
   try {
-    await supabase.auth.getUser();
+    const { data: { user } } = await supabase.auth.getUser();
+    isAuthenticated = !!user;
   } catch {
-    // Erreur silencieuse - le client gérera
+    // Erreur silencieuse - considérer comme non connecté
     console.warn('Middleware: Impossible de vérifier l\'utilisateur');
+    isAuthenticated = false;
   }
 
-  // Routes protégées - vérification SIMPLE sans appel DB
+  // Routes protégées
   const protectedRoutes = ['/dashboard', '/onboarding'];
   const isProtectedRoute = protectedRoutes.some((route) =>
     request.nextUrl.pathname.startsWith(route)
   );
 
-  // Vérifier UNIQUEMENT la présence du cookie de session (rapide)
-  const hasAuthCookie = request.cookies.getAll().some(
-    cookie => cookie.name.includes('auth-token') || cookie.name.includes('sb-')
-  );
-
-  // Si route protégée et PAS de cookie → redirection login
-  // (Le client vérifiera plus finement ensuite)
-  if (isProtectedRoute && !hasAuthCookie) {
+  // Si route protégée et PAS connecté → redirection login
+  if (isProtectedRoute && !isAuthenticated) {
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     return NextResponse.redirect(url);
   }
 
-  // Si sur login/signup AVEC cookie → redirection dashboard
+  // Si sur login/signup ET connecté → redirection dashboard
   const authRoutes = ['/login', '/signup'];
   const isAuthRoute = authRoutes.includes(request.nextUrl.pathname);
   
-  if (isAuthRoute && hasAuthCookie) {
+  if (isAuthRoute && isAuthenticated) {
     const url = request.nextUrl.clone();
     url.pathname = '/dashboard';
     return NextResponse.redirect(url);
