@@ -31,10 +31,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quel article de la Constitution de 1958 définit les caractéristiques fondamentales de la République française ?",
     options: [
-      "L'article 1er",
-      "L'article 2",
-      "L'article 89",
-      "Le Préambule"
+      "L'article 1er de la Constitution",
+      "L'article 2 de la Constitution",
+      "L'article 89 de la Constitution",
+      "Le Préambule de la Constitution"
     ],
     correctHash: hashAnswer(1, 0),
     explication: "L'article 1er de la Constitution de 1958 affirme que « La France est une République indivisible, laïque, démocratique et sociale ». C'est le fondement de l'identité constitutionnelle française."
@@ -45,9 +45,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quelle loi fondamentale a établi la séparation des Églises et de l'État en France ?",
     options: [
       "La loi du 9 décembre 1905",
-      "La loi du 14 juillet 1789",
-      "Le Code civil de 1804",
-      "La Constitution de 1958"
+      "La loi du 28 mars 1882",
+      "La loi du 1er juillet 1901",
+      "La loi du 29 juillet 1881"
     ],
     correctHash: hashAnswer(2, 0),
     explication: "La loi du 9 décembre 1905 établit la séparation des Églises et de l'État. Elle garantit la liberté de conscience et le libre exercice des cultes, tout en affirmant que la République ne reconnaît, ne salarie ni ne subventionne aucun culte."
@@ -57,10 +57,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'est-ce que le « bloc de constitutionnalité » en droit français ?",
     options: [
-      "L'ensemble des textes à valeur constitutionnelle (Constitution, DDHC 1789, Préambule 1946, Charte environnement)",
-      "Uniquement la Constitution de 1958",
-      "Les décisions du Conseil constitutionnel",
-      "Les traités européens"
+      "La Constitution, la DDHC de 1789, le Préambule de 1946 et la Charte de l'environnement",
+      "La Constitution de 1958, le Code civil et les traités internationaux ratifiés",
+      "Les décisions du Conseil constitutionnel et les lois organiques fondamentales",
+      "La Constitution, les ordonnances présidentielles et les règlements du Parlement"
     ],
     correctHash: hashAnswer(3, 0),
     explication: "Le bloc de constitutionnalité comprend la Constitution de 1958, la Déclaration des droits de l'homme de 1789, le Préambule de 1946 et la Charte de l'environnement de 2004. Ces textes ont tous une valeur constitutionnelle."
@@ -71,9 +71,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Selon la Déclaration des droits de l'homme de 1789, qu'est-ce que la Liberté ?",
     options: [
       "Pouvoir faire tout ce qui ne nuit pas à autrui",
-      "Faire tout ce que l'on veut sans limite",
-      "Le droit de ne pas respecter les lois",
-      "L'absence de toute contrainte légale"
+      "Pouvoir agir selon sa conscience personnelle",
+      "Pouvoir exercer ses droits sans restriction",
+      "Pouvoir s'exprimer librement en tout lieu"
     ],
     correctHash: hashAnswer(4, 0),
     explication: "L'article 4 de la DDHC définit la liberté comme « pouvoir faire tout ce qui ne nuit pas à autrui ». Les limites de cette liberté sont déterminées par la loi, qui protège les droits d'autrui."
@@ -86,7 +86,7 @@ const NIVEAU_1: QuizQuestion[] = [
       "Le Conseil constitutionnel",
       "Le Conseil d'État",
       "La Cour de cassation",
-      "Le Parlement"
+      "La Cour des comptes"
     ],
     correctHash: hashAnswer(5, 0),
     explication: "Le Conseil constitutionnel, créé en 1958, vérifie la conformité des lois à la Constitution. Depuis 2008, les citoyens peuvent le saisir via la Question Prioritaire de Constitutionnalité (QPC)."
@@ -96,10 +96,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'implique le caractère « indivisible » de la République française ?",
     options: [
-      "L'unité du peuple, du territoire et de la loi qui s'applique uniformément",
-      "L'impossibilité de modifier la Constitution",
-      "L'interdiction des partis politiques régionaux",
-      "La centralisation absolue du pouvoir à Paris"
+      "L'unité du peuple, du territoire et de la loi s'appliquant uniformément",
+      "L'impossibilité de créer des régions autonomes avec leurs propres lois",
+      "L'interdiction de la décentralisation et des pouvoirs locaux élus",
+      "La centralisation de toutes les décisions administratives à Paris"
     ],
     correctHash: hashAnswer(6, 0),
     explication: "L'indivisibilité signifie que la France forme un tout : un seul peuple, un seul territoire, une seule loi. Cela n'empêche pas la décentralisation mais exclut le fédéralisme et garantit l'égalité des citoyens."
@@ -110,9 +110,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Qu'est-ce que la laïcité garantit aux citoyens français ?",
     options: [
       "La liberté de conscience et le libre exercice des cultes",
-      "L'obligation de pratiquer une religion",
-      "L'interdiction de toute pratique religieuse",
-      "La supériorité d'une religion sur les autres"
+      "La neutralité des citoyens vis-à-vis de toutes les religions",
+      "L'interdiction des signes religieux dans l'espace public",
+      "La séparation stricte entre vie privée et vie religieuse"
     ],
     correctHash: hashAnswer(7, 0),
     explication: "La laïcité garantit à chacun la liberté de croire ou de ne pas croire, et de pratiquer sa religion librement. L'État reste neutre vis-à-vis de toutes les religions sans en favoriser aucune."
@@ -122,10 +122,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quel principe républicain est directement issu de l'article 1er de la DDHC de 1789 ?",
     options: [
-      "L'égalité devant la loi sans distinction d'origine, de race ou de religion",
-      "La laïcité de l'État",
-      "Le suffrage universel",
-      "La liberté de la presse"
+      "L'égalité des hommes en droits dès la naissance",
+      "La liberté d'expression et d'opinion",
+      "Le droit de propriété inviolable et sacré",
+      "La résistance à l'oppression et à la tyrannie"
     ],
     correctHash: hashAnswer(8, 0),
     explication: "L'article 1er de la DDHC proclame que « Les hommes naissent et demeurent libres et égaux en droits ». Ce principe d'égalité est repris dans l'article 1er de la Constitution de 1958."
@@ -136,9 +136,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Qu'est-ce que la « République sociale » mentionnée dans la Constitution ?",
     options: [
       "L'État garantit la protection sociale et la solidarité nationale",
-      "La France est un pays socialiste",
-      "Les entreprises appartiennent à l'État",
-      "Tous les citoyens ont le même revenu"
+      "L'État organise la redistribution égalitaire des richesses",
+      "L'État contrôle les principales entreprises stratégiques",
+      "L'État assure un revenu minimum identique pour tous"
     ],
     correctHash: hashAnswer(9, 0),
     explication: "Le caractère social de la République implique que l'État assure la protection sociale des citoyens : santé, retraite, chômage, famille. C'est le fondement de la Sécurité sociale créée en 1945."
@@ -150,7 +150,7 @@ const NIVEAU_1: QuizQuestion[] = [
     options: [
       "Le Préambule de la Constitution de 1946",
       "La Déclaration des droits de l'homme de 1789",
-      "La Constitution de 1958",
+      "L'article premier de la Constitution de 1958",
       "La Charte de l'environnement de 2004"
     ],
     correctHash: hashAnswer(10, 0),

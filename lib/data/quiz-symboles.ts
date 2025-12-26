@@ -31,10 +31,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Dans quel article de la Constitution de 1958 sont définis les symboles officiels de la République ?",
     options: [
-      "L'article 2",
-      "L'article 1er",
-      "Le Préambule",
-      "L'article 89"
+      "L'article 2 de la Constitution",
+      "L'article 1er de la Constitution",
+      "L'article 3 de la Constitution",
+      "L'article 4 de la Constitution"
     ],
     correctHash: hashAnswer(3001, 0),
     explication: "L'article 2 de la Constitution définit les symboles de la République : l'emblème national (drapeau tricolore), l'hymne national (La Marseillaise), la devise (Liberté, Égalité, Fraternité) et le principe du gouvernement du peuple."
@@ -45,9 +45,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quelle est l'origine historique des trois couleurs du drapeau français ?",
     options: [
       "Le bleu et rouge de Paris associés au blanc de la monarchie",
-      "Les couleurs des trois ordres (clergé, noblesse, tiers état)",
-      "Les couleurs de l'armée révolutionnaire",
-      "Un choix arbitraire de Napoléon Bonaparte"
+      "Le bleu du ciel, le blanc de la paix et le rouge du sang versé",
+      "Les couleurs des trois ordres : clergé, noblesse et tiers état",
+      "Les couleurs de l'armée révolutionnaire adoptées en 1789"
     ],
     correctHash: hashAnswer(3002, 0),
     explication: "Le drapeau tricolore associe le blanc royal aux couleurs de Paris (bleu et rouge). Cette combinaison symbolise l'union du roi et du peuple parisien lors de la Révolution française."
@@ -58,9 +58,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Qui a composé La Marseillaise et dans quel contexte historique ?",
     options: [
       "Rouget de Lisle en 1792, pour l'entrée en guerre contre l'Autriche",
-      "Victor Hugo en 1848, pour la Révolution de février",
-      "Napoléon Bonaparte en 1804, pour son sacre",
-      "Charles de Gaulle en 1940, pour la Résistance"
+      "Gossec et Méhul en 1795, pour célébrer la victoire de Valmy",
+      "Berlioz et Thomas en 1830, pour la Révolution de Juillet",
+      "Debussy et Ravel en 1879, pour l'inauguration de la IIIe République"
     ],
     correctHash: hashAnswer(3003, 0),
     explication: "Claude Joseph Rouget de Lisle a composé le « Chant de guerre pour l'Armée du Rhin » en avril 1792 à Strasbourg, alors que la France déclarait la guerre à l'Autriche. Il a été renommé « La Marseillaise » par les fédérés marseillais."
@@ -71,9 +71,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "En quelle année La Marseillaise est-elle définitivement devenue l'hymne national officiel ?",
     options: [
       "1879 sous la IIIe République",
-      "1792 pendant la Révolution",
-      "1958 avec la Ve République",
-      "1804 sous le Premier Empire"
+      "1848 sous la IIe République",
+      "1870 après la chute de l'Empire",
+      "1889 pour le centenaire de la Révolution"
     ],
     correctHash: hashAnswer(3004, 0),
     explication: "Bien qu'adoptée une première fois en 1795, La Marseillaise a été interdite sous l'Empire et la Restauration. Elle est redevenue hymne national définitivement en 1879 sous la IIIe République."
@@ -84,9 +84,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Que représente Marianne dans la symbolique républicaine ?",
     options: [
       "L'allégorie féminine de la République et de ses valeurs",
-      "Une reine historique de France",
-      "La première femme à avoir voté en France",
-      "Une héroïne de la Révolution française"
+      "L'allégorie féminine de la Justice et de l'Équité",
+      "L'allégorie féminine de la Liberté et de la Victoire",
+      "L'allégorie féminine de la Paix et de la Concorde"
     ],
     correctHash: hashAnswer(3005, 0),
     explication: "Marianne est l'allégorie de la République française. Elle incarne les valeurs républicaines : la liberté, la raison et le combat pour la démocratie. Elle n'est pas un personnage historique réel mais un symbole."
@@ -97,9 +97,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Que symbolise le bonnet phrygien porté par Marianne ?",
     options: [
       "La liberté, hérité du bonnet des esclaves affranchis dans l'Antiquité",
-      "La victoire militaire française",
-      "La sagesse des philosophes grecs",
-      "L'appartenance au peuple parisien"
+      "La sagesse, inspiré de la coiffe des philosophes grecs anciens",
+      "La victoire, adopté après les batailles de la Révolution française",
+      "L'égalité, représentant l'unité du peuple français révolutionnaire"
     ],
     correctHash: hashAnswer(3006, 0),
     explication: "Le bonnet phrygien était porté par les esclaves affranchis dans la Rome antique. Il est devenu le symbole de la liberté pendant la Révolution française et orne la tête de Marianne."
@@ -109,10 +109,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Pourquoi le 14 juillet a-t-il été choisi comme fête nationale française ?",
     options: [
-      "Pour commémorer la prise de la Bastille (1789) et la Fête de la Fédération (1790)",
-      "Pour célébrer uniquement la prise de la Bastille",
-      "Pour marquer l'anniversaire de la proclamation de la République",
-      "Pour honorer l'adoption de la Constitution"
+      "Pour commémorer la prise de la Bastille et la Fête de la Fédération",
+      "Pour célébrer la proclamation de la République et l'abolition de la royauté",
+      "Pour marquer l'adoption de la Déclaration des droits de l'homme",
+      "Pour honorer la victoire de Valmy et la fin des guerres révolutionnaires"
     ],
     correctHash: hashAnswer(3007, 0),
     explication: "La loi de 1880 a choisi le 14 juillet pour célébrer à la fois la prise de la Bastille (symbole révolutionnaire) et la Fête de la Fédération de 1790 (symbole d'unité nationale), évitant ainsi la seule commémoration d'une journée sanglante."
@@ -123,9 +123,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quel est le statut juridique du coq gaulois en tant que symbole de la France ?",
     options: [
       "C'est un symbole traditionnel non inscrit dans la Constitution",
-      "Il est inscrit à l'article 2 de la Constitution",
-      "Il a été officialisé par décret présidentiel",
-      "Il est le symbole officiel depuis Napoléon"
+      "C'est un symbole officiel inscrit à l'article 2 de la Constitution",
+      "C'est un symbole légal défini par une loi organique de 1958",
+      "C'est un symbole national adopté par décret présidentiel en 1962"
     ],
     correctHash: hashAnswer(3008, 0),
     explication: "Contrairement au drapeau, à l'hymne et à la devise, le coq gaulois n'est pas inscrit dans la Constitution. C'est un symbole traditionnel et populaire, utilisé notamment par les équipes sportives françaises."
@@ -136,9 +136,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Où se trouve le Grand Sceau de la République et qui en est le gardien ?",
     options: [
       "Au Ministère de la Justice, gardé par le Garde des Sceaux",
-      "À l'Élysée, gardé par le Président",
-      "Au Sénat, gardé par son Président",
-      "Au Conseil constitutionnel, gardé par son Président"
+      "Au Palais de l'Élysée, gardé par le Président de la République",
+      "Au Palais du Luxembourg, gardé par le Président du Sénat",
+      "Au Palais Bourbon, gardé par le Président de l'Assemblée nationale"
     ],
     correctHash: hashAnswer(3009, 0),
     explication: "Le Grand Sceau de la République est conservé au Ministère de la Justice. Le ministre de la Justice porte le titre de « Garde des Sceaux » car il en est traditionnellement le gardien."
@@ -148,10 +148,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quelle est la particularité de la laïcité en Alsace-Moselle concernant les symboles religieux ?",
     options: [
-      "Le Concordat de 1801 y est toujours en vigueur avec un régime dérogatoire",
-      "La laïcité y est plus stricte qu'ailleurs en France",
-      "Les symboles religieux y sont totalement interdits",
-      "Le drapeau régional remplace le drapeau tricolore"
+      "Le Concordat de 1801 y reste en vigueur avec un régime dérogatoire",
+      "La loi de 1905 y est appliquée de manière renforcée et stricte",
+      "Les symboles religieux y sont totalement interdits dans l'espace public",
+      "Un régime local spécifique interdit toute subvention aux cultes"
     ],
     correctHash: hashAnswer(3010, 0),
     explication: "L'Alsace-Moselle était allemande en 1905 lors de la loi de séparation. Le Concordat de 1801 y reste en vigueur : l'État rémunère les ministres des cultes reconnus. C'est une exception au principe de laïcité."

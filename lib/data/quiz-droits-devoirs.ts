@@ -32,9 +32,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quels sont les textes qui composent le bloc de constitutionnalité en matière de droits fondamentaux ?",
     options: [
       "La DDHC de 1789, le Préambule de 1946, la Constitution de 1958 et la Charte de l'environnement",
-      "Uniquement la Déclaration des droits de l'homme de 1789",
-      "Le Code civil et le Code pénal",
-      "Les traités européens uniquement"
+      "La DDHC de 1789, le Code civil de 1804, le Code pénal et les traités européens ratifiés",
+      "La Constitution de 1958, les lois organiques, les ordonnances et les règlements d'application",
+      "Le Préambule de 1946, les traités internationaux, les conventions et les accords bilatéraux"
     ],
     correctHash: hashAnswer(2001, 0),
     explication: "Le bloc de constitutionnalité comprend la Déclaration de 1789 (droits civils et politiques), le Préambule de 1946 (droits économiques et sociaux), la Constitution de 1958 et la Charte de l'environnement de 2004."
@@ -44,10 +44,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'est-ce que la Question Prioritaire de Constitutionnalité (QPC) ?",
     options: [
-      "Un moyen pour tout justiciable de contester la constitutionnalité d'une loi devant le Conseil constitutionnel",
-      "Une question posée au Président de la République",
-      "Un référendum constitutionnel",
-      "Une procédure réservée aux députés"
+      "Un moyen pour tout justiciable de contester la constitutionnalité d'une loi",
+      "Un recours permettant aux députés de saisir le Conseil d'État",
+      "Une procédure réservée au Président pour modifier la Constitution",
+      "Un mécanisme permettant au Sénat d'annuler une loi adoptée"
     ],
     correctHash: hashAnswer(2002, 0),
     explication: "La QPC, créée en 2008, permet à tout citoyen de saisir indirectement le Conseil constitutionnel, via une juridiction, pour contester une loi qui porterait atteinte aux droits et libertés garantis par la Constitution."
@@ -57,10 +57,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quels sont les critères de discrimination interdits par la loi française ?",
     options: [
-      "Plus de 25 critères : origine, sexe, âge, handicap, religion, orientation sexuelle, apparence physique, etc.",
-      "Seulement le sexe et l'origine",
-      "Uniquement 5 critères principaux",
-      "Cela dépend des secteurs d'activité"
+      "Plus de 25 critères : origine, sexe, âge, handicap, religion, orientation sexuelle",
+      "Une dizaine de critères : origine, sexe, âge, religion, nationalité, statut",
+      "Cinq critères principaux : origine, sexe, religion, opinions politiques, handicap",
+      "Trois critères fondamentaux : origine ethnique, sexe biologique, appartenance religieuse"
     ],
     correctHash: hashAnswer(2003, 0),
     explication: "L'article 225-1 du Code pénal liste plus de 25 critères de discrimination interdits, incluant l'origine, le sexe, la situation de famille, la grossesse, l'apparence physique, le patronyme, le lieu de résidence, l'état de santé, le handicap, les opinions politiques, etc."
@@ -71,9 +71,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quel principe juridique empêche de punir une personne pour un acte qui n'était pas interdit au moment des faits ?",
     options: [
       "Le principe de non-rétroactivité de la loi pénale",
-      "La présomption d'innocence",
-      "Le droit au silence",
-      "L'habeas corpus"
+      "Le principe de la présomption d'innocence absolue",
+      "Le principe du contradictoire dans le procès pénal",
+      "Le principe de légalité des délits et des peines"
     ],
     correctHash: hashAnswer(2004, 0),
     explication: "Le principe de non-rétroactivité de la loi pénale, issu de l'article 8 de la DDHC, interdit de condamner une personne pour un acte qui n'était pas légalement interdit au moment où elle l'a commis."
@@ -83,10 +83,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qui est le Défenseur des droits et quelle est sa fonction principale ?",
     options: [
-      "Une autorité indépendante qui protège les droits des citoyens face à l'administration et lutte contre les discriminations",
-      "Le ministre de la Justice",
-      "Un avocat commis d'office",
-      "Le Président du Conseil constitutionnel"
+      "Une autorité indépendante qui protège les citoyens face à l'administration",
+      "Un magistrat qui représente l'État devant les tribunaux administratifs",
+      "Un conseiller du Président chargé de la protection des libertés publiques",
+      "Un haut fonctionnaire qui dirige les services du ministère de la Justice"
     ],
     correctHash: hashAnswer(2005, 0),
     explication: "Le Défenseur des droits est une autorité constitutionnelle indépendante créée en 2011. Il peut être saisi par tout citoyen qui s'estime lésé par une administration ou victime de discrimination."
@@ -96,10 +96,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'est-ce que l'obligation de non-assistance à personne en danger prévue par le Code pénal ?",
     options: [
-      "Un délit puni de 5 ans de prison et 75 000 € d'amende pour celui qui n'aide pas une personne en péril",
-      "Un simple conseil moral sans conséquence légale",
-      "Un devoir applicable uniquement aux professionnels de santé",
-      "Une règle sans sanction pénale"
+      "Un délit puni de 5 ans de prison et 75 000 € d'amende",
+      "Un délit puni de 3 ans de prison et 45 000 € d'amende",
+      "Une contravention punie de 1 500 € d'amende maximum",
+      "Une infraction punie de 2 ans de prison et 30 000 € d'amende"
     ],
     correctHash: hashAnswer(2006, 0),
     explication: "L'article 223-6 du Code pénal punit la non-assistance à personne en péril de 5 ans d'emprisonnement et 75 000 € d'amende. C'est un devoir citoyen de porter assistance ou d'alerter les secours."
@@ -109,10 +109,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'est-ce que la Charte de l'environnement de 2004 a introduit dans le droit français ?",
     options: [
-      "Le droit de vivre dans un environnement sain et le devoir de préserver l'environnement",
-      "L'interdiction des véhicules polluants",
-      "La création du ministère de l'Écologie",
-      "Le recyclage obligatoire"
+      "Le droit de vivre dans un environnement sain et le devoir de le préserver",
+      "L'interdiction des émissions polluantes et le contrôle des industries",
+      "La création du ministère de l'Écologie et des agences de l'eau",
+      "L'obligation de recyclage des déchets et la taxation du carbone"
     ],
     correctHash: hashAnswer(2007, 0),
     explication: "La Charte de l'environnement, à valeur constitutionnelle depuis 2005, consacre le droit à un environnement équilibré et le principe de précaution. Elle crée aussi un devoir pour chacun de participer à la préservation de l'environnement."
@@ -122,10 +122,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quelle est la durée maximale de la garde à vue en droit commun ?",
     options: [
-      "24 heures, renouvelable une fois (48 heures maximum)",
-      "72 heures sans renouvellement",
-      "12 heures maximum",
-      "1 semaine"
+      "24 heures renouvelable une fois, soit 48 heures maximum",
+      "48 heures renouvelable une fois, soit 96 heures maximum",
+      "12 heures renouvelable deux fois, soit 36 heures maximum",
+      "72 heures sans possibilité de renouvellement légal"
     ],
     correctHash: hashAnswer(2008, 0),
     explication: "En droit commun, la garde à vue dure 24 heures, renouvelable une fois sur autorisation du procureur (48h au total). Elle peut être prolongée à 96h ou 144h pour des infractions spécifiques (terrorisme, criminalité organisée)."
@@ -135,10 +135,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'est-ce que le principe d'égal accès aux emplois publics garanti par l'article 6 de la DDHC ?",
     options: [
-      "Le droit pour tout citoyen de postuler aux emplois publics sans autre distinction que ses capacités et talents",
-      "L'obligation d'embaucher 50% d'hommes et 50% de femmes",
-      "Le recrutement réservé aux personnes diplômées",
-      "L'accès automatique aux emplois publics"
+      "Le droit de postuler aux emplois publics selon ses capacités et talents",
+      "Le droit d'accéder à tout emploi public sans condition de diplôme",
+      "L'obligation d'embaucher à parité dans toutes les administrations",
+      "La garantie d'obtenir un emploi public après un an de chômage"
     ],
     correctHash: hashAnswer(2009, 0),
     explication: "L'article 6 de la DDHC garantit que tous les citoyens sont également admissibles aux dignités, places et emplois publics, selon leurs capacités et sans autre distinction que leurs vertus et talents. C'est le fondement du concours administratif."
@@ -148,10 +148,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quel texte a instauré la contribution aux charges publiques selon les capacités de chacun ?",
     options: [
-      "L'article 13 de la Déclaration des droits de l'homme de 1789",
-      "Le Code général des impôts de 1950",
-      "La Constitution de 1958",
-      "Le traité de Maastricht"
+      "L'article 13 de la DDHC de 1789",
+      "L'article 34 de la Constitution de 1958",
+      "Le Préambule de la Constitution de 1946",
+      "L'article 72 du Code général des impôts"
     ],
     correctHash: hashAnswer(2010, 0),
     explication: "L'article 13 de la DDHC de 1789 établit que « la contribution commune doit être également répartie entre tous les citoyens, en raison de leurs facultés ». C'est le fondement de l'impôt progressif et de la solidarité nationale."

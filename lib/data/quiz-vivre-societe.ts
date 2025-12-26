@@ -30,10 +30,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quel est le contenu obligatoire du Contrat d'Intégration Républicaine (CIR) signé avec l'OFII ?",
     options: [
-      "Une formation civique et une formation linguistique si le niveau B1 n'est pas atteint",
-      "Uniquement un test de français",
-      "Un cours d'histoire de France de 6 mois",
-      "Un examen médical et une déclaration de revenus"
+      "Une formation civique et une formation linguistique si niveau B1 non atteint",
+      "Un test de français et un entretien d'insertion professionnelle obligatoire",
+      "Un cours d'histoire de France et une évaluation des compétences acquises",
+      "Un examen médical complet et une déclaration de situation financière"
     ],
     correctHash: hashAnswer(1001, 0),
     explication: "Le CIR comprend une formation civique obligatoire sur les principes et valeurs de la République, et une formation linguistique pour atteindre le niveau A1 (avec objectif B1 pour la naturalisation)."
@@ -44,9 +44,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quelle condition de résidence est généralement requise pour demander la naturalisation française ?",
     options: [
       "5 ans de résidence régulière et continue en France",
-      "10 ans de résidence en France",
-      "2 ans de résidence en France",
-      "Aucune durée minimale de résidence"
+      "3 ans de résidence régulière et continue en France",
+      "7 ans de résidence régulière et continue en France",
+      "10 ans de résidence régulière et continue en France"
     ],
     correctHash: hashAnswer(1002, 0),
     explication: "La naturalisation nécessite en général 5 ans de résidence régulière en France. Ce délai peut être réduit dans certains cas (mariage avec un Français, services exceptionnels, niveau d'études...)."
@@ -57,9 +57,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quel niveau de français est exigé pour la naturalisation depuis les réformes récentes ?",
     options: [
       "Niveau B1 oral et écrit du CECRL",
-      "Niveau A1 oral uniquement",
-      "Niveau C1 universitaire",
-      "Aucun niveau n'est requis"
+      "Niveau A2 oral et écrit du CECRL",
+      "Niveau B2 oral et écrit du CECRL",
+      "Niveau A1 oral et écrit du CECRL"
     ],
     correctHash: hashAnswer(1003, 0),
     explication: "Le niveau B1 du Cadre Européen Commun de Référence pour les Langues (CECRL) est requis à l'oral et à l'écrit. Il correspond à un niveau intermédiaire permettant de s'exprimer de façon autonome."
@@ -70,9 +70,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Comment un enfant né en France de parents étrangers acquiert-il la nationalité française ?",
     options: [
       "Automatiquement à 18 ans s'il a résidé 5 ans en France depuis l'âge de 11 ans",
-      "Automatiquement à la naissance (droit du sol absolu)",
-      "Uniquement par demande des parents avant 13 ans",
-      "Jamais, il reste étranger toute sa vie"
+      "Automatiquement à 16 ans s'il a résidé 3 ans en France depuis l'âge de 13 ans",
+      "Automatiquement à 21 ans s'il a résidé 7 ans en France depuis l'âge de 14 ans",
+      "Automatiquement à la naissance par application directe du droit du sol français"
     ],
     correctHash: hashAnswer(1004, 0),
     explication: "C'est le droit du sol différé. L'enfant né en France de parents étrangers devient français automatiquement à 18 ans s'il a vécu en France au moins 5 ans depuis ses 11 ans. Il peut aussi demander la nationalité dès 16 ans ou ses parents dès 13 ans."
@@ -82,10 +82,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quelle est la différence entre naturalisation et acquisition par déclaration ?",
     options: [
-      "La naturalisation est discrétionnaire, la déclaration est un droit si les conditions sont remplies",
-      "Ce sont deux termes synonymes",
-      "La déclaration concerne uniquement les mineurs",
-      "La naturalisation est automatique, la déclaration nécessite une demande"
+      "La naturalisation est discrétionnaire, la déclaration est un droit acquis",
+      "La naturalisation est automatique, la déclaration nécessite un dossier",
+      "La naturalisation concerne les adultes, la déclaration les mineurs",
+      "La naturalisation est gratuite, la déclaration requiert des frais"
     ],
     correctHash: hashAnswer(1005, 0),
     explication: "La naturalisation est une décision de l'État qui peut être refusée même si les conditions sont remplies. L'acquisition par déclaration (ex: conjoint de Français) est un droit : l'État ne peut pas la refuser si les conditions légales sont respectées."
@@ -95,10 +95,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'est-ce que la carte de résident de 10 ans et quelles sont les conditions pour l'obtenir ?",
     options: [
-      "Un titre de séjour longue durée après 5 ans de résidence régulière avec conditions d'intégration",
-      "Une carte d'identité française",
-      "Un visa touristique de longue durée",
-      "Un permis de travail permanent"
+      "Un titre de séjour longue durée après 5 ans avec conditions d'intégration",
+      "Un titre de séjour longue durée après 3 ans avec conditions de ressources",
+      "Un titre de séjour permanent dès l'arrivée avec justificatif de domicile",
+      "Un titre de séjour temporaire après 7 ans avec contrat de travail CDI"
     ],
     correctHash: hashAnswer(1006, 0),
     explication: "La carte de résident est un titre de séjour de 10 ans renouvelable. Elle est accordée après 5 ans de séjour régulier, sous conditions d'intégration républicaine et de ressources. Elle donne le droit de travailler sans restriction."
@@ -109,9 +109,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quel organisme gère le premier accueil des étrangers et le Contrat d'Intégration Républicaine ?",
     options: [
       "L'OFII (Office Français de l'Immigration et de l'Intégration)",
-      "La préfecture uniquement",
-      "Pôle Emploi / France Travail",
-      "La CAF (Caisse d'Allocations Familiales)"
+      "L'OFPRA (Office Français de Protection des Réfugiés et Apatrides)",
+      "La DIRECCTE (Direction des Entreprises et de l'Emploi)",
+      "L'ANEF (Administration Numérique pour les Étrangers en France)"
     ],
     correctHash: hashAnswer(1007, 0),
     explication: "L'OFII est l'opérateur principal de l'État en matière d'intégration. Il fait passer la visite médicale, organise les formations civiques et linguistiques, et assure le suivi du CIR pendant 1 an."
@@ -121,10 +121,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quels documents constituent le « bloc de preuves » pour une demande de naturalisation ?",
     options: [
-      "Justificatifs de résidence, d'intégration, de ressources, casier judiciaire vierge, attestation de niveau B1",
-      "Uniquement le passeport et un justificatif de domicile",
-      "Le diplôme du baccalauréat français",
-      "Un certificat de l'ambassade du pays d'origine"
+      "Justificatifs de résidence, d'intégration, de ressources et attestation niveau B1",
+      "Passeport en cours de validité, justificatif de domicile et photo d'identité",
+      "Diplôme du baccalauréat français, certificat de travail et fiche de paie",
+      "Certificat de l'ambassade du pays d'origine et attestation de non-condamnation"
     ],
     correctHash: hashAnswer(1008, 0),
     explication: "Le dossier de naturalisation comprend : preuves de résidence (5 ans), certificat de niveau B1, casier judiciaire, justificatifs de ressources stables, attestation d'assimilation aux principes républicains, et preuve de connaissance de l'histoire et la culture française."
@@ -135,9 +135,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Qu'est-ce que FranceConnect et quel est son rôle dans les démarches administratives ?",
     options: [
       "Un système d'authentification unique pour accéder aux services publics en ligne",
-      "Un réseau social officiel du gouvernement",
-      "Une application de traduction pour les étrangers",
-      "Un formulaire papier obligatoire"
+      "Un réseau social officiel pour communiquer avec les administrations françaises",
+      "Une application de traduction automatique pour les formulaires administratifs",
+      "Un portail d'information générale sur les droits et démarches en France"
     ],
     correctHash: hashAnswer(1009, 0),
     explication: "FranceConnect est le système d'identification numérique de l'État. Il permet de se connecter à tous les services publics en ligne (impôts, CAF, Ameli, ANTS...) avec un seul compte, sécurisé par une identité vérifiée."
@@ -148,9 +148,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quelle est la procédure pour valider un VLS-TS (Visa Long Séjour valant Titre de Séjour) à l'arrivée en France ?",
     options: [
       "Validation en ligne sur le site de l'ANEF dans les 3 mois suivant l'arrivée",
-      "Se présenter à la préfecture le jour de l'arrivée",
-      "Aucune validation n'est nécessaire",
-      "Obtenir un tampon à l'aéroport"
+      "Présentation en préfecture dans les 2 mois suivant l'arrivée en France",
+      "Enregistrement au commissariat dans les 4 mois suivant l'arrivée en France",
+      "Déclaration à la mairie dans les 6 mois suivant l'arrivée en France"
     ],
     correctHash: hashAnswer(1010, 0),
     explication: "Le VLS-TS doit être validé en ligne sur le portail de l'ANEF (Administration Numérique pour les Étrangers en France) dans les 3 mois suivant l'arrivée. Cette validation active le titre de séjour et permet de payer la taxe de séjour."

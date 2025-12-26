@@ -31,10 +31,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quel principe constitutionnel organise la répartition des pouvoirs en France ?",
     options: [
-      "La séparation des pouvoirs (exécutif, législatif, judiciaire)",
-      "La concentration des pouvoirs au Parlement",
-      "La fusion des pouvoirs au profit du Président",
-      "L'absence de hiérarchie entre les pouvoirs"
+      "La séparation des pouvoirs exécutif, législatif et judiciaire",
+      "La concentration des pouvoirs au sein du Parlement bicaméral",
+      "La primauté du pouvoir exécutif sur les autres pouvoirs",
+      "La hiérarchie des pouvoirs sous l'autorité du Président"
     ],
     correctHash: hashAnswer(1001, 0),
     explication: "La séparation des pouvoirs, théorisée par Montesquieu, distingue le pouvoir exécutif (Président et Gouvernement), le pouvoir législatif (Parlement) et le pouvoir judiciaire (tribunaux). Elle garantit l'équilibre démocratique."
@@ -45,9 +45,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Qu'est-ce qui caractérise la Ve République par rapport aux régimes précédents ?",
     options: [
       "Un exécutif fort avec un Président élu au suffrage universel direct",
-      "La suprématie absolue du Parlement",
-      "L'absence de Constitution écrite",
-      "L'élection du Premier ministre au suffrage direct"
+      "Un Parlement renforcé avec un Premier ministre élu directement",
+      "Un équilibre parfait entre le Président et l'Assemblée nationale",
+      "Une primauté du Sénat sur l'ensemble des institutions politiques"
     ],
     correctHash: hashAnswer(1002, 0),
     explication: "La Ve République, fondée en 1958 par de Gaulle, renforce considérablement le pouvoir exécutif. Depuis 1962, le Président est élu directement par le peuple, ce qui lui confère une légitimité démocratique forte."
@@ -57,10 +57,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quels sont les pouvoirs propres du Président de la République selon la Constitution ?",
     options: [
-      "Dissolution de l'Assemblée, nomination du Premier ministre, pouvoirs exceptionnels (art. 16), référendum",
-      "Voter les lois et fixer les impôts",
-      "Nommer les juges et rendre la justice",
-      "Décider seul du budget de l'État"
+      "Dissolution de l'Assemblée, nomination du Premier ministre et référendum",
+      "Adoption des lois, fixation des impôts et vote du budget de l'État",
+      "Nomination des juges, organisation de la justice et grâce présidentielle",
+      "Contrôle du gouvernement, gestion des finances et décrets ministériels"
     ],
     correctHash: hashAnswer(1003, 0),
     explication: "Les pouvoirs propres du Président, exercés sans contreseing, incluent : la nomination du Premier ministre (art. 8), la dissolution de l'Assemblée (art. 12), le référendum (art. 11), les pouvoirs exceptionnels (art. 16) et la saisine du Conseil constitutionnel (art. 54 et 61)."
@@ -71,9 +71,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quelle est la différence entre la motion de censure et la question de confiance ?",
     options: [
       "La motion de censure est initiée par les députés, la question de confiance par le Premier ministre",
-      "Ce sont deux procédures identiques",
-      "La motion de censure concerne le Président, la question de confiance le Premier ministre",
-      "La motion de censure est votée par le Sénat"
+      "La motion de censure est votée par le Sénat, la question de confiance par l'Assemblée",
+      "La motion de censure concerne le Président, la question de confiance le Gouvernement",
+      "La motion de censure nécessite 2/3 des voix, la question de confiance la majorité simple"
     ],
     correctHash: hashAnswer(1004, 0),
     explication: "La motion de censure (art. 49-2) permet aux députés de renverser le Gouvernement. La question de confiance (art. 49-1) est posée par le Premier ministre sur son programme. Si elle est rejetée, le Gouvernement doit démissionner."
@@ -83,10 +83,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'est-ce que la cohabitation dans le système politique français ?",
     options: [
-      "La situation où le Président et le Premier ministre sont de partis politiques opposés",
-      "Le partage du pouvoir entre le Parlement et le Gouvernement",
-      "L'alliance entre partis pour former une coalition",
-      "Le dialogue entre l'Assemblée nationale et le Sénat"
+      "Le Président et le Premier ministre sont de partis politiques opposés",
+      "Le Président et le Président de l'Assemblée sont de la même majorité",
+      "Le Gouvernement et le Sénat travaillent en étroite collaboration",
+      "L'Assemblée et le Sénat votent les lois dans les mêmes termes"
     ],
     correctHash: hashAnswer(1005, 0),
     explication: "La cohabitation survient lorsque le Président doit nommer un Premier ministre d'un parti opposé, car sa majorité parlementaire a été perdue. Il y a eu trois cohabitations : 1986-88, 1993-95 et 1997-2002."
@@ -96,10 +96,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quel est le rôle du Conseil constitutionnel dans le processus législatif ?",
     options: [
-      "Vérifier la conformité des lois à la Constitution avant ou après leur promulgation",
-      "Rédiger les projets de loi",
-      "Voter les lois au nom du peuple",
-      "Nommer les ministres"
+      "Vérifier la conformité des lois à la Constitution avant ou après promulgation",
+      "Rédiger les projets de loi proposés par le Gouvernement au Parlement",
+      "Conseiller le Président sur l'opportunité de promulguer une loi",
+      "Trancher les conflits entre l'Assemblée nationale et le Sénat"
     ],
     correctHash: hashAnswer(1006, 0),
     explication: "Le Conseil constitutionnel contrôle la constitutionnalité des lois. Il peut être saisi avant promulgation (contrôle a priori) ou après par QPC (contrôle a posteriori). Il peut censurer les dispositions non conformes à la Constitution."
@@ -110,9 +110,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Comment s'opère le bicamérisme en France et quel est le rôle spécifique du Sénat ?",
     options: [
       "Le Sénat représente les collectivités territoriales et peut bloquer les révisions constitutionnelles",
-      "Le Sénat a exactement les mêmes pouvoirs que l'Assemblée nationale",
-      "Le Sénat peut renverser le Gouvernement",
-      "Le Sénat élit le Président de la République"
+      "Le Sénat représente les citoyens français et peut renverser le Gouvernement par motion de censure",
+      "Le Sénat élit le Président de la République en cas de vacance du pouvoir exécutif",
+      "Le Sénat détient les mêmes pouvoirs que l'Assemblée nationale sur tous les textes de loi"
     ],
     correctHash: hashAnswer(1007, 0),
     explication: "Le bicamérisme français distingue l'Assemblée (élue au suffrage direct, représente le peuple) et le Sénat (élu au suffrage indirect, représente les collectivités). Le Sénat ne peut pas renverser le Gouvernement mais peut bloquer une révision constitutionnelle."
@@ -122,10 +122,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Qu'est-ce que l'article 49-3 de la Constitution ?",
     options: [
-      "Une procédure permettant au Gouvernement de faire adopter une loi sans vote, sauf motion de censure",
-      "L'article définissant les pouvoirs du Président",
-      "La procédure de dissolution de l'Assemblée",
-      "L'article sur le référendum"
+      "Une procédure permettant d'adopter une loi sans vote, sauf motion de censure",
+      "Une procédure permettant au Président de dissoudre l'Assemblée nationale",
+      "Une procédure permettant d'organiser un référendum sur une loi contestée",
+      "Une procédure permettant de réviser la Constitution par voie parlementaire"
     ],
     correctHash: hashAnswer(1008, 0),
     explication: "L'article 49-3 permet au Premier ministre d'engager la responsabilité du Gouvernement sur un texte. Celui-ci est considéré comme adopté sans vote, sauf si une motion de censure est déposée et adoptée dans les 24 heures."
@@ -135,10 +135,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quelle est la procédure de révision de la Constitution selon l'article 89 ?",
     options: [
-      "Vote identique des deux chambres puis référendum ou Congrès (3/5e des voix)",
-      "Décision du Président seul",
-      "Vote de l'Assemblée nationale à la majorité simple",
-      "Approbation du Conseil constitutionnel"
+      "Vote identique des deux chambres puis référendum ou Congrès à 3/5e",
+      "Vote de l'Assemblée à majorité absolue puis approbation présidentielle",
+      "Décision du Conseil constitutionnel après consultation du Parlement",
+      "Vote du Sénat à majorité qualifiée puis validation par le peuple"
     ],
     correctHash: hashAnswer(1009, 0),
     explication: "La révision constitutionnelle (art. 89) requiert le vote du texte identique par l'Assemblée et le Sénat, puis soit un référendum, soit l'approbation du Congrès (Parlement réuni) à la majorité des 3/5e."

@@ -32,9 +32,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quelle rupture fondamentale la Révolution française de 1789 a-t-elle opérée dans l'organisation du pouvoir ?",
     options: [
       "Le passage de la souveraineté royale à la souveraineté nationale",
-      "Le renforcement du pouvoir absolu du roi",
-      "La création de l'Union européenne",
-      "L'instauration d'une théocratie"
+      "Le transfert du pouvoir royal vers une monarchie constitutionnelle",
+      "L'abolition de la noblesse au profit d'une aristocratie élue",
+      "Le partage du pouvoir entre le roi et le Parlement de Paris"
     ],
     correctHash: hashAnswer(2001, 0),
     explication: "La Révolution a transféré la souveraineté du roi au peuple/nation. L'article 3 de la DDHC proclame que « le principe de toute souveraineté réside essentiellement dans la Nation ». C'est le fondement de la démocratie française."
@@ -45,9 +45,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quels droits fondamentaux la Déclaration des droits de l'homme et du citoyen de 1789 consacre-t-elle ?",
     options: [
       "La liberté, la propriété, la sûreté et la résistance à l'oppression",
-      "Uniquement le droit de vote",
-      "Les droits sociaux comme la retraite",
-      "Le droit à l'emploi garanti"
+      "La liberté, l'égalité, la fraternité et la solidarité nationale",
+      "Le droit de vote, le droit au travail et le droit à l'éducation",
+      "La liberté d'expression, le droit de propriété et le droit de grève"
     ],
     correctHash: hashAnswer(2002, 0),
     explication: "L'article 2 de la DDHC énumère les droits naturels et imprescriptibles de l'homme : la liberté, la propriété, la sûreté et la résistance à l'oppression. Ces droits de première génération restent le socle des libertés fondamentales."
@@ -58,9 +58,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quel texte a codifié le droit civil français et reste encore en vigueur aujourd'hui ?",
     options: [
       "Le Code civil de 1804, dit Code Napoléon",
-      "La Constitution de 1791",
-      "Le Code du travail de 1910",
-      "La Déclaration des droits de l'homme de 1789"
+      "Le Code pénal de 1791, dit Code révolutionnaire",
+      "Le Code de commerce de 1807, dit Code impérial",
+      "Le Code du travail de 1910, dit Code social"
     ],
     correctHash: hashAnswer(2003, 0),
     explication: "Le Code civil de 1804, voulu par Napoléon, a unifié le droit privé français. Il régit encore aujourd'hui les personnes, la famille, les biens et les contrats. Il a influencé de nombreux systèmes juridiques dans le monde."
@@ -70,10 +70,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quelles sont les lois fondatrices de l'école républicaine votées sous la IIIe République ?",
     options: [
-      "Les lois Jules Ferry (1881-1882) instaurant l'école gratuite, laïque et obligatoire",
-      "Les lois Guizot de 1833",
-      "Les lois Debré de 1959",
-      "La loi Haby de 1975"
+      "Les lois Jules Ferry (1881-1882) : école gratuite, laïque et obligatoire",
+      "Les lois Guizot (1833-1834) : école primaire et formation des maîtres",
+      "Les lois Falloux (1850-1851) : liberté d'enseignement et écoles privées",
+      "Les lois Debré (1959-1960) : contrats avec l'école privée catholique"
     ],
     correctHash: hashAnswer(2004, 0),
     explication: "Les lois Jules Ferry ont imposé l'instruction primaire obligatoire (6-13 ans), gratuite et laïque. Elles ont fondé le modèle de l'école républicaine française qui vise à former des citoyens éclairés."
@@ -84,9 +84,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quelle loi a définitivement établi la séparation des Églises et de l'État ?",
     options: [
       "La loi du 9 décembre 1905",
-      "Le Concordat de 1801",
-      "La Constitution de 1958",
-      "La loi Combes de 1901"
+      "La loi du 1er juillet 1901",
+      "La loi du 28 mars 1882",
+      "La loi du 29 juillet 1881"
     ],
     correctHash: hashAnswer(2005, 0),
     explication: "La loi de 1905 proclame que « La République assure la liberté de conscience » et « ne reconnaît, ne salarie ni ne subventionne aucun culte ». Elle reste le fondement juridique de la laïcité en France."
@@ -96,10 +96,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quand et par qui les femmes ont-elles obtenu le droit de vote en France ?",
     options: [
-      "En 1944 par ordonnance du Gouvernement provisoire du général de Gaulle",
-      "En 1789 avec la Révolution française",
-      "En 1848 avec le suffrage universel masculin",
-      "En 1958 avec la Ve République"
+      "En 1944 par ordonnance du Gouvernement provisoire de de Gaulle",
+      "En 1936 par décision du Front populaire de Léon Blum",
+      "En 1848 par décret de la Deuxième République française",
+      "En 1946 par la Constitution de la Quatrième République"
     ],
     correctHash: hashAnswer(2006, 0),
     explication: "L'ordonnance du 21 avril 1944 a accordé le droit de vote et d'éligibilité aux femmes. Elles ont voté pour la première fois aux élections municipales d'avril 1945. La France était en retard par rapport à d'autres démocraties."
@@ -109,10 +109,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quel programme le Conseil National de la Résistance a-t-il élaboré en 1944 ?",
     options: [
-      "Un programme de réformes sociales incluant la Sécurité sociale, les nationalisations et les comités d'entreprise",
-      "Un plan de reconstruction des villes bombardées",
-      "Un traité de paix avec l'Allemagne",
-      "La Constitution de la IVe République"
+      "Des réformes sociales incluant la Sécurité sociale et les nationalisations",
+      "Un plan militaire pour la libération du territoire français",
+      "Une organisation administrative pour la reconstruction des villes",
+      "Un traité diplomatique pour les relations avec les pays alliés"
     ],
     correctHash: hashAnswer(2007, 0),
     explication: "Le programme du CNR (15 mars 1944), intitulé « Les Jours Heureux », prévoyait la création de la Sécurité sociale, les nationalisations, le droit de vote des femmes et les comités d'entreprise. Il a façonné le modèle social français."
@@ -123,9 +123,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quelle crise a conduit au retour du général de Gaulle et à la fondation de la Ve République en 1958 ?",
     options: [
       "La crise algérienne et l'instabilité de la IVe République",
-      "La Seconde Guerre mondiale",
-      "Mai 68",
-      "La crise économique de 1929"
+      "La crise économique et le chômage de masse en métropole",
+      "La crise sociale et les grèves générales dans les usines",
+      "La crise diplomatique et les tensions avec l'Union soviétique"
     ],
     correctHash: hashAnswer(2008, 0),
     explication: "La guerre d'Algérie (1954-1962) et le putsch des généraux ont précipité la chute de la IVe République. De Gaulle est rappelé au pouvoir en mai 1958 et fait adopter une nouvelle Constitution renforçant l'exécutif."
@@ -136,9 +136,9 @@ const NIVEAU_1: QuizQuestion[] = [
     question: "Quel référendum a instauré l'élection du Président au suffrage universel direct ?",
     options: [
       "Le référendum de 1962 proposé par le général de Gaulle",
-      "Le référendum de 1958 sur la Constitution",
-      "Le référendum de 2000 sur le quinquennat",
-      "Le référendum de 2005 sur la Constitution européenne"
+      "Le référendum de 1958 sur l'adoption de la Constitution",
+      "Le référendum de 1969 sur la régionalisation et le Sénat",
+      "Le référendum de 2000 sur la réduction du mandat présidentiel"
     ],
     correctHash: hashAnswer(2009, 0),
     explication: "Le référendum du 28 octobre 1962 a modifié la Constitution pour instaurer l'élection du Président au suffrage universel direct. Cette réforme, contestée dans sa procédure, a renforcé la légitimité présidentielle."
@@ -148,10 +148,10 @@ const NIVEAU_1: QuizQuestion[] = [
     niveau: 1,
     question: "Quelle date historique est associée à l'Appel du 18 juin 1940 ?",
     options: [
-      "L'appel à la résistance lancé par le général de Gaulle depuis Londres",
-      "La signature de l'armistice avec l'Allemagne",
-      "La libération de Paris",
-      "Le débarquement en Normandie"
+      "L'appel à la résistance lancé par de Gaulle depuis Londres",
+      "L'appel à l'armistice lancé par le maréchal Pétain depuis Vichy",
+      "L'appel à la mobilisation lancé par le général Weygand depuis Paris",
+      "L'appel au cessez-le-feu lancé par le général Giraud depuis Alger"
     ],
     correctHash: hashAnswer(2010, 0),
     explication: "Le 18 juin 1940, le général de Gaulle lance depuis Londres un appel à continuer le combat contre l'Allemagne nazie. Cet appel fonde la France Libre et la Résistance. Il est devenu un symbole de refus de la défaite."
