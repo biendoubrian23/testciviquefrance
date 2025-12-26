@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { createClient } from '@/lib/supabase/client';
-import { Check, Crown, ChevronDown, Loader2, CheckCircle } from 'lucide-react';
+import { Check, Crown, ChevronDown, Loader2, CheckCircle, Gift } from 'lucide-react';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
 import ManageSubscriptionButton from '@/components/dashboard/ManageSubscriptionButton';
 import ErrorModal from '@/components/ui/ErrorModal';
+import CountdownTimer, { usePromoActive } from '@/components/ui/CountdownTimer';
 
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -71,6 +72,7 @@ export default function OffresPage() {
     isOpen: false,
     message: ''
   });
+  const isPromoActive = usePromoActive();
 
   // Cast du profil pour accéder aux nouveaux champs
   const extendedProfile = profile as ExtendedProfile | null;
@@ -197,11 +199,26 @@ export default function OffresPage() {
         </div>
       )}
 
+      {/* Bandeau Promo Nouvel An */}
+      {isPromoActive && (
+        <div className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white p-4 rounded-lg shadow-lg">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+            <div className="flex items-center gap-2">
+              <Gift className="w-6 h-6 animate-bounce" />
+              <span className="text-lg font-bold">🎉 OFFRE NOUVEL AN -30%</span>
+            </div>
+            <div className="bg-white/20 px-3 py-1 rounded-full">
+              <CountdownTimer compact className="text-white" />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* En-tête */}
       <div>
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Nos Offres</h1>
         <p className="text-gray-600 text-lg">
-          Choisissez la formule adaptée à votre préparation
+          {isPromoActive ? 'Profitez de -30% pour le Nouvel An !' : 'Choisissez la formule adaptée à votre préparation'}
         </p>
       </div>
 
@@ -297,11 +314,21 @@ export default function OffresPage() {
             </span>
           </div>
 
-          <div className="bg-primary-600 text-white p-6 pt-8 h-full flex flex-col">
+          <div className="bg-primary-600 text-white p-6 pt-8 h-full flex flex-col relative">
+            {/* Badge -30% */}
+            {isPromoActive && (
+              <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse z-20">
+                -30%
+              </div>
+            )}
+            
             <div className="flex items-center gap-2 mb-2">
               <Crown className="w-5 h-5" />
               <h3 className="text-lg font-bold">Pack Standard</h3>
             </div>
+            {isPromoActive && (
+              <div className="text-lg text-red-300 line-through">4,49€</div>
+            )}
             <div className="flex items-baseline gap-1 mb-1">
               <span className="text-4xl font-bold">2,99€</span>
               <span className="text-primary-200 text-sm">/semaine</span>
@@ -355,7 +382,17 @@ export default function OffresPage() {
               : 'border-gray-200'
           } p-6 h-full flex flex-col`}
         >
+          {/* Badge -30% */}
+          {isPromoActive && (
+            <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse z-20">
+              -30%
+            </div>
+          )}
+          
           <h3 className="text-lg font-bold text-primary-600 mb-2">Premium</h3>
+          {isPromoActive && (
+            <div className="text-lg text-red-500 line-through">9,99€</div>
+          )}
           <div className="flex items-baseline gap-1 mb-1">
             <span className="text-4xl font-bold text-gray-900">6,99€</span>
             <span className="text-gray-500 text-sm">/semaine</span>
@@ -412,7 +449,17 @@ export default function OffresPage() {
               : 'border-gray-200'
           } p-6 h-full flex flex-col`}
         >
+          {/* Badge -30% */}
+          {isPromoActive && (
+            <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse z-20">
+              -30%
+            </div>
+          )}
+          
           <h3 className="text-lg font-bold text-primary-600 mb-2">Pack Examen</h3>
+          {isPromoActive && (
+            <div className="text-lg text-red-500 line-through">3,59€</div>
+          )}
           <div className="flex items-baseline gap-1 mb-1">
             <span className="text-4xl font-bold text-gray-900">2,50€</span>
           </div>

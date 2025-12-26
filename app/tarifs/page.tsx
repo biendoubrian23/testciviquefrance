@@ -4,7 +4,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Check, ArrowRight, ChevronDown } from 'lucide-react';
+import CountdownTimer, { usePromoActive } from '@/components/ui/CountdownTimer';
+import { Check, ArrowRight, ChevronDown, Gift } from 'lucide-react';
 
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -35,6 +36,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export default function TarifsPage() {
+  const isPromoActive = usePromoActive();
+  
   return (
     <>
       <Header />
@@ -54,6 +57,22 @@ export default function TarifsPage() {
         {/* 3 Offres principales */}
         <section className="py-8 lg:py-10">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            {/* Bandeau Promo Nouvel An */}
+            {isPromoActive && (
+              <div className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white p-4 mb-8 shadow-lg">
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+                  <div className="flex items-center gap-2">
+                    <Gift className="w-6 h-6 animate-bounce" />
+                    <span className="text-lg font-bold">🎉 OFFRE NOUVEL AN -30%</span>
+                  </div>
+                  <div className="bg-white/20 px-3 py-1 rounded-full">
+                    <CountdownTimer compact className="text-white" />
+                  </div>
+                </div>
+              </div>
+            )}
+            
             <div className="grid md:grid-cols-3 gap-8">
               
               {/* Gratuit */}
@@ -95,8 +114,18 @@ export default function TarifsPage() {
                   Recommandé
                 </div>
                 
+                {/* Badge -30% */}
+                {isPromoActive && (
+                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
+                    -30%
+                  </div>
+                )}
+                
                 <div className="mb-8">
                   <h2 className="text-lg font-medium text-primary-200 mb-2">Pack Standard</h2>
+                  {isPromoActive && (
+                    <div className="text-xl text-red-300 line-through mb-1">4,49€</div>
+                  )}
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-bold">2,99€</span>
                     <span className="text-primary-200">/semaine</span>
@@ -136,9 +165,20 @@ export default function TarifsPage() {
               </div>
 
               {/* Premium */}
-              <div className="bg-white border border-gray-200 p-8 lg:p-10 animate-fade-in-up delay-300 transition-all duration-300 hover:shadow-lg hover:border-primary-200 flex flex-col">
+              <div className="bg-white border border-gray-200 p-8 lg:p-10 animate-fade-in-up delay-300 transition-all duration-300 hover:shadow-lg hover:border-primary-200 flex flex-col relative">
+                
+                {/* Badge -30% */}
+                {isPromoActive && (
+                  <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
+                    -30%
+                  </div>
+                )}
+                
                 <div className="mb-8">
                   <h2 className="text-lg font-medium text-primary-600 mb-2">Premium</h2>
+                  {isPromoActive && (
+                    <div className="text-xl text-red-500 line-through mb-1">9,99€</div>
+                  )}
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-bold text-gray-900">6,99€</span>
                     <span className="text-gray-500">/semaine</span>
@@ -192,10 +232,19 @@ export default function TarifsPage() {
             </div>
             
             <div className="flex justify-center">
-              <div className="group bg-white p-8 border-2 border-primary-200 hover:border-primary-600 transition-all duration-300 hover:shadow-lg text-center">
+              <div className="group bg-white p-8 border-2 border-primary-200 hover:border-primary-600 transition-all duration-300 hover:shadow-lg text-center relative">
+                
+                {/* Badge -30% */}
+                <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
+                  -30%
+                </div>
+                
                 <div className="text-sm text-primary-600 font-medium mb-3">Offre découverte</div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-2">2 Sessions d&apos;examen blanc</h3>
-                <div className="text-5xl font-bold text-gray-900 mb-4">2,50€</div>
+                <div className="flex items-baseline justify-center gap-2 mb-4">
+                  <span className="text-2xl text-gray-400 line-through">3,59€</span>
+                  <span className="text-5xl font-bold text-gray-900">2,50€</span>
+                </div>
                 <p className="text-gray-600 mb-6">Testez-vous dans les conditions réelles</p>
                 <Link href="/signup" className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-all group-hover:gap-3">
                   Essayer maintenant <ArrowRight className="w-5 h-5" />
