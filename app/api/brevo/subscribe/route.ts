@@ -1,9 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { checkRateLimit, RATE_LIMITS, rateLimitResponse, getIdentifier } from '@/lib/utils/rate-limit';
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
 const BREVO_LIST_ID = 4; // Liste "inscription" - ID #4
 
 export async function POST(request: NextRequest) {
+  // Rate limiting - 10 requêtes par minute (anti-spam)
+  const identifier = getIdentifier(request);
+  const rateLimitResult = checkRateLimit(identifier, RATE_LIMITS.auth);
+  
+  if (!rateLimitResult.success) {
+    return rateLimitResponse(rateLimitResult.resetTime);
+  }
+
   try {
     // Vérifier que la clé API est configurée
     if (!BREVO_API_KEY) {

@@ -12,14 +12,13 @@ export default function ManageSubscriptionButton() {
     setIsLoading(true);
     
     try {
+      // Le serveur récupère le customerId depuis la session (sécurisé)
       const response = await fetch('/api/create-portal-session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          customerId: (profile as any)?.stripe_customer_id,
-        }),
+        body: JSON.stringify({}),
       });
 
       const { url } = await response.json();

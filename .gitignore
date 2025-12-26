@@ -42,3 +42,19 @@ next-env.d.ts
 # Sitemap
 public/sitemap*.xml
 public/robots.txt
+
+# =====================================================
+# FICHIERS SENSIBLES ADMIN - NE JAMAIS PUSH
+# =====================================================
+
+# Script avec mot de passe admin en clair
+admin-dashboard/scripts/generate-admin-hash.js
+
+# Fichiers SQL avec hash de mot de passe
+admin-dashboard/supabase/admin-auth-tables.sql
+
+# Tout fichier contenant des credentials
+**/credentials*
+**/secrets*
+*.secret
+*.key

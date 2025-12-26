@@ -40,3 +40,19 @@ next-env.d.ts
 
 # Testing
 coverage/
+
+# =====================================================
+
+# =====================================================
+
+
+scripts/generate-admin-hash.js
+
+
+supabase/admin-auth-tables.sql
+
+
+**/credentials*
+**/secrets*
+*.secret
+*.key

@@ -31,17 +31,10 @@ const withPWA = require('@ducanh2912/next-pwa').default({
           },
         },
       },
+      // Supabase REST : NetworkOnly (pas de cache pour données authentifiées)
       {
         urlPattern: /^https:\/\/.*\.supabase\.co\/rest\/.*/i,
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'supabase-api',
-          networkTimeoutSeconds: 5,
-          expiration: {
-            maxEntries: 50,
-            maxAgeSeconds: 5 * 60,
-          },
-        },
+        handler: 'NetworkOnly',
       },
     ],
   },
@@ -71,7 +64,6 @@ const nextConfig = {
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 31536000, // 1 an
-    dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
   },
   
