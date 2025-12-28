@@ -21,26 +21,25 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.testciviquefrance.fr'),
   title: {
-    default: 'Test Civique France 2025 2026 - Préparation Examen Naturalisation & Titre de Séjour | Nouvelle Loi Immigration',
-    template: '%s | Test Civique France - Examen Civique Naturalisation 2025 2026',
+    default: 'Test Civique 2026 - Préparation Gratuite | Test Civique France',
+    template: '%s | Test Civique France 2026',
   },
-  description: 'Préparez le test civique obligatoire 2025-2026 pour la naturalisation française, carte de séjour pluriannuelle et titre de séjour étudiant. Où passer le test civique ? Suis-je éligible ? 800+ questions QCM officielles conformes nouvelle loi immigration. Seuil 80% (32/40). Taux de réussite 95%. Gratuit.',
+  description: 'Test civique 2026 : 800+ questions QCM gratuites. Préparation complète à l\'examen civique pour naturalisation française. Taux de réussite 95%.',
   keywords: [
-    // Mots-clés principaux test civique
+    // Mots-clés PRIORITAIRES - test civique seul
     'test civique',
+    'test civique 2026',
     'test civique france',
-    'test civique français',
-    'test civique 2025',
     'examen civique',
-    'examen civique france',
-    'examen civique 2025',
+    'test civique gratuit',
+    'préparation test civique',
+    'examen civique 2026',
     'test civique naturalisation',
     'examen civique naturalisation',
-    'test civique gratuit',
+    'test civique français',
 
-    // NOUVELLE LOI IMMIGRATION 2024-2025
-    'loi immigration 2024',
-    'loi immigration 2025',
+    // NOUVELLE LOI IMMIGRATION 2026
+    'loi immigration 2026',
     'nouvelle loi immigration france',
     'réforme immigration france',
     'loi asile immigration',
@@ -48,17 +47,17 @@ export const metadata: Metadata = {
     'décret 2025-647',
     'CESEDA',
     'article R.413-12-1',
-    'conditions naturalisation 2025',
+    'conditions naturalisation 2026',
     'nouvelles règles naturalisation',
 
     // NATURALISATION
     'naturalisation française',
-    'naturalisation france 2025',
+    'naturalisation france 2026',
     'devenir français',
     'devenir citoyen français',
     'obtenir nationalité française',
     'demande naturalisation',
-    'dossier naturalisation 2025',
+    'dossier naturalisation 2026',
     'nationalité française conditions',
     'procédure naturalisation',
     'délai naturalisation france',
@@ -71,7 +70,7 @@ export const metadata: Metadata = {
     'carte de résident',
     'carte résident france',
     'renouvellement titre séjour',
-    'renouvellement carte séjour 2025',
+    'renouvellement carte séjour 2026',
     'premier titre séjour france',
     'titre séjour 4 ans',
     'titre séjour 10 ans',
@@ -94,7 +93,7 @@ export const metadata: Metadata = {
 
     // REGROUPEMENT FAMILIAL
     'regroupement familial france',
-    'regroupement familial 2025',
+    'regroupement familial 2026',
     'visa conjoint français',
     'carte séjour conjoint',
     'titre séjour famille',
@@ -154,19 +153,7 @@ export const metadata: Metadata = {
     'test blanc naturalisation',
     'entrainement gratuit test civique',
 
-    // ===== TEST CIVIQUE PAR MOIS 2025 =====
-    'test civique janvier 2025',
-    'test civique février 2025',
-    'test civique mars 2025',
-    'test civique avril 2025',
-    'test civique mai 2025',
-    'test civique juin 2025',
-    'test civique juillet 2025',
-    'test civique août 2025',
-    'test civique septembre 2025',
-    'test civique octobre 2025',
-    'test civique novembre 2025',
-    'test civique décembre 2025',
+    // ===== TEST CIVIQUE PAR MOIS 2026 (PRIORITAIRE) =====
 
     // ===== TEST CIVIQUE PAR MOIS 2026 =====
     'test civique 2026',
@@ -235,12 +222,11 @@ export const metadata: Metadata = {
     'délai test civique',
     'date test civique',
     'prochaine session test civique',
-    'calendrier test civique 2025',
     'calendrier test civique 2026',
 
     // ===== QUESTIONS UTILISATEURS - COMBIEN =====
     'combien coûte le test civique',
-    'prix test civique 2025',
+    'prix test civique 2026',
     'tarif test civique',
     'test civique gratuit ou payant',
     'coût inscription test civique',

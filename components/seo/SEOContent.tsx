@@ -14,7 +14,7 @@ export default function SEOContent() {
           Le test civique est un examen officiel obligatoire pour obtenir la naturalisation française,
           une carte de séjour pluriannuelle ou une carte de résident. Encadré par le Code de l'entrée
           et du séjour des étrangers et du droit d'asile (CESEDA), notamment l'article R.413-12-1,
-          et par le décret n° 2025-647 du 15 juillet 2025, ce test évalue les connaissances du candidat
+          et par le décret n° 2025-647 du 15 juillet 2025 (applicable en 2026), ce test évalue les connaissances du candidat
           sur les valeurs, institutions et la vie en société en France.
         </p>
       </section>
@@ -74,7 +74,7 @@ export default function SEOContent() {
           nous vous accompagnons vers la réussite de votre examen de naturalisation.
         </p>
         <ul>
-          <li>800+ questions QCM conformes au référentiel officiel 2025</li>
+          <li>800+ questions QCM conformes au référentiel officiel 2026</li>
           <li>Cours détaillés sur les valeurs de la République française</li>
           <li>Fiches de révision sur les institutions françaises</li>
           <li>Quiz sur les droits et devoirs du citoyen</li>
@@ -150,11 +150,11 @@ export default function SEOContent() {
           <dt>Le test civique est-il difficile ?</dt>
           <dd>Avec une bonne préparation, le test civique est accessible. Notre taux de réussite est de 95%.</dd>
 
-          <dt>Quand passer le test civique en 2025 ?</dt>
-          <dd>Vous pouvez passer le test civique tout au long de l'année 2025 : janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre.</dd>
-
           <dt>Quand passer le test civique en 2026 ?</dt>
-          <dd>Le test civique 2026 sera disponible dès janvier 2026. Préparez-vous dès maintenant !</dd>
+          <dd>Vous pouvez passer le test civique tout au long de l'année 2026 : janvier, février, mars, avril, mai, juin, juillet, août, septembre, octobre, novembre, décembre.</dd>
+
+          <dt>Quand passer le test civique en 2027 ?</dt>
+          <dd>Le test civique 2027 sera disponible dès janvier 2027. Préparez-vous dès maintenant !</dd>
           
           <dt>Comment obtenir l'attestation de réussite ?</dt>
           <dd>L'attestation est délivrée par l'organisme après réussite au test.</dd>
@@ -174,38 +174,38 @@ export default function SEOContent() {
       </section>
 
       <section>
-        <h2>Test civique par mois 2025</h2>
-        <ul>
-          <li>Test civique janvier 2025 - Préparez-vous dès maintenant</li>
-          <li>Test civique février 2025 - Sessions disponibles</li>
-          <li>Test civique mars 2025 - Inscriptions ouvertes</li>
-          <li>Test civique avril 2025 - Révisez avec nous</li>
-          <li>Test civique mai 2025 - Taux de réussite 95%</li>
-          <li>Test civique juin 2025 - Entraînement gratuit</li>
-          <li>Test civique juillet 2025 - Examens blancs disponibles</li>
-          <li>Test civique août 2025 - Continuez votre préparation</li>
-          <li>Test civique septembre 2025 - Nouvelle rentrée</li>
-          <li>Test civique octobre 2025 - Sessions d'automne</li>
-          <li>Test civique novembre 2025 - Dernières sessions de l'année</li>
-          <li>Test civique décembre 2025 - Préparez 2026</li>
-        </ul>
-      </section>
-
-      <section>
         <h2>Test civique par mois 2026</h2>
         <ul>
           <li>Test civique janvier 2026 - Nouvelle année, nouveau départ</li>
           <li>Test civique février 2026 - Sessions d'hiver</li>
-          <li>Test civique mars 2026 - Printemps des naturalisation</li>
-          <li>Test civique avril 2026 - Continuez votre parcours</li>
-          <li>Test civique mai 2026 - Préparation intensive</li>
-          <li>Test civique juin 2026 - Sessions d'été</li>
-          <li>Test civique juillet 2026 - Révisez pendant les vacances</li>
-          <li>Test civique août 2026 - Sessions estivales</li>
+          <li>Test civique mars 2026 - Printemps des naturalisations</li>
+          <li>Test civique avril 2026 - Révisez avec nous</li>
+          <li>Test civique mai 2026 - Taux de réussite 95%</li>
+          <li>Test civique juin 2026 - Entraînement gratuit</li>
+          <li>Test civique juillet 2026 - Examens blancs disponibles</li>
+          <li>Test civique août 2026 - Continuez votre préparation</li>
           <li>Test civique septembre 2026 - Rentrée 2026</li>
-          <li>Test civique octobre 2026 - Automne 2026</li>
-          <li>Test civique novembre 2026 - Fin d'année</li>
-          <li>Test civique décembre 2026 - Dernières sessions</li>
+          <li>Test civique octobre 2026 - Sessions d'automne</li>
+          <li>Test civique novembre 2026 - Sessions de fin d'année</li>
+          <li>Test civique décembre 2026 - Préparez 2027</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Test civique par mois 2027</h2>
+        <ul>
+          <li>Test civique janvier 2027 - Nouvelle année, nouveau départ</li>
+          <li>Test civique février 2027 - Sessions d'hiver</li>
+          <li>Test civique mars 2027 - Printemps des naturalisation</li>
+          <li>Test civique avril 2027 - Continuez votre parcours</li>
+          <li>Test civique mai 2027 - Préparation intensive</li>
+          <li>Test civique juin 2027 - Sessions d'été</li>
+          <li>Test civique juillet 2027 - Révisez pendant les vacances</li>
+          <li>Test civique août 2027 - Sessions estivales</li>
+          <li>Test civique septembre 2027 - Rentrée 2027</li>
+          <li>Test civique octobre 2027 - Automne 2027</li>
+          <li>Test civique novembre 2027 - Fin d'année</li>
+          <li>Test civique décembre 2027 - Dernières sessions</li>
         </ul>
       </section>
 
@@ -242,10 +242,10 @@ export default function SEOContent() {
       </section>
 
       <section>
-        <h2>Nouvelle loi immigration 2024-2025</h2>
+        <h2>Nouvelle loi immigration 2025-2026</h2>
         <p>
           La nouvelle loi immigration 2024 renforce les exigences du test civique. Le décret 2025-647 
-          définit les nouvelles modalités. Depuis 2025, le test civique est obligatoire pour davantage 
+          définit les nouvelles modalités applicables en 2026. Depuis janvier 2026, le test civique est obligatoire pour davantage 
           de démarches d'intégration et de titres de séjour. Préparez-vous avec Test Civique France 
           pour réussir votre examen conformément aux nouvelles règles.
         </p>
@@ -262,14 +262,14 @@ export default function SEOContent() {
           histoire france, géographie france, culture française, laïcité, Marianne,
           drapeau français, Marseillaise, devise française, décret 2025-647, CESEDA,
           R.413-12-1, 40 questions, 80 pourcent, 32 bonnes réponses,
-          test civique 2025, test civique 2026, examen civique 2025, examen civique 2026,
-          test civique janvier 2025, test civique février 2025, test civique mars 2025,
+          test civique 2026, test civique 2027, examen civique 2026, examen civique 2027,
           test civique janvier 2026, test civique février 2026, test civique mars 2026,
+          test civique janvier 2027, test civique février 2027, test civique mars 2027,
           où passer le test civique, où passer mon test civique, suis-je éligible au test civique,
-          comment s'inscrire au test civique, combien coûte le test civique,
+          comment s'inscrire au test civique, combien coûte le test civique, comment passer le test civique,
           le test civique est-il difficile, peut-on repasser le test civique,
           test civique paris, test civique lyon, test civique marseille, test civique toulouse,
-          nouvelle loi immigration, loi immigration 2024, loi immigration 2025,
+          nouvelle loi immigration 2026, loi immigration 2026, loi immigration 2025,
           titre de séjour étudiant, étudiant étranger france, regroupement familial
         </p>
       </section>

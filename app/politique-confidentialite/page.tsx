@@ -13,7 +13,7 @@ export default function PolitiqueConfidentialitePage() {
           </h1>
           
           <p className="text-gray-600 mb-8">
-            Dernière mise à jour : Décembre 2025
+            Dernière mise à jour : Janvier 2026
           </p>
 
           <div className="space-y-8">

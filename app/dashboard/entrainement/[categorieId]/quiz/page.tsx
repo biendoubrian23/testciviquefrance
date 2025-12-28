@@ -103,7 +103,7 @@ export default function QuizPage() {
   const [isLoadingPurchase, setIsLoadingPurchase] = useState(false)
   
   // Timer - peut être désactivé si mode sans chrono
-  const DEFAULT_TIMER = 15 // 15 secondes par défaut
+  const DEFAULT_TIMER = 2 // 15 secondes par défaut
   const [timeLeft, setTimeLeft] = useState(DEFAULT_TIMER)
   
   // États pour la célébration (confettis + toast)
@@ -832,10 +832,36 @@ export default function QuizPage() {
     const percentage = totalQuestions > 0 ? Math.round((score / totalQuestions) * 100) : 0
     const isSuccess = percentage >= 80 // 8/10 requis pour passer
     
+    // Afficher la notification social proof pour membres gratuits (géré par CSS animation)
+    const isFreeUser = !hasActiveSubscription && !allLevelsUnlocked
+    
     return (
       <>
         <Confetti isActive={showConfetti} duration={5000} />
         <CelebrationToast isVisible={showCelebration} score={score} onHide={() => setShowCelebration(false)} />
+        
+        {/* Notification Social Proof - membres gratuits uniquement, disparaît après 5s via CSS */}
+        {isFreeUser && (
+          <>
+            <style>{`
+              @keyframes socialProofAnim {
+                0% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+                8% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                85% { opacity: 1; transform: translateX(-50%) translateY(0); }
+                100% { opacity: 0; transform: translateX(-50%) translateY(-20px); }
+              }
+            `}</style>
+            <div 
+              className="fixed top-4 left-1/2 z-50"
+              style={{ animation: 'socialProofAnim 6s ease-out forwards' }}
+            >
+              <div className="bg-emerald-600 text-white px-4 py-2 rounded-lg shadow-lg flex items-center gap-2">
+                <span className="text-lg">✅</span>
+                <span className="text-sm font-medium">847 candidats ont réussi leur test civique avec notre préparation</span>
+              </div>
+            </div>
+          </>
+        )}
         
         <div className="max-w-md mx-auto px-2 sm:px-4 py-6">
           <div className="bg-white border border-gray-200 p-5 text-center">
@@ -910,6 +936,20 @@ export default function QuizPage() {
             </div>
           
             <div className="flex flex-col gap-2">
+              {/* Bouton déblocage pour membres GRATUITS - redirige vers Stripe 2,99€ */}
+              {!hasActiveSubscription && !allLevelsUnlocked && niveau < 10 && (
+                <a
+                  href={STRIPE_PLANS.standard.paymentLink}
+                  className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-3 px-4 font-semibold hover:from-primary-700 hover:to-primary-800 transition-all flex flex-col items-center justify-center gap-1 shadow-lg"
+                >
+                  <span className="text-xs font-medium opacity-90">⚠️ Ne perdez pas votre progression !</span>
+                  <span className="flex items-center gap-2">
+                    <Unlock className="w-4 h-4" />
+                    Débloquez les {10 - niveau} niveaux restants →
+                  </span>
+                </a>
+              )}
+              
               {/* Bouton déblocage - uniquement pour membres abonnés avec score 5-7 ET qui n'ont PAS encore l'achat */}
               {hasActiveSubscription && !allLevelsUnlocked && !isSuccess && score >= 5 && score <= 7 && niveau < 10 && (
                 <button
@@ -922,7 +962,8 @@ export default function QuizPage() {
                 </button>
               )}
               
-              {niveau < 10 && (
+              {/* Bouton niveau suivant - seulement pour membres payants */}
+              {(hasActiveSubscription || allLevelsUnlocked) && niveau < 10 && (
                 <button
                   onClick={() => {
                     clearQuizState()

@@ -98,33 +98,71 @@ export default function EntrainementPage() {
       const categoriesWithStats = await Promise.all(
         categoriesData.map(async (cat) => {
           // Calculer la progression par niveaux si l'utilisateur est connecté
-          let niveauxCompletes = 0;
+          let niveauMaxDebloque = 0;
           const totalNiveaux = 10;
           
           if (user) {
             try {
-              // Récupérer la progression depuis progression_niveaux
-              const { data: progressionData } = await supabase
-                .from('progression_niveaux')
-                .select('niveau_actuel')
+              // Récupérer le profil pour savoir si l'utilisateur a accès premium
+              const { data: profileData } = await supabase
+                .from('profiles')
+                .select('all_levels_unlocked, subscription_status')
+                .eq('id', user.id)
+                .single();
+              
+              const hasAllLevelsUnlocked = profileData?.all_levels_unlocked || false;
+              const hasActiveSubscription = profileData?.subscription_status === 'active';
+              const hasPremiumAccess = hasActiveSubscription || hasAllLevelsUnlocked;
+
+              // Récupérer les meilleurs scores par niveau depuis sessions_quiz
+              const { data: sessionsData } = await supabase
+                .from('sessions_quiz')
+                .select('niveau, score')
                 .eq('user_id', user.id)
                 .eq('categorie_id', cat.id)
-                .single();
+                .eq('completed', true);
 
-              if (progressionData) {
-                // Le niveau actuel représente le prochain niveau débloqué
-                // Donc si niveau_actuel = 3, on a complété les niveaux 1 et 2
-                niveauxCompletes = Math.min(progressionData.niveau_actuel, 10);
+              // Calculer le meilleur score pour chaque niveau
+              const meilleursScoresParNiveau = new Map<number, number>();
+              
+              if (sessionsData) {
+                for (const session of sessionsData) {
+                  const currentBest = meilleursScoresParNiveau.get(session.niveau) || 0;
+                  if (session.score > currentBest) {
+                    meilleursScoresParNiveau.set(session.niveau, session.score);
+                  }
+                }
               }
+
+              // Calculer le niveau maximum débloqué basé sur les scores réussis
+              // - Score >= 8/10 : déblocage normal
+              // - Score >= 5/10 ET all_levels_unlocked : déblocage avec achat
+              niveauMaxDebloque = hasPremiumAccess ? 1 : 1; // Niveau 1 toujours accessible
+              
+              for (let i = 1; i <= 10; i++) {
+                const scoreNiveau = meilleursScoresParNiveau.get(i) || 0;
+                // Si le niveau i a été réussi (score >= 8), débloquer le niveau i+1
+                if (scoreNiveau >= 8) {
+                  niveauMaxDebloque = Math.max(niveauMaxDebloque, i + 1);
+                }
+                // Si l'utilisateur a all_levels_unlocked et score >= 5, débloquer aussi
+                else if (hasAllLevelsUnlocked && scoreNiveau >= 5) {
+                  niveauMaxDebloque = Math.max(niveauMaxDebloque, i + 1);
+                }
+              }
+              
+              // Ne pas dépasser 10
+              niveauMaxDebloque = Math.min(niveauMaxDebloque, 10);
+              
             } catch {
               // Pas de progression pour cette catégorie
-              niveauxCompletes = 0;
+              niveauMaxDebloque = 0;
             }
           }
 
           // Calculer le pourcentage de progression basé sur les niveaux débloqués
-          const progress = user && niveauxCompletes > 0 
-            ? Math.round((niveauxCompletes / totalNiveaux) * 100) 
+          const progress = user && niveauMaxDebloque > 0 
+            ? Math.round((niveauMaxDebloque / totalNiveaux) * 100) 
             : 0;
 
           return {
@@ -133,14 +171,13 @@ export default function EntrainementPage() {
             description: cat.description,
             ordre: cat.ordre,
             questionsCount: 70, // 4 niveaux x 10 questions + 6 niveaux x 5 questions = 70
-            niveauxCompletes,
+            niveauxCompletes: niveauMaxDebloque,
             totalNiveaux,
             progress,
           };
         })
       );
 
-      setCategories(categoriesWithStats);
       setCategories(categoriesWithStats);
     } catch (error) {
       console.error('Erreur chargement catégories:', error);

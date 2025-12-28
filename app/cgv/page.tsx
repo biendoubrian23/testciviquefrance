@@ -13,7 +13,7 @@ export default function CGVPage() {
           </h1>
           
           <p className="text-gray-600 mb-8">
-            Dernière mise à jour : Décembre 2025
+            Dernière mise à jour : Janvier 2026
           </p>
 
           <div className="space-y-8">
@@ -770,7 +770,7 @@ export default function CGVPage() {
 
             <div className="bg-gray-50 p-4 rounded mt-6 text-center text-sm text-gray-600">
               <p>
-                Ces CGV ont été mises à jour en décembre 2025. Vous acceptez les présentes CGV lors de la souscription 
+                Ces CGV ont été mises à jour en janvier 2026. Vous acceptez les présentes CGV lors de la souscription 
                 de votre abonnement. Pour toute question : <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a>
               </p>
             </div>
