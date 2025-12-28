@@ -553,7 +553,7 @@ export default function OffresPage() {
                     <p className="text-sm text-gray-500 mt-1">
                       Continuez votre progression sans avoir à recommencer.
                     </p>
-                    <p className="text-xs text-gray-400 mt-2">Valable si score entre 5/10 et 7/10</p>
+                    <p className="text-xs text-gray-400 mt-2">Valable si score entre 2/10 et 7/10</p>
                   </div>
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
                     <div className="text-2xl font-bold text-gray-900">0,99€</div>

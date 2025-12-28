@@ -950,8 +950,8 @@ export default function QuizPage() {
                 </a>
               )}
               
-              {/* Bouton déblocage - uniquement pour membres abonnés avec score 5-7 ET qui n'ont PAS encore l'achat */}
-              {hasActiveSubscription && !allLevelsUnlocked && !isSuccess && score >= 5 && score <= 7 && niveau < 10 && (
+              {/* Bouton déblocage - uniquement pour membres abonnés avec score 2-7 ET qui n'ont PAS encore l'achat */}
+              {hasActiveSubscription && !allLevelsUnlocked && !isSuccess && score >= 2 && score <= 7 && niveau < 10 && (
                 <button
                   onClick={handleUseUnlockLevel}
                   className="w-full bg-amber-600 text-white py-2.5 px-4 font-semibold hover:bg-amber-700 transition-colors flex items-center justify-center gap-2"
@@ -969,16 +969,16 @@ export default function QuizPage() {
                     clearQuizState()
                     window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
                   }}
-                  disabled={!isSuccess && !(allLevelsUnlocked && score >= 5 && score <= 7)}
+                  disabled={!isSuccess && !(allLevelsUnlocked && score >= 2 && score <= 7)}
                   className={`w-full py-2.5 px-4 font-semibold transition-colors ${
-                    isSuccess || (allLevelsUnlocked && score >= 5 && score <= 7)
+                    isSuccess || (allLevelsUnlocked && score >= 2 && score <= 7)
                       ? 'bg-primary-600 text-white hover:bg-primary-700' 
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                   }`}
                 >
                   {isSuccess 
                     ? 'Passer au niveau suivant' 
-                    : allLevelsUnlocked && score >= 5 && score <= 7
+                    : allLevelsUnlocked && score >= 2 && score <= 7
                       ? 'Passer au niveau suivant (déblocage actif)'
                       : 'Niveau suivant (80% requis)'}
                 </button>
