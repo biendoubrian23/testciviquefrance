@@ -9,6 +9,14 @@
     "lint": "next lint",
     "postbuild": "next-sitemap"
   },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions",
+    "last 2 Edge versions",
+    "not dead",
+    "not op_mini all"
+  ],
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.8",
     "@stripe/stripe-js": "^4.9.0",

@@ -7,22 +7,22 @@ import { useState, useEffect } from 'react';
 // Images du carrousel avec messages marketing (format WebP optimisé)
 const carouselSlides = [
   {
-    image: '/carousselle1.webp',
+    image: '/carousselle1_opt.webp',
     title: 'Préparation efficace',
     subtitle: 'Des milliers de questions officielles',
   },
   {
-    image: '/carousselle2.webp',
+    image: '/carousselle2_opt.webp',
     title: 'Prêt pour le jour J',
     subtitle: '95% de taux de réussite',
   },
   {
-    image: '/carousselle3.webp',
+    image: '/carousselle3_opt.webp',
     title: 'Apprenez à votre rythme',
     subtitle: 'Accessible 24h/24 sur tous vos appareils',
   },
   {
-    image: '/carousselle4.webp',
+    image: '/carousselle4_opt.webp',
     title: 'Examens blancs réalistes',
     subtitle: 'Conditions identiques au vrai test',
   },
@@ -37,7 +37,7 @@ const carouselSlides = [
   //   subtitle: 'Maîtrisez les valeurs de la République',
   // },
   {
-    image: '/carousselle7.webp',
+    image: '/carousselle7_opt.webp',
     title: 'Réussissez du premier coup',
     subtitle: 'Une méthode éprouvée par des milliers de candidats',
   },
@@ -93,7 +93,7 @@ export default function Hero() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute bottom-12 left-4 right-4 text-white">
-                      <h3 className="text-xl font-bold mb-1">{slide.title}</h3>
+                      <h2 className="text-xl font-bold mb-1">{slide.title}</h2>
                       <p className="text-white/80 text-sm">{slide.subtitle}</p>
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export default function Hero() {
                   
                   {/* Texte marketing */}
                   <div className="absolute bottom-16 left-6 right-6 text-white">
-                    <h3 className="text-2xl sm:text-3xl font-bold mb-2">{slide.title}</h3>
+                    <h2 className="text-2xl sm:text-3xl font-bold mb-2">{slide.title}</h2>
                     <p className="text-white/80 text-lg">{slide.subtitle}</p>
                   </div>
                 </div>

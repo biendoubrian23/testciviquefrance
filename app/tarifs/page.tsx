@@ -78,7 +78,7 @@ export default function TarifsPage() {
               {/* Gratuit */}
               <div className="bg-white border border-gray-200 p-8 lg:p-10 animate-fade-in-up delay-100 transition-all duration-300 hover:shadow-lg hover:border-emerald-200 flex flex-col">
                 <div className="mb-8">
-                  <h2 className="text-lg font-medium text-emerald-600 mb-2">Gratuit</h2>
+                  <h2 className="text-lg font-medium text-emerald-700 mb-2">Gratuit</h2>
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-bold text-gray-900">0€</span>
                   </div>
@@ -102,7 +102,7 @@ export default function TarifsPage() {
 
                 <Link
                   href="/signup"
-                  className="mt-8 block w-full py-4 text-center border border-emerald-600 text-emerald-600 font-medium hover:bg-emerald-600 hover:text-white transition-all duration-300"
+                  className="mt-8 block w-full py-4 text-center border border-emerald-700 text-emerald-700 font-medium hover:bg-emerald-700 hover:text-white transition-all duration-300"
                 >
                   Commencer gratuitement
                 </Link>
@@ -122,15 +122,15 @@ export default function TarifsPage() {
                 )}
                 
                 <div className="mb-8">
-                  <h2 className="text-lg font-medium text-primary-200 mb-2">Pack Standard</h2>
+                  <h2 className="text-lg font-medium text-primary-100 mb-2">Pack Standard</h2>
                   {isPromoActive && (
                     <div className="text-xl text-red-300 line-through mb-1">4,49€</div>
                   )}
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-bold">2,99€</span>
-                    <span className="text-primary-200">/semaine</span>
+                    <span className="text-white/90">/semaine</span>
                   </div>
-                  <p className="text-primary-200 mt-2">Accès pendant 7 jours</p>
+                  <p className="text-primary-100 mt-2">Accès pendant 7 jours</p>
                 </div>
                 
                 <div className="space-y-4 flex-grow">

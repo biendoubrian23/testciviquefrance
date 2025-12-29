@@ -19,6 +19,7 @@ export default function Header() {
               alt="Test Civique France"
               width={290}
               height={88}
+              priority
               className="h-[97px] w-auto object-contain"
             />
           </Link>

@@ -39,7 +39,7 @@ type AuthContextType = {
   session: Session | null;
   isLoading: boolean;
   authError: string | null; // Nouveau: pour afficher les erreurs
-  signUp: (email: string, password: string, prenom: string, nom: string) => Promise<{ error: Error | null }>;
+  signUp: (email: string, password: string, prenom: string, nom: string, acceptMarketing?: boolean) => Promise<{ error: Error | null }>;
   signIn: (email: string, password: string) => Promise<{ error: Error | null }>;
   signInWithGoogle: () => Promise<{ error: Error | null }>;
   signOut: () => Promise<void>;
@@ -191,7 +191,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
   }, [initAuth, fetchProfile]);
 
-  const signUp = useCallback(async (email: string, password: string, prenom: string, nom: string) => {
+  const signUp = useCallback(async (email: string, password: string, prenom: string, nom: string, acceptMarketing: boolean = false) => {
     const { error } = await supabase.auth.signUp({
       email,
       password,
@@ -215,6 +215,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             email,
             prenom,
             nom,
+            acceptMarketing,
           }),
         });
 

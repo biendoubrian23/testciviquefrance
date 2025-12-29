@@ -44,6 +44,7 @@ export default function SignupPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const [acceptMarketing, setAcceptMarketing] = useState(false);
   const [error, setError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -93,7 +94,7 @@ export default function SignupPage() {
 
     setIsLoading(true);
 
-    const { error } = await signUp(email, password, prenom, nom);
+    const { error } = await signUp(email, password, prenom, nom, acceptMarketing);
 
     if (error) {
       if (error.message.includes('already registered')) {
@@ -291,6 +292,19 @@ export default function SignupPage() {
                   Minimum 8 caractères, une lettre et un chiffre
                 </p>
               )}
+            </div>
+
+            <div className="flex items-start gap-2">
+              <input
+                type="checkbox"
+                id="accept-marketing"
+                checked={acceptMarketing}
+                onChange={(e) => setAcceptMarketing(e.target.checked)}
+                className="w-4 h-4 mt-1 border-gray-300 focus:ring-primary-500"
+              />
+              <label htmlFor="accept-marketing" className="text-sm text-gray-600">
+                J&apos;accepte de recevoir des emails d&apos;information et des offres liées au service
+              </label>
             </div>
 
             <div className="flex items-start gap-2">

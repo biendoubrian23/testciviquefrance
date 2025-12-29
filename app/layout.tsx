@@ -6,7 +6,11 @@ import Script from 'next/script';
 import { StructuredData, getOrganizationSchema, getWebSiteSchema } from '@/components/seo/StructuredData';
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
 
-
+// Préconnexions pour améliorer les performances (fonts Google)
+const preconnectLinks = [
+  { href: 'https://fonts.googleapis.com', crossOrigin: undefined },
+  { href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' as const },
+];
 
 export const viewport: Viewport = {
   width: 'device-width',

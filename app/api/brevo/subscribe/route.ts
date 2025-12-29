@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { checkRateLimit, RATE_LIMITS, rateLimitResponse, getIdentifier } from '@/lib/utils/rate-limit';
 
 const BREVO_API_KEY = process.env.BREVO_API_KEY;
-const BREVO_LIST_ID = 4; // Liste "inscription" - ID #4
+const BREVO_LIST_INSCRIPTION = 4; // Liste "inscription" - ID #4
+const BREVO_LIST_MARKETING = 7; // Liste "marketing test civique" - ID #7
 
 export async function POST(request: NextRequest) {
   // Rate limiting - 10 requêtes par minute (anti-spam)
@@ -23,11 +24,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Log pour debugging (masqué)
-    console.log(`📝 Tentative d'ajout Brevo. Key présente: ${!!BREVO_API_KEY}, ListID: ${BREVO_LIST_ID}`);
-
     const body = await request.json();
-    const { email, prenom, nom } = body;
+    const { email, prenom, nom, acceptMarketing } = body;
+
+    // Construire la liste des IDs en fonction du consentement marketing
+    const listIds = acceptMarketing 
+      ? [BREVO_LIST_INSCRIPTION, BREVO_LIST_MARKETING] // Listes 4 et 7
+      : [BREVO_LIST_INSCRIPTION]; // Liste 4 uniquement
+
+    // Log pour debugging
+    console.log(`📝 Tentative d'ajout Brevo. Email: ${email}, Marketing: ${acceptMarketing}, ListIDs: ${listIds.join(', ')}`);
 
     // Validation de l'email
     if (!email) {
@@ -51,7 +57,7 @@ export async function POST(request: NextRequest) {
           PRENOM: prenom || '',
           NOM: nom || '',
         },
-        listIds: [BREVO_LIST_ID],
+        listIds: listIds,
         updateEnabled: true, // Met à jour si le contact existe déjà
       }),
     });
