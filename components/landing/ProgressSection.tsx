@@ -67,9 +67,9 @@ export default function ProgressSection() {
                     <span className="text-primary-600 font-bold text-sm">{highlight.number}</span>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900 mb-1">
+                    <h3 className="font-semibold text-gray-900 mb-1">
                       {highlight.title}
-                    </h4>
+                    </h3>
                     <p className="text-gray-600 text-sm">
                       {highlight.description}
                     </p>

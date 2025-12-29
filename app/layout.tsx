@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Analytics } from '@vercel/analytics/react';
@@ -6,11 +7,13 @@ import Script from 'next/script';
 import { StructuredData, getOrganizationSchema, getWebSiteSchema } from '@/components/seo/StructuredData';
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
 
-// Préconnexions pour améliorer les performances (fonts Google)
-const preconnectLinks = [
-  { href: 'https://fonts.googleapis.com', crossOrigin: undefined },
-  { href: 'https://fonts.gstatic.com', crossOrigin: 'anonymous' as const },
-];
+// Police Montserrat optimisée avec next/font (self-hosted, pas de blocage)
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-montserrat',
+});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -688,12 +691,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={montserrat.variable}>
       <head>
-        {/* Préconnexions pour performance */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+        {/* DNS prefetch pour scripts tiers */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 

@@ -19,10 +19,10 @@ const images = [
   'carousselle7.webp',
 ];
 
-// Dimensions optimales pour le carrousel (aspect ratio ~4:3)
-const TARGET_WIDTH = 900;
-const TARGET_HEIGHT = 675;
-const QUALITY = 75;
+// Dimensions optimales pour le carrousel mobile (665x499 affiché)
+const TARGET_WIDTH = 700;
+const TARGET_HEIGHT = 525;
+const QUALITY = 80;
 
 async function optimizeImages() {
   console.log('🚀 Début de l\'optimisation des images du carrousel...\n');
