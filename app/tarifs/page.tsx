@@ -10,7 +10,7 @@ import { Check, ArrowRight, ChevronDown, Gift } from 'lucide-react';
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <div className="border-b border-gray-200">
       <button
@@ -18,16 +18,14 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         className="w-full py-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
       >
         <h3 className="text-lg font-medium text-gray-900 pr-4">{question}</h3>
-        <ChevronDown 
-          className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300 ${
-            isOpen ? 'rotate-180' : ''
-          }`} 
+        <ChevronDown
+          className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
+            }`}
         />
       </button>
-      <div 
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-48 pb-6' : 'max-h-0'
-        }`}
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-48 pb-6' : 'max-h-0'
+          }`}
       >
         <p className="text-gray-600 leading-relaxed">{answer}</p>
       </div>
@@ -37,7 +35,7 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function TarifsPage() {
   const isPromoActive = usePromoActive();
-  
+
   return (
     <>
       <Header />
@@ -57,7 +55,7 @@ export default function TarifsPage() {
         {/* 3 Offres principales */}
         <section className="py-8 lg:py-10">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             {/* Bandeau Promo Nouvel An */}
             {isPromoActive && (
               <div className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white p-4 mb-8 shadow-lg">
@@ -72,9 +70,9 @@ export default function TarifsPage() {
                 </div>
               </div>
             )}
-            
+
             <div className="grid md:grid-cols-3 gap-8">
-              
+
               {/* Gratuit */}
               <div className="bg-white border border-gray-200 p-8 lg:p-10 animate-fade-in-up delay-100 transition-all duration-300 hover:shadow-lg hover:border-emerald-200 flex flex-col">
                 <div className="mb-8">
@@ -84,7 +82,7 @@ export default function TarifsPage() {
                   </div>
                   <p className="text-gray-500 mt-2">Pour découvrir la plateforme</p>
                 </div>
-                
+
                 <div className="space-y-4 flex-grow">
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
@@ -113,14 +111,14 @@ export default function TarifsPage() {
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-white text-primary-600 px-4 py-1.5 text-sm font-medium">
                   Recommandé
                 </div>
-                
+
                 {/* Badge -30% */}
                 {isPromoActive && (
                   <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
                     -30%
                   </div>
                 )}
-                
+
                 <div className="mb-8">
                   <h2 className="text-lg font-medium text-primary-100 mb-2">Pack Standard</h2>
                   {isPromoActive && (
@@ -128,11 +126,11 @@ export default function TarifsPage() {
                   )}
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-bold">2,99€</span>
-                    <span className="text-white/90">/semaine</span>
+                    <span className="text-white/90">/mois</span>
                   </div>
-                  <p className="text-primary-100 mt-2">Accès pendant 7 jours</p>
+                  <p className="text-primary-100 mt-2">Accès pendant 1 mois</p>
                 </div>
-                
+
                 <div className="space-y-4 flex-grow">
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-white mt-0.5 flex-shrink-0" />
@@ -166,14 +164,14 @@ export default function TarifsPage() {
 
               {/* Premium */}
               <div className="bg-white border border-gray-200 p-8 lg:p-10 animate-fade-in-up delay-300 transition-all duration-300 hover:shadow-lg hover:border-primary-200 flex flex-col relative">
-                
+
                 {/* Badge -30% */}
                 {isPromoActive && (
                   <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
                     -30%
                   </div>
                 )}
-                
+
                 <div className="mb-8">
                   <h2 className="text-lg font-medium text-primary-600 mb-2">Premium</h2>
                   {isPromoActive && (
@@ -181,11 +179,11 @@ export default function TarifsPage() {
                   )}
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-bold text-gray-900">6,99€</span>
-                    <span className="text-gray-500">/semaine</span>
+                    <span className="text-gray-500">/mois</span>
                   </div>
-                  <p className="text-gray-500 mt-2">Accès illimité pendant 7 jours</p>
+                  <p className="text-gray-500 mt-2">Accès pendant 1 moiss</p>
                 </div>
-                
+
                 <div className="space-y-4 flex-grow">
                   <div className="flex items-start gap-3">
                     <Check className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
@@ -230,15 +228,15 @@ export default function TarifsPage() {
                 Essayez notre plateforme avec 2 sessions d&apos;examen blanc dans les conditions réelles de l&apos;examen civique.
               </p>
             </div>
-            
+
             <div className="flex justify-center">
               <div className="group bg-white p-8 border-2 border-primary-200 hover:border-primary-600 transition-all duration-300 hover:shadow-lg text-center relative">
-                
+
                 {/* Badge -30% */}
                 <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse">
                   -30%
                 </div>
-                
+
                 <div className="text-sm text-primary-600 font-medium mb-3">Offre découverte</div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-2">2 Sessions d&apos;examen blanc</h3>
                 <div className="flex items-baseline justify-center gap-2 mb-4">
@@ -258,25 +256,25 @@ export default function TarifsPage() {
         <section className="py-16 lg:py-20 bg-gray-50">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Questions fréquentes</h2>
-            
+
             <div className="space-y-0 border-t border-gray-200">
-              <FAQItem 
+              <FAQItem
                 question="Comment fonctionne l'abonnement à la semaine ?"
                 answer="L'abonnement vous donne un accès complet pendant 7 jours à partir de la date d'achat. Vous pouvez utiliser toutes les fonctionnalités incluses dans votre formule sans limitation pendant cette période."
               />
-              <FAQItem 
+              <FAQItem
                 question="Quelle est la différence entre Pack Standard et Premium ?"
                 answer="Le Pack Standard (2,99€) inclut les tests thématiques, 1 session d&apos;examen blanc et les cours. Le Premium (6,99€) offre des tests illimités, 3 sessions d&apos;examen blanc, des statistiques avancées et un support prioritaire."
               />
-              <FAQItem 
+              <FAQItem
                 question="Les questions sont-elles conformes à l'examen officiel ?"
                 answer="Oui, toutes nos questions sont basées sur le référentiel officiel de l'examen civique français. Elles couvrent les valeurs de la République, l'histoire de France, la géographie et les institutions."
               />
-              <FAQItem 
+              <FAQItem
                 question="Puis-je réviser sur mobile ?"
                 answer="Absolument ! Notre plateforme est entièrement responsive et fonctionne parfaitement sur smartphone, tablette et ordinateur. Révisez où vous voulez, quand vous voulez."
               />
-              <FAQItem 
+              <FAQItem
                 question="Que se passe-t-il si je n'ai pas réussi en une semaine ?"
                 answer="Pas de panique ! Vous pouvez renouveler votre abonnement à tout moment. De plus, les cours et fiches de révision restent accessibles gratuitement même après expiration de votre formule."
               />

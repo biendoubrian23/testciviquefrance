@@ -98,8 +98,8 @@ export default function OnboardingOffersPage() {
               onClick={handleContinueWithOffer}
               disabled={isProcessing}
               className={`inline-flex items-center gap-2 px-8 py-3 font-semibold transition-all duration-200 shadow-md hover:shadow-lg ${!isProcessing
-                  ? 'bg-primary-600 text-white hover:bg-primary-700'
-                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                ? 'bg-primary-600 text-white hover:bg-primary-700'
+                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                 }`}
             >
               {isProcessing ? (
@@ -142,7 +142,7 @@ export default function OnboardingOffersPage() {
                 <span className="text-4xl font-bold">2,99€</span>
                 <span className="text-primary-200 text-sm">/semaine</span>
               </div>
-              <p className="text-primary-100 mb-4 text-sm">Accès pendant 7 jours</p>
+              <p className="text-primary-100 mb-4 text-sm">Accès pendant 1 mois</p>
 
               <ul className="space-y-2 mb-6 flex-grow text-sm">
                 <li className="flex items-center gap-2">
@@ -186,7 +186,7 @@ export default function OnboardingOffersPage() {
               <span className="text-4xl font-bold text-gray-900">6,99€</span>
               <span className="text-gray-500 text-sm">/semaine</span>
             </div>
-            <p className="text-gray-500 mb-4 text-sm">Accès illimité pendant 7 jours</p>
+            <p className="text-gray-500 mb-4 text-sm">Accès pendant 1 moiss</p>
 
             <ul className="space-y-2 mb-6 flex-grow text-sm">
               <li className="flex items-center gap-2 text-gray-700">

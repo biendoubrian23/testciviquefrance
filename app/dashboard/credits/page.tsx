@@ -12,7 +12,7 @@ import CountdownTimer, { usePromoActive } from '@/components/ui/CountdownTimer';
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
     <div className="border-b border-gray-200 last:border-b-0">
       <button
@@ -20,16 +20,14 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
         className="w-full py-4 px-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
       >
         <h4 className="font-semibold text-gray-900 pr-4">{question}</h4>
-        <ChevronDown 
-          className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300 ${
-            isOpen ? 'rotate-180' : ''
-          }`} 
+        <ChevronDown
+          className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''
+            }`}
         />
       </button>
-      <div 
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-40 pb-4 px-4' : 'max-h-0'
-        }`}
+      <div
+        className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-40 pb-4 px-4' : 'max-h-0'
+          }`}
       >
         <p className="text-sm text-gray-600">{answer}</p>
       </div>
@@ -87,7 +85,7 @@ export default function OffresPage() {
     try {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
-      
+
       if (!user || !user.email) {
         setErrorModal({
           isOpen: true,
@@ -147,7 +145,7 @@ export default function OffresPage() {
     try {
       const supabase = createClient();
       const { data: { user } } = await supabase.auth.getUser();
-      
+
       if (!user || !user.email) {
         setErrorModal({
           isOpen: true,
@@ -240,7 +238,7 @@ export default function OffresPage() {
             </div>
           </div>
         </div>
-        
+
         {/* Afficher les achats actifs */}
         <div className="border-t border-gray-200 pt-4 mt-4">
           <div className="flex items-center justify-between mb-2">
@@ -255,8 +253,8 @@ export default function OffresPage() {
             {/* Afficher l'abonnement Stripe actif */}
             {extendedProfile?.subscription_status === 'active' && extendedProfile?.stripe_price_id && (
               <span className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-semibold">
-                {extendedProfile.stripe_price_id === STRIPE_PLANS.standard.priceId && '👑 Pack Standard (2,99€/semaine)'}
-                {extendedProfile.stripe_price_id === STRIPE_PLANS.premium.priceId && '⭐ Pack Premium (6,99€/semaine)'}
+                {extendedProfile.stripe_price_id === STRIPE_PLANS.standard.priceId && '👑 Pack Standard (2,99€/mois)'}
+                {extendedProfile.stripe_price_id === STRIPE_PLANS.premium.priceId && '⭐ Pack Premium (6,99€/mois)'}
               </span>
             )}
             {/* Afficher les crédits de sessions d'examens blancs disponibles */}
@@ -285,27 +283,26 @@ export default function OffresPage() {
                 📚 Flashcards 2 thèmes
               </span>
             )}
-            {!extendedProfile?.is_premium && 
-             !extendedProfile?.all_levels_unlocked && 
-             !extendedProfile?.no_timer_enabled && 
-             !extendedProfile?.flashcards_2_themes && (
-              <span className="text-gray-400 text-sm">Aucun achat pour le moment</span>
-            )}
+            {!extendedProfile?.is_premium &&
+              !extendedProfile?.all_levels_unlocked &&
+              !extendedProfile?.no_timer_enabled &&
+              !extendedProfile?.flashcards_2_themes && (
+                <span className="text-gray-400 text-sm">Aucun achat pour le moment</span>
+              )}
           </div>
         </div>
       </div>
 
       {/* 3 Offres */}
       <div className="grid md:grid-cols-3 gap-6">
-        
+
         {/* Pack Standard - 2,99€/semaine - Recommandé */}
-        <div 
+        <div
           onClick={() => handleSelectOffer('pack_standard')}
-          className={`relative cursor-pointer transition-all duration-200 ${
-            selectedOffer === 'pack_standard' 
-              ? 'ring-2 ring-primary-600' 
-              : ''
-          }`}
+          className={`relative cursor-pointer transition-all duration-200 ${selectedOffer === 'pack_standard'
+            ? 'ring-2 ring-primary-600'
+            : ''
+            }`}
         >
           {/* Badge Recommandé - couleur contrastante */}
           <div className="absolute -top-3 inset-x-0 flex justify-center z-10">
@@ -321,7 +318,7 @@ export default function OffresPage() {
                 -30%
               </div>
             )}
-            
+
             <div className="flex items-center gap-2 mb-2">
               <Crown className="w-5 h-5" />
               <h3 className="text-lg font-bold">Pack Standard</h3>
@@ -331,10 +328,10 @@ export default function OffresPage() {
             )}
             <div className="flex items-baseline gap-1 mb-1">
               <span className="text-4xl font-bold">2,99€</span>
-              <span className="text-primary-200 text-sm">/semaine</span>
+              <span className="text-primary-200 text-sm">/mois</span>
             </div>
-            <p className="text-primary-100 mb-4 text-sm">Accès pendant 7 jours</p>
-            
+            <p className="text-primary-100 mb-4 text-sm">Accès pendant 1 mois</p>
+
             <ul className="space-y-2 mb-6 flex-grow text-sm">
               <li className="flex items-center gap-2">
                 <Check className="w-4 h-4 flex-shrink-0" />
@@ -363,7 +360,7 @@ export default function OffresPage() {
                 ✓ Plan actuel
               </div>
             ) : (
-              <button 
+              <button
                 onClick={(e) => { e.stopPropagation(); handleStripePurchase('standard'); }}
                 className="w-full py-3 bg-white text-primary-600 font-semibold hover:bg-gray-50 transition-colors"
               >
@@ -374,13 +371,12 @@ export default function OffresPage() {
         </div>
 
         {/* Pack Premium - 6,99€/semaine */}
-        <div 
+        <div
           onClick={() => setSelectedOffer('pack_premium')}
-          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${
-            selectedOffer === 'pack_premium' 
-              ? 'border-primary-600 ring-2 ring-primary-600' 
-              : 'border-gray-200'
-          } p-6 h-full flex flex-col`}
+          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${selectedOffer === 'pack_premium'
+            ? 'border-primary-600 ring-2 ring-primary-600'
+            : 'border-gray-200'
+            } p-6 h-full flex flex-col`}
         >
           {/* Badge -30% */}
           {isPromoActive && (
@@ -388,17 +384,17 @@ export default function OffresPage() {
               -30%
             </div>
           )}
-          
+
           <h3 className="text-lg font-bold text-primary-600 mb-2">Premium</h3>
           {isPromoActive && (
             <div className="text-lg text-red-500 line-through">9,99€</div>
           )}
           <div className="flex items-baseline gap-1 mb-1">
             <span className="text-4xl font-bold text-gray-900">6,99€</span>
-            <span className="text-gray-500 text-sm">/semaine</span>
+            <span className="text-gray-500 text-sm">/mois</span>
           </div>
-          <p className="text-gray-500 mb-4 text-sm">Accès illimité pendant 7 jours</p>
-          
+          <p className="text-gray-500 mb-4 text-sm">Accès pendant 1 moiss</p>
+
           <ul className="space-y-2 mb-6 flex-grow text-sm">
             <li className="flex items-center gap-2 text-gray-700">
               <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
@@ -427,13 +423,12 @@ export default function OffresPage() {
               ✓ Plan actuel
             </div>
           ) : (
-            <button 
+            <button
               onClick={(e) => { e.stopPropagation(); handleStripePurchase('premium'); }}
-              className={`w-full py-3 font-semibold transition-colors border-2 ${
-                selectedOffer === 'pack_premium'
-                  ? 'bg-primary-600 text-white border-primary-600'
-                  : 'border-primary-600 text-primary-600 hover:bg-primary-50'
-              }`}
+              className={`w-full py-3 font-semibold transition-colors border-2 ${selectedOffer === 'pack_premium'
+                ? 'bg-primary-600 text-white border-primary-600'
+                : 'border-primary-600 text-primary-600 hover:bg-primary-50'
+                }`}
             >
               Sélectionner
             </button>
@@ -441,13 +436,12 @@ export default function OffresPage() {
         </div>
 
         {/* Pack Examen - 2,50€ à l'unité */}
-        <div 
+        <div
           onClick={() => setSelectedOffer('pack_examen')}
-          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${
-            selectedOffer === 'pack_examen' 
-              ? 'border-primary-600 ring-2 ring-primary-600' 
-              : 'border-gray-200'
-          } p-6 h-full flex flex-col`}
+          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${selectedOffer === 'pack_examen'
+            ? 'border-primary-600 ring-2 ring-primary-600'
+            : 'border-gray-200'
+            } p-6 h-full flex flex-col`}
         >
           {/* Badge -30% */}
           {isPromoActive && (
@@ -455,7 +449,7 @@ export default function OffresPage() {
               -30%
             </div>
           )}
-          
+
           <h3 className="text-lg font-bold text-primary-600 mb-2">Pack Examen</h3>
           {isPromoActive && (
             <div className="text-lg text-red-500 line-through">3,59€</div>
@@ -464,7 +458,7 @@ export default function OffresPage() {
             <span className="text-4xl font-bold text-gray-900">2,50€</span>
           </div>
           <p className="text-gray-500 mb-4 text-sm">À l&apos;unité • Sans expiration</p>
-          
+
           <ul className="space-y-2 mb-6 flex-grow text-sm">
             <li className="flex items-center gap-2 text-gray-700">
               <Check className="w-4 h-4 text-primary-600 flex-shrink-0" />
@@ -484,13 +478,12 @@ export default function OffresPage() {
             </li>
           </ul>
 
-          <button 
+          <button
             onClick={(e) => { e.stopPropagation(); handleStripePurchase('examen'); }}
-            className={`w-full py-3 font-semibold transition-colors border-2 ${
-              selectedOffer === 'pack_examen'
-                ? 'bg-primary-600 text-white border-primary-600'
-                : 'border-primary-600 text-primary-600 hover:bg-primary-50'
-            }`}
+            className={`w-full py-3 font-semibold transition-colors border-2 ${selectedOffer === 'pack_examen'
+              ? 'bg-primary-600 text-white border-primary-600'
+              : 'border-primary-600 text-primary-600 hover:bg-primary-50'
+              }`}
           >
             Sélectionner
           </button>
@@ -510,18 +503,16 @@ export default function OffresPage() {
               Options supplémentaires pour personnaliser votre expérience
             </p>
           </div>
-          <ChevronDown 
-            className={`w-6 h-6 text-gray-500 flex-shrink-0 transition-transform duration-300 ${
-              showMicroservices ? 'rotate-180' : ''
-            }`} 
+          <ChevronDown
+            className={`w-6 h-6 text-gray-500 flex-shrink-0 transition-transform duration-300 ${showMicroservices ? 'rotate-180' : ''
+              }`}
           />
         </button>
-        
+
         {/* Contenu déroulant */}
-        <div 
-          className={`overflow-hidden transition-all duration-500 ease-in-out ${
-            showMicroservices ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
-          }`}
+        <div
+          className={`overflow-hidden transition-all duration-500 ease-in-out ${showMicroservices ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
+            }`}
         >
           <div className="px-6 pb-6 pt-2">
             {/* 
@@ -695,20 +686,20 @@ export default function OffresPage() {
       <div className="mt-12">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Questions fréquentes</h2>
         <div className="bg-white border border-gray-200">
-          <FAQItem 
-            question="Comment fonctionne l'abonnement ?" 
+          <FAQItem
+            question="Comment fonctionne l'abonnement ?"
             answer="L'abonnement est hebdomadaire et se renouvelle automatiquement. Vous pouvez l'annuler à tout moment depuis votre espace membre."
           />
-          <FAQItem 
-            question="Puis-je annuler mon abonnement ?" 
+          <FAQItem
+            question="Puis-je annuler mon abonnement ?"
             answer="Oui, vous pouvez annuler à tout moment depuis la section 'Gérer mon abonnement'. L'accès reste actif jusqu'à la fin de la période payée."
           />
-          <FAQItem 
-            question="Les achats ponctuels expirent-ils ?" 
+          <FAQItem
+            question="Les achats ponctuels expirent-ils ?"
             answer="Non, les achats ponctuels (Débloquer niveau, Mode sans chrono, Pack Examen) restent actifs tant que vous avez un abonnement actif."
           />
-          <FAQItem 
-            question="Que se passe-t-il si mon abonnement expire ?" 
+          <FAQItem
+            question="Que se passe-t-il si mon abonnement expire ?"
             answer="Si votre abonnement expire, vous perdez l'accès aux fonctionnalités premium, mais vos achats ponctuels restent enregistrés et seront réactivés si vous vous réabonnez."
           />
         </div>
