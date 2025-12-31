@@ -45,7 +45,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   compress: true, // Activer la compression gzip
-  
+
   // Optimisation des images
   images: {
     remotePatterns: [
@@ -66,7 +66,7 @@ const nextConfig = {
     minimumCacheTTL: 31536000, // 1 an
     contentDispositionType: 'attachment',
   },
-  
+
   // Headers pour cache et sécurité
   async headers() {
     return [
@@ -101,11 +101,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://www.youtube.com https://s.ytimg.com https://googleads.g.doubleclick.net https://www.googleadservices.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://www.youtube.com https://s.ytimg.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://eu.i.posthog.com https://eu-assets.i.posthog.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: https: blob: https://www.googletagmanager.com https://www.google-analytics.com https://img.youtube.com https://i.ytimg.com https://www.google.com https://www.google.fr https://googleads.g.doubleclick.net",
-              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://js.stripe.com https://api.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://api.web3forms.com https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net https://www.googleadservices.com",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://js.stripe.com https://api.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://api.web3forms.com https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://eu.i.posthog.com https://eu.posthog.com",
               "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://www.googletagmanager.com https://www.youtube.com https://www.youtube-nocookie.com https://googleads.g.doubleclick.net https://www.googleadservices.com",
               "object-src 'none'",
               "base-uri 'self'",
@@ -145,7 +145,7 @@ const nextConfig = {
       }
     ]
   },
-  
+
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
@@ -157,7 +157,7 @@ const nextConfig = {
     // Ignorer les erreurs TypeScript pendant le build si nécessaire
     ignoreBuildErrors: false,
   },
-  
+
   // Optimisations de performance
   experimental: {
     optimizeCss: true,
