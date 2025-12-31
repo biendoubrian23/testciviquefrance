@@ -105,7 +105,7 @@ const nextConfig = {
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
               "font-src 'self' https://fonts.gstatic.com",
               "img-src 'self' data: https: blob: https://www.googletagmanager.com https://www.google-analytics.com https://img.youtube.com https://i.ytimg.com https://www.google.com https://www.google.fr https://googleads.g.doubleclick.net",
-              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://js.stripe.com https://api.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://api.web3forms.com https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://eu.i.posthog.com https://eu.posthog.com",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://js.stripe.com https://api.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://api.web3forms.com https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com",
               "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://www.googletagmanager.com https://www.youtube.com https://www.youtube-nocookie.com https://googleads.g.doubleclick.net https://www.googleadservices.com",
               "object-src 'none'",
               "base-uri 'self'",
