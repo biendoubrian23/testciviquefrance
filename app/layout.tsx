@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
 import { StructuredData, getOrganizationSchema, getWebSiteSchema } from '@/components/seo/StructuredData';
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
+import { PostHogProvider } from '@/components/analytics/PostHogProvider';
 
 // Police Montserrat optimisée avec next/font (self-hosted, pas de blocage)
 const montserrat = Montserrat({
@@ -747,10 +748,10 @@ export default function RootLayout({
       <body className="antialiased" suppressHydrationWarning>
         {/* Google Tag Manager - noscript (fallback) */}
         <noscript>
-          <iframe 
+          <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-WFN8446P"
-            height="0" 
-            width="0" 
+            height="0"
+            width="0"
             style={{ display: 'none', visibility: 'hidden' }}
           />
         </noscript>
@@ -770,7 +771,9 @@ export default function RootLayout({
         </Script>
 
         <AnnouncementBanner />
-        <AuthProvider>{children}</AuthProvider>
+        <PostHogProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </PostHogProvider>
         <Analytics />
       </body>
     </html>

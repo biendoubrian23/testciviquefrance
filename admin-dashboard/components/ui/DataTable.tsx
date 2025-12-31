@@ -14,14 +14,18 @@ interface DataTableProps<T> {
   keyExtractor: (item: T) => string;
   isLoading?: boolean;
   emptyMessage?: string;
+  onRowClick?: (item: T) => void;
+  rowClassName?: string;
 }
 
-export function DataTable<T>({ 
-  columns, 
-  data, 
-  keyExtractor, 
+export function DataTable<T>({
+  columns,
+  data,
+  keyExtractor,
   isLoading = false,
-  emptyMessage = 'Aucune donnee disponible'
+  emptyMessage = 'Aucune donnee disponible',
+  onRowClick,
+  rowClassName,
 }: DataTableProps<T>) {
   if (isLoading) {
     return (
@@ -57,8 +61,8 @@ export function DataTable<T>({
           <thead>
             <tr className="table-header">
               {columns.map((column) => (
-                <th 
-                  key={column.key.toString()} 
+                <th
+                  key={column.key.toString()}
                   className={`
                     px-3 lg:px-6 py-3 whitespace-nowrap
                     ${column.hideOnMobile ? 'hidden md:table-cell' : ''}
@@ -73,10 +77,14 @@ export function DataTable<T>({
           </thead>
           <tbody>
             {data.map((item) => (
-              <tr key={keyExtractor(item)} className="table-row">
+              <tr
+                key={keyExtractor(item)}
+                className={`table-row ${rowClassName || ''}`}
+                onClick={onRowClick ? () => onRowClick(item) : undefined}
+              >
                 {columns.map((column) => (
-                  <td 
-                    key={column.key.toString()} 
+                  <td
+                    key={column.key.toString()}
                     className={`
                       px-3 lg:px-6 py-3 lg:py-4 text-sm
                       ${column.hideOnMobile ? 'hidden md:table-cell' : ''}
@@ -85,8 +93,8 @@ export function DataTable<T>({
                     `}
                   >
                     <div className={column.truncate ? 'truncate' : ''}>
-                      {column.render 
-                        ? column.render(item) 
+                      {column.render
+                        ? column.render(item)
                         : String((item as Record<string, unknown>)[column.key as string] ?? '-')
                       }
                     </div>
