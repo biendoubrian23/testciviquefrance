@@ -364,7 +364,7 @@ export default function OffresPage() {
                 onClick={(e) => { e.stopPropagation(); handleStripePurchase('standard'); }}
                 className="w-full py-3 bg-white text-primary-600 font-semibold hover:bg-gray-50 transition-colors"
               >
-                Sélectionner
+                🎁 Essai gratuit 2 jours
               </button>
             )}
           </div>
@@ -430,7 +430,7 @@ export default function OffresPage() {
                 : 'border-primary-600 text-primary-600 hover:bg-primary-50'
                 }`}
             >
-              Sélectionner
+              🎁 Essayer 2 jours gratuits
             </button>
           )}
         </div>

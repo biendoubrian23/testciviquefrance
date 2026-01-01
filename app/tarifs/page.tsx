@@ -158,7 +158,7 @@ export default function TarifsPage() {
                   href="/signup"
                   className="mt-8 block w-full py-4 text-center bg-white text-primary-600 font-medium hover:bg-primary-50 transition-all duration-300"
                 >
-                  Sélectionner
+                  🎁 Essai gratuit 2 jours
                 </Link>
               </div>
 
@@ -211,7 +211,7 @@ export default function TarifsPage() {
                   href="/signup"
                   className="mt-8 block w-full py-4 text-center border border-primary-600 text-primary-600 font-medium hover:bg-primary-600 hover:text-white transition-all duration-300"
                 >
-                  Démarrer Premium
+                  🎁 Essayer 2 jours gratuits
                 </Link>
               </div>
 

@@ -383,6 +383,15 @@ export default function DashboardPage() {
             <FileQuestion className="w-5 h-5" />
             Session d&apos;examen blanc
           </Link>
+          {/* Bouton essai gratuit - visible uniquement sur mobile */}
+          <Link 
+            href="/dashboard/credits"
+            className="sm:hidden inline-flex items-center justify-center gap-2 bg-emerald-50 text-emerald-700 px-5 py-3 font-semibold hover:bg-emerald-100 active:bg-emerald-200 transition-colors border border-emerald-200"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+          >
+            <Trophy className="w-5 h-5" />
+            🎁 2 jours d&apos;essai GRATUIT
+          </Link>
         </div>
       </div>
 

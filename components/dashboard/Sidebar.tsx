@@ -46,6 +46,7 @@ const bottomMenuItems = [
     title: 'Offres',
     icon: CreditCard,
     href: '/dashboard/credits',
+    badge: '🎁 Essai gratuit',
   },
   {
     title: 'Aide',
@@ -184,6 +185,11 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                     <div className="flex items-center gap-3">
                       <Icon className="w-5 h-5 flex-shrink-0" />
                       <span className="font-medium">{item.title}</span>
+                      {item.badge && (
+                        <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">
+                          {item.badge}
+                        </span>
+                      )}
                     </div>
                     {active && <ChevronRight className="w-4 h-4" />}
                   </Link>

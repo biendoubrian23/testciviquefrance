@@ -106,7 +106,7 @@ export default function OnboardingOffersPage() {
                 'Traitement en cours...'
               ) : (
                 <>
-                  Continuer avec cette offre
+                  🎁 Essayer gratuitement
                   <ChevronRight className="w-5 h-5" />
                 </>
               )}
@@ -172,7 +172,7 @@ export default function OnboardingOffersPage() {
                 disabled={isProcessing}
                 className="w-full py-2.5 bg-white text-primary-600 font-semibold hover:bg-gray-50 transition-colors text-sm"
               >
-                {isProcessing ? 'Traitement...' : 'Sélectionner'}
+                {isProcessing ? 'Traitement...' : '🎁 Essayer gratuitement'}
               </button>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function OnboardingOffersPage() {
               disabled={isProcessing}
               className="w-full py-2.5 font-semibold transition-colors border-2 text-sm border-primary-600 text-primary-600 hover:bg-primary-50"
             >
-              {isProcessing ? 'Traitement...' : 'Sélectionner'}
+              {isProcessing ? 'Traitement...' : '🎁 Essayer gratuitement'}
             </button>
           </div>
 
