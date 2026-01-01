@@ -20,6 +20,10 @@ export interface Profile {
   flashcards_5_themes: boolean;
   last_purchase_at: string | null;
   has_completed_onboarding: boolean;
+  // Nouvelles colonnes d'objectifs utilisateur
+  test_deadline: 'urgent' | 'soon' | 'relaxed' | 'no_date' | 'exploration' | null;
+  procedure_type: 'naturalization' | 'residence_permit' | 'renewal' | 'other' | null;
+  profile_completed_at: string | null;
   created_at: string;
   updated_at: string;
 }

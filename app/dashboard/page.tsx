@@ -363,8 +363,20 @@ export default function DashboardPage() {
         <h1 className="text-2xl sm:text-3xl font-bold mb-2">
           Bonjour {profile?.prenom || 'là'}
         </h1>
+        {/* Message personnalisé selon le profil */}
         <p className="text-primary-100 mb-5 sm:mb-6 text-base sm:text-lg">
-          Prêt à continuer votre préparation à l&apos;examen civique ?
+          {profile?.test_deadline === 'urgent' 
+            ? 'Votre test approche ! Entraînez-vous régulièrement pour être prêt le jour J.'
+            : profile?.test_deadline === 'soon'
+            ? 'Vous avez le temps de bien vous préparer. Continuez votre entraînement !'
+            : profile?.test_deadline === 'relaxed'
+            ? 'Prenez votre temps et progressez à votre rythme.'
+            : profile?.test_deadline === 'exploration'
+            ? 'Explorez librement les questions, sans pression !'
+            : profile?.test_deadline === 'no_date'
+            ? 'Définir une date peut vous aider à rester motivé. Bonne préparation !'
+            : 'Prêt à continuer votre préparation à l\'examen civique ?'
+          }
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
           <Link 

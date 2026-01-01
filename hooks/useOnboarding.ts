@@ -47,7 +47,7 @@ export function useOnboarding(redirectIfNotComplete = true) {
           
           // Redirection si demandée et onboarding non complété
           if (redirectIfNotComplete && !profile?.has_completed_onboarding) {
-            router.push('/onboarding/quiz');
+            router.push('/onboarding/profil');
           }
         }
       } catch (err) {

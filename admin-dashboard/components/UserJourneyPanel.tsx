@@ -168,6 +168,54 @@ export function UserJourneyPanel({ userId, onClose }: UserJourneyPanelProps) {
                         Inscrit le {formatDate(data.profile.created_at)} ({formatRelativeTime(data.profile.created_at)})
                     </div>
 
+                    {/* 🎯 PROFIL DÉCLARÉ */}
+                    <Card className="border-primary-200 bg-primary-50">
+                        <h3 className="font-semibold text-primary-900 mb-3 flex items-center gap-2">
+                            <User className="w-5 h-5" />
+                            Profil déclaré
+                        </h3>
+                        <div className="space-y-2">
+                            {/* Échéance */}
+                            <div className="flex items-center justify-between">
+                                <span className="text-sm text-primary-700">📅 Échéance</span>
+                                <span className="text-sm font-medium">
+                                    {data.profile.test_deadline ? (
+                                        <Badge variant={
+                                            data.profile.test_deadline === 'urgent' ? 'danger' :
+                                            data.profile.test_deadline === 'soon' ? 'warning' :
+                                            data.profile.test_deadline === 'relaxed' ? 'success' :
+                                            data.profile.test_deadline === 'exploration' ? 'info' : 'default'
+                                        }>
+                                            {data.profile.test_deadline === 'urgent' && '🔴 Moins d\'1 mois'}
+                                            {data.profile.test_deadline === 'soon' && '🟠 1 à 3 mois'}
+                                            {data.profile.test_deadline === 'relaxed' && '🟢 Plus de 3 mois'}
+                                            {data.profile.test_deadline === 'no_date' && '⏳ Pas de date'}
+                                            {data.profile.test_deadline === 'exploration' && '🎯 Curiosité'}
+                                        </Badge>
+                                    ) : (
+                                        <span className="text-gray-400">Non renseigné</span>
+                                    )}
+                                </span>
+                            </div>
+                            {/* Démarche */}
+                            <div className="flex items-center justify-between">
+                                <span className="text-sm text-primary-700">📋 Démarche</span>
+                                <span className="text-sm font-medium">
+                                    {data.profile.procedure_type ? (
+                                        <Badge variant="info">
+                                            {data.profile.procedure_type === 'naturalization' && '🇫🇷 Naturalisation'}
+                                            {data.profile.procedure_type === 'residence_permit' && '📄 Titre de séjour'}
+                                            {data.profile.procedure_type === 'renewal' && '🔄 Renouvellement'}
+                                            {data.profile.procedure_type === 'other' && '❓ Autre'}
+                                        </Badge>
+                                    ) : (
+                                        <span className="text-gray-400">Non renseigné</span>
+                                    )}
+                                </span>
+                            </div>
+                        </div>
+                    </Card>
+
                     {/* 📍 PARCOURS DE NAVIGATION - PostHog */}
                     <Card className="border-indigo-200 bg-indigo-50">
                         <h3 className="font-semibold text-indigo-900 mb-4 flex items-center gap-2">

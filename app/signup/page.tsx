@@ -104,8 +104,8 @@ export default function SignupPage() {
       }
       setIsLoading(false);
     } else {
-      // Rediriger directement vers l'onboarding
-      router.push('/onboarding/quiz');
+      // Rediriger directement vers l'onboarding (profil puis quiz)
+      router.push('/onboarding/profil');
     }
   };
 

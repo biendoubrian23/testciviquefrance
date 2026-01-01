@@ -32,6 +32,10 @@ type Profile = {
   flashcards_2_themes?: boolean;
   flashcards_5_themes?: boolean;
   flashcards_purchased_at?: string;
+  // Objectifs utilisateur (onboarding profil)
+  test_deadline?: 'urgent' | 'soon' | 'relaxed' | 'no_date' | 'exploration' | null;
+  procedure_type?: 'naturalization' | 'residence_permit' | 'renewal' | 'other' | null;
+  profile_completed_at?: string | null;
 };
 
 type AuthContextType = {

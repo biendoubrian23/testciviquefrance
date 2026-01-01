@@ -64,7 +64,7 @@ export async function GET(request: Request) {
           
           await addToBrevo(user.email || '', prenom, nom, origin);
           
-          return NextResponse.redirect(`${origin}/onboarding/quiz`);
+          return NextResponse.redirect(`${origin}/onboarding/profil`);
         }
 
         // Vérifier si le profil vient d'être créé (moins de 10 secondes) = nouveau compte
@@ -82,7 +82,7 @@ export async function GET(request: Request) {
           
           await addToBrevo(user.email || '', prenom, nom, origin);
           
-          return NextResponse.redirect(`${origin}/onboarding/quiz`);
+          return NextResponse.redirect(`${origin}/onboarding/profil`);
         }
         
         // Compte existant (créé il y a plus de 10 secondes) -> toujours dashboard
