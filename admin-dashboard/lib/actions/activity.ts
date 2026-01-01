@@ -126,38 +126,41 @@ export async function getRecentSignups(period: PeriodType = '1d', limit: number 
 export async function getHourlyActivity(period: PeriodType = '1d') {
   const supabase = createAdminClient();
   const data = [];
+  const now = new Date();
 
-  // Déterminer le nombre d'heures à afficher selon la période
-  let hoursToShow = 24;
-  switch (period) {
-    case '15min':
-    case '1h':
-      hoursToShow = 1;
-      break;
-    case '1d':
-      hoursToShow = 24;
-      break;
-    case '1w':
-      hoursToShow = 24 * 7; // On montre par jour pour 1 semaine
-      break;
-    case '1m':
-      hoursToShow = 30; // On montre par jour pour 1 mois
-      break;
-    case '1y':
-      hoursToShow = 12; // On montre par mois pour 1 an
-      break;
-    case 'lifetime':
-      hoursToShow = 24; // Par défaut dernières 24h
-      break;
-  }
-
-  // Pour les périodes courtes, on fait par heure
-  if (period === '1d' || period === '15min' || period === '1h') {
-    const actualHours = period === '1h' ? 1 : period === '15min' ? 1 : 24;
+  // Selon la période, on adapte la granularité
+  if (period === '15min' || period === '1h') {
+    // Pour 15min et 1h : afficher par tranches de 5 minutes
+    const minutes = period === '15min' ? 15 : 60;
+    const intervals = period === '15min' ? 3 : 12; // 3 tranches de 5min ou 12 tranches de 5min
     
-    for (let i = actualHours - 1; i >= 0; i--) {
-      const hourStart = new Date();
-      hourStart.setHours(hourStart.getHours() - i, 0, 0, 0);
+    for (let i = intervals - 1; i >= 0; i--) {
+      const intervalStart = new Date(now.getTime() - (i + 1) * 5 * 60 * 1000);
+      const intervalEnd = new Date(now.getTime() - i * 5 * 60 * 1000);
+
+      const [
+        { count: sessions },
+        { count: examens },
+      ] = await Promise.all([
+        supabase.from('sessions_quiz').select('*', { count: 'exact', head: true })
+          .gte('started_at', intervalStart.toISOString())
+          .lt('started_at', intervalEnd.toISOString()),
+        supabase.from('examens_blancs').select('*', { count: 'exact', head: true })
+          .gte('started_at', intervalStart.toISOString())
+          .lt('started_at', intervalEnd.toISOString()),
+      ]);
+
+      data.push({
+        hour: intervalEnd.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
+        sessions: sessions || 0,
+        examens: examens || 0,
+      });
+    }
+  } else if (period === '1d') {
+    // Pour 1 jour : afficher par heure (24 heures)
+    for (let i = 23; i >= 0; i--) {
+      const hourStart = new Date(now);
+      hourStart.setHours(now.getHours() - i, 0, 0, 0);
       const hourEnd = new Date(hourStart);
       hourEnd.setHours(hourEnd.getHours() + 1);
 
@@ -179,28 +182,80 @@ export async function getHourlyActivity(period: PeriodType = '1d') {
         examens: examens || 0,
       });
     }
-  } else {
-    // Pour les périodes longues, on garde le comportement par défaut (24h)
-    for (let i = 23; i >= 0; i--) {
-      const hourStart = new Date();
-      hourStart.setHours(hourStart.getHours() - i, 0, 0, 0);
-      const hourEnd = new Date(hourStart);
-      hourEnd.setHours(hourEnd.getHours() + 1);
+  } else if (period === '1w') {
+    // Pour 1 semaine : afficher par jour (7 jours)
+    for (let i = 6; i >= 0; i--) {
+      const dayStart = new Date(now);
+      dayStart.setDate(now.getDate() - i);
+      dayStart.setHours(0, 0, 0, 0);
+      const dayEnd = new Date(dayStart);
+      dayEnd.setDate(dayEnd.getDate() + 1);
 
       const [
         { count: sessions },
         { count: examens },
       ] = await Promise.all([
         supabase.from('sessions_quiz').select('*', { count: 'exact', head: true })
-          .gte('started_at', hourStart.toISOString())
-          .lt('started_at', hourEnd.toISOString()),
+          .gte('started_at', dayStart.toISOString())
+          .lt('started_at', dayEnd.toISOString()),
         supabase.from('examens_blancs').select('*', { count: 'exact', head: true })
-          .gte('started_at', hourStart.toISOString())
-          .lt('started_at', hourEnd.toISOString()),
+          .gte('started_at', dayStart.toISOString())
+          .lt('started_at', dayEnd.toISOString()),
       ]);
 
       data.push({
-        hour: hourStart.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }),
+        hour: dayStart.toLocaleDateString('fr-FR', { weekday: 'short', day: '2-digit' }),
+        sessions: sessions || 0,
+        examens: examens || 0,
+      });
+    }
+  } else if (period === '1m') {
+    // Pour 1 mois : afficher par jour (30 jours)
+    for (let i = 29; i >= 0; i--) {
+      const dayStart = new Date(now);
+      dayStart.setDate(now.getDate() - i);
+      dayStart.setHours(0, 0, 0, 0);
+      const dayEnd = new Date(dayStart);
+      dayEnd.setDate(dayEnd.getDate() + 1);
+
+      const [
+        { count: sessions },
+        { count: examens },
+      ] = await Promise.all([
+        supabase.from('sessions_quiz').select('*', { count: 'exact', head: true })
+          .gte('started_at', dayStart.toISOString())
+          .lt('started_at', dayEnd.toISOString()),
+        supabase.from('examens_blancs').select('*', { count: 'exact', head: true })
+          .gte('started_at', dayStart.toISOString())
+          .lt('started_at', dayEnd.toISOString()),
+      ]);
+
+      data.push({
+        hour: dayStart.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' }),
+        sessions: sessions || 0,
+        examens: examens || 0,
+      });
+    }
+  } else if (period === '1y' || period === 'lifetime') {
+    // Pour 1 an ou lifetime : afficher par mois (12 mois)
+    for (let i = 11; i >= 0; i--) {
+      const monthStart = new Date(now.getFullYear(), now.getMonth() - i, 1);
+      const monthEnd = new Date(now.getFullYear(), now.getMonth() - i + 1, 1);
+
+      const [
+        { count: sessions },
+        { count: examens },
+      ] = await Promise.all([
+        supabase.from('sessions_quiz').select('*', { count: 'exact', head: true })
+          .gte('started_at', monthStart.toISOString())
+          .lt('started_at', monthEnd.toISOString()),
+        supabase.from('examens_blancs').select('*', { count: 'exact', head: true })
+          .gte('started_at', monthStart.toISOString())
+          .lt('started_at', monthEnd.toISOString()),
+      ]);
+
+      data.push({
+        hour: monthStart.toLocaleDateString('fr-FR', { month: 'short', year: '2-digit' }),
         sessions: sessions || 0,
         examens: examens || 0,
       });

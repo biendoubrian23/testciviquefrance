@@ -17,6 +17,18 @@ import {
   Filter,
 } from 'lucide-react';
 
+// Types de période disponibles
+type ChartPeriod = '1d' | '1w' | '2w' | '1m' | '3m' | '1y';
+
+const PERIOD_LABELS: Record<ChartPeriod, string> = {
+  '1d': '1 jour',
+  '1w': '1 sem',
+  '2w': '2 sem',
+  '1m': '1 mois',
+  '3m': '3 mois',
+  '1y': '1 an',
+};
+
 interface DashboardClientProps {
   initialStats: {
     totalUsers: number;
@@ -44,8 +56,8 @@ interface DashboardClientProps {
 
 export function DashboardClient({
   initialStats,
-  activityData,
-  revenueData,
+  activityData: initialActivityData,
+  revenueData: initialRevenueData,
   categoryStats,
   recentUsers,
   examSuccessData,
@@ -53,6 +65,48 @@ export function DashboardClient({
   const [stats, setStats] = useState(initialStats);
   const [filter, setFilter] = useState<SubscriptionFilter>('all');
   const [isPending, startTransition] = useTransition();
+  
+  // États pour les graphiques avec filtres de période
+  const [activityData, setActivityData] = useState(initialActivityData);
+  const [revenueData, setRevenueData] = useState(initialRevenueData);
+  const [activityPeriod, setActivityPeriod] = useState<ChartPeriod>('2w');
+  const [revenuePeriod, setRevenuePeriod] = useState<ChartPeriod>('1m');
+  const [isActivityLoading, setIsActivityLoading] = useState(false);
+  const [isRevenueLoading, setIsRevenueLoading] = useState(false);
+
+  // Fonction pour charger les données d'activité
+  const loadActivityData = async (period: ChartPeriod) => {
+    setActivityPeriod(period);
+    setIsActivityLoading(true);
+    try {
+      const response = await fetch(`/api/charts?type=activity&period=${period}`);
+      const result = await response.json();
+      if (result.data) {
+        setActivityData(result.data);
+      }
+    } catch (error) {
+      console.error('Erreur chargement activité:', error);
+    } finally {
+      setIsActivityLoading(false);
+    }
+  };
+
+  // Fonction pour charger les données de revenus
+  const loadRevenueData = async (period: ChartPeriod) => {
+    setRevenuePeriod(period);
+    setIsRevenueLoading(true);
+    try {
+      const response = await fetch(`/api/charts?type=revenue&period=${period}`);
+      const result = await response.json();
+      if (result.data) {
+        setRevenueData(result.data);
+      }
+    } catch (error) {
+      console.error('Erreur chargement revenus:', error);
+    } finally {
+      setIsRevenueLoading(false);
+    }
+  };
 
   const handleFilterChange = (newFilter: SubscriptionFilter) => {
     setFilter(newFilter);
@@ -174,11 +228,60 @@ export function DashboardClient({
 
       {/* Graphiques principaux */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-4 lg:mb-8">
-        <Card title="Activité" subtitle="14 derniers jours">
-          <ActivityChart data={activityData} />
+        {/* Graphique Activité avec filtres */}
+        <Card 
+          title="Activité" 
+          subtitle={PERIOD_LABELS[activityPeriod]}
+          actions={
+            <div className="flex gap-1 flex-wrap">
+              {(Object.keys(PERIOD_LABELS) as ChartPeriod[]).map((period) => (
+                <button
+                  key={period}
+                  onClick={() => loadActivityData(period)}
+                  disabled={isActivityLoading}
+                  className={`px-2 py-1 text-xs font-medium transition-colors ${
+                    activityPeriod === period
+                      ? 'bg-primary-600 text-white'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  } ${isActivityLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                  {PERIOD_LABELS[period]}
+                </button>
+              ))}
+            </div>
+          }
+        >
+          <div className={isActivityLoading ? 'opacity-50' : ''}>
+            <ActivityChart data={activityData} />
+          </div>
         </Card>
-        <Card title="Revenus" subtitle="30 derniers jours">
-          <RevenueChart data={revenueData} />
+
+        {/* Graphique Revenus avec filtres */}
+        <Card 
+          title="Revenus" 
+          subtitle={PERIOD_LABELS[revenuePeriod]}
+          actions={
+            <div className="flex gap-1 flex-wrap">
+              {(Object.keys(PERIOD_LABELS) as ChartPeriod[]).map((period) => (
+                <button
+                  key={period}
+                  onClick={() => loadRevenueData(period)}
+                  disabled={isRevenueLoading}
+                  className={`px-2 py-1 text-xs font-medium transition-colors ${
+                    revenuePeriod === period
+                      ? 'bg-primary-600 text-white'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  } ${isRevenueLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                >
+                  {PERIOD_LABELS[period]}
+                </button>
+              ))}
+            </div>
+          }
+        >
+          <div className={isRevenueLoading ? 'opacity-50' : ''}>
+            <RevenueChart data={revenueData} />
+          </div>
         </Card>
       </div>
 
