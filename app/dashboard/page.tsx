@@ -382,14 +382,14 @@ export default function DashboardPage() {
           {/* Bouton Flashcards - visible uniquement sur mobile */}
           <Link 
             href="/dashboard/flashcards"
-            className="sm:hidden inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-5 py-3 font-medium hover:bg-primary-50 active:bg-primary-100 transition-colors border-2 border-primary-600"
+            className="sm:hidden inline-flex items-center justify-center gap-2 bg-white text-emerald-600 px-5 py-3 font-medium hover:bg-emerald-50 active:bg-emerald-100 transition-colors"
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             🃏 Flashcards
           </Link>
           <Link 
             href="/dashboard/entrainement"
-            className="inline-flex items-center justify-center gap-2 bg-primary-600 text-white px-5 py-3 sm:py-2.5 font-medium hover:bg-primary-700 active:bg-primary-800 transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-5 py-3 sm:py-2.5 font-medium hover:bg-primary-50 active:bg-primary-100 transition-colors"
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <BookOpen className="w-5 h-5" />
@@ -397,7 +397,7 @@ export default function DashboardPage() {
           </Link>
           <Link 
             href="/dashboard/examens"
-            className="inline-flex items-center justify-center gap-2 bg-primary-700 text-white px-5 py-3 sm:py-2.5 font-medium hover:bg-primary-800 active:bg-primary-900 transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-white text-indigo-700 px-5 py-3 sm:py-2.5 font-medium hover:bg-indigo-50 active:bg-indigo-100 transition-colors"
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <FileQuestion className="w-5 h-5" />
