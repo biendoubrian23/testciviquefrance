@@ -182,11 +182,11 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
                     }`}
                     style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
-                    <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
                       <Icon className="w-5 h-5 flex-shrink-0" />
                       <span className="font-medium">{item.title}</span>
                       {item.badge && (
-                        <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded-full font-medium">
+                        <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full font-medium whitespace-nowrap">
                           {item.badge}
                         </span>
                       )}
