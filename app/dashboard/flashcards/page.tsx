@@ -365,8 +365,10 @@ export default function FlashcardsPage() {
     );
   }
 
-  // Page verrouillée pour les membres gratuits
-  if (!hasSubscription) {
+  // Page verrouillée si aucun accès aux flashcards (ni abonnement, ni achat flashcards)
+  const hasFlashcardsAccess = hasSubscription || hasFlashcards2 || hasFlashcards5;
+  
+  if (!hasFlashcardsAccess) {
     return (
       <div className="max-w-2xl mx-auto px-3 sm:px-4 py-8 sm:py-12">
         {/* Lien retour vers les offres */}
@@ -388,17 +390,17 @@ export default function FlashcardsPage() {
           </div>
           
           <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 sm:mb-4">
-            Flashcards réservés aux membres
+            Débloquez les Flashcards
           </h1>
           
           <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6 max-w-md mx-auto">
-            Accédez à des centaines de flashcards interactifs pour réviser efficacement 
-            les thèmes clés de l'examen civique.
+            Accédez à des flashcards interactifs pour réviser efficacement 
+            les thèmes clés de l&apos;examen civique.
           </p>
           
-          <div className="bg-amber-50 border border-amber-200 p-3 sm:p-4 mb-4 sm:mb-6">
-            <p className="text-xs sm:text-sm text-amber-800 font-medium">
-              ⚡ Fonctionnalité disponible avec l'abonnement Standard ou Premium
+          <div className="bg-emerald-50 border border-emerald-200 p-3 sm:p-4 mb-4 sm:mb-6">
+            <p className="text-xs sm:text-sm text-emerald-800 font-medium">
+              🃏 Achetez les flashcards à l&apos;unité - sans abonnement requis !
             </p>
           </div>
           
@@ -406,7 +408,7 @@ export default function FlashcardsPage() {
             onClick={() => setShowUpgradeModal(true)}
             className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all"
           >
-            <span>Débloquer les Flashcards</span>
+            <span>Voir les packs Flashcards</span>
             <ArrowRight className="w-5 h-5" />
           </button>
         </div>

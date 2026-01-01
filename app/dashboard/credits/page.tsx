@@ -604,13 +604,7 @@ export default function OffresPage() {
                 </div>
               </div>
 
-              {/* 
-                PACK 3: Flashcards 2 thèmes
-                - Lié à l'abonnement : OUI
-                - Désactivé si abonnement expiré : OUI
-                - Stripe product_id : À configurer
-              */}
-              {/* Flashcards 2 thèmes */}
+              {/* Flashcards 2 thèmes - Achat indépendant */}
               <div className="bg-gray-50 border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
@@ -641,13 +635,7 @@ export default function OffresPage() {
                 </div>
               </div>
 
-              {/* 
-                PACK 4: Flashcards 5 thèmes
-                - Lié à l'abonnement : OUI
-                - Désactivé si abonnement expiré : OUI
-                - Stripe product_id : À configurer
-              */}
-              {/* Flashcards 5 thèmes */}
+              {/* Flashcards 5 thèmes - Achat indépendant */}
               <div className="bg-gray-50 border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
@@ -696,7 +684,7 @@ export default function OffresPage() {
           />
           <FAQItem
             question="Les achats ponctuels expirent-ils ?"
-            answer="Non, les achats ponctuels (Débloquer niveau, Mode sans chrono, Pack Examen) restent actifs tant que vous avez un abonnement actif."
+            answer="Non, les achats ponctuels sont permanents. Les Flashcards restent accessibles à vie, sans nécessiter d'abonnement."
           />
           <FAQItem
             question="Que se passe-t-il si mon abonnement expire ?"

@@ -66,7 +66,7 @@ export const STRIPE_PLANS = {
     productId: 'prod_TZEqyMCtaJySf4',
     price: 1.20,
     interval: 'one_time' as const,
-    requiresSubscription: true,
+    requiresSubscription: false,
     features: [
       'Principes et valeurs',
       'Histoire et géographie',
@@ -85,7 +85,7 @@ export const STRIPE_PLANS = {
     productId: 'prod_TZErV6VPZJuOqE',
     price: 1.50,
     interval: 'one_time' as const,
-    requiresSubscription: true,
+    requiresSubscription: false,
     features: [
       'Tous les 5 thèmes',
       'Institutions politiques',

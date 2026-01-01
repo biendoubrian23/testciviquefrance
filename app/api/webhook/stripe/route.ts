@@ -339,12 +339,6 @@ async function handleOneTimePayment(
   else if (priceId === STRIPE_PLANS.flashcards2Themes.priceId) {
     console.log('🃏 Flashcards 2 thèmes acheté');
 
-    // Vérifier si l'utilisateur a un abonnement actif
-    if (profile.subscription_status !== 'active') {
-      console.error('❌ Achat Flashcards refusé - Pas d\'abonnement actif');
-      return;
-    }
-
     const { error: updateError } = await supabase
       .from('profiles')
       .update({
@@ -381,12 +375,6 @@ async function handleOneTimePayment(
   // Vérifier si c'est Flashcards 5 thèmes
   else if (priceId === STRIPE_PLANS.flashcards5Themes.priceId) {
     console.log('🃏 Flashcards 5 thèmes acheté');
-
-    // Vérifier si l'utilisateur a un abonnement actif
-    if (profile.subscription_status !== 'active') {
-      console.error('❌ Achat Flashcards refusé - Pas d\'abonnement actif');
-      return;
-    }
 
     const { error: updateError } = await supabase
       .from('profiles')

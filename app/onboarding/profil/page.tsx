@@ -16,11 +16,11 @@ const STEPS = [
     question: 'Quand devez-vous passer votre test civique ?',
     field: 'test_deadline',
     options: [
-      { label: '🔴 Moins d\'1 mois', value: 'urgent' },
-      { label: '🟠 1 à 3 mois', value: 'soon' },
-      { label: '🟢 Plus de 3 mois', value: 'relaxed' },
-      { label: '⏳ Pas encore de date', value: 'no_date' },
-      { label: '🎯 Simple curiosité', value: 'exploration' },
+      { label: 'Moins d\'1 mois', value: 'urgent' },
+      { label: '1 à 3 mois', value: 'soon' },
+      { label: 'Plus de 3 mois', value: 'relaxed' },
+      { label: 'Pas encore de date', value: 'no_date' },
+      { label: 'Simple curiosité', value: 'exploration' },
     ],
   },
   {
@@ -31,10 +31,10 @@ const STEPS = [
     question: 'Quelle est votre démarche administrative ?',
     field: 'procedure_type',
     options: [
-      { label: '🇫🇷 Naturalisation', value: 'naturalization' },
-      { label: '📄 Titre de séjour', value: 'residence_permit' },
-      { label: '🔄 Renouvellement', value: 'renewal' },
-      { label: '❓ Autre / Je ne sais pas', value: 'other' },
+      { label: 'Naturalisation', value: 'naturalization' },
+      { label: 'Titre de séjour', value: 'residence_permit' },
+      { label: 'Carte de résident', value: 'resident_card' },
+      { label: 'Autre / Je ne sais pas', value: 'other' },
     ],
   },
 ];
@@ -142,8 +142,8 @@ export default function OnboardingProfilPage() {
           {step.question}
         </h2>
 
-        {/* Options - Grille 2 colonnes sur mobile */}
-        <div className="grid grid-cols-2 gap-2 mb-6">
+        {/* Options - Liste verticale */}
+        <div className="flex flex-col space-y-2 mb-6">
           {step.options.map((option) => {
             const isSelected = selectedOption === option.value;
 
@@ -151,7 +151,7 @@ export default function OnboardingProfilPage() {
               <button
                 key={option.value}
                 onClick={() => handleSelectOption(option.value)}
-                className={`p-3 text-left border-2 transition-all duration-200 text-sm ${
+                className={`w-full p-3 text-left border-2 transition-all duration-200 text-sm ${
                   isSelected
                     ? 'border-primary-600 bg-primary-50 text-primary-900'
                     : 'border-gray-200 bg-white text-gray-700 hover:border-gray-300 hover:bg-gray-50'
