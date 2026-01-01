@@ -145,14 +145,12 @@ export default function OnboardingResultsPage() {
               🎁 Essayer gratuitement • 0€
               <ChevronRight className="w-5 h-5" />
             </button>
-            {/* Bouton masqué temporairement
             <button
               onClick={() => router.push('/dashboard')}
               className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-white text-gray-700 font-semibold border border-gray-300 hover:bg-gray-50 transition-all duration-200"
             >
               Continuer au Dashboard
             </button>
-            */}
           </div>
         </div>
 
