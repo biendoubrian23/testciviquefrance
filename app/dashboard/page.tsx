@@ -385,7 +385,7 @@ export default function DashboardPage() {
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <BookOpen className="w-5 h-5" />
-            S&apos;entraîner
+            Quiz thématiques
           </Link>
           <Link 
             href="/dashboard/examens"
@@ -394,6 +394,14 @@ export default function DashboardPage() {
           >
             <FileQuestion className="w-5 h-5" />
             Session d&apos;examen blanc
+          </Link>
+          {/* Bouton Flashcards - visible uniquement sur mobile */}
+          <Link 
+            href="/dashboard/flashcards"
+            className="sm:hidden inline-flex items-center justify-center gap-2 bg-emerald-600 text-white px-5 py-3 font-medium hover:bg-emerald-700 active:bg-emerald-800 transition-colors"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
+          >
+            🃏 Flashcards
           </Link>
           {/* Bouton essai gratuit - visible uniquement sur mobile */}
           <Link 
