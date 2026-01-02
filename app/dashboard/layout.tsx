@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import Sidebar from '@/components/dashboard/Sidebar';
 import DashboardHeader from '@/components/dashboard/DashboardHeader';
+import BottomNav from '@/components/dashboard/BottomNav';
 import { Loader2, RefreshCw, WifiOff } from 'lucide-react';
 
 export default function DashboardLayout({
@@ -128,10 +129,13 @@ export default function DashboardLayout({
       {/* Contenu principal */}
       <div className="lg:ml-64 min-h-screen flex flex-col">
         <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
-        <main className="flex-1 p-1 sm:p-6">
+        <main className="flex-1 p-1 sm:p-6 pb-20 lg:pb-6">
           {children}
         </main>
       </div>
+
+      {/* Navigation mobile en bas */}
+      <BottomNav />
     </div>
   );
 }
