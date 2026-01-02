@@ -172,13 +172,22 @@ export default function ExamensPage() {
         <>
           {/* Card principale - Lancer un examen */}
           <div className="bg-primary-600 p-8 text-white">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div className="flex flex-col gap-6">
               <div>
                 <h2 className="text-2xl font-bold mb-3">Prêt pour une session d&apos;examen blanc ?</h2>
                 <p className="text-primary-100 mb-4 max-w-xl">
                   L&apos;examen civique officiel comporte 40 questions. Vous devez obtenir au moins 32 bonnes réponses (80%) pour réussir.
                   Testez-vous dans les mêmes conditions !
                 </p>
+                
+                {/* Bouton Commencer l'examen - Positionné après la description sur mobile */}
+                <button
+                  onClick={handleStartExam}
+                  className="sm:hidden w-full inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-6 py-3 font-bold hover:bg-primary-50 transition-colors mb-4"
+                >
+                  Commencer l&apos;examen
+                  <ArrowRight className="w-5 h-5" />
+                </button>
                 
                 {/* Compteur d'examens disponibles */}
                 {examCredits && (
@@ -217,7 +226,8 @@ export default function ExamensPage() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col gap-3">
+              {/* Bouton Commencer l'examen - Version desktop (cachée sur mobile) */}
+              <div className="hidden sm:flex flex-col gap-3">
                 <button
                   onClick={handleStartExam}
                   className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-6 py-3 font-bold hover:bg-primary-50 transition-colors"
