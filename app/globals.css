@@ -223,6 +223,17 @@
   }
 }
 
+/* Bottom navigation fixe - toujours visible */
+.bottom-nav-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: white;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
 /* Flexbox fallbacks pour anciens navigateurs */
 .flex {
   display: -webkit-box;
