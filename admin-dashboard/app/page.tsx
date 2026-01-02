@@ -1,7 +1,7 @@
 import { Header } from '@/components/layout';
 import { 
   getDashboardStats, 
-  getActivityData, 
+  getSignupsData, 
   getRevenueData, 
   getCategoryStats,
   getRecentUsers,
@@ -15,14 +15,14 @@ export const revalidate = 0;
 export default async function DashboardPage() {
   const [
     stats,
-    activityData,
+    signupsData,
     revenueData,
     categoryStats,
     recentUsers,
     examSuccessData,
   ] = await Promise.all([
     getDashboardStats('all'),
-    getActivityData(14),
+    getSignupsData(14),
     getRevenueData(30),
     getCategoryStats(),
     getRecentUsers(8),
@@ -39,7 +39,7 @@ export default async function DashboardPage() {
       <div className="p-4 lg:p-8">
         <DashboardClient
           initialStats={stats}
-          activityData={activityData}
+          activityData={signupsData}
           revenueData={revenueData}
           categoryStats={categoryStats}
           recentUsers={recentUsers}

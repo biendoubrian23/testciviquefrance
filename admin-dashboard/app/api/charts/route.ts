@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getActivityData, getRevenueData } from '@/lib/actions/dashboard';
+import { getActivityData, getRevenueData, getSignupsData } from '@/lib/actions/dashboard';
 
 // Mapping des périodes vers le nombre de jours
 const PERIOD_DAYS: Record<string, number> = {
@@ -13,7 +13,7 @@ const PERIOD_DAYS: Record<string, number> = {
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
-  const type = searchParams.get('type') || 'activity'; // 'activity' ou 'revenue'
+  const type = searchParams.get('type') || 'activity'; // 'activity', 'revenue' ou 'signups'
   const period = searchParams.get('period') || '2w';
   
   const days = PERIOD_DAYS[period] || 14;
@@ -24,6 +24,9 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ data });
     } else if (type === 'revenue') {
       const data = await getRevenueData(days);
+      return NextResponse.json({ data });
+    } else if (type === 'signups') {
+      const data = await getSignupsData(days);
       return NextResponse.json({ data });
     }
 

@@ -2,7 +2,7 @@
 
 import { useState, useTransition } from 'react';
 import { StatCard, Card } from '@/components/ui';
-import { ActivityChart, RevenueChart, CategoryDistribution, ExamSuccessChart } from '@/components/charts';
+import { SignupsChart, RevenueChart, CategoryDistribution, ExamSuccessChart } from '@/components/charts';
 import { RecentUsersTable } from './components/RecentUsersTable';
 import { SubscriptionFilter } from '@/lib/actions/dashboard';
 import { 
@@ -67,27 +67,27 @@ export function DashboardClient({
   const [isPending, startTransition] = useTransition();
   
   // États pour les graphiques avec filtres de période
-  const [activityData, setActivityData] = useState(initialActivityData);
+  const [signupsData, setSignupsData] = useState(initialActivityData);
   const [revenueData, setRevenueData] = useState(initialRevenueData);
-  const [activityPeriod, setActivityPeriod] = useState<ChartPeriod>('2w');
+  const [signupsPeriod, setSignupsPeriod] = useState<ChartPeriod>('2w');
   const [revenuePeriod, setRevenuePeriod] = useState<ChartPeriod>('1m');
-  const [isActivityLoading, setIsActivityLoading] = useState(false);
+  const [isSignupsLoading, setIsSignupsLoading] = useState(false);
   const [isRevenueLoading, setIsRevenueLoading] = useState(false);
 
-  // Fonction pour charger les données d'activité
-  const loadActivityData = async (period: ChartPeriod) => {
-    setActivityPeriod(period);
-    setIsActivityLoading(true);
+  // Fonction pour charger les données d'inscriptions
+  const loadSignupsData = async (period: ChartPeriod) => {
+    setSignupsPeriod(period);
+    setIsSignupsLoading(true);
     try {
-      const response = await fetch(`/api/charts?type=activity&period=${period}`);
+      const response = await fetch(`/api/charts?type=signups&period=${period}`);
       const result = await response.json();
       if (result.data) {
-        setActivityData(result.data);
+        setSignupsData(result.data);
       }
     } catch (error) {
-      console.error('Erreur chargement activité:', error);
+      console.error('Erreur chargement inscriptions:', error);
     } finally {
-      setIsActivityLoading(false);
+      setIsSignupsLoading(false);
     }
   };
 
@@ -228,22 +228,22 @@ export function DashboardClient({
 
       {/* Graphiques principaux */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-4 lg:mb-8">
-        {/* Graphique Activité avec filtres */}
+        {/* Graphique Inscriptions avec filtres */}
         <Card 
-          title="Activité" 
-          subtitle={PERIOD_LABELS[activityPeriod]}
+          title="Inscriptions" 
+          subtitle={PERIOD_LABELS[signupsPeriod]}
           actions={
             <div className="flex gap-1 flex-wrap">
               {(Object.keys(PERIOD_LABELS) as ChartPeriod[]).map((period) => (
                 <button
                   key={period}
-                  onClick={() => loadActivityData(period)}
-                  disabled={isActivityLoading}
+                  onClick={() => loadSignupsData(period)}
+                  disabled={isSignupsLoading}
                   className={`px-2 py-1 text-xs font-medium transition-colors ${
-                    activityPeriod === period
+                    signupsPeriod === period
                       ? 'bg-primary-600 text-white'
                       : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  } ${isActivityLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  } ${isSignupsLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   {PERIOD_LABELS[period]}
                 </button>
@@ -251,8 +251,8 @@ export function DashboardClient({
             </div>
           }
         >
-          <div className={isActivityLoading ? 'opacity-50' : ''}>
-            <ActivityChart data={activityData} />
+          <div className={isSignupsLoading ? 'opacity-50' : ''}>
+            <SignupsChart data={signupsData} />
           </div>
         </Card>
 

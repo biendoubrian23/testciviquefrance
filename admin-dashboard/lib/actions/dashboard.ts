@@ -178,6 +178,38 @@ export async function getActivityData(days: number = 14) {
   return data;
 }
 
+// Données des inscriptions uniquement (pour le graphique Vue d'ensemble)
+export async function getSignupsData(days: number = 14) {
+  const supabase = createAdminClient();
+  
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - days);
+  
+  const { data: profilesData } = await supabase
+    .from('profiles')
+    .select('created_at')
+    .gte('created_at', startDate.toISOString());
+
+  // Grouper par jour
+  const data = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    const dayStr = date.toISOString().split('T')[0];
+
+    const signups = profilesData?.filter(p => 
+      p.created_at?.startsWith(dayStr)
+    ).length || 0;
+
+    data.push({
+      date: date.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' }),
+      signups,
+    });
+  }
+
+  return data;
+}
+
 export async function getRevenueData(days: number = 30) {
   const supabase = createAdminClient();
   

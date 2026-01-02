@@ -1,27 +1,21 @@
 import { Header } from '@/components/layout';
 import { RefreshBanner } from '@/components/ui/RefreshBanner';
 import { ActivityClient } from './ActivityClient';
-import { getActivityStats, getRecentSessions, getRecentExamens, getRecentSignups, getHourlyActivity } from '@/lib/actions/activity';
+import { getActivityStats, getRecentSessions, getRecentExamens, getRecentSignups } from '@/lib/actions/activity';
+import { getActivityData } from '@/lib/actions/dashboard';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export default async function ActivityPage() {
-  // Charger les données initiales (période par défaut: 1 semaine)
-  const [stats, sessions, examens, signups, hourlyData] = await Promise.all([
+  // Charger les données initiales (période par défaut: 2 semaines)
+  const [stats, sessions, examens, signups, chartData] = await Promise.all([
     getActivityStats('1w'),
     getRecentSessions('1w'),
     getRecentExamens('1w'),
     getRecentSignups('1w'),
-    getHourlyActivity('1w'),
+    getActivityData(14), // Données d'activité journalière sur 2 semaines
   ]);
-
-  // Transformer les données pour le graphique
-  const chartData = hourlyData.map(h => ({
-    date: h.hour,
-    users: h.sessions + h.examens,
-    sessions: h.sessions,
-  }));
 
   return (
     <div className="min-h-screen bg-background-light">

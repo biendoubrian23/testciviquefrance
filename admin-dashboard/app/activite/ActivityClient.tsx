@@ -82,11 +82,8 @@ export function ActivityClient({
     try {
       const res = await fetch(`/api/activity/chart?period=${period}`);
       const data = await res.json();
-      setChartData(data.map((h: any) => ({
-        date: h.hour,
-        users: h.sessions + h.examens,
-        sessions: h.sessions,
-      })));
+      // Données d'activité journalière (users actifs + sessions par jour)
+      setChartData(data);
     } catch (error) {
       console.error('Erreur chart:', error);
     } finally {
@@ -208,7 +205,7 @@ export function ActivityClient({
       {/* Graphique avec filtre */}
       <div className="mb-8">
         <Card 
-          title="Activité horaire" 
+          title="Activité journalière" 
           subtitle={getPeriodLabel(chartPeriod)}
           actions={<PeriodFilter value={chartPeriod} onChange={setChartPeriod} compact />}
         >
