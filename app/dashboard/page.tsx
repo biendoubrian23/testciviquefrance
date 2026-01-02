@@ -407,8 +407,7 @@ export default function DashboardPage() {
             className="sm:hidden inline-flex items-center justify-center gap-2 bg-amber-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-amber-600 active:bg-amber-700 transition-colors"
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
-            <Trophy className="w-5 h-5" />
-            🎁 2 jours d&apos;essai GRATUIT
+            🎁 Essai gratuit → Cliquez ici
           </Link>
         </div>
       </div>
