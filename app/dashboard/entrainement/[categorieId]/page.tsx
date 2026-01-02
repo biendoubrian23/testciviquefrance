@@ -384,25 +384,20 @@ export default function CategorieDetailPage() {
 
       {/* Message info pour membres gratuits */}
       {!hasActiveSubscription && !allLevelsUnlocked && (
-        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-2 border-amber-300 p-4 mb-6">
-          <div className="flex items-start gap-3">
-            <Lock className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-semibold text-amber-900 mb-1">
-                Membre gratuit - Accès limité au niveau 1
-              </h3>
-              <p className="text-sm text-amber-800 mb-3">
-                En tant que membre gratuit, vous avez accès au niveau 1 de toutes les thématiques. 
-                Pour débloquer les niveaux 2 à 10, souscrivez à l'abonnement hebdomadaire et profitez également des flashcards, statistiques et temps illimité !
-              </p>
-              <button
-                onClick={() => router.push('/dashboard/credits')}
-                className="inline-flex items-center gap-2 bg-amber-600 text-white px-4 py-2 text-sm font-medium hover:bg-amber-700 transition-colors"
-              >
-                <Sparkles className="w-4 h-4" />
-                Voir les abonnements
-              </button>
+        <div className="bg-amber-50 border border-amber-300 p-3 mb-6 rounded-lg">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <Lock className="w-4 h-4 text-amber-600 flex-shrink-0" />
+              <span className="text-sm font-medium text-amber-900">
+                Niveau 1 uniquement • <span className="text-amber-700">Abonnez-vous pour tout débloquer</span>
+              </span>
             </div>
+            <button
+              onClick={() => router.push('/dashboard/credits')}
+              className="flex-shrink-0 bg-amber-600 text-white px-3 py-1.5 text-xs font-medium rounded hover:bg-amber-700 transition-colors"
+            >
+              Voir les offres
+            </button>
           </div>
         </div>
       )}

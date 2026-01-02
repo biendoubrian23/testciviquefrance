@@ -233,7 +233,7 @@ export default function OffresPage() {
             <div className="text-right">
               <p className="text-sm text-gray-500">Niveaux restants</p>
               <p className="text-2xl font-bold text-primary-600">
-                {extendedProfile?.is_premium ? '∞' : '3'}/jour
+                {extendedProfile?.is_premium ? '∞' : '0'}/jour
               </p>
             </div>
           </div>
@@ -294,24 +294,24 @@ export default function OffresPage() {
       </div>
 
       {/* 3 Offres */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-6 px-4 sm:px-0 max-w-[85%] sm:max-w-none mx-auto mt-8">
 
         {/* Pack Standard - 2,99€/semaine - Recommandé */}
         <div
           onClick={() => handleSelectOffer('pack_standard')}
-          className={`relative cursor-pointer transition-all duration-200 ${selectedOffer === 'pack_standard'
-            ? 'ring-2 ring-primary-600'
+          className={`relative cursor-pointer transition-all duration-200 mt-4 ${selectedOffer === 'pack_standard'
+            ? 'ring-2 ring-primary-600 rounded-lg'
             : ''
             }`}
         >
-          {/* Badge Recommandé - couleur contrastante */}
+          {/* Badge Recommandé - dépasse au-dessus de la carte */}
           <div className="absolute -top-3 inset-x-0 flex justify-center z-10">
-            <span className="px-4 py-1 bg-amber-400 text-amber-900 text-sm font-bold shadow-sm">
+            <span className="px-5 py-1.5 bg-amber-400 text-amber-900 text-sm font-bold shadow-lg rounded-full">
               Recommandé
             </span>
           </div>
 
-          <div className="bg-primary-600 text-white p-6 pt-8 h-full flex flex-col relative">
+          <div className="bg-primary-600 text-white p-6 pt-8 h-full flex flex-col relative rounded-lg">
             {/* Badge -30% */}
             {isPromoActive && (
               <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse z-20">
@@ -373,7 +373,7 @@ export default function OffresPage() {
         {/* Pack Premium - 6,99€/semaine */}
         <div
           onClick={() => setSelectedOffer('pack_premium')}
-          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${selectedOffer === 'pack_premium'
+          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 rounded-lg ${selectedOffer === 'pack_premium'
             ? 'border-primary-600 ring-2 ring-primary-600'
             : 'border-gray-200'
             } p-6 h-full flex flex-col`}
@@ -438,7 +438,7 @@ export default function OffresPage() {
         {/* Pack Examen - 2,50€ à l'unité */}
         <div
           onClick={() => setSelectedOffer('pack_examen')}
-          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 ${selectedOffer === 'pack_examen'
+          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 rounded-lg ${selectedOffer === 'pack_examen'
             ? 'border-primary-600 ring-2 ring-primary-600'
             : 'border-gray-200'
             } p-6 h-full flex flex-col`}
@@ -491,7 +491,7 @@ export default function OffresPage() {
       </div>
 
       {/* Micro-transactions - Accordéon déroulant */}
-      <div className="bg-white border border-gray-200">
+      <div className="bg-white border border-gray-200 rounded-lg mx-3 sm:mx-0">
         {/* En-tête cliquable */}
         <button
           onClick={() => setShowMicroservices(!showMicroservices)}
@@ -537,7 +537,7 @@ export default function OffresPage() {
                 - Stripe product_id : À configurer
               */}
               {/* Débloquer niveau suivant */}
-              <div className="bg-gray-50 border border-gray-200 p-5 hover:border-primary-300 transition-colors">
+              <div className="bg-gray-50 border border-gray-200 p-5 rounded-lg hover:border-primary-300 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">Débloquer le niveau suivant</h3>
@@ -574,7 +574,7 @@ export default function OffresPage() {
                 - Stripe product_id : À configurer
               */}
               {/* Mode sans chrono */}
-              <div className="bg-gray-50 border border-gray-200 p-5 hover:border-gray-400 transition-colors">
+              <div className="bg-gray-50 border border-gray-200 p-5 rounded-lg hover:border-gray-400 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">Mode sans chrono</h3>
@@ -605,7 +605,7 @@ export default function OffresPage() {
               </div>
 
               {/* Flashcards 2 thèmes - Achat indépendant */}
-              <div className="bg-gray-50 border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
+              <div className="bg-gray-50 border border-gray-200 p-5 rounded-lg hover:border-emerald-300 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">Flashcards 2 thèmes</h3>
@@ -636,7 +636,7 @@ export default function OffresPage() {
               </div>
 
               {/* Flashcards 5 thèmes - Achat indépendant */}
-              <div className="bg-gray-50 border border-gray-200 p-5 hover:border-emerald-300 transition-colors">
+              <div className="bg-gray-50 border border-gray-200 p-5 rounded-lg hover:border-emerald-300 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">Flashcards 5 thèmes</h3>
@@ -671,9 +671,9 @@ export default function OffresPage() {
       </div>
 
       {/* Section FAQ */}
-      <div className="mt-12">
+      <div className="mt-12 px-3 sm:px-0">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Questions fréquentes</h2>
-        <div className="bg-white border border-gray-200">
+        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
           <FAQItem
             question="Comment fonctionne l'abonnement ?"
             answer="L'abonnement est hebdomadaire et se renouvelle automatiquement. Vous pouvez l'annuler à tout moment depuis votre espace membre."

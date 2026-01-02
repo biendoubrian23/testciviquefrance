@@ -13,7 +13,7 @@ export default function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
   const { profile } = useAuth();
 
   return (
-    <header className="h-14 sm:h-16 bg-white border-b border-gray-200 flex items-center justify-between px-3 sm:px-6 sticky top-0 z-30">
+    <header className="h-14 sm:h-16 bg-white border-b border-gray-200 flex items-center justify-between px-3 sm:px-6 fixed top-0 left-0 right-0 lg:left-64 z-30">
       {/* Menu burger (mobile uniquement) */}
       <button 
         onClick={onMenuClick}

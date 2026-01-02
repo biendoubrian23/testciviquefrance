@@ -125,13 +125,18 @@ export default function QuizPage() {
       if (user) {
         const { data: profile } = await supabase
           .from('profiles')
-          .select('all_levels_unlocked, no_timer_enabled')
+          .select('all_levels_unlocked, no_timer_enabled, is_premium, subscription_status')
           .eq('id', user.id)
           .single()
 
         if (profile) {
           setUserProfile(profile)
-          setNoTimerMode(profile.no_timer_enabled || false)
+          // Mode sans chrono activé si:
+          // 1. L'utilisateur a acheté le mode sans chrono (no_timer_enabled)
+          // 2. OU l'utilisateur est membre gratuit (pas premium et pas d'abonnement actif)
+          const isPremium = profile.is_premium || profile.subscription_status === 'active'
+          const isFreeMember = !isPremium
+          setNoTimerMode(profile.no_timer_enabled || isFreeMember)
           setAllLevelsUnlocked(profile.all_levels_unlocked || false)
         }
       }

@@ -39,7 +39,7 @@ export default function BottomNav() {
   };
 
   return (
-    <nav className="lg:hidden bottom-nav-fixed border-t border-gray-200">
+    <nav className="lg:hidden bottom-nav-fixed fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200" style={{ zIndex: 9999 }}>
       <div className="flex justify-around items-center h-16">
         {navItems.map((item) => {
           const active = isActive(item.href);

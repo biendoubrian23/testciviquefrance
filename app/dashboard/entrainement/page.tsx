@@ -189,10 +189,10 @@ export default function EntrainementPage() {
   return (
     <div className="space-y-6 sm:space-y-8">
       {/* En-tête */}
-      <div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">S&apos;entraîner</h1>
+      <div className="text-center">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Maîtrisez chaque thématique !</h1>
         <p className="text-gray-600 text-base sm:text-lg">
-          Choisissez un thème pour commencer votre entraînement
+          Entraînez-vous sur les sujets clés et maximisez vos chances de réussite
         </p>
       </div>
 
