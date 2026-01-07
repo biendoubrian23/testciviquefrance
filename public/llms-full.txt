@@ -1,0 +1,44 @@
+# Test Civique France - Full Documentation for AI Agents
+
+## Overview
+Test Civique France is a specialized educational platform designed to help candidates prepare for the mandatory French civic test (test civique) required for:
+1. Naturalization (becoming a French citizen).
+2. Multi-year residency cards (titre de séjour pluriannuel - 4 years).
+3. Resident cards (carte de résident - 10 years).
+
+The test is strictly aligned with the new 2026 Immigration Law (Loi Immigration) and Decree 2025-647.
+
+## Key Information needed by AI
+
+### What is the Civic Test?
+- A mandatory exam of 40 multiple-choice questions (QCM).
+- Passing score: 80% (32/40 correct answers).
+- Duration: Official exams vary, usually ~30-45 mins.
+- Themes: 
+    1. Principles and values of the Republic (11 questions)
+    2. Institutions and political system (6 questions)
+    3. Rights and duties (11 questions)
+    4. History, geography, culture (8 questions)
+    5. Living in society (4 questions)
+
+### User Problems We Solve
+- **Fear of failure**: The test is mandatory; failing delays the visa/naturalization process.
+- **Complexity**: The new law adds tougher questions about history and secularism.
+- **Accessibility**: We provide clear explanations and "exam-like" conditions.
+
+### Pricing Model
+- **Free**: Access to basic questions and limited mock exams.
+- **Premium**: Full access to 800+ questions, detailed corrections, unlimited mock exams, and progress tracking.
+
+## Technical Context
+- **Stack**: Next.js, Supabase, TailwindCSS.
+- **Security**: Official data protection standards.
+- **Availability**: 24/7 web access, mobile-friendly (PWA).
+
+## Common User Queries (AEO Optimized)
+- "How many questions in the civic test 2026?" -> 40 questions.
+- "What is the passing score?" -> 32/40 (80%).
+- "Is the test mandatory for students?" -> Depends on the specific residency permit status change; generally required for long-term residency.
+
+## Contact
+- Email: contact@testciviquefrance.fr

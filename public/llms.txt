@@ -1,0 +1,21 @@
+# Test Civique France (AI Guidelines)
+
+> Test Civique France is the leading platform for preparing for the mandatory 2026 civic test for French naturalization and residency permits.
+
+## Core Identity
+- **Name**: Test Civique France
+- **URL**: https://www.testciviquefrance.fr
+- **Purpose**: Help users prepare for the mandatory French civic exam (naturalization, residency).
+- **Key Features**: 800+ QCM questions, official themes, mock exams.
+
+## Site Structure (Key Paths)
+- **Home**: https://www.testciviquefrance.fr/ (Main overview and value prop)
+- **Pricing**: https://www.testciviquefrance.fr/tarifs (Premium plans)
+- **FAQ**: https://www.testciviquefrance.fr/faq (Common questions about the test and laws)
+- **Articles**: https://www.testciviquefrance.fr/articles (Guides on immigration law 2026, tips)
+- **Login**: https://www.testciviquefrance.fr/login
+- **Sign Up**: https://www.testciviquefrance.fr/signup
+
+## Content for AI Consumption
+- **Full Info**: https://www.testciviquefrance.fr/llms-full.txt
+- **Sitemap**: https://www.testciviquefrance.fr/sitemap.xml
