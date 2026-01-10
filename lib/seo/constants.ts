@@ -42,6 +42,48 @@ export const PRIMARY_KEYWORDS = {
     'examen civique france',
     'examen civique naturalisation',
   ],
+  
+  // NOUVEAUX - CONCURRENTS DIRECTS
+  competitors: [
+    'le test civique',
+    'letestcivique',
+    'le-test-civique',
+    'test-civique.fr',
+    'mon examen civique',
+    'monexamencivique',
+    'prepacivique',
+    'prépa civique',
+    'civique-test',
+    'quizzcivique',
+    'quiz civique',
+    'examen-civique.fr',
+    'test civique officiel',
+    'preparation-naturalisation',
+    'france-naturalisation',
+    'naturalisationfrancaise',
+  ],
+  
+  // NOUVEAUX - SITES GOUVERNEMENTAUX
+  governmental: [
+    'service-public.fr naturalisation',
+    'france-visas test civique',
+    'ANEF naturalisation',
+    'ANEF titre séjour',
+    'OFII test civique',
+    'OFII naturalisation',
+    'office français immigration',
+    'interieur.gouv.fr naturalisation',
+    'immigration.interieur.gouv.fr',
+    'demarches.interieur.gouv.fr',
+    'demarches-simplifiees.fr naturalisation',
+    'gouv.fr naturalisation',
+    'gouv.fr test civique',
+    'préfecture naturalisation',
+    'préfecture titre séjour',
+    'rendez-vous ANEF',
+    'prise rendez-vous naturalisation',
+  ],
+  
   naturalisation: [
     'naturalisation française',
     'naturalisation france 2025',

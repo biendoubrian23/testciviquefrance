@@ -148,6 +148,97 @@ export const metadata: Metadata = {
     '40 questions test civique',
     '80 pourcent test civique',
     '32 bonnes réponses',
+
+    // CONCURRENTS - Positionnement sur leurs recherches
+    'le test civique',
+    'letestcivique',
+    'le-test-civique',
+    'testcivique',
+    'test civique officiel',
+    'test-civique.fr',
+    'monexamencivique',
+    'mon examen civique',
+    'prepacivique',
+    'prépa civique',
+    'civique-test',
+    'france-naturalisation',
+    'naturalisationfrancaise',
+    'examen-civique.fr',
+    'quizzcivique',
+    'quiz civique france',
+    'preparation-naturalisation',
+    'test naturalisation gratuit',
+    'révision examen civique',
+    'révision naturalisation',
+    'testciviquefrance',
+
+    // SITES OFFICIELS GOUVERNEMENTAUX - Positionnement associé
+    'service public naturalisation',
+    'service-public.fr naturalisation',
+    'france-visas test civique',
+    'france visas titre séjour',
+    'ANEF titre séjour',
+    'ANEF naturalisation',
+    'administration numérique étrangers france',
+    'préfecture naturalisation',
+    'préfecture titre séjour',
+    'sous-préfecture titre séjour',
+    'OFII test civique',
+    'OFII naturalisation',
+    'office français immigration intégration',
+    'OFII formation civique',
+    'interieur.gouv.fr naturalisation',
+    'ministère intérieur naturalisation',
+    'ministère intérieur titre séjour',
+    'immigration.interieur.gouv.fr',
+    'demarches.interieur.gouv.fr',
+    'demarches-simplifiees.fr naturalisation',
+    'rendez-vous préfecture titre séjour',
+    'rendez vous anef',
+    'prise rendez-vous naturalisation',
+    'ants.gouv.fr titre séjour',
+    'gouv.fr naturalisation',
+    'gouv.fr titre séjour',
+    'gouv.fr test civique',
+    
+    // ORGANISMES ET INSTITUTIONS
+    'ofpra naturalisation',
+    'CAF titre séjour',
+    'pôle emploi titre séjour',
+    'CPAM titre séjour',
+    'prefecture de police paris naturalisation',
+    'préfecture police titre séjour',
+    'consulat france naturalisation',
+    'mairie naturalisation',
+    'naturalisation en ligne',
+    
+    // TERMES JURIDIQUES ET ADMINISTRATIFS
+    'CESEDA naturalisation',
+    'code entrée séjour étrangers',
+    'décret naturalisation 2025',
+    'arrêté naturalisation',
+    'journal officiel naturalisation',
+    'JO naturalisation',
+    'récépissé titre séjour',
+    'attestation dépôt naturalisation',
+    'convocation test civique',
+    'convocation naturalisation',
+    'déclaration acquisition nationalité française',
+    'déclaration nationalité française mariage',
+    'réintégration nationalité française',
+    
+    // ALTERNATIVES ET VARIATIONS
+    'test de citoyenneté france',
+    'examen citoyenneté française',
+    'épreuve civique naturalisation',
+    'QCM connaissance france',
+    'questions culture française',
+    'connaissances langue française naturalisation',
+    'niveau B1 naturalisation',
+    'diplôme français naturalisation',
+    'TCF naturalisation',
+    'DELF B1 naturalisation',
+    'attestation linguistique naturalisation',
     'seuil réussite test civique',
     'durée test civique',
     'où passer test civique',
@@ -732,6 +823,13 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+
+        {/* Ahrefs Web Analytics */}
+        <Script 
+          src="https://analytics.ahrefs.com/analytics.js" 
+          data-key="hFBKQGItWXZ9na7DwxsrZw"
+          strategy="afterInteractive"
         />
 
         {/* Google Tag Manager - Head */}
