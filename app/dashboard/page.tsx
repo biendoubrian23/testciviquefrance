@@ -377,10 +377,10 @@ export default function DashboardPage() {
           }
         </p>
         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-          {/* Bouton Flashcards - visible uniquement sur mobile */}
+          {/* Bouton Flashcards - maintenant visible sur tous les écrans */}
           <Link 
             href="/dashboard/flashcards"
-            className="sm:hidden inline-flex items-center justify-center gap-2 bg-white text-emerald-600 px-5 py-3 rounded-md font-medium hover:bg-emerald-50 active:bg-emerald-100 transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-white text-emerald-600 px-5 py-3 sm:py-2.5 rounded-md font-medium hover:bg-emerald-50 active:bg-emerald-100 transition-colors"
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             🃏 Flashcards
@@ -401,10 +401,10 @@ export default function DashboardPage() {
             <FileQuestion className="w-5 h-5" />
             Session d&apos;examen blanc
           </Link>
-          {/* Bouton essai gratuit - visible uniquement sur mobile */}
+          {/* Bouton essai gratuit - maintenant visible sur tous les écrans */}
           <Link 
             href="/dashboard/credits"
-            className="sm:hidden inline-flex items-center justify-center gap-2 bg-amber-500 text-white px-5 py-3 rounded-md font-semibold hover:bg-amber-600 active:bg-amber-700 transition-colors"
+            className="inline-flex items-center justify-center gap-2 bg-amber-500 text-white px-5 py-3 sm:py-2.5 rounded-md font-semibold hover:bg-amber-600 active:bg-amber-700 transition-colors"
             style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             🎁 Essai gratuit → Cliquez ici
