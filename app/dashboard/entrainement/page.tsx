@@ -111,7 +111,7 @@ export default function EntrainementPage() {
                 .single();
               
               const hasAllLevelsUnlocked = profileData?.all_levels_unlocked || false;
-              const hasActiveSubscription = profileData?.subscription_status === 'active';
+              const hasActiveSubscription = profileData?.subscription_status === 'active' || profileData?.subscription_status === 'trialing';
               const hasPremiumAccess = hasActiveSubscription || hasAllLevelsUnlocked;
 
               // Récupérer les meilleurs scores par niveau depuis sessions_quiz

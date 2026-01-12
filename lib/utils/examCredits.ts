@@ -5,6 +5,14 @@
 import { createClient } from '@/lib/supabase/client';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
 
+/**
+ * Vérifier si un statut d'abonnement donne accès aux fonctionnalités premium
+ * Inclut 'active' ET 'trialing' (période d'essai gratuite)
+ */
+export function isSubscriptionActive(status: string | null | undefined): boolean {
+  return status === 'active' || status === 'trialing';
+}
+
 export interface ExamCreditsInfo {
   examCredits: number; // Crédits Pack Examen (achetés à l'unité)
   subscriptionExamsLimit: number; // Limite d'examens inclus dans l'abonnement (1 pour Standard, 3 pour Premium)
@@ -49,8 +57,8 @@ export async function getExamCreditsInfo(userId: string): Promise<ExamCreditsInf
   let isStandard = false;
   let isPremium = false;
 
-  // Vérifier les examens inclus dans l'abonnement
-  if (profile.subscription_status === 'active') {
+  // Vérifier les examens inclus dans l'abonnement (inclut la période d'essai 'trialing')
+  if (isSubscriptionActive(profile.subscription_status)) {
     if (profile.stripe_price_id === STRIPE_PLANS.standard.priceId) {
       subscriptionExamsLimit = 1; // Pack Standard = 1 examen
       isStandard = true;
@@ -113,8 +121,8 @@ export async function consumeExamCredit(userId: string): Promise<boolean> {
     return true;
   }
 
-  // Priorité 2 : Utiliser les examens de l'abonnement
-  if (profile.subscription_status === 'active') {
+  // Priorité 2 : Utiliser les examens de l'abonnement (inclut la période d'essai 'trialing')
+  if (isSubscriptionActive(profile.subscription_status)) {
     const subscriptionExamsUsed = profile.subscription_exams_used || 0;
     let subscriptionExamsLimit = 0;
 

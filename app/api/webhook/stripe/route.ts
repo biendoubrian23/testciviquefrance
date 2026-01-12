@@ -180,6 +180,9 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
   const customerId = subscription.customer as string;
   const priceId = subscription.items.data[0].price.id;
 
+  // 'trialing' = période d'essai gratuite, doit aussi donner accès premium
+  const hasActiveAccess = subscription.status === 'active' || subscription.status === 'trialing';
+
   const { error } = await supabase
     .from('profiles')
     .update({
@@ -188,7 +191,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
       subscription_status: subscription.status,
       subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
       subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
-      is_premium: subscription.status === 'active',
+      is_premium: hasActiveAccess,
     })
     .eq('stripe_customer_id', customerId);
 

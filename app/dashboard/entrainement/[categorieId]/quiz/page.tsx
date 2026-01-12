@@ -134,7 +134,7 @@ export default function QuizPage() {
           // Mode sans chrono activé si:
           // 1. L'utilisateur a acheté le mode sans chrono (no_timer_enabled)
           // 2. OU l'utilisateur est membre gratuit (pas premium et pas d'abonnement actif)
-          const isPremium = profile.is_premium || profile.subscription_status === 'active'
+          const isPremium = profile.is_premium || profile.subscription_status === 'active' || profile.subscription_status === 'trialing'
           const isFreeMember = !isPremium
           setNoTimerMode(profile.no_timer_enabled || isFreeMember)
           setAllLevelsUnlocked(profile.all_levels_unlocked || false)
@@ -422,7 +422,7 @@ export default function QuizPage() {
 
       if (profileData) {
         const hasAllLevelsUnlocked = profileData.all_levels_unlocked || false
-        const hasActiveSubscription = profileData.subscription_status === 'active'
+        const hasActiveSubscription = profileData.subscription_status === 'active' || profileData.subscription_status === 'trialing'
         const hasPremiumAccess = hasActiveSubscription || hasAllLevelsUnlocked
 
         setAllLevelsUnlocked(hasAllLevelsUnlocked)

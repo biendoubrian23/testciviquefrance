@@ -96,7 +96,7 @@ export default function OffresPage() {
 
       // Vérifier si ce produit nécessite un abonnement
       const plan = STRIPE_PLANS[planKey];
-      if (plan.requiresSubscription && extendedProfile?.subscription_status !== 'active') {
+      if (plan.requiresSubscription && extendedProfile?.subscription_status !== 'active' && extendedProfile?.subscription_status !== 'trialing') {
         setErrorModal({
           isOpen: true,
           message: 'Cet achat nécessite un abonnement actif (Standard ou Premium). Veuillez d\'abord souscrire à un abonnement.'
@@ -251,7 +251,7 @@ export default function OffresPage() {
           </div>
           <div className="flex flex-wrap gap-2">
             {/* Afficher l'abonnement Stripe actif */}
-            {extendedProfile?.subscription_status === 'active' && extendedProfile?.stripe_price_id && (
+            {(extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') && extendedProfile?.stripe_price_id && (
               <span className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-semibold">
                 {extendedProfile.stripe_price_id === STRIPE_PLANS.standard.priceId && '👑 Pack Standard (2,99€/mois)'}
                 {extendedProfile.stripe_price_id === STRIPE_PLANS.premium.priceId && '⭐ Pack Premium (6,99€/mois)'}
@@ -355,7 +355,7 @@ export default function OffresPage() {
               </li>
             </ul>
 
-            {extendedProfile?.stripe_price_id === STRIPE_PLANS.standard.priceId && extendedProfile?.subscription_status === 'active' ? (
+            {extendedProfile?.stripe_price_id === STRIPE_PLANS.standard.priceId && (extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') ? (
               <div className="w-full py-3 bg-white text-primary-600 font-semibold text-center border-2 border-primary-600">
                 ✓ Plan actuel
               </div>
@@ -418,7 +418,7 @@ export default function OffresPage() {
             </li>
           </ul>
 
-          {extendedProfile?.stripe_price_id === STRIPE_PLANS.premium.priceId && extendedProfile?.subscription_status === 'active' ? (
+          {extendedProfile?.stripe_price_id === STRIPE_PLANS.premium.priceId && (extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') ? (
             <div className="w-full py-3 font-semibold text-center border-2 bg-primary-600 text-white border-primary-600">
               ✓ Plan actuel
             </div>

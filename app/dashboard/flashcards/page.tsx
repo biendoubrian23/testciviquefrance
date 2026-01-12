@@ -178,7 +178,7 @@ export default function FlashcardsPage() {
         .single();
 
       if (profile) {
-        const subscriptionActive = profile.subscription_status === 'active';
+        const subscriptionActive = profile.subscription_status === 'active' || profile.subscription_status === 'trialing';
         setHasSubscription(subscriptionActive);
         setHasFlashcards2(profile.flashcards_2_themes || false);
         setHasFlashcards5(profile.flashcards_5_themes || false);
