@@ -165,6 +165,7 @@ export interface DashboardStats {
   newUsersThisWeek: number;
   newUsersThisMonth: number;
   premiumUsers: number;
+  trialingUsers: number;
   activeUsersToday: number;
   totalQuestions: number;
   totalCategories: number;
