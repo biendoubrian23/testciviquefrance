@@ -88,15 +88,37 @@ const STANDARD_PRICE_IDS = [
   'price_1Sc3AqIUG5GUejFZagJyV8HC', // Standard PRODUCTION
 ];
 
-export type PaidUserFilter = 'all' | 'premium' | 'standard';
+export type PaidUserFilter = 'all' | 'premium' | 'standard' | 'trialing';
 
 export type PaidUserWithType = Profile & {
   subscription_type: 'standard' | 'premium';
   subscription_price: number;
+  is_trialing?: boolean;
 };
 
 export async function getPremiumUsers(filter: PaidUserFilter = 'all'): Promise<PaidUserWithType[]> {
   const supabase = createAdminClient();
+
+  // Filtre spécial pour les utilisateurs en période d'essai
+  if (filter === 'trialing') {
+    const { data } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('subscription_status', 'trialing')
+      .order('subscription_start_date', { ascending: false });
+
+    if (!data) return [];
+
+    return data.map(user => {
+      const isPremiumPlan = user.stripe_price_id && PREMIUM_PRICE_IDS.includes(user.stripe_price_id);
+      return {
+        ...user,
+        subscription_type: isPremiumPlan ? 'premium' as const : 'standard' as const,
+        subscription_price: isPremiumPlan ? PREMIUM_PRICE : STANDARD_PRICE,
+        is_trialing: true,
+      };
+    });
+  }
 
   // Inclure is_premium = true OU subscription_status = 'active' OU 'trialing'
   let query = supabase

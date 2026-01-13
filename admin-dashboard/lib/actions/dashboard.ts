@@ -33,6 +33,7 @@ export async function getDashboardStats(subscriptionFilter: SubscriptionFilter =
     { count: newUsersThisMonth },
     { count: premiumUsersCount },
     { count: standardUsersCount },
+    { count: trialingUsersCount },
     { count: totalQuestions },
     { count: totalCategories },
     { count: totalExamens },
@@ -47,14 +48,17 @@ export async function getDashboardStats(subscriptionFilter: SubscriptionFilter =
     // Nouveaux ce mois
     supabase.from('profiles').select('*', { count: 'exact', head: true })
       .gte('created_at', startOfMonth.toISOString()),
-    // Utilisateurs premium (is_premium + price_id premium)
+    // Utilisateurs premium (is_premium OU subscription_status active/trialing + price_id premium)
     supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .eq('is_premium', true)
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .in('stripe_price_id', PREMIUM_PRICE_IDS),
-    // Utilisateurs standard (is_premium + price_id standard)
+    // Utilisateurs standard (is_premium OU subscription_status active/trialing + price_id standard)
     supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .eq('is_premium', true)
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .in('stripe_price_id', STANDARD_PRICE_IDS),
+    // Utilisateurs en période d'essai (trialing)
+    supabase.from('profiles').select('*', { count: 'exact', head: true })
+      .eq('subscription_status', 'trialing'),
     // Total questions
     supabase.from('questions').select('*', { count: 'exact', head: true }),
     // Total categories
@@ -81,6 +85,7 @@ export async function getDashboardStats(subscriptionFilter: SubscriptionFilter =
   // Calculer les revenus basés sur les abonnements actifs
   const standardUsers = standardUsersCount || 0;
   const premiumUsers = premiumUsersCount || 0;
+  const trialingUsers = trialingUsersCount || 0;
   
   // Revenus des abonnements (par semaine)
   const standardRevenue = standardUsers * STANDARD_PRICE;
@@ -117,6 +122,7 @@ export async function getDashboardStats(subscriptionFilter: SubscriptionFilter =
     newUsersThisMonth: newUsersThisMonth || 0,
     premiumUsers: displayedPremiumUsers, // Affiche selon le filtre
     standardUsers,
+    trialingUsers, // Utilisateurs en période d'essai
     activeUsersToday: 0,
     totalQuestions: totalQuestions || 0,
     totalCategories: totalCategories || 0,

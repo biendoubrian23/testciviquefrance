@@ -35,6 +35,7 @@ interface DashboardClientProps {
     newUsersThisMonth: number;
     premiumUsers: number;
     standardUsers: number;
+    trialingUsers: number;
     totalRevenus: number;
     revenusThisMonth: number;
     standardRevenue: number;
@@ -163,7 +164,7 @@ export function DashboardClient({
       </div>
 
       {/* Stats principales - grille 2 cols sur mobile */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6 mb-4 lg:mb-8">
         <StatCard
           title="Utilisateurs"
           value={stats.totalUsers.toLocaleString('fr-FR')}
@@ -181,6 +182,13 @@ export function DashboardClient({
           }
           icon={Award}
           variant="success"
+        />
+        <StatCard
+          title="🎁 Essai gratuit"
+          value={stats.trialingUsers?.toLocaleString('fr-FR') || '0'}
+          subtitle="Période d'essai"
+          icon={Clock}
+          variant="warning"
         />
         <StatCard
           title={`Revenus`}

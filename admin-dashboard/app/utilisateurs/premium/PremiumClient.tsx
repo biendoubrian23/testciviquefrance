@@ -83,7 +83,7 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
   };
 
   const filteredStats = getFilteredStats();
-  const filterLabel = filter === 'all' ? 'Payants' : filter === 'premium' ? 'Premium' : 'Standard';
+  const filterLabel = filter === 'all' ? 'Payants' : filter === 'premium' ? 'Premium' : filter === 'trialing' ? 'Essai gratuit' : 'Standard';
 
   const columns = [
     {
@@ -232,9 +232,10 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
           onChange={(e) => handleFilterChange(e.target.value as PaidUserFilter)}
           className="px-4 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
         >
-          <option value="all">Tous les abonnes</option>
+          <option value="all">Tous les abonnés</option>
           <option value="standard">Standard (2.99€/sem)</option>
           <option value="premium">Premium (6.99€/sem)</option>
+          <option value="trialing">🎁 Essai gratuit</option>
         </select>
         <div className="ml-auto flex gap-4 text-sm">
           <span className="text-orange-600 font-medium">{stats.totalStandard} Standard</span>

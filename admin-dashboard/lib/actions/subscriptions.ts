@@ -21,13 +21,14 @@ export type Subscription = {
   nom: string | null;
   type: 'standard' | 'premium';
   price: number;
-  status: 'active' | 'canceled' | 'past_due' | 'inactive';
+  status: 'active' | 'trialing' | 'canceled' | 'past_due' | 'inactive';
   start_date: string | null;
   end_date: string | null;
   stripe_customer_id: string | null;
   stripe_subscription_id: string | null;
   days_remaining: number;
   weeks_active: number;
+  is_trialing?: boolean;
 };
 
 export type SubscriptionStats = {
@@ -47,8 +48,8 @@ export type SubscriptionStats = {
 };
 
 export type SubscriptionFilter = {
-  type?: 'all' | 'standard' | 'premium';
-  status?: 'all' | 'active' | 'expiring' | 'canceled';
+  type?: 'all' | 'standard' | 'premium' | 'trialing';
+  status?: 'all' | 'active' | 'trialing' | 'expiring' | 'canceled';
   period?: 'all' | 'week' | 'month' | '3months';
 };
 
@@ -79,18 +80,22 @@ export async function getSubscriptions(filter: SubscriptionFilter = {}): Promise
   let query = supabase
     .from('profiles')
     .select('id, email, prenom, nom, is_premium, stripe_price_id, subscription_status, subscription_start_date, subscription_end_date, stripe_customer_id, stripe_subscription_id')
-    .eq('is_premium', true);
+    .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing');
 
   // Filtre par type
   if (filter.type === 'premium') {
     query = query.in('stripe_price_id', PREMIUM_PRICE_IDS);
   } else if (filter.type === 'standard') {
     query = query.in('stripe_price_id', STANDARD_PRICE_IDS);
+  } else if (filter.type === 'trialing') {
+    query = query.eq('subscription_status', 'trialing');
   }
 
   // Filtre par statut
   if (filter.status === 'active') {
     query = query.eq('subscription_status', 'active');
+  } else if (filter.status === 'trialing') {
+    query = query.eq('subscription_status', 'trialing');
   } else if (filter.status === 'canceled') {
     query = query.eq('subscription_status', 'canceled');
   }
@@ -115,6 +120,7 @@ export async function getSubscriptions(filter: SubscriptionFilter = {}): Promise
       stripe_subscription_id: user.stripe_subscription_id,
       days_remaining: getDaysRemaining(user.subscription_end_date),
       weeks_active: getWeeksActive(user.subscription_start_date),
+      is_trialing: user.subscription_status === 'trialing',
     };
   });
 
@@ -154,22 +160,28 @@ export async function getSubscriptionStats(): Promise<SubscriptionStats> {
     { count: canceledThisMonth },
     { data: newThisWeekData },
     { data: newThisMonthData },
+    { count: trialingCount },
   ] = await Promise.all([
+    // Utilisateurs actifs (is_premium OU active OU trialing)
     supabase.from('profiles')
-      .select('stripe_price_id, subscription_end_date, subscription_start_date')
-      .eq('is_premium', true),
+      .select('stripe_price_id, subscription_end_date, subscription_start_date, subscription_status')
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing'),
     supabase.from('profiles')
       .select('*', { count: 'exact', head: true })
       .eq('subscription_status', 'canceled')
       .gte('subscription_end_date', oneMonthAgo.toISOString()),
     supabase.from('profiles')
       .select('id')
-      .eq('is_premium', true)
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .gte('subscription_start_date', oneWeekAgo.toISOString()),
     supabase.from('profiles')
       .select('id')
-      .eq('is_premium', true)
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .gte('subscription_start_date', oneMonthAgo.toISOString()),
+    // Comptage spécifique des utilisateurs en période d'essai
+    supabase.from('profiles')
+      .select('*', { count: 'exact', head: true })
+      .eq('subscription_status', 'trialing'),
   ]);
 
   const users = activeUsers || [];
