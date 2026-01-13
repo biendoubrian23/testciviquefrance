@@ -225,7 +225,8 @@ export async function getRecentSessions(limit: number = 50, userFilter: UserFilt
     .from('sessions_quiz')
     .select('*')
     .eq('completed', true)
-    .order('completed_at', { ascending: false })
+    .not('completed_at', 'is', null)
+    .order('completed_at', { ascending: false, nullsFirst: false })
     .limit(limit);
 
   if (userIds !== null) {
@@ -233,7 +234,11 @@ export async function getRecentSessions(limit: number = 50, userFilter: UserFilt
     query = query.in('user_id', userIds);
   }
 
-  const { data: sessions } = await query;
+  const { data: sessions, error } = await query;
+
+  if (error) {
+    console.error('Erreur récupération sessions:', error);
+  }
 
   if (!sessions) return [];
 

@@ -98,10 +98,11 @@ export type PaidUserWithType = Profile & {
 export async function getPremiumUsers(filter: PaidUserFilter = 'all'): Promise<PaidUserWithType[]> {
   const supabase = createAdminClient();
 
+  // Inclure is_premium = true OU subscription_status = 'active' OU 'trialing'
   let query = supabase
     .from('profiles')
     .select('*')
-    .eq('is_premium', true);
+    .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing');
 
   if (filter === 'premium') {
     query = query.in('stripe_price_id', PREMIUM_PRICE_IDS);
@@ -109,7 +110,7 @@ export async function getPremiumUsers(filter: PaidUserFilter = 'all'): Promise<P
     query = query.in('stripe_price_id', STANDARD_PRICE_IDS);
   }
 
-  const { data } = await query.order('premium_expires_at', { ascending: true });
+  const { data } = await query.order('subscription_start_date', { ascending: false });
 
   if (!data) return [];
 
@@ -126,6 +127,7 @@ export async function getPremiumUsers(filter: PaidUserFilter = 'all'): Promise<P
 export async function getPaidUsersStats() {
   const supabase = createAdminClient();
 
+  // Inclure les utilisateurs avec is_premium=true OU subscription_status in ('active', 'trialing')
   const [
     { count: totalStandard },
     { count: totalPremium },
@@ -133,22 +135,21 @@ export async function getPaidUsersStats() {
     { data: premiumUsers },
   ] = await Promise.all([
     supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .eq('is_premium', true)
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .in('stripe_price_id', STANDARD_PRICE_IDS),
     supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .eq('is_premium', true)
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .in('stripe_price_id', PREMIUM_PRICE_IDS),
-    supabase.from('profiles').select('premium_expires_at')
-      .eq('is_premium', true)
+    supabase.from('profiles').select('subscription_end_date, subscription_status')
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .in('stripe_price_id', STANDARD_PRICE_IDS),
-    supabase.from('profiles').select('premium_expires_at')
-      .eq('is_premium', true)
+    supabase.from('profiles').select('subscription_end_date, subscription_status')
+      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .in('stripe_price_id', PREMIUM_PRICE_IDS),
   ]);
 
   const now = new Date();
   const oneDay = 24 * 60 * 60 * 1000;
-  const oneWeek = 7 * oneDay;
 
   const getDaysRemaining = (expiresAt: string | null) => {
     if (!expiresAt) return 0;
@@ -156,11 +157,11 @@ export async function getPaidUsersStats() {
     return Math.max(0, Math.ceil((expires.getTime() - now.getTime()) / oneDay));
   };
 
-  const standardExpiringThisWeek = standardUsers?.filter(u => getDaysRemaining(u.premium_expires_at) <= 7).length || 0;
-  const premiumExpiringThisWeek = premiumUsers?.filter(u => getDaysRemaining(u.premium_expires_at) <= 7).length || 0;
+  const standardExpiringThisWeek = standardUsers?.filter(u => getDaysRemaining(u.subscription_end_date) <= 7).length || 0;
+  const premiumExpiringThisWeek = premiumUsers?.filter(u => getDaysRemaining(u.subscription_end_date) <= 7).length || 0;
 
-  const standardExpiringToday = standardUsers?.filter(u => getDaysRemaining(u.premium_expires_at) <= 1).length || 0;
-  const premiumExpiringToday = premiumUsers?.filter(u => getDaysRemaining(u.premium_expires_at) <= 1).length || 0;
+  const standardExpiringToday = standardUsers?.filter(u => getDaysRemaining(u.subscription_end_date) <= 1).length || 0;
+  const premiumExpiringToday = premiumUsers?.filter(u => getDaysRemaining(u.subscription_end_date) <= 1).length || 0;
 
   return {
     totalStandard: totalStandard || 0,

@@ -230,7 +230,7 @@ export function DashboardClient({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-4 lg:mb-8">
         {/* Graphique Inscriptions avec filtres */}
         <Card 
-          title="Inscriptions" 
+          title={`Inscriptions (${signupsData.reduce((sum, d) => sum + d.signups, 0)} sur ${PERIOD_LABELS[signupsPeriod]})`}
           subtitle={PERIOD_LABELS[signupsPeriod]}
           actions={
             <div className="flex gap-1 flex-wrap">
