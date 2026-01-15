@@ -4,13 +4,17 @@ import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { ExternalLink, Loader2 } from 'lucide-react';
 
-export default function ManageSubscriptionButton() {
+interface ManageSubscriptionButtonProps {
+  variant?: 'default' | 'discrete';
+}
+
+export default function ManageSubscriptionButton({ variant = 'default' }: ManageSubscriptionButtonProps) {
   const { profile } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleManageSubscription = async () => {
     setIsLoading(true);
-    
+
     try {
       // Le serveur récupère le customerId depuis la session (sécurisé)
       const response = await fetch('/api/create-portal-session', {
@@ -22,7 +26,7 @@ export default function ManageSubscriptionButton() {
       });
 
       const { url } = await response.json();
-      
+
       if (url) {
         window.location.href = url;
       }
@@ -38,6 +42,20 @@ export default function ManageSubscriptionButton() {
     return null;
   }
 
+  // Style discret : petit texte gris
+  if (variant === 'discrete') {
+    return (
+      <button
+        onClick={handleManageSubscription}
+        disabled={isLoading}
+        className="text-xs text-gray-400 hover:text-gray-500 hover:underline transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isLoading ? 'Chargement...' : 'Gérer mon abonnement'}
+      </button>
+    );
+  }
+
+  // Style par défaut
   return (
     <button
       onClick={handleManageSubscription}

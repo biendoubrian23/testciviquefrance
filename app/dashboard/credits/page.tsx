@@ -243,11 +243,6 @@ export default function OffresPage() {
         <div className="border-t border-gray-200 pt-4 mt-4">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm font-medium text-gray-700">Vos achats actifs :</p>
-            {extendedProfile?.is_premium && (
-              <div className="flex gap-2">
-                <ManageSubscriptionButton />
-              </div>
-            )}
           </div>
           <div className="flex flex-wrap gap-2">
             {/* Afficher l'abonnement Stripe actif */}
@@ -666,6 +661,13 @@ export default function OffresPage() {
                 </div>
               </div>
             </div>
+
+            {/* Lien discret pour gérer l'abonnement */}
+            {extendedProfile?.is_premium && (
+              <div className="mt-6 pt-4 border-t border-gray-100">
+                <ManageSubscriptionButton variant="discrete" />
+              </div>
+            )}
           </div>
         </div>
       </div>
