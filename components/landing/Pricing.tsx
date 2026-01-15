@@ -25,8 +25,8 @@ const pricingPlans = [
     name: 'Pack Standard',
     nameColor: 'text-white',
     price: '2,99€',
-    period: '/mois',
-    description: 'Accès pendant 1 mois',
+    period: '',
+    description: 'Sans engagement mensuel',
     features: [
       'Tests thématiques',
       '1 session d\'examen blanc',
@@ -43,8 +43,8 @@ const pricingPlans = [
     name: 'Premium',
     nameColor: 'text-primary-600',
     price: '6,99€',
-    period: '/mois',
-    description: 'Accès pendant 1 moiss',
+    period: '',
+    description: 'Sans engagement mensuel',
     features: [
       'Tests illimités',
       "3 sessions d'examen blanc",

@@ -126,9 +126,8 @@ export default function TarifsPage() {
                   )}
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-bold">2,99€</span>
-                    <span className="text-white/90">/mois</span>
                   </div>
-                  <p className="text-primary-100 mt-2">Accès pendant 1 mois</p>
+                  <p className="text-primary-100 mt-2">Sans engagement mensuel</p>
                 </div>
 
                 <div className="space-y-4 flex-grow">
@@ -179,9 +178,8 @@ export default function TarifsPage() {
                   )}
                   <div className="flex items-baseline gap-1">
                     <span className="text-5xl font-bold text-gray-900">6,99€</span>
-                    <span className="text-gray-500">/mois</span>
                   </div>
-                  <p className="text-gray-500 mt-2">Accès pendant 1 moiss</p>
+                  <p className="text-gray-500 mt-2">Sans engagement mensuel</p>
                 </div>
 
                 <div className="space-y-4 flex-grow">

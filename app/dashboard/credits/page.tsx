@@ -248,8 +248,8 @@ export default function OffresPage() {
             {/* Afficher l'abonnement Stripe actif */}
             {(extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') && extendedProfile?.stripe_price_id && (
               <span className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-semibold">
-                {extendedProfile.stripe_price_id === STRIPE_PLANS.standard.priceId && '👑 Pack Standard (2,99€/mois)'}
-                {extendedProfile.stripe_price_id === STRIPE_PLANS.premium.priceId && '⭐ Pack Premium (6,99€/mois)'}
+                {extendedProfile.stripe_price_id === STRIPE_PLANS.standard.priceId && '👑 Pack Standard (2,99€)'}
+                {extendedProfile.stripe_price_id === STRIPE_PLANS.premium.priceId && '⭐ Pack Premium (6,99€)'}
               </span>
             )}
             {/* Afficher les crédits de sessions d'examens blancs disponibles */}
@@ -323,9 +323,8 @@ export default function OffresPage() {
             )}
             <div className="flex items-baseline gap-1 mb-1">
               <span className="text-4xl font-bold">2,99€</span>
-              <span className="text-primary-200 text-sm">/mois</span>
             </div>
-            <p className="text-primary-100 mb-4 text-sm">Accès pendant 1 mois</p>
+            <p className="text-primary-100 mb-4 text-sm">Sans engagement mensuel</p>
 
             <ul className="space-y-2 mb-6 flex-grow text-sm">
               <li className="flex items-center gap-2">
@@ -386,9 +385,8 @@ export default function OffresPage() {
           )}
           <div className="flex items-baseline gap-1 mb-1">
             <span className="text-4xl font-bold text-gray-900">6,99€</span>
-            <span className="text-gray-500 text-sm">/mois</span>
           </div>
-          <p className="text-gray-500 mb-4 text-sm">Accès pendant 1 moiss</p>
+          <p className="text-gray-500 mb-4 text-sm">Sans engagement mensuel</p>
 
           <ul className="space-y-2 mb-6 flex-grow text-sm">
             <li className="flex items-center gap-2 text-gray-700">
