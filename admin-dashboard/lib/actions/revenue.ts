@@ -108,10 +108,12 @@ export async function getRevenueByProduct() {
     pack_standard: 'Pack Standard',
     pack_premium: 'Pack Premium',
     pack_examen: 'Pack Examen',
-    unlock_level: 'Deblocage niveau',
+    unlock_level: 'Déblocage niveau',
     no_timer: 'Mode sans chrono',
-    flashcards_2: 'Flashcards 2 themes',
-    flashcards_5: 'Flashcards 5 themes',
+    flashcards_2: 'Flashcards 2 thèmes',
+    flashcards_5: 'Flashcards 5 thèmes',
+    flashcards_2_themes: 'Flashcards 2 thèmes',
+    flashcards_5_themes: 'Flashcards 5 thèmes',
   };
 
   return Object.entries(grouped).map(([type, stats]) => ({

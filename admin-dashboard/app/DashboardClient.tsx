@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect, useCallback } from 'react';
 import { StatCard, Card } from '@/components/ui';
 import { SignupsChart, RevenueChart, CategoryDistribution, ExamSuccessChart } from '@/components/charts';
 import { RecentUsersTable } from './components/RecentUsersTable';
@@ -29,6 +29,8 @@ const PERIOD_LABELS: Record<ChartPeriod, string> = {
   '1y': '1 an',
 };
 
+import { ServiceStats } from '@/lib/actions/services';
+
 interface DashboardClientProps {
   initialStats: {
     totalUsers: number;
@@ -53,6 +55,8 @@ interface DashboardClientProps {
   categoryStats: any[];
   recentUsers: any[];
   examSuccessData: any[];
+  servicesRevenue?: number;
+  servicesStats?: ServiceStats[];
 }
 
 export function DashboardClient({
@@ -62,10 +66,15 @@ export function DashboardClient({
   categoryStats,
   recentUsers,
   examSuccessData,
+  servicesRevenue = 0,
+  servicesStats = [],
 }: DashboardClientProps) {
   const [stats, setStats] = useState(initialStats);
   const [filter, setFilter] = useState<SubscriptionFilter>('all');
   const [isPending, startTransition] = useTransition();
+  const [lastUpdate, setLastUpdate] = useState(new Date());
+  const [currentServicesRevenue, setCurrentServicesRevenue] = useState(servicesRevenue);
+  const [currentServicesStats, setCurrentServicesStats] = useState(servicesStats);
   
   // États pour les graphiques avec filtres de période
   const [signupsData, setSignupsData] = useState(initialActivityData);
@@ -74,6 +83,45 @@ export function DashboardClient({
   const [revenuePeriod, setRevenuePeriod] = useState<ChartPeriod>('1m');
   const [isSignupsLoading, setIsSignupsLoading] = useState(false);
   const [isRevenueLoading, setIsRevenueLoading] = useState(false);
+
+  // Calculer le total des achats de services
+  const totalServicesCount = currentServicesStats.reduce((sum, s) => sum + s.count, 0);
+
+  // Fonction de rafraîchissement automatique
+  const refreshData = useCallback(async () => {
+    try {
+      const [statsRes, servicesStatsRes, servicesRevenueRes] = await Promise.all([
+        fetch(`/api/dashboard?filter=${filter}`),
+        fetch('/api/services/stats'),
+        fetch('/api/services/revenue'),
+      ]);
+
+      if (statsRes.ok) {
+        const statsData = await statsRes.json();
+        if (statsData.stats) setStats(statsData.stats);
+      }
+
+      if (servicesStatsRes.ok) {
+        const servicesData = await servicesStatsRes.json();
+        if (servicesData.stats) setCurrentServicesStats(servicesData.stats);
+      }
+
+      if (servicesRevenueRes.ok) {
+        const revenueData = await servicesRevenueRes.json();
+        if (revenueData.totalRevenue !== undefined) setCurrentServicesRevenue(revenueData.totalRevenue);
+      }
+
+      setLastUpdate(new Date());
+    } catch (error) {
+      console.error('Erreur rafraîchissement dashboard:', error);
+    }
+  }, [filter]);
+
+  // Rafraîchissement automatique toutes les 15 secondes
+  useEffect(() => {
+    const interval = setInterval(refreshData, 15000);
+    return () => clearInterval(interval);
+  }, [refreshData]);
 
   // Fonction pour charger les données d'inscriptions
   const loadSignupsData = async (period: ChartPeriod) => {
@@ -161,6 +209,18 @@ export function DashboardClient({
           <option value="standard">Standard (2.99€/sem)</option>
           <option value="premium">Premium (6.99€/sem)</option>
         </select>
+        <div className="flex items-center gap-2 ml-auto">
+          <button
+            onClick={refreshData}
+            className="flex items-center gap-1 px-3 py-1 text-xs bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+            title="Rafraîchir les données"
+          >
+            Actualiser
+          </button>
+          <span className="text-xs text-text-muted whitespace-nowrap">
+            {lastUpdate.toLocaleTimeString('fr-FR')}
+          </span>
+        </div>
       </div>
 
       {/* Stats principales - grille 2 cols sur mobile */}
@@ -210,7 +270,14 @@ export function DashboardClient({
       </div>
 
       {/* Stats secondaires - grille 2 cols sur mobile */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-6 mb-4 lg:mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-6 mb-4 lg:mb-8">
+        <StatCard
+          title="Services annexes"
+          value={`${currentServicesRevenue.toFixed(2)}€`}
+          subtitle={`${totalServicesCount} achats`}
+          icon={TrendingUp}
+          variant="info"
+        />
         <StatCard
           title="Questions"
           value={stats.totalQuestions.toLocaleString('fr-FR')}

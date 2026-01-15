@@ -7,6 +7,7 @@ import {
   getRecentUsers,
   getExamSuccessData,
 } from '@/lib/actions/dashboard';
+import { getTotalServicesRevenue, getServicesStats } from '@/lib/actions/services';
 import { DashboardClient } from './DashboardClient';
 
 export const dynamic = 'force-dynamic';
@@ -20,6 +21,8 @@ export default async function DashboardPage() {
     categoryStats,
     recentUsers,
     examSuccessData,
+    servicesRevenue,
+    servicesStats,
   ] = await Promise.all([
     getDashboardStats('all'),
     getSignupsData(14),
@@ -27,6 +30,8 @@ export default async function DashboardPage() {
     getCategoryStats(),
     getRecentUsers(8),
     getExamSuccessData(14),
+    getTotalServicesRevenue(),
+    getServicesStats(),
   ]);
 
   return (
@@ -44,6 +49,8 @@ export default async function DashboardPage() {
           categoryStats={categoryStats}
           recentUsers={recentUsers}
           examSuccessData={examSuccessData}
+          servicesRevenue={servicesRevenue}
+          servicesStats={servicesStats}
         />
       </div>
     </div>

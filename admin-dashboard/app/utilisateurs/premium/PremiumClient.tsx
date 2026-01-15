@@ -43,9 +43,9 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
     }
   }, [filter]);
 
-  // Rafraîchissement automatique toutes les 30 secondes
+  // Rafraîchissement automatique toutes les 15 secondes
   useEffect(() => {
-    const interval = setInterval(refreshData, 30000);
+    const interval = setInterval(refreshData, 15000);
     return () => clearInterval(interval);
   }, [refreshData]);
 

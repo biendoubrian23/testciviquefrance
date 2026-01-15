@@ -135,7 +135,7 @@ export interface Gamification {
 export interface Achat {
   id: string;
   user_id: string;
-  product_type: 'pack_standard' | 'pack_premium' | 'pack_examen' | 'unlock_level' | 'no_timer' | 'flashcards_2' | 'flashcards_5';
+  product_type: 'pack_standard' | 'pack_premium' | 'pack_examen' | 'unlock_level' | 'no_timer' | 'flashcards_2' | 'flashcards_5' | 'flashcards_2_themes' | 'flashcards_5_themes';
   amount: number;
   currency: string;
   stripe_payment_id: string | null;

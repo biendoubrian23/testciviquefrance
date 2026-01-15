@@ -83,9 +83,9 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
     }
   }, [filter]);
 
-  // Rafraîchissement automatique toutes les 30 secondes
+  // Rafraîchissement automatique toutes les 15 secondes
   useEffect(() => {
-    const interval = setInterval(refreshAll, 30000);
+    const interval = setInterval(refreshAll, 15000);
     return () => clearInterval(interval);
   }, [refreshAll]);
 

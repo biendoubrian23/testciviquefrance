@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Header } from '@/components/layout';
 import { StatCard, Card, Badge, LoadingSpinner } from '@/components/ui';
 import { 
@@ -13,7 +13,8 @@ import {
   Filter,
   Download,
   User,
-  Calendar
+  Calendar,
+  RefreshCw
 } from 'lucide-react';
 import { ServiceStats, ServiceUser, ServiceFilter, ServiceType, SERVICE_CONFIG } from '@/lib/actions/services';
 
@@ -26,11 +27,13 @@ interface AchatsAnnexesClientProps {
 export default function AchatsAnnexesClient({ 
   initialStats, 
   initialUsers, 
-  totalRevenue 
+  totalRevenue: initialTotalRevenue 
 }: AchatsAnnexesClientProps) {
-  const [stats] = useState<ServiceStats[]>(initialStats);
+  const [stats, setStats] = useState<ServiceStats[]>(initialStats);
   const [users, setUsers] = useState<ServiceUser[]>(initialUsers);
+  const [totalRevenue, setTotalRevenue] = useState(initialTotalRevenue);
   const [loading, setLoading] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState(new Date());
 
   // Filtres
   const [filters, setFilters] = useState<ServiceFilter>({
@@ -39,15 +42,54 @@ export default function AchatsAnnexesClient({
     endDate: undefined,
   });
 
-  // Service le plus populaire
-  const mostPopular = stats.reduce((prev, current) => 
-    (prev.count > current.count) ? prev : current
-  );
+  // Fonction de rafraîchissement des données
+  const refreshData = useCallback(async () => {
+    setLoading(true);
+    try {
+      const [statsRes, usersRes, revenueRes] = await Promise.all([
+        fetch('/api/services/stats'),
+        fetch('/api/services'),
+        fetch('/api/services/revenue'),
+      ]);
+      
+      if (statsRes.ok) {
+        const statsData = await statsRes.json();
+        setStats(statsData.stats || []);
+      }
+      
+      if (usersRes.ok) {
+        const usersData = await usersRes.json();
+        setUsers(usersData.users || []);
+      }
+      
+      if (revenueRes.ok) {
+        const revenueData = await revenueRes.json();
+        setTotalRevenue(revenueData.totalRevenue || 0);
+      }
+      
+      setLastUpdate(new Date());
+    } catch (error) {
+      console.error('Erreur rafraîchissement:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-  // Service le plus rentable
-  const mostProfitable = stats.reduce((prev, current) => 
-    (prev.revenue > current.revenue) ? prev : current
-  );
+  // Rafraîchissement automatique toutes les 15 secondes
+  useEffect(() => {
+    const interval = setInterval(refreshData, 15000);
+    return () => clearInterval(interval);
+  }, [refreshData]);
+
+  // Service le plus populaire (avec gestion cas vide)
+  const mostPopular = stats.length > 0 
+    ? stats.reduce((prev, current) => (prev.count > current.count) ? prev : current)
+    : { serviceType: 'flashcards_2' as ServiceType, count: 0, revenue: 0 };
+
+  // Service le plus rentable (avec gestion cas vide)
+  const mostProfitable = stats.length > 0
+    ? stats.reduce((prev, current) => (prev.revenue > current.revenue) ? prev : current)
+    : { serviceType: 'flashcards_2' as ServiceType, count: 0, revenue: 0 };
 
   // Total d'achats
   const totalPurchases = stats.reduce((sum, s) => sum + s.count, 0);
@@ -118,14 +160,24 @@ export default function AchatsAnnexesClient({
       startDate: undefined,
       endDate: undefined,
     });
-    setUsers(initialUsers);
+    refreshData(); // Rafraîchir les données au lieu d'utiliser les données initiales
   };
 
   return (
     <div className="min-h-screen bg-background-light">
       <Header 
         title="Achats Annexes" 
-        subtitle="Services additionnels achetés par les utilisateurs"
+        subtitle={`Mise à jour: ${lastUpdate.toLocaleString('fr-FR')}`}
+        actions={
+          <button
+            onClick={refreshData}
+            disabled={loading}
+            className="flex items-center gap-2 px-3 py-2 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50"
+          >
+            <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
+            Rafraîchir
+          </button>
+        }
       />
 
       <div className="p-8">

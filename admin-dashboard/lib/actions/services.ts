@@ -59,14 +59,46 @@ export const SERVICE_CONFIG: Record<ServiceType, { label: string; description: s
 };
 
 
+// Mapping des product_type de la table achats vers nos ServiceType
+const PRODUCT_TYPE_MAPPING: Record<string, ServiceType> = {
+  'flashcards_2_themes': 'flashcards_2',
+  'flashcards_5_themes': 'flashcards_5',
+  'flashcards_2': 'flashcards_2',
+  'flashcards_5': 'flashcards_5',
+  'no_timer': 'no_timer',
+  'unlock_level': 'unlock_level',
+  'pack_examen': 'exam_credits',
+};
+
 export async function getServicesStats(): Promise<ServiceStats[]> {
   const supabase = createAdminClient();
 
-  const { data: profiles } = await supabase
-    .from('profiles')
-    .select('flashcards_2_themes, flashcards_5_themes, no_timer_enabled, unlock_level_count, all_levels_unlocked, exam_credits');
+  // Récupérer les achats de services annexes depuis la table achats
+  const { data: achats, error } = await supabase
+    .from('achats')
+    .select('product_type, amount')
+    .eq('status', 'completed')
+    .in('product_type', [
+      'flashcards_2_themes', 'flashcards_5_themes', 
+      'flashcards_2', 'flashcards_5',
+      'no_timer', 'unlock_level', 'pack_examen'
+    ]);
 
-  if (!profiles || profiles.length === 0) {
+  if (error) {
+    console.error('Erreur récupération achats services:', error);
+  }
+
+  // Initialiser les stats pour tous les services
+  const statsMap: Record<ServiceType, { count: number; revenue: number }> = {
+    flashcards_2: { count: 0, revenue: 0 },
+    flashcards_5: { count: 0, revenue: 0 },
+    no_timer: { count: 0, revenue: 0 },
+    unlock_level: { count: 0, revenue: 0 },
+    all_levels: { count: 0, revenue: 0 },
+    exam_credits: { count: 0, revenue: 0 },
+  };
+
+  if (!achats || achats.length === 0) {
     // Retourner des stats vides pour éviter les erreurs
     return Object.keys(SERVICE_CONFIG).map((key) => ({
       serviceType: key as ServiceType,
@@ -75,56 +107,21 @@ export async function getServicesStats(): Promise<ServiceStats[]> {
     }));
   }
 
-  const stats: ServiceStats[] = [];
+  // Agréger les achats par type de service
+  for (const achat of achats) {
+    const serviceType = PRODUCT_TYPE_MAPPING[achat.product_type];
+    if (serviceType && statsMap[serviceType]) {
+      statsMap[serviceType].count += 1;
+      statsMap[serviceType].revenue += achat.amount || 0;
+    }
+  }
 
-  // Flashcards 2 thèmes
-  const flash2Count = profiles.filter(p => p.flashcards_2_themes && !p.flashcards_5_themes).length;
-  stats.push({
-    serviceType: 'flashcards_2',
-    count: flash2Count,
-    revenue: flash2Count * SERVICE_CONFIG.flashcards_2.price,
-  });
-
-  // Flashcards 5 thèmes
-  const flash5Count = profiles.filter(p => p.flashcards_5_themes).length;
-  stats.push({
-    serviceType: 'flashcards_5',
-    count: flash5Count,
-    revenue: flash5Count * SERVICE_CONFIG.flashcards_5.price,
-  });
-
-  // Mode sans chrono
-  const noTimerCount = profiles.filter(p => p.no_timer_enabled).length;
-  stats.push({
-    serviceType: 'no_timer',
-    count: noTimerCount,
-    revenue: noTimerCount * SERVICE_CONFIG.no_timer.price,
-  });
-
-  // Déblocage niveau (somme des unlock_level_count)
-  const totalUnlocks = profiles.reduce((sum, p) => sum + (p.unlock_level_count || 0), 0);
-  stats.push({
-    serviceType: 'unlock_level',
-    count: totalUnlocks,
-    revenue: totalUnlocks * SERVICE_CONFIG.unlock_level.price,
-  });
-
-  // Tous les niveaux
-  const allLevelsCount = profiles.filter(p => p.all_levels_unlocked).length;
-  stats.push({
-    serviceType: 'all_levels',
-    count: allLevelsCount,
-    revenue: allLevelsCount * SERVICE_CONFIG.all_levels.price,
-  });
-
-  // Pack Examen (crédits achetés) - chaque pack = 2 crédits
-  const totalExamCredits = profiles.reduce((sum, p) => sum + (p.exam_credits || 0), 0);
-  const packsSold = Math.ceil(totalExamCredits / 2);
-  stats.push({
-    serviceType: 'exam_credits',
-    count: packsSold,
-    revenue: packsSold * SERVICE_CONFIG.exam_credits.price,
-  });
+  // Convertir en tableau et trier par revenu
+  const stats: ServiceStats[] = Object.entries(statsMap).map(([key, value]) => ({
+    serviceType: key as ServiceType,
+    count: value.count,
+    revenue: value.revenue,
+  }));
 
   return stats.sort((a, b) => b.revenue - a.revenue);
 }
@@ -132,82 +129,87 @@ export async function getServicesStats(): Promise<ServiceStats[]> {
 export async function getServiceUsers(filter: ServiceFilter = {}): Promise<ServiceUser[]> {
   const supabase = createAdminClient();
 
-  let query = supabase
-    .from('profiles')
-    .select('id, email, prenom, nom, flashcards_2_themes, flashcards_5_themes, no_timer_enabled, unlock_level_count, all_levels_unlocked, exam_credits, last_purchase_at')
-    .order('last_purchase_at', { ascending: false, nullsFirst: false });
+  // Récupérer les achats de services annexes depuis la table achats
+  let achatsQuery = supabase
+    .from('achats')
+    .select('user_id, product_type, amount, created_at')
+    .eq('status', 'completed')
+    .in('product_type', [
+      'flashcards_2_themes', 'flashcards_5_themes', 
+      'flashcards_2', 'flashcards_5',
+      'no_timer', 'unlock_level', 'pack_examen'
+    ])
+    .order('created_at', { ascending: false });
 
   if (filter.startDate) {
-    query = query.gte('last_purchase_at', filter.startDate);
+    achatsQuery = achatsQuery.gte('created_at', filter.startDate);
   }
   if (filter.endDate) {
-    query = query.lte('last_purchase_at', filter.endDate);
+    achatsQuery = achatsQuery.lte('created_at', filter.endDate);
   }
 
-  const { data: profiles } = await query;
+  const { data: achats } = await achatsQuery;
+
+  if (!achats || achats.length === 0) return [];
+
+  // Grouper par user_id
+  const userAchatsMap = new Map<string, { services: Set<ServiceType>; totalSpent: number; productTypes: string[] }>();
+  
+  for (const achat of achats) {
+    const userId = achat.user_id;
+    const serviceType = PRODUCT_TYPE_MAPPING[achat.product_type];
+    
+    // Filtrer par type de service si spécifié
+    if (filter.serviceType && serviceType !== filter.serviceType) {
+      continue;
+    }
+    
+    if (!userAchatsMap.has(userId)) {
+      userAchatsMap.set(userId, { services: new Set(), totalSpent: 0, productTypes: [] });
+    }
+    
+    const userData = userAchatsMap.get(userId)!;
+    if (serviceType) {
+      userData.services.add(serviceType);
+    }
+    userData.totalSpent += achat.amount || 0;
+    userData.productTypes.push(achat.product_type);
+  }
+
+  // Récupérer les profils des utilisateurs
+  const userIds = Array.from(userAchatsMap.keys());
+  
+  if (userIds.length === 0) return [];
+
+  const { data: profiles } = await supabase
+    .from('profiles')
+    .select('id, email, prenom, nom, exam_credits, unlock_level_count, all_levels_unlocked')
+    .in('id', userIds);
 
   if (!profiles) return [];
 
   const users: ServiceUser[] = [];
 
   for (const profile of profiles) {
-    const services: ServiceType[] = [];
-    let totalSpent = 0;
+    const userData = userAchatsMap.get(profile.id);
+    if (!userData) continue;
 
-    // Vérifier les services achetés
-    if (profile.flashcards_5_themes) {
-      services.push('flashcards_5');
-      totalSpent += SERVICE_CONFIG.flashcards_5.price;
-    } else if (profile.flashcards_2_themes) {
-      services.push('flashcards_2');
-      totalSpent += SERVICE_CONFIG.flashcards_2.price;
-    }
-
-    if (profile.no_timer_enabled) {
-      services.push('no_timer');
-      totalSpent += SERVICE_CONFIG.no_timer.price;
-    }
-
-    if (profile.unlock_level_count > 0) {
-      services.push('unlock_level');
-      totalSpent += profile.unlock_level_count * SERVICE_CONFIG.unlock_level.price;
-    }
-
-    if (profile.all_levels_unlocked) {
-      services.push('all_levels');
-      totalSpent += SERVICE_CONFIG.all_levels.price;
-    }
-
-    if (profile.exam_credits > 0) {
-      services.push('exam_credits');
-      // Chaque pack = 2 crédits
-      const packs = Math.ceil(profile.exam_credits / 2);
-      totalSpent += packs * SERVICE_CONFIG.exam_credits.price;
-    }
-
-    // Filtrer par type de service si spécifié
-    if (filter.serviceType && !services.includes(filter.serviceType)) {
-      continue;
-    }
-
-    // N'ajouter que les utilisateurs avec au moins un service
-    if (services.length > 0) {
-      users.push({
-        id: profile.id,
-        email: profile.email,
-        full_name: profile.prenom && profile.nom 
-          ? `${profile.prenom} ${profile.nom}` 
-          : profile.prenom || profile.nom || null,
-        services,
-        exam_credits: profile.exam_credits || 0,
-        unlock_level_count: profile.unlock_level_count || 0,
-        all_levels_unlocked: profile.all_levels_unlocked || false,
-        totalSpent,
-      });
-    }
+    users.push({
+      id: profile.id,
+      email: profile.email,
+      full_name: profile.prenom && profile.nom 
+        ? `${profile.prenom} ${profile.nom}` 
+        : profile.prenom || profile.nom || null,
+      services: Array.from(userData.services),
+      exam_credits: profile.exam_credits || 0,
+      unlock_level_count: profile.unlock_level_count || 0,
+      all_levels_unlocked: profile.all_levels_unlocked || false,
+      totalSpent: userData.totalSpent,
+    });
   }
 
-  return users;
+  // Trier par total dépensé
+  return users.sort((a, b) => b.totalSpent - a.totalSpent);
 }
 
 export async function getTotalServicesRevenue(): Promise<number> {

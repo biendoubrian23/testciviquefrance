@@ -179,7 +179,37 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
   console.log('🔄 Subscription updated:', subscription.id);
 
   const customerId = subscription.customer as string;
-  const priceId = subscription.items.data[0].price.id;
+  
+  // Vérifier que l'utilisateur existe avant de mettre à jour
+  const { data: existingProfile, error: fetchError } = await supabase
+    .from('profiles')
+    .select('id, email')
+    .eq('stripe_customer_id', customerId)
+    .single();
+
+  if (fetchError || !existingProfile) {
+    console.warn(`⚠️ Profil non trouvé pour customer ${customerId}, tentative via subscription_id`);
+    
+    // Essayer de trouver par subscription_id
+    const { data: profileBySubId, error: subError } = await supabase
+      .from('profiles')
+      .select('id, email')
+      .eq('stripe_subscription_id', subscription.id)
+      .single();
+    
+    if (subError || !profileBySubId) {
+      console.error(`❌ Impossible de trouver le profil pour customer ${customerId} ou subscription ${subscription.id}`);
+      return; // Ne pas lancer d'erreur, juste ignorer
+    }
+    
+    console.log(`✅ Profil trouvé via subscription_id: ${profileBySubId.email}`);
+  }
+  
+  const priceId = subscription.items.data[0]?.price?.id;
+  if (!priceId) {
+    console.error('❌ Pas de price_id dans la subscription');
+    return;
+  }
 
   // 'trialing' = période d'essai gratuite, doit aussi donner accès premium
   const hasActiveAccess = subscription.status === 'active' || subscription.status === 'trialing';
@@ -199,7 +229,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
   if (error) {
     console.error('❌ Erreur mise à jour subscription:', error);
   } else {
-    console.log('✅ Subscription mise à jour');
+    console.log(`✅ Subscription mise à jour - status: ${subscription.status}, is_premium: ${hasActiveAccess}`);
   }
 }
 
@@ -208,6 +238,18 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supa
   console.log('🗑️ Subscription deleted:', subscription.id);
 
   const customerId = subscription.customer as string;
+
+  // Vérifier que l'utilisateur existe
+  const { data: existingProfile, error: fetchError } = await supabase
+    .from('profiles')
+    .select('id, email')
+    .eq('stripe_customer_id', customerId)
+    .single();
+
+  if (fetchError || !existingProfile) {
+    console.warn(`⚠️ Profil non trouvé pour customer ${customerId} lors de la suppression`);
+    return;
+  }
 
   const { error } = await supabase
     .from('profiles')
@@ -222,7 +264,7 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supa
   if (error) {
     console.error('❌ Erreur annulation subscription:', error);
   } else {
-    console.log('✅ Accès révoqué');
+    console.log(`✅ Accès révoqué pour ${existingProfile.email}`);
   }
 }
 
@@ -258,17 +300,34 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: Ret
 
   const customerId = invoice.customer as string;
 
+  // Vérifier que l'utilisateur existe
+  const { data: existingProfile, error: fetchError } = await supabase
+    .from('profiles')
+    .select('id, email, subscription_status')
+    .eq('stripe_customer_id', customerId)
+    .single();
+
+  if (fetchError || !existingProfile) {
+    console.warn(`⚠️ Profil non trouvé pour customer ${customerId} lors de l'échec de paiement`);
+    return;
+  }
+
+  // Si l'utilisateur était en trialing et le paiement échoue, révoquer l'accès
+  const shouldRevokePremium = existingProfile.subscription_status === 'trialing';
+
   const { error } = await supabase
     .from('profiles')
     .update({
       subscription_status: 'past_due',
+      // Révoquer l'accès si c'était une période d'essai qui se termine
+      ...(shouldRevokePremium && { is_premium: false }),
     })
     .eq('stripe_customer_id', customerId);
 
   if (error) {
     console.error('❌ Erreur marquage paiement échoué:', error);
   } else {
-    console.log('⚠️ Statut mis à jour: past_due');
+    console.log(`⚠️ Statut mis à jour: past_due pour ${existingProfile.email}${shouldRevokePremium ? ' - Accès révoqué (fin période essai)' : ''}`);
   }
 }
 

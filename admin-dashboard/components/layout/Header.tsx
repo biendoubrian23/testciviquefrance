@@ -1,14 +1,15 @@
 'use client';
 
 import { Bell, Search, User } from 'lucide-react';
-import { useState } from 'react';
+import { useState, ReactNode } from 'react';
 
 interface HeaderProps {
   title: string;
   subtitle?: string;
+  actions?: ReactNode;
 }
 
-export function Header({ title, subtitle }: HeaderProps) {
+export function Header({ title, subtitle, actions }: HeaderProps) {
   const [showSearch, setShowSearch] = useState(false);
 
   return (
@@ -22,6 +23,9 @@ export function Header({ title, subtitle }: HeaderProps) {
       </div>
 
       <div className="flex items-center gap-2 lg:gap-4 flex-shrink-0">
+        {/* Actions personnalisées */}
+        {actions && <div className="hidden sm:block">{actions}</div>}
+        
         {/* Search - caché sur mobile, avec toggle */}
         <div className="relative hidden md:block">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
