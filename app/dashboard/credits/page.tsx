@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { createClient } from '@/lib/supabase/client';
 import { Check, Crown, ChevronDown, Loader2, CheckCircle, Gift } from 'lucide-react';
-import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { STRIPE_PLANS, ALL_STANDARD_PRICE_IDS, ALL_PREMIUM_PRICE_IDS } from '@/lib/stripe/plans';
 import ManageSubscriptionButton from '@/components/dashboard/ManageSubscriptionButton';
 import ErrorModal from '@/components/ui/ErrorModal';
 import CountdownTimer, { usePromoActive } from '@/components/ui/CountdownTimer';
@@ -248,8 +248,8 @@ export default function OffresPage() {
             {/* Afficher l'abonnement Stripe actif */}
             {(extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') && extendedProfile?.stripe_price_id && (
               <span className="inline-flex items-center px-3 py-1 bg-primary-100 text-primary-800 text-sm rounded-full font-semibold">
-                {extendedProfile.stripe_price_id === STRIPE_PLANS.standard.priceId && '👑 Pack Standard (2,99€)'}
-                {extendedProfile.stripe_price_id === STRIPE_PLANS.premium.priceId && '⭐ Pack Premium (6,99€)'}
+                {ALL_STANDARD_PRICE_IDS.includes(extendedProfile.stripe_price_id) && '👑 Pack Standard (2,99€)'}
+                {ALL_PREMIUM_PRICE_IDS.includes(extendedProfile.stripe_price_id) && '⭐ Pack Premium (6,99€)'}
               </span>
             )}
             {/* Afficher les crédits de sessions d'examens blancs disponibles */}
@@ -349,7 +349,7 @@ export default function OffresPage() {
               </li>
             </ul>
 
-            {extendedProfile?.stripe_price_id === STRIPE_PLANS.standard.priceId && (extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') ? (
+            {ALL_STANDARD_PRICE_IDS.includes(extendedProfile?.stripe_price_id || '') && (extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') ? (
               <div className="w-full py-3 bg-white text-primary-600 font-semibold text-center border-2 border-primary-600">
                 ✓ Plan actuel
               </div>
@@ -411,7 +411,7 @@ export default function OffresPage() {
             </li>
           </ul>
 
-          {extendedProfile?.stripe_price_id === STRIPE_PLANS.premium.priceId && (extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') ? (
+          {ALL_PREMIUM_PRICE_IDS.includes(extendedProfile?.stripe_price_id || '') && (extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') ? (
             <div className="w-full py-3 font-semibold text-center border-2 bg-primary-600 text-white border-primary-600">
               ✓ Plan actuel
             </div>

@@ -3,7 +3,7 @@
  */
 
 import { createClient } from '@/lib/supabase/client';
-import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { STRIPE_PLANS, ALL_STANDARD_PRICE_IDS, ALL_PREMIUM_PRICE_IDS } from '@/lib/stripe/plans';
 
 /**
  * Vérifier si un statut d'abonnement donne accès aux fonctionnalités premium
@@ -59,10 +59,11 @@ export async function getExamCreditsInfo(userId: string): Promise<ExamCreditsInf
 
   // Vérifier les examens inclus dans l'abonnement (inclut la période d'essai 'trialing')
   if (isSubscriptionActive(profile.subscription_status)) {
-    if (profile.stripe_price_id === STRIPE_PLANS.standard.priceId) {
+    // Utiliser les listes complètes de priceIds pour compatibilité dev/prod
+    if (ALL_STANDARD_PRICE_IDS.includes(profile.stripe_price_id)) {
       subscriptionExamsLimit = 1; // Pack Standard = 1 examen
       isStandard = true;
-    } else if (profile.stripe_price_id === STRIPE_PLANS.premium.priceId) {
+    } else if (ALL_PREMIUM_PRICE_IDS.includes(profile.stripe_price_id)) {
       subscriptionExamsLimit = 3; // Pack Premium = 3 examens
       isPremium = true;
     }
@@ -126,9 +127,10 @@ export async function consumeExamCredit(userId: string): Promise<boolean> {
     const subscriptionExamsUsed = profile.subscription_exams_used || 0;
     let subscriptionExamsLimit = 0;
 
-    if (profile.stripe_price_id === STRIPE_PLANS.standard.priceId) {
+    // Utiliser les listes complètes de priceIds pour compatibilité dev/prod
+    if (ALL_STANDARD_PRICE_IDS.includes(profile.stripe_price_id)) {
       subscriptionExamsLimit = 1;
-    } else if (profile.stripe_price_id === STRIPE_PLANS.premium.priceId) {
+    } else if (ALL_PREMIUM_PRICE_IDS.includes(profile.stripe_price_id)) {
       subscriptionExamsLimit = 3;
     }
 

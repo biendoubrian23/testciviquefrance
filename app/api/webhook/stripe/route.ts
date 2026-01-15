@@ -163,6 +163,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
       subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
       subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
       is_premium: true,
+      subscription_exams_used: 0, // Reset du compteur pour le nouvel abonnement
     })
     .eq('email', customerEmail);
 
@@ -238,6 +239,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<t
     .update({
       subscription_status: 'active',
       is_premium: true,
+      subscription_exams_used: 0, // Reset du compteur à chaque renouvellement hebdomadaire
     })
     .eq('stripe_customer_id', customerId);
 

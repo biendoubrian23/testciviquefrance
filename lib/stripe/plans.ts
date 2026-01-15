@@ -1,3 +1,14 @@
+// Tous les priceIds (dev + production) pour vérification
+export const ALL_STANDARD_PRICE_IDS = [
+  'price_1Sc3qxEuT9agNbEUdX0RkLM4', // Standard DEV
+  'price_1Sc3AqIUG5GUejFZagJyV8HC', // Standard PRODUCTION
+];
+
+export const ALL_PREMIUM_PRICE_IDS = [
+  'price_1Sc3rPEuT9agNbEU65mDE4RP', // Premium DEV
+  'price_1Sc3BYIUG5GUejFZaWexcxzz', // Premium PRODUCTION
+];
+
 // Configuration des plans Stripe
 export const STRIPE_PLANS = {
   standard: {
