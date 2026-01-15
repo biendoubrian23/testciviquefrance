@@ -179,6 +179,9 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
   console.log('🔄 Subscription updated:', subscription.id);
 
   const customerId = subscription.customer as string;
+  let profileId: string | null = null;
+  let profileEmail: string | null = null;
+  let foundVia: 'customer_id' | 'subscription_id' = 'customer_id';
   
   // Vérifier que l'utilisateur existe avant de mettre à jour
   const { data: existingProfile, error: fetchError } = await supabase
@@ -202,7 +205,13 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
       return; // Ne pas lancer d'erreur, juste ignorer
     }
     
+    profileId = profileBySubId.id;
+    profileEmail = profileBySubId.email;
+    foundVia = 'subscription_id';
     console.log(`✅ Profil trouvé via subscription_id: ${profileBySubId.email}`);
+  } else {
+    profileId = existingProfile.id;
+    profileEmail = existingProfile.email;
   }
   
   const priceId = subscription.items.data[0]?.price?.id;
@@ -214,9 +223,11 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
   // 'trialing' = période d'essai gratuite, doit aussi donner accès premium
   const hasActiveAccess = subscription.status === 'active' || subscription.status === 'trialing';
 
+  // Mettre à jour par ID du profil (plus fiable)
   const { error } = await supabase
     .from('profiles')
     .update({
+      stripe_customer_id: customerId, // S'assurer que le customer_id est aussi enregistré
       stripe_subscription_id: subscription.id,
       stripe_price_id: priceId,
       subscription_status: subscription.status,
@@ -224,12 +235,12 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
       subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
       is_premium: hasActiveAccess,
     })
-    .eq('stripe_customer_id', customerId);
+    .eq('id', profileId);
 
   if (error) {
     console.error('❌ Erreur mise à jour subscription:', error);
   } else {
-    console.log(`✅ Subscription mise à jour - status: ${subscription.status}, is_premium: ${hasActiveAccess}`);
+    console.log(`✅ Subscription mise à jour pour ${profileEmail} (trouvé via ${foundVia}) - status: ${subscription.status}, is_premium: ${hasActiveAccess}`);
   }
 }
 
@@ -477,9 +488,10 @@ async function handleOneTimePayment(
   else if (priceId === STRIPE_PLANS.noTimer.priceId) {
     console.log('⏱️ Mode sans chrono acheté');
 
-    // Vérifier si l'utilisateur a un abonnement actif
-    if (profile.subscription_status !== 'active') {
-      console.error('❌ Achat Mode sans chrono refusé - Pas d\'abonnement actif');
+    // Vérifier si l'utilisateur a un abonnement actif OU en période d'essai
+    const hasActiveSubscription = profile.subscription_status === 'active' || profile.subscription_status === 'trialing';
+    if (!hasActiveSubscription) {
+      console.error('❌ Achat Mode sans chrono refusé - Pas d\'abonnement actif (status:', profile.subscription_status, ')');
       return;
     }
 
@@ -520,9 +532,10 @@ async function handleOneTimePayment(
   else if (priceId === STRIPE_PLANS.unlockLevel.priceId) {
     console.log('🔓 Débloquer niveau suivant acheté');
 
-    // Vérifier si l'utilisateur a un abonnement actif
-    if (profile.subscription_status !== 'active') {
-      console.error('❌ Achat Débloquer niveau refusé - Pas d\'abonnement actif');
+    // Vérifier si l'utilisateur a un abonnement actif OU en période d'essai
+    const hasActiveSubscription = profile.subscription_status === 'active' || profile.subscription_status === 'trialing';
+    if (!hasActiveSubscription) {
+      console.error('❌ Achat Débloquer niveau refusé - Pas d\'abonnement actif (status:', profile.subscription_status, ')');
       return;
     }
 
