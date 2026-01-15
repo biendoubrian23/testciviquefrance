@@ -9,7 +9,7 @@
 // VERSION NON ENCODÉE - Questions difficiles niveau examen civique
 // ==========================================================================
 
-import { ExamenBlanc, Question } from './types';
+import { ExamenBlanc, Question, decodeExamen } from './types';
 
 const EXAM_NUMBER = 1;
 
@@ -576,7 +576,8 @@ export function findCorrectIndexExam1(questionId: number, correctHash: string): 
   return 0;
 }
 
-export const EXAMEN_1: ExamenBlanc = {
+// Examen avec questions décodées pour l'affichage
+const _EXAMEN_1: ExamenBlanc = {
   numero: 1,
   titre: "Examen blanc #1",
   description: "40 questions en conditions réelles d'examen",
@@ -584,3 +585,5 @@ export const EXAMEN_1: ExamenBlanc = {
   dureeMinutes: 45,
   totalQuestions: 40
 };
+
+export const EXAMEN_1 = decodeExamen(_EXAMEN_1);
