@@ -20,156 +20,145 @@ const questions: Question[] = [
     id: 1,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Indivisibilité République",
-    question: "Que signifie le principe d'indivisibilité de la République inscrit à l'article 1er de la Constitution ?",
+    question: "UXVlIHNpZ25pZmllIGxlIHByaW5jaXBlIGQnaW5kaXZpc2liaWxpdMOpIGRlIGxhIFLDqXB1YmxpcXVlIGluc2NyaXQgw6AgbCdhcnRpY2xlIDFlciBkZSBsYSBDb25zdGl0dXRpb24gPw==",
     options: [
-      "La souveraineté appartient au peuple dans son ensemble ; aucune région ne peut revendiquer une souveraineté distincte",
-      "Le territoire français ne peut jamais être modifié, même en cas de référendum local approuvé",
-      "Les citoyens ne peuvent pas être divisés en catégories sociales ou professionnelles distinctes",
-      "Le Président de la République ne peut pas être destitué pendant la durée de son mandat"
+      "TGEgc291dmVyYWluZXTDqSBhcHBhcnRpZW50IGF1IHBldXBsZSBkYW5zIHNvbiBlbnNlbWJsZSA7IGF1Y3VuZSByw6lnaW9uIG5lIHBldXQgcmV2ZW5kaXF1ZXIgdW5lIHNvdXZlcmFpbmV0w6kgZGlzdGluY3Rl",
+      "TGUgdGVycml0b2lyZSBmcmFuw6dhaXMgbmUgcGV1dCBqYW1haXMgw6p0cmUgbW9kaWZpw6ksIG3Dqm1lIGVuIGNhcyBkZSByw6lmw6lyZW5kdW0gbG9jYWwgYXBwcm91dsOp",
+      "TGVzIGNpdG95ZW5zIG5lIHBldXZlbnQgcGFzIMOqdHJlIGRpdmlzw6lzIGVuIGNhdMOpZ29yaWVzIHNvY2lhbGVzIG91IHByb2Zlc3Npb25uZWxsZXMgZGlzdGluY3Rlcw==",
+      "TGUgUHLDqXNpZGVudCBkZSBsYSBSw6lwdWJsaXF1ZSBuZSBwZXV0IHBhcyDDqnRyZSBkZXN0aXR1w6kgcGVuZGFudCBsYSBkdXLDqWUgZGUgc29uIG1hbmRhdA=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 1, 0),
-    explication: "L'indivisibilité signifie que la souveraineté est une et appartient au peuple dans son ensemble. Aucune partie du territoire ne peut revendiquer une souveraineté propre."
-  },
+    explication: "TCdpbmRpdmlzaWJpbGl0w6kgc2lnbmlmaWUgcXVlIGxhIHNvdXZlcmFpbmV0w6kgZXN0IHVuZSBldCBhcHBhcnRpZW50IGF1IHBldXBsZSBkYW5zIHNvbiBlbnNlbWJsZS4gQXVjdW5lIHBhcnRpZSBkdSB0ZXJyaXRvaXJlIG5lIHBldXQgcmV2ZW5kaXF1ZXIgdW5lIHNvdXZlcmFpbmV0w6kgcHJvcHJlLg=="},
   {
     id: 2,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Sceau République",
-    question: "Que représente le sceau de la République française et quand est-il utilisé ?",
+    question: "UXVlIHJlcHLDqXNlbnRlIGxlIHNjZWF1IGRlIGxhIFLDqXB1YmxpcXVlIGZyYW7Dp2Fpc2UgZXQgcXVhbmQgZXN0LWlsIHV0aWxpc8OpID8=",
     options: [
-      "La Liberté assise avec un faisceau de licteur ; il authentifie les actes les plus solennels de la République",
-      "Marianne debout portant le drapeau tricolore ; il est apposé sur tous les documents administratifs",
-      "Un coq gaulois sur un bouclier ; il est utilisé uniquement pour les actes diplomatiques",
-      "Les trois couleurs nationales en rosace ; il certifie les documents judiciaires exclusivement"
+      "TGEgTGliZXJ0w6kgYXNzaXNlIGF2ZWMgdW4gZmFpc2NlYXUgZGUgbGljdGV1ciA7IGlsIGF1dGhlbnRpZmllIGxlcyBhY3RlcyBsZXMgcGx1cyBzb2xlbm5lbHMgZGUgbGEgUsOpcHVibGlxdWU=",
+      "TWFyaWFubmUgZGVib3V0IHBvcnRhbnQgbGUgZHJhcGVhdSB0cmljb2xvcmUgOyBpbCBlc3QgYXBwb3PDqSBzdXIgdG91cyBsZXMgZG9jdW1lbnRzIGFkbWluaXN0cmF0aWZz",
+      "VW4gY29xIGdhdWxvaXMgc3VyIHVuIGJvdWNsaWVyIDsgaWwgZXN0IHV0aWxpc8OpIHVuaXF1ZW1lbnQgcG91ciBsZXMgYWN0ZXMgZGlwbG9tYXRpcXVlcw==",
+      "TGVzIHRyb2lzIGNvdWxldXJzIG5hdGlvbmFsZXMgZW4gcm9zYWNlIDsgaWwgY2VydGlmaWUgbGVzIGRvY3VtZW50cyBqdWRpY2lhaXJlcyBleGNsdXNpdmVtZW50"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 2, 0),
-    explication: "Le sceau de la République représente la Liberté assise tenant un faisceau de licteur. Il est utilisé pour sceller les actes les plus solennels (Constitution, traités...)."
-  },
+    explication: "TGUgc2NlYXUgZGUgbGEgUsOpcHVibGlxdWUgcmVwcsOpc2VudGUgbGEgTGliZXJ0w6kgYXNzaXNlIHRlbmFudCB1biBmYWlzY2VhdSBkZSBsaWN0ZXVyLiBJbCBlc3QgdXRpbGlzw6kgcG91ciBzY2VsbGVyIGxlcyBhY3RlcyBsZXMgcGx1cyBzb2xlbm5lbHMgKENvbnN0aXR1dGlvbiwgdHJhaXTDqXMuLi4pLg=="},
   {
     id: 3,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Fête de la Fédération",
-    question: "Quel événement le 14 juillet commémore-t-il officiellement depuis la loi de 1880 ?",
+    question: "UXVlbCDDqXbDqW5lbWVudCBsZSAxNCBqdWlsbGV0IGNvbW3DqW1vcmUtdC1pbCBvZmZpY2llbGxlbWVudCBkZXB1aXMgbGEgbG9pIGRlIDE4ODAgPw==",
     options: [
-      "La Fête de la Fédération du 14 juillet 1790, symbole de l'unité nationale autour des valeurs révolutionnaires",
-      "La prise de la Bastille du 14 juillet 1789, symbole de la révolte contre l'absolutisme royal",
-      "Les deux événements à la fois, associant la révolte populaire et la réconciliation nationale",
-      "L'abolition de la royauté le 14 juillet 1792 et la proclamation de la Première République"
+      "TGEgRsOqdGUgZGUgbGEgRsOpZMOpcmF0aW9uIGR1IDE0IGp1aWxsZXQgMTc5MCwgc3ltYm9sZSBkZSBsJ3VuaXTDqSBuYXRpb25hbGUgYXV0b3VyIGRlcyB2YWxldXJzIHLDqXZvbHV0aW9ubmFpcmVz",
+      "TGEgcHJpc2UgZGUgbGEgQmFzdGlsbGUgZHUgMTQganVpbGxldCAxNzg5LCBzeW1ib2xlIGRlIGxhIHLDqXZvbHRlIGNvbnRyZSBsJ2Fic29sdXRpc21lIHJveWFs",
+      "TGVzIGRldXggw6l2w6luZW1lbnRzIMOgIGxhIGZvaXMsIGFzc29jaWFudCBsYSByw6l2b2x0ZSBwb3B1bGFpcmUgZXQgbGEgcsOpY29uY2lsaWF0aW9uIG5hdGlvbmFsZQ==",
+      "TCdhYm9saXRpb24gZGUgbGEgcm95YXV0w6kgbGUgMTQganVpbGxldCAxNzkyIGV0IGxhIHByb2NsYW1hdGlvbiBkZSBsYSBQcmVtacOocmUgUsOpcHVibGlxdWU="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 3, 0),
-    explication: "Officiellement, c'est la Fête de la Fédération du 14 juillet 1790 qui est commémorée, symbole de réconciliation nationale, même si la prise de la Bastille reste dans les mémoires."
-  },
+    explication: "T2ZmaWNpZWxsZW1lbnQsIGMnZXN0IGxhIEbDqnRlIGRlIGxhIEbDqWTDqXJhdGlvbiBkdSAxNCBqdWlsbGV0IDE3OTAgcXVpIGVzdCBjb21tw6ltb3LDqWUsIHN5bWJvbGUgZGUgcsOpY29uY2lsaWF0aW9uIG5hdGlvbmFsZSwgbcOqbWUgc2kgbGEgcHJpc2UgZGUgbGEgQmFzdGlsbGUgcmVzdGUgZGFucyBsZXMgbcOpbW9pcmVzLg=="},
   {
     id: 4,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Loi de 1905",
-    question: "Quel article de la loi de 1905 garantit la liberté de conscience et le libre exercice des cultes ?",
+    question: "UXVlbCBhcnRpY2xlIGRlIGxhIGxvaSBkZSAxOTA1IGdhcmFudGl0IGxhIGxpYmVydMOpIGRlIGNvbnNjaWVuY2UgZXQgbGUgbGlicmUgZXhlcmNpY2UgZGVzIGN1bHRlcyA/",
     options: [
-      "L'article 1er, qui affirme que la République assure la liberté de conscience et garantit le libre exercice des cultes",
-      "L'article 9, qui interdit toute discrimination fondée sur les croyances religieuses des citoyens",
-      "L'article 5, qui prévoit la neutralité absolue de l'État envers toutes les religions reconnues",
-      "L'article 12, qui autorise l'enseignement religieux dans les établissements scolaires publics"
+      "TCdhcnRpY2xlIDFlciwgcXVpIGFmZmlybWUgcXVlIGxhIFLDqXB1YmxpcXVlIGFzc3VyZSBsYSBsaWJlcnTDqSBkZSBjb25zY2llbmNlIGV0IGdhcmFudGl0IGxlIGxpYnJlIGV4ZXJjaWNlIGRlcyBjdWx0ZXM=",
+      "TCdhcnRpY2xlIDksIHF1aSBpbnRlcmRpdCB0b3V0ZSBkaXNjcmltaW5hdGlvbiBmb25kw6llIHN1ciBsZXMgY3JveWFuY2VzIHJlbGlnaWV1c2VzIGRlcyBjaXRveWVucw==",
+      "TCdhcnRpY2xlIDUsIHF1aSBwcsOpdm9pdCBsYSBuZXV0cmFsaXTDqSBhYnNvbHVlIGRlIGwnw4l0YXQgZW52ZXJzIHRvdXRlcyBsZXMgcmVsaWdpb25zIHJlY29ubnVlcw==",
+      "TCdhcnRpY2xlIDEyLCBxdWkgYXV0b3Jpc2UgbCdlbnNlaWduZW1lbnQgcmVsaWdpZXV4IGRhbnMgbGVzIMOpdGFibGlzc2VtZW50cyBzY29sYWlyZXMgcHVibGljcw=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 4, 0),
-    explication: "L'article 1er de la loi de 1905 affirme : 'La République assure la liberté de conscience. Elle garantit le libre exercice des cultes.'"
-  },
+    explication: "TCdhcnRpY2xlIDFlciBkZSBsYSBsb2kgZGUgMTkwNSBhZmZpcm1lIDogJ0xhIFLDqXB1YmxpcXVlIGFzc3VyZSBsYSBsaWJlcnTDqSBkZSBjb25zY2llbmNlLiBFbGxlIGdhcmFudGl0IGxlIGxpYnJlIGV4ZXJjaWNlIGRlcyBjdWx0ZXMuJw=="},
   {
     id: 5,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Aumôneries",
-    question: "Des aumôneries peuvent-elles exister dans certains établissements publics malgré la laïcité ?",
+    question: "RGVzIGF1bcO0bmVyaWVzIHBldXZlbnQtZWxsZXMgZXhpc3RlciBkYW5zIGNlcnRhaW5zIMOpdGFibGlzc2VtZW50cyBwdWJsaWNzIG1hbGdyw6kgbGEgbGHDr2NpdMOpID8=",
     options: [
-      "Oui, dans les prisons, hôpitaux, casernes et internats, pour garantir le libre exercice du culte des personnes retenues",
-      "Non, la présence de religieux est totalement interdite dans tous les établissements publics français",
-      "Oui, mais uniquement pour les religions historiquement présentes en France depuis le Concordat",
-      "Non, les personnes souhaitant pratiquer doivent obligatoirement sortir des établissements publics"
+      "T3VpLCBkYW5zIGxlcyBwcmlzb25zLCBow7RwaXRhdXgsIGNhc2VybmVzIGV0IGludGVybmF0cywgcG91ciBnYXJhbnRpciBsZSBsaWJyZSBleGVyY2ljZSBkdSBjdWx0ZSBkZXMgcGVyc29ubmVzIHJldGVudWVz",
+      "Tm9uLCBsYSBwcsOpc2VuY2UgZGUgcmVsaWdpZXV4IGVzdCB0b3RhbGVtZW50IGludGVyZGl0ZSBkYW5zIHRvdXMgbGVzIMOpdGFibGlzc2VtZW50cyBwdWJsaWNzIGZyYW7Dp2Fpcw==",
+      "T3VpLCBtYWlzIHVuaXF1ZW1lbnQgcG91ciBsZXMgcmVsaWdpb25zIGhpc3RvcmlxdWVtZW50IHByw6lzZW50ZXMgZW4gRnJhbmNlIGRlcHVpcyBsZSBDb25jb3JkYXQ=",
+      "Tm9uLCBsZXMgcGVyc29ubmVzIHNvdWhhaXRhbnQgcHJhdGlxdWVyIGRvaXZlbnQgb2JsaWdhdG9pcmVtZW50IHNvcnRpciBkZXMgw6l0YWJsaXNzZW1lbnRzIHB1YmxpY3M="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 5, 0),
-    explication: "Des aumôneries existent dans les prisons, hôpitaux, casernes et internats pour permettre aux personnes qui ne peuvent pas sortir librement de pratiquer leur culte."
-  },
+    explication: "RGVzIGF1bcO0bmVyaWVzIGV4aXN0ZW50IGRhbnMgbGVzIHByaXNvbnMsIGjDtHBpdGF1eCwgY2FzZXJuZXMgZXQgaW50ZXJuYXRzIHBvdXIgcGVybWV0dHJlIGF1eCBwZXJzb25uZXMgcXVpIG5lIHBldXZlbnQgcGFzIHNvcnRpciBsaWJyZW1lbnQgZGUgcHJhdGlxdWVyIGxldXIgY3VsdGUu"},
   {
     id: 6,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Égalité devant l'impôt",
-    question: "Que signifie le principe d'égalité devant les charges publiques affirmé par la Constitution ?",
+    question: "UXVlIHNpZ25pZmllIGxlIHByaW5jaXBlIGQnw6lnYWxpdMOpIGRldmFudCBsZXMgY2hhcmdlcyBwdWJsaXF1ZXMgYWZmaXJtw6kgcGFyIGxhIENvbnN0aXR1dGlvbiA/",
     options: [
-      "Les impôts sont répartis selon les capacités contributives de chacun, proportionnellement aux revenus et au patrimoine",
-      "Tous les citoyens doivent payer exactement le même montant d'impôts, quel que soit leur revenu",
-      "Seuls les citoyens les plus riches contribuent aux charges publiques pour financer les services",
-      "Les charges publiques ne concernent que les entreprises, les particuliers étant exonérés d'impôts"
+      "TGVzIGltcMO0dHMgc29udCByw6lwYXJ0aXMgc2Vsb24gbGVzIGNhcGFjaXTDqXMgY29udHJpYnV0aXZlcyBkZSBjaGFjdW4sIHByb3BvcnRpb25uZWxsZW1lbnQgYXV4IHJldmVudXMgZXQgYXUgcGF0cmltb2luZQ==",
+      "VG91cyBsZXMgY2l0b3llbnMgZG9pdmVudCBwYXllciBleGFjdGVtZW50IGxlIG3Dqm1lIG1vbnRhbnQgZCdpbXDDtHRzLCBxdWVsIHF1ZSBzb2l0IGxldXIgcmV2ZW51",
+      "U2V1bHMgbGVzIGNpdG95ZW5zIGxlcyBwbHVzIHJpY2hlcyBjb250cmlidWVudCBhdXggY2hhcmdlcyBwdWJsaXF1ZXMgcG91ciBmaW5hbmNlciBsZXMgc2VydmljZXM=",
+      "TGVzIGNoYXJnZXMgcHVibGlxdWVzIG5lIGNvbmNlcm5lbnQgcXVlIGxlcyBlbnRyZXByaXNlcywgbGVzIHBhcnRpY3VsaWVycyDDqXRhbnQgZXhvbsOpcsOpcyBkJ2ltcMO0dHM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 6, 0),
-    explication: "L'égalité devant les charges publiques signifie que les impôts sont répartis selon les capacités contributives. C'est le principe de progressivité de l'impôt."
-  },
+    explication: "TCfDqWdhbGl0w6kgZGV2YW50IGxlcyBjaGFyZ2VzIHB1YmxpcXVlcyBzaWduaWZpZSBxdWUgbGVzIGltcMO0dHMgc29udCByw6lwYXJ0aXMgc2Vsb24gbGVzIGNhcGFjaXTDqXMgY29udHJpYnV0aXZlcy4gQydlc3QgbGUgcHJpbmNpcGUgZGUgcHJvZ3Jlc3Npdml0w6kgZGUgbCdpbXDDtHQu"},
   {
     id: 7,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Mise en situation embauche",
-    question: "Un employeur peut-il vous demander votre âge lors d'un entretien d'embauche ?",
+    question: "VW4gZW1wbG95ZXVyIHBldXQtaWwgdm91cyBkZW1hbmRlciB2b3RyZSDDomdlIGxvcnMgZCd1biBlbnRyZXRpZW4gZCdlbWJhdWNoZSA/",
     options: [
-      "Il peut le demander, mais ne peut pas refuser de vous embaucher en raison de votre âge, ce serait une discrimination",
-      "Non, la date de naissance est une donnée personnelle qui ne peut jamais être communiquée à un employeur",
-      "Oui, l'employeur peut exiger de connaître votre âge et refuser les candidats trop jeunes ou trop âgés",
-      "Non, sauf pour les emplois de la fonction publique soumis à des limites d'âge réglementaires"
+      "SWwgcGV1dCBsZSBkZW1hbmRlciwgbWFpcyBuZSBwZXV0IHBhcyByZWZ1c2VyIGRlIHZvdXMgZW1iYXVjaGVyIGVuIHJhaXNvbiBkZSB2b3RyZSDDomdlLCBjZSBzZXJhaXQgdW5lIGRpc2NyaW1pbmF0aW9u",
+      "Tm9uLCBsYSBkYXRlIGRlIG5haXNzYW5jZSBlc3QgdW5lIGRvbm7DqWUgcGVyc29ubmVsbGUgcXVpIG5lIHBldXQgamFtYWlzIMOqdHJlIGNvbW11bmlxdcOpZSDDoCB1biBlbXBsb3lldXI=",
+      "T3VpLCBsJ2VtcGxveWV1ciBwZXV0IGV4aWdlciBkZSBjb25uYcOudHJlIHZvdHJlIMOiZ2UgZXQgcmVmdXNlciBsZXMgY2FuZGlkYXRzIHRyb3AgamV1bmVzIG91IHRyb3Agw6Jnw6lz",
+      "Tm9uLCBzYXVmIHBvdXIgbGVzIGVtcGxvaXMgZGUgbGEgZm9uY3Rpb24gcHVibGlxdWUgc291bWlzIMOgIGRlcyBsaW1pdGVzIGQnw6JnZSByw6lnbGVtZW50YWlyZXM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 7, 0),
-    explication: "L'employeur peut demander l'âge, mais refuser un candidat en raison de son âge constitue une discrimination interdite, sauf exceptions légales (majorité requise, etc.)."
-  },
+    explication: "TCdlbXBsb3lldXIgcGV1dCBkZW1hbmRlciBsJ8OiZ2UsIG1haXMgcmVmdXNlciB1biBjYW5kaWRhdCBlbiByYWlzb24gZGUgc29uIMOiZ2UgY29uc3RpdHVlIHVuZSBkaXNjcmltaW5hdGlvbiBpbnRlcmRpdGUsIHNhdWYgZXhjZXB0aW9ucyBsw6lnYWxlcyAobWFqb3JpdMOpIHJlcXVpc2UsIGV0Yy4pLg=="},
   {
     id: 8,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Parité politique",
-    question: "La loi impose-t-elle la parité hommes-femmes dans les candidatures aux élections ?",
+    question: "TGEgbG9pIGltcG9zZS10LWVsbGUgbGEgcGFyaXTDqSBob21tZXMtZmVtbWVzIGRhbnMgbGVzIGNhbmRpZGF0dXJlcyBhdXggw6lsZWN0aW9ucyA/",
     options: [
-      "Oui, la loi oblige à présenter autant de femmes que d'hommes pour certains scrutins de liste, sous peine de pénalités financières",
-      "Non, la parité est encouragée mais reste un objectif sans contrainte juridique ni sanction",
-      "Oui, tous les élus doivent obligatoirement être des femmes pour rattraper le retard historique",
-      "Non, la Constitution interdit toute mesure favorisant un sexe au nom de l'égalité stricte"
+      "T3VpLCBsYSBsb2kgb2JsaWdlIMOgIHByw6lzZW50ZXIgYXV0YW50IGRlIGZlbW1lcyBxdWUgZCdob21tZXMgcG91ciBjZXJ0YWlucyBzY3J1dGlucyBkZSBsaXN0ZSwgc291cyBwZWluZSBkZSBww6luYWxpdMOpcyBmaW5hbmNpw6hyZXM=",
+      "Tm9uLCBsYSBwYXJpdMOpIGVzdCBlbmNvdXJhZ8OpZSBtYWlzIHJlc3RlIHVuIG9iamVjdGlmIHNhbnMgY29udHJhaW50ZSBqdXJpZGlxdWUgbmkgc2FuY3Rpb24=",
+      "T3VpLCB0b3VzIGxlcyDDqWx1cyBkb2l2ZW50IG9ibGlnYXRvaXJlbWVudCDDqnRyZSBkZXMgZmVtbWVzIHBvdXIgcmF0dHJhcGVyIGxlIHJldGFyZCBoaXN0b3JpcXVl",
+      "Tm9uLCBsYSBDb25zdGl0dXRpb24gaW50ZXJkaXQgdG91dGUgbWVzdXJlIGZhdm9yaXNhbnQgdW4gc2V4ZSBhdSBub20gZGUgbCfDqWdhbGl0w6kgc3RyaWN0ZQ=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 8, 0),
-    explication: "La loi impose la parité dans les listes de candidats pour les scrutins de liste (municipales, régionales, européennes...). Des pénalités financières sanctionnent le non-respect."
-  },
+    explication: "TGEgbG9pIGltcG9zZSBsYSBwYXJpdMOpIGRhbnMgbGVzIGxpc3RlcyBkZSBjYW5kaWRhdHMgcG91ciBsZXMgc2NydXRpbnMgZGUgbGlzdGUgKG11bmljaXBhbGVzLCByw6lnaW9uYWxlcywgZXVyb3DDqWVubmVzLi4uKS4gRGVzIHDDqW5hbGl0w6lzIGZpbmFuY2nDqHJlcyBzYW5jdGlvbm5lbnQgbGUgbm9uLXJlc3BlY3Qu"},
   {
     id: 9,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Défenseur droits saisine",
-    question: "Qui peut saisir le Défenseur des droits et cette démarche est-elle gratuite ?",
+    question: "UXVpIHBldXQgc2Fpc2lyIGxlIETDqWZlbnNldXIgZGVzIGRyb2l0cyBldCBjZXR0ZSBkw6ltYXJjaGUgZXN0LWVsbGUgZ3JhdHVpdGUgPw==",
     options: [
-      "Toute personne s'estimant lésée par un service public ou une discrimination peut le saisir gratuitement et directement",
-      "Seuls les avocats peuvent saisir le Défenseur des droits pour leurs clients moyennant des frais de dossier",
-      "Uniquement les citoyens français majeurs peuvent déposer une réclamation auprès de cette institution",
-      "Le Défenseur des droits ne peut être saisi que par le Premier ministre ou le président du Parlement"
+      "VG91dGUgcGVyc29ubmUgcydlc3RpbWFudCBsw6lzw6llIHBhciB1biBzZXJ2aWNlIHB1YmxpYyBvdSB1bmUgZGlzY3JpbWluYXRpb24gcGV1dCBsZSBzYWlzaXIgZ3JhdHVpdGVtZW50IGV0IGRpcmVjdGVtZW50",
+      "U2V1bHMgbGVzIGF2b2NhdHMgcGV1dmVudCBzYWlzaXIgbGUgRMOpZmVuc2V1ciBkZXMgZHJvaXRzIHBvdXIgbGV1cnMgY2xpZW50cyBtb3llbm5hbnQgZGVzIGZyYWlzIGRlIGRvc3NpZXI=",
+      "VW5pcXVlbWVudCBsZXMgY2l0b3llbnMgZnJhbsOnYWlzIG1hamV1cnMgcGV1dmVudCBkw6lwb3NlciB1bmUgcsOpY2xhbWF0aW9uIGF1cHLDqHMgZGUgY2V0dGUgaW5zdGl0dXRpb24=",
+      "TGUgRMOpZmVuc2V1ciBkZXMgZHJvaXRzIG5lIHBldXQgw6p0cmUgc2Fpc2kgcXVlIHBhciBsZSBQcmVtaWVyIG1pbmlzdHJlIG91IGxlIHByw6lzaWRlbnQgZHUgUGFybGVtZW50"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 9, 0),
-    explication: "Toute personne, française ou étrangère, peut saisir gratuitement et directement le Défenseur des droits si elle s'estime lésée par un service public ou victime de discrimination."
-  },
+    explication: "VG91dGUgcGVyc29ubmUsIGZyYW7Dp2Fpc2Ugb3Ugw6l0cmFuZ8OocmUsIHBldXQgc2Fpc2lyIGdyYXR1aXRlbWVudCBldCBkaXJlY3RlbWVudCBsZSBEw6lmZW5zZXVyIGRlcyBkcm9pdHMgc2kgZWxsZSBzJ2VzdGltZSBsw6lzw6llIHBhciB1biBzZXJ2aWNlIHB1YmxpYyBvdSB2aWN0aW1lIGRlIGRpc2NyaW1pbmF0aW9uLg=="},
   {
     id: 10,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Consentement mariage",
-    question: "Quelle condition est indispensable pour que le mariage civil soit valable en France ?",
+    question: "UXVlbGxlIGNvbmRpdGlvbiBlc3QgaW5kaXNwZW5zYWJsZSBwb3VyIHF1ZSBsZSBtYXJpYWdlIGNpdmlsIHNvaXQgdmFsYWJsZSBlbiBGcmFuY2UgPw==",
     options: [
-      "Le consentement libre et éclairé des deux époux, exprimé personnellement devant l'officier d'état civil",
-      "L'accord préalable des parents des deux époux, quelle que soit la majorité des futurs mariés",
-      "La possession d'un patrimoine minimum permettant de subvenir aux besoins du futur ménage",
-      "La célébration d'une cérémonie religieuse préalable reconnue par l'État français"
+      "TGUgY29uc2VudGVtZW50IGxpYnJlIGV0IMOpY2xhaXLDqSBkZXMgZGV1eCDDqXBvdXgsIGV4cHJpbcOpIHBlcnNvbm5lbGxlbWVudCBkZXZhbnQgbCdvZmZpY2llciBkJ8OpdGF0IGNpdmls",
+      "TCdhY2NvcmQgcHLDqWFsYWJsZSBkZXMgcGFyZW50cyBkZXMgZGV1eCDDqXBvdXgsIHF1ZWxsZSBxdWUgc29pdCBsYSBtYWpvcml0w6kgZGVzIGZ1dHVycyBtYXJpw6lz",
+      "TGEgcG9zc2Vzc2lvbiBkJ3VuIHBhdHJpbW9pbmUgbWluaW11bSBwZXJtZXR0YW50IGRlIHN1YnZlbmlyIGF1eCBiZXNvaW5zIGR1IGZ1dHVyIG3DqW5hZ2U=",
+      "TGEgY8OpbMOpYnJhdGlvbiBkJ3VuZSBjw6lyw6ltb25pZSByZWxpZ2lldXNlIHByw6lhbGFibGUgcmVjb25udWUgcGFyIGwnw4l0YXQgZnJhbsOnYWlz"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 10, 0),
-    explication: "Le mariage civil nécessite le consentement libre et éclairé des deux époux. Sans ce consentement personnel et non contraint, le mariage peut être annulé."
-  },
+    explication: "TGUgbWFyaWFnZSBjaXZpbCBuw6ljZXNzaXRlIGxlIGNvbnNlbnRlbWVudCBsaWJyZSBldCDDqWNsYWlyw6kgZGVzIGRldXggw6lwb3V4LiBTYW5zIGNlIGNvbnNlbnRlbWVudCBwZXJzb25uZWwgZXQgbm9uIGNvbnRyYWludCwgbGUgbWFyaWFnZSBwZXV0IMOqdHJlIGFubnVsw6ku"},
   {
     id: 11,
     categorie: "Principes et valeurs de la République",
     sousCategorie: "Violence morale",
-    question: "Les violences psychologiques au sein du couple sont-elles punies par la loi française ?",
+    question: "TGVzIHZpb2xlbmNlcyBwc3ljaG9sb2dpcXVlcyBhdSBzZWluIGR1IGNvdXBsZSBzb250LWVsbGVzIHB1bmllcyBwYXIgbGEgbG9pIGZyYW7Dp2Fpc2UgPw==",
     options: [
-      "Oui, les violences psychologiques répétées sont un délit puni de 3 ans d'emprisonnement et 45 000 euros d'amende",
-      "Non, seules les violences physiques laissant des traces visibles sont sanctionnées pénalement",
-      "Oui, mais uniquement si elles sont commises devant des témoins pouvant attester des faits",
-      "Non, les violences morales relèvent du civil et ne peuvent donner lieu qu'à des dommages et intérêts"
+      "T3VpLCBsZXMgdmlvbGVuY2VzIHBzeWNob2xvZ2lxdWVzIHLDqXDDqXTDqWVzIHNvbnQgdW4gZMOpbGl0IHB1bmkgZGUgMyBhbnMgZCdlbXByaXNvbm5lbWVudCBldCA0NSAwMDAgZXVyb3MgZCdhbWVuZGU=",
+      "Tm9uLCBzZXVsZXMgbGVzIHZpb2xlbmNlcyBwaHlzaXF1ZXMgbGFpc3NhbnQgZGVzIHRyYWNlcyB2aXNpYmxlcyBzb250IHNhbmN0aW9ubsOpZXMgcMOpbmFsZW1lbnQ=",
+      "T3VpLCBtYWlzIHVuaXF1ZW1lbnQgc2kgZWxsZXMgc29udCBjb21taXNlcyBkZXZhbnQgZGVzIHTDqW1vaW5zIHBvdXZhbnQgYXR0ZXN0ZXIgZGVzIGZhaXRz",
+      "Tm9uLCBsZXMgdmlvbGVuY2VzIG1vcmFsZXMgcmVsw6h2ZW50IGR1IGNpdmlsIGV0IG5lIHBldXZlbnQgZG9ubmVyIGxpZXUgcXUnw6AgZGVzIGRvbW1hZ2VzIGV0IGludMOpcsOqdHM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 11, 0),
-    explication: "Les violences psychologiques répétées au sein du couple sont un délit depuis 2010. Elles sont punies de 3 ans d'emprisonnement et 45 000 euros d'amende."
-  },
+    explication: "TGVzIHZpb2xlbmNlcyBwc3ljaG9sb2dpcXVlcyByw6lww6l0w6llcyBhdSBzZWluIGR1IGNvdXBsZSBzb250IHVuIGTDqWxpdCBkZXB1aXMgMjAxMC4gRWxsZXMgc29udCBwdW5pZXMgZGUgMyBhbnMgZCdlbXByaXNvbm5lbWVudCBldCA0NSAwMDAgZXVyb3MgZCdhbWVuZGUu"},
 
   // ==================== 2. SYSTÈME INSTITUTIONNEL (6 questions) ====================
   
@@ -177,86 +166,80 @@ const questions: Question[] = [
     id: 12,
     categorie: "Système institutionnel et politique",
     sousCategorie: "Dissolution Assemblée",
-    question: "Dans quelles conditions le Président de la République peut-il dissoudre l'Assemblée nationale ?",
+    question: "RGFucyBxdWVsbGVzIGNvbmRpdGlvbnMgbGUgUHLDqXNpZGVudCBkZSBsYSBSw6lwdWJsaXF1ZSBwZXV0LWlsIGRpc3NvdWRyZSBsJ0Fzc2VtYmzDqWUgbmF0aW9uYWxlID8=",
     options: [
-      "À tout moment après consultation du Premier ministre et des présidents des assemblées, mais pas deux fois en un an",
-      "Uniquement après un vote de défiance du Parlement contre le Gouvernement en place",
-      "Jamais, la dissolution de l'Assemblée nationale est interdite par la Constitution de 1958",
-      "Seulement en cas de guerre ou de crise grave menaçant les institutions de la République"
+      "w4AgdG91dCBtb21lbnQgYXByw6hzIGNvbnN1bHRhdGlvbiBkdSBQcmVtaWVyIG1pbmlzdHJlIGV0IGRlcyBwcsOpc2lkZW50cyBkZXMgYXNzZW1ibMOpZXMsIG1haXMgcGFzIGRldXggZm9pcyBlbiB1biBhbg==",
+      "VW5pcXVlbWVudCBhcHLDqHMgdW4gdm90ZSBkZSBkw6lmaWFuY2UgZHUgUGFybGVtZW50IGNvbnRyZSBsZSBHb3V2ZXJuZW1lbnQgZW4gcGxhY2U=",
+      "SmFtYWlzLCBsYSBkaXNzb2x1dGlvbiBkZSBsJ0Fzc2VtYmzDqWUgbmF0aW9uYWxlIGVzdCBpbnRlcmRpdGUgcGFyIGxhIENvbnN0aXR1dGlvbiBkZSAxOTU4",
+      "U2V1bGVtZW50IGVuIGNhcyBkZSBndWVycmUgb3UgZGUgY3Jpc2UgZ3JhdmUgbWVuYcOnYW50IGxlcyBpbnN0aXR1dGlvbnMgZGUgbGEgUsOpcHVibGlxdWU="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 12, 0),
-    explication: "Le Président peut dissoudre l'Assemblée nationale après consultation (non avis conforme) du Premier ministre et des présidents des assemblées. Une nouvelle dissolution est interdite dans l'année suivante."
-  },
+    explication: "TGUgUHLDqXNpZGVudCBwZXV0IGRpc3NvdWRyZSBsJ0Fzc2VtYmzDqWUgbmF0aW9uYWxlIGFwcsOocyBjb25zdWx0YXRpb24gKG5vbiBhdmlzIGNvbmZvcm1lKSBkdSBQcmVtaWVyIG1pbmlzdHJlIGV0IGRlcyBwcsOpc2lkZW50cyBkZXMgYXNzZW1ibMOpZXMuIFVuZSBub3V2ZWxsZSBkaXNzb2x1dGlvbiBlc3QgaW50ZXJkaXRlIGRhbnMgbCdhbm7DqWUgc3VpdmFudGUu"},
   {
     id: 13,
     categorie: "Système institutionnel et politique",
     sousCategorie: "Motion de censure",
-    question: "Qu'est-ce qu'une motion de censure et quelles sont les conditions de son adoption ?",
+    question: "UXUnZXN0LWNlIHF1J3VuZSBtb3Rpb24gZGUgY2Vuc3VyZSBldCBxdWVsbGVzIHNvbnQgbGVzIGNvbmRpdGlvbnMgZGUgc29uIGFkb3B0aW9uID8=",
     options: [
-      "Une procédure permettant à l'Assemblée nationale de renverser le Gouvernement, nécessitant la majorité absolue des députés",
-      "Un texte du Sénat critiquant la politique gouvernementale sans conséquence juridique directe",
-      "Une sanction du Conseil constitutionnel contre une loi jugée contraire aux droits fondamentaux",
-      "Un avertissement du Président de la République au Premier ministre sans effet sur le Gouvernement"
+      "VW5lIHByb2PDqWR1cmUgcGVybWV0dGFudCDDoCBsJ0Fzc2VtYmzDqWUgbmF0aW9uYWxlIGRlIHJlbnZlcnNlciBsZSBHb3V2ZXJuZW1lbnQsIG7DqWNlc3NpdGFudCBsYSBtYWpvcml0w6kgYWJzb2x1ZSBkZXMgZMOpcHV0w6lz",
+      "VW4gdGV4dGUgZHUgU8OpbmF0IGNyaXRpcXVhbnQgbGEgcG9saXRpcXVlIGdvdXZlcm5lbWVudGFsZSBzYW5zIGNvbnPDqXF1ZW5jZSBqdXJpZGlxdWUgZGlyZWN0ZQ==",
+      "VW5lIHNhbmN0aW9uIGR1IENvbnNlaWwgY29uc3RpdHV0aW9ubmVsIGNvbnRyZSB1bmUgbG9pIGp1Z8OpZSBjb250cmFpcmUgYXV4IGRyb2l0cyBmb25kYW1lbnRhdXg=",
+      "VW4gYXZlcnRpc3NlbWVudCBkdSBQcsOpc2lkZW50IGRlIGxhIFLDqXB1YmxpcXVlIGF1IFByZW1pZXIgbWluaXN0cmUgc2FucyBlZmZldCBzdXIgbGUgR291dmVybmVtZW50"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 13, 0),
-    explication: "La motion de censure permet à l'Assemblée nationale de renverser le Gouvernement. Elle doit être votée par la majorité absolue des députés."
-  },
+    explication: "TGEgbW90aW9uIGRlIGNlbnN1cmUgcGVybWV0IMOgIGwnQXNzZW1ibMOpZSBuYXRpb25hbGUgZGUgcmVudmVyc2VyIGxlIEdvdXZlcm5lbWVudC4gRWxsZSBkb2l0IMOqdHJlIHZvdMOpZSBwYXIgbGEgbWFqb3JpdMOpIGFic29sdWUgZGVzIGTDqXB1dMOpcy4="},
   {
     id: 14,
     categorie: "Système institutionnel et politique",
     sousCategorie: "Conseil constitutionnel composition",
-    question: "Comment sont nommés les membres du Conseil constitutionnel ?",
+    question: "Q29tbWVudCBzb250IG5vbW3DqXMgbGVzIG1lbWJyZXMgZHUgQ29uc2VpbCBjb25zdGl0dXRpb25uZWwgPw==",
     options: [
-      "Trois par le Président, trois par le président de l'Assemblée, trois par le président du Sénat, pour un mandat de 9 ans",
-      "Tous élus par le Parlement réuni en Congrès à la majorité des deux tiers pour un mandat de 7 ans",
-      "Nommés par le Premier ministre sur proposition du ministre de la Justice pour un mandat à vie",
-      "Désignés par tirage au sort parmi les magistrats de la Cour de cassation pour un mandat de 5 ans"
+      "VHJvaXMgcGFyIGxlIFByw6lzaWRlbnQsIHRyb2lzIHBhciBsZSBwcsOpc2lkZW50IGRlIGwnQXNzZW1ibMOpZSwgdHJvaXMgcGFyIGxlIHByw6lzaWRlbnQgZHUgU8OpbmF0LCBwb3VyIHVuIG1hbmRhdCBkZSA5IGFucw==",
+      "VG91cyDDqWx1cyBwYXIgbGUgUGFybGVtZW50IHLDqXVuaSBlbiBDb25ncsOocyDDoCBsYSBtYWpvcml0w6kgZGVzIGRldXggdGllcnMgcG91ciB1biBtYW5kYXQgZGUgNyBhbnM=",
+      "Tm9tbcOpcyBwYXIgbGUgUHJlbWllciBtaW5pc3RyZSBzdXIgcHJvcG9zaXRpb24gZHUgbWluaXN0cmUgZGUgbGEgSnVzdGljZSBwb3VyIHVuIG1hbmRhdCDDoCB2aWU=",
+      "RMOpc2lnbsOpcyBwYXIgdGlyYWdlIGF1IHNvcnQgcGFybWkgbGVzIG1hZ2lzdHJhdHMgZGUgbGEgQ291ciBkZSBjYXNzYXRpb24gcG91ciB1biBtYW5kYXQgZGUgNSBhbnM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 14, 0),
-    explication: "Le Conseil constitutionnel comprend 9 membres : 3 nommés par le Président, 3 par le président de l'Assemblée, 3 par le président du Sénat, pour 9 ans non renouvelables."
-  },
+    explication: "TGUgQ29uc2VpbCBjb25zdGl0dXRpb25uZWwgY29tcHJlbmQgOSBtZW1icmVzIDogMyBub21tw6lzIHBhciBsZSBQcsOpc2lkZW50LCAzIHBhciBsZSBwcsOpc2lkZW50IGRlIGwnQXNzZW1ibMOpZSwgMyBwYXIgbGUgcHLDqXNpZGVudCBkdSBTw6luYXQsIHBvdXIgOSBhbnMgbm9uIHJlbm91dmVsYWJsZXMu"},
   {
     id: 15,
     categorie: "Système institutionnel et politique",
     sousCategorie: "QPC",
-    question: "Qu'est-ce qu'une Question Prioritaire de Constitutionnalité (QPC) ?",
+    question: "UXUnZXN0LWNlIHF1J3VuZSBRdWVzdGlvbiBQcmlvcml0YWlyZSBkZSBDb25zdGl0dXRpb25uYWxpdMOpIChRUEMpID8=",
     options: [
-      "Le droit pour tout justiciable de contester la conformité d'une loi aux droits et libertés garantis par la Constitution",
-      "Une procédure permettant au Parlement de saisir le Conseil constitutionnel avant le vote d'une loi",
-      "Un recours du Président de la République contre une décision de justice jugée contraire à la Constitution",
-      "Une question posée par les citoyens lors des référendums sur la modification de la Constitution"
+      "TGUgZHJvaXQgcG91ciB0b3V0IGp1c3RpY2lhYmxlIGRlIGNvbnRlc3RlciBsYSBjb25mb3JtaXTDqSBkJ3VuZSBsb2kgYXV4IGRyb2l0cyBldCBsaWJlcnTDqXMgZ2FyYW50aXMgcGFyIGxhIENvbnN0aXR1dGlvbg==",
+      "VW5lIHByb2PDqWR1cmUgcGVybWV0dGFudCBhdSBQYXJsZW1lbnQgZGUgc2Fpc2lyIGxlIENvbnNlaWwgY29uc3RpdHV0aW9ubmVsIGF2YW50IGxlIHZvdGUgZCd1bmUgbG9p",
+      "VW4gcmVjb3VycyBkdSBQcsOpc2lkZW50IGRlIGxhIFLDqXB1YmxpcXVlIGNvbnRyZSB1bmUgZMOpY2lzaW9uIGRlIGp1c3RpY2UganVnw6llIGNvbnRyYWlyZSDDoCBsYSBDb25zdGl0dXRpb24=",
+      "VW5lIHF1ZXN0aW9uIHBvc8OpZSBwYXIgbGVzIGNpdG95ZW5zIGxvcnMgZGVzIHLDqWbDqXJlbmR1bXMgc3VyIGxhIG1vZGlmaWNhdGlvbiBkZSBsYSBDb25zdGl0dXRpb24="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 15, 0),
-    explication: "La QPC (depuis 2010) permet à tout justiciable, dans un procès, de contester la conformité d'une loi applicable aux droits et libertés garantis par la Constitution."
-  },
+    explication: "TGEgUVBDIChkZXB1aXMgMjAxMCkgcGVybWV0IMOgIHRvdXQganVzdGljaWFibGUsIGRhbnMgdW4gcHJvY8OocywgZGUgY29udGVzdGVyIGxhIGNvbmZvcm1pdMOpIGQndW5lIGxvaSBhcHBsaWNhYmxlIGF1eCBkcm9pdHMgZXQgbGliZXJ0w6lzIGdhcmFudGlzIHBhciBsYSBDb25zdGl0dXRpb24u"},
   {
     id: 16,
     categorie: "Système institutionnel et politique",
     sousCategorie: "Commune maire",
-    question: "Comment le maire d'une commune est-il élu et qui le nomme officiellement ?",
+    question: "Q29tbWVudCBsZSBtYWlyZSBkJ3VuZSBjb21tdW5lIGVzdC1pbCDDqWx1IGV0IHF1aSBsZSBub21tZSBvZmZpY2llbGxlbWVudCA/",
     options: [
-      "Élu par le conseil municipal parmi ses membres lors de la première réunion suivant les élections municipales",
-      "Élu directement par les habitants de la commune au suffrage universel lors d'un scrutin séparé",
-      "Nommé par le préfet de département sur proposition du conseil municipal après les élections",
-      "Désigné automatiquement comme le candidat ayant obtenu le plus de voix aux élections municipales"
+      "w4lsdSBwYXIgbGUgY29uc2VpbCBtdW5pY2lwYWwgcGFybWkgc2VzIG1lbWJyZXMgbG9ycyBkZSBsYSBwcmVtacOocmUgcsOpdW5pb24gc3VpdmFudCBsZXMgw6lsZWN0aW9ucyBtdW5pY2lwYWxlcw==",
+      "w4lsdSBkaXJlY3RlbWVudCBwYXIgbGVzIGhhYml0YW50cyBkZSBsYSBjb21tdW5lIGF1IHN1ZmZyYWdlIHVuaXZlcnNlbCBsb3JzIGQndW4gc2NydXRpbiBzw6lwYXLDqQ==",
+      "Tm9tbcOpIHBhciBsZSBwcsOpZmV0IGRlIGTDqXBhcnRlbWVudCBzdXIgcHJvcG9zaXRpb24gZHUgY29uc2VpbCBtdW5pY2lwYWwgYXByw6hzIGxlcyDDqWxlY3Rpb25z",
+      "RMOpc2lnbsOpIGF1dG9tYXRpcXVlbWVudCBjb21tZSBsZSBjYW5kaWRhdCBheWFudCBvYnRlbnUgbGUgcGx1cyBkZSB2b2l4IGF1eCDDqWxlY3Rpb25zIG11bmljaXBhbGVz"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 16, 0),
-    explication: "Le maire est élu par le conseil municipal parmi ses membres lors de la première réunion suivant les élections municipales. Il n'est pas élu directement par les habitants."
-  },
+    explication: "TGUgbWFpcmUgZXN0IMOpbHUgcGFyIGxlIGNvbnNlaWwgbXVuaWNpcGFsIHBhcm1pIHNlcyBtZW1icmVzIGxvcnMgZGUgbGEgcHJlbWnDqHJlIHLDqXVuaW9uIHN1aXZhbnQgbGVzIMOpbGVjdGlvbnMgbXVuaWNpcGFsZXMuIElsIG4nZXN0IHBhcyDDqWx1IGRpcmVjdGVtZW50IHBhciBsZXMgaGFiaXRhbnRzLg=="},
   {
     id: 17,
     categorie: "Système institutionnel et politique",
     sousCategorie: "Intercommunalité",
-    question: "Qu'est-ce qu'une intercommunalité (EPCI) et quel est son rôle ?",
+    question: "UXUnZXN0LWNlIHF1J3VuZSBpbnRlcmNvbW11bmFsaXTDqSAoRVBDSSkgZXQgcXVlbCBlc3Qgc29uIHLDtGxlID8=",
     options: [
-      "Un regroupement de communes exerçant des compétences en commun comme les transports, les déchets ou le développement économique",
-      "Un service de l'État coordonnant les actions des différentes communes d'un même département",
-      "Une association de maires se réunissant pour défendre les intérêts des petites communes rurales",
-      "Un tribunal administratif spécialisé dans les litiges entre communes voisines sur le territoire"
+      "VW4gcmVncm91cGVtZW50IGRlIGNvbW11bmVzIGV4ZXLDp2FudCBkZXMgY29tcMOpdGVuY2VzIGVuIGNvbW11biBjb21tZSBsZXMgdHJhbnNwb3J0cywgbGVzIGTDqWNoZXRzIG91IGxlIGTDqXZlbG9wcGVtZW50IMOpY29ub21pcXVl",
+      "VW4gc2VydmljZSBkZSBsJ8OJdGF0IGNvb3Jkb25uYW50IGxlcyBhY3Rpb25zIGRlcyBkaWZmw6lyZW50ZXMgY29tbXVuZXMgZCd1biBtw6ptZSBkw6lwYXJ0ZW1lbnQ=",
+      "VW5lIGFzc29jaWF0aW9uIGRlIG1haXJlcyBzZSByw6l1bmlzc2FudCBwb3VyIGTDqWZlbmRyZSBsZXMgaW50w6lyw6p0cyBkZXMgcGV0aXRlcyBjb21tdW5lcyBydXJhbGVz",
+      "VW4gdHJpYnVuYWwgYWRtaW5pc3RyYXRpZiBzcMOpY2lhbGlzw6kgZGFucyBsZXMgbGl0aWdlcyBlbnRyZSBjb21tdW5lcyB2b2lzaW5lcyBzdXIgbGUgdGVycml0b2lyZQ=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 17, 0),
-    explication: "Les EPCI (Établissements Publics de Coopération Intercommunale) regroupent des communes pour exercer des compétences en commun (transports, déchets, eau, développement économique...)."
-  },
+    explication: "TGVzIEVQQ0kgKMOJdGFibGlzc2VtZW50cyBQdWJsaWNzIGRlIENvb3DDqXJhdGlvbiBJbnRlcmNvbW11bmFsZSkgcmVncm91cGVudCBkZXMgY29tbXVuZXMgcG91ciBleGVyY2VyIGRlcyBjb21ww6l0ZW5jZXMgZW4gY29tbXVuICh0cmFuc3BvcnRzLCBkw6ljaGV0cywgZWF1LCBkw6l2ZWxvcHBlbWVudCDDqWNvbm9taXF1ZS4uLiku"},
 
   // ==================== 3. DROITS ET DEVOIRS (11 questions) ====================
   
@@ -264,156 +247,145 @@ const questions: Question[] = [
     id: 18,
     categorie: "Droits et devoirs",
     sousCategorie: "Liberté d'expression limites",
-    question: "Quelles sont les limites à la liberté d'expression en France ?",
+    question: "UXVlbGxlcyBzb250IGxlcyBsaW1pdGVzIMOgIGxhIGxpYmVydMOpIGQnZXhwcmVzc2lvbiBlbiBGcmFuY2UgPw==",
     options: [
-      "La diffamation, l'injure, la provocation à la haine, l'apologie du terrorisme et le négationnisme sont interdits",
-      "Aucune limite n'existe, la liberté d'expression est absolue et ne peut jamais être restreinte",
-      "Seules les critiques envers le Président de la République et les institutions sont interdites",
-      "Les opinions politiques peuvent être exprimées, mais pas les opinions religieuses ou philosophiques"
+      "TGEgZGlmZmFtYXRpb24sIGwnaW5qdXJlLCBsYSBwcm92b2NhdGlvbiDDoCBsYSBoYWluZSwgbCdhcG9sb2dpZSBkdSB0ZXJyb3Jpc21lIGV0IGxlIG7DqWdhdGlvbm5pc21lIHNvbnQgaW50ZXJkaXRz",
+      "QXVjdW5lIGxpbWl0ZSBuJ2V4aXN0ZSwgbGEgbGliZXJ0w6kgZCdleHByZXNzaW9uIGVzdCBhYnNvbHVlIGV0IG5lIHBldXQgamFtYWlzIMOqdHJlIHJlc3RyZWludGU=",
+      "U2V1bGVzIGxlcyBjcml0aXF1ZXMgZW52ZXJzIGxlIFByw6lzaWRlbnQgZGUgbGEgUsOpcHVibGlxdWUgZXQgbGVzIGluc3RpdHV0aW9ucyBzb250IGludGVyZGl0ZXM=",
+      "TGVzIG9waW5pb25zIHBvbGl0aXF1ZXMgcGV1dmVudCDDqnRyZSBleHByaW3DqWVzLCBtYWlzIHBhcyBsZXMgb3BpbmlvbnMgcmVsaWdpZXVzZXMgb3UgcGhpbG9zb3BoaXF1ZXM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 18, 0),
-    explication: "La liberté d'expression a des limites : diffamation, injure, provocation à la haine raciale ou religieuse, apologie du terrorisme, négationnisme sont punis par la loi."
-  },
+    explication: "TGEgbGliZXJ0w6kgZCdleHByZXNzaW9uIGEgZGVzIGxpbWl0ZXMgOiBkaWZmYW1hdGlvbiwgaW5qdXJlLCBwcm92b2NhdGlvbiDDoCBsYSBoYWluZSByYWNpYWxlIG91IHJlbGlnaWV1c2UsIGFwb2xvZ2llIGR1IHRlcnJvcmlzbWUsIG7DqWdhdGlvbm5pc21lIHNvbnQgcHVuaXMgcGFyIGxhIGxvaS4="},
   {
     id: 19,
     categorie: "Droits et devoirs",
     sousCategorie: "RGPD droits",
-    question: "Quels droits le RGPD accorde-t-il aux citoyens concernant leurs données personnelles ?",
+    question: "UXVlbHMgZHJvaXRzIGxlIFJHUEQgYWNjb3JkZS10LWlsIGF1eCBjaXRveWVucyBjb25jZXJuYW50IGxldXJzIGRvbm7DqWVzIHBlcnNvbm5lbGxlcyA/",
     options: [
-      "Droit d'accès, de rectification, d'effacement, de portabilité et d'opposition au traitement de leurs données",
-      "Uniquement le droit de savoir si une entreprise détient des données, sans pouvoir les modifier",
-      "Le droit de vendre ses données personnelles aux entreprises intéressées par ces informations",
-      "Aucun droit particulier, les entreprises peuvent utiliser librement toutes les données collectées"
+      "RHJvaXQgZCdhY2PDqHMsIGRlIHJlY3RpZmljYXRpb24sIGQnZWZmYWNlbWVudCwgZGUgcG9ydGFiaWxpdMOpIGV0IGQnb3Bwb3NpdGlvbiBhdSB0cmFpdGVtZW50IGRlIGxldXJzIGRvbm7DqWVz",
+      "VW5pcXVlbWVudCBsZSBkcm9pdCBkZSBzYXZvaXIgc2kgdW5lIGVudHJlcHJpc2UgZMOpdGllbnQgZGVzIGRvbm7DqWVzLCBzYW5zIHBvdXZvaXIgbGVzIG1vZGlmaWVy",
+      "TGUgZHJvaXQgZGUgdmVuZHJlIHNlcyBkb25uw6llcyBwZXJzb25uZWxsZXMgYXV4IGVudHJlcHJpc2VzIGludMOpcmVzc8OpZXMgcGFyIGNlcyBpbmZvcm1hdGlvbnM=",
+      "QXVjdW4gZHJvaXQgcGFydGljdWxpZXIsIGxlcyBlbnRyZXByaXNlcyBwZXV2ZW50IHV0aWxpc2VyIGxpYnJlbWVudCB0b3V0ZXMgbGVzIGRvbm7DqWVzIGNvbGxlY3TDqWVz"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 19, 0),
-    explication: "Le RGPD accorde des droits aux citoyens : accès à leurs données, rectification des erreurs, effacement (droit à l'oubli), portabilité et opposition au traitement."
-  },
+    explication: "TGUgUkdQRCBhY2NvcmRlIGRlcyBkcm9pdHMgYXV4IGNpdG95ZW5zIDogYWNjw6hzIMOgIGxldXJzIGRvbm7DqWVzLCByZWN0aWZpY2F0aW9uIGRlcyBlcnJldXJzLCBlZmZhY2VtZW50IChkcm9pdCDDoCBsJ291YmxpKSwgcG9ydGFiaWxpdMOpIGV0IG9wcG9zaXRpb24gYXUgdHJhaXRlbWVudC4="},
   {
     id: 20,
     categorie: "Droits et devoirs",
     sousCategorie: "Allocation chômage",
-    question: "Quelles sont les conditions pour bénéficier de l'allocation chômage (ARE) en France ?",
+    question: "UXVlbGxlcyBzb250IGxlcyBjb25kaXRpb25zIHBvdXIgYsOpbsOpZmljaWVyIGRlIGwnYWxsb2NhdGlvbiBjaMO0bWFnZSAoQVJFKSBlbiBGcmFuY2UgPw==",
     options: [
-      "Avoir travaillé au moins 6 mois sur les 24 derniers mois, être inscrit à France Travail et chercher activement un emploi",
-      "Avoir travaillé au moins 5 ans sans interruption chez le même employeur avant le licenciement",
-      "Être français et avoir plus de 25 ans, sans condition de durée de travail préalable",
-      "Avoir démissionné de son emploi et déposer une demande auprès de la Sécurité sociale"
+      "QXZvaXIgdHJhdmFpbGzDqSBhdSBtb2lucyA2IG1vaXMgc3VyIGxlcyAyNCBkZXJuaWVycyBtb2lzLCDDqnRyZSBpbnNjcml0IMOgIEZyYW5jZSBUcmF2YWlsIGV0IGNoZXJjaGVyIGFjdGl2ZW1lbnQgdW4gZW1wbG9p",
+      "QXZvaXIgdHJhdmFpbGzDqSBhdSBtb2lucyA1IGFucyBzYW5zIGludGVycnVwdGlvbiBjaGV6IGxlIG3Dqm1lIGVtcGxveWV1ciBhdmFudCBsZSBsaWNlbmNpZW1lbnQ=",
+      "w4p0cmUgZnJhbsOnYWlzIGV0IGF2b2lyIHBsdXMgZGUgMjUgYW5zLCBzYW5zIGNvbmRpdGlvbiBkZSBkdXLDqWUgZGUgdHJhdmFpbCBwcsOpYWxhYmxl",
+      "QXZvaXIgZMOpbWlzc2lvbm7DqSBkZSBzb24gZW1wbG9pIGV0IGTDqXBvc2VyIHVuZSBkZW1hbmRlIGF1cHLDqHMgZGUgbGEgU8OpY3VyaXTDqSBzb2NpYWxl"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 20, 0),
-    explication: "Pour l'ARE, il faut avoir travaillé au moins 6 mois sur les 24 derniers mois (ou 36 pour les plus de 53 ans), être inscrit à France Travail et chercher activement un emploi."
-  },
+    explication: "UG91ciBsJ0FSRSwgaWwgZmF1dCBhdm9pciB0cmF2YWlsbMOpIGF1IG1vaW5zIDYgbW9pcyBzdXIgbGVzIDI0IGRlcm5pZXJzIG1vaXMgKG91IDM2IHBvdXIgbGVzIHBsdXMgZGUgNTMgYW5zKSwgw6p0cmUgaW5zY3JpdCDDoCBGcmFuY2UgVHJhdmFpbCBldCBjaGVyY2hlciBhY3RpdmVtZW50IHVuIGVtcGxvaS4="},
   {
     id: 21,
     categorie: "Droits et devoirs",
     sousCategorie: "Droit de grève",
-    question: "Le droit de grève est-il garanti en France et quelles sont ses limites ?",
+    question: "TGUgZHJvaXQgZGUgZ3LDqHZlIGVzdC1pbCBnYXJhbnRpIGVuIEZyYW5jZSBldCBxdWVsbGVzIHNvbnQgc2VzIGxpbWl0ZXMgPw==",
     options: [
-      "Oui, c'est un droit constitutionnel, mais il peut être limité pour assurer la continuité des services publics essentiels",
-      "Non, le droit de grève a été supprimé par une réforme récente du Code du travail français",
-      "Oui, mais uniquement pour les salariés du secteur privé, les fonctionnaires n'y ont pas droit",
-      "Non, les grèves sont illégales et les grévistes peuvent être immédiatement licenciés sans préavis"
+      "T3VpLCBjJ2VzdCB1biBkcm9pdCBjb25zdGl0dXRpb25uZWwsIG1haXMgaWwgcGV1dCDDqnRyZSBsaW1pdMOpIHBvdXIgYXNzdXJlciBsYSBjb250aW51aXTDqSBkZXMgc2VydmljZXMgcHVibGljcyBlc3NlbnRpZWxz",
+      "Tm9uLCBsZSBkcm9pdCBkZSBncsOodmUgYSDDqXTDqSBzdXBwcmltw6kgcGFyIHVuZSByw6lmb3JtZSByw6ljZW50ZSBkdSBDb2RlIGR1IHRyYXZhaWwgZnJhbsOnYWlz",
+      "T3VpLCBtYWlzIHVuaXF1ZW1lbnQgcG91ciBsZXMgc2FsYXJpw6lzIGR1IHNlY3RldXIgcHJpdsOpLCBsZXMgZm9uY3Rpb25uYWlyZXMgbid5IG9udCBwYXMgZHJvaXQ=",
+      "Tm9uLCBsZXMgZ3LDqHZlcyBzb250IGlsbMOpZ2FsZXMgZXQgbGVzIGdyw6l2aXN0ZXMgcGV1dmVudCDDqnRyZSBpbW3DqWRpYXRlbWVudCBsaWNlbmNpw6lzIHNhbnMgcHLDqWF2aXM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 21, 0),
-    explication: "Le droit de grève est un droit constitutionnel. Il peut être réglementé pour assurer la continuité des services publics essentiels (hôpitaux, transports, etc.)."
-  },
+    explication: "TGUgZHJvaXQgZGUgZ3LDqHZlIGVzdCB1biBkcm9pdCBjb25zdGl0dXRpb25uZWwuIElsIHBldXQgw6p0cmUgcsOpZ2xlbWVudMOpIHBvdXIgYXNzdXJlciBsYSBjb250aW51aXTDqSBkZXMgc2VydmljZXMgcHVibGljcyBlc3NlbnRpZWxzIChow7RwaXRhdXgsIHRyYW5zcG9ydHMsIGV0Yy4pLg=="},
   {
     id: 22,
     categorie: "Droits et devoirs",
     sousCategorie: "Mise en situation santé",
-    question: "Un médecin peut-il refuser de vous soigner en raison de vos origines ou de votre religion ?",
+    question: "VW4gbcOpZGVjaW4gcGV1dC1pbCByZWZ1c2VyIGRlIHZvdXMgc29pZ25lciBlbiByYWlzb24gZGUgdm9zIG9yaWdpbmVzIG91IGRlIHZvdHJlIHJlbGlnaW9uID8=",
     options: [
-      "Non, c'est interdit ; tout refus de soins discriminatoire est puni par la loi et par le code de déontologie médicale",
-      "Oui, le médecin libéral peut choisir ses patients selon ses préférences personnelles sans restriction",
-      "Non, sauf s'il s'agit d'un médecin exerçant dans un établissement privé à caractère confessionnel",
-      "Oui, mais uniquement si le patient n'est pas couvert par l'assurance maladie obligatoire"
+      "Tm9uLCBjJ2VzdCBpbnRlcmRpdCA7IHRvdXQgcmVmdXMgZGUgc29pbnMgZGlzY3JpbWluYXRvaXJlIGVzdCBwdW5pIHBhciBsYSBsb2kgZXQgcGFyIGxlIGNvZGUgZGUgZMOpb250b2xvZ2llIG3DqWRpY2FsZQ==",
+      "T3VpLCBsZSBtw6lkZWNpbiBsaWLDqXJhbCBwZXV0IGNob2lzaXIgc2VzIHBhdGllbnRzIHNlbG9uIHNlcyBwcsOpZsOpcmVuY2VzIHBlcnNvbm5lbGxlcyBzYW5zIHJlc3RyaWN0aW9u",
+      "Tm9uLCBzYXVmIHMnaWwgcydhZ2l0IGQndW4gbcOpZGVjaW4gZXhlcsOnYW50IGRhbnMgdW4gw6l0YWJsaXNzZW1lbnQgcHJpdsOpIMOgIGNhcmFjdMOocmUgY29uZmVzc2lvbm5lbA==",
+      "T3VpLCBtYWlzIHVuaXF1ZW1lbnQgc2kgbGUgcGF0aWVudCBuJ2VzdCBwYXMgY291dmVydCBwYXIgbCdhc3N1cmFuY2UgbWFsYWRpZSBvYmxpZ2F0b2lyZQ=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 22, 0),
-    explication: "Un médecin ne peut pas refuser de soigner un patient pour des motifs discriminatoires. C'est puni par la loi et contraire au code de déontologie médicale."
-  },
+    explication: "VW4gbcOpZGVjaW4gbmUgcGV1dCBwYXMgcmVmdXNlciBkZSBzb2lnbmVyIHVuIHBhdGllbnQgcG91ciBkZXMgbW90aWZzIGRpc2NyaW1pbmF0b2lyZXMuIEMnZXN0IHB1bmkgcGFyIGxhIGxvaSBldCBjb250cmFpcmUgYXUgY29kZSBkZSBkw6lvbnRvbG9naWUgbcOpZGljYWxlLg=="},
   {
     id: 23,
     categorie: "Droits et devoirs",
     sousCategorie: "Délai de rétractation",
-    question: "De combien de jours disposez-vous pour vous rétracter après un achat à distance ?",
+    question: "RGUgY29tYmllbiBkZSBqb3VycyBkaXNwb3Nlei12b3VzIHBvdXIgdm91cyByw6l0cmFjdGVyIGFwcsOocyB1biBhY2hhdCDDoCBkaXN0YW5jZSA/",
     options: [
-      "14 jours à compter de la réception du bien ou de la conclusion du contrat pour les services, sans justification",
-      "7 jours ouvrables uniquement pour les produits défectueux nécessitant un échange ou remboursement",
-      "30 jours mais uniquement si le vendeur propose une garantie « satisfait ou remboursé » explicite",
-      "Aucun délai, une fois la commande passée, l'acheteur est définitivement engagé contractuellement"
+      "MTQgam91cnMgw6AgY29tcHRlciBkZSBsYSByw6ljZXB0aW9uIGR1IGJpZW4gb3UgZGUgbGEgY29uY2x1c2lvbiBkdSBjb250cmF0IHBvdXIgbGVzIHNlcnZpY2VzLCBzYW5zIGp1c3RpZmljYXRpb24=",
+      "NyBqb3VycyBvdXZyYWJsZXMgdW5pcXVlbWVudCBwb3VyIGxlcyBwcm9kdWl0cyBkw6lmZWN0dWV1eCBuw6ljZXNzaXRhbnQgdW4gw6ljaGFuZ2Ugb3UgcmVtYm91cnNlbWVudA==",
+      "MzAgam91cnMgbWFpcyB1bmlxdWVtZW50IHNpIGxlIHZlbmRldXIgcHJvcG9zZSB1bmUgZ2FyYW50aWUgwqsgc2F0aXNmYWl0IG91IHJlbWJvdXJzw6kgwrsgZXhwbGljaXRl",
+      "QXVjdW4gZMOpbGFpLCB1bmUgZm9pcyBsYSBjb21tYW5kZSBwYXNzw6llLCBsJ2FjaGV0ZXVyIGVzdCBkw6lmaW5pdGl2ZW1lbnQgZW5nYWfDqSBjb250cmFjdHVlbGxlbWVudA=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 23, 0),
-    explication: "Pour tout achat à distance (internet, téléphone), vous disposez de 14 jours pour vous rétracter sans avoir à justifier votre décision ni payer de pénalités."
-  },
+    explication: "UG91ciB0b3V0IGFjaGF0IMOgIGRpc3RhbmNlIChpbnRlcm5ldCwgdMOpbMOpcGhvbmUpLCB2b3VzIGRpc3Bvc2V6IGRlIDE0IGpvdXJzIHBvdXIgdm91cyByw6l0cmFjdGVyIHNhbnMgYXZvaXIgw6AganVzdGlmaWVyIHZvdHJlIGTDqWNpc2lvbiBuaSBwYXllciBkZSBww6luYWxpdMOpcy4="},
   {
     id: 24,
     categorie: "Droits et devoirs",
     sousCategorie: "Secret professionnel",
-    question: "Quelles professions sont soumises au secret professionnel par la loi ?",
+    question: "UXVlbGxlcyBwcm9mZXNzaW9ucyBzb250IHNvdW1pc2VzIGF1IHNlY3JldCBwcm9mZXNzaW9ubmVsIHBhciBsYSBsb2kgPw==",
     options: [
-      "Médecins, avocats, notaires, assistants sociaux et autres professions définies par la loi, sous peine de sanctions pénales",
-      "Uniquement les agents de l'État dans l'exercice de leurs fonctions publiques administratives",
-      "Tous les salariés du secteur privé vis-à-vis de leur employeur et de leurs collègues",
-      "Aucune profession n'est légalement tenue au secret, c'est une obligation morale sans sanction"
+      "TcOpZGVjaW5zLCBhdm9jYXRzLCBub3RhaXJlcywgYXNzaXN0YW50cyBzb2NpYXV4IGV0IGF1dHJlcyBwcm9mZXNzaW9ucyBkw6lmaW5pZXMgcGFyIGxhIGxvaSwgc291cyBwZWluZSBkZSBzYW5jdGlvbnMgcMOpbmFsZXM=",
+      "VW5pcXVlbWVudCBsZXMgYWdlbnRzIGRlIGwnw4l0YXQgZGFucyBsJ2V4ZXJjaWNlIGRlIGxldXJzIGZvbmN0aW9ucyBwdWJsaXF1ZXMgYWRtaW5pc3RyYXRpdmVz",
+      "VG91cyBsZXMgc2FsYXJpw6lzIGR1IHNlY3RldXIgcHJpdsOpIHZpcy3DoC12aXMgZGUgbGV1ciBlbXBsb3lldXIgZXQgZGUgbGV1cnMgY29sbMOoZ3Vlcw==",
+      "QXVjdW5lIHByb2Zlc3Npb24gbidlc3QgbMOpZ2FsZW1lbnQgdGVudWUgYXUgc2VjcmV0LCBjJ2VzdCB1bmUgb2JsaWdhdGlvbiBtb3JhbGUgc2FucyBzYW5jdGlvbg=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 24, 0),
-    explication: "Le secret professionnel est imposé par la loi à certaines professions (médecins, avocats, notaires, assistants sociaux...). Sa violation est punie pénalement."
-  },
+    explication: "TGUgc2VjcmV0IHByb2Zlc3Npb25uZWwgZXN0IGltcG9zw6kgcGFyIGxhIGxvaSDDoCBjZXJ0YWluZXMgcHJvZmVzc2lvbnMgKG3DqWRlY2lucywgYXZvY2F0cywgbm90YWlyZXMsIGFzc2lzdGFudHMgc29jaWF1eC4uLikuIFNhIHZpb2xhdGlvbiBlc3QgcHVuaWUgcMOpbmFsZW1lbnQu"},
   {
     id: 25,
     categorie: "Droits et devoirs",
     sousCategorie: "Pension alimentaire",
-    question: "Qu'est-ce qu'une pension alimentaire et qui doit la verser ?",
+    question: "UXUnZXN0LWNlIHF1J3VuZSBwZW5zaW9uIGFsaW1lbnRhaXJlIGV0IHF1aSBkb2l0IGxhIHZlcnNlciA/",
     options: [
-      "Une contribution financière versée pour l'entretien et l'éducation d'un enfant par le parent qui n'en a pas la garde principale",
-      "Une aide de l'État versée aux familles monoparentales sans condition de ressources ni de revenus",
-      "Un impôt prélevé sur les revenus des parents pour financer les cantines scolaires des écoles publiques",
-      "Une allocation familiale versée automatiquement à tous les parents d'enfants mineurs scolarisés"
+      "VW5lIGNvbnRyaWJ1dGlvbiBmaW5hbmNpw6hyZSB2ZXJzw6llIHBvdXIgbCdlbnRyZXRpZW4gZXQgbCfDqWR1Y2F0aW9uIGQndW4gZW5mYW50IHBhciBsZSBwYXJlbnQgcXVpIG4nZW4gYSBwYXMgbGEgZ2FyZGUgcHJpbmNpcGFsZQ==",
+      "VW5lIGFpZGUgZGUgbCfDiXRhdCB2ZXJzw6llIGF1eCBmYW1pbGxlcyBtb25vcGFyZW50YWxlcyBzYW5zIGNvbmRpdGlvbiBkZSByZXNzb3VyY2VzIG5pIGRlIHJldmVudXM=",
+      "VW4gaW1ww7R0IHByw6lsZXbDqSBzdXIgbGVzIHJldmVudXMgZGVzIHBhcmVudHMgcG91ciBmaW5hbmNlciBsZXMgY2FudGluZXMgc2NvbGFpcmVzIGRlcyDDqWNvbGVzIHB1YmxpcXVlcw==",
+      "VW5lIGFsbG9jYXRpb24gZmFtaWxpYWxlIHZlcnPDqWUgYXV0b21hdGlxdWVtZW50IMOgIHRvdXMgbGVzIHBhcmVudHMgZCdlbmZhbnRzIG1pbmV1cnMgc2NvbGFyaXPDqXM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 25, 0),
-    explication: "La pension alimentaire est versée par le parent qui n'a pas la garde principale pour contribuer à l'entretien et l'éducation de l'enfant. Son montant est fixé par le juge."
-  },
+    explication: "TGEgcGVuc2lvbiBhbGltZW50YWlyZSBlc3QgdmVyc8OpZSBwYXIgbGUgcGFyZW50IHF1aSBuJ2EgcGFzIGxhIGdhcmRlIHByaW5jaXBhbGUgcG91ciBjb250cmlidWVyIMOgIGwnZW50cmV0aWVuIGV0IGwnw6lkdWNhdGlvbiBkZSBsJ2VuZmFudC4gU29uIG1vbnRhbnQgZXN0IGZpeMOpIHBhciBsZSBqdWdlLg=="},
   {
     id: 26,
     categorie: "Droits et devoirs",
     sousCategorie: "Garde alternée",
-    question: "Qu'est-ce que la résidence alternée et comment est-elle organisée ?",
+    question: "UXUnZXN0LWNlIHF1ZSBsYSByw6lzaWRlbmNlIGFsdGVybsOpZSBldCBjb21tZW50IGVzdC1lbGxlIG9yZ2FuaXPDqWUgPw==",
     options: [
-      "L'enfant vit alternativement chez chacun de ses parents, selon un rythme décidé par accord ou par le juge aux affaires familiales",
-      "L'enfant choisit librement chez lequel de ses parents il souhaite vivre sans intervention du juge",
-      "Les parents vivent ensemble dans le même logement mais alternent les responsabilités parentales chaque semaine",
-      "L'enfant est placé dans une famille d'accueil neutre pour éviter les conflits entre ses deux parents"
+      "TCdlbmZhbnQgdml0IGFsdGVybmF0aXZlbWVudCBjaGV6IGNoYWN1biBkZSBzZXMgcGFyZW50cywgc2Vsb24gdW4gcnl0aG1lIGTDqWNpZMOpIHBhciBhY2NvcmQgb3UgcGFyIGxlIGp1Z2UgYXV4IGFmZmFpcmVzIGZhbWlsaWFsZXM=",
+      "TCdlbmZhbnQgY2hvaXNpdCBsaWJyZW1lbnQgY2hleiBsZXF1ZWwgZGUgc2VzIHBhcmVudHMgaWwgc291aGFpdGUgdml2cmUgc2FucyBpbnRlcnZlbnRpb24gZHUganVnZQ==",
+      "TGVzIHBhcmVudHMgdml2ZW50IGVuc2VtYmxlIGRhbnMgbGUgbcOqbWUgbG9nZW1lbnQgbWFpcyBhbHRlcm5lbnQgbGVzIHJlc3BvbnNhYmlsaXTDqXMgcGFyZW50YWxlcyBjaGFxdWUgc2VtYWluZQ==",
+      "TCdlbmZhbnQgZXN0IHBsYWPDqSBkYW5zIHVuZSBmYW1pbGxlIGQnYWNjdWVpbCBuZXV0cmUgcG91ciDDqXZpdGVyIGxlcyBjb25mbGl0cyBlbnRyZSBzZXMgZGV1eCBwYXJlbnRz"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 26, 0),
-    explication: "La résidence alternée permet à l'enfant de vivre alternativement chez chacun de ses parents. Le rythme est décidé par accord des parents ou par le juge."
-  },
+    explication: "TGEgcsOpc2lkZW5jZSBhbHRlcm7DqWUgcGVybWV0IMOgIGwnZW5mYW50IGRlIHZpdnJlIGFsdGVybmF0aXZlbWVudCBjaGV6IGNoYWN1biBkZSBzZXMgcGFyZW50cy4gTGUgcnl0aG1lIGVzdCBkw6ljaWTDqSBwYXIgYWNjb3JkIGRlcyBwYXJlbnRzIG91IHBhciBsZSBqdWdlLg=="},
   {
     id: 27,
     categorie: "Droits et devoirs",
     sousCategorie: "Adoption conditions",
-    question: "Quelles sont les conditions d'âge pour adopter un enfant en France ?",
+    question: "UXVlbGxlcyBzb250IGxlcyBjb25kaXRpb25zIGQnw6JnZSBwb3VyIGFkb3B0ZXIgdW4gZW5mYW50IGVuIEZyYW5jZSA/",
     options: [
-      "Avoir au moins 26 ans pour une adoption plénière, ou 28 ans pour une adoption simple si l'on est célibataire",
-      "Avoir exactement le même âge que l'enfant à adopter, plus ou moins 5 ans de différence",
-      "Aucune condition d'âge, toute personne majeure peut adopter un enfant sans restriction",
-      "Avoir moins de 50 ans car les adoptions sont interdites aux personnes de plus de 50 ans"
+      "QXZvaXIgYXUgbW9pbnMgMjYgYW5zIHBvdXIgdW5lIGFkb3B0aW9uIHBsw6luacOocmUsIG91IDI4IGFucyBwb3VyIHVuZSBhZG9wdGlvbiBzaW1wbGUgc2kgbCdvbiBlc3QgY8OpbGliYXRhaXJl",
+      "QXZvaXIgZXhhY3RlbWVudCBsZSBtw6ptZSDDomdlIHF1ZSBsJ2VuZmFudCDDoCBhZG9wdGVyLCBwbHVzIG91IG1vaW5zIDUgYW5zIGRlIGRpZmbDqXJlbmNl",
+      "QXVjdW5lIGNvbmRpdGlvbiBkJ8OiZ2UsIHRvdXRlIHBlcnNvbm5lIG1hamV1cmUgcGV1dCBhZG9wdGVyIHVuIGVuZmFudCBzYW5zIHJlc3RyaWN0aW9u",
+      "QXZvaXIgbW9pbnMgZGUgNTAgYW5zIGNhciBsZXMgYWRvcHRpb25zIHNvbnQgaW50ZXJkaXRlcyBhdXggcGVyc29ubmVzIGRlIHBsdXMgZGUgNTAgYW5z"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 27, 0),
-    explication: "Pour adopter, il faut avoir au moins 26 ans (ou 28 ans si célibataire pour l'adoption simple) et avoir au moins 15 ans de plus que l'enfant adopté."
-  },
+    explication: "UG91ciBhZG9wdGVyLCBpbCBmYXV0IGF2b2lyIGF1IG1vaW5zIDI2IGFucyAob3UgMjggYW5zIHNpIGPDqWxpYmF0YWlyZSBwb3VyIGwnYWRvcHRpb24gc2ltcGxlKSBldCBhdm9pciBhdSBtb2lucyAxNSBhbnMgZGUgcGx1cyBxdWUgbCdlbmZhbnQgYWRvcHTDqS4="},
   {
     id: 28,
     categorie: "Droits et devoirs",
     sousCategorie: "Tutelle majeur",
-    question: "Qu'est-ce que la tutelle d'un majeur protégé et quand est-elle mise en place ?",
+    question: "UXUnZXN0LWNlIHF1ZSBsYSB0dXRlbGxlIGQndW4gbWFqZXVyIHByb3TDqWfDqSBldCBxdWFuZCBlc3QtZWxsZSBtaXNlIGVuIHBsYWNlID8=",
     options: [
-      "Une mesure de protection complète pour une personne incapable de gérer seule ses affaires, décidée par le juge des contentieux de la protection",
-      "Un simple conseil donné à une personne âgée pour l'aider dans ses démarches administratives quotidiennes",
-      "Une procédure permettant aux enfants majeurs de gérer les biens de leurs parents sans leur accord",
-      "Un contrat volontaire signé devant notaire par une personne souhaitant déléguer sa gestion patrimoniale"
+      "VW5lIG1lc3VyZSBkZSBwcm90ZWN0aW9uIGNvbXBsw6h0ZSBwb3VyIHVuZSBwZXJzb25uZSBpbmNhcGFibGUgZGUgZ8OpcmVyIHNldWxlIHNlcyBhZmZhaXJlcywgZMOpY2lkw6llIHBhciBsZSBqdWdlIGRlcyBjb250ZW50aWV1eCBkZSBsYSBwcm90ZWN0aW9u",
+      "VW4gc2ltcGxlIGNvbnNlaWwgZG9ubsOpIMOgIHVuZSBwZXJzb25uZSDDomfDqWUgcG91ciBsJ2FpZGVyIGRhbnMgc2VzIGTDqW1hcmNoZXMgYWRtaW5pc3RyYXRpdmVzIHF1b3RpZGllbm5lcw==",
+      "VW5lIHByb2PDqWR1cmUgcGVybWV0dGFudCBhdXggZW5mYW50cyBtYWpldXJzIGRlIGfDqXJlciBsZXMgYmllbnMgZGUgbGV1cnMgcGFyZW50cyBzYW5zIGxldXIgYWNjb3Jk",
+      "VW4gY29udHJhdCB2b2xvbnRhaXJlIHNpZ27DqSBkZXZhbnQgbm90YWlyZSBwYXIgdW5lIHBlcnNvbm5lIHNvdWhhaXRhbnQgZMOpbMOpZ3VlciBzYSBnZXN0aW9uIHBhdHJpbW9uaWFsZQ=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 28, 0),
-    explication: "La tutelle est une mesure de protection pour une personne qui ne peut pas gérer seule ses affaires. Elle est décidée par le juge et implique une représentation complète."
-  },
+    explication: "TGEgdHV0ZWxsZSBlc3QgdW5lIG1lc3VyZSBkZSBwcm90ZWN0aW9uIHBvdXIgdW5lIHBlcnNvbm5lIHF1aSBuZSBwZXV0IHBhcyBnw6lyZXIgc2V1bGUgc2VzIGFmZmFpcmVzLiBFbGxlIGVzdCBkw6ljaWTDqWUgcGFyIGxlIGp1Z2UgZXQgaW1wbGlxdWUgdW5lIHJlcHLDqXNlbnRhdGlvbiBjb21wbMOodGUu"},
 
   // ==================== 4. HISTOIRE, GÉOGRAPHIE ET CULTURE (8 questions) ====================
   
@@ -421,114 +393,106 @@ const questions: Question[] = [
     id: 29,
     categorie: "Histoire, géographie et culture",
     sousCategorie: "Serment du Jeu de Paume",
-    question: "Que s'est-il passé le 20 juin 1789 lors du Serment du Jeu de Paume ?",
+    question: "UXVlIHMnZXN0LWlsIHBhc3PDqSBsZSAyMCBqdWluIDE3ODkgbG9ycyBkdSBTZXJtZW50IGR1IEpldSBkZSBQYXVtZSA/",
     options: [
-      "Les députés du Tiers État ont juré de ne pas se séparer avant d'avoir donné une Constitution à la France",
-      "Le roi Louis XVI a abdiqué volontairement en faveur de son fils le Dauphin héritier du trône",
-      "Les révolutionnaires ont proclamé la République française et aboli définitivement la monarchie",
-      "La Déclaration des droits de l'homme et du citoyen a été officiellement adoptée par l'Assemblée"
+      "TGVzIGTDqXB1dMOpcyBkdSBUaWVycyDDiXRhdCBvbnQganVyw6kgZGUgbmUgcGFzIHNlIHPDqXBhcmVyIGF2YW50IGQnYXZvaXIgZG9ubsOpIHVuZSBDb25zdGl0dXRpb24gw6AgbGEgRnJhbmNl",
+      "TGUgcm9pIExvdWlzIFhWSSBhIGFiZGlxdcOpIHZvbG9udGFpcmVtZW50IGVuIGZhdmV1ciBkZSBzb24gZmlscyBsZSBEYXVwaGluIGjDqXJpdGllciBkdSB0csO0bmU=",
+      "TGVzIHLDqXZvbHV0aW9ubmFpcmVzIG9udCBwcm9jbGFtw6kgbGEgUsOpcHVibGlxdWUgZnJhbsOnYWlzZSBldCBhYm9saSBkw6lmaW5pdGl2ZW1lbnQgbGEgbW9uYXJjaGll",
+      "TGEgRMOpY2xhcmF0aW9uIGRlcyBkcm9pdHMgZGUgbCdob21tZSBldCBkdSBjaXRveWVuIGEgw6l0w6kgb2ZmaWNpZWxsZW1lbnQgYWRvcHTDqWUgcGFyIGwnQXNzZW1ibMOpZQ=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 29, 0),
-    explication: "Le 20 juin 1789, les députés du Tiers État, réunis dans la salle du Jeu de Paume, ont juré de ne pas se séparer avant d'avoir donné une Constitution à la France."
-  },
+    explication: "TGUgMjAganVpbiAxNzg5LCBsZXMgZMOpcHV0w6lzIGR1IFRpZXJzIMOJdGF0LCByw6l1bmlzIGRhbnMgbGEgc2FsbGUgZHUgSmV1IGRlIFBhdW1lLCBvbnQganVyw6kgZGUgbmUgcGFzIHNlIHPDqXBhcmVyIGF2YW50IGQnYXZvaXIgZG9ubsOpIHVuZSBDb25zdGl0dXRpb24gw6AgbGEgRnJhbmNlLg=="},
   {
     id: 30,
     categorie: "Histoire, géographie et culture",
     sousCategorie: "Abolition esclavage",
-    question: "En quelle année l'esclavage a-t-il été définitivement aboli dans les colonies françaises ?",
+    question: "RW4gcXVlbGxlIGFubsOpZSBsJ2VzY2xhdmFnZSBhLXQtaWwgw6l0w6kgZMOpZmluaXRpdmVtZW50IGFib2xpIGRhbnMgbGVzIGNvbG9uaWVzIGZyYW7Dp2Fpc2VzID8=",
     options: [
-      "En 1848, par décret de Victor Schœlcher sous la Deuxième République, après une première abolition en 1794",
-      "En 1789, dès le début de la Révolution française proclamant la liberté et l'égalité de tous",
-      "En 1815, lors du retour de la monarchie après la chute de Napoléon Bonaparte",
-      "En 1870, avec la proclamation de la Troisième République et la fin du Second Empire"
+      "RW4gMTg0OCwgcGFyIGTDqWNyZXQgZGUgVmljdG9yIFNjaMWTbGNoZXIgc291cyBsYSBEZXV4acOobWUgUsOpcHVibGlxdWUsIGFwcsOocyB1bmUgcHJlbWnDqHJlIGFib2xpdGlvbiBlbiAxNzk0",
+      "RW4gMTc4OSwgZMOocyBsZSBkw6lidXQgZGUgbGEgUsOpdm9sdXRpb24gZnJhbsOnYWlzZSBwcm9jbGFtYW50IGxhIGxpYmVydMOpIGV0IGwnw6lnYWxpdMOpIGRlIHRvdXM=",
+      "RW4gMTgxNSwgbG9ycyBkdSByZXRvdXIgZGUgbGEgbW9uYXJjaGllIGFwcsOocyBsYSBjaHV0ZSBkZSBOYXBvbMOpb24gQm9uYXBhcnRl",
+      "RW4gMTg3MCwgYXZlYyBsYSBwcm9jbGFtYXRpb24gZGUgbGEgVHJvaXNpw6htZSBSw6lwdWJsaXF1ZSBldCBsYSBmaW4gZHUgU2Vjb25kIEVtcGlyZQ=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 30, 0),
-    explication: "L'esclavage a été définitivement aboli en 1848 par Victor Schœlcher. Une première abolition en 1794 avait été annulée par Napoléon en 1802."
-  },
+    explication: "TCdlc2NsYXZhZ2UgYSDDqXTDqSBkw6lmaW5pdGl2ZW1lbnQgYWJvbGkgZW4gMTg0OCBwYXIgVmljdG9yIFNjaMWTbGNoZXIuIFVuZSBwcmVtacOocmUgYWJvbGl0aW9uIGVuIDE3OTQgYXZhaXQgw6l0w6kgYW5udWzDqWUgcGFyIE5hcG9sw6lvbiBlbiAxODAyLg=="},
   {
     id: 31,
     categorie: "Histoire, géographie et culture",
     sousCategorie: "Front populaire",
-    question: "Quelles avancées sociales majeures sont associées au Front populaire de 1936 ?",
+    question: "UXVlbGxlcyBhdmFuY8OpZXMgc29jaWFsZXMgbWFqZXVyZXMgc29udCBhc3NvY2nDqWVzIGF1IEZyb250IHBvcHVsYWlyZSBkZSAxOTM2ID8=",
     options: [
-      "Les congés payés (2 semaines), la semaine de 40 heures et les conventions collectives entre patronat et syndicats",
-      "La création de la Sécurité sociale, le salaire minimum interprofessionnel et l'assurance chômage",
-      "Le droit de vote des femmes, l'abolition de la peine de mort et la légalisation du divorce",
-      "La nationalisation des grandes entreprises, la création de l'impôt sur le revenu et l'école laïque"
+      "TGVzIGNvbmfDqXMgcGF5w6lzICgyIHNlbWFpbmVzKSwgbGEgc2VtYWluZSBkZSA0MCBoZXVyZXMgZXQgbGVzIGNvbnZlbnRpb25zIGNvbGxlY3RpdmVzIGVudHJlIHBhdHJvbmF0IGV0IHN5bmRpY2F0cw==",
+      "TGEgY3LDqWF0aW9uIGRlIGxhIFPDqWN1cml0w6kgc29jaWFsZSwgbGUgc2FsYWlyZSBtaW5pbXVtIGludGVycHJvZmVzc2lvbm5lbCBldCBsJ2Fzc3VyYW5jZSBjaMO0bWFnZQ==",
+      "TGUgZHJvaXQgZGUgdm90ZSBkZXMgZmVtbWVzLCBsJ2Fib2xpdGlvbiBkZSBsYSBwZWluZSBkZSBtb3J0IGV0IGxhIGzDqWdhbGlzYXRpb24gZHUgZGl2b3JjZQ==",
+      "TGEgbmF0aW9uYWxpc2F0aW9uIGRlcyBncmFuZGVzIGVudHJlcHJpc2VzLCBsYSBjcsOpYXRpb24gZGUgbCdpbXDDtHQgc3VyIGxlIHJldmVudSBldCBsJ8OpY29sZSBsYcOvcXVl"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 31, 0),
-    explication: "Le Front populaire (1936) a instauré les congés payés (2 semaines), la semaine de 40 heures et les conventions collectives. Des avancées sociales majeures."
-  },
+    explication: "TGUgRnJvbnQgcG9wdWxhaXJlICgxOTM2KSBhIGluc3RhdXLDqSBsZXMgY29uZ8OpcyBwYXnDqXMgKDIgc2VtYWluZXMpLCBsYSBzZW1haW5lIGRlIDQwIGhldXJlcyBldCBsZXMgY29udmVudGlvbnMgY29sbGVjdGl2ZXMuIERlcyBhdmFuY8OpZXMgc29jaWFsZXMgbWFqZXVyZXMu"},
   {
     id: 32,
     categorie: "Histoire, géographie et culture",
     sousCategorie: "Mont-Blanc",
-    question: "Quel est le plus haut sommet de France et des Alpes et quelle est son altitude ?",
+    question: "UXVlbCBlc3QgbGUgcGx1cyBoYXV0IHNvbW1ldCBkZSBGcmFuY2UgZXQgZGVzIEFscGVzIGV0IHF1ZWxsZSBlc3Qgc29uIGFsdGl0dWRlID8=",
     options: [
-      "Le Mont-Blanc culminant à 4 807 mètres, plus haut sommet d'Europe occidentale à la frontière franco-italienne",
-      "Le Mont Ventoux culminant à 1 912 mètres, célèbre sommet du Tour de France cycliste",
-      "Le Puy de Dôme culminant à 1 465 mètres, volcan emblématique du Massif central français",
-      "Le Pic du Midi de Bigorre culminant à 2 877 mètres, observatoire astronomique dans les Pyrénées"
+      "TGUgTW9udC1CbGFuYyBjdWxtaW5hbnQgw6AgNCA4MDcgbcOodHJlcywgcGx1cyBoYXV0IHNvbW1ldCBkJ0V1cm9wZSBvY2NpZGVudGFsZSDDoCBsYSBmcm9udGnDqHJlIGZyYW5jby1pdGFsaWVubmU=",
+      "TGUgTW9udCBWZW50b3V4IGN1bG1pbmFudCDDoCAxIDkxMiBtw6h0cmVzLCBjw6lsw6hicmUgc29tbWV0IGR1IFRvdXIgZGUgRnJhbmNlIGN5Y2xpc3Rl",
+      "TGUgUHV5IGRlIETDtG1lIGN1bG1pbmFudCDDoCAxIDQ2NSBtw6h0cmVzLCB2b2xjYW4gZW1ibMOpbWF0aXF1ZSBkdSBNYXNzaWYgY2VudHJhbCBmcmFuw6dhaXM=",
+      "TGUgUGljIGR1IE1pZGkgZGUgQmlnb3JyZSBjdWxtaW5hbnQgw6AgMiA4NzcgbcOodHJlcywgb2JzZXJ2YXRvaXJlIGFzdHJvbm9taXF1ZSBkYW5zIGxlcyBQeXLDqW7DqWVz"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 32, 0),
-    explication: "Le Mont-Blanc culmine à 4 807 mètres. C'est le plus haut sommet de France, des Alpes et d'Europe occidentale, situé à la frontière franco-italienne."
-  },
+    explication: "TGUgTW9udC1CbGFuYyBjdWxtaW5lIMOgIDQgODA3IG3DqHRyZXMuIEMnZXN0IGxlIHBsdXMgaGF1dCBzb21tZXQgZGUgRnJhbmNlLCBkZXMgQWxwZXMgZXQgZCdFdXJvcGUgb2NjaWRlbnRhbGUsIHNpdHXDqSDDoCBsYSBmcm9udGnDqHJlIGZyYW5jby1pdGFsaWVubmUu"},
   {
     id: 33,
     categorie: "Histoire, géographie et culture",
     sousCategorie: "Guyane",
-    question: "Quelle particularité géographique distingue la Guyane des autres départements français ?",
+    question: "UXVlbGxlIHBhcnRpY3VsYXJpdMOpIGfDqW9ncmFwaGlxdWUgZGlzdGluZ3VlIGxhIEd1eWFuZSBkZXMgYXV0cmVzIGTDqXBhcnRlbWVudHMgZnJhbsOnYWlzID8=",
     options: [
-      "C'est le plus grand département français par sa superficie et le seul situé sur le continent sud-américain",
-      "C'est le département le plus peuplé de France d'outre-mer avec plus d'un million d'habitants",
-      "C'est le seul territoire français situé dans l'hémisphère sud au-delà de l'équateur terrestre",
-      "C'est une île volcanique active avec le seul volcan en éruption du territoire français"
+      "Qydlc3QgbGUgcGx1cyBncmFuZCBkw6lwYXJ0ZW1lbnQgZnJhbsOnYWlzIHBhciBzYSBzdXBlcmZpY2llIGV0IGxlIHNldWwgc2l0dcOpIHN1ciBsZSBjb250aW5lbnQgc3VkLWFtw6lyaWNhaW4=",
+      "Qydlc3QgbGUgZMOpcGFydGVtZW50IGxlIHBsdXMgcGV1cGzDqSBkZSBGcmFuY2UgZCdvdXRyZS1tZXIgYXZlYyBwbHVzIGQndW4gbWlsbGlvbiBkJ2hhYml0YW50cw==",
+      "Qydlc3QgbGUgc2V1bCB0ZXJyaXRvaXJlIGZyYW7Dp2FpcyBzaXR1w6kgZGFucyBsJ2jDqW1pc3Bow6hyZSBzdWQgYXUtZGVsw6AgZGUgbCfDqXF1YXRldXIgdGVycmVzdHJl",
+      "Qydlc3QgdW5lIMOubGUgdm9sY2FuaXF1ZSBhY3RpdmUgYXZlYyBsZSBzZXVsIHZvbGNhbiBlbiDDqXJ1cHRpb24gZHUgdGVycml0b2lyZSBmcmFuw6dhaXM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 33, 0),
-    explication: "La Guyane est le plus grand département français (environ 84 000 km²) et le seul situé sur le continent américain. Elle abrite le Centre spatial guyanais."
-  },
+    explication: "TGEgR3V5YW5lIGVzdCBsZSBwbHVzIGdyYW5kIGTDqXBhcnRlbWVudCBmcmFuw6dhaXMgKGVudmlyb24gODQgMDAwIGttwrIpIGV0IGxlIHNldWwgc2l0dcOpIHN1ciBsZSBjb250aW5lbnQgYW3DqXJpY2Fpbi4gRWxsZSBhYnJpdGUgbGUgQ2VudHJlIHNwYXRpYWwgZ3V5YW5haXMu"},
   {
     id: 34,
     categorie: "Histoire, géographie et culture",
     sousCategorie: "Victor Hugo",
-    question: "Victor Hugo est l'auteur de deux romans majeurs de la littérature française. Lesquels ?",
+    question: "VmljdG9yIEh1Z28gZXN0IGwnYXV0ZXVyIGRlIGRldXggcm9tYW5zIG1hamV1cnMgZGUgbGEgbGl0dMOpcmF0dXJlIGZyYW7Dp2Fpc2UuIExlc3F1ZWxzID8=",
     options: [
-      "Les Misérables et Notre-Dame de Paris, chefs-d'œuvre du romantisme français du XIXe siècle",
-      "Madame Bovary et L'Éducation sentimentale, romans réalistes décrivant la société provinciale",
-      "Germinal et L'Assommoir, œuvres naturalistes dépeignant la condition ouvrière sous le Second Empire",
-      "Le Rouge et le Noir et La Chartreuse de Parme, romans d'analyse psychologique et sociale"
+      "TGVzIE1pc8OpcmFibGVzIGV0IE5vdHJlLURhbWUgZGUgUGFyaXMsIGNoZWZzLWQnxZN1dnJlIGR1IHJvbWFudGlzbWUgZnJhbsOnYWlzIGR1IFhJWGUgc2nDqGNsZQ==",
+      "TWFkYW1lIEJvdmFyeSBldCBMJ8OJZHVjYXRpb24gc2VudGltZW50YWxlLCByb21hbnMgcsOpYWxpc3RlcyBkw6ljcml2YW50IGxhIHNvY2nDqXTDqSBwcm92aW5jaWFsZQ==",
+      "R2VybWluYWwgZXQgTCdBc3NvbW1vaXIsIMWTdXZyZXMgbmF0dXJhbGlzdGVzIGTDqXBlaWduYW50IGxhIGNvbmRpdGlvbiBvdXZyacOocmUgc291cyBsZSBTZWNvbmQgRW1waXJl",
+      "TGUgUm91Z2UgZXQgbGUgTm9pciBldCBMYSBDaGFydHJldXNlIGRlIFBhcm1lLCByb21hbnMgZCdhbmFseXNlIHBzeWNob2xvZ2lxdWUgZXQgc29jaWFsZQ=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 34, 0),
-    explication: "Victor Hugo (1802-1885) a écrit Les Misérables et Notre-Dame de Paris. Poète, romancier et homme politique engagé, il repose au Panthéon."
-  },
+    explication: "VmljdG9yIEh1Z28gKDE4MDItMTg4NSkgYSDDqWNyaXQgTGVzIE1pc8OpcmFibGVzIGV0IE5vdHJlLURhbWUgZGUgUGFyaXMuIFBvw6h0ZSwgcm9tYW5jaWVyIGV0IGhvbW1lIHBvbGl0aXF1ZSBlbmdhZ8OpLCBpbCByZXBvc2UgYXUgUGFudGjDqW9uLg=="},
   {
     id: 35,
     categorie: "Histoire, géographie et culture",
     sousCategorie: "Impressionnisme",
-    question: "Quel mouvement pictural né en France au XIXe siècle a révolutionné l'art occidental ?",
+    question: "UXVlbCBtb3V2ZW1lbnQgcGljdHVyYWwgbsOpIGVuIEZyYW5jZSBhdSBYSVhlIHNpw6hjbGUgYSByw6l2b2x1dGlvbm7DqSBsJ2FydCBvY2NpZGVudGFsID8=",
     options: [
-      "L'impressionnisme, avec des peintres comme Monet, Renoir et Degas privilégiant la lumière et l'instant",
-      "Le cubisme, avec Picasso et Braque décomposant les formes en figures géométriques abstraites",
-      "Le surréalisme, explorant l'inconscient et le rêve avec Dalí et Magritte au XXe siècle",
-      "Le fauvisme, caractérisé par l'utilisation de couleurs vives et pures avec Matisse et Derain"
+      "TCdpbXByZXNzaW9ubmlzbWUsIGF2ZWMgZGVzIHBlaW50cmVzIGNvbW1lIE1vbmV0LCBSZW5vaXIgZXQgRGVnYXMgcHJpdmlsw6lnaWFudCBsYSBsdW1pw6hyZSBldCBsJ2luc3RhbnQ=",
+      "TGUgY3ViaXNtZSwgYXZlYyBQaWNhc3NvIGV0IEJyYXF1ZSBkw6ljb21wb3NhbnQgbGVzIGZvcm1lcyBlbiBmaWd1cmVzIGfDqW9tw6l0cmlxdWVzIGFic3RyYWl0ZXM=",
+      "TGUgc3VycsOpYWxpc21lLCBleHBsb3JhbnQgbCdpbmNvbnNjaWVudCBldCBsZSByw6p2ZSBhdmVjIERhbMOtIGV0IE1hZ3JpdHRlIGF1IFhYZSBzacOoY2xl",
+      "TGUgZmF1dmlzbWUsIGNhcmFjdMOpcmlzw6kgcGFyIGwndXRpbGlzYXRpb24gZGUgY291bGV1cnMgdml2ZXMgZXQgcHVyZXMgYXZlYyBNYXRpc3NlIGV0IERlcmFpbg=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 35, 0),
-    explication: "L'impressionnisme est né en France vers 1860-1870. Monet, Renoir, Degas, Pissarro, Sisley ont révolutionné la peinture en privilégiant la lumière et l'instant."
-  },
+    explication: "TCdpbXByZXNzaW9ubmlzbWUgZXN0IG7DqSBlbiBGcmFuY2UgdmVycyAxODYwLTE4NzAuIE1vbmV0LCBSZW5vaXIsIERlZ2FzLCBQaXNzYXJybywgU2lzbGV5IG9udCByw6l2b2x1dGlvbm7DqSBsYSBwZWludHVyZSBlbiBwcml2aWzDqWdpYW50IGxhIGx1bWnDqHJlIGV0IGwnaW5zdGFudC4="},
   {
     id: 36,
     categorie: "Histoire, géographie et culture",
     sousCategorie: "Gastronomie UNESCO",
-    question: "Depuis quand et pourquoi le repas gastronomique des Français est-il inscrit à l'UNESCO ?",
+    question: "RGVwdWlzIHF1YW5kIGV0IHBvdXJxdW9pIGxlIHJlcGFzIGdhc3Ryb25vbWlxdWUgZGVzIEZyYW7Dp2FpcyBlc3QtaWwgaW5zY3JpdCDDoCBsJ1VORVNDTyA/",
     options: [
-      "Depuis 2010, reconnu comme patrimoine culturel immatériel de l'humanité pour ses rituels et sa convivialité",
-      "Depuis 1980, inscrit au patrimoine mondial pour la qualité exceptionnelle des produits du terroir",
-      "Depuis 2000, célébré pour l'excellence des chefs étoilés français et leur rayonnement international",
-      "Depuis 1950, protégé comme patrimoine national français sans reconnaissance internationale officielle"
+      "RGVwdWlzIDIwMTAsIHJlY29ubnUgY29tbWUgcGF0cmltb2luZSBjdWx0dXJlbCBpbW1hdMOpcmllbCBkZSBsJ2h1bWFuaXTDqSBwb3VyIHNlcyByaXR1ZWxzIGV0IHNhIGNvbnZpdmlhbGl0w6k=",
+      "RGVwdWlzIDE5ODAsIGluc2NyaXQgYXUgcGF0cmltb2luZSBtb25kaWFsIHBvdXIgbGEgcXVhbGl0w6kgZXhjZXB0aW9ubmVsbGUgZGVzIHByb2R1aXRzIGR1IHRlcnJvaXI=",
+      "RGVwdWlzIDIwMDAsIGPDqWzDqWJyw6kgcG91ciBsJ2V4Y2VsbGVuY2UgZGVzIGNoZWZzIMOpdG9pbMOpcyBmcmFuw6dhaXMgZXQgbGV1ciByYXlvbm5lbWVudCBpbnRlcm5hdGlvbmFs",
+      "RGVwdWlzIDE5NTAsIHByb3TDqWfDqSBjb21tZSBwYXRyaW1vaW5lIG5hdGlvbmFsIGZyYW7Dp2FpcyBzYW5zIHJlY29ubmFpc3NhbmNlIGludGVybmF0aW9uYWxlIG9mZmljaWVsbGU="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 36, 0),
-    explication: "Le repas gastronomique des Français est inscrit au patrimoine culturel immatériel de l'UNESCO depuis 2010. C'est un art de vivre lié aux célébrations."
-  },
+    explication: "TGUgcmVwYXMgZ2FzdHJvbm9taXF1ZSBkZXMgRnJhbsOnYWlzIGVzdCBpbnNjcml0IGF1IHBhdHJpbW9pbmUgY3VsdHVyZWwgaW1tYXTDqXJpZWwgZGUgbCdVTkVTQ08gZGVwdWlzIDIwMTAuIEMnZXN0IHVuIGFydCBkZSB2aXZyZSBsacOpIGF1eCBjw6lsw6licmF0aW9ucy4="},
 
   // ==================== 5. VIVRE DANS LA SOCIÉTÉ FRANÇAISE (4 questions) ====================
   
@@ -536,59 +500,70 @@ const questions: Question[] = [
     id: 37,
     categorie: "Vivre dans la société française",
     sousCategorie: "CMU-C ACS",
-    question: "Qu'est-ce que la Complémentaire Santé Solidaire (ex-CMU-C) et à qui s'adresse-t-elle ?",
+    question: "UXUnZXN0LWNlIHF1ZSBsYSBDb21wbMOpbWVudGFpcmUgU2FudMOpIFNvbGlkYWlyZSAoZXgtQ01VLUMpIGV0IMOgIHF1aSBzJ2FkcmVzc2UtdC1lbGxlID8=",
     options: [
-      "Une aide permettant aux personnes à faibles revenus de bénéficier d'une complémentaire santé gratuite ou à moindre coût",
-      "Une assurance obligatoire pour tous les salariés souscrite par leur employeur auprès d'une mutuelle",
-      "Un remboursement supplémentaire de la Sécurité sociale pour les maladies graves et chroniques",
-      "Une carte donnant accès gratuit aux hôpitaux publics sans condition de ressources ni de revenus"
+      "VW5lIGFpZGUgcGVybWV0dGFudCBhdXggcGVyc29ubmVzIMOgIGZhaWJsZXMgcmV2ZW51cyBkZSBiw6luw6lmaWNpZXIgZCd1bmUgY29tcGzDqW1lbnRhaXJlIHNhbnTDqSBncmF0dWl0ZSBvdSDDoCBtb2luZHJlIGNvw7t0",
+      "VW5lIGFzc3VyYW5jZSBvYmxpZ2F0b2lyZSBwb3VyIHRvdXMgbGVzIHNhbGFyacOpcyBzb3VzY3JpdGUgcGFyIGxldXIgZW1wbG95ZXVyIGF1cHLDqHMgZCd1bmUgbXV0dWVsbGU=",
+      "VW4gcmVtYm91cnNlbWVudCBzdXBwbMOpbWVudGFpcmUgZGUgbGEgU8OpY3VyaXTDqSBzb2NpYWxlIHBvdXIgbGVzIG1hbGFkaWVzIGdyYXZlcyBldCBjaHJvbmlxdWVz",
+      "VW5lIGNhcnRlIGRvbm5hbnQgYWNjw6hzIGdyYXR1aXQgYXV4IGjDtHBpdGF1eCBwdWJsaWNzIHNhbnMgY29uZGl0aW9uIGRlIHJlc3NvdXJjZXMgbmkgZGUgcmV2ZW51cw=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 37, 0),
-    explication: "La Complémentaire Santé Solidaire permet aux personnes à faibles revenus de bénéficier d'une complémentaire santé gratuite ou à moins d'un euro par jour."
-  },
+    explication: "TGEgQ29tcGzDqW1lbnRhaXJlIFNhbnTDqSBTb2xpZGFpcmUgcGVybWV0IGF1eCBwZXJzb25uZXMgw6AgZmFpYmxlcyByZXZlbnVzIGRlIGLDqW7DqWZpY2llciBkJ3VuZSBjb21wbMOpbWVudGFpcmUgc2FudMOpIGdyYXR1aXRlIG91IMOgIG1vaW5zIGQndW4gZXVybyBwYXIgam91ci4="},
   {
     id: 38,
     categorie: "Vivre dans la société française",
     sousCategorie: "Carte grise",
-    question: "Quel document est obligatoire pour pouvoir circuler avec un véhicule en France ?",
+    question: "UXVlbCBkb2N1bWVudCBlc3Qgb2JsaWdhdG9pcmUgcG91ciBwb3V2b2lyIGNpcmN1bGVyIGF2ZWMgdW4gdsOpaGljdWxlIGVuIEZyYW5jZSA/",
     options: [
-      "Le certificat d'immatriculation (carte grise), qui doit correspondre au véhicule et être à jour de l'adresse",
-      "Un simple justificatif d'assurance suffit, le certificat d'immatriculation étant facultatif",
-      "Le permis de conduire du propriétaire du véhicule est le seul document obligatoire à présenter",
-      "Aucun document n'est requis si le véhicule a été acheté d'occasion depuis moins d'un an"
+      "TGUgY2VydGlmaWNhdCBkJ2ltbWF0cmljdWxhdGlvbiAoY2FydGUgZ3Jpc2UpLCBxdWkgZG9pdCBjb3JyZXNwb25kcmUgYXUgdsOpaGljdWxlIGV0IMOqdHJlIMOgIGpvdXIgZGUgbCdhZHJlc3Nl",
+      "VW4gc2ltcGxlIGp1c3RpZmljYXRpZiBkJ2Fzc3VyYW5jZSBzdWZmaXQsIGxlIGNlcnRpZmljYXQgZCdpbW1hdHJpY3VsYXRpb24gw6l0YW50IGZhY3VsdGF0aWY=",
+      "TGUgcGVybWlzIGRlIGNvbmR1aXJlIGR1IHByb3ByacOpdGFpcmUgZHUgdsOpaGljdWxlIGVzdCBsZSBzZXVsIGRvY3VtZW50IG9ibGlnYXRvaXJlIMOgIHByw6lzZW50ZXI=",
+      "QXVjdW4gZG9jdW1lbnQgbidlc3QgcmVxdWlzIHNpIGxlIHbDqWhpY3VsZSBhIMOpdMOpIGFjaGV0w6kgZCdvY2Nhc2lvbiBkZXB1aXMgbW9pbnMgZCd1biBhbg=="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 38, 0),
-    explication: "Le certificat d'immatriculation (carte grise) est obligatoire pour circuler. Il doit être à jour (adresse, propriétaire) et présenté en cas de contrôle."
-  },
+    explication: "TGUgY2VydGlmaWNhdCBkJ2ltbWF0cmljdWxhdGlvbiAoY2FydGUgZ3Jpc2UpIGVzdCBvYmxpZ2F0b2lyZSBwb3VyIGNpcmN1bGVyLiBJbCBkb2l0IMOqdHJlIMOgIGpvdXIgKGFkcmVzc2UsIHByb3ByacOpdGFpcmUpIGV0IHByw6lzZW50w6kgZW4gY2FzIGRlIGNvbnRyw7RsZS4="},
   {
     id: 39,
     categorie: "Vivre dans la société française",
     sousCategorie: "SMIC",
-    question: "Qu'est-ce que le SMIC et comment son montant est-il déterminé ?",
+    question: "UXUnZXN0LWNlIHF1ZSBsZSBTTUlDIGV0IGNvbW1lbnQgc29uIG1vbnRhbnQgZXN0LWlsIGTDqXRlcm1pbsOpID8=",
     options: [
-      "Le Salaire Minimum Interprofessionnel de Croissance, réévalué au moins une fois par an par le gouvernement",
-      "Un salaire de référence indicatif sans valeur obligatoire pour les employeurs du secteur privé",
-      "Le salaire moyen des Français, calculé par l'INSEE chaque année pour les statistiques nationales",
-      "Une prime exceptionnelle versée par l'État aux travailleurs les moins bien rémunérés"
+      "TGUgU2FsYWlyZSBNaW5pbXVtIEludGVycHJvZmVzc2lvbm5lbCBkZSBDcm9pc3NhbmNlLCByw6nDqXZhbHXDqSBhdSBtb2lucyB1bmUgZm9pcyBwYXIgYW4gcGFyIGxlIGdvdXZlcm5lbWVudA==",
+      "VW4gc2FsYWlyZSBkZSByw6lmw6lyZW5jZSBpbmRpY2F0aWYgc2FucyB2YWxldXIgb2JsaWdhdG9pcmUgcG91ciBsZXMgZW1wbG95ZXVycyBkdSBzZWN0ZXVyIHByaXbDqQ==",
+      "TGUgc2FsYWlyZSBtb3llbiBkZXMgRnJhbsOnYWlzLCBjYWxjdWzDqSBwYXIgbCdJTlNFRSBjaGFxdWUgYW5uw6llIHBvdXIgbGVzIHN0YXRpc3RpcXVlcyBuYXRpb25hbGVz",
+      "VW5lIHByaW1lIGV4Y2VwdGlvbm5lbGxlIHZlcnPDqWUgcGFyIGwnw4l0YXQgYXV4IHRyYXZhaWxsZXVycyBsZXMgbW9pbnMgYmllbiByw6ltdW7DqXLDqXM="
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 39, 0),
-    explication: "Le SMIC (Salaire Minimum Interprofessionnel de Croissance) est le salaire horaire minimum légal. Il est réévalué au moins une fois par an par le gouvernement."
-  },
+    explication: "TGUgU01JQyAoU2FsYWlyZSBNaW5pbXVtIEludGVycHJvZmVzc2lvbm5lbCBkZSBDcm9pc3NhbmNlKSBlc3QgbGUgc2FsYWlyZSBob3JhaXJlIG1pbmltdW0gbMOpZ2FsLiBJbCBlc3QgcsOpw6l2YWx1w6kgYXUgbW9pbnMgdW5lIGZvaXMgcGFyIGFuIHBhciBsZSBnb3V2ZXJuZW1lbnQu"},
   {
     id: 40,
     categorie: "Vivre dans la société française",
     sousCategorie: "Taxe d'habitation",
-    question: "La taxe d'habitation sur les résidences principales existe-t-elle encore en France ?",
+    question: "TGEgdGF4ZSBkJ2hhYml0YXRpb24gc3VyIGxlcyByw6lzaWRlbmNlcyBwcmluY2lwYWxlcyBleGlzdGUtdC1lbGxlIGVuY29yZSBlbiBGcmFuY2UgPw==",
     options: [
-      "Non, elle a été progressivement supprimée et est totalement abolie pour les résidences principales depuis 2023",
-      "Oui, elle reste due par tous les occupants d'un logement au 1er janvier de chaque année",
-      "Non, elle a été remplacée par une taxe sur les loyers payée uniquement par les propriétaires bailleurs",
-      "Oui, mais uniquement pour les ménages dont les revenus dépassent un certain seuil fiscal"
+      "Tm9uLCBlbGxlIGEgw6l0w6kgcHJvZ3Jlc3NpdmVtZW50IHN1cHByaW3DqWUgZXQgZXN0IHRvdGFsZW1lbnQgYWJvbGllIHBvdXIgbGVzIHLDqXNpZGVuY2VzIHByaW5jaXBhbGVzIGRlcHVpcyAyMDIz",
+      "T3VpLCBlbGxlIHJlc3RlIGR1ZSBwYXIgdG91cyBsZXMgb2NjdXBhbnRzIGQndW4gbG9nZW1lbnQgYXUgMWVyIGphbnZpZXIgZGUgY2hhcXVlIGFubsOpZQ==",
+      "Tm9uLCBlbGxlIGEgw6l0w6kgcmVtcGxhY8OpZSBwYXIgdW5lIHRheGUgc3VyIGxlcyBsb3llcnMgcGF5w6llIHVuaXF1ZW1lbnQgcGFyIGxlcyBwcm9wcmnDqXRhaXJlcyBiYWlsbGV1cnM=",
+      "T3VpLCBtYWlzIHVuaXF1ZW1lbnQgcG91ciBsZXMgbcOpbmFnZXMgZG9udCBsZXMgcmV2ZW51cyBkw6lwYXNzZW50IHVuIGNlcnRhaW4gc2V1aWwgZmlzY2Fs"
     ],
     correctHash: hashAnswer(EXAM_NUMBER, 40, 0),
-    explication: "La taxe d'habitation sur les résidences principales a été supprimée progressivement et est totalement abolie depuis 2023. Elle reste due pour les résidences secondaires."
-  }
+    explication: "TGEgdGF4ZSBkJ2hhYml0YXRpb24gc3VyIGxlcyByw6lzaWRlbmNlcyBwcmluY2lwYWxlcyBhIMOpdMOpIHN1cHByaW3DqWUgcHJvZ3Jlc3NpdmVtZW50IGV0IGVzdCB0b3RhbGVtZW50IGFib2xpZSBkZXB1aXMgMjAyMy4gRWxsZSByZXN0ZSBkdWUgcG91ciBsZXMgcsOpc2lkZW5jZXMgc2Vjb25kYWlyZXMu"}
 ];
+
+// Fonction pour vérifier une réponse
+export function verifyAnswerExam5(questionId: number, userAnswerIndex: number, correctHash: string): boolean {
+  return hashAnswer(EXAM_NUMBER, questionId, userAnswerIndex) === correctHash;
+}
+
+// Fonction pour trouver l'index correct à partir du hash
+export function findCorrectIndexExam5(questionId: number, correctHash: string): number {
+  for (let i = 0; i < 4; i++) {
+    if (hashAnswer(EXAM_NUMBER, questionId, i) === correctHash) {
+      return i;
+    }
+  }
+  return 0;
+}
 
 export const EXAMEN_5: ExamenBlanc = {
   numero: 5,
