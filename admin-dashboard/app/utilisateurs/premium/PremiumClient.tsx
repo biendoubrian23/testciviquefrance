@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect, useCallback } from 'react';
 import { StatCard, Card, Badge, DataTable, ProgressBar } from '@/components/ui';
-import { Award, Calendar, Clock, CreditCard, Filter, Unlock, Timer, BookOpen, FileText } from 'lucide-react';
+import { Award, Calendar, Clock, CreditCard, Filter, Unlock, Timer, BookOpen, FileText, RefreshCw } from 'lucide-react';
 import { PaidUserWithType, PaidUserFilter } from '@/lib/actions/users';
 
 interface PaidUsersStats {
@@ -28,6 +28,26 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
   const [stats, setStats] = useState(initialStats);
   const [filter, setFilter] = useState<PaidUserFilter>('all');
   const [isPending, startTransition] = useTransition();
+  const [lastUpdate, setLastUpdate] = useState(new Date());
+
+  // Fonction de rafraîchissement des données
+  const refreshData = useCallback(async () => {
+    try {
+      const response = await fetch(`/api/premium?filter=${filter}`);
+      const data = await response.json();
+      if (data.users) setUsers(data.users);
+      if (data.stats) setStats(data.stats);
+      setLastUpdate(new Date());
+    } catch (error) {
+      console.error('Erreur rafraîchissement:', error);
+    }
+  }, [filter]);
+
+  // Rafraîchissement automatique toutes les 30 secondes
+  useEffect(() => {
+    const interval = setInterval(refreshData, 30000);
+    return () => clearInterval(interval);
+  }, [refreshData]);
 
   const handleFilterChange = (newFilter: PaidUserFilter) => {
     setFilter(newFilter);
@@ -35,6 +55,8 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
       const response = await fetch(`/api/premium?filter=${newFilter}`);
       const data = await response.json();
       setUsers(data.users);
+      if (data.stats) setStats(data.stats);
+      setLastUpdate(new Date());
     });
   };
 
@@ -91,12 +113,10 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
       header: 'Utilisateur',
       render: (user: PaidUserWithType) => (
         <div className="flex items-center gap-3">
-          <div className={`w-10 h-10 flex items-center justify-center flex-shrink-0 ${
-            user.subscription_type === 'premium' ? 'bg-green-100' : 'bg-orange-100'
-          }`}>
-            <Award className={`w-5 h-5 ${
-              user.subscription_type === 'premium' ? 'text-green-600' : 'text-orange-600'
-            }`} />
+          <div className={`w-10 h-10 flex items-center justify-center flex-shrink-0 ${user.subscription_type === 'premium' ? 'bg-green-100' : 'bg-orange-100'
+            }`}>
+            <Award className={`w-5 h-5 ${user.subscription_type === 'premium' ? 'text-green-600' : 'text-orange-600'
+              }`} />
           </div>
           <div>
             <p className="font-medium text-text-primary">
@@ -129,9 +149,9 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
           <div className="space-y-1">
             <span className="text-sm">{formatDate(user.premium_expires_at)}</span>
             <div className="flex items-center gap-2">
-              <ProgressBar 
-                value={daysRemaining} 
-                max={7} 
+              <ProgressBar
+                value={daysRemaining}
+                max={7}
                 size="sm"
                 variant={variant}
               />
@@ -146,24 +166,24 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
       header: 'Services annexes',
       render: (user: PaidUserWithType) => {
         const services = [];
-        
+
         // Flashcards
         if (user.flashcards_5_themes) {
           services.push({ label: 'Flashcards 5', icon: BookOpen, color: 'bg-purple-100 text-purple-700' });
         } else if (user.flashcards_2_themes) {
           services.push({ label: 'Flashcards 2', icon: BookOpen, color: 'bg-purple-100 text-purple-700' });
         }
-        
+
         // Chrono désactivé
         if (user.no_timer_enabled) {
           services.push({ label: 'Sans chrono', icon: Timer, color: 'bg-blue-100 text-blue-700' });
         }
-        
+
         // Niveaux débloqués
         if (user.unlock_level_count > 0) {
           services.push({ label: `${user.unlock_level_count} niv.`, icon: Unlock, color: 'bg-amber-100 text-amber-700' });
         }
-        
+
         // Crédits examens blancs (Pack Examen achetés)
         if (user.exam_credits > 0) {
           services.push({ label: `${user.exam_credits} pack exam`, icon: FileText, color: 'bg-green-100 text-green-700' });
@@ -176,7 +196,7 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
         return (
           <div className="flex flex-wrap gap-1">
             {services.map((service, idx) => (
-              <div 
+              <div
                 key={idx}
                 className={`inline-flex items-center gap-1 px-2 py-1 text-xs font-medium ${service.color}`}
               >
@@ -198,7 +218,7 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
         const subscriptionRemaining = Math.max(0, subscriptionQuota - (user.subscription_exams_used || 0));
         const packCredits = user.exam_credits || 0;
         const totalAvailable = subscriptionRemaining + packCredits;
-        
+
         return (
           <div className="flex flex-col items-center space-y-1">
             <span className={`font-bold text-lg ${totalAvailable > 0 ? 'text-green-600' : 'text-text-muted'}`}>
@@ -224,7 +244,7 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
   return (
     <div className={isPending ? 'opacity-60' : ''}>
       {/* Filtre */}
-      <div className="mb-6 flex items-center gap-4 p-4 bg-gray-50 border border-gray-200">
+      <div className="mb-6 flex flex-wrap items-center gap-4 p-4 bg-gray-50 border border-gray-200">
         <Filter className="w-5 h-5 text-text-muted" />
         <span className="text-sm font-medium">Type d'abonnement:</span>
         <select
@@ -237,9 +257,20 @@ export function PremiumClient({ initialUsers, initialStats }: PremiumClientProps
           <option value="premium">Premium (6.99€/sem)</option>
           <option value="trialing">🎁 Essai gratuit</option>
         </select>
-        <div className="ml-auto flex gap-4 text-sm">
+        <div className="ml-auto flex items-center gap-4 text-sm">
           <span className="text-orange-600 font-medium">{stats.totalStandard} Standard</span>
           <span className="text-green-600 font-medium">{stats.totalPremium} Premium</span>
+          <button
+            onClick={refreshData}
+            className="flex items-center gap-1 px-3 py-1 text-xs bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+            title="Rafraîchir les données"
+          >
+            <RefreshCw className="w-3 h-3" />
+            Actualiser
+          </button>
+          <span className="text-xs text-text-muted">
+            {lastUpdate.toLocaleTimeString('fr-FR')}
+          </span>
         </div>
       </div>
 

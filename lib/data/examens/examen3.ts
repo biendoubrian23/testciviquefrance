@@ -6,21 +6,12 @@
 // 4. Histoire/géographie/culture (8 questions)
 // 5. Vivre en France (4 questions)
 // ==========================================================================
+// VERSION NON ENCODÉE - Questions difficiles niveau examen civique
+// ==========================================================================
 
-import { ExamenBlanc, Question, decodeQuestion } from './types';
+import { ExamenBlanc, Question, hashAnswer } from './types';
 
 const EXAM_NUMBER = 3;
-
-// Fonction de hash simple (djb2) pour l'examen 3
-function hashAnswer(questionId: number, answerIndex: number): string {
-  const str = `exam${EXAM_NUMBER}_q${questionId}_a${answerIndex}_civique2024`;
-  let hash = 5381;
-  for (let i = 0; i < str.length; i++) {
-    hash = ((hash << 5) + hash) + str.charCodeAt(i);
-    hash = hash & hash;
-  }
-  return Math.abs(hash).toString(16);
-}
 
 const questions: Question[] = [
   // ==================== 1. PRINCIPES ET VALEURS (11 questions) ====================
@@ -28,557 +19,582 @@ const questions: Question[] = [
   {
     id: 1,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Devise et symboles",
-    question: "UXVlbGxlIGZsZXVyIGVzdCB0cmFkaXRpb25uZWxsZW1lbnQgYXNzb2Npw6llIMOgIGxhIFLDqXB1YmxpcXVlIGZyYW7Dp2Fpc2UgPw==",
+    sousCategorie: "Devise républicaine",
+    question: "Quel article de la Constitution de 1958 inscrit la devise « Liberté, Égalité, Fraternité » comme symbole de la République ?",
     options: [
-      "TGEgcm9zZQ==",
-      "TGUgbHlz",
-      "TCdpcmlz",
-      "TGEgdHVsaXBl"
+      "L'article 2 de la Constitution, qui définit les symboles officiels de la République française",
+      "L'article 1er de la Constitution, qui définit les caractéristiques de la République française",
+      "L'article 89 de la Constitution, qui définit les modalités de révision constitutionnelle",
+      "Le Préambule de la Constitution, qui renvoie à la Déclaration des droits de l'homme de 1789"
     ],
-    correctHash: hashAnswer(1, 1),
-    explication: "TGUgbHlzIGVzdCB0cmFkaXRpb25uZWxsZW1lbnQgYXNzb2Npw6kgw6AgbGEgUsOpcHVibGlxdWUgZnJhbsOnYWlzZS4gSWwgc3ltYm9saXNlIGxhIHJveWF1dMOpIGZyYW7Dp2Fpc2UgZXQgYSDDqXTDqSByZXByaXMgY29tbWUgc3ltYm9sZSBkZSBsYSBuYXRpb24u"},
+    correctHash: hashAnswer(EXAM_NUMBER, 1, 0),
+    explication: "L'article 2 de la Constitution de 1958 définit les symboles de la République : la langue française, le drapeau tricolore, l'hymne national, la devise et le principe de gouvernement."
+  },
   {
     id: 2,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Devise et symboles",
-    question: "Q29tYmllbiBkZSBiYW5kZXMgYSBsZSBkcmFwZWF1IGZyYW7Dp2FpcyA/",
+    sousCategorie: "Drapeau français",
+    question: "Quelle est la signification historique des trois couleurs du drapeau français et leur disposition ?",
     options: [
-      "RGV1eA==",
-      "VHJvaXM=",
-      "UXVhdHJl",
-      "Q2lucQ=="
+      "Bleu et rouge (couleurs de Paris) encadrant le blanc (couleur royale), symbolisant l'union peuple-monarchie en 1789",
+      "Trois couleurs choisies au hasard par Napoléon Bonaparte lors de son sacre impérial en 1804",
+      "Rouge, blanc, bleu représentant le sang versé, la pureté et le ciel de France depuis le Moyen Âge",
+      "Couleurs héritées du drapeau américain en hommage au soutien français lors de la guerre d'indépendance"
     ],
-    correctHash: hashAnswer(2, 1),
-    explication: "TGUgZHJhcGVhdSBmcmFuw6dhaXMsIGFwcGVsw6kgZHJhcGVhdSB0cmljb2xvcmUsIGNvbXBvcnRlIHRyb2lzIGJhbmRlcyB2ZXJ0aWNhbGVzIGRlIGNvdWxldXJzIMOpZ2FsZXMgOiBibGV1LCBibGFuYyBldCByb3VnZS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 2, 0),
+    explication: "Le drapeau français est composé de trois bandes verticales : bleu (côté mât), blanc (centre) et rouge (côté flottant). Le bleu et le rouge sont les couleurs de Paris, le blanc était la couleur royale."
+  },
   {
     id: 3,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Laïcité",
-    question: "w4AgbCfDqWNvbGUgcHVibGlxdWUgZW4gRnJhbmNlLCBsZXMgZW5zZWlnbmFudHMgcGV1dmVudC1pbHMgcG9ydGVyIGRlcyBzaWduZXMgcmVsaWdpZXV4IG9zdGVuc2libGVzID8=",
+    sousCategorie: "Hymne national",
+    question: "Qui a composé La Marseillaise et dans quel contexte historique particulier ?",
     options: [
-      "T3VpLCBjJ2VzdCB1biBkcm9pdA==",
-      "Tm9uLCBjJ2VzdCBpbnRlcmRpdCBwYXIgbGEgbG9pIGRlIGxhw69jaXTDqQ==",
-      "T3VpLCBtYWlzIHNldWxlbWVudCBlbiBtYXRlcm5lbGxl",
-      "Q2VsYSBkw6lwZW5kIGRlIGxhIHLDqWdpb24="
+      "Rouget de Lisle en 1792 à Strasbourg, comme chant de guerre pour l'armée du Rhin face aux monarchies européennes",
+      "Victor Hugo en 1830 pour célébrer la révolution de Juillet et l'avènement de Louis-Philippe",
+      "Hector Berlioz en 1848 pour accompagner la proclamation de la Deuxième République française",
+      "Claude Debussy en 1914 pour galvaniser les troupes françaises au début de la Première Guerre mondiale"
     ],
-    correctHash: hashAnswer(3, 1),
-    explication: "TGVzIGFnZW50cyBkdSBzZXJ2aWNlIHB1YmxpYywgZG9udCBsZXMgZW5zZWlnbmFudHMsIHNvbnQgdGVudXMgw6AgdW5lIHN0cmljdGUgbmV1dHJhbGl0w6kgcmVsaWdpZXVzZS4gSWxzIG5lIHBldXZlbnQgcGFzIHBvcnRlciBkZSBzaWduZXMgcmVsaWdpZXV4IG9zdGVuc2libGVzLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 3, 0),
+    explication: "La Marseillaise a été composée par Rouget de Lisle en 1792 à Strasbourg pour l'armée du Rhin. Elle est devenue hymne national en 1795."
+  },
   {
     id: 4,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Laïcité",
-    question: "TGEgbGHDr2NpdMOpIGdhcmFudGl0IDo=",
+    sousCategorie: "Démocratie",
+    question: "Qu'est-ce que le suffrage universel direct et depuis quand s'applique-t-il pleinement en France ?",
     options: [
-      "TCdpbnRlcmRpY3Rpb24gZGUgdG91dGVzIGxlcyByZWxpZ2lvbnM=",
-      "TGEgbGliZXJ0w6kgZGUgY29uc2NpZW5jZSBldCBkZSBjdWx0ZSBwb3VyIHRvdXM=",
-      "TGEgcHLDqWRvbWluYW5jZSBkJ3VuZSBzZXVsZSByZWxpZ2lvbg==",
-      "TCdvYmxpZ2F0aW9uIGQnw6p0cmUgYXRow6ll"
+      "Le droit de vote pour tous les citoyens majeurs, pleinement effectif depuis 1944 avec le vote des femmes",
+      "Le droit de vote réservé aux propriétaires fonciers, en vigueur depuis la Révolution de 1789",
+      "Le droit de vote par l'intermédiaire de grands électeurs, comme pour l'élection des sénateurs",
+      "Le droit de vote accordé uniquement aux hommes de plus de 25 ans sachant lire et écrire"
     ],
-    correctHash: hashAnswer(4, 1),
-    explication: "TGEgbGHDr2NpdMOpIGdhcmFudGl0IGxhIGxpYmVydMOpIGRlIGNvbnNjaWVuY2UgZXQgZGUgY3VsdGUgcG91ciB0b3VzIGxlcyBjaXRveWVucy4gRWxsZSBhc3N1cmUgbGEgbmV1dHJhbGl0w6kgZGUgbCfDiXRhdCB2aXMtw6AtdmlzIGRlcyByZWxpZ2lvbnMgdG91dCBlbiBwcm90w6lnZWFudCBsYSBsaWJlcnTDqSByZWxpZ2lldXNlIGRlIGNoYWN1bi4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 4, 0),
+    explication: "Le suffrage universel direct permet à tous les citoyens majeurs de voter. Il est pleinement effectif en France depuis 1944, date du droit de vote des femmes."
+  },
   {
     id: 5,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Égalité",
-    question: "UXUnZXN0LWNlIHF1ZSBsYSBwYXJpdMOpIGVuIHBvbGl0aXF1ZSA/",
+    sousCategorie: "Signes religieux école",
+    question: "Que prévoit la loi du 15 mars 2004 concernant les signes religieux dans les établissements scolaires publics ?",
     options: [
-      "TCfDqWdhbCBhY2PDqHMgZGVzIGhvbW1lcyBldCBkZXMgZmVtbWVzIGF1eCBtYW5kYXRzIMOpbGVjdG9yYXV4",
-      "TCfDqWdhbGl0w6kgZGVzIHJldmVudXMgZW50cmUgdG91cyBsZXMgY2l0b3llbnM=",
-      "TGUgcGFydGFnZSDDqWdhbCBkdSB0ZW1wcyBkZSBwYXJvbGU=",
-      "TGEgcm90YXRpb24gb2JsaWdhdG9pcmUgZGVzIMOpbHVz"
+      "L'interdiction du port de signes religieux ostensibles par les élèves des écoles, collèges et lycées publics",
+      "L'autorisation de tous les signes religieux dans les établissements scolaires sans aucune restriction",
+      "L'interdiction de toute référence religieuse y compris dans les cours d'histoire et de philosophie",
+      "L'obligation pour tous les élèves de porter un uniforme laïque standardisé dans les écoles publiques"
     ],
-    correctHash: hashAnswer(5, 0),
-    explication: "TGEgcGFyaXTDqSBkw6lzaWduZSBsJ8OpZ2FsIGFjY8OocyBkZXMgaG9tbWVzIGV0IGRlcyBmZW1tZXMgYXV4IG1hbmRhdHMgw6lsZWN0b3JhdXggZXQgZm9uY3Rpb25zIMOpbGVjdGl2ZXMuIERlcyBsb2lzIGltcG9zZW50IGTDqXNvcm1haXMgZGVzIHF1b3RhcyBwb3VyIGZhdm9yaXNlciBsJ8OpZ2FsaXTDqS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 5, 0),
+    explication: "La loi du 15 mars 2004 interdit le port de signes religieux ostensibles par les élèves dans les écoles, collèges et lycées publics. Les signes discrets sont autorisés."
+  },
   {
     id: 6,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Égalité",
-    question: "RW4gRnJhbmNlLCBsYSBkaXNjcmltaW5hdGlvbiDDoCBsJ2VtYmF1Y2hlIGVzdCA6",
+    sousCategorie: "Alsace-Moselle",
+    question: "Pourquoi le régime de la laïcité est-il différent en Alsace-Moselle par rapport au reste de la France ?",
     options: [
-      "QXV0b3Jpc8OpZSBkYW5zIGNlcnRhaW5zIGNhcw==",
-      "U3RyaWN0ZW1lbnQgaW50ZXJkaXRlIGV0IHB1bmllIHBhciBsYSBsb2k=",
-      "VG9sw6lyw6llIHBvdXIgbGVzIHBldGl0ZXMgZW50cmVwcmlzZXM=",
-      "UGVybWlzZSBhdmVjIGwnYWNjb3JkIGR1IGNhbmRpZGF0"
+      "Ces départements étaient allemands en 1905 et n'ont pas été concernés par la loi de séparation des Églises et de l'État",
+      "Ces régions ont obtenu une dérogation spéciale du Conseil constitutionnel en 1958 lors de la Ve République",
+      "Le Pape a négocié une exception pour ces territoires historiquement catholiques au XIXe siècle",
+      "Ces départements ont voté par référendum local pour conserver le régime concordataire en 1945"
     ],
-    correctHash: hashAnswer(6, 1),
-    explication: "VG91dGUgZGlzY3JpbWluYXRpb24gw6AgbCdlbWJhdWNoZSBlc3Qgc3RyaWN0ZW1lbnQgaW50ZXJkaXRlIGV0IGNvbnN0aXR1ZSB1biBkw6lsaXQgcMOpbmFsLiBFbGxlIHBldXQgw6p0cmUgZm9uZMOpZSBzdXIgbCdvcmlnaW5lLCBsZSBzZXhlLCBsJ8OiZ2UsIGwnb3JpZW50YXRpb24gc2V4dWVsbGUsIGV0Yy4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 6, 0),
+    explication: "L'Alsace-Moselle était allemande en 1905 et n'a pas été concernée par la loi de séparation. Le régime concordataire y est maintenu, avec reconnaissance de certains cultes."
+  },
   {
     id: 7,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Liberté",
-    question: "TGEgbGliZXJ0w6kgZGUgbGEgcHJlc3NlIGVuIEZyYW5jZSBzaWduaWZpZSBxdWUgOg==",
+    sousCategorie: "Égalité devant la loi",
+    question: "Qu'implique le principe d'égalité devant la loi inscrit dans la Constitution française ?",
     options: [
-      "TGVzIGpvdXJuYWxpc3RlcyBwZXV2ZW50IMOpY3JpcmUgY2UgcXUnaWxzIHZldWxlbnQgc2FucyBhdWN1bmUgbGltaXRl",
-      "TGVzIG3DqWRpYXMgc29udCBsaWJyZXMgbWFpcyBkb2l2ZW50IHJlc3BlY3RlciBsZXMgbG9pcyAoZGlmZmFtYXRpb24sIHZpZSBwcml2w6llLi4uKQ==",
-      "U2V1bCBsJ8OJdGF0IHBldXQgcHVibGllciBkZXMgam91cm5hdXg=",
-      "TGEgcHJlc3NlIGVzdCBlbnRpw6hyZW1lbnQgY29udHLDtGzDqWUgcGFyIGxlIGdvdXZlcm5lbWVudA=="
+      "La même loi s'applique à tous sans distinction d'origine, de race, de religion ou de condition sociale",
+      "Tous les citoyens doivent avoir exactement les mêmes revenus et le même patrimoine",
+      "L'État doit traiter différemment chaque citoyen selon sa situation personnelle particulière",
+      "Seuls les citoyens français de naissance bénéficient de l'égalité devant la loi française"
     ],
-    correctHash: hashAnswer(7, 1),
-    explication: "TGEgbGliZXJ0w6kgZGUgbGEgcHJlc3NlIGVzdCBnYXJhbnRpZSBtYWlzIGVuY2FkcsOpZSBwYXIgbGEgbG9pLiBMZXMgam91cm5hbGlzdGVzIGRvaXZlbnQgcmVzcGVjdGVyIGxhIHZpZSBwcml2w6llLCBuZSBwYXMgZGlmZmFtZXIsIG5pIGluY2l0ZXIgw6AgbGEgaGFpbmUu"},
+    correctHash: hashAnswer(EXAM_NUMBER, 7, 0),
+    explication: "L'égalité devant la loi signifie que la même loi s'applique à tous, sans distinction. C'est un principe fondamental de la République depuis 1789."
+  },
   {
     id: 8,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Liberté",
-    question: "UGV1dC1vbiBtYW5pZmVzdGVyIGxpYnJlbWVudCBlbiBGcmFuY2UgPw==",
+    sousCategorie: "Mise en situation embauche",
+    question: "Un employeur vous demande lors d'un entretien d'embauche si vous comptez avoir des enfants. Est-ce légal ?",
     options: [
-      "T3VpLCBzYW5zIGF1Y3VuZSBmb3JtYWxpdMOp",
-      "T3VpLCBtYWlzIGlsIGZhdXQgZMOpY2xhcmVyIGxhIG1hbmlmZXN0YXRpb24gw6AgbGEgcHLDqWZlY3R1cmU=",
-      "Tm9uLCBjJ2VzdCBpbnRlcmRpdA==",
-      "T3VpLCBtYWlzIHNldWxlbWVudCBsZSBkaW1hbmNoZQ=="
+      "Non, c'est une question discriminatoire interdite par le Code du travail, vous n'êtes pas obligé de répondre",
+      "Oui, l'employeur a le droit de connaître vos projets familiaux pour organiser son entreprise",
+      "Oui, si le poste implique des responsabilités importantes nécessitant une disponibilité totale",
+      "Non, sauf si vous êtes une femme, auquel cas cette question est autorisée par la loi"
     ],
-    correctHash: hashAnswer(8, 1),
-    explication: "TGUgZHJvaXQgZGUgbWFuaWZlc3RhdGlvbiBlc3QgZ2FyYW50aSBlbiBGcmFuY2UsIG1haXMgdG91dGUgbWFuaWZlc3RhdGlvbiBzdXIgbGEgdm9pZSBwdWJsaXF1ZSBkb2l0IMOqdHJlIGTDqWNsYXLDqWUgw6AgbCdhdmFuY2UgYXVwcsOocyBkZSBsYSBwcsOpZmVjdHVyZSBvdSBkZSBsYSBtYWlyaWUu"},
+    correctHash: hashAnswer(EXAM_NUMBER, 8, 0),
+    explication: "Les questions sur la vie privée (projets familiaux, religion, opinions politiques...) sont interdites lors d'un entretien d'embauche. C'est une forme de discrimination."
+  },
   {
     id: 9,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Fraternité",
-    question: "TGUgU2Vjb3VycyBwb3B1bGFpcmUsIGxhIENyb2l4LVJvdWdlLCBsZXMgUmVzdG9zIGR1IEPFk3VyIHNvbnQgZGVzIGV4ZW1wbGVzIGRlIDo=",
+    sousCategorie: "Accès aux services publics",
+    question: "Quel principe garantit que tous les usagers puissent accéder aux services publics dans les mêmes conditions ?",
     options: [
-      "U2VydmljZXMgcHVibGljcyBvYmxpZ2F0b2lyZXM=",
-      "QXNzb2NpYXRpb25zIHF1aSBpbmNhcm5lbnQgbGEgZnJhdGVybml0w6kgZXQgbGEgc29saWRhcml0w6k=",
-      "RW50cmVwcmlzZXMgY29tbWVyY2lhbGVz",
-      "UGFydGlzIHBvbGl0aXF1ZXM="
+      "Le principe d'égalité d'accès aux services publics, corollaire du principe d'égalité devant la loi",
+      "Le principe de rentabilité des services publics imposant une tarification uniforme",
+      "Le principe de proximité obligeant l'État à implanter un service public dans chaque commune",
+      "Le principe de gratuité totale de tous les services publics pour l'ensemble des citoyens"
     ],
-    correctHash: hashAnswer(9, 1),
-    explication: "Q2VzIGFzc29jaWF0aW9ucyBjYXJpdGF0aXZlcyBpbmNhcm5lbnQgbGVzIHZhbGV1cnMgZGUgZnJhdGVybml0w6kgZXQgZGUgc29saWRhcml0w6kgZW4gdmVuYW50IGVuIGFpZGUgYXV4IHBlcnNvbm5lcyBlbiBkaWZmaWN1bHTDqSAocGF1dnJldMOpLCBleGNsdXNpb24sIGV0Yy4pLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 9, 0),
+    explication: "Le principe d'égalité d'accès aux services publics garantit que tous les usagers peuvent y accéder dans les mêmes conditions, sans discrimination."
+  },
   {
     id: 10,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Fraternité",
-    question: "UXVlIHNpZ25pZmllIMOqdHJlIHNvbGlkYWlyZSA/",
+    sousCategorie: "Solidarité nationale",
+    question: "Comment se manifeste concrètement le principe de solidarité nationale en France ?",
     options: [
-      "Vml2cmUgc2V1bCBldCBpbmTDqXBlbmRhbnQ=",
-      "QWlkZXIgbGVzIGF1dHJlcyBldCBzZSBzZW50aXIgcmVzcG9uc2FibGUgZHUgYmllbiBjb21tdW4=",
-      "T2LDqWlyIGF1eCBhdXRvcml0w6lz",
-      "UGF5ZXIgc2VzIGltcMO0dHMgdW5pcXVlbWVudA=="
+      "Par le système de protection sociale (Sécurité sociale, aides sociales) financé par les cotisations et impôts",
+      "Par l'obligation pour chaque citoyen d'aider personnellement ses voisins en difficulté",
+      "Par le bénévolat obligatoire de 10 heures par mois imposé à tous les citoyens français",
+      "Par le versement d'un revenu universel identique à tous les résidents du territoire français"
     ],
-    correctHash: hashAnswer(10, 1),
-    explication: "TGEgc29saWRhcml0w6kgaW1wbGlxdWUgZCdhaWRlciBsZXMgYXV0cmVzLCBkZSBzZSBzZW50aXIgcmVzcG9uc2FibGUgZHUgYmllbi3DqnRyZSBjb2xsZWN0aWYgZXQgZGUgY29udHJpYnVlciBhdSBiaWVuIGNvbW11bi4gQydlc3QgdW4gcGlsaWVyIGRlIGxhIGZyYXRlcm5pdMOpLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 10, 0),
+    explication: "La solidarité nationale se manifeste par le système de protection sociale : Sécurité sociale, allocations familiales, RSA, aides au logement... financés collectivement."
+  },
   {
     id: 11,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Lutte contre les discriminations",
-    question: "RW4gRnJhbmNlLCBsJ2hvbW9waG9iaWUgZXN0IDo=",
+    sousCategorie: "Défenseur des droits",
+    question: "Quel est le rôle du Défenseur des droits, autorité constitutionnelle indépendante créée en 2011 ?",
     options: [
-      "VG9sw6lyw6llIHNpIGVsbGUgcmVzdGUgZGlzY3LDqHRl",
-      "UHVuaWUgcGFyIGxhIGxvaSBjb21tZSB0b3V0ZSBkaXNjcmltaW5hdGlvbg==",
-      "QXV0b3Jpc8OpZSBkYW5zIGxlIGNhZHJlIHByaXbDqQ==",
-      "VW5lIG9waW5pb24gcGVyc29ubmVsbGUgcHJvdMOpZ8OpZQ=="
+      "Défendre les droits des citoyens face aux administrations, lutter contre les discriminations et protéger les enfants",
+      "Représenter la France auprès de la Cour européenne des droits de l'homme à Strasbourg",
+      "Présider le Conseil constitutionnel et statuer sur la conformité des lois à la Constitution",
+      "Diriger les services de police et de gendarmerie pour garantir l'ordre public républicain"
     ],
-    correctHash: hashAnswer(11, 1),
-    explication: "TCdob21vcGhvYmllIGVzdCB1bmUgZGlzY3JpbWluYXRpb24gZm9uZMOpZSBzdXIgbCdvcmllbnRhdGlvbiBzZXh1ZWxsZS4gRWxsZSBlc3Qgc3RyaWN0ZW1lbnQgaW50ZXJkaXRlIGV0IHB1bmllIHBhciBsYSBsb2kgZnJhbsOnYWlzZSwgY29tbWUgdG91dGUgZm9ybWUgZGUgZGlzY3JpbWluYXRpb24u"},
+    correctHash: hashAnswer(EXAM_NUMBER, 11, 0),
+    explication: "Le Défenseur des droits défend les droits des citoyens face aux administrations, lutte contre les discriminations, défend les droits des enfants et veille à la déontologie des forces de sécurité."
+  },
 
   // ==================== 2. SYSTÈME INSTITUTIONNEL (6 questions) ====================
   
   {
     id: 12,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Démocratie et droit de vote",
-    question: "UXVlbCBlc3QgbGUgbW9kZSBkZSBzY3J1dGluIHBvdXIgw6lsaXJlIGxlIFByw6lzaWRlbnQgZGUgbGEgUsOpcHVibGlxdWUgPw==",
+    sousCategorie: "Séparation des pouvoirs",
+    question: "Quels sont les trois pouvoirs séparés dans une démocratie selon la théorie de Montesquieu ?",
     options: [
-      "U2NydXRpbiBwcm9wb3J0aW9ubmVs",
-      "U3VmZnJhZ2UgdW5pdmVyc2VsIGRpcmVjdCDDoCBkZXV4IHRvdXJz",
-      "w4lsZWN0aW9uIHBhciBsZXMgZMOpcHV0w6lz",
-      "VGlyYWdlIGF1IHNvcnQ="
+      "Le pouvoir législatif (faire les lois), exécutif (appliquer les lois) et judiciaire (juger selon les lois)",
+      "Le pouvoir présidentiel, gouvernemental et parlementaire tels que définis dans la Constitution de 1958",
+      "Le pouvoir municipal, départemental et régional constituant les collectivités territoriales françaises",
+      "Le pouvoir militaire, religieux et civil hérités de l'organisation de l'Ancien Régime monarchique"
     ],
-    correctHash: hashAnswer(12, 1),
-    explication: "TGUgUHLDqXNpZGVudCBkZSBsYSBSw6lwdWJsaXF1ZSBlc3Qgw6lsdSBhdSBzdWZmcmFnZSB1bml2ZXJzZWwgZGlyZWN0IMOgIGRldXggdG91cnMuIFNpIGF1Y3VuIGNhbmRpZGF0IG4nb2J0aWVudCBsYSBtYWpvcml0w6kgYWJzb2x1ZSBhdSBwcmVtaWVyIHRvdXIsIHVuIHNlY29uZCB0b3VyIGVzdCBvcmdhbmlzw6ku"},
+    correctHash: hashAnswer(EXAM_NUMBER, 12, 0),
+    explication: "Montesquieu a théorisé la séparation des pouvoirs : législatif (Parlement), exécutif (Gouvernement) et judiciaire (tribunaux). Ce principe garantit les libertés."
+  },
   {
     id: 13,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Démocratie et droit de vote",
-    question: "TGVzIHPDqW5hdGV1cnMgc29udCDDqWx1cyBwYXIgOg==",
+    sousCategorie: "Mandat présidentiel",
+    question: "Quelle est la durée du mandat présidentiel et combien de mandats consécutifs sont autorisés depuis 2008 ?",
     options: [
-      "TGVzIGNpdG95ZW5zIGRpcmVjdGVtZW50",
-      "TGVzIGdyYW5kcyDDqWxlY3RldXJzICjDqWx1cyBsb2NhdXggcHJpbmNpcGFsZW1lbnQp",
-      "TGUgUHLDqXNpZGVudCBkZSBsYSBSw6lwdWJsaXF1ZQ==",
-      "TGVzIGTDqXB1dMOpcw=="
+      "5 ans (quinquennat depuis 2000), renouvelable une seule fois consécutivement depuis la révision de 2008",
+      "7 ans (septennat) renouvelable indéfiniment comme c'était le cas avant la réforme de 2000",
+      "4 ans renouvelable deux fois maximum sur le modèle de la présidence américaine",
+      "6 ans non renouvelable pour garantir l'alternance démocratique au sommet de l'État"
     ],
-    correctHash: hashAnswer(13, 1),
-    explication: "TGVzIHPDqW5hdGV1cnMgc29udCDDqWx1cyBhdSBzdWZmcmFnZSB1bml2ZXJzZWwgaW5kaXJlY3QgcGFyIGRlcyBncmFuZHMgw6lsZWN0ZXVycywgcHJpbmNpcGFsZW1lbnQgY29tcG9zw6lzIGQnw6lsdXMgbG9jYXV4IChtYWlyZXMsIGNvbnNlaWxsZXJzIG11bmljaXBhdXgsIGTDqXBhcnRlbWVudGF1eCBldCByw6lnaW9uYXV4KS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 13, 0),
+    explication: "Le Président est élu pour 5 ans (quinquennat depuis 2000). Depuis 2008, il ne peut exercer plus de deux mandats consécutifs."
+  },
   {
     id: 14,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Organisation de la République",
-    question: "Q29tYmllbiB5IGEtdC1pbCBkZSByw6lnaW9ucyBlbiBGcmFuY2UgbcOpdHJvcG9saXRhaW5lID8=",
+    sousCategorie: "Rôle du Gouvernement",
+    question: "Quel est le rôle constitutionnel du Gouvernement selon l'article 20 de la Constitution de 1958 ?",
     options: [
-      "MTA=",
-      "MTI=",
-      "MTM=",
-      "MjI="
+      "Déterminer et conduire la politique de la Nation, disposer de l'administration et de la force armée",
+      "Voter les lois, autoriser le budget de l'État et contrôler l'action du pouvoir exécutif",
+      "Rendre la justice au nom du peuple français et interpréter les lois votées par le Parlement",
+      "Élire le Président de la République et nommer les membres du Conseil constitutionnel"
     ],
-    correctHash: hashAnswer(14, 2),
-    explication: "RGVwdWlzIGxhIHLDqWZvcm1lIHRlcnJpdG9yaWFsZSBkZSAyMDE2LCBsYSBGcmFuY2UgbcOpdHJvcG9saXRhaW5lIGNvbXB0ZSAxMyByw6lnaW9ucy4gQXZlYyBsZXMgNSByw6lnaW9ucyBkJ291dHJlLW1lciwgbGEgRnJhbmNlIGNvbXB0ZSAxOCByw6lnaW9ucyBhdSB0b3RhbC4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 14, 0),
+    explication: "Selon l'article 20, le Gouvernement détermine et conduit la politique de la Nation. Il dispose de l'administration et de la force armée."
+  },
   {
     id: 15,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Organisation de la République",
-    question: "UXVpIHJlcHLDqXNlbnRlIGwnw4l0YXQgZGFucyBsZSBkw6lwYXJ0ZW1lbnQgPw==",
+    sousCategorie: "Motion de censure",
+    question: "Qu'est-ce qu'une motion de censure et quelles sont ses conséquences si elle est adoptée ?",
     options: [
-      "TGUgbWFpcmU=",
-      "TGUgZMOpcHV0w6k=",
-      "TGUgcHLDqWZldA==",
-      "TGUgcHLDqXNpZGVudCBkdSBjb25zZWlsIGTDqXBhcnRlbWVudGFs"
+      "Un vote de l'Assemblée nationale qui, s'il est adopté à la majorité absolue, entraîne la démission du Gouvernement",
+      "Une décision du Président de la République mettant fin aux fonctions du Premier ministre",
+      "Un avis du Conseil constitutionnel déclarant une loi contraire à la Constitution",
+      "Une procédure du Sénat permettant de destituer le Président de la République pour haute trahison"
     ],
-    correctHash: hashAnswer(15, 2),
-    explication: "TGUgcHLDqWZldCBlc3QgbGUgcmVwcsOpc2VudGFudCBkZSBsJ8OJdGF0IGRhbnMgbGUgZMOpcGFydGVtZW50LiBJbCBlc3Qgbm9tbcOpIHBhciBsZSBQcsOpc2lkZW50IGRlIGxhIFLDqXB1YmxpcXVlIGV0IGRpcmlnZSBsZXMgc2VydmljZXMgZGUgbCfDiXRhdCBhdSBuaXZlYXUgbG9jYWwu"},
+    correctHash: hashAnswer(EXAM_NUMBER, 15, 0),
+    explication: "La motion de censure est un vote de l'Assemblée nationale. Si elle est adoptée à la majorité absolue, le Gouvernement doit démissionner."
+  },
   {
     id: 16,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Collectivités territoriales",
-    question: "UXVlbGxlIGNvbGxlY3Rpdml0w6kgZ8OocmUgbGVzIGNvbGzDqGdlcyA/",
+    sousCategorie: "Conseil d'État",
+    question: "Quelles sont les deux fonctions principales du Conseil d'État dans le système institutionnel français ?",
     options: [
-      "TGEgY29tbXVuZQ==",
-      "TGUgZMOpcGFydGVtZW50",
-      "TGEgcsOpZ2lvbg==",
-      "TCfDiXRhdA=="
+      "Conseiller juridique du Gouvernement pour les projets de loi et plus haute juridiction administrative",
+      "Chambre haute du Parlement et cour d'appel pour les décisions de l'Assemblée nationale",
+      "Tribunal pénal pour les crimes politiques et cour de cassation pour les affaires civiles",
+      "Organe de contrôle du budget de l'État et juridiction financière suprême de la République"
     ],
-    correctHash: hashAnswer(16, 1),
-    explication: "TGVzIGTDqXBhcnRlbWVudHMgb250IGxhIHJlc3BvbnNhYmlsaXTDqSBkZSBsYSBjb25zdHJ1Y3Rpb24sIGRlIGwnZW50cmV0aWVuIGV0IGR1IGZvbmN0aW9ubmVtZW50IGRlcyBjb2xsw6hnZXMuIExlcyByw6lnaW9ucyBnw6hyZW50IGxlcyBseWPDqWVzIGV0IGxlcyBjb21tdW5lcyBsZXMgw6ljb2xlcy4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 16, 0),
+    explication: "Le Conseil d'État a deux fonctions : conseiller le Gouvernement sur les projets de textes juridiques et juger en dernier ressort les litiges administratifs."
+  },
   {
     id: 17,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Institutions européennes",
-    question: "RGVwdWlzIHF1YW5kIGxhIEZyYW5jZSBlc3QtZWxsZSBtZW1icmUgZGUgbCdVbmlvbiBldXJvcMOpZW5uZSA/",
+    sousCategorie: "Cour des comptes",
+    question: "Quelle est la mission principale de la Cour des comptes dans le contrôle de l'action publique ?",
     options: [
-      "MTk0NQ==",
-      "MTk1Nw==",
-      "MTk5Mg==",
-      "MjAwMg=="
+      "Contrôler la régularité et l'efficacité de l'utilisation des fonds publics par les administrations",
+      "Juger les infractions pénales commises par les fonctionnaires dans l'exercice de leurs fonctions",
+      "Vérifier la constitutionnalité des lois votées par le Parlement avant leur promulgation",
+      "Gérer le budget de l'État et répartir les crédits entre les différents ministères"
     ],
-    correctHash: hashAnswer(17, 1),
-    explication: "TGEgRnJhbmNlIGVzdCBtZW1icmUgZm9uZGF0ZXVyIGRlIGwnVW5pb24gZXVyb3DDqWVubmUgZGVwdWlzIGxlIHRyYWl0w6kgZGUgUm9tZSBlbiAxOTU3LCBxdWkgYSBjcsOpw6kgbGEgQ29tbXVuYXV0w6kgw6ljb25vbWlxdWUgZXVyb3DDqWVubmUgKENFRSku"},
+    correctHash: hashAnswer(EXAM_NUMBER, 17, 0),
+    explication: "La Cour des comptes contrôle la régularité et l'efficacité de l'utilisation de l'argent public. Elle produit un rapport annuel rendu public."
+  },
 
   // ==================== 3. DROITS ET DEVOIRS (11 questions) ====================
   
   {
     id: 18,
     categorie: "Droits et devoirs",
-    sousCategorie: "Droits fondamentaux",
-    question: "TGUgZHJvaXQgZGUgZ3LDqHZlIGVuIEZyYW5jZSBlc3QgOg==",
+    sousCategorie: "Droits naturels DDHC",
+    question: "Quels sont les quatre droits naturels et imprescriptibles de l'homme selon l'article 2 de la DDHC de 1789 ?",
     options: [
-      "SW50ZXJkaXQgZGFucyB0b3VzIGxlcyBjYXM=",
-      "R2FyYW50aSBwYXIgbGEgQ29uc3RpdHV0aW9u",
-      "QXV0b3Jpc8OpIHNldWxlbWVudCBkYW5zIGxlIHByaXbDqQ==",
-      "UsOpc2VydsOpIGF1eCBmb25jdGlvbm5haXJlcw=="
+      "La liberté, la propriété, la sûreté et la résistance à l'oppression, droits inaliénables de tout être humain",
+      "Le travail, le logement, l'éducation et la santé, droits sociaux garantis par l'État providence",
+      "Le vote, l'éligibilité, la nationalité et la citoyenneté, droits politiques des seuls nationaux",
+      "La vie, la dignité, l'intégrité physique et la liberté de mouvement, droits fondamentaux contemporains"
     ],
-    correctHash: hashAnswer(18, 1),
-    explication: "TGUgZHJvaXQgZGUgZ3LDqHZlIGVzdCBnYXJhbnRpIHBhciBsYSBDb25zdGl0dXRpb24gZnJhbsOnYWlzZSBkZXB1aXMgMTk0Ni4gSWwgcGVybWV0IGF1eCBzYWxhcmnDqXMgZGUgY2Vzc2VyIGxlIHRyYXZhaWwgcG91ciBkw6lmZW5kcmUgbGV1cnMgcmV2ZW5kaWNhdGlvbnMgcHJvZmVzc2lvbm5lbGxlcy4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 18, 0),
+    explication: "L'article 2 de la DDHC définit quatre droits naturels et imprescriptibles : la liberté, la propriété, la sûreté et la résistance à l'oppression."
+  },
   {
     id: 19,
     categorie: "Droits et devoirs",
-    sousCategorie: "Droits fondamentaux",
-    question: "RW4gRnJhbmNlLCBsYSBwcm9wcmnDqXTDqSBwcml2w6llIGVzdCA6",
+    sousCategorie: "Présomption d'innocence",
+    question: "Qu'implique le principe de présomption d'innocence garanti par l'article 9 de la DDHC ?",
     options: [
-      "SW50ZXJkaXRl",
-      "VW4gZHJvaXQgcHJvdMOpZ8OpIHBhciBsYSBsb2k=",
-      "UsOpc2VydsOpZSBhdXggY2l0b3llbnMgZnJhbsOnYWlzIHVuaXF1ZW1lbnQ=",
-      "TGltaXTDqWUgw6AgMTAgYW5z"
+      "Toute personne accusée est considérée innocente jusqu'à ce que sa culpabilité soit légalement établie",
+      "Toute personne arrêtée doit être immédiatement libérée sans possibilité de détention provisoire",
+      "Les juges doivent acquitter systématiquement les accusés en cas de doute sur leur culpabilité",
+      "La police ne peut procéder à aucune arrestation sans une condamnation préalable par un tribunal"
     ],
-    correctHash: hashAnswer(19, 1),
-    explication: "TGUgZHJvaXQgZGUgcHJvcHJpw6l0w6kgZXN0IHVuIGRyb2l0IGZvbmRhbWVudGFsIHByb3TDqWfDqSBwYXIgbGEgRMOpY2xhcmF0aW9uIGRlcyBkcm9pdHMgZGUgbCdob21tZSBldCBkdSBjaXRveWVuIGRlIDE3ODkuIElsIGVzdCBpbnZpb2xhYmxlIGV0IHNhY3LDqS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 19, 0),
+    explication: "La présomption d'innocence signifie que toute personne est considérée innocente jusqu'à ce qu'un tribunal établisse sa culpabilité. C'est un droit fondamental."
+  },
   {
     id: 20,
     categorie: "Droits et devoirs",
-    sousCategorie: "Droits fondamentaux",
-    question: "TGEgbGliZXJ0w6kgZGUgcsOpdW5pb24gc2lnbmlmaWUgcXVlIDo=",
+    sousCategorie: "Secret du vote",
+    question: "Pourquoi le secret du vote est-il garanti et comment est-il assuré lors des scrutins ?",
     options: [
-      "T24gbmUgcGV1dCBqYW1haXMgc2UgcsOpdW5pcg==",
-      "T24gcGV1dCBzZSByw6l1bmlyIGxpYnJlbWVudCBwb3VyIGRlcyBtb3RpZnMgcGFjaWZpcXVlcw==",
-      "SWwgZmF1dCB1bmUgYXV0b3Jpc2F0aW9uIHBvdXIgdG91dGUgcsOpdW5pb24=",
-      "T24gbmUgcGV1dCBzZSByw6l1bmlyIHF1ZSBkYW5zIGRlcyBsaWV1eCBwdWJsaWNz"
+      "Pour garantir la liberté de choix de l'électeur, assuré par l'isoloir et l'enveloppe fermée obligatoires",
+      "Pour permettre aux candidats de vérifier qui a voté pour eux après le dépouillement",
+      "Pour faciliter le comptage des voix par les assesseurs du bureau de vote",
+      "Pour permettre aux électeurs de voter par correspondance sans se déplacer au bureau de vote"
     ],
-    correctHash: hashAnswer(20, 1),
-    explication: "TGEgbGliZXJ0w6kgZGUgcsOpdW5pb24gcGVybWV0IGF1eCBjaXRveWVucyBkZSBzZSByYXNzZW1ibGVyIHBhY2lmaXF1ZW1lbnQuIExlcyByw6l1bmlvbnMgcHJpdsOpZXMgc29udCBsaWJyZXMsIGxlcyByw6l1bmlvbnMgcHVibGlxdWVzIHBldXZlbnQgbsOpY2Vzc2l0ZXIgdW5lIGTDqWNsYXJhdGlvbi4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 20, 0),
+    explication: "Le secret du vote garantit la liberté de choix de l'électeur. Il est assuré par le passage obligatoire par l'isoloir et l'utilisation d'enveloppes fermées."
+  },
   {
     id: 21,
     categorie: "Droits et devoirs",
-    sousCategorie: "Devoirs du citoyen",
-    question: "UG91cnF1b2kgcGFpZS10LW9uIGRlcyBpbXDDtHRzIGVuIEZyYW5jZSA/",
+    sousCategorie: "Devoir de contribution",
+    question: "Qu'implique l'article 13 de la DDHC concernant la contribution commune aux charges publiques ?",
     options: [
-      "UG91ciBlbnJpY2hpciBsJ8OJdGF0",
-      "UG91ciBmaW5hbmNlciBsZXMgc2VydmljZXMgcHVibGljcyBldCBsYSBzb2xpZGFyaXTDqSBuYXRpb25hbGU=",
-      "Qydlc3QgdW5lIHB1bml0aW9u",
-      "UG91ciBwYXllciBsZXMgc2FsYWlyZXMgZGVzIHBvbGl0aWNpZW5zIHVuaXF1ZW1lbnQ="
+      "Chacun doit contribuer aux dépenses publiques selon ses capacités, fondement du système fiscal français",
+      "Seuls les propriétaires fonciers doivent payer des impôts pour financer les services publics",
+      "Les impôts sont facultatifs et chaque citoyen choisit librement de contribuer ou non",
+      "L'État doit assurer la gratuité totale de tous les services sans aucun prélèvement fiscal"
     ],
-    correctHash: hashAnswer(21, 1),
-    explication: "TGVzIGltcMO0dHMgZmluYW5jZW50IGxlcyBzZXJ2aWNlcyBwdWJsaWNzICjDqWR1Y2F0aW9uLCBzYW50w6ksIHPDqWN1cml0w6kuLi4pLCBsZXMgaW5mcmFzdHJ1Y3R1cmVzIGV0IGxhIHNvbGlkYXJpdMOpIG5hdGlvbmFsZSAoYWlkZXMgc29jaWFsZXMsIHJldHJhaXRlcy4uLikuIEMnZXN0IHVuIGRldm9pciBjaXRveWVuLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 21, 0),
+    explication: "L'article 13 de la DDHC fonde l'obligation fiscale : la contribution commune doit être répartie entre tous selon leurs facultés. C'est le fondement de l'impôt."
+  },
   {
     id: 22,
     categorie: "Droits et devoirs",
-    sousCategorie: "Devoirs du citoyen",
-    question: "w4AgcGFydGlyIGRlIHF1ZWwgw6JnZSBwZXV0LW9uIHZvdGVyIGVuIEZyYW5jZSA/",
+    sousCategorie: "Droit à l'éducation",
+    question: "Qui peut bénéficier du droit à l'instruction gratuite dans l'école publique française ?",
     options: [
-      "MTYgYW5z",
-      "MTggYW5z",
-      "MjEgYW5z",
-      "MjUgYW5z"
+      "Tous les enfants résidant en France, quelle que soit leur nationalité ou leur situation administrative",
+      "Uniquement les enfants de nationalité française nés sur le territoire national",
+      "Les enfants de familles payant des impôts en France depuis au moins 5 ans",
+      "Uniquement les enfants dont les parents sont inscrits sur les listes électorales"
     ],
-    correctHash: hashAnswer(22, 1),
-    explication: "RW4gRnJhbmNlLCBsZSBkcm9pdCBkZSB2b3RlIGVzdCBhY2NvcmTDqSDDoCBwYXJ0aXIgZGUgMTggYW5zLiBDJ2VzdCBsJ8OiZ2UgZGUgbGEgbWFqb3JpdMOpIGNpdmlsZSBldCBwb2xpdGlxdWUsIMOpdGFibGkgZGVwdWlzIDE5NzQu"},
+    correctHash: hashAnswer(EXAM_NUMBER, 22, 0),
+    explication: "Tous les enfants résidant en France ont droit à l'instruction gratuite, quelle que soit leur nationalité ou la situation administrative de leurs parents."
+  },
   {
     id: 23,
     categorie: "Droits et devoirs",
-    sousCategorie: "Devoirs du citoyen",
-    question: "TGUgc2VydmljZSBjaXZpcXVlIGVzdCA6",
+    sousCategorie: "Mise en situation recensement",
+    question: "À quel âge devez-vous vous faire recenser auprès de votre mairie et pourquoi est-ce obligatoire ?",
     options: [
-      "T2JsaWdhdG9pcmUgcG91ciB0b3Vz",
-      "VW4gZW5nYWdlbWVudCB2b2xvbnRhaXJlIGF1IHNlcnZpY2UgZGUgbCdpbnTDqXLDqnQgZ8OpbsOpcmFs",
-      "UsOpc2VydsOpIGF1eCBtaWxpdGFpcmVz",
-      "VW5lIHB1bml0aW9uIGp1ZGljaWFpcmU="
+      "À 16 ans, pour être convoqué à la Journée Défense et Citoyenneté et pouvoir passer des examens",
+      "À 18 ans, pour obtenir automatiquement le droit de vote aux élections nationales",
+      "À 21 ans, pour être éligible aux fonctions électives municipales et départementales",
+      "À 25 ans, pour pouvoir demander la nationalité française par naturalisation"
     ],
-    correctHash: hashAnswer(23, 1),
-    explication: "TGUgc2VydmljZSBjaXZpcXVlIGVzdCB1biBlbmdhZ2VtZW50IHZvbG9udGFpcmUgZGUgNiDDoCAxMiBtb2lzIGF1IHNlcnZpY2UgZGUgbCdpbnTDqXLDqnQgZ8OpbsOpcmFsLCBvdXZlcnQgYXV4IGpldW5lcyBkZSAxNiDDoCAyNSBhbnMgKDMwIGFucyBwb3VyIGxlcyBoYW5kaWNhcMOpcyku"},
+    correctHash: hashAnswer(EXAM_NUMBER, 23, 0),
+    explication: "Le recensement est obligatoire à 16 ans. Il permet d'être convoqué à la JDC et est nécessaire pour s'inscrire aux examens (bac, permis de conduire...)."
+  },
   {
     id: 24,
     categorie: "Droits et devoirs",
-    sousCategorie: "Justice",
-    question: "RW4gRnJhbmNlLCBsYSBqdXN0aWNlIGVzdCA6",
+    sousCategorie: "Droit au logement",
+    question: "Le droit au logement est-il reconnu en France et comment peut-on le faire valoir ?",
     options: [
-      "UmVuZHVlIGF1IG5vbSBkdSBQcsOpc2lkZW50",
-      "UmVuZHVlIGF1IG5vbSBkdSBwZXVwbGUgZnJhbsOnYWlz",
-      "UmVuZHVlIGF1IG5vbSBkZSBsJ8OJZ2xpc2U=",
-      "UmVuZHVlIGF1IG5vbSBkZXMganVnZXM="
+      "Oui, c'est un objectif à valeur constitutionnelle ; le DALO permet de saisir une commission en cas de mal-logement",
+      "Non, le logement relève exclusivement de la responsabilité individuelle de chaque citoyen",
+      "Oui, l'État doit fournir gratuitement un logement à toute personne qui en fait la demande",
+      "Non, seuls les propriétaires ont des droits en matière de logement en France"
     ],
-    correctHash: hashAnswer(24, 1),
-    explication: "TGEganVzdGljZSBlc3QgcmVuZHVlIGF1IG5vbSBkdSBwZXVwbGUgZnJhbsOnYWlzLiBDZXR0ZSBmb3JtdWxlIGZpZ3VyZSBzdXIgdG91cyBsZXMganVnZW1lbnRzIGV0IGTDqWNpc2lvbnMgZGUganVzdGljZSwgcmFwcGVsYW50IHF1ZSBsZSBwb3V2b2lyIGp1ZGljaWFpcmUgw6ltYW5lIGR1IHBldXBsZS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 24, 0),
+    explication: "Le droit au logement est un objectif à valeur constitutionnelle. Le Droit au Logement Opposable (DALO) permet aux mal-logés de saisir une commission pour faire valoir ce droit."
+  },
   {
     id: 25,
     categorie: "Droits et devoirs",
-    sousCategorie: "Justice",
-    question: "UXVlbCBlc3QgbGUgcsO0bGUgZCd1biBhdm9jYXQgPw==",
+    sousCategorie: "Obligation de témoigner",
+    question: "Êtes-vous obligé de témoigner si vous êtes cité comme témoin dans une affaire judiciaire ?",
     options: [
-      "SnVnZXIgbGVzIGFjY3Vzw6lz",
-      "RMOpZmVuZHJlIGV0IGNvbnNlaWxsZXIgc29uIGNsaWVudA==",
-      "QXJyw6p0ZXIgbGVzIGNyaW1pbmVscw==",
-      "RMOpY2lkZXIgZGUgbGEgcGVpbmU="
+      "Oui, le refus de témoigner sans motif légitime est une infraction punie par la loi française",
+      "Non, le témoignage est toujours facultatif pour protéger la vie privée des citoyens",
+      "Oui, sauf si vous êtes un proche de l'accusé, auquel cas vous êtes automatiquement dispensé",
+      "Non, seuls les fonctionnaires et agents publics ont l'obligation légale de témoigner"
     ],
-    correctHash: hashAnswer(25, 1),
-    explication: "TCdhdm9jYXQgZMOpZmVuZCBldCBjb25zZWlsbGUgc29uIGNsaWVudCBkYW5zIHNlcyBkw6ltYXJjaGVzIGp1cmlkaXF1ZXMuIElsIGFzc3VyZSBsYSBkw6lmZW5zZSBkZSBzZXMgZHJvaXRzIGRldmFudCBsYSBqdXN0aWNlIGV0IHBldXQgbGUgcmVwcsOpc2VudGVyIGF1IHRyaWJ1bmFsLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 25, 0),
+    explication: "Le témoignage en justice est une obligation civique. Le refus de témoigner ou le faux témoignage sont des infractions punies par la loi."
+  },
   {
     id: 26,
     categorie: "Droits et devoirs",
-    sousCategorie: "Défense nationale",
-    question: "TGUgc2VydmljZSBtaWxpdGFpcmUgZW4gRnJhbmNlIGVzdCA6",
+    sousCategorie: "Mise en situation accident",
+    question: "Vous assistez à un accident de la route avec des blessés. Quelle est votre obligation légale ?",
     options: [
-      "T2JsaWdhdG9pcmUgcG91ciB0b3Vz",
-      "U3VzcGVuZHUgZGVwdWlzIDE5OTcsIHJlbXBsYWPDqSBwYXIgdW5lIEpvdXJuw6llIETDqWZlbnNlIGV0IENpdG95ZW5uZXTDqQ==",
-      "UsOpc2VydsOpIGF1eCB2b2xvbnRhaXJlcyDDqXRyYW5nZXJz",
-      "T2JsaWdhdG9pcmUganVzcXUnw6AgMzAgYW5z"
+      "Protéger, alerter les secours (15, 18, 112), secourir si possible ; la non-assistance est un délit pénal",
+      "Ne rien faire pour ne pas aggraver la situation car seuls les professionnels peuvent intervenir",
+      "Prendre des photos de l'accident pour les assurances puis continuer votre route normalement",
+      "Attendre l'arrivée de la police sans bouger ni parler aux victimes pour préserver les preuves"
     ],
-    correctHash: hashAnswer(26, 1),
-    explication: "TGUgc2VydmljZSBtaWxpdGFpcmUgb2JsaWdhdG9pcmUgYSDDqXTDqSBzdXNwZW5kdSBlbiAxOTk3LiBJbCBlc3QgcmVtcGxhY8OpIHBhciBsYSBKb3VybsOpZSBEw6lmZW5zZSBldCBDaXRveWVubmV0w6kgKEpEQyksIG9ibGlnYXRvaXJlIHBvdXIgdG91cyBsZXMgamV1bmVzIEZyYW7Dp2Fpcy4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 26, 0),
+    explication: "Face à un accident, vous devez protéger les lieux, alerter les secours (15, 18, 112) et secourir si possible. La non-assistance à personne en danger est un délit."
+  },
   {
     id: 27,
     categorie: "Droits et devoirs",
-    sousCategorie: "Droits sociaux",
-    question: "TGEgU8OpY3VyaXTDqSBzb2NpYWxlIGVuIEZyYW5jZSBnYXJhbnRpdCA6",
+    sousCategorie: "Respect environnement",
+    question: "Quelles obligations environnementales découlent de la Charte de l'environnement intégrée à la Constitution ?",
     options: [
-      "VW5pcXVlbWVudCBsZXMgcmV0cmFpdGVz",
-      "TGEgcHJvdGVjdGlvbiBjb250cmUgbGVzIHJpc3F1ZXMgc29jaWF1eCAobWFsYWRpZSwgdmllaWxsZXNzZSwgZmFtaWxsZS4uLik=",
-      "U2V1bGVtZW50IGwnYXNzdXJhbmNlIGNow7RtYWdl",
-      "TGVzIHJldmVudXMgZGVzIGVudHJlcHJpc2Vz"
+      "Le devoir de prendre part à la préservation de l'environnement et de réparer les dommages causés",
+      "L'interdiction totale d'utiliser tout véhicule à moteur thermique depuis 2020",
+      "L'obligation de recycler 100% de ses déchets ménagers sous peine d'amende forfaitaire",
+      "Le paiement d'une taxe carbone personnelle calculée sur le nombre de kilomètres parcourus"
     ],
-    correctHash: hashAnswer(27, 1),
-    explication: "TGEgU8OpY3VyaXTDqSBzb2NpYWxlIHByb3TDqGdlIGNvbnRyZSBsZXMgcmlzcXVlcyBzb2NpYXV4IDogbWFsYWRpZSwgbWF0ZXJuaXTDqSwgaW52YWxpZGl0w6ksIHZpZWlsbGVzc2UsIGTDqWPDqHMsIGFjY2lkZW50cyBkdSB0cmF2YWlsIGV0IG1hbGFkaWVzIHByb2Zlc3Npb25uZWxsZXMuIEVsbGUgY29tcHJlbmQgYXVzc2kgbGVzIHByZXN0YXRpb25zIGZhbWlsaWFsZXMu"},
+    correctHash: hashAnswer(EXAM_NUMBER, 27, 0),
+    explication: "La Charte de l'environnement de 2004, intégrée à la Constitution, impose à chacun de prendre part à la préservation de l'environnement et de réparer les dommages causés."
+  },
   {
     id: 28,
     categorie: "Droits et devoirs",
-    sousCategorie: "Droits sociaux",
-    question: "RW4gRnJhbmNlLCBsJ8OpY29sZSBlc3Qgb2JsaWdhdG9pcmUgOg==",
+    sousCategorie: "Liberté de manifestation",
+    question: "Le droit de manifester est-il garanti en France et quelles sont les obligations à respecter ?",
     options: [
-      "RGUgMyDDoCAxNiBhbnM=",
-      "RGUgNiDDoCAxNCBhbnM=",
-      "RGUgMyDDoCAxOCBhbnM=",
-      "U2V1bGVtZW50IGp1c3F1J8OgIDEyIGFucw=="
+      "Oui, c'est une liberté fondamentale mais les manifestations sur la voie publique doivent être déclarées en préfecture",
+      "Non, toute manifestation est interdite car elle trouble l'ordre public et la circulation",
+      "Oui, aucune formalité n'est requise car la liberté de manifester est absolue et sans restriction",
+      "Oui, mais uniquement pour les syndicats et partis politiques officiellement reconnus par l'État"
     ],
-    correctHash: hashAnswer(28, 0),
-    explication: "TCdpbnN0cnVjdGlvbiBlc3Qgb2JsaWdhdG9pcmUgZW4gRnJhbmNlIGRlIDMgw6AgMTYgYW5zIGRlcHVpcyAyMDE5LiBFbGxlIHBldXQgw6p0cmUgZGlzcGVuc8OpZSDDoCBsJ8OpY29sZSBwdWJsaXF1ZSwgcHJpdsOpZSBvdSBkYW5zIGxhIGZhbWlsbGUgKGluc3RydWN0aW9uIGVuIGZhbWlsbGUpLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 28, 0),
+    explication: "Le droit de manifester est une liberté fondamentale. Les manifestations sur la voie publique doivent être déclarées en préfecture au moins 3 jours avant."
+  },
 
-  // ==================== 4. HISTOIRE, GÉOGRAPHIE, CULTURE (8 questions) ====================
+  // ==================== 4. HISTOIRE, GÉOGRAPHIE ET CULTURE (8 questions) ====================
   
   {
     id: 29,
-    categorie: "Histoire, géographie et culture de la France",
-    sousCategorie: "Grandes dates",
-    question: "UXVlIGNvbW3DqW1vcmUtdC1vbiBsZSAxNCBqdWlsbGV0ID8=",
+    categorie: "Histoire, géographie et culture",
+    sousCategorie: "République et ses formes",
+    question: "Combien de Républiques la France a-t-elle connues depuis 1792 et laquelle est actuellement en vigueur ?",
     options: [
-      "TGEgZmluIGRlIGxhIFNlY29uZGUgR3VlcnJlIG1vbmRpYWxl",
-      "TGEgcHJpc2UgZGUgbGEgQmFzdGlsbGUgZW4gMTc4OQ==",
-      "TGEgc2lnbmF0dXJlIGR1IHRyYWl0w6kgZGUgVmVyc2FpbGxlcw==",
-      "TGEgbGliw6lyYXRpb24gZGUgUGFyaXM="
+      "Cinq Républiques : la Ve République, instaurée en 1958, est actuellement en vigueur sous forme présidentielle",
+      "Trois Républiques : la IIIe République, la plus longue, est toujours en application depuis 1870",
+      "Une seule République continue depuis 1789 avec différentes constitutions successives",
+      "Sept Républiques, la VIIe ayant été instaurée lors de la réforme constitutionnelle de 2008"
     ],
-    correctHash: hashAnswer(29, 1),
-    explication: "TGUgMTQganVpbGxldCBjb21tw6ltb3JlIGxhIHByaXNlIGRlIGxhIEJhc3RpbGxlIGxlIDE0IGp1aWxsZXQgMTc4OSwgw6l2w6luZW1lbnQgc3ltYm9saXF1ZSBkdSBkw6lidXQgZGUgbGEgUsOpdm9sdXRpb24gZnJhbsOnYWlzZS4gQydlc3QgbGEgZsOqdGUgbmF0aW9uYWxlLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 29, 0),
+    explication: "La France a connu cinq Républiques. La Ve République a été instaurée en 1958 par le général de Gaulle. Elle se caractérise par un régime semi-présidentiel."
+  },
   {
     id: 30,
-    categorie: "Histoire, géographie et culture de la France",
-    sousCategorie: "Grandes dates",
-    question: "UXVlbCDDqXbDqW5lbWVudCBtYXJxdWUgbGUgZMOpYnV0IGRlIGxhIFZlIFLDqXB1YmxpcXVlID8=",
+    categorie: "Histoire, géographie et culture",
+    sousCategorie: "Seconde Guerre mondiale",
+    question: "Quels événements majeurs ont marqué la participation de la France à la Seconde Guerre mondiale ?",
     options: [
-      "TGEgUsOpdm9sdXRpb24gZnJhbsOnYWlzZQ==",
-      "TCfDqWxlY3Rpb24gZHUgZ8OpbsOpcmFsIGRlIEdhdWxsZSBldCBsYSBDb25zdGl0dXRpb24gZGUgMTk1OA==",
-      "TGEgZmluIGRlIGxhIFByZW1pw6hyZSBHdWVycmUgbW9uZGlhbGU=",
-      "TGUgdHJhaXTDqSBkZSBSb21l"
+      "La défaite de 1940, l'Occupation, la Résistance, la France libre de De Gaulle et la Libération en 1944",
+      "La victoire rapide sur l'Allemagne en 1939, l'occupation de Berlin et la capitulation allemande en 1940",
+      "La neutralité totale de la France pendant le conflit et son rôle de médiateur entre les belligérants",
+      "L'alliance avec l'Allemagne nazie de 1939 à 1943 puis le retournement d'alliance après Stalingrad"
     ],
-    correctHash: hashAnswer(30, 1),
-    explication: "TGEgVmUgUsOpcHVibGlxdWUgZMOpYnV0ZSBlbiAxOTU4IGF2ZWMgbCfDqWxlY3Rpb24gZHUgZ8OpbsOpcmFsIGRlIEdhdWxsZSBldCBsJ2Fkb3B0aW9uIGQndW5lIG5vdXZlbGxlIENvbnN0aXR1dGlvbiwgcXVpIHJlbmZvcmNlIGxlcyBwb3V2b2lycyBkdSBQcsOpc2lkZW50Lg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 30, 0),
+    explication: "La France a été vaincue en 1940 et occupée. La Résistance intérieure et la France libre de De Gaulle ont contribué à la Libération en 1944."
+  },
   {
     id: 31,
-    categorie: "Histoire, géographie et culture de la France",
-    sousCategorie: "Grandes dates",
-    question: "UXVhbmQgbGVzIGZlbW1lcyBvbnQtZWxsZXMgb2J0ZW51IGxlIGRyb2l0IGRlIHZvdGUgZW4gRnJhbmNlID8=",
+    categorie: "Histoire, géographie et culture",
+    sousCategorie: "Décolonisation",
+    question: "Comment la France a-t-elle procédé à la décolonisation de son empire colonial après 1945 ?",
     options: [
-      "MTc4OQ==",
-      "MTg0OA==",
-      "MTk0NA==",
-      "MTk3NA=="
+      "Par des indépendances négociées ou des guerres (Indochine 1954, Algérie 1962), avec maintien de liens avec les anciennes colonies",
+      "Par un transfert pacifique et immédiat de souveraineté à toutes les colonies dès 1945",
+      "Par le maintien de tous les territoires coloniaux comme départements d'outre-mer français",
+      "Par la vente des colonies aux États-Unis et à la Grande-Bretagne contre des compensations financières"
     ],
-    correctHash: hashAnswer(31, 2),
-    explication: "TGVzIGZlbW1lcyBvbnQgb2J0ZW51IGxlIGRyb2l0IGRlIHZvdGUgZW4gRnJhbmNlIGVuIDE5NDQsIGdyw6JjZSDDoCB1bmUgb3Jkb25uYW5jZSBkdSBnw6luw6lyYWwgZGUgR2F1bGxlLiBFbGxlcyBvbnQgdm90w6kgcG91ciBsYSBwcmVtacOocmUgZm9pcyBlbiAxOTQ1Lg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 31, 0),
+    explication: "La décolonisation s'est faite par des indépendances négociées ou des guerres (Indochine, Algérie). La France conserve des liens étroits avec ses anciennes colonies."
+  },
   {
     id: 32,
-    categorie: "Histoire, géographie et culture de la France",
-    sousCategorie: "Géographie",
-    question: "UXVlbGxlIGVzdCBsYSBwbHVzIGdyYW5kZSB2aWxsZSBkZSBGcmFuY2UgPw==",
+    categorie: "Histoire, géographie et culture",
+    sousCategorie: "Hexagone",
+    question: "Pourquoi la France métropolitaine est-elle surnommée l'Hexagone et quelle est sa superficie ?",
     options: [
-      "TWFyc2VpbGxl",
-      "THlvbg==",
-      "UGFyaXM=",
-      "VG91bG91c2U="
+      "En raison de sa forme géométrique à six côtés ; elle couvre environ 551 000 km² pour 68 millions d'habitants",
+      "En raison du nombre de ses régions métropolitaines fixé à six par la Constitution de 1958",
+      "En référence aux six pays frontaliers avec lesquels elle partage des frontières terrestres",
+      "En hommage aux six rois qui ont unifié le territoire français au cours du Moyen Âge"
     ],
-    correctHash: hashAnswer(32, 2),
-    explication: "UGFyaXMgZXN0IGxhIGNhcGl0YWxlIGV0IGxhIHBsdXMgZ3JhbmRlIHZpbGxlIGRlIEZyYW5jZSBhdmVjIHBsdXMgZGUgMiBtaWxsaW9ucyBkJ2hhYml0YW50cyAoMTIgbWlsbGlvbnMgZGFucyBsJ2FnZ2xvbcOpcmF0aW9uKS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 32, 0),
+    explication: "La France métropolitaine est appelée l'Hexagone en raison de sa forme géométrique. Elle couvre environ 551 000 km² et compte environ 68 millions d'habitants."
+  },
   {
     id: 33,
-    categorie: "Histoire, géographie et culture de la France",
-    sousCategorie: "Géographie",
-    question: "Q29tYmllbiBkZSBwYXlzIHBhcnRhZ2VudCB1bmUgZnJvbnRpw6hyZSB0ZXJyZXN0cmUgYXZlYyBsYSBGcmFuY2UgbcOpdHJvcG9saXRhaW5lID8=",
+    categorie: "Histoire, géographie et culture",
+    sousCategorie: "Pays frontaliers",
+    question: "Avec quels pays la France métropolitaine partage-t-elle une frontière terrestre ?",
     options: [
-      "NA==",
-      "Ng==",
-      "OA==",
-      "MTA="
+      "Belgique, Luxembourg, Allemagne, Suisse, Italie, Monaco, Espagne et Andorre (8 pays)",
+      "Uniquement l'Allemagne, l'Espagne et l'Italie, les trois grands voisins européens",
+      "Belgique, Pays-Bas, Allemagne, Autriche et Suisse au nord et à l'est du territoire",
+      "Espagne, Portugal, Italie et Grèce au sud, pays méditerranéens de l'Union européenne"
     ],
-    correctHash: hashAnswer(33, 2),
-    explication: "TGEgRnJhbmNlIG3DqXRyb3BvbGl0YWluZSBwYXJ0YWdlIHNlcyBmcm9udGnDqHJlcyBhdmVjIDggcGF5cyA6IEVzcGFnbmUsIEl0YWxpZSwgU3Vpc3NlLCBBbGxlbWFnbmUsIEx1eGVtYm91cmcsIEJlbGdpcXVlLCBNb25hY28gZXQgQW5kb3JyZS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 33, 0),
+    explication: "La France métropolitaine a des frontières terrestres avec 8 pays : Belgique, Luxembourg, Allemagne, Suisse, Italie, Monaco, Espagne et Andorre."
+  },
   {
     id: 34,
-    categorie: "Histoire, géographie et culture de la France",
-    sousCategorie: "Culture et patrimoine",
-    question: "UXVlbCBtb251bWVudCBlc3QgbGUgc3ltYm9sZSBkZSBQYXJpcyA/",
+    categorie: "Histoire, géographie et culture",
+    sousCategorie: "Francophonie",
+    question: "Qu'est-ce que la Francophonie et quel est son rôle dans le monde ?",
     options: [
-      "TGUgTG91dnJl",
-      "Tm90cmUtRGFtZQ==",
-      "TGEgdG91ciBFaWZmZWw=",
-      "TCdBcmMgZGUgVHJpb21waGU="
+      "L'ensemble des pays et régions où le français est parlé, représentant 321 millions de locuteurs dans le monde",
+      "Un mouvement politique visant à imposer la langue française comme langue officielle de l'ONU",
+      "Une organisation militaire regroupant les anciennes colonies françaises pour leur défense commune",
+      "Un programme économique d'aide au développement financé exclusivement par la France"
     ],
-    correctHash: hashAnswer(34, 2),
-    explication: "TGEgdG91ciBFaWZmZWwgZXN0IGxlIG1vbnVtZW50IGxlIHBsdXMgZW1ibMOpbWF0aXF1ZSBkZSBQYXJpcy4gQ29uc3RydWl0ZSBwYXIgR3VzdGF2ZSBFaWZmZWwgcG91ciBsJ0V4cG9zaXRpb24gdW5pdmVyc2VsbGUgZGUgMTg4OSwgZWxsZSBtZXN1cmUgMzMwIG3DqHRyZXMu"},
+    correctHash: hashAnswer(EXAM_NUMBER, 34, 0),
+    explication: "La Francophonie regroupe les pays et régions où le français est parlé. L'Organisation internationale de la Francophonie (OIF) promeut la langue française et les valeurs qu'elle véhicule."
+  },
   {
     id: 35,
-    categorie: "Histoire, géographie et culture de la France",
-    sousCategorie: "Culture et patrimoine",
-    question: "UXVlbCBtdXPDqWUgcGFyaXNpZW4gZXN0IGxlIHBsdXMgdmlzaXTDqSBhdSBtb25kZSA/",
+    categorie: "Histoire, géographie et culture",
+    sousCategorie: "Gastronomie UNESCO",
+    question: "Quel aspect de la culture française a été inscrit au patrimoine culturel immatériel de l'UNESCO en 2010 ?",
     options: [
-      "TGUgbXVzw6llIGQnT3JzYXk=",
-      "TGUgQ2VudHJlIFBvbXBpZG91",
-      "TGUgbXVzw6llIGR1IExvdXZyZQ==",
-      "TGUgbXVzw6llIFJvZGlu"
+      "Le repas gastronomique des Français, avec ses rituels et sa convivialité autour de la table",
+      "La Tour Eiffel comme symbole de l'ingénierie française et du génie architectural",
+      "La langue française comme patrimoine linguistique universel de l'humanité",
+      "Le système éducatif français comme modèle d'enseignement républicain laïque"
     ],
-    correctHash: hashAnswer(35, 2),
-    explication: "TGUgbXVzw6llIGR1IExvdXZyZSBlc3QgbGUgbXVzw6llIGxlIHBsdXMgdmlzaXTDqSBhdSBtb25kZSBhdmVjIHByw6hzIGRlIDEwIG1pbGxpb25zIGRlIHZpc2l0ZXVycyBwYXIgYW4uIElsIGFicml0ZSBub3RhbW1lbnQgTGEgSm9jb25kZSBkZSBMw6lvbmFyZCBkZSBWaW5jaS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 35, 0),
+    explication: "Le repas gastronomique des Français a été inscrit au patrimoine culturel immatériel de l'UNESCO en 2010. Il célèbre l'art de bien manger et la convivialité."
+  },
   {
     id: 36,
-    categorie: "Histoire, géographie et culture de la France",
-    sousCategorie: "Personnalités",
-    question: "UXVpIMOpdGFpdCBWaWN0b3IgSHVnbyA/",
+    categorie: "Histoire, géographie et culture",
+    sousCategorie: "Grandes figures lettres",
+    question: "Quel philosophe des Lumières, auteur du Contrat social, a influencé les principes de la Révolution française ?",
     options: [
-      "VW4gcGVpbnRyZSBpbXByZXNzaW9ubmlzdGU=",
-      "VW4gw6ljcml2YWluIGV0IHBvw6h0ZSBmcmFuw6dhaXMgbWFqZXVy",
-      "VW4gZ8OpbsOpcmFsIGRlIGxhIFLDqXZvbHV0aW9u",
-      "VW4gc2NpZW50aWZpcXVl"
+      "Jean-Jacques Rousseau, dont les idées sur la souveraineté populaire ont inspiré la Déclaration de 1789",
+      "René Descartes, fondateur du rationalisme moderne et auteur du Discours de la méthode",
+      "Blaise Pascal, mathématicien et philosophe auteur des Pensées sur la condition humaine",
+      "Michel de Montaigne, humaniste de la Renaissance auteur des Essais sur la nature humaine"
     ],
-    correctHash: hashAnswer(36, 1),
-    explication: "VmljdG9yIEh1Z28gKDE4MDItMTg4NSkgZXN0IGwndW4gZGVzIHBsdXMgZ3JhbmRzIMOpY3JpdmFpbnMgZnJhbsOnYWlzLiBJbCBlc3QgbCdhdXRldXIgZGVzIE1pc8OpcmFibGVzLCBkZSBOb3RyZS1EYW1lIGRlIFBhcmlzIGV0IGRlIG5vbWJyZXV4IHBvw6htZXMgZW5nYWfDqXMu"},
+    correctHash: hashAnswer(EXAM_NUMBER, 36, 0),
+    explication: "Jean-Jacques Rousseau (1712-1778), philosophe des Lumières, a influencé la Révolution française avec ses idées sur la souveraineté populaire et le contrat social."
+  },
 
-  // ==================== 5. VIVRE EN FRANCE (4 questions) ====================
+  // ==================== 5. VIVRE DANS LA SOCIÉTÉ FRANÇAISE (4 questions) ====================
   
   {
     id: 37,
-    categorie: "Vivre en France",
-    sousCategorie: "Vie quotidienne",
-    question: "TGUgbnVtw6lybyBkJ3VyZ2VuY2UgZXVyb3DDqWVuIGVzdCBsZSA6",
+    categorie: "Vivre dans la société française",
+    sousCategorie: "Pôle emploi",
+    question: "Quel organisme accompagne les demandeurs d'emploi dans leur recherche de travail et gère l'assurance chômage ?",
     options: [
-      "MTU=",
-      "MTc=",
-      "MTg=",
-      "MTEy"
+      "France Travail (anciennement Pôle emploi), service public de l'emploi issu de la fusion ANPE-Assedic en 2008",
+      "La Caisse d'Allocations Familiales (CAF), qui gère toutes les prestations sociales françaises",
+      "L'Inspection du travail, service de contrôle du respect du droit du travail dans les entreprises",
+      "La Caisse Primaire d'Assurance Maladie (CPAM), branche maladie de la Sécurité sociale"
     ],
-    correctHash: hashAnswer(37, 3),
-    explication: "TGUgMTEyIGVzdCBsZSBudW3DqXJvIGQndXJnZW5jZSBldXJvcMOpZW4gZ3JhdHVpdCwgYWNjZXNzaWJsZSBkYW5zIHRvdXMgbGVzIHBheXMgZGUgbCdVbmlvbiBldXJvcMOpZW5uZS4gRW4gRnJhbmNlLCBpbCBleGlzdGUgYXVzc2kgbGUgMTUgKFNBTVUpLCAxNyAocG9saWNlKSBldCAxOCAocG9tcGllcnMpLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 37, 0),
+    explication: "France Travail (ex-Pôle emploi) accompagne les demandeurs d'emploi, gère l'inscription et l'indemnisation chômage, et aide à la recherche d'emploi."
+  },
   {
     id: 38,
-    categorie: "Vivre en France",
-    sousCategorie: "Vie quotidienne",
-    question: "UG91ciBsb3VlciB1biBsb2dlbWVudCBlbiBGcmFuY2UsIG9uIGRlbWFuZGUgZ8OpbsOpcmFsZW1lbnQgOg==",
+    categorie: "Vivre dans la société française",
+    sousCategorie: "Aide juridictionnelle",
+    question: "Qu'est-ce que l'aide juridictionnelle et qui peut en bénéficier ?",
     options: [
-      "VW5pcXVlbWVudCBkZSBsJ2FyZ2VudA==",
-      "VW4gZG9zc2llciBhdmVjIGp1c3RpZmljYXRpZnMgZGUgcmV2ZW51cyBldCBkJ2lkZW50aXTDqQ==",
-      "UmllbiBkdSB0b3V0",
-      "VW5lIGF1dG9yaXNhdGlvbiBkdSBtYWlyZQ=="
+      "Une prise en charge totale ou partielle des frais de justice pour les personnes aux revenus modestes",
+      "Un service de conseil juridique gratuit réservé exclusivement aux citoyens français",
+      "Une assurance obligatoire couvrant tous les frais de justice pour l'ensemble de la population",
+      "Un fonds d'indemnisation des victimes d'erreurs judiciaires géré par le ministère de la Justice"
     ],
-    correctHash: hashAnswer(38, 1),
-    explication: "UG91ciBsb3VlciB1biBsb2dlbWVudCwgaWwgZmF1dCBjb25zdGl0dWVyIHVuIGRvc3NpZXIgY29tcHJlbmFudCBwacOoY2UgZCdpZGVudGl0w6ksIGp1c3RpZmljYXRpZnMgZGUgcmV2ZW51cywgZ2FyYW50aWVzLi4uIExlIHByb3ByacOpdGFpcmUgdsOpcmlmaWUgbGEgc29sdmFiaWxpdMOpIGR1IGxvY2F0YWlyZS4="},
+    correctHash: hashAnswer(EXAM_NUMBER, 38, 0),
+    explication: "L'aide juridictionnelle permet aux personnes aux revenus modestes de bénéficier d'une prise en charge totale ou partielle des frais de justice (avocat, huissier...)."
+  },
   {
     id: 39,
-    categorie: "Vivre en France",
-    sousCategorie: "Vie citoyenne",
-    question: "RGFucyB1biBpbW1ldWJsZSwgbGVzIGTDqWNpc2lvbnMgY29sbGVjdGl2ZXMgc29udCBwcmlzZXMgOg==",
+    categorie: "Vivre dans la société française",
+    sousCategorie: "Transport public",
+    question: "Quel titre de transport permet de circuler librement dans les transports en commun d'Île-de-France ?",
     options: [
-      "UGFyIGxlIHByb3ByacOpdGFpcmUgdW5pcXVlbWVudA==",
-      "RW4gYXNzZW1ibMOpZSBnw6luw6lyYWxlIGRlcyBjb3Byb3ByacOpdGFpcmVz",
-      "UGFyIGxlIG1haXJl",
-      "UGFyIGxhIHBvbGljZQ=="
+      "Le pass Navigo, carte nominative permettant l'accès à tous les transports franciliens (métro, bus, RER, tramway)",
+      "Le ticket de métro unitaire valable uniquement pour un trajet dans le métro parisien intra-muros",
+      "La carte Vitale, carte d'assurance maladie utilisée également pour les transports publics",
+      "Le permis de conduire, seul document permettant d'accéder aux transports en commun en France"
     ],
-    correctHash: hashAnswer(39, 1),
-    explication: "RGFucyB1bmUgY29wcm9wcmnDqXTDqSwgbGVzIGTDqWNpc2lvbnMgaW1wb3J0YW50ZXMgKHRyYXZhdXgsIGNoYXJnZXMuLi4pIHNvbnQgcHJpc2VzIGVuIGFzc2VtYmzDqWUgZ8OpbsOpcmFsZSBvw7kgdG91cyBsZXMgY29wcm9wcmnDqXRhaXJlcyBwZXV2ZW50IHZvdGVyLg=="},
+    correctHash: hashAnswer(EXAM_NUMBER, 39, 0),
+    explication: "Le pass Navigo est une carte nominative permettant de circuler dans tous les transports en commun d'Île-de-France : métro, bus, RER, tramway."
+  },
   {
     id: 40,
-    categorie: "Vivre en France",
-    sousCategorie: "Santé",
-    question: "UG91ciBjb25zdWx0ZXIgdW4gbcOpZGVjaW4gZW4gRnJhbmNlLCBpbCBmYXV0IDo=",
+    categorie: "Vivre dans la société française",
+    sousCategorie: "Compte bancaire",
+    question: "Le droit au compte bancaire est-il garanti en France et comment peut-on le faire valoir ?",
     options: [
-      "w4p0cmUgcmljaGUgb2JsaWdhdG9pcmVtZW50",
-      "QXZvaXIgdW5lIGNhcnRlIFZpdGFsZSBvdSDDqnRyZSBhZmZpbGnDqSDDoCBsYSBTw6ljdXJpdMOpIHNvY2lhbGU=",
-      "QXZvaXIgcGx1cyBkZSA0MCBhbnM=",
-      "T2J0ZW5pciBsJ2F1dG9yaXNhdGlvbiBkZSBsYSBtYWlyaWU="
+      "Oui, toute personne peut demander à la Banque de France de désigner une banque obligée de lui ouvrir un compte",
+      "Non, les banques sont libres de refuser d'ouvrir un compte sans avoir à justifier leur décision",
+      "Oui, mais uniquement pour les citoyens français disposant d'un emploi stable et déclaré",
+      "Non, l'ouverture d'un compte bancaire dépend exclusivement du bon vouloir des établissements bancaires"
     ],
-    correctHash: hashAnswer(40, 1),
-    explication: "UG91ciBiw6luw6lmaWNpZXIgZHUgcmVtYm91cnNlbWVudCBkZXMgc29pbnMsIGlsIGZhdXQgw6p0cmUgYWZmaWxpw6kgw6AgbGEgU8OpY3VyaXTDqSBzb2NpYWxlIGV0IGRpc3Bvc2VyIGQndW5lIGNhcnRlIFZpdGFsZS4gTGVzIHBlcnNvbm5lcyBzYW5zIHJlc3NvdXJjZXMgcGV1dmVudCBiw6luw6lmaWNpZXIgZGUgbCdhaWRlIG3DqWRpY2FsZSBkJ8OJdGF0Lg=="}
-];
-
-// Fonction pour vérifier une réponse
-export function verifyAnswerExam3(questionId: number, userAnswerIndex: number, correctHash: string): boolean {
-  return hashAnswer(questionId, userAnswerIndex) === correctHash;
-}
-
-// Fonction pour trouver l'index correct à partir du hash
-export function findCorrectIndexExam3(questionId: number, correctHash: string): number {
-  for (let i = 0; i < 4; i++) {
-    if (hashAnswer(questionId, i) === correctHash) {
-      return i;
-    }
+    correctHash: hashAnswer(EXAM_NUMBER, 40, 0),
+    explication: "Le droit au compte est garanti. En cas de refus d'ouverture par une banque, vous pouvez saisir la Banque de France qui désignera un établissement obligé de vous ouvrir un compte."
   }
-  return 0;
-}
+];
 
 export const EXAMEN_3: ExamenBlanc = {
   numero: 3,
   titre: "Examen blanc #3",
   description: "40 questions en conditions réelles d'examen",
-  questions: questions.map(q => decodeQuestion(q)),
+  questions: questions,
   dureeMinutes: 45,
   totalQuestions: 40
 };

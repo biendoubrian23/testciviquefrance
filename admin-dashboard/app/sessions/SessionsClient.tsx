@@ -1,8 +1,8 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, useEffect, useCallback } from 'react';
 import { StatCard, Card, Badge, DataTable, ProgressBar } from '@/components/ui';
-import { FileText, Target, TrendingUp, BookOpen, Filter } from 'lucide-react';
+import { FileText, Target, TrendingUp, BookOpen, Filter, RefreshCw } from 'lucide-react';
 import { UserFilter } from '@/lib/actions/examens';
 
 interface SessionWithDetails {
@@ -48,6 +48,27 @@ export function SessionsClient({ initialStats, initialSessions, initialCategoryS
   const [categoryStats, setCategoryStats] = useState(initialCategoryStats);
   const [filter, setFilter] = useState<UserFilter>('all');
   const [isPending, startTransition] = useTransition();
+  const [lastUpdate, setLastUpdate] = useState(new Date());
+
+  // Fonction de rafraîchissement des données
+  const refreshData = useCallback(async () => {
+    try {
+      const response = await fetch(`/api/sessions?filter=${filter}`);
+      const data = await response.json();
+      if (data.stats) setStats(data.stats);
+      if (data.sessions) setSessions(data.sessions);
+      if (data.categoryStats) setCategoryStats(data.categoryStats);
+      setLastUpdate(new Date());
+    } catch (error) {
+      console.error('Erreur rafraîchissement:', error);
+    }
+  }, [filter]);
+
+  // Rafraîchissement automatique toutes les 30 secondes
+  useEffect(() => {
+    const interval = setInterval(refreshData, 30000);
+    return () => clearInterval(interval);
+  }, [refreshData]);
 
   const handleFilterChange = (newFilter: UserFilter) => {
     setFilter(newFilter);
@@ -57,6 +78,7 @@ export function SessionsClient({ initialStats, initialSessions, initialCategoryS
       setStats(data.stats);
       setSessions(data.sessions);
       setCategoryStats(data.categoryStats);
+      setLastUpdate(new Date());
     });
   };
 
@@ -140,7 +162,7 @@ export function SessionsClient({ initialStats, initialSessions, initialCategoryS
   return (
     <div className={isPending ? 'opacity-60' : ''}>
       {/* Filtre */}
-      <div className="mb-6 flex items-center gap-4 p-4 bg-gray-50 border border-gray-200">
+      <div className="mb-6 flex flex-wrap items-center gap-4 p-4 bg-gray-50 border border-gray-200">
         <Filter className="w-5 h-5 text-text-muted" />
         <span className="text-sm font-medium">Filtrer par type d'utilisateur:</span>
         <select
@@ -153,9 +175,22 @@ export function SessionsClient({ initialStats, initialSessions, initialCategoryS
           <option value="standard">Standard</option>
           <option value="gratuit">Gratuit</option>
         </select>
-        <span className="text-sm text-text-muted ml-2">
-          {filterLabel[filter]}
-        </span>
+        <div className="ml-auto flex items-center gap-3">
+          <span className="text-sm text-text-muted">
+            {filterLabel[filter]}
+          </span>
+          <button
+            onClick={refreshData}
+            className="flex items-center gap-1 px-3 py-1 text-xs bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+            title="Rafraîchir les données"
+          >
+            <RefreshCw className="w-3 h-3" />
+            Actualiser
+          </button>
+          <span className="text-xs text-text-muted">
+            {lastUpdate.toLocaleTimeString('fr-FR')}
+          </span>
+        </div>
       </div>
 
       {/* Stats */}
@@ -181,15 +216,15 @@ export function SessionsClient({ initialStats, initialSessions, initialCategoryS
       </div>
 
       {/* Stats par categorie */}
-      <Card 
-        title="Performance par categorie" 
+      <Card
+        title="Performance par categorie"
         subtitle="Statistiques de sessions par theme"
         className="mb-8"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {categoryStats.map((cat) => (
-            <div 
-              key={cat.id} 
+            <div
+              key={cat.id}
               className="p-4 border border-gray-200"
               style={{ borderLeftWidth: '4px', borderLeftColor: cat.color }}
             >
@@ -208,8 +243,8 @@ export function SessionsClient({ initialStats, initialSessions, initialCategoryS
                 </div>
               </div>
               <div className="mt-3">
-                <ProgressBar 
-                  value={cat.avgScore} 
+                <ProgressBar
+                  value={cat.avgScore}
                   max={100}
                   size="sm"
                   variant={cat.avgScore >= 70 ? 'success' : cat.avgScore >= 50 ? 'warning' : 'error'}

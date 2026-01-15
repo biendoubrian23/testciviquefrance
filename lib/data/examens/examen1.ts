@@ -6,8 +6,10 @@
 // 4. Histoire/géographie/culture (8 questions)
 // 5. Vivre en France (4 questions)
 // ==========================================================================
+// VERSION NON ENCODÉE - Questions difficiles niveau examen civique
+// ==========================================================================
 
-import { ExamenBlanc, Question, decodeQuestion } from './types';
+import { ExamenBlanc, Question } from './types';
 
 const EXAM_NUMBER = 1;
 
@@ -28,535 +30,575 @@ const questions: Question[] = [
   {
     id: 1,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Devise et symboles",
-    question: "UXVlbGxlIGVzdCBsYSBkZXZpc2UgZGUgbGEgUsOpcHVibGlxdWUgZnJhbsOnYWlzZSA/",
+    sousCategorie: "Constitution",
+    question: "Quel article de la Constitution de 1958 définit les caractéristiques fondamentales de la République française comme indivisible, laïque, démocratique et sociale ?",
     options: [
-      "VW5pdMOpLCBGb3JjZSwgUHJvZ3LDqHM=",
-      "TGliZXJ0w6ksIMOJZ2FsaXTDqSwgRnJhdGVybml0w6k=",
-      "VHJhdmFpbCwgRmFtaWxsZSwgUGF0cmll",
-      "SG9ubmV1ciwgUGF0cmllLCBEZXZvaXI="
+      "L'article 1er de la Constitution de 1958",
+      "L'article 2 de la Constitution de 1958",
+      "L'article 89 de la Constitution de 1958",
+      "Le Préambule de la Constitution de 1958"
     ],
-    correctHash: hashAnswer(1, 1),
-    explication: "TGEgZGV2aXNlIGRlIGxhIFLDqXB1YmxpcXVlIGZyYW7Dp2Fpc2UgZXN0IMKrIExpYmVydMOpLCDDiWdhbGl0w6ksIEZyYXRlcm5pdMOpIMK7LiBFbGxlIGZpZ3VyZSBkYW5zIGwnYXJ0aWNsZSAyIGRlIGxhIENvbnN0aXR1dGlvbiBkZSAxOTU4IGV0IGVzdCBpbnNjcml0ZSBzdXIgbGVzIGZyb250b25zIGRlcyBiw6J0aW1lbnRzIHB1YmxpY3Mu"},
+    correctHash: hashAnswer(1, 0),
+    explication: "L'article 1er de la Constitution de 1958 affirme que « La France est une République indivisible, laïque, démocratique et sociale ». C'est le fondement de l'identité constitutionnelle française."
+  },
   {
     id: 2,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Devise et symboles",
-    question: "UXVlbGxlcyBzb250IGxlcyBjb3VsZXVycyBkdSBkcmFwZWF1IGZyYW7Dp2FpcywgZGUgZ2F1Y2hlIMOgIGRyb2l0ZSA/",
+    sousCategorie: "Laïcité",
+    question: "Quelle loi fondamentale a établi la séparation des Églises et de l'État, garantissant la liberté de conscience et le libre exercice des cultes ?",
     options: [
-      "Um91Z2UsIGJsYW5jLCBibGV1",
-      "QmxldSwgcm91Z2UsIGJsYW5j",
-      "QmxldSwgYmxhbmMsIHJvdWdl",
-      "QmxhbmMsIGJsZXUsIHJvdWdl"
+      "La loi du 9 décembre 1905 relative à la séparation des Églises et de l'État",
+      "La loi du 28 mars 1882 sur l'enseignement primaire obligatoire et laïque",
+      "La loi du 1er juillet 1901 relative au contrat d'association",
+      "La loi du 29 juillet 1881 sur la liberté de la presse"
     ],
-    correctHash: hashAnswer(2, 2),
-    explication: "TGUgZHJhcGVhdSBmcmFuw6dhaXMgZXN0IGNvbXBvc8OpIGRlIHRyb2lzIGJhbmRlcyB2ZXJ0aWNhbGVzIDogYmxldSAoY8O0dMOpIG3DonQpLCBibGFuYyAoY2VudHJlKSBldCByb3VnZSAoY8O0dMOpIGZsb3R0YW50KS4gSWwgZXN0IGxlIHN5bWJvbGUgZGUgbGEgUsOpcHVibGlxdWUgZGVwdWlzIDE3OTQu"},
+    correctHash: hashAnswer(2, 0),
+    explication: "La loi du 9 décembre 1905 établit la séparation des Églises et de l'État. Elle garantit la liberté de conscience et le libre exercice des cultes, tout en affirmant que la République ne reconnaît, ne salarie ni ne subventionne aucun culte."
+  },
   {
     id: 3,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Devise et symboles",
-    question: "UXVlbCBlc3QgbCdoeW1uZSBuYXRpb25hbCBmcmFuw6dhaXMgPw==",
+    sousCategorie: "Bloc de constitutionnalité",
+    question: "Qu'est-ce que le « bloc de constitutionnalité » reconnu par le Conseil constitutionnel depuis 1971 ?",
     options: [
-      "TGUgQ2hhbnQgZHUgRMOpcGFydA==",
-      "TGEgTWFyc2VpbGxhaXNl",
-      "TCdJbnRlcm5hdGlvbmFsZQ==",
-      "TGEgUGFyaXNpZW5uZQ=="
+      "La Constitution de 1958, la DDHC de 1789, le Préambule de 1946 et la Charte de l'environnement de 2004",
+      "La Constitution de 1958, le Code civil et les traités internationaux ratifiés par la France",
+      "Les décisions du Conseil constitutionnel et les lois organiques fondamentales votées depuis 1958",
+      "La Constitution de 1958, les ordonnances présidentielles et les règlements intérieurs du Parlement"
     ],
-    correctHash: hashAnswer(3, 1),
-    explication: "TGEgTWFyc2VpbGxhaXNlIGVzdCBsJ2h5bW5lIG5hdGlvbmFsIGZyYW7Dp2FpcyBkZXB1aXMgMTc5NS4gQ29tcG9zw6llIHBhciBSb3VnZXQgZGUgTGlzbGUgZW4gMTc5MiwgZWxsZSBhIMOpdMOpIMOpY3JpdGUgw6AgU3RyYXNib3VyZyBwb3VyIGwnYXJtw6llIGR1IFJoaW4u"},
+    correctHash: hashAnswer(3, 0),
+    explication: "Le bloc de constitutionnalité comprend la Constitution de 1958, la Déclaration des droits de l'homme de 1789, le Préambule de 1946 et la Charte de l'environnement de 2004. Ces textes ont tous une valeur constitutionnelle."
+  },
   {
     id: 4,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Laïcité",
-    question: "UXVlIHNpZ25pZmllIGxhIGxhw69jaXTDqSBlbiBGcmFuY2UgPw==",
+    sousCategorie: "DDHC",
+    question: "Selon l'article 4 de la Déclaration des droits de l'homme et du citoyen de 1789, comment est définie la Liberté ?",
     options: [
-      "TCdpbnRlcmRpY3Rpb24gZGUgdG91dGVzIGxlcyByZWxpZ2lvbnM=",
-      "TGEgc8OpcGFyYXRpb24gZGVzIMOJZ2xpc2VzIGV0IGRlIGwnw4l0YXQgZXQgbGEgbGliZXJ0w6kgZGUgY3JvaXJlIG91IGRlIG5lIHBhcyBjcm9pcmU=",
-      "TCdvYmxpZ2F0aW9uIGQnw6p0cmUgYXRow6ll",
-      "TGEgcmVsaWdpb24gZCfDiXRhdA=="
+      "Pouvoir faire tout ce qui ne nuit pas à autrui, dans les limites déterminées par la loi",
+      "Pouvoir agir selon sa conscience personnelle sans aucune restriction extérieure",
+      "Pouvoir exercer ses droits fondamentaux sans intervention de l'État",
+      "Pouvoir s'exprimer librement en tout lieu et en toute circonstance"
     ],
-    correctHash: hashAnswer(4, 1),
-    explication: "TGEgbGHDr2NpdMOpIGdhcmFudGl0IGxhIGxpYmVydMOpIGRlIGNvbnNjaWVuY2UgZXQgbGEgbmV1dHJhbGl0w6kgZGUgbCfDiXRhdCB2aXMtw6AtdmlzIGRlcyByZWxpZ2lvbnMuIENoYWN1biBlc3QgbGlicmUgZGUgY3JvaXJlIG91IGRlIG5lIHBhcyBjcm9pcmUsIGRhbnMgbGUgcmVzcGVjdCBkZSBsJ29yZHJlIHB1YmxpYy4="},
+    correctHash: hashAnswer(4, 0),
+    explication: "L'article 4 de la DDHC définit la liberté comme « pouvoir faire tout ce qui ne nuit pas à autrui ». Les limites de cette liberté sont déterminées par la loi, qui protège les droits d'autrui."
+  },
   {
     id: 5,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Laïcité",
-    question: "RW4gcXVlbGxlIGFubsOpZSBhIMOpdMOpIHZvdMOpZSBsYSBsb2kgZGUgc8OpcGFyYXRpb24gZGVzIMOJZ2xpc2VzIGV0IGRlIGwnw4l0YXQgPw==",
+    sousCategorie: "Conseil constitutionnel",
+    question: "Quelle institution créée en 1958 veille au respect de la Constitution et peut être saisie par les citoyens via la QPC depuis 2008 ?",
     options: [
-      "MTc4OQ==",
-      "MTg0OA==",
-      "MTkwNQ==",
-      "MTk1OA=="
+      "Le Conseil constitutionnel composé de 9 membres nommés pour 9 ans",
+      "Le Conseil d'État qui est la plus haute juridiction administrative française",
+      "La Cour de cassation qui est la plus haute juridiction de l'ordre judiciaire",
+      "La Cour des comptes qui contrôle les finances publiques de l'État"
     ],
-    correctHash: hashAnswer(5, 2),
-    explication: "TGEgbG9pIGRlIHPDqXBhcmF0aW9uIGRlcyDDiWdsaXNlcyBldCBkZSBsJ8OJdGF0IGEgw6l0w6kgdm90w6llIGxlIDkgZMOpY2VtYnJlIDE5MDUuIEVsbGUgw6l0YWJsaXQgbGEgbmV1dHJhbGl0w6kgZGUgbCfDiXRhdCBldCBnYXJhbnRpdCBsYSBsaWJlcnTDqSByZWxpZ2lldXNlLg=="},
+    correctHash: hashAnswer(5, 0),
+    explication: "Le Conseil constitutionnel, créé en 1958, vérifie la conformité des lois à la Constitution. Depuis 2008, les citoyens peuvent le saisir via la Question Prioritaire de Constitutionnalité (QPC)."
+  },
   {
     id: 6,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Mise en situation",
-    question: "VW4gZW1wbG95ZXVyIHJlZnVzZSBkJ2VtYmF1Y2hlciB1bmUgcGVyc29ubmUgZW4gcmFpc29uIGRlIHNvbiBvcmlnaW5lLiBRdWUgZGl0IGxhIGxvaSA/",
+    sousCategorie: "Indivisibilité",
+    question: "Qu'implique le caractère « indivisible » de la République française inscrit à l'article 1er de la Constitution ?",
     options: [
-      "Qydlc3QgbMOpZ2FsLCBsJ2VtcGxveWV1ciBlc3QgbGlicmUgZGUgY2hvaXNpcg==",
-      "Qydlc3QgaW50ZXJkaXQsIGMnZXN0IHVuZSBkaXNjcmltaW5hdGlvbiBwdW5pZSBwYXIgbGEgbG9p",
-      "Qydlc3QgbMOpZ2FsIHNpIGMnZXN0IHVuZSBwZXRpdGUgZW50cmVwcmlzZQ==",
-      "Q2VsYSBkw6lwZW5kIGR1IHBvc3Rl"
+      "L'unité du peuple français, du territoire national et de la loi s'appliquant uniformément à tous",
+      "L'impossibilité de créer des régions autonomes disposant de leurs propres pouvoirs législatifs",
+      "L'interdiction de toute décentralisation administrative et des pouvoirs locaux élus par les citoyens",
+      "La centralisation de toutes les décisions administratives et politiques dans la capitale Paris"
     ],
-    correctHash: hashAnswer(6, 1),
-    explication: "TGEgZGlzY3JpbWluYXRpb24gw6AgbCdlbWJhdWNoZSBmb25kw6llIHN1ciBsJ29yaWdpbmUgZXN0IGludGVyZGl0ZSBwYXIgbGUgQ29kZSBkdSB0cmF2YWlsIGV0IGxlIENvZGUgcMOpbmFsLiBFbGxlIGVzdCBwYXNzaWJsZSBkZSBzYW5jdGlvbnMgcMOpbmFsZXMgKDMgYW5zIGRlIHByaXNvbiBldCA0NSAwMDAg4oKsIGQnYW1lbmRlKS4="},
+    correctHash: hashAnswer(6, 0),
+    explication: "L'indivisibilité signifie que la France forme un tout : un seul peuple, un seul territoire, une seule loi. Cela n'empêche pas la décentralisation mais exclut le fédéralisme et garantit l'égalité des citoyens."
+  },
   {
     id: 7,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Mise en situation",
-    question: "VW4gYWdlbnQgZGUgbGEgZm9uY3Rpb24gcHVibGlxdWUgcGV1dC1pbCBhZmZpY2hlciBzZXMgb3BpbmlvbnMgcmVsaWdpZXVzZXMgZGFucyBsJ2V4ZXJjaWNlIGRlIHNlcyBmb25jdGlvbnMgPw==",
+    sousCategorie: "Laïcité garanties",
+    question: "Quelles garanties fondamentales la laïcité assure-t-elle aux citoyens français selon la loi de 1905 ?",
     options: [
-      "T3VpLCBjJ2VzdCBzYSBsaWJlcnTDqSBpbmRpdmlkdWVsbGU=",
-      "Tm9uLCBpbCBkb2l0IHJlc3BlY3RlciBsZSBwcmluY2lwZSBkZSBuZXV0cmFsaXTDqQ==",
-      "T3VpLCBzaSBzZXMgY29sbMOoZ3VlcyBzb250IGQnYWNjb3Jk",
-      "Q2VsYSBkw6lwZW5kIGRlIGxhIHJlbGlnaW9u"
+      "La liberté de conscience et le libre exercice des cultes dans le respect de l'ordre public",
+      "La neutralité obligatoire de tous les citoyens vis-à-vis de toutes les religions reconnues",
+      "L'interdiction de tous les signes religieux dans l'ensemble de l'espace public français",
+      "La séparation stricte et absolue entre la vie privée des individus et toute pratique religieuse"
     ],
-    correctHash: hashAnswer(7, 1),
-    explication: "TGVzIGFnZW50cyBwdWJsaWNzIGRvaXZlbnQgcmVzcGVjdGVyIGxlIHByaW5jaXBlIGRlIG5ldXRyYWxpdMOpIGV0IG5lIHBldXZlbnQgbWFuaWZlc3RlciBsZXVycyBjb252aWN0aW9ucyByZWxpZ2lldXNlcyBkYW5zIGwnZXhlcmNpY2UgZGUgbGV1cnMgZm9uY3Rpb25zLg=="},
+    correctHash: hashAnswer(7, 0),
+    explication: "La laïcité garantit à chacun la liberté de croire ou de ne pas croire, et de pratiquer sa religion librement. L'État reste neutre vis-à-vis de toutes les religions sans en favoriser aucune."
+  },
   {
     id: 8,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Mise en situation",
-    question: "Vm91cyDDqnRlcyB0w6ltb2luIGQndW5lIGFncmVzc2lvbiByYWNpc3RlIGRhbnMgbGEgcnVlLiBRdWUgZGV2ZXotdm91cyBmYWlyZSA/",
+    sousCategorie: "Égalité",
+    question: "Quel principe républicain fondamental est directement proclamé par l'article 1er de la DDHC de 1789 ?",
     options: [
-      "UmllbiwgY2Ugbidlc3QgcGFzIHZvdHJlIGFmZmFpcmU=",
-      "RmlsbWVyIGV0IHB1YmxpZXIgc3VyIGxlcyByw6lzZWF1eCBzb2NpYXV4",
-      "QWxlcnRlciBsZXMgc2Vjb3VycyAoMTcgb3UgMTEyKSBldCBwb3J0ZXIgYXNzaXN0YW5jZSBzaSBwb3NzaWJsZSBzYW5zIHZvdXMgbWV0dHJlIGVuIGRhbmdlcg==",
-      "SW50ZXJ2ZW5pciBwaHlzaXF1ZW1lbnQgZGFucyB0b3VzIGxlcyBjYXM="
+      "L'égalité en droits des hommes naissant et demeurant libres dès leur naissance",
+      "La liberté d'expression et d'opinion sans aucune restriction gouvernementale",
+      "Le droit de propriété considéré comme inviolable et sacré par la Nation",
+      "La résistance à l'oppression comme droit naturel et imprescriptible de l'homme"
     ],
-    correctHash: hashAnswer(8, 2),
-    explication: "RmFjZSDDoCB1bmUgYWdyZXNzaW9uLCBpbCBmYXV0IGFsZXJ0ZXIgbGVzIHNlY291cnMgKDE3IHBvdXIgbGEgcG9saWNlLCAxMTIgbnVtw6lybyBldXJvcMOpZW4gZCd1cmdlbmNlKSBldCBwb3J0ZXIgYXNzaXN0YW5jZSBkYW5zIGxhIG1lc3VyZSBkdSBwb3NzaWJsZSwgc2FucyBzZSBtZXR0cmUgZW4gZGFuZ2VyLg=="},
+    correctHash: hashAnswer(8, 0),
+    explication: "L'article 1er de la DDHC proclame que « Les hommes naissent et demeurent libres et égaux en droits ». Ce principe d'égalité est repris dans l'article 1er de la Constitution de 1958."
+  },
   {
     id: 9,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Mise en situation",
-    question: "VW4gw6lsw6h2ZSBwZXV0LWlsIHBvcnRlciB1biBzaWduZSByZWxpZ2lldXggb3N0ZW5zaWJsZSBkYW5zIHVuZSDDqWNvbGUgcHVibGlxdWUgPw==",
+    sousCategorie: "République sociale",
+    question: "Que signifie le caractère « social » de la République française mentionné dans la Constitution de 1958 ?",
     options: [
-      "T3VpLCBjJ2VzdCBzYSBsaWJlcnTDqQ==",
-      "Tm9uLCBjJ2VzdCBpbnRlcmRpdCBwYXIgbGEgbG9pIGRlIDIwMDQ=",
-      "T3VpLCBzaSBsZXMgcGFyZW50cyBsJ2F1dG9yaXNlbnQ=",
-      "Q2VsYSBkw6lwZW5kIGRlIGwnw6l0YWJsaXNzZW1lbnQ="
+      "L'État garantit la protection sociale, la solidarité nationale et les droits sociaux fondamentaux",
+      "L'État organise la redistribution égalitaire et totale des richesses entre tous les citoyens",
+      "L'État contrôle directement toutes les principales entreprises stratégiques du pays",
+      "L'État assure un revenu minimum strictement identique pour tous les résidents"
     ],
-    correctHash: hashAnswer(9, 1),
-    explication: "TGEgbG9pIGR1IDE1IG1hcnMgMjAwNCBpbnRlcmRpdCBsZSBwb3J0IGRlIHNpZ25lcyByZWxpZ2lldXggb3N0ZW5zaWJsZXMgZGFucyBsZXMgw6ljb2xlcywgY29sbMOoZ2VzIGV0IGx5Y8OpZXMgcHVibGljcy4gTGVzIHNpZ25lcyBkaXNjcmV0cyBzb250IGF1dG9yaXPDqXMu"},
+    correctHash: hashAnswer(9, 0),
+    explication: "Le caractère social de la République implique que l'État assure la protection sociale des citoyens : santé, retraite, chômage, famille. C'est le fondement de la Sécurité sociale créée en 1945."
+  },
   {
     id: 10,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Mise en situation",
-    question: "VW4gYmFpbGxldXIgcmVmdXNlIGRlIGxvdWVyIHVuIGFwcGFydGVtZW50IMOgIHVuZSBmYW1pbGxlIGVuIHJhaXNvbiBkZSBzYSByZWxpZ2lvbi4gRXN0LWNlIGzDqWdhbCA/",
+    sousCategorie: "Droits sociaux",
+    question: "Quel texte constitutionnel a introduit les droits économiques et sociaux en France, notamment le droit au travail et le droit syndical ?",
     options: [
-      "T3VpLCBsZSBwcm9wcmnDqXRhaXJlIGVzdCBsaWJyZSBkZSBjaG9pc2lyIHNvbiBsb2NhdGFpcmU=",
-      "Tm9uLCBjJ2VzdCB1bmUgZGlzY3JpbWluYXRpb24gaW50ZXJkaXRlIHBhciBsYSBsb2k=",
-      "T3VpLCBzaSBsZSBsb2dlbWVudCBlc3QgcGV0aXQ=",
-      "Q2VsYSBkw6lwZW5kIGRlIGxhIHLDqWdpb24="
+      "Le Préambule de la Constitution de 1946 faisant partie du bloc de constitutionnalité",
+      "La Déclaration des droits de l'homme et du citoyen du 26 août 1789",
+      "L'article premier de la Constitution de la Ve République de 1958",
+      "La Charte de l'environnement adoptée et intégrée à la Constitution en 2004"
     ],
-    correctHash: hashAnswer(10, 1),
-    explication: "TGEgZGlzY3JpbWluYXRpb24gZGFucyBsZSBsb2dlbWVudCBmb25kw6llIHN1ciBsYSByZWxpZ2lvbiBlc3QgaW50ZXJkaXRlLiBMZSBiYWlsbGV1ciBlbmNvdXJ0IGRlcyBzYW5jdGlvbnMgcMOpbmFsZXMgcG91dmFudCBhbGxlciBqdXNxdSfDoCAzIGFucyBkZSBwcmlzb24gZXQgNDUgMDAwIOKCrCBkJ2FtZW5kZS4="},
+    correctHash: hashAnswer(10, 0),
+    explication: "Le Préambule de 1946 a consacré les droits économiques et sociaux : droit au travail, droit syndical, droit de grève, protection de la santé, droit à l'éducation. Il fait partie du bloc de constitutionnalité."
+  },
   {
     id: 11,
     categorie: "Principes et valeurs de la République",
-    sousCategorie: "Mise en situation",
-    question: "UXUnZXN0LWNlIHF1ZSBsJ8OpZ2FsaXTDqSBmZW1tZXMtaG9tbWVzIGltcGxpcXVlIGVuIEZyYW5jZSA/",
+    sousCategorie: "Égalité femmes-hommes",
+    question: "Que garantit le principe constitutionnel d'égalité entre les femmes et les hommes renforcé par la révision de 2008 ?",
     options: [
-      "TGVzIGZlbW1lcyBvbnQgbW9pbnMgZGUgZHJvaXRzIHF1ZSBsZXMgaG9tbWVz",
-      "TGVzIGZlbW1lcyBldCBsZXMgaG9tbWVzIG9udCBsZXMgbcOqbWVzIGRyb2l0cyBldCBsZXMgbcOqbWVzIGRldm9pcnM=",
-      "TGVzIGhvbW1lcyBkw6ljaWRlbnQgcG91ciBsZXMgZmVtbWVz",
-      "TCfDqWdhbGl0w6kgbidleGlzdGUgcXVlIGRhbnMgbGUgdHJhdmFpbA=="
+      "L'égal accès des femmes et des hommes aux mandats électoraux, fonctions et responsabilités",
+      "Un quota obligatoire de 50% de femmes dans toutes les entreprises privées françaises",
+      "La parité stricte et obligatoire dans tous les secteurs économiques sans exception",
+      "L'interdiction de toute différence salariale même justifiée par des critères objectifs"
     ],
-    correctHash: hashAnswer(11, 1),
-    explication: "TCfDqWdhbGl0w6kgZW50cmUgbGVzIGZlbW1lcyBldCBsZXMgaG9tbWVzIGVzdCB1biBwcmluY2lwZSBjb25zdGl0dXRpb25uZWwuIEVsbGUgcydhcHBsaXF1ZSBkYW5zIHRvdXMgbGVzIGRvbWFpbmVzIDogdHJhdmFpbCwgZmFtaWxsZSwgdmllIHB1YmxpcXVlLCBldGMu"},
+    correctHash: hashAnswer(11, 0),
+    explication: "L'égalité entre les femmes et les hommes est un principe constitutionnel. La loi favorise l'égal accès aux mandats électoraux et fonctions électives, ainsi qu'aux responsabilités professionnelles et sociales."
+  },
 
   // ==================== 2. SYSTÈME INSTITUTIONNEL (6 questions) ====================
   
   {
     id: 12,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Démocratie et droit de vote",
-    question: "RW4gRnJhbmNlLCBsYSBzb3V2ZXJhaW5ldMOpIGFwcGFydGllbnQgw6AgOg==",
+    sousCategorie: "Souveraineté",
+    question: "Selon l'article 3 de la Constitution de 1958, à qui appartient la souveraineté nationale et comment s'exerce-t-elle ?",
     options: [
-      "QXUgR291dmVybmVtZW50",
-      "QXUgUGFybGVtZW50",
-      "QXUgUHLDqXNpZGVudCBkZSBsYSBSw6lwdWJsaXF1ZQ==",
-      "QXUgcGV1cGxl"
+      "Au peuple qui l'exerce par ses représentants élus et par la voie du référendum",
+      "Au Gouvernement qui définit et conduit la politique de la Nation française",
+      "Au Parlement bicaméral composé de l'Assemblée nationale et du Sénat",
+      "Au Président de la République élu au suffrage universel direct depuis 1962"
     ],
-    correctHash: hashAnswer(12, 3),
-    explication: "U2Vsb24gbCdhcnRpY2xlIDMgZGUgbGEgQ29uc3RpdHV0aW9uIDogwqsgTGEgc291dmVyYWluZXTDqSBuYXRpb25hbGUgYXBwYXJ0aWVudCBhdSBwZXVwbGUgcXVpIGwnZXhlcmNlIHBhciBzZXMgcmVwcsOpc2VudGFudHMgZXQgcGFyIGxhIHZvaWUgZHUgcsOpZsOpcmVuZHVtLiDCuw=="},
+    correctHash: hashAnswer(12, 0),
+    explication: "Selon l'article 3 de la Constitution : « La souveraineté nationale appartient au peuple qui l'exerce par ses représentants et par la voie du référendum. » C'est le principe de la démocratie représentative."
+  },
   {
     id: 13,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Démocratie et droit de vote",
-    question: "w4AgcXVlbCDDomdlIHBldXQtb24gdm90ZXIgZW4gRnJhbmNlID8=",
+    sousCategorie: "Droit de vote",
+    question: "Quelles sont les conditions cumulatives pour exercer le droit de vote en France lors des élections nationales ?",
     options: [
-      "MTYgYW5z",
-      "MTggYW5z",
-      "MjEgYW5z",
-      "MjUgYW5z"
+      "Avoir 18 ans, être de nationalité française, jouir de ses droits civiques et être inscrit sur les listes électorales",
+      "Avoir 21 ans, résider en France depuis plus de 5 ans et posséder un titre de séjour valide",
+      "Avoir 18 ans, posséder un diplôme reconnu par l'État et payer des impôts en France",
+      "Être majeur, être propriétaire d'un bien immobilier et avoir un emploi stable depuis 2 ans"
     ],
-    correctHash: hashAnswer(13, 1),
-    explication: "RW4gRnJhbmNlLCBsZSBkcm9pdCBkZSB2b3RlIGVzdCBhY2NvcmTDqSDDoCB0b3VzIGxlcyBjaXRveWVucyBmcmFuw6dhaXMgw6Jnw6lzIGRlIDE4IGFucyBvdSBwbHVzLCBqb3Vpc3NhbnQgZGUgbGV1cnMgZHJvaXRzIGNpdmlscyBldCBwb2xpdGlxdWVzLg=="},
+    correctHash: hashAnswer(13, 0),
+    explication: "En France, le droit de vote est accordé à tous les citoyens français âgés de 18 ans ou plus, jouissant de leurs droits civils et politiques, et inscrits sur les listes électorales."
+  },
   {
     id: 14,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Démocratie et droit de vote",
-    question: "TGUgdm90ZSBlbiBGcmFuY2UgZXN0LWlsIG9ibGlnYXRvaXJlID8=",
+    sousCategorie: "Vote",
+    question: "Le vote en France est-il obligatoire et quelles sont les conséquences de l'abstention électorale ?",
     options: [
-      "T3VpLCBvbiByaXNxdWUgdW5lIGFtZW5kZSBzaSBvbiBuZSB2b3RlIHBhcw==",
-      "Tm9uLCBsZSB2b3RlIGVzdCB1biBkcm9pdCBldCB1biBkZXZvaXIgY2l2aXF1ZSwgbWFpcyBpbCBuJ2VzdCBwYXMgb2JsaWdhdG9pcmU=",
-      "T3VpLCBzYXVmIHBvdXIgbGVzIHBlcnNvbm5lcyDDomfDqWVz",
-      "Tm9uLCBzYXVmIHBvdXIgbGVzIMOpbGVjdGlvbnMgcHLDqXNpZGVudGllbGxlcw=="
+      "Non, le vote est un droit et un devoir civique mais l'abstention n'est pas sanctionnée par la loi",
+      "Oui, l'abstention est passible d'une amende pouvant aller jusqu'à 150 euros par scrutin",
+      "Oui, sauf pour les personnes âgées de plus de 70 ans qui bénéficient d'une dispense automatique",
+      "Non, sauf pour les élections présidentielles où l'abstention entraîne une suspension des droits civiques"
     ],
-    correctHash: hashAnswer(14, 1),
-    explication: "RW4gRnJhbmNlLCBsZSB2b3RlIG4nZXN0IHBhcyBvYmxpZ2F0b2lyZSAoY29udHJhaXJlbWVudCDDoCBsYSBCZWxnaXF1ZSBvdSBhdSBMdXhlbWJvdXJnKS4gQydlc3QgdW4gZHJvaXQgZm9uZGFtZW50YWwgZXQgdW4gZGV2b2lyIGNpdmlxdWUsIG1haXMgbCdhYnN0ZW50aW9uIG4nZXN0IHBhcyBzYW5jdGlvbm7DqWUu"},
+    correctHash: hashAnswer(14, 0),
+    explication: "En France, le vote n'est pas obligatoire (contrairement à la Belgique ou au Luxembourg). C'est un droit fondamental et un devoir civique, mais l'abstention n'est pas sanctionnée."
+  },
   {
     id: 15,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Organisation de la République",
-    question: "UXVpIGVzdCBsZSBjaGVmIGRlIGwnw4l0YXQgZW4gRnJhbmNlID8=",
+    sousCategorie: "Président",
+    question: "Quel est le rôle constitutionnel du Président de la République selon l'article 5 de la Constitution de 1958 ?",
     options: [
-      "TGUgUHJlbWllciBtaW5pc3RyZQ==",
-      "TGUgUHLDqXNpZGVudCBkZSBsJ0Fzc2VtYmzDqWUgbmF0aW9uYWxl",
-      "TGUgUHLDqXNpZGVudCBkZSBsYSBSw6lwdWJsaXF1ZQ==",
-      "TGUgUHLDqXNpZGVudCBkdSBTw6luYXQ="
+      "Veiller au respect de la Constitution, assurer le fonctionnement des pouvoirs publics et la continuité de l'État",
+      "Diriger l'action du Gouvernement, être responsable de la défense nationale et présider le Conseil des ministres",
+      "Voter les lois, contrôler l'action du Gouvernement et représenter les territoires de la République",
+      "Trancher les litiges entre les citoyens, interpréter la Constitution et valider les élections nationales"
     ],
-    correctHash: hashAnswer(15, 2),
-    explication: "TGUgUHLDqXNpZGVudCBkZSBsYSBSw6lwdWJsaXF1ZSBlc3QgbGUgY2hlZiBkZSBsJ8OJdGF0LiBJbCBlc3Qgw6lsdSBhdSBzdWZmcmFnZSB1bml2ZXJzZWwgZGlyZWN0IHBvdXIgNSBhbnMgZXQgdmVpbGxlIGF1IHJlc3BlY3QgZGUgbGEgQ29uc3RpdHV0aW9uLg=="},
+    correctHash: hashAnswer(15, 0),
+    explication: "Le Président de la République veille au respect de la Constitution. Il assure, par son arbitrage, le fonctionnement régulier des pouvoirs publics ainsi que la continuité de l'État."
+  },
   {
     id: 16,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Organisation de la République",
-    question: "TGUgUGFybGVtZW50IGZyYW7Dp2FpcyBlc3QgY29tcG9zw6kgZGUgOg==",
+    sousCategorie: "Parlement",
+    question: "Comment est composé le Parlement français et quelle est la durée du mandat de ses membres ?",
     options: [
-      "TCdBc3NlbWJsw6llIG5hdGlvbmFsZSB1bmlxdWVtZW50",
-      "TGUgU8OpbmF0IHVuaXF1ZW1lbnQ=",
-      "TCdBc3NlbWJsw6llIG5hdGlvbmFsZSBldCBsZSBTw6luYXQ=",
-      "TGUgQ29uc2VpbCBjb25zdGl0dXRpb25uZWwgZXQgbGUgQ29uc2VpbCBkJ8OJdGF0"
+      "L'Assemblée nationale (577 députés élus pour 5 ans) et le Sénat (348 sénateurs élus pour 6 ans)",
+      "L'Assemblée nationale (500 députés élus pour 4 ans) et le Sénat (300 sénateurs élus pour 5 ans)",
+      "Une chambre unique de 600 parlementaires élus au suffrage universel direct pour 6 ans",
+      "Deux chambres de 400 membres chacune élus au scrutin proportionnel pour 4 ans"
     ],
-    correctHash: hashAnswer(16, 2),
-    explication: "TGUgUGFybGVtZW50IGZyYW7Dp2FpcyBlc3QgYmljYW3DqXJhbCA6IGlsIGNvbXByZW5kIGwnQXNzZW1ibMOpZSBuYXRpb25hbGUgKDU3NyBkw6lwdXTDqXMgw6lsdXMgYXUgc3VmZnJhZ2UgZGlyZWN0KSBldCBsZSBTw6luYXQgKDM0OCBzw6luYXRldXJzIMOpbHVzIGF1IHN1ZmZyYWdlIGluZGlyZWN0KS4="},
+    correctHash: hashAnswer(16, 0),
+    explication: "Le Parlement français est bicaméral : il comprend l'Assemblée nationale (577 députés élus au suffrage direct pour 5 ans) et le Sénat (348 sénateurs élus au suffrage indirect pour 6 ans)."
+  },
   {
     id: 17,
     categorie: "Système institutionnel et politique",
-    sousCategorie: "Institutions européennes",
-    question: "TGEgRnJhbmNlIGVzdCBtZW1icmUgZm9uZGF0ZXVyIGRlIGwnVW5pb24gZXVyb3DDqWVubmUuIEVuIHF1ZWxsZSBhbm7DqWUgYSDDqXTDqSBzaWduw6kgbGUgdHJhaXTDqSBkZSBSb21lID8=",
+    sousCategorie: "Union européenne",
+    question: "En quelle année a été signé le traité de Rome instituant la Communauté économique européenne dont la France est membre fondateur ?",
     options: [
-      "MTk0NQ==",
-      "MTk1Nw==",
-      "MTk5Mg==",
-      "MjAwMg=="
+      "Le 25 mars 1957 par six pays : France, Allemagne, Italie, Belgique, Pays-Bas et Luxembourg",
+      "Le 7 février 1992 lors de la signature du traité de Maastricht créant l'Union européenne",
+      "Le 9 mai 1950 date de la déclaration de Robert Schuman considérée comme l'acte fondateur",
+      "Le 13 décembre 2007 lors de la signature du traité de Lisbonne réformant les institutions"
     ],
-    correctHash: hashAnswer(17, 1),
-    explication: "TGUgdHJhaXTDqSBkZSBSb21lIGEgw6l0w6kgc2lnbsOpIGxlIDI1IG1hcnMgMTk1NyBwYXIgNiBwYXlzIGZvbmRhdGV1cnMgOiBGcmFuY2UsIEFsbGVtYWduZSwgSXRhbGllLCBCZWxnaXF1ZSwgUGF5cy1CYXMgZXQgTHV4ZW1ib3VyZy4="},
+    correctHash: hashAnswer(17, 0),
+    explication: "Le traité de Rome a été signé le 25 mars 1957 par 6 pays fondateurs : France, Allemagne, Italie, Belgique, Pays-Bas et Luxembourg. Il a créé la Communauté économique européenne (CEE)."
+  },
 
   // ==================== 3. DROITS ET DEVOIRS (11 questions) ====================
   
   {
     id: 18,
     categorie: "Droits et devoirs",
-    sousCategorie: "Droits fondamentaux",
-    question: "TGEgRMOpY2xhcmF0aW9uIGRlcyBkcm9pdHMgZGUgbCdob21tZSBldCBkdSBjaXRveWVuIGRhdGUgZGUgOg==",
+    sousCategorie: "DDHC",
+    question: "En quelle année a été adoptée la Déclaration des droits de l'homme et du citoyen qui fait partie du bloc de constitutionnalité ?",
     options: [
-      "MTc4OQ==",
-      "MTg0OA==",
-      "MTkwNQ==",
-      "MTk1OA=="
+      "Le 26 août 1789, pendant la Révolution française, par l'Assemblée nationale constituante",
+      "Le 24 février 1848, lors de la proclamation de la Deuxième République française",
+      "Le 9 décembre 1905, en même temps que la loi de séparation des Églises et de l'État",
+      "Le 4 octobre 1958, lors de l'adoption de la Constitution de la Ve République"
     ],
     correctHash: hashAnswer(18, 0),
-    explication: "TGEgRMOpY2xhcmF0aW9uIGRlcyBkcm9pdHMgZGUgbCdob21tZSBldCBkdSBjaXRveWVuIGEgw6l0w6kgYWRvcHTDqWUgbGUgMjYgYW/Du3QgMTc4OS4gRWxsZSBmYWl0IHBhcnRpZSBkdSBibG9jIGRlIGNvbnN0aXR1dGlvbm5hbGl0w6kgZXQgZ2FyYW50aXQgbGVzIGRyb2l0cyBmb25kYW1lbnRhdXgu"},
+    explication: "La Déclaration des droits de l'homme et du citoyen a été adoptée le 26 août 1789. Elle fait partie du bloc de constitutionnalité et garantit les droits fondamentaux."
+  },
   {
     id: 19,
     categorie: "Droits et devoirs",
-    sousCategorie: "Droits fondamentaux",
-    question: "UXVlbCBkcm9pdCBuJ2VzdCBQQVMgZ2FyYW50aSBwYXIgbGEgQ29uc3RpdHV0aW9uIGZyYW7Dp2Fpc2UgPw==",
+    sousCategorie: "Droits constitutionnels",
+    question: "Parmi les droits suivants, lequel n'est PAS garanti comme un droit créance opposable à l'État dans la Constitution française ?",
     options: [
-      "TGEgbGliZXJ0w6kgZCdleHByZXNzaW9u",
-      "TGUgZHJvaXQgZGUgcHJvcHJpw6l0w6k=",
-      "TGUgZHJvaXQgYXUgdHJhdmFpbCBnYXJhbnRpIHBhciBsJ8OJdGF0",
-      "TGEgbGliZXJ0w6kgZGUgY29uc2NpZW5jZQ=="
+      "Le droit à un emploi garanti par l'État pour tout citoyen demandeur d'emploi",
+      "La liberté d'expression et de communication des pensées et des opinions",
+      "Le droit de propriété considéré comme inviolable et sacré depuis 1789",
+      "La liberté de conscience et le libre exercice des cultes religieux"
     ],
-    correctHash: hashAnswer(19, 2),
-    explication: "TGUgZHJvaXQgYXUgdHJhdmFpbCBlc3QgbWVudGlvbm7DqSBkYW5zIGxlIHByw6lhbWJ1bGUgZGUgMTk0NiwgbWFpcyBpbCBuZSBzJ2FnaXQgcGFzIGQndW5lIGdhcmFudGllIGQnZW1wbG9pIHBhciBsJ8OJdGF0LiBMJ8OJdGF0IGRvaXQgZmF2b3Jpc2VyIGwnYWNjw6hzIMOgIGwnZW1wbG9pLCBtYWlzIG5lIHBldXQgZ2FyYW50aXIgdW4gZW1wbG9pIMOgIGNoYWN1bi4="},
+    correctHash: hashAnswer(19, 0),
+    explication: "Le droit au travail est mentionné dans le préambule de 1946, mais il ne s'agit pas d'une garantie d'emploi par l'État. L'État doit favoriser l'accès à l'emploi, mais ne peut garantir un emploi à chacun."
+  },
   {
     id: 20,
     categorie: "Droits et devoirs",
-    sousCategorie: "Obligations et devoirs",
-    question: "UXVlbGxlIGVzdCBsYSBwcmluY2lwYWxlIG9ibGlnYXRpb24gZmlzY2FsZSBkZXMgcsOpc2lkZW50cyBlbiBGcmFuY2UgPw==",
+    sousCategorie: "Obligations fiscales",
+    question: "Quelle est la principale obligation fiscale des personnes résidant en France, qu'elles soient françaises ou étrangères ?",
     options: [
-      "UGF5ZXIgdW5pcXVlbWVudCBsYSBUVkE=",
-      "RMOpY2xhcmVyIHNlcyByZXZlbnVzIGV0IHBheWVyIHNlcyBpbXDDtHRz",
-      "UGF5ZXIgc2V1bGVtZW50IHMnaWxzIHNvbnQgcHJvcHJpw6l0YWlyZXM=",
-      "TGVzIMOpdHJhbmdlcnMgbmUgcGFpZW50IHBhcyBkJ2ltcMO0dHM="
+      "Déclarer l'ensemble de ses revenus mondiaux et payer les impôts correspondants dans les délais légaux",
+      "Payer uniquement la TVA sur les achats effectués dans les commerces du territoire français",
+      "S'acquitter des impôts seulement en cas de propriété immobilière sur le territoire national",
+      "Les étrangers résidant en France sont exonérés de tout impôt pendant les cinq premières années"
     ],
-    correctHash: hashAnswer(20, 1),
-    explication: "VG91dGUgcGVyc29ubmUgcsOpc2lkYW50IGVuIEZyYW5jZSBkb2l0IGTDqWNsYXJlciBzZXMgcmV2ZW51cyBldCBwYXllciBsZXMgaW1ww7R0cyBjb3JyZXNwb25kYW50cy4gQydlc3QgdW5lIG9ibGlnYXRpb24gbMOpZ2FsZSBxdWkgY29udHJpYnVlIGF1IGZpbmFuY2VtZW50IGRlcyBzZXJ2aWNlcyBwdWJsaWNzLg=="},
+    correctHash: hashAnswer(20, 0),
+    explication: "Toute personne résidant en France doit déclarer ses revenus et payer les impôts correspondants. C'est une obligation légale qui contribue au financement des services publics."
+  },
   {
     id: 21,
     categorie: "Droits et devoirs",
-    sousCategorie: "Obligations et devoirs",
-    question: "TGUgcmVzcGVjdCBkZXMgbG9pcyBkZSBsYSBSw6lwdWJsaXF1ZSBlc3QtaWwgb2JsaWdhdG9pcmUgcG91ciB0b3VzID8=",
+    sousCategorie: "Respect des lois",
+    question: "Le respect des lois de la République est-il obligatoire pour toutes les personnes se trouvant sur le territoire français ?",
     options: [
-      "Tm9uLCBzZXVsZW1lbnQgcG91ciBsZXMgY2l0b3llbnMgZnJhbsOnYWlz",
-      "T3VpLCBwb3VyIHRvdXRlIHBlcnNvbm5lIHNlIHRyb3V2YW50IHN1ciBsZSB0ZXJyaXRvaXJlIGZyYW7Dp2Fpcw==",
-      "Tm9uLCBsZXMgdG91cmlzdGVzIGVuIHNvbnQgZXhlbXB0w6lz",
-      "T3VpLCBtYWlzIHNldWxlbWVudCBsZXMgbG9pcyBww6luYWxlcw=="
+      "Oui, toute personne sur le territoire français doit respecter les lois, quelle que soit sa nationalité",
+      "Non, seuls les citoyens français de naissance sont tenus de respecter l'ensemble des lois",
+      "Non, les touristes et visiteurs étrangers bénéficient d'une immunité juridique temporaire",
+      "Oui, mais uniquement les lois pénales, les lois civiles ne s'appliquant qu'aux nationaux"
     ],
-    correctHash: hashAnswer(21, 1),
-    explication: "VG91dGUgcGVyc29ubmUgc3VyIGxlIHRlcnJpdG9pcmUgZnJhbsOnYWlzLCBxdWVsbGUgcXVlIHNvaXQgc2EgbmF0aW9uYWxpdMOpLCBkb2l0IHJlc3BlY3RlciBsZXMgbG9pcyBkZSBsYSBSw6lwdWJsaXF1ZS4gTnVsIG4nZXN0IGNlbnPDqSBpZ25vcmVyIGxhIGxvaS4="},
+    correctHash: hashAnswer(21, 0),
+    explication: "Toute personne sur le territoire français, quelle que soit sa nationalité, doit respecter les lois de la République. Nul n'est censé ignorer la loi."
+  },
   {
     id: 22,
     categorie: "Droits et devoirs",
-    sousCategorie: "Obligations et devoirs",
-    question: "TGEgc2NvbGFyaXTDqSBlc3Qgb2JsaWdhdG9pcmUgZW4gRnJhbmNlIHBvdXIgbGVzIGVuZmFudHMgZGUgOg==",
+    sousCategorie: "Scolarité obligatoire",
+    question: "Depuis la loi de 2019, quelle est la tranche d'âge pendant laquelle l'instruction est obligatoire en France ?",
     options: [
-      "MyDDoCAxNCBhbnM=",
-      "MyDDoCAxNiBhbnM=",
-      "NiDDoCAxNiBhbnM=",
-      "NiDDoCAxOCBhbnM="
+      "De 3 à 16 ans, avec une obligation de formation jusqu'à 18 ans (école, apprentissage ou insertion)",
+      "De 6 à 16 ans, comme c'était le cas depuis la loi de 1959 sur la prolongation de la scolarité",
+      "De 3 à 14 ans, l'instruction étant facultative au-delà pour les élèves en difficulté scolaire",
+      "De 6 à 18 ans, sans possibilité de dérogation même pour les élèves en apprentissage professionnel"
     ],
-    correctHash: hashAnswer(22, 1),
-    explication: "RGVwdWlzIDIwMTksIGwnaW5zdHJ1Y3Rpb24gZXN0IG9ibGlnYXRvaXJlIGRlIDMgw6AgMTYgYW5zLiBMYSBmb3JtYXRpb24gZXN0IGVuc3VpdGUgb2JsaWdhdG9pcmUganVzcXUnw6AgMTggYW5zICjDqWNvbGUsIGFwcHJlbnRpc3NhZ2UsIGluc2VydGlvbi4uLiku"},
+    correctHash: hashAnswer(22, 0),
+    explication: "Depuis 2019, l'instruction est obligatoire de 3 à 16 ans. La formation est ensuite obligatoire jusqu'à 18 ans (école, apprentissage, insertion...)."
+  },
   {
     id: 23,
     categorie: "Droits et devoirs",
-    sousCategorie: "Mise en situation",
-    question: "Vm91cyByZWNldmV6IHVuIGF2aXMgZCdpbXBvc2l0aW9uLiBRdWVsbGUgZXN0IHZvdHJlIG9ibGlnYXRpb24gPw==",
+    sousCategorie: "Mise en situation fiscale",
+    question: "Vous recevez un avis d'imposition que vous estimez trop élevé. Quelle est votre obligation légale ?",
     options: [
-      "Vm91cyBwb3V2ZXogbCdpZ25vcmVyIHNpIHZvdXMgZXN0aW1leiBwYXllciB0cm9w",
-      "Vm91cyBkZXZleiBwYXllciBkYW5zIGxlcyBkw6lsYWlzIGluZGlxdcOpcw==",
-      "Vm91cyBwb3V2ZXogcGF5ZXIgcXVhbmQgdm91cyB2b3VsZXo=",
-      "U2V1bHMgbGVzIHByb3ByacOpdGFpcmVzIGRvaXZlbnQgcGF5ZXI="
+      "Payer dans les délais puis contester par réclamation auprès de l'administration fiscale si nécessaire",
+      "Ignorer l'avis si vous estimez que le montant est injustifié et attendre une relance officielle",
+      "Payer uniquement la moitié du montant en attendant que l'erreur soit corrigée automatiquement",
+      "Refuser tout paiement jusqu'à obtention d'un rendez-vous avec un inspecteur des impôts"
     ],
-    correctHash: hashAnswer(23, 1),
-    explication: "TGUgcGFpZW1lbnQgZGVzIGltcMO0dHMgZGFucyBsZXMgZMOpbGFpcyBlc3QgdW5lIG9ibGlnYXRpb24gbMOpZ2FsZS4gRW4gY2FzIGRlIGRpZmZpY3VsdMOpcywgaWwgZmF1dCBjb250YWN0ZXIgbCdhZG1pbmlzdHJhdGlvbiBmaXNjYWxlIHBvdXIgZGVtYW5kZXIgdW4gZMOpbGFpIG91IHVuIMOpdGFsZW1lbnQu"},
+    correctHash: hashAnswer(23, 0),
+    explication: "Le paiement des impôts dans les délais est une obligation légale. En cas de désaccord, il faut d'abord payer puis contester par réclamation. En cas de difficultés, contacter l'administration pour demander un délai."
+  },
   {
     id: 24,
     categorie: "Droits et devoirs",
-    sousCategorie: "Mise en situation",
-    question: "Vm90cmUgdm9pc2luIGZhaXQgZHUgYnJ1aXQgZXhjZXNzaWYgbGEgbnVpdC4gUXVlIHBvdXZlei12b3VzIGZhaXJlID8=",
+    sousCategorie: "Mise en situation voisinage",
+    question: "Votre voisin fait du bruit excessif la nuit de manière répétée. Quels sont vos recours légaux ?",
     options: [
-      "UmllbiwgYydlc3Qgc29uIGRyb2l0",
-      "QXBwZWxlciBsYSBwb2xpY2UgZXQvb3UgZmFpcmUgY29uc3RhdGVyIGxlIHRyb3VibGUgcGFyIHVuIGh1aXNzaWVy",
-      "Vm91cyB2ZW5nZXIgZW4gZmFpc2FudCBhdXNzaSBkdSBicnVpdA==",
-      "RMOpbcOpbmFnZXI="
+      "Appeler la police (17), faire constater le trouble par huissier ou engager une médiation de voisinage",
+      "Rien, car les nuisances sonores entre voisins ne sont pas réprimées par la législation française",
+      "Se venger en faisant également du bruit car la loi autorise la réciprocité entre voisins",
+      "Déménager immédiatement car aucune procédure judiciaire n'existe pour les troubles de voisinage"
     ],
-    correctHash: hashAnswer(24, 1),
-    explication: "TGUgdGFwYWdlIG5vY3R1cm5lIGVzdCB1bmUgaW5mcmFjdGlvbi4gVm91cyBwb3V2ZXogYXBwZWxlciBsYSBwb2xpY2UgKDE3KSwgZmFpcmUgY29uc3RhdGVyIGxlIHRyb3VibGUgcGFyIHVuIGh1aXNzaWVyLCBvdSBlbmdhZ2VyIHVuZSBtw6lkaWF0aW9uLg=="},
+    correctHash: hashAnswer(24, 0),
+    explication: "Le tapage nocturne est une infraction. Vous pouvez appeler la police (17), faire constater le trouble par un huissier, ou engager une médiation."
+  },
   {
     id: 25,
     categorie: "Droits et devoirs",
-    sousCategorie: "Mise en situation",
-    question: "Vm91cyDDqnRlcyBjb252b3F1w6kgcG91ciB1bmUgam91cm7DqWUgZGUganVyeSBkJ2Fzc2lzZXMuIEVzdC1jZSBvYmxpZ2F0b2lyZSA/",
+    sousCategorie: "Devoir civique jury",
+    question: "Vous êtes convoqué pour participer à un jury d'assises. Quelle est la nature de cette obligation ?",
     options: [
-      "Tm9uLCBjJ2VzdCB1bmUgaW52aXRhdGlvbg==",
-      "T3VpLCBzYXVmIG1vdGlmIGzDqWdpdGltZSwgYydlc3QgdW4gZGV2b2lyIGNpdmlxdWU=",
-      "Tm9uLCBzaSB2b3VzIHRyYXZhaWxsZXo=",
-      "T3VpLCBtYWlzIHNldWxlbWVudCBwb3VyIGxlcyBmb25jdGlvbm5haXJlcw=="
+      "C'est un devoir civique obligatoire ; refuser sans motif légitime est passible d'une amende de 3750 euros",
+      "C'est une simple invitation facultative que vous pouvez décliner sans aucune justification",
+      "C'est obligatoire seulement pour les fonctionnaires et agents de l'État en exercice",
+      "C'est facultatif mais le refus entraîne une inscription au casier judiciaire pour cinq ans"
     ],
-    correctHash: hashAnswer(25, 1),
-    explication: "w4p0cmUganVyw6kgZCdhc3Npc2VzIGVzdCB1biBkZXZvaXIgY2l2aXF1ZSBvYmxpZ2F0b2lyZS4gUmVmdXNlciBzYW5zIG1vdGlmIGzDqWdpdGltZSBlc3QgcGFzc2libGUgZCd1bmUgYW1lbmRlLg=="},
+    correctHash: hashAnswer(25, 0),
+    explication: "Être juré d'assises est un devoir civique obligatoire. Refuser sans motif légitime est passible d'une amende pouvant aller jusqu'à 3750 euros."
+  },
   {
     id: 26,
     categorie: "Droits et devoirs",
-    sousCategorie: "Mise en situation",
-    question: "VW4gY29tbWVyw6dhbnQgcmVmdXNlIGRlIHZvdXMgc2VydmlyIGVuIHJhaXNvbiBkZSB2b3RyZSBvcmlnaW5lLiBRdWUgZmFpcmUgPw==",
+    sousCategorie: "Mise en situation discrimination",
+    question: "Un commerçant refuse de vous servir en raison de votre origine. Quelles sont les sanctions prévues par la loi ?",
     options: [
-      "UmllbiwgYydlc3Qgc29uIGNob2l4IGNvbW1lcmNpYWw=",
-      "UG9ydGVyIHBsYWludGUgcG91ciBkaXNjcmltaW5hdGlvbg==",
-      "TCdhY2NlcHRlciBldCBhbGxlciBhaWxsZXVycw==",
-      "Q2VsYSBuJ2VzdCBwYXMgcHVuaXNzYWJsZQ=="
+      "C'est un délit de discrimination puni jusqu'à 3 ans de prison et 45 000 euros d'amende",
+      "C'est une simple contravention passible d'une amende de 150 euros maximum",
+      "C'est légal car le commerçant est libre de choisir sa clientèle selon ses critères personnels",
+      "C'est interdit mais non sanctionné pénalement, seule une action civile est possible"
     ],
-    correctHash: hashAnswer(26, 1),
-    explication: "TGUgcmVmdXMgZGUgdmVudGUgZGlzY3JpbWluYXRvaXJlIGVzdCB1biBkw6lsaXQgcHVuaSBwYXIgbGEgbG9pLiBWb3VzIHBvdXZleiBwb3J0ZXIgcGxhaW50ZSBhdXByw6hzIGRlIGxhIHBvbGljZSwgZGUgbGEgZ2VuZGFybWVyaWUgb3UgZHUgcHJvY3VyZXVyIGRlIGxhIFLDqXB1YmxpcXVlLg=="},
+    correctHash: hashAnswer(26, 0),
+    explication: "Le refus de vente discriminatoire est un délit puni par le Code pénal : jusqu'à 3 ans de prison et 45 000 euros d'amende. Vous pouvez porter plainte auprès de la police ou du procureur."
+  },
   {
     id: 27,
     categorie: "Droits et devoirs",
-    sousCategorie: "Mise en situation",
-    question: "Vm91cyB0cm91dmV6IHVuIHBvcnRlZmV1aWxsZSBjb250ZW5hbnQgZGUgbCdhcmdlbnQgZXQgZGVzIHBhcGllcnMgZCdpZGVudGl0w6kuIFF1ZSBkZXZlei12b3VzIGZhaXJlID8=",
+    sousCategorie: "Mise en situation objet trouvé",
+    question: "Vous trouvez un portefeuille contenant de l'argent et des papiers d'identité. Quelle est votre obligation légale ?",
     options: [
-      "R2FyZGVyIGwnYXJnZW50IGV0IGpldGVyIGxlIHJlc3Rl",
-      "TGUgcmFwcG9ydGVyIMOgIGxhIHBvbGljZSBvdSDDoCBsYSBtYWlyaWU=",
-      "TGUgZ2FyZGVyIGVuIGF0dGVuZGFudCBxdSdvbiB2b3VzIGNvbnRhY3Rl",
-      "TGUgamV0ZXIgcG91ciBuZSBwYXMgYXZvaXIgZGUgcHJvYmzDqG1lcw=="
+      "Le rapporter à la police, la gendarmerie ou la mairie ; garder l'objet peut constituer un abus de confiance",
+      "Le garder en attendant que le propriétaire vous contacte via une annonce sur les réseaux sociaux",
+      "Garder l'argent et jeter les papiers pour éviter tout problème administratif ultérieur",
+      "Le remettre au premier passant qui accepte de s'en charger pour vous libérer de toute responsabilité"
     ],
-    correctHash: hashAnswer(27, 1),
-    explication: "Vm91cyBkZXZleiByYXBwb3J0ZXIgbCdvYmpldCB0cm91dsOpIGF1IGNvbW1pc3NhcmlhdCwgw6AgbGEgZ2VuZGFybWVyaWUgb3Ugw6AgbGEgbWFpcmllLiBHYXJkZXIgdW4gb2JqZXQgdHJvdXbDqSBzYW5zIGNoZXJjaGVyIMOgIGxlIHJlc3RpdHVlciBwZXV0IGNvbnN0aXR1ZXIgdW4gYWJ1cyBkZSBjb25maWFuY2Uu"},
+    correctHash: hashAnswer(27, 0),
+    explication: "Vous devez rapporter l'objet trouvé au commissariat, à la gendarmerie ou à la mairie. Garder un objet trouvé sans chercher à le restituer peut constituer un abus de confiance."
+  },
   {
     id: 28,
     categorie: "Droits et devoirs",
-    sousCategorie: "Mise en situation",
-    question: "Vm90cmUgZW1wbG95ZXVyIHZvdXMgZGVtYW5kZSBkZSB0cmF2YWlsbGVyIGxlIGRpbWFuY2hlLiBFc3QtY2UgbMOpZ2FsID8=",
+    sousCategorie: "Droit du travail",
+    question: "Votre employeur vous demande de travailler le dimanche. Dans quels cas est-ce autorisé par la loi ?",
     options: [
-      "Tm9uLCBqYW1haXM=",
-      "T3VpLCBkYW5zIGNlcnRhaW5zIHNlY3RldXJzIGV0IGF2ZWMgZGVzIGNvbXBlbnNhdGlvbnMgcHLDqXZ1ZXMgcGFyIGxhIGxvaQ==",
-      "T3VpLCBzYW5zIGF1Y3VuZSBjb21wZW5zYXRpb24=",
-      "U2V1bGVtZW50IGF2ZWMgdm90cmUgYWNjb3JkIMOpY3JpdCwgc2FucyBleGNlcHRpb24="
+      "Dans certains secteurs définis par la loi (commerce alimentaire, santé, hôtellerie) avec compensations obligatoires",
+      "Jamais, le repos dominical est un droit absolu et inaliénable pour tous les salariés français",
+      "Toujours, l'employeur est libre d'organiser le temps de travail selon les besoins de l'entreprise",
+      "Seulement avec l'accord écrit préalable du salarié, sans aucune autre condition ni compensation"
     ],
-    correctHash: hashAnswer(28, 1),
-    explication: "TGUgdHJhdmFpbCBsZSBkaW1hbmNoZSBlc3QgZW5jYWRyw6kgcGFyIGxhIGxvaS4gSWwgZXN0IGF1dG9yaXPDqSBkYW5zIGNlcnRhaW5zIHNlY3RldXJzIChjb21tZXJjZSBhbGltZW50YWlyZSwgaMO0dGVsbGVyaWUsIHNhbnTDqS4uLikgZXQgZG9pdCBkb25uZXIgbGlldSDDoCBkZXMgY29tcGVuc2F0aW9ucy4="},
+    correctHash: hashAnswer(28, 0),
+    explication: "Le travail le dimanche est encadré par la loi. Il est autorisé dans certains secteurs (commerce alimentaire, hôtellerie, santé...) et doit donner lieu à des compensations."
+  },
 
   // ==================== 4. HISTOIRE, GÉOGRAPHIE ET CULTURE (8 questions) ====================
   
   {
     id: 29,
     categorie: "Histoire, géographie et culture",
-    sousCategorie: "Histoire",
-    question: "UXVlbCDDqXbDqW5lbWVudCBtYXJxdWUgbGUgZMOpYnV0IGRlIGxhIFLDqXZvbHV0aW9uIGZyYW7Dp2Fpc2UgPw==",
+    sousCategorie: "Révolution française",
+    question: "Quel événement du 14 juillet 1789 marque symboliquement le début de la Révolution française ?",
     options: [
-      "TGEgbW9ydCBkZSBMb3VpcyBYSVY=",
-      "TGEgcHJpc2UgZGUgbGEgQmFzdGlsbGUgbGUgMTQganVpbGxldCAxNzg5",
-      "TGUgc2FjcmUgZGUgTmFwb2zDqW9u",
-      "TGEgYmF0YWlsbGUgZGUgV2F0ZXJsb28="
+      "La prise de la Bastille, forteresse royale symbole de l'arbitraire monarchique",
+      "La mort de Louis XVI guillotiné sur la place de la Révolution à Paris",
+      "Le sacre de Napoléon Bonaparte comme Empereur des Français à Notre-Dame",
+      "La bataille de Valmy, première victoire de l'armée révolutionnaire française"
     ],
-    correctHash: hashAnswer(29, 1),
-    explication: "TGEgcHJpc2UgZGUgbGEgQmFzdGlsbGUgbGUgMTQganVpbGxldCAxNzg5IGVzdCBsZSBzeW1ib2xlIGR1IGTDqWJ1dCBkZSBsYSBSw6l2b2x1dGlvbiBmcmFuw6dhaXNlLiBDZXR0ZSBkYXRlIGVzdCBkZXZlbnVlIGxhIGbDqnRlIG5hdGlvbmFsZSBmcmFuw6dhaXNlIGRlcHVpcyAxODgwLg=="},
+    correctHash: hashAnswer(29, 0),
+    explication: "La prise de la Bastille le 14 juillet 1789 est le symbole du début de la Révolution française. Cette date est devenue la fête nationale française depuis 1880."
+  },
   {
     id: 30,
     categorie: "Histoire, géographie et culture",
-    sousCategorie: "Histoire",
-    question: "UXVpIMOpdGFpdCBsZSBnw6luw6lyYWwgcXVpIGEgbGliw6lyw6kgbGEgRnJhbmNlIHBlbmRhbnQgbGEgU2Vjb25kZSBHdWVycmUgbW9uZGlhbGUgZXQgZm9uZMOpIGxhIFZlIFLDqXB1YmxpcXVlID8=",
+    sousCategorie: "Charles de Gaulle",
+    question: "Quel général a dirigé la France libre pendant la Seconde Guerre mondiale et fondé la Ve République en 1958 ?",
     options: [
-      "TWFyw6ljaGFsIFDDqXRhaW4=",
-      "SmVhbiBNb3VsaW4=",
-      "Q2hhcmxlcyBkZSBHYXVsbGU=",
-      "R2VvcmdlcyBDbGVtZW5jZWF1"
+      "Le général Charles de Gaulle, premier président de la Ve République de 1959 à 1969",
+      "Le maréchal Philippe Pétain, chef de l'État français sous le régime de Vichy",
+      "Jean Moulin, chef du Conseil national de la Résistance unifié en 1943",
+      "Georges Clemenceau, président du Conseil et artisan de la victoire de 1918"
     ],
-    correctHash: hashAnswer(30, 2),
-    explication: "TGUgZ8OpbsOpcmFsIENoYXJsZXMgZGUgR2F1bGxlIGEgZGlyaWfDqSBsYSBGcmFuY2UgbGlicmUgcGVuZGFudCBsYSBTZWNvbmRlIEd1ZXJyZSBtb25kaWFsZSBldCBhIGZvbmTDqSBsYSBWZSBSw6lwdWJsaXF1ZSBlbiAxOTU4LiBJbCBlbiBhIMOpdMOpIGxlIHByZW1pZXIgcHLDqXNpZGVudCAoMTk1OS0xOTY5KS4="},
+    correctHash: hashAnswer(30, 0),
+    explication: "Le général Charles de Gaulle a dirigé la France libre pendant la Seconde Guerre mondiale et a fondé la Ve République en 1958. Il en a été le premier président (1959-1969)."
+  },
   {
     id: 31,
     categorie: "Histoire, géographie et culture",
-    sousCategorie: "Histoire",
-    question: "UXVhbmQgYSDDqXTDqSBhYm9saWUgZMOpZmluaXRpdmVtZW50IGwnZXNjbGF2YWdlIGVuIEZyYW5jZSA/",
+    sousCategorie: "Abolition esclavage",
+    question: "Quand l'esclavage a-t-il été définitivement aboli dans les colonies françaises et par quel décret ?",
     options: [
-      "MTc4OQ==",
-      "MTg0OA==",
-      "MTkwNQ==",
-      "MTk0NQ=="
+      "Le 27 avril 1848 par le décret de Victor Schœlcher, sous la Deuxième République",
+      "Le 4 février 1794 par la Convention nationale, première abolition révolutionnaire",
+      "Le 9 décembre 1905 par la loi de séparation des Églises et de l'État",
+      "Le 8 mai 1945 à la fin de la Seconde Guerre mondiale en Europe"
     ],
-    correctHash: hashAnswer(31, 1),
-    explication: "TCdhYm9saXRpb24gZMOpZmluaXRpdmUgZGUgbCdlc2NsYXZhZ2UgZW4gRnJhbmNlIGEgw6l0w6kgcHJvY2xhbcOpZSBsZSAyNyBhdnJpbCAxODQ4IHBhciBsZSBkw6ljcmV0IGRlIFZpY3RvciBTY2jFk2xjaGVyLg=="},
+    correctHash: hashAnswer(31, 0),
+    explication: "L'abolition définitive de l'esclavage en France a été proclamée le 27 avril 1848 par le décret de Victor Schœlcher."
+  },
   {
     id: 32,
     categorie: "Histoire, géographie et culture",
-    sousCategorie: "Géographie",
-    question: "Q29tYmllbiBsYSBGcmFuY2UgY29tcHRlLXQtZWxsZSBkZSByw6lnaW9ucyBtw6l0cm9wb2xpdGFpbmVzID8=",
+    sousCategorie: "Régions métropolitaines",
+    question: "Depuis la réforme territoriale de 2016, combien la France métropolitaine compte-t-elle de régions ?",
     options: [
-      "MTI=",
-      "MTM=",
-      "MTg=",
-      "MjI="
+      "13 régions métropolitaines (contre 22 auparavant), auxquelles s'ajoutent 5 régions d'outre-mer",
+      "12 régions métropolitaines organisées autour des principales métropoles économiques françaises",
+      "18 régions au total incluant les départements et régions d'outre-mer intégrés depuis 2003",
+      "22 régions métropolitaines comme avant la réforme territoriale initialement prévue en 2010"
     ],
-    correctHash: hashAnswer(32, 1),
-    explication: "RGVwdWlzIDIwMTYsIGxhIEZyYW5jZSBtw6l0cm9wb2xpdGFpbmUgY29tcHRlIDEzIHLDqWdpb25zIChjb250cmUgMjIgYXVwYXJhdmFudCkuIEVuIGNvbXB0YW50IGxlcyByw6lnaW9ucyBkJ291dHJlLW1lciwgbGEgRnJhbmNlIGNvbXB0ZSAxOCByw6lnaW9ucyBhdSB0b3RhbC4="},
+    correctHash: hashAnswer(32, 0),
+    explication: "Depuis 2016, la France métropolitaine compte 13 régions (contre 22 auparavant). En comptant les régions d'outre-mer, la France compte 18 régions au total."
+  },
   {
     id: 33,
     categorie: "Histoire, géographie et culture",
-    sousCategorie: "Géographie",
-    question: "UXVlbCBlc3QgbGUgcGx1cyBsb25nIGZsZXV2ZSBkZSBGcmFuY2UgPw==",
+    sousCategorie: "Géographie fleuves",
+    question: "Quel est le plus long fleuve entièrement français, prenant sa source au Mont Gerbier-de-Jonc ?",
     options: [
-      "TGEgU2VpbmU=",
-      "TGUgUmjDtG5l",
-      "TGEgTG9pcmU=",
-      "TGEgR2Fyb25uZQ=="
+      "La Loire, avec 1 012 km, se jetant dans l'océan Atlantique à Saint-Nazaire",
+      "La Seine, traversant Paris et se jetant dans la Manche au Havre en Normandie",
+      "Le Rhône, prenant sa source en Suisse et se jetant dans la Méditerranée à Marseille",
+      "La Garonne, prenant sa source en Espagne et formant l'estuaire de la Gironde"
     ],
-    correctHash: hashAnswer(33, 2),
-    explication: "TGEgTG9pcmUgZXN0IGxlIHBsdXMgbG9uZyBmbGV1dmUgZGUgRnJhbmNlIGF2ZWMgMSAwMTIga20uIEVsbGUgcHJlbmQgc2Egc291cmNlIGF1IE1vbnQgR2VyYmllci1kZS1Kb25jIGVuIEFyZMOoY2hlIGV0IHNlIGpldHRlIGRhbnMgbCdvY8OpYW4gQXRsYW50aXF1ZSDDoCBTYWludC1OYXphaXJlLg=="},
+    correctHash: hashAnswer(33, 0),
+    explication: "La Loire est le plus long fleuve de France avec 1 012 km. Elle prend sa source au Mont Gerbier-de-Jonc en Ardèche et se jette dans l'océan Atlantique à Saint-Nazaire."
+  },
   {
     id: 34,
     categorie: "Histoire, géographie et culture",
-    sousCategorie: "Géographie",
-    question: "TGVxdWVsIGRlIGNlcyB0ZXJyaXRvaXJlcyBuJ2VzdCBQQVMgdW4gZMOpcGFydGVtZW50IG91IHVuZSByw6lnaW9uIGQnb3V0cmUtbWVyID8=",
+    sousCategorie: "Outre-mer",
+    question: "Parmi les territoires suivants, lequel n'est PAS un département ou une région d'outre-mer français ?",
     options: [
-      "TGEgR3VhZGVsb3VwZQ==",
-      "TW9uYWNv",
-      "TGEgUsOpdW5pb24=",
-      "TGEgTWFydGluaXF1ZQ=="
+      "Monaco, qui est une principauté indépendante et souveraine depuis le XIIIe siècle",
+      "La Guadeloupe, département et région d'outre-mer situé dans les Antilles françaises",
+      "La Réunion, département et région d'outre-mer situé dans l'océan Indien",
+      "La Martinique, département et région d'outre-mer situé dans les Antilles françaises"
     ],
-    correctHash: hashAnswer(34, 1),
-    explication: "TW9uYWNvIGVzdCB1bmUgcHJpbmNpcGF1dMOpIGluZMOpcGVuZGFudGUsIGNlIG4nZXN0IHBhcyB1biB0ZXJyaXRvaXJlIGZyYW7Dp2Fpcy4gTGEgR3VhZGVsb3VwZSwgbGEgTWFydGluaXF1ZSBldCBMYSBSw6l1bmlvbiBzb250IGRlcyBkw6lwYXJ0ZW1lbnRzIGV0IHLDqWdpb25zIGQnb3V0cmUtbWVyIChEUk9NKS4="},
+    correctHash: hashAnswer(34, 0),
+    explication: "Monaco est une principauté indépendante, ce n'est pas un territoire français. La Guadeloupe, la Martinique et La Réunion sont des départements et régions d'outre-mer (DROM)."
+  },
   {
     id: 35,
     categorie: "Histoire, géographie et culture",
-    sousCategorie: "Patrimoine",
-    question: "UXVlbCBtb251bWVudCBwYXJpc2llbiBhIMOpdMOpIGNvbnN0cnVpdCBwb3VyIGwnRXhwb3NpdGlvbiB1bml2ZXJzZWxsZSBkZSAxODg5ID8=",
+    sousCategorie: "Patrimoine Tour Eiffel",
+    question: "Pour quel événement et en quelle année la Tour Eiffel a-t-elle été construite par Gustave Eiffel ?",
     options: [
-      "TCdBcmMgZGUgVHJpb21waGU=",
-      "TGEgVG91ciBFaWZmZWw=",
-      "TGUgU2FjcsOpLUPFk3Vy",
-      "TGUgUGFudGjDqW9u"
+      "L'Exposition universelle de 1889, célébrant le centenaire de la Révolution française",
+      "L'Exposition universelle de 1900, marquant l'entrée dans le nouveau siècle",
+      "Les Jeux Olympiques de Paris en 1924, premiers jeux modernes en France",
+      "La Libération de Paris en 1944, comme symbole de la France libre retrouvée"
     ],
-    correctHash: hashAnswer(35, 1),
-    explication: "TGEgVG91ciBFaWZmZWwgYSDDqXTDqSBjb25zdHJ1aXRlIHBhciBHdXN0YXZlIEVpZmZlbCBwb3VyIGwnRXhwb3NpdGlvbiB1bml2ZXJzZWxsZSBkZSAxODg5LCBjZW50ZW5haXJlIGRlIGxhIFLDqXZvbHV0aW9uIGZyYW7Dp2Fpc2Uu"},
+    correctHash: hashAnswer(35, 0),
+    explication: "La Tour Eiffel a été construite par Gustave Eiffel pour l'Exposition universelle de 1889, centenaire de la Révolution française."
+  },
   {
     id: 36,
     categorie: "Histoire, géographie et culture",
-    sousCategorie: "Patrimoine",
-    question: "T8O5IHNvbnQgZW50ZXJyw6lzIGxlcyBncmFuZHMgcGVyc29ubmFnZXMgZGUgbCdoaXN0b2lyZSBkZSBGcmFuY2UgPw==",
+    sousCategorie: "Panthéon",
+    question: "Quel monument parisien accueille les sépultures des personnalités ayant marqué l'histoire de France ?",
     options: [
-      "QXUgTG91dnJl",
-      "QXUgUGFudGjDqW9u",
-      "w4AgVmVyc2FpbGxlcw==",
-      "w4AgTm90cmUtRGFtZQ=="
+      "Le Panthéon, où reposent Victor Hugo, Marie Curie, Jean Moulin et Simone Veil",
+      "Le musée du Louvre, ancienne résidence royale et plus grand musée du monde",
+      "Le château de Versailles, symbole de la monarchie absolue de Louis XIV",
+      "La cathédrale Notre-Dame de Paris, chef-d'œuvre de l'architecture gothique"
     ],
-    correctHash: hashAnswer(36, 1),
-    explication: "TGUgUGFudGjDqW9uLCDDoCBQYXJpcywgYWNjdWVpbGxlIGxlcyBzw6lwdWx0dXJlcyBkZSBwZXJzb25uYWxpdMOpcyBheWFudCBtYXJxdcOpIGwnaGlzdG9pcmUgZGUgRnJhbmNlIChWaWN0b3IgSHVnbywgTWFyaWUgQ3VyaWUsIEplYW4gTW91bGluLCBTaW1vbmUgVmVpbC4uLiku"},
+    correctHash: hashAnswer(36, 0),
+    explication: "Le Panthéon, à Paris, accueille les sépultures de personnalités ayant marqué l'histoire de France (Victor Hugo, Marie Curie, Jean Moulin, Simone Veil...)."
+  },
 
   // ==================== 5. VIVRE DANS LA SOCIÉTÉ FRANÇAISE (4 questions) ====================
   
   {
     id: 37,
     categorie: "Vivre dans la société française",
-    sousCategorie: "S'installer en France",
-    question: "UXVlbCBkb2N1bWVudCBlc3Qgb2JsaWdhdG9pcmUgcG91ciB1biDDqXRyYW5nZXIgbm9uLWV1cm9ww6llbiBzb3VoYWl0YW50IHLDqXNpZGVyIGVuIEZyYW5jZSBwbHVzIGRlIDMgbW9pcyA/",
+    sousCategorie: "Titre de séjour",
+    question: "Quel document est obligatoire pour un étranger non-européen souhaitant résider en France plus de 3 mois ?",
     options: [
-      "VW4gdmlzYSBzZXVsZW1lbnQ=",
-      "VW4gdGl0cmUgZGUgc8Opam91ciBvdSB2aXNhIGxvbmcgc8Opam91cg==",
-      "VW5lIGNhcnRlIGQnaWRlbnRpdMOpIGRlIHNvbiBwYXlz",
-      "QXVjdW4gZG9jdW1lbnQ="
+      "Un titre de séjour ou un visa long séjour valant titre de séjour (VLS-TS) délivré par la préfecture",
+      "Un simple visa touristique de court séjour valable 90 jours renouvelable indéfiniment",
+      "Une carte d'identité de son pays d'origine accompagnée d'une attestation d'hébergement",
+      "Aucun document particulier, la libre circulation s'appliquant à tous les ressortissants étrangers"
     ],
-    correctHash: hashAnswer(37, 1),
-    explication: "UG91ciBzw6lqb3VybmVyIGVuIEZyYW5jZSBwbHVzIGRlIDMgbW9pcywgdW4gw6l0cmFuZ2VyIG5vbi1ldXJvcMOpZW4gZG9pdCBwb3Nzw6lkZXIgdW4gdGl0cmUgZGUgc8Opam91ciBvdSB1biB2aXNhIGxvbmcgc8Opam91ciB2YWxhbnQgdGl0cmUgZGUgc8Opam91ciAoVkxTLVRTKS4="},
+    correctHash: hashAnswer(37, 0),
+    explication: "Pour séjourner en France plus de 3 mois, un étranger non-européen doit posséder un titre de séjour ou un visa long séjour valant titre de séjour (VLS-TS)."
+  },
   {
     id: 38,
     categorie: "Vivre dans la société française",
-    sousCategorie: "Accès aux soins",
-    question: "UXVlbCBudW3DqXJvIGFwcGVsZXIgZW4gY2FzIGQndXJnZW5jZSBtw6lkaWNhbGUgZW4gRnJhbmNlID8=",
+    sousCategorie: "Urgences médicales",
+    question: "Quel numéro devez-vous appeler en cas d'urgence médicale nécessitant une intervention du SAMU ?",
     options: [
-      "MTc=",
-      "MTUgKFNBTVUp",
-      "MTg=",
-      "MTE0"
+      "Le 15 (SAMU - Service d'Aide Médicale Urgente) pour toute urgence médicale grave",
+      "Le 17 (Police secours) pour signaler une infraction ou demander une intervention policière",
+      "Le 18 (Sapeurs-pompiers) pour les incendies et les accidents de la route",
+      "Le 114 (Numéro d'urgence pour les personnes sourdes ou malentendantes)"
     ],
-    correctHash: hashAnswer(38, 1),
-    explication: "TGUgMTUgZXN0IGxlIG51bcOpcm8gZHUgU0FNVSAoU2VydmljZSBkJ0FpZGUgTcOpZGljYWxlIFVyZ2VudGUpLiBMZSAxNyBlc3QgbGEgcG9saWNlLCBsZSAxOCBsZXMgcG9tcGllcnMsIGxlIDExMiBsZSBudW3DqXJvIGV1cm9ww6llbiBkJ3VyZ2VuY2Uu"},
+    correctHash: hashAnswer(38, 0),
+    explication: "Le 15 est le numéro du SAMU (Service d'Aide Médicale Urgente). Le 17 est la police, le 18 les pompiers, le 112 le numéro européen d'urgence."
+  },
   {
     id: 39,
     categorie: "Vivre dans la société française",
-    sousCategorie: "Travailler en France",
-    question: "UXVlbGxlIGVzdCBsYSBkdXLDqWUgbMOpZ2FsZSBkdSB0cmF2YWlsIGVuIEZyYW5jZSBwb3VyIHVuIHNhbGFyacOpIMOgIHRlbXBzIHBsZWluID8=",
+    sousCategorie: "Durée du travail",
+    question: "Quelle est la durée légale hebdomadaire du travail en France pour un salarié à temps plein depuis les lois Aubry ?",
     options: [
-      "MzIgaGV1cmVzIHBhciBzZW1haW5l",
-      "MzUgaGV1cmVzIHBhciBzZW1haW5l",
-      "MzkgaGV1cmVzIHBhciBzZW1haW5l",
-      "NDAgaGV1cmVzIHBhciBzZW1haW5l"
+      "35 heures par semaine depuis 2000, les heures au-delà étant des heures supplémentaires majorées",
+      "32 heures par semaine depuis la réforme du temps de travail de 2019 pour tous les secteurs",
+      "39 heures par semaine comme c'était le cas avant les ordonnances Macron de 2017",
+      "40 heures par semaine selon le standard européen appliqué dans tous les pays de l'UE"
     ],
-    correctHash: hashAnswer(39, 1),
-    explication: "TGEgZHVyw6llIGzDqWdhbGUgZHUgdHJhdmFpbCBlbiBGcmFuY2UgZXN0IGRlIDM1IGhldXJlcyBwYXIgc2VtYWluZSBkZXB1aXMgMjAwMCAobG9pcyBBdWJyeSkuIExlcyBoZXVyZXMgYXUtZGVsw6Agc29udCBkZXMgaGV1cmVzIHN1cHBsw6ltZW50YWlyZXMgbWFqb3LDqWVzLg=="},
+    correctHash: hashAnswer(39, 0),
+    explication: "La durée légale du travail en France est de 35 heures par semaine depuis 2000 (lois Aubry). Les heures au-delà sont des heures supplémentaires majorées."
+  },
   {
     id: 40,
     categorie: "Vivre dans la société française",
-    sousCategorie: "Éducation",
-    question: "TCfDqWNvbGUgcHVibGlxdWUgZW4gRnJhbmNlIGVzdCA6",
+    sousCategorie: "École publique",
+    question: "Quels sont les trois principes fondamentaux de l'école publique française issus des lois Jules Ferry ?",
     options: [
-      "UGF5YW50ZSBldCBmYWN1bHRhdGl2ZQ==",
-      "R3JhdHVpdGUsIGxhw69xdWUgZXQgb2JsaWdhdG9pcmUgZGUgMyDDoCAxNiBhbnM=",
-      "UsOpc2VydsOpZSBhdXggY2l0b3llbnMgZnJhbsOnYWlz",
-      "R8OpcsOpZSBwYXIgbGVzIHJlbGlnaW9ucw=="
+      "Gratuite, laïque et obligatoire de 3 à 16 ans pour tous les enfants résidant en France",
+      "Payante, confessionnelle et facultative selon le choix des parents pour leurs enfants",
+      "Réservée aux citoyens français, gérée par les religions et accessible dès 6 ans",
+      "Privée, sélective et obligatoire uniquement pour les familles disposant de revenus suffisants"
     ],
-    correctHash: hashAnswer(40, 1),
-    explication: "TCfDqWNvbGUgcHVibGlxdWUgZnJhbsOnYWlzZSBlc3QgZ3JhdHVpdGUsIGxhw69xdWUgZXQgb2JsaWdhdG9pcmUuIEwnaW5zdHJ1Y3Rpb24gZXN0IG9ibGlnYXRvaXJlIGRlIDMgw6AgMTYgYW5zIHBvdXIgdG91cyBsZXMgZW5mYW50cyByw6lzaWRhbnQgZW4gRnJhbmNlLCBxdWVsbGUgcXVlIHNvaXQgbGV1ciBuYXRpb25hbGl0w6ku"}
+    correctHash: hashAnswer(40, 0),
+    explication: "L'école publique française est gratuite, laïque et obligatoire. L'instruction est obligatoire de 3 à 16 ans pour tous les enfants résidant en France, quelle que soit leur nationalité."
+  }
 ];
 
 // Fonction pour vérifier une réponse
@@ -578,7 +620,7 @@ export const EXAMEN_1: ExamenBlanc = {
   numero: 1,
   titre: "Examen blanc #1",
   description: "40 questions en conditions réelles d'examen",
-  questions: questions.map(q => decodeQuestion(q)),
+  questions: questions,
   dureeMinutes: 45,
   totalQuestions: 40
 };

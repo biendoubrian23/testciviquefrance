@@ -1,11 +1,11 @@
 'use client';
 
-import { useState, useEffect, useTransition } from 'react';
+import { useState, useEffect, useTransition, useCallback } from 'react';
 import { Header } from '@/components/layout';
 import { StatCard, Card } from '@/components/ui';
 import { ClassementTable } from './ClassementTable';
 import { UserRanking, SortCriteria, FilterCriteria } from '@/lib/actions/classement';
-import { Trophy, Target, Clock, Zap } from 'lucide-react';
+import { Trophy, Target, Clock, Zap, RefreshCw } from 'lucide-react';
 
 interface ClassementClientProps {
   initialRankings: UserRanking[];
@@ -17,11 +17,40 @@ interface ClassementClientProps {
   };
 }
 
-export function ClassementClient({ initialRankings, stats }: ClassementClientProps) {
+export function ClassementClient({ initialRankings, stats: initialStats }: ClassementClientProps) {
   const [rankings, setRankings] = useState<UserRanking[]>(initialRankings);
+  const [stats, setStats] = useState(initialStats);
   const [sortBy, setSortBy] = useState<SortCriteria>('taux_reussite');
   const [filters, setFilters] = useState<FilterCriteria>({});
   const [isPending, startTransition] = useTransition();
+  const [lastUpdate, setLastUpdate] = useState(new Date());
+
+  // Fonction de rafraîchissement des données
+  const refreshData = useCallback(async () => {
+    try {
+      const params = new URLSearchParams();
+      params.set('sort', sortBy);
+      if (filters.subscriptionType) params.set('subscription', filters.subscriptionType);
+      if (filters.minQuestions) params.set('minQuestions', String(filters.minQuestions));
+      if (filters.minTauxReussite) params.set('minTaux', String(filters.minTauxReussite));
+      if (filters.hasExamens) params.set('hasExamens', 'true');
+      if (filters.actifRecent) params.set('actifRecent', 'true');
+
+      const response = await fetch(`/api/classement?${params.toString()}`);
+      const data = await response.json();
+      if (data.rankings) setRankings(data.rankings);
+      if (data.stats) setStats(data.stats);
+      setLastUpdate(new Date());
+    } catch (error) {
+      console.error('Erreur rafraîchissement:', error);
+    }
+  }, [sortBy, filters]);
+
+  // Rafraîchissement automatique toutes les 30 secondes
+  useEffect(() => {
+    const interval = setInterval(refreshData, 30000);
+    return () => clearInterval(interval);
+  }, [refreshData]);
 
   const handleSortChange = async (newSort: SortCriteria) => {
     setSortBy(newSort);
@@ -33,10 +62,12 @@ export function ClassementClient({ initialRankings, stats }: ClassementClientPro
       if (filters.minTauxReussite) params.set('minTaux', String(filters.minTauxReussite));
       if (filters.hasExamens) params.set('hasExamens', 'true');
       if (filters.actifRecent) params.set('actifRecent', 'true');
-      
+
       const response = await fetch(`/api/classement?${params.toString()}`);
       const data = await response.json();
       setRankings(data.rankings);
+      if (data.stats) setStats(data.stats);
+      setLastUpdate(new Date());
     });
   };
 
@@ -50,10 +81,12 @@ export function ClassementClient({ initialRankings, stats }: ClassementClientPro
       if (newFilters.minTauxReussite) params.set('minTaux', String(newFilters.minTauxReussite));
       if (newFilters.hasExamens) params.set('hasExamens', 'true');
       if (newFilters.actifRecent) params.set('actifRecent', 'true');
-      
+
       const response = await fetch(`/api/classement?${params.toString()}`);
       const data = await response.json();
       setRankings(data.rankings);
+      if (data.stats) setStats(data.stats);
+      setLastUpdate(new Date());
     });
   };
 
@@ -65,12 +98,27 @@ export function ClassementClient({ initialRankings, stats }: ClassementClientPro
 
   return (
     <div className="min-h-screen bg-background-light">
-      <Header 
-        title="Classement" 
+      <Header
+        title="Classement"
         subtitle={`${rankings.length} utilisateurs classes`}
       />
 
       <div className="p-4 lg:p-8">
+        {/* Barre d'actualisation */}
+        <div className="mb-4 flex items-center justify-end gap-4 p-3 bg-gray-50 border border-gray-200">
+          <span className="text-xs text-text-muted">
+            Dernière mise à jour: {lastUpdate.toLocaleTimeString('fr-FR')}
+          </span>
+          <button
+            onClick={refreshData}
+            className="flex items-center gap-1 px-3 py-1 text-xs bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+            title="Rafraîchir les données"
+          >
+            <RefreshCw className="w-3 h-3" />
+            Actualiser
+          </button>
+        </div>
+
         {/* Stats des meilleurs */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
           <StatCard
@@ -103,8 +151,8 @@ export function ClassementClient({ initialRankings, stats }: ClassementClientPro
         </div>
 
         {/* Tableau de classement */}
-        <Card 
-          title="Classement des utilisateurs" 
+        <Card
+          title="Classement des utilisateurs"
           subtitle="Tries et filtres par performance"
           noPadding
           className={isPending ? 'opacity-60' : ''}

@@ -17,13 +17,13 @@ const STANDARD_PRICE_IDS = [
 
 export type SubscriptionFilter = 'all' | 'premium' | 'standard';
 
-export async function getDashboardStats(subscriptionFilter: SubscriptionFilter = 'all'): Promise<DashboardStats & { 
+export async function getDashboardStats(subscriptionFilter: SubscriptionFilter = 'all'): Promise<DashboardStats & {
   standardUsers: number;
   standardRevenue: number;
   premiumRevenue: number;
 }> {
   const supabase = createAdminClient();
-  
+
   const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
@@ -86,25 +86,25 @@ export async function getDashboardStats(subscriptionFilter: SubscriptionFilter =
   const standardUsers = standardUsersCount || 0;
   const premiumUsers = premiumUsersCount || 0;
   const trialingUsers = trialingUsersCount || 0;
-  
+
   // Revenus des abonnements (par semaine)
   const standardRevenue = standardUsers * STANDARD_PRICE;
   const premiumRevenue = premiumUsers * PREMIUM_PRICE;
   const subscriptionRevenue = standardRevenue + premiumRevenue;
-  
+
   // Revenus des achats ponctuels
   const achatsRevenue = achatsData?.reduce((sum, a) => sum + (a.amount || 0), 0) || 0;
   const achatsThisMonthRevenue = achatsThisMonth?.reduce((sum, a) => sum + (a.amount || 0), 0) || 0;
-  
+
   // Total revenus = abonnements + achats ponctuels
   const totalRevenus = subscriptionRevenue + achatsRevenue;
   const revenusThisMonth = subscriptionRevenue + achatsThisMonthRevenue;
-  
+
   const questionsRepondues = statsData?.reduce((sum, s) => sum + (s.total_questions_repondues || 0), 0) || 0;
   const tempsEtudeTotal = statsData?.reduce((sum, s) => sum + (s.temps_total_etude || 0), 0) || 0;
 
-  const tauxReussiteExamens = totalExamens && totalExamens > 0 
-    ? Math.round(((examensReussis || 0) / totalExamens) * 100) 
+  const tauxReussiteExamens = totalExamens && totalExamens > 0
+    ? Math.round(((examensReussis || 0) / totalExamens) * 100)
     : 0;
 
   // Appliquer le filtre pour les stats affichées
@@ -142,11 +142,11 @@ export async function getDashboardStats(subscriptionFilter: SubscriptionFilter =
 
 export async function getActivityData(days: number = 14) {
   const supabase = createAdminClient();
-  
+
   // Recuperer toutes les donnees en une seule requete puis grouper cote client
   const startDate = new Date();
   startDate.setDate(startDate.getDate() - days);
-  
+
   const [
     { data: profilesData },
     { data: sessionsData },
@@ -166,11 +166,11 @@ export async function getActivityData(days: number = 14) {
     date.setDate(date.getDate() - i);
     const dayStr = date.toISOString().split('T')[0];
 
-    const users = profilesData?.filter(p => 
+    const users = profilesData?.filter(p =>
       p.created_at?.startsWith(dayStr)
     ).length || 0;
-    
-    const sessions = sessionsData?.filter(s => 
+
+    const sessions = sessionsData?.filter(s =>
       s.started_at?.startsWith(dayStr)
     ).length || 0;
 
@@ -187,10 +187,10 @@ export async function getActivityData(days: number = 14) {
 // Données des inscriptions uniquement (pour le graphique Vue d'ensemble)
 export async function getSignupsData(days: number = 14) {
   const supabase = createAdminClient();
-  
+
   const startDate = new Date();
   startDate.setDate(startDate.getDate() - days);
-  
+
   const { data: profilesData } = await supabase
     .from('profiles')
     .select('created_at')
@@ -203,7 +203,7 @@ export async function getSignupsData(days: number = 14) {
     date.setDate(date.getDate() - i);
     const dayStr = date.toISOString().split('T')[0];
 
-    const signups = profilesData?.filter(p => 
+    const signups = profilesData?.filter(p =>
       p.created_at?.startsWith(dayStr)
     ).length || 0;
 
@@ -218,20 +218,22 @@ export async function getSignupsData(days: number = 14) {
 
 export async function getRevenueData(days: number = 30) {
   const supabase = createAdminClient();
-  
+
   const startDate = new Date();
   startDate.setDate(startDate.getDate() - days);
-  
+
   // Récupérer les abonnements actifs avec leur date de début
   const [
     { data: subscriptions },
     { data: achats },
   ] = await Promise.all([
+    // Ne pas filtrer sur is_premium pour inclure les abonnements annulés
+    // Un paiement a été effectué, donc il doit être comptabilisé
     supabase
       .from('profiles')
       .select('stripe_price_id, subscription_start_date')
-      .eq('is_premium', true)
       .not('subscription_start_date', 'is', null)
+      .not('stripe_price_id', 'is', null)
       .gte('subscription_start_date', startDate.toISOString()),
     supabase
       .from('achats')
@@ -248,20 +250,20 @@ export async function getRevenueData(days: number = 30) {
     const dayStr = date.toISOString().split('T')[0];
 
     // Revenus des abonnements démarrés ce jour
-    const daySubscriptions = subscriptions?.filter(s => 
+    const daySubscriptions = subscriptions?.filter(s =>
       s.subscription_start_date?.startsWith(dayStr)
     ) || [];
-    
+
     const subscriptionRevenue = daySubscriptions.reduce((sum, s) => {
       const isPremium = s.stripe_price_id && PREMIUM_PRICE_IDS.includes(s.stripe_price_id);
       return sum + (isPremium ? PREMIUM_PRICE : STANDARD_PRICE);
     }, 0);
 
     // Revenus des achats ponctuels (pack examen, etc.)
-    const dayAchats = achats?.filter(a => 
+    const dayAchats = achats?.filter(a =>
       a.created_at?.startsWith(dayStr)
     ) || [];
-    
+
     const achatsRevenue = dayAchats.reduce((sum, a) => sum + (a.amount || 0), 0);
 
     data.push({
@@ -275,7 +277,7 @@ export async function getRevenueData(days: number = 30) {
 
 export async function getCategoryStats() {
   const supabase = createAdminClient();
-  
+
   const [
     { data: categories },
     { data: questions },
@@ -295,7 +297,7 @@ export async function getCategoryStats() {
 
 export async function getRecentUsers(limit: number = 10) {
   const supabase = createAdminClient();
-  
+
   const { data } = await supabase
     .from('profiles')
     .select('*')
@@ -307,10 +309,10 @@ export async function getRecentUsers(limit: number = 10) {
 
 export async function getExamSuccessData(days: number = 14) {
   const supabase = createAdminClient();
-  
+
   const startDate = new Date();
   startDate.setDate(startDate.getDate() - days);
-  
+
   const { data: examens } = await supabase
     .from('examens_blancs')
     .select('passed, is_completed, completed_at')
@@ -324,10 +326,10 @@ export async function getExamSuccessData(days: number = 14) {
     date.setDate(date.getDate() - i);
     const dayStr = date.toISOString().split('T')[0];
 
-    const dayExamens = examens?.filter(e => 
+    const dayExamens = examens?.filter(e =>
       e.completed_at?.startsWith(dayStr)
     ) || [];
-    
+
     const reussis = dayExamens.filter(e => e.passed).length;
     const echoues = dayExamens.filter(e => !e.passed).length;
 

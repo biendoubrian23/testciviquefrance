@@ -1,13 +1,13 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { StatCard, Card, Badge, ProgressBar } from '@/components/ui';
-import { 
-  CreditCard, 
-  TrendingUp, 
-  Users, 
-  Calendar, 
-  Clock, 
+import {
+  CreditCard,
+  TrendingUp,
+  Users,
+  Calendar,
+  Clock,
   RefreshCw,
   ChevronRight,
   AlertTriangle,
@@ -40,6 +40,7 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
   });
   const [loading, setLoading] = useState(false);
   const [refreshingStats, setRefreshingStats] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState(new Date());
 
   // Fonction pour rafraîchir les statistiques (churn inclus)
   const refreshStats = async () => {
@@ -50,12 +51,43 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
       if (data.stats) {
         setStats(data.stats);
       }
+      setLastUpdate(new Date());
     } catch (error) {
       console.error('Error refreshing stats:', error);
     } finally {
       setRefreshingStats(false);
     }
   };
+
+  // Fonction de rafraîchissement global
+  const refreshAll = useCallback(async () => {
+    try {
+      const params = new URLSearchParams();
+      if (filter.type !== 'all') params.set('type', filter.type!);
+      if (filter.status !== 'all') params.set('status', filter.status!);
+      if (filter.period !== 'all') params.set('period', filter.period!);
+
+      const [subsResponse, statsResponse] = await Promise.all([
+        fetch(`/api/subscriptions?${params.toString()}`),
+        fetch('/api/subscriptions/stats')
+      ]);
+
+      const subsData = await subsResponse.json();
+      const statsData = await statsResponse.json();
+
+      if (subsData.subscriptions) setSubscriptions(subsData.subscriptions);
+      if (statsData.stats) setStats(statsData.stats);
+      setLastUpdate(new Date());
+    } catch (error) {
+      console.error('Error refreshing:', error);
+    }
+  }, [filter]);
+
+  // Rafraîchissement automatique toutes les 30 secondes
+  useEffect(() => {
+    const interval = setInterval(refreshAll, 30000);
+    return () => clearInterval(interval);
+  }, [refreshAll]);
 
   const handleFilterChange = async () => {
     setLoading(true);
@@ -64,10 +96,11 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
       if (filter.type !== 'all') params.set('type', filter.type!);
       if (filter.status !== 'all') params.set('status', filter.status!);
       if (filter.period !== 'all') params.set('period', filter.period!);
-      
+
       const response = await fetch(`/api/subscriptions?${params.toString()}`);
       const data = await response.json();
       setSubscriptions(data.subscriptions);
+      setLastUpdate(new Date());
     } catch (error) {
       console.error('Error fetching subscriptions:', error);
     } finally {
@@ -90,6 +123,21 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
 
   return (
     <div className={loading ? 'opacity-60' : ''}>
+      {/* Barre d'actualisation */}
+      <div className="mb-4 flex items-center justify-end gap-4 p-3 bg-gray-50 border border-gray-200">
+        <span className="text-xs text-text-muted">
+          Dernière mise à jour: {lastUpdate.toLocaleTimeString('fr-FR')}
+        </span>
+        <button
+          onClick={refreshAll}
+          className="flex items-center gap-1 px-3 py-1 text-xs bg-primary-600 text-white hover:bg-primary-700 transition-colors"
+          title="Rafraîchir les données"
+        >
+          <RefreshCw className="w-3 h-3" />
+          Actualiser
+        </button>
+      </div>
+
       {/* Stats principales */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
         <StatCard
@@ -150,9 +198,9 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
             <div className="text-sm text-text-muted">
               Prix: 2.99€/semaine
             </div>
-            <ProgressBar 
-              value={stats.totalStandard} 
-              max={stats.totalActive || 1} 
+            <ProgressBar
+              value={stats.totalStandard}
+              max={stats.totalActive || 1}
               variant="warning"
               showPercentage
               label={`${Math.round((stats.totalStandard / (stats.totalActive || 1)) * 100)}%`}
@@ -169,9 +217,9 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
             <div className="text-sm text-text-muted">
               Prix: 6.99€/semaine
             </div>
-            <ProgressBar 
-              value={stats.totalPremium} 
-              max={stats.totalActive || 1} 
+            <ProgressBar
+              value={stats.totalPremium}
+              max={stats.totalActive || 1}
               variant="success"
               showPercentage
               label={`${Math.round((stats.totalPremium / (stats.totalActive || 1)) * 100)}%`}
@@ -188,8 +236,8 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
             <div className="text-sm text-text-muted">
               Basé sur les abonnés actuels
             </div>
-            <Link 
-              href="/revenus/projections" 
+            <Link
+              href="/revenus/projections"
               className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium"
             >
               <Sparkles className="w-4 h-4" />
@@ -202,7 +250,7 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
 
       {/* Bouton Analyse intelligente */}
       <div className="mb-8">
-        <Link 
+        <Link
           href="/revenus/projections"
           className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg"
         >
@@ -259,7 +307,7 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
         {/* Filtres */}
         <div className="p-4 border-b border-gray-200 flex flex-wrap gap-4 items-center bg-gray-50">
           <Filter className="w-5 h-5 text-text-muted" />
-          
+
           <select
             value={filter.type}
             onChange={(e) => setFilter({ ...filter, type: e.target.value as SubscriptionFilter['type'] })}
