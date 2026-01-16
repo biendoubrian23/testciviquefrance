@@ -176,14 +176,14 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
 
 // Gérer la mise à jour d'abonnement (renouvellement, changement de plan)
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
-  console.log('🔄 Subscription updated:', subscription.id);
+  console.log('🔄 Subscription updated:', subscription.id, '- status:', subscription.status);
 
   const customerId = subscription.customer as string;
   let profileId: string | null = null;
   let profileEmail: string | null = null;
-  let foundVia: 'customer_id' | 'subscription_id' = 'customer_id';
+  let foundVia: 'customer_id' | 'subscription_id' | 'email' = 'customer_id';
   
-  // Vérifier que l'utilisateur existe avant de mettre à jour
+  // ÉTAPE 1: Chercher par stripe_customer_id
   const { data: existingProfile, error: fetchError } = await supabase
     .from('profiles')
     .select('id, email')
@@ -193,7 +193,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
   if (fetchError || !existingProfile) {
     console.warn(`⚠️ Profil non trouvé pour customer ${customerId}, tentative via subscription_id`);
     
-    // Essayer de trouver par subscription_id
+    // ÉTAPE 2: Chercher par stripe_subscription_id
     const { data: profileBySubId, error: subError } = await supabase
       .from('profiles')
       .select('id, email')
@@ -201,14 +201,47 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
       .single();
     
     if (subError || !profileBySubId) {
-      console.error(`❌ Impossible de trouver le profil pour customer ${customerId} ou subscription ${subscription.id}`);
-      return; // Ne pas lancer d'erreur, juste ignorer
+      console.warn(`⚠️ Profil non trouvé pour subscription ${subscription.id}, tentative via email Stripe`);
+      
+      // ÉTAPE 3: Récupérer l'email du customer Stripe et chercher par email
+      try {
+        const stripeCustomer = await stripe.customers.retrieve(customerId);
+        if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
+          const customerStripeEmail = stripeCustomer.email;
+          console.log(`📧 Email récupéré de Stripe: ${customerStripeEmail}`);
+          
+          const { data: profileByEmail, error: emailError } = await supabase
+            .from('profiles')
+            .select('id, email')
+            .eq('email', customerStripeEmail)
+            .single();
+          
+          if (emailError || !profileByEmail) {
+            console.error(`❌ Impossible de trouver le profil pour customer ${customerId}, subscription ${subscription.id}, ou email ${customerStripeEmail}`);
+            console.error(`   fetchError: ${fetchError?.message || 'aucune'}`);
+            console.error(`   subError: ${subError?.message || 'aucune'}`);
+            console.error(`   emailError: ${emailError?.message || 'aucune'}`);
+            return;
+          }
+          
+          profileId = profileByEmail.id;
+          profileEmail = profileByEmail.email;
+          foundVia = 'email';
+          console.log(`✅ Profil trouvé via email Stripe: ${profileByEmail.email}`);
+        } else {
+          console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
+          return;
+        }
+      } catch (stripeError: any) {
+        console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+        return;
+      }
+    } else {
+      profileId = profileBySubId.id;
+      profileEmail = profileBySubId.email;
+      foundVia = 'subscription_id';
+      console.log(`✅ Profil trouvé via subscription_id: ${profileBySubId.email}`);
     }
-    
-    profileId = profileBySubId.id;
-    profileEmail = profileBySubId.email;
-    foundVia = 'subscription_id';
-    console.log(`✅ Profil trouvé via subscription_id: ${profileBySubId.email}`);
   } else {
     profileId = existingProfile.id;
     profileEmail = existingProfile.email;
@@ -220,8 +253,13 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
     return;
   }
 
-  // 'trialing' = période d'essai gratuite, doit aussi donner accès premium
-  const hasActiveAccess = subscription.status === 'active' || subscription.status === 'trialing';
+  // Déterminer si l'utilisateur doit avoir accès Premium
+  // Statuts qui donnent accès: 'active', 'trialing'
+  // Statuts qui révoquent l'accès: 'past_due', 'canceled', 'unpaid', 'incomplete', 'incomplete_expired', 'paused'
+  const activeStatuses = ['active', 'trialing'];
+  const hasActiveAccess = activeStatuses.includes(subscription.status);
+
+  console.log(`   Prix: ${priceId}, Statut Stripe: ${subscription.status}, Accès Premium: ${hasActiveAccess}`);
 
   // Mettre à jour par ID du profil (plus fiable)
   const { error } = await supabase
@@ -239,6 +277,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
 
   if (error) {
     console.error('❌ Erreur mise à jour subscription:', error);
+    throw new Error(`Erreur mise à jour subscription: ${error.message}`);
   } else {
     console.log(`✅ Subscription mise à jour pour ${profileEmail} (trouvé via ${foundVia}) - status: ${subscription.status}, is_premium: ${hasActiveAccess}`);
   }
@@ -310,35 +349,85 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: Ret
   if (!invoice.subscription) return;
 
   const customerId = invoice.customer as string;
+  const subscriptionId = invoice.subscription as string;
 
-  // Vérifier que l'utilisateur existe
-  const { data: existingProfile, error: fetchError } = await supabase
+  // Vérifier que l'utilisateur existe - essayer plusieurs méthodes
+  let existingProfile = null;
+  let profileFoundVia = 'customer_id';
+  
+  // ÉTAPE 1: Chercher par customer_id
+  const { data: profileByCustomer, error: fetchError } = await supabase
     .from('profiles')
     .select('id, email, subscription_status')
     .eq('stripe_customer_id', customerId)
     .single();
 
-  if (fetchError || !existingProfile) {
-    console.warn(`⚠️ Profil non trouvé pour customer ${customerId} lors de l'échec de paiement`);
-    return;
+  if (fetchError || !profileByCustomer) {
+    // ÉTAPE 2: Essayer par subscription_id
+    const { data: profileBySub, error: subError } = await supabase
+      .from('profiles')
+      .select('id, email, subscription_status')
+      .eq('stripe_subscription_id', subscriptionId)
+      .single();
+    
+    if (subError || !profileBySub) {
+      // ÉTAPE 3: Récupérer l'email du customer Stripe et chercher par email
+      console.warn(`⚠️ Profil non trouvé par customer_id ou subscription_id, tentative via email Stripe`);
+      
+      try {
+        const stripeCustomer = await stripe.customers.retrieve(customerId);
+        if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
+          const customerStripeEmail = stripeCustomer.email;
+          console.log(`📧 Email récupéré de Stripe: ${customerStripeEmail}`);
+          
+          const { data: profileByEmail, error: emailError } = await supabase
+            .from('profiles')
+            .select('id, email, subscription_status')
+            .eq('email', customerStripeEmail)
+            .single();
+          
+          if (emailError || !profileByEmail) {
+            console.error(`❌ Impossible de trouver le profil pour customer ${customerId}, subscription ${subscriptionId}, ou email ${customerStripeEmail} lors de l'échec de paiement`);
+            return;
+          }
+          
+          existingProfile = profileByEmail;
+          profileFoundVia = 'email';
+          console.log(`✅ Profil trouvé via email Stripe: ${profileByEmail.email}`);
+        } else {
+          console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
+          return;
+        }
+      } catch (stripeError: any) {
+        console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+        return;
+      }
+    } else {
+      existingProfile = profileBySub;
+      profileFoundVia = 'subscription_id';
+    }
+  } else {
+    existingProfile = profileByCustomer;
   }
 
-  // Si l'utilisateur était en trialing et le paiement échoue, révoquer l'accès
-  const shouldRevokePremium = existingProfile.subscription_status === 'trialing';
-
+  // IMPORTANT: Révoquer l'accès premium pour TOUT échec de paiement
+  // L'utilisateur pourra récupérer son accès quand le paiement sera régularisé
+  // On met aussi à jour les identifiants Stripe si on les a trouvés par email (pour corriger les données manquantes)
   const { error } = await supabase
     .from('profiles')
     .update({
       subscription_status: 'past_due',
-      // Révoquer l'accès si c'était une période d'essai qui se termine
-      ...(shouldRevokePremium && { is_premium: false }),
+      is_premium: false, // Toujours révoquer l'accès en cas d'échec de paiement
+      // Mettre à jour les identifiants Stripe s'ils n'étaient pas présents
+      stripe_customer_id: customerId,
+      stripe_subscription_id: subscriptionId,
     })
-    .eq('stripe_customer_id', customerId);
+    .eq('id', existingProfile.id);
 
   if (error) {
     console.error('❌ Erreur marquage paiement échoué:', error);
   } else {
-    console.log(`⚠️ Statut mis à jour: past_due pour ${existingProfile.email}${shouldRevokePremium ? ' - Accès révoqué (fin période essai)' : ''}`);
+    console.log(`⚠️ Paiement échoué pour ${existingProfile.email} (trouvé via ${profileFoundVia}) - Accès Premium révoqué, statut: past_due`);
   }
 }
 
