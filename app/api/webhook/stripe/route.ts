@@ -5,7 +5,7 @@ import { STRIPE_PLANS } from '@/lib/stripe/plans';
 import { checkRateLimit, RATE_LIMITS, rateLimitResponse, getIdentifier } from '@/lib/utils/rate-limit';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder', {
-  apiVersion: '2025-02-24.acacia',
+  apiVersion: '2025-11-17.clover' as any, // Version utilisée en production
 });
 
 function getSupabaseClient() {
@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
   // 🚦 PROTECTION 1 : Rate limiting (100 requêtes/min par IP)
   const identifier = getIdentifier(req);
   const rateLimitResult = checkRateLimit(identifier, RATE_LIMITS.stripeWebhook);
-  
+
   if (!rateLimitResult.success) {
     console.warn(`⚠️ Rate limit dépassé pour IP: ${identifier}`);
     return rateLimitResponse(rateLimitResult.resetTime);
@@ -58,35 +58,56 @@ export async function POST(req: NextRequest) {
 
   console.log(`📨 Event reçu: ${event.type}`);
 
+  // Chaque handler est wrappé pour éviter qu'une erreur ne cause un 500 global
   try {
     switch (event.type) {
       case 'checkout.session.completed': {
-        const session = event.data.object as Stripe.Checkout.Session;
-        await handleCheckoutCompleted(session, supabase);
+        try {
+          const session = event.data.object as Stripe.Checkout.Session;
+          await handleCheckoutCompleted(session, supabase);
+        } catch (handlerError) {
+          console.error('❌ Erreur checkout.session.completed:', handlerError);
+        }
         break;
       }
 
       case 'customer.subscription.updated': {
-        const subscription = event.data.object as Stripe.Subscription;
-        await handleSubscriptionUpdated(subscription, supabase);
+        try {
+          const subscription = event.data.object as Stripe.Subscription;
+          await handleSubscriptionUpdated(subscription, supabase);
+        } catch (handlerError) {
+          console.error('❌ Erreur customer.subscription.updated:', handlerError);
+        }
         break;
       }
 
       case 'customer.subscription.deleted': {
-        const subscription = event.data.object as Stripe.Subscription;
-        await handleSubscriptionDeleted(subscription, supabase);
+        try {
+          const subscription = event.data.object as Stripe.Subscription;
+          await handleSubscriptionDeleted(subscription, supabase);
+        } catch (handlerError) {
+          console.error('❌ Erreur customer.subscription.deleted:', handlerError);
+        }
         break;
       }
 
       case 'invoice.paid': {
-        const invoice = event.data.object as Stripe.Invoice;
-        await handleInvoicePaid(invoice, supabase);
+        try {
+          const invoice = event.data.object as Stripe.Invoice;
+          await handleInvoicePaid(invoice, supabase);
+        } catch (handlerError) {
+          console.error('❌ Erreur invoice.paid:', handlerError);
+        }
         break;
       }
 
       case 'invoice.payment_failed': {
-        const invoice = event.data.object as Stripe.Invoice;
-        await handleInvoicePaymentFailed(invoice, supabase);
+        try {
+          const invoice = event.data.object as Stripe.Invoice;
+          await handleInvoicePaymentFailed(invoice, supabase);
+        } catch (handlerError) {
+          console.error('❌ Erreur invoice.payment_failed:', handlerError);
+        }
         break;
       }
 
@@ -94,13 +115,13 @@ export async function POST(req: NextRequest) {
         console.log(`⚠️ Event non géré: ${event.type}`);
     }
 
+    // Toujours retourner 200 pour éviter les retries infinis de Stripe
     return NextResponse.json({ received: true });
   } catch (error) {
-    console.error('❌ Erreur traitement webhook:', error);
-    return NextResponse.json(
-      { error: 'Webhook handler failed' },
-      { status: 500 }
-    );
+    console.error('❌ Erreur critique traitement webhook:', error);
+    // Même en cas d'erreur critique, retourner 200 pour éviter les retries
+    // Les erreurs sont loggées et peuvent être tracées
+    return NextResponse.json({ received: true, warning: 'Handler had errors but acknowledged' });
   }
 }
 
@@ -126,7 +147,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
   // Récupérer l'abonnement
   const subscriptionId = session.subscription as string;
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
-  
+
   const priceId = subscription.items.data[0].price.id;
 
   // Trouver le plan correspondant
@@ -144,19 +165,31 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
   // Mettre à jour le profil dans Supabase
   const { data: profile, error: fetchError } = await supabase
     .from('profiles')
-    .select('*')
+    .select('id, email, stripe_customer_id, stripe_subscription_id')
     .eq('email', customerEmail)
     .single();
 
-  if (fetchError) {
+  if (fetchError || !profile) {
     console.error('❌ Erreur récupération profil:', fetchError);
     return;
   }
 
+  // IMPORTANT: Ne pas écraser le customer_id si le profil a déjà un abonnement actif
+  // avec un autre customer (cas où l'utilisateur a plusieurs customers Stripe)
+  // Pour les abonnements (subscription mode), on met à jour le customer_id
+  // Pour les paiements uniques, on garde l'ancien customer_id s'il existe
+  const shouldUpdateCustomerId = session.mode === 'subscription' || !profile.stripe_customer_id;
+
+  console.log(`📋 Mode checkout: ${session.mode}`);
+  console.log(`📋 Customer ID actuel: ${profile.stripe_customer_id || 'aucun'}`);
+  console.log(`📋 Nouveau customer ID: ${customerId}`);
+  console.log(`📋 Mise à jour customer_id: ${shouldUpdateCustomerId ? 'OUI' : 'NON (préservation)'}`);
+
   const { error: updateError } = await supabase
     .from('profiles')
     .update({
-      stripe_customer_id: customerId,
+      // Mettre à jour customer_id seulement si abonnement ou si vide
+      stripe_customer_id: shouldUpdateCustomerId ? customerId : profile.stripe_customer_id,
       stripe_subscription_id: subscriptionId,
       stripe_price_id: priceId,
       subscription_status: subscription.status,
@@ -165,7 +198,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
       is_premium: true,
       subscription_exams_used: 0, // Reset du compteur pour le nouvel abonnement
     })
-    .eq('email', customerEmail);
+    .eq('id', profile.id); // Utiliser l'ID au lieu de l'email pour plus de fiabilité
 
   if (updateError) {
     console.error('❌ Erreur mise à jour profil:', updateError);
@@ -175,78 +208,53 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
 }
 
 // Gérer la mise à jour d'abonnement (renouvellement, changement de plan)
+// STRATÉGIE EMAIL-FIRST: L'email est le lien le plus fiable entre Stripe et notre BDD
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('🔄 Subscription updated:', subscription.id, '- status:', subscription.status);
 
   const customerId = subscription.customer as string;
-  let profileId: string | null = null;
-  let profileEmail: string | null = null;
-  let foundVia: 'customer_id' | 'subscription_id' | 'email' = 'customer_id';
-  
-  // ÉTAPE 1: Chercher par stripe_customer_id
-  const { data: existingProfile, error: fetchError } = await supabase
+
+  // ÉTAPE 1: Récupérer l'email du customer Stripe (source de vérité)
+  let customerEmail: string | null = null;
+  try {
+    const stripeCustomer = await stripe.customers.retrieve(customerId);
+    if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
+      customerEmail = stripeCustomer.email;
+      console.log(`📧 Email récupéré de Stripe: ${customerEmail}`);
+    } else {
+      console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
+      return;
+    }
+  } catch (stripeError: any) {
+    console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+    return;
+  }
+
+  // ÉTAPE 2: Chercher le profil par email (le plus fiable)
+  const { data: profile, error: fetchError } = await supabase
     .from('profiles')
-    .select('id, email')
-    .eq('stripe_customer_id', customerId)
+    .select('id, email, stripe_customer_id, stripe_subscription_id')
+    .eq('email', customerEmail)
     .single();
 
-  if (fetchError || !existingProfile) {
-    console.warn(`⚠️ Profil non trouvé pour customer ${customerId}, tentative via subscription_id`);
-    
-    // ÉTAPE 2: Chercher par stripe_subscription_id
-    const { data: profileBySubId, error: subError } = await supabase
-      .from('profiles')
-      .select('id, email')
-      .eq('stripe_subscription_id', subscription.id)
-      .single();
-    
-    if (subError || !profileBySubId) {
-      console.warn(`⚠️ Profil non trouvé pour subscription ${subscription.id}, tentative via email Stripe`);
-      
-      // ÉTAPE 3: Récupérer l'email du customer Stripe et chercher par email
-      try {
-        const stripeCustomer = await stripe.customers.retrieve(customerId);
-        if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
-          const customerStripeEmail = stripeCustomer.email;
-          console.log(`📧 Email récupéré de Stripe: ${customerStripeEmail}`);
-          
-          const { data: profileByEmail, error: emailError } = await supabase
-            .from('profiles')
-            .select('id, email')
-            .eq('email', customerStripeEmail)
-            .single();
-          
-          if (emailError || !profileByEmail) {
-            console.error(`❌ Impossible de trouver le profil pour customer ${customerId}, subscription ${subscription.id}, ou email ${customerStripeEmail}`);
-            console.error(`   fetchError: ${fetchError?.message || 'aucune'}`);
-            console.error(`   subError: ${subError?.message || 'aucune'}`);
-            console.error(`   emailError: ${emailError?.message || 'aucune'}`);
-            return;
-          }
-          
-          profileId = profileByEmail.id;
-          profileEmail = profileByEmail.email;
-          foundVia = 'email';
-          console.log(`✅ Profil trouvé via email Stripe: ${profileByEmail.email}`);
-        } else {
-          console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
-          return;
-        }
-      } catch (stripeError: any) {
-        console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
-        return;
-      }
-    } else {
-      profileId = profileBySubId.id;
-      profileEmail = profileBySubId.email;
-      foundVia = 'subscription_id';
-      console.log(`✅ Profil trouvé via subscription_id: ${profileBySubId.email}`);
-    }
-  } else {
-    profileId = existingProfile.id;
-    profileEmail = existingProfile.email;
+  if (fetchError || !profile) {
+    console.error(`❌ Profil non trouvé pour email ${customerEmail}`);
+    console.error(`   Erreur: ${fetchError?.message || 'aucune'}`);
+    // L'utilisateur n'existe pas dans notre système - ignorer silencieusement
+    return;
   }
-  
+
+  console.log(`✅ Profil trouvé via email: ${profile.email} (ID: ${profile.id})`);
+
+  // ÉTAPE 3: Vérifier si on doit mettre à jour le customer_id
+  // Mettre à jour TOUJOURS pour les subscription.updated car c'est l'abonnement qui compte
+  if (profile.stripe_customer_id && profile.stripe_customer_id !== customerId) {
+    console.warn(`⚠️ CORRECTION: customer_id différent détecté`);
+    console.warn(`   En BDD: ${profile.stripe_customer_id}`);
+    console.warn(`   Reçu de Stripe: ${customerId}`);
+    console.warn(`   → Mise à jour vers le customer de l'abonnement actif`);
+  }
+
   const priceId = subscription.items.data[0]?.price?.id;
   if (!priceId) {
     console.error('❌ Pas de price_id dans la subscription');
@@ -259,13 +267,17 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
   const activeStatuses = ['active', 'trialing'];
   const hasActiveAccess = activeStatuses.includes(subscription.status);
 
-  console.log(`   Prix: ${priceId}, Statut Stripe: ${subscription.status}, Accès Premium: ${hasActiveAccess}`);
+  console.log(`📊 Mise à jour subscription pour profil ${profile.id}:`);
+  console.log(`   Email: ${customerEmail}`);
+  console.log(`   Prix: ${priceId}`);
+  console.log(`   Statut Stripe: ${subscription.status}`);
+  console.log(`   Accès Premium: ${hasActiveAccess}`);
 
-  // Mettre à jour par ID du profil (plus fiable)
-  const { error } = await supabase
+  // Mettre à jour le profil avec les bonnes infos Stripe
+  const { error, data } = await supabase
     .from('profiles')
     .update({
-      stripe_customer_id: customerId, // S'assurer que le customer_id est aussi enregistré
+      stripe_customer_id: customerId, // Toujours mettre à jour avec le customer de l'abonnement
       stripe_subscription_id: subscription.id,
       stripe_price_id: priceId,
       subscription_status: subscription.status,
@@ -273,35 +285,46 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
       subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
       is_premium: hasActiveAccess,
     })
-    .eq('id', profileId);
+    .eq('id', profile.id)
+    .select();
 
   if (error) {
     console.error('❌ Erreur mise à jour subscription:', error);
-    throw new Error(`Erreur mise à jour subscription: ${error.message}`);
+    console.error(`   Code: ${error.code}, Message: ${error.message}, Details: ${error.details}`);
+    return;
   } else {
-    console.log(`✅ Subscription mise à jour pour ${profileEmail} (trouvé via ${foundVia}) - status: ${subscription.status}, is_premium: ${hasActiveAccess}`);
+    console.log(`✅ Subscription mise à jour avec succès pour ${customerEmail}`);
+    console.log(`   Nouveau statut: ${subscription.status}, is_premium: ${hasActiveAccess}`);
+    if (data && data.length > 0) {
+      console.log(`   Données mises à jour:`, JSON.stringify(data[0], null, 2));
+    }
   }
 }
 
+
 // Gérer l'annulation d'abonnement
+// STRATÉGIE EMAIL-FIRST pour cohérence avec les autres handlers
 async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('🗑️ Subscription deleted:', subscription.id);
 
   const customerId = subscription.customer as string;
 
-  // Vérifier que l'utilisateur existe
-  const { data: existingProfile, error: fetchError } = await supabase
-    .from('profiles')
-    .select('id, email')
-    .eq('stripe_customer_id', customerId)
-    .single();
-
-  if (fetchError || !existingProfile) {
-    console.warn(`⚠️ Profil non trouvé pour customer ${customerId} lors de la suppression`);
+  // Récupérer l'email du customer Stripe
+  let customerEmail: string | null = null;
+  try {
+    const stripeCustomer = await stripe.customers.retrieve(customerId);
+    if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
+      customerEmail = stripeCustomer.email;
+    } else {
+      console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
+      return;
+    }
+  } catch (stripeError: any) {
+    console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
     return;
   }
 
-  const { error } = await supabase
+  const { error, data } = await supabase
     .from('profiles')
     .update({
       subscription_status: 'canceled',
@@ -309,16 +332,21 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supa
       stripe_subscription_id: null,
       stripe_price_id: null,
     })
-    .eq('stripe_customer_id', customerId);
+    .eq('email', customerEmail)
+    .select('email');
 
   if (error) {
     console.error('❌ Erreur annulation subscription:', error);
+  } else if (data && data.length > 0) {
+    console.log(`✅ Accès révoqué pour ${data[0].email}`);
   } else {
-    console.log(`✅ Accès révoqué pour ${existingProfile.email}`);
+    console.warn(`⚠️ Profil non trouvé pour email ${customerEmail}`);
   }
 }
 
+
 // Gérer le paiement réussi d'une facture (renouvellement)
+// STRATÉGIE EMAIL-FIRST pour cohérence avec les autres handlers
 async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('💳 Invoice paid:', invoice.id);
 
@@ -326,23 +354,45 @@ async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<t
 
   const customerId = invoice.customer as string;
 
-  const { error } = await supabase
+  // Récupérer l'email du customer Stripe
+  let customerEmail: string | null = null;
+  try {
+    const stripeCustomer = await stripe.customers.retrieve(customerId);
+    if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
+      customerEmail = stripeCustomer.email;
+    } else {
+      console.error(`❌ Customer Stripe ${customerId} n'a pas d'email`);
+      return;
+    }
+  } catch (stripeError: any) {
+    console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+    return;
+  }
+
+  // Mise à jour par email
+  const { error, data } = await supabase
     .from('profiles')
     .update({
       subscription_status: 'active',
       is_premium: true,
-      subscription_exams_used: 0, // Reset du compteur à chaque renouvellement hebdomadaire
+      subscription_exams_used: 0, // Reset du compteur à chaque renouvellement
+      stripe_customer_id: customerId, // S'assurer que le bon customer_id est enregistré
     })
-    .eq('stripe_customer_id', customerId);
+    .eq('email', customerEmail)
+    .select('email');
 
   if (error) {
     console.error('❌ Erreur après paiement:', error);
+  } else if (data && data.length > 0) {
+    console.log(`✅ Paiement confirmé pour ${data[0].email}`);
   } else {
-    console.log('✅ Paiement confirmé');
+    console.warn(`⚠️ Profil non trouvé pour email ${customerEmail}`);
   }
 }
 
+
 // Gérer l'échec de paiement
+// STRATÉGIE EMAIL-FIRST pour cohérence avec les autres handlers
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('❌ Invoice payment failed:', invoice.id);
 
@@ -351,85 +401,44 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: Ret
   const customerId = invoice.customer as string;
   const subscriptionId = invoice.subscription as string;
 
-  // Vérifier que l'utilisateur existe - essayer plusieurs méthodes
-  let existingProfile = null;
-  let profileFoundVia = 'customer_id';
-  
-  // ÉTAPE 1: Chercher par customer_id
-  const { data: profileByCustomer, error: fetchError } = await supabase
-    .from('profiles')
-    .select('id, email, subscription_status')
-    .eq('stripe_customer_id', customerId)
-    .single();
-
-  if (fetchError || !profileByCustomer) {
-    // ÉTAPE 2: Essayer par subscription_id
-    const { data: profileBySub, error: subError } = await supabase
-      .from('profiles')
-      .select('id, email, subscription_status')
-      .eq('stripe_subscription_id', subscriptionId)
-      .single();
-    
-    if (subError || !profileBySub) {
-      // ÉTAPE 3: Récupérer l'email du customer Stripe et chercher par email
-      console.warn(`⚠️ Profil non trouvé par customer_id ou subscription_id, tentative via email Stripe`);
-      
-      try {
-        const stripeCustomer = await stripe.customers.retrieve(customerId);
-        if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
-          const customerStripeEmail = stripeCustomer.email;
-          console.log(`📧 Email récupéré de Stripe: ${customerStripeEmail}`);
-          
-          const { data: profileByEmail, error: emailError } = await supabase
-            .from('profiles')
-            .select('id, email, subscription_status')
-            .eq('email', customerStripeEmail)
-            .single();
-          
-          if (emailError || !profileByEmail) {
-            console.error(`❌ Impossible de trouver le profil pour customer ${customerId}, subscription ${subscriptionId}, ou email ${customerStripeEmail} lors de l'échec de paiement`);
-            return;
-          }
-          
-          existingProfile = profileByEmail;
-          profileFoundVia = 'email';
-          console.log(`✅ Profil trouvé via email Stripe: ${profileByEmail.email}`);
-        } else {
-          console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
-          return;
-        }
-      } catch (stripeError: any) {
-        console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
-        return;
-      }
+  // Récupérer l'email du customer Stripe
+  let customerEmail: string | null = null;
+  try {
+    const stripeCustomer = await stripe.customers.retrieve(customerId);
+    if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
+      customerEmail = stripeCustomer.email;
+      console.log(`📧 Email récupéré de Stripe: ${customerEmail}`);
     } else {
-      existingProfile = profileBySub;
-      profileFoundVia = 'subscription_id';
+      console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
+      return;
     }
-  } else {
-    existingProfile = profileByCustomer;
+  } catch (stripeError: any) {
+    console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+    return;
   }
 
   // IMPORTANT: Révoquer l'accès premium pour TOUT échec de paiement
   // L'utilisateur pourra récupérer son accès quand le paiement sera régularisé
-  // On met aussi à jour les identifiants Stripe si on les a trouvés par email (pour corriger les données manquantes)
-  const { error } = await supabase
+  const { error, data } = await supabase
     .from('profiles')
     .update({
       subscription_status: 'past_due',
       is_premium: false, // Toujours révoquer l'accès en cas d'échec de paiement
-      // Mettre à jour les identifiants Stripe s'ils n'étaient pas présents
       stripe_customer_id: customerId,
       stripe_subscription_id: subscriptionId,
     })
-    .eq('id', existingProfile.id);
+    .eq('email', customerEmail)
+    .select('email');
 
   if (error) {
     console.error('❌ Erreur marquage paiement échoué:', error);
+  } else if (data && data.length > 0) {
+    console.log(`⚠️ Paiement échoué pour ${data[0].email} - Accès Premium révoqué, statut: past_due`);
   } else {
-    console.log(`⚠️ Paiement échoué pour ${existingProfile.email} (trouvé via ${profileFoundVia}) - Accès Premium révoqué, statut: past_due`);
+    console.warn(`⚠️ Profil non trouvé pour email ${customerEmail}`);
   }
 }
+
 
 // Gérer les paiements uniques (Pack Examen)
 async function handleOneTimePayment(
@@ -442,14 +451,14 @@ async function handleOneTimePayment(
 
   // Récupérer les items achetés
   const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
-  
+
   if (!lineItems.data || lineItems.data.length === 0) {
     console.error('❌ Aucun item trouvé dans la session');
     return;
   }
 
   const priceId = lineItems.data[0].price?.id;
-  
+
   // Récupérer le profil
   const { data: profile, error: fetchError } = await supabase
     .from('profiles')
