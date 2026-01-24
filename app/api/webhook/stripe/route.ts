@@ -166,7 +166,7 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
   const { data: profile, error: fetchError } = await supabase
     .from('profiles')
     .select('id, email, stripe_customer_id, stripe_subscription_id')
-    .eq('email', customerEmail)
+    .ilike('email', customerEmail)
     .single();
 
   if (fetchError || !profile) {
@@ -234,7 +234,7 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
   const { data: profile, error: fetchError } = await supabase
     .from('profiles')
     .select('id, email, stripe_customer_id, stripe_subscription_id')
-    .eq('email', customerEmail)
+    .ilike('email', customerEmail)
     .single();
 
   if (fetchError || !profile) {
@@ -332,7 +332,7 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supa
       stripe_subscription_id: null,
       stripe_price_id: null,
     })
-    .eq('email', customerEmail)
+    .ilike('email', customerEmail)
     .select('email');
 
   if (error) {
@@ -378,7 +378,7 @@ async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<t
       subscription_exams_used: 0, // Reset du compteur à chaque renouvellement
       stripe_customer_id: customerId, // S'assurer que le bon customer_id est enregistré
     })
-    .eq('email', customerEmail)
+    .ilike('email', customerEmail)
     .select('email');
 
   if (error) {
@@ -427,7 +427,7 @@ async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: Ret
       stripe_customer_id: customerId,
       stripe_subscription_id: subscriptionId,
     })
-    .eq('email', customerEmail)
+    .ilike('email', customerEmail)
     .select('email');
 
   if (error) {
@@ -463,7 +463,7 @@ async function handleOneTimePayment(
   const { data: profile, error: fetchError } = await supabase
     .from('profiles')
     .select('id, exam_credits, stripe_customer_id, subscription_status')
-    .eq('email', customerEmail)
+    .ilike('email', customerEmail)
     .single();
 
   if (fetchError || !profile) {
@@ -482,7 +482,7 @@ async function handleOneTimePayment(
         stripe_customer_id: profile.stripe_customer_id || customerId,
         last_purchase_at: new Date().toISOString(),
       })
-      .eq('email', customerEmail);
+      .ilike('email', customerEmail);
 
     if (updateError) {
       console.error('❌ Erreur mise à jour crédits:', updateError);
@@ -519,7 +519,7 @@ async function handleOneTimePayment(
         flashcards_purchased_at: new Date().toISOString(),
         stripe_customer_id: profile.stripe_customer_id || customerId,
       })
-      .eq('email', customerEmail);
+      .ilike('email', customerEmail);
 
     if (updateError) {
       console.error('❌ Erreur activation Flashcards 2 thèmes:', updateError);
@@ -556,7 +556,7 @@ async function handleOneTimePayment(
         flashcards_purchased_at: new Date().toISOString(),
         stripe_customer_id: profile.stripe_customer_id || customerId,
       })
-      .eq('email', customerEmail);
+      .ilike('email', customerEmail);
 
     if (updateError) {
       console.error('❌ Erreur activation Flashcards 5 thèmes:', updateError);
@@ -600,7 +600,7 @@ async function handleOneTimePayment(
         last_purchase_at: new Date().toISOString(),
         stripe_customer_id: profile.stripe_customer_id || customerId,
       })
-      .eq('email', customerEmail);
+      .ilike('email', customerEmail);
 
     if (updateError) {
       console.error('❌ Erreur activation Mode sans chrono:', updateError);
@@ -644,7 +644,7 @@ async function handleOneTimePayment(
         last_purchase_at: new Date().toISOString(),
         stripe_customer_id: profile.stripe_customer_id || customerId,
       })
-      .eq('email', customerEmail);
+      .ilike('email', customerEmail);
 
     if (updateError) {
       console.error('❌ Erreur activation Débloquer niveau:', updateError);
