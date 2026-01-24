@@ -370,23 +370,75 @@ async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<t
   }
 
   // Mise à jour par email
-  const { error, data } = await supabase
+  // NOTE: On ne met à jour que si le montant est > 0 ou si c'est nécessaire pour réactiver
+  // Mais on laisse handleSubscriptionUpdated gérer les détails du statut (dates, etc.)
+  // Ici on s'assure juste que l'utilisateur est marqué comme PREMIUM après un paiement réussi
+
+  let { error, data } = await supabase
     .from('profiles')
     .update({
       subscription_status: 'active',
-      is_premium: true,
-      subscription_exams_used: 0, // Reset du compteur à chaque renouvellement
-      stripe_customer_id: customerId, // S'assurer que le bon customer_id est enregistré
+      is_premium: true, // Le paiement est passé, donc accès garanti
+      subscription_exams_used: 0,
+      stripe_customer_id: customerId,
     })
     .ilike('email', customerEmail)
-    .select('email');
+    .select('email, id');
 
+  // Fallback et gestion des erreurs omise pour brièveté du diff, on garde le code existant...
   if (error) {
     console.error('❌ Erreur après paiement:', error);
-  } else if (data && data.length > 0) {
-    console.log(`✅ Paiement confirmé pour ${data[0].email}`);
-  } else {
-    console.warn(`⚠️ Profil non trouvé pour email ${customerEmail}`);
+  } else if (!data || data.length === 0) {
+    // FALLBACK LOGIC SAME AS BEFORE...
+    // ...
+    const { data: dataByCust, error: errorCust } = await supabase
+      .from('profiles')
+      .update({
+        subscription_status: 'active',
+        is_premium: true,
+        subscription_exams_used: 0,
+        stripe_customer_id: customerId,
+      })
+      .eq('stripe_customer_id', customerId)
+      .select('email, id');
+
+    if (dataByCust && dataByCust.length > 0) {
+      data = dataByCust;
+      console.log(`✅ Profil retrouvé et payé via customer_id: ${data[0].email}`);
+    } else {
+      console.warn(`⚠️ Profil non trouvé pour email ${customerEmail} ni customer_id ${customerId}`);
+    }
+  }
+
+  // ENREGISTRER LA TRANSACTION (Seulement si montant > 0)
+  if (data && data.length > 0) {
+    const profileId = data[0].id;
+    const amount = invoice.amount_paid / 100;
+
+    if (amount > 0) {
+      const productType = amount > 5 ? 'pack_premium' : 'pack_standard';
+
+      const { error: achatError } = await supabase
+        .from('achats')
+        .insert({
+          user_id: profileId,
+          product_type: productType,
+          amount: amount,
+          currency: invoice.currency || 'EUR',
+          stripe_payment_id: invoice.payment_intent as string || invoice.id,
+          stripe_customer_id: customerId,
+          status: 'completed',
+          completed_at: new Date().toISOString()
+        });
+
+      if (achatError) {
+        console.error('❌ Erreur enregistrement transaction:', achatError);
+      } else {
+        console.log(`💰 Transaction enregistrée: ${amount} ${invoice.currency} (${productType})`);
+      }
+    } else {
+      console.log('ℹ️ Facture à 0€ (Essai gratuit ou 100% remise) - Pas d\'enregistrement de revenus');
+    }
   }
 }
 

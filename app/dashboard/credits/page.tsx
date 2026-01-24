@@ -286,7 +286,15 @@ export default function OffresPage() {
               )}
           </div>
         </div>
+
+        {/* Bouton de gestion d'abonnement pour tous ceux qui ont un historique */}
+        {extendedProfile?.stripe_customer_id && (
+          <div className="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+            <ManageSubscriptionButton variant="discrete" />
+          </div>
+        )}
       </div>
+
 
       {/* 3 Offres */}
       <div className="grid md:grid-cols-3 gap-6 px-4 sm:px-0 max-w-[85%] sm:max-w-none mx-auto mt-8">
@@ -660,12 +668,7 @@ export default function OffresPage() {
               </div>
             </div>
 
-            {/* Lien discret pour gérer l'abonnement */}
-            {extendedProfile?.is_premium && (
-              <div className="mt-6 pt-4 border-t border-gray-100">
-                <ManageSubscriptionButton variant="discrete" />
-              </div>
-            )}
+
           </div>
         </div>
       </div>
@@ -699,6 +702,6 @@ export default function OffresPage() {
         onClose={() => setErrorModal({ isOpen: false, message: '' })}
         message={errorModal.message}
       />
-    </div>
+    </div >
   );
 }
