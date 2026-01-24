@@ -64,7 +64,7 @@ const targetEmail = 'ibtissem.chaieb@gmail.com';
 
 async function main() {
     console.log('--- DIAGNOSTIC START ---');
-    console.log(`Key Prefix: ${STRIPE_SECRET_KEY.substring(0, 7)}...`);
+    console.log(`Key Prefix: ${(STRIPE_SECRET_KEY || '').substring(0, 7)}...`);
 
     // 1. Check Stripe Account
     try {
