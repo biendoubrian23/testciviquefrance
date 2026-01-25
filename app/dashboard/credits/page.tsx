@@ -110,7 +110,8 @@ export default function OffresPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           planKey,
-          userEmail: user.email
+          userEmail: user.email,
+          userId: user.id
         })
       });
 
@@ -160,7 +161,8 @@ export default function OffresPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           planKey: planType,
-          userEmail: user.email
+          userEmail: user.email,
+          userId: user.id
         })
       });
 

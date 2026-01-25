@@ -125,22 +125,67 @@ export async function POST(req: NextRequest) {
   }
 }
 
+// ==============================================================================
+// HANDLERS
+// ==============================================================================
+
+// Helper pour trouver un profil par stripe_customer_id ou email
+// Cette fonction centralise la logique "ID d'abord, Email ensuite"
+async function findProfile(
+  supabase: ReturnType<typeof getSupabaseClient>,
+  stripeCustomerId: string,
+  email?: string | null
+) {
+  // 1. Essayer par Stripe Customer ID (Le plus fiable)
+  if (stripeCustomerId) {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .eq('stripe_customer_id', stripeCustomerId)
+      .single();
+
+    if (data && !error) {
+      console.log(`✅ Profil trouvé par Customer ID: ${data.id}`);
+      return data;
+    }
+  }
+
+  // 2. Si pas trouvé et qu'on a un email, essayer par email
+  if (email) {
+    console.log(`⚠️ Profil non trouvé par ID ${stripeCustomerId}, tentative par email: ${email}`);
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .ilike('email', email)
+      .single();
+
+    if (data && !error) {
+      console.log(`✅ Profil trouvé par Email: ${data.id}. Mise à jour du Customer ID...`);
+      // Auto-heal: On met à jour le customer ID manquant
+      await supabase
+        .from('profiles')
+        .update({ stripe_customer_id: stripeCustomerId })
+        .eq('id', data.id);
+
+      return data;
+    }
+  }
+
+  return null;
+}
+
 // Gérer la création d'abonnement après paiement
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('✅ Checkout completed:', session.id);
 
-  const customerEmail = session.customer_details?.email;
-  if (!customerEmail) {
-    console.error('❌ Pas d\'email client trouvé');
-    return;
-  }
-
   const customerId = session.customer as string;
+  const customerEmail = session.customer_details?.email || (session as any).email;
+  const clientReferenceId = session.client_reference_id; // C'est ici que userId arrive grâce au Payment Link fix
 
   // Vérifier si c'est un abonnement ou un paiement unique
   if (session.mode === 'payment') {
     // Paiement unique (Pack Examen)
-    await handleOneTimePayment(session, customerEmail, customerId, supabase);
+    await handleOneTimePayment(session, customerEmail, customerId, clientReferenceId, supabase);
     return;
   }
 
@@ -160,124 +205,82 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
     return;
   }
 
-  console.log(`💰 Abonnement créé - Plan: ${planKey}, Email: ${customerEmail}`);
+  console.log(`💰 Abonnement créé - Plan: ${planKey}, Email: ${customerEmail}, Ref ID: ${clientReferenceId}`);
 
-  // Mettre à jour le profil dans Supabase
-  const { data: profile, error: fetchError } = await supabase
-    .from('profiles')
-    .select('id, email, stripe_customer_id, stripe_subscription_id')
-    .ilike('email', customerEmail)
-    .single();
+  let profile = null;
 
-  if (fetchError || !profile) {
-    console.error('❌ Erreur récupération profil:', fetchError);
+  // 1. Chercher par client_reference_id (FIABILITÉ MAXIMALE)
+  if (clientReferenceId) {
+    const { data } = await supabase.from('profiles').select('id, email, stripe_customer_id').eq('id', clientReferenceId).single();
+    profile = data;
+    if (profile) console.log(`✅ Profil identifié par client_reference_id: ${profile.id}`);
+  }
+
+  // 2. Si pas trouvé (ancien système ou oubli), utiliser le helper standard
+  if (!profile) {
+    profile = await findProfile(supabase, customerId, customerEmail);
+  }
+
+  if (!profile) {
+    console.error('❌ IMPOSSIBLE de trouver le profil pour ce checkout.');
     return;
   }
 
-  // IMPORTANT: Ne pas écraser le customer_id si le profil a déjà un abonnement actif
-  // avec un autre customer (cas où l'utilisateur a plusieurs customers Stripe)
-  // Pour les abonnements (subscription mode), on met à jour le customer_id
-  // Pour les paiements uniques, on garde l'ancien customer_id s'il existe
-  const shouldUpdateCustomerId = session.mode === 'subscription' || !profile.stripe_customer_id;
-
-  console.log(`📋 Mode checkout: ${session.mode}`);
-  console.log(`📋 Customer ID actuel: ${profile.stripe_customer_id || 'aucun'}`);
-  console.log(`📋 Nouveau customer ID: ${customerId}`);
-  console.log(`📋 Mise à jour customer_id: ${shouldUpdateCustomerId ? 'OUI' : 'NON (préservation)'}`);
-
+  // Mettre à jour le profil
   const { error: updateError } = await supabase
     .from('profiles')
     .update({
-      // Mettre à jour customer_id seulement si abonnement ou si vide
-      stripe_customer_id: shouldUpdateCustomerId ? customerId : profile.stripe_customer_id,
+      stripe_customer_id: customerId, // On force le lien ici
       stripe_subscription_id: subscriptionId,
       stripe_price_id: priceId,
       subscription_status: subscription.status,
       subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
       subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
-      is_premium: true,
-      subscription_exams_used: 0, // Reset du compteur pour le nouvel abonnement
+      is_premium: true, // L'utilisateur vient de payer ou de s'inscrire, donc accès immédiat
+      subscription_exams_used: 0,
     })
-    .eq('id', profile.id); // Utiliser l'ID au lieu de l'email pour plus de fiabilité
+    .eq('id', profile.id);
 
   if (updateError) {
     console.error('❌ Erreur mise à jour profil:', updateError);
   } else {
-    console.log('✅ Profil mis à jour avec succès');
+    console.log('✅ Profil mis à jour avec succès (Checkout)');
   }
 }
 
 // Gérer la mise à jour d'abonnement (renouvellement, changement de plan)
-// STRATÉGIE EMAIL-FIRST: L'email est le lien le plus fiable entre Stripe et notre BDD
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('🔄 Subscription updated:', subscription.id, '- status:', subscription.status);
 
   const customerId = subscription.customer as string;
 
-  // ÉTAPE 1: Récupérer l'email du customer Stripe (source de vérité)
-  let customerEmail: string | null = null;
+  // Tenter de récupérer l'email depuis Stripe au cas où on en aurait besoin pour le fallback
+  let customerEmail = null;
   try {
-    const stripeCustomer = await stripe.customers.retrieve(customerId);
-    if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
-      customerEmail = stripeCustomer.email;
-      console.log(`📧 Email récupéré de Stripe: ${customerEmail}`);
-    } else {
-      console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
-      return;
-    }
-  } catch (stripeError: any) {
-    console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+    const customer = await stripe.customers.retrieve(customerId);
+    if (!customer.deleted) customerEmail = (customer as Stripe.Customer).email;
+  } catch (e) { console.warn('Erreur récup email stripe:', e); }
+
+  const profile = await findProfile(supabase, customerId, customerEmail);
+
+  if (!profile) {
+    console.error(`❌ Profil introuvable pour maj abonnement (Cust: ${customerId})`);
     return;
-  }
-
-  // ÉTAPE 2: Chercher le profil par email (le plus fiable)
-  const { data: profile, error: fetchError } = await supabase
-    .from('profiles')
-    .select('id, email, stripe_customer_id, stripe_subscription_id')
-    .ilike('email', customerEmail)
-    .single();
-
-  if (fetchError || !profile) {
-    console.error(`❌ Profil non trouvé pour email ${customerEmail}`);
-    console.error(`   Erreur: ${fetchError?.message || 'aucune'}`);
-    // L'utilisateur n'existe pas dans notre système - ignorer silencieusement
-    return;
-  }
-
-  console.log(`✅ Profil trouvé via email: ${profile.email} (ID: ${profile.id})`);
-
-  // ÉTAPE 3: Vérifier si on doit mettre à jour le customer_id
-  // Mettre à jour TOUJOURS pour les subscription.updated car c'est l'abonnement qui compte
-  if (profile.stripe_customer_id && profile.stripe_customer_id !== customerId) {
-    console.warn(`⚠️ CORRECTION: customer_id différent détecté`);
-    console.warn(`   En BDD: ${profile.stripe_customer_id}`);
-    console.warn(`   Reçu de Stripe: ${customerId}`);
-    console.warn(`   → Mise à jour vers le customer de l'abonnement actif`);
   }
 
   const priceId = subscription.items.data[0]?.price?.id;
-  if (!priceId) {
-    console.error('❌ Pas de price_id dans la subscription');
-    return;
-  }
 
-  // Déterminer si l'utilisateur doit avoir accès Premium
-  // Statuts qui donnent accès: 'active', 'trialing'
-  // Statuts qui révoquent l'accès: 'past_due', 'canceled', 'unpaid', 'incomplete', 'incomplete_expired', 'paused'
+  // Statuts donnant accès Premium
+  // TRIALING doit donner accès !
   const activeStatuses = ['active', 'trialing'];
   const hasActiveAccess = activeStatuses.includes(subscription.status);
 
-  console.log(`📊 Mise à jour subscription pour profil ${profile.id}:`);
-  console.log(`   Email: ${customerEmail}`);
-  console.log(`   Prix: ${priceId}`);
-  console.log(`   Statut Stripe: ${subscription.status}`);
-  console.log(`   Accès Premium: ${hasActiveAccess}`);
+  console.log(`📊 Maj ID: ${profile.id} | Statut: ${subscription.status} | Premium: ${hasActiveAccess}`);
 
-  // Mettre à jour le profil avec les bonnes infos Stripe
-  const { error, data } = await supabase
+  const { error } = await supabase
     .from('profiles')
     .update({
-      stripe_customer_id: customerId, // Toujours mettre à jour avec le customer de l'abonnement
+      stripe_customer_id: customerId,
       stripe_subscription_id: subscription.id,
       stripe_price_id: priceId,
       subscription_status: subscription.status,
@@ -285,46 +288,37 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
       subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
       is_premium: hasActiveAccess,
     })
-    .eq('id', profile.id)
-    .select();
+    .eq('id', profile.id);
 
   if (error) {
-    console.error('❌ Erreur mise à jour subscription:', error);
-    console.error(`   Code: ${error.code}, Message: ${error.message}, Details: ${error.details}`);
-    return;
+    console.error('❌ Erreur DB subscription:', error);
   } else {
-    console.log(`✅ Subscription mise à jour avec succès pour ${customerEmail}`);
-    console.log(`   Nouveau statut: ${subscription.status}, is_premium: ${hasActiveAccess}`);
-    if (data && data.length > 0) {
-      console.log(`   Données mises à jour:`, JSON.stringify(data[0], null, 2));
-    }
+    console.log(`✅ Subscription mise à jour.`);
   }
 }
 
 
 // Gérer l'annulation d'abonnement
-// STRATÉGIE EMAIL-FIRST pour cohérence avec les autres handlers
 async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('🗑️ Subscription deleted:', subscription.id);
 
   const customerId = subscription.customer as string;
-
-  // Récupérer l'email du customer Stripe
-  let customerEmail: string | null = null;
+  let customerEmail = null;
   try {
-    const stripeCustomer = await stripe.customers.retrieve(customerId);
-    if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
-      customerEmail = stripeCustomer.email;
-    } else {
-      console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
-      return;
-    }
-  } catch (stripeError: any) {
-    console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+    const customer = await stripe.customers.retrieve(customerId);
+    if (!customer.deleted) customerEmail = (customer as Stripe.Customer).email;
+  } catch (e) { }
+
+  const profile = await findProfile(supabase, customerId, customerEmail);
+
+  if (!profile) {
+    console.warn(`⚠️ Profil non trouvé pour suppression (Cust: ${customerId})`);
     return;
   }
 
-  const { error, data } = await supabase
+  // On garde le stripe_customer_id pour permettre un réabonnement ou gérer les factures
+  // On ne vide QUE les infos d'abonnement actif
+  const { error } = await supabase
     .from('profiles')
     .update({
       subscription_status: 'canceled',
@@ -332,394 +326,170 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supa
       stripe_subscription_id: null,
       stripe_price_id: null,
     })
-    .ilike('email', customerEmail)
-    .select('email');
+    .eq('id', profile.id);
 
   if (error) {
-    console.error('❌ Erreur annulation subscription:', error);
-  } else if (data && data.length > 0) {
-    console.log(`✅ Accès révoqué pour ${data[0].email}`);
+    console.error('❌ Erreur annulation:', error);
   } else {
-    console.warn(`⚠️ Profil non trouvé pour email ${customerEmail}`);
+    console.log(`✅ Accès révoqué pour ${profile.email}`);
   }
 }
 
 
 // Gérer le paiement réussi d'une facture (renouvellement)
-// STRATÉGIE EMAIL-FIRST pour cohérence avec les autres handlers
 async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('💳 Invoice paid:', invoice.id);
-
   if (!invoice.subscription) return;
 
   const customerId = invoice.customer as string;
+  const profile = await findProfile(supabase, customerId, invoice.customer_email);
 
-  // Récupérer l'email du customer Stripe
-  let customerEmail: string | null = null;
-  try {
-    const stripeCustomer = await stripe.customers.retrieve(customerId);
-    if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
-      customerEmail = stripeCustomer.email;
-    } else {
-      console.error(`❌ Customer Stripe ${customerId} n'a pas d'email`);
-      return;
-    }
-  } catch (stripeError: any) {
-    console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+  if (!profile) {
+    console.error('❌ Profil non trouvé pour Invoice Paid');
     return;
   }
 
-  // Mise à jour par email
-  // NOTE: On ne met à jour que si le montant est > 0 ou si c'est nécessaire pour réactiver
-  // Mais on laisse handleSubscriptionUpdated gérer les détails du statut (dates, etc.)
-  // Ici on s'assure juste que l'utilisateur est marqué comme PREMIUM après un paiement réussi
-
-  let { error, data } = await supabase
+  // Renouvellement réussi -> Active + Premium + Reset Compteurs
+  const { error, data } = await supabase
     .from('profiles')
     .update({
       subscription_status: 'active',
-      is_premium: true, // Le paiement est passé, donc accès garanti
+      is_premium: true,
       subscription_exams_used: 0,
-      stripe_customer_id: customerId,
+      stripe_customer_id: customerId, // Reinforce link
     })
-    .ilike('email', customerEmail)
-    .select('email, id');
+    .eq('id', profile.id)
+    .select();
 
-  // Fallback et gestion des erreurs omise pour brièveté du diff, on garde le code existant...
-  if (error) {
-    console.error('❌ Erreur après paiement:', error);
-  } else if (!data || data.length === 0) {
-    // FALLBACK LOGIC SAME AS BEFORE...
-    // ...
-    const { data: dataByCust, error: errorCust } = await supabase
-      .from('profiles')
-      .update({
-        subscription_status: 'active',
-        is_premium: true,
-        subscription_exams_used: 0,
-        stripe_customer_id: customerId,
-      })
-      .eq('stripe_customer_id', customerId)
-      .select('email, id');
-
-    if (dataByCust && dataByCust.length > 0) {
-      data = dataByCust;
-      console.log(`✅ Profil retrouvé et payé via customer_id: ${data[0].email}`);
-    } else {
-      console.warn(`⚠️ Profil non trouvé pour email ${customerEmail} ni customer_id ${customerId}`);
-    }
-  }
-
-  // ENREGISTRER LA TRANSACTION (Seulement si montant > 0)
-  if (data && data.length > 0) {
-    const profileId = data[0].id;
+  // Enregistrement transaction
+  if (data && data.length > 0 && invoice.amount_paid > 0) {
     const amount = invoice.amount_paid / 100;
+    const productType = amount > 5 ? 'pack_premium' : 'pack_standard';
 
-    if (amount > 0) {
-      const productType = amount > 5 ? 'pack_premium' : 'pack_standard';
-
-      const { error: achatError } = await supabase
-        .from('achats')
-        .insert({
-          user_id: profileId,
-          product_type: productType,
-          amount: amount,
-          currency: invoice.currency || 'EUR',
-          stripe_payment_id: invoice.payment_intent as string || invoice.id,
-          stripe_customer_id: customerId,
-          status: 'completed',
-          completed_at: new Date().toISOString()
-        });
-
-      if (achatError) {
-        console.error('❌ Erreur enregistrement transaction:', achatError);
-      } else {
-        console.log(`💰 Transaction enregistrée: ${amount} ${invoice.currency} (${productType})`);
-      }
-    } else {
-      console.log('ℹ️ Facture à 0€ (Essai gratuit ou 100% remise) - Pas d\'enregistrement de revenus');
-    }
+    await supabase.from('achats').insert({
+      user_id: profile.id,
+      product_type: productType,
+      amount: amount,
+      currency: invoice.currency || 'EUR',
+      stripe_payment_id: invoice.payment_intent as string || invoice.id,
+      stripe_customer_id: customerId,
+      status: 'completed',
+      completed_at: new Date().toISOString()
+    });
+    console.log('💰 Transaction enregistrée.');
   }
 }
 
 
 // Gérer l'échec de paiement
-// STRATÉGIE EMAIL-FIRST pour cohérence avec les autres handlers
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('❌ Invoice payment failed:', invoice.id);
-
   if (!invoice.subscription) return;
 
   const customerId = invoice.customer as string;
-  const subscriptionId = invoice.subscription as string;
+  const profile = await findProfile(supabase, customerId, invoice.customer_email);
 
-  // Récupérer l'email du customer Stripe
-  let customerEmail: string | null = null;
-  try {
-    const stripeCustomer = await stripe.customers.retrieve(customerId);
-    if (stripeCustomer && !stripeCustomer.deleted && 'email' in stripeCustomer && stripeCustomer.email) {
-      customerEmail = stripeCustomer.email;
-      console.log(`📧 Email récupéré de Stripe: ${customerEmail}`);
-    } else {
-      console.error(`❌ Customer Stripe ${customerId} n'a pas d'email ou est supprimé`);
-      return;
-    }
-  } catch (stripeError: any) {
-    console.error(`❌ Erreur récupération customer Stripe: ${stripeError.message}`);
+  if (!profile) {
+    console.error('❌ Profil non trouvé pour Payment Failed');
     return;
   }
 
-  // IMPORTANT: Révoquer l'accès premium pour TOUT échec de paiement
-  // L'utilisateur pourra récupérer son accès quand le paiement sera régularisé
-  const { error, data } = await supabase
+  // IMPORTANT: 
+  // 1. Statut -> past_due
+  // 2. Premium -> false (coupe l'accès)
+  // 3. ON GARDE le stripe_customer_id pour que le bouton "Gérer l'abonnement" fonctionne encore !
+  //    (C'est ça qui permet à l'utilisateur d'aller mettre à jour sa CB ou annuler)
+
+  await supabase
     .from('profiles')
     .update({
       subscription_status: 'past_due',
-      is_premium: false, // Toujours révoquer l'accès en cas d'échec de paiement
-      stripe_customer_id: customerId,
-      stripe_subscription_id: subscriptionId,
+      is_premium: false,
     })
-    .ilike('email', customerEmail)
-    .select('email');
+    .eq('id', profile.id);
 
-  if (error) {
-    console.error('❌ Erreur marquage paiement échoué:', error);
-  } else if (data && data.length > 0) {
-    console.log(`⚠️ Paiement échoué pour ${data[0].email} - Accès Premium révoqué, statut: past_due`);
-  } else {
-    console.warn(`⚠️ Profil non trouvé pour email ${customerEmail}`);
-  }
+  console.log(`⚠️ Paiement échoué pour ${profile.email} - Accès coupé, mais gestion abo possible.`);
 }
 
 
 // Gérer les paiements uniques (Pack Examen)
 async function handleOneTimePayment(
   session: Stripe.Checkout.Session,
-  customerEmail: string,
+  customerEmail: string | null | undefined,
   customerId: string,
+  clientReferenceId: string | null,
   supabase: ReturnType<typeof getSupabaseClient>
 ) {
   console.log('💳 Paiement unique détecté');
 
-  // Récupérer les items achetés
   const lineItems = await stripe.checkout.sessions.listLineItems(session.id);
-
-  if (!lineItems.data || lineItems.data.length === 0) {
-    console.error('❌ Aucun item trouvé dans la session');
-    return;
-  }
-
+  if (!lineItems.data || lineItems.data.length === 0) return;
   const priceId = lineItems.data[0].price?.id;
 
-  // Récupérer le profil
-  const { data: profile, error: fetchError } = await supabase
-    .from('profiles')
-    .select('id, exam_credits, stripe_customer_id, subscription_status')
-    .ilike('email', customerEmail)
-    .single();
+  let profile = null;
+  if (clientReferenceId) {
+    const { data } = await supabase.from('profiles').select('*').eq('id', clientReferenceId).single();
+    profile = data;
+  }
+  if (!profile) {
+    profile = await findProfile(supabase, customerId, customerEmail);
+  }
 
-  if (fetchError || !profile) {
-    console.error('❌ Erreur récupération profil:', fetchError);
+  if (!profile) {
+    console.error('❌ Profil non trouvé pour achat unique');
     return;
   }
 
-  // Vérifier si c'est le Pack Examen
+  // Logique spécifique par produit (inchangée mais utilisant le bon profile.id)
+  // ... (Je reprends la logique existante mais plus concise)
+
+  let updates: any = { stripe_customer_id: profile.stripe_customer_id || customerId };
+  let productType = 'unknown';
+  let amount = (session.amount_total || 0) / 100;
+
   if (priceId === STRIPE_PLANS.examen.priceId) {
-    console.log('📝 Pack Examen acheté - Ajout de 2 examens blancs');
-
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({
-        exam_credits: (profile.exam_credits || 0) + 2, // Ajouter 2 examens blancs
-        stripe_customer_id: profile.stripe_customer_id || customerId,
-        last_purchase_at: new Date().toISOString(),
-      })
-      .ilike('email', customerEmail);
-
-    if (updateError) {
-      console.error('❌ Erreur mise à jour crédits:', updateError);
-    } else {
-      console.log('✅ 2 examens blancs ajoutés au profil');
-    }
-
-    // Enregistrer l'achat dans la table achats
-    const { error: achatError } = await supabase
-      .from('achats')
-      .insert({
-        user_id: profile.id,
-        product_type: 'pack_examen',
-        amount: 2.50,
-        currency: 'EUR',
-        stripe_payment_id: session.payment_intent as string,
-        stripe_customer_id: customerId,
-        status: 'completed',
-        completed_at: new Date().toISOString(),
-      });
-
-    if (achatError) {
-      console.error('❌ Erreur enregistrement achat:', achatError);
-    }
+    updates.exam_credits = (profile.exam_credits || 0) + 2;
+    updates.last_purchase_at = new Date().toISOString();
+    productType = 'pack_examen';
+    console.log('📝 Pack Examen +2');
   }
-  // Vérifier si c'est Flashcards 2 thèmes
   else if (priceId === STRIPE_PLANS.flashcards2Themes.priceId) {
-    console.log('🃏 Flashcards 2 thèmes acheté');
-
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({
-        flashcards_2_themes: true,
-        flashcards_purchased_at: new Date().toISOString(),
-        stripe_customer_id: profile.stripe_customer_id || customerId,
-      })
-      .ilike('email', customerEmail);
-
-    if (updateError) {
-      console.error('❌ Erreur activation Flashcards 2 thèmes:', updateError);
-    } else {
-      console.log('✅ Flashcards 2 thèmes activés (Principes + Histoire)');
-    }
-
-    // Enregistrer l'achat
-    const { error: achatError } = await supabase
-      .from('achats')
-      .insert({
-        user_id: profile.id,
-        product_type: 'flashcards_2_themes',
-        amount: 1.20,
-        currency: 'EUR',
-        stripe_payment_id: session.payment_intent as string,
-        stripe_customer_id: customerId,
-        status: 'completed',
-        completed_at: new Date().toISOString(),
-      });
-
-    if (achatError) {
-      console.error('❌ Erreur enregistrement achat:', achatError);
-    }
+    updates.flashcards_2_themes = true;
+    updates.flashcards_purchased_at = new Date().toISOString();
+    productType = 'flashcards_2_themes';
   }
-  // Vérifier si c'est Flashcards 5 thèmes
   else if (priceId === STRIPE_PLANS.flashcards5Themes.priceId) {
-    console.log('🃏 Flashcards 5 thèmes acheté');
-
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({
-        flashcards_5_themes: true,
-        flashcards_purchased_at: new Date().toISOString(),
-        stripe_customer_id: profile.stripe_customer_id || customerId,
-      })
-      .ilike('email', customerEmail);
-
-    if (updateError) {
-      console.error('❌ Erreur activation Flashcards 5 thèmes:', updateError);
-    } else {
-      console.log('✅ Flashcards 5 thèmes activés (Tous les thèmes)');
-    }
-
-    // Enregistrer l'achat
-    const { error: achatError } = await supabase
-      .from('achats')
-      .insert({
-        user_id: profile.id,
-        product_type: 'flashcards_5_themes',
-        amount: 1.50,
-        currency: 'EUR',
-        stripe_payment_id: session.payment_intent as string,
-        stripe_customer_id: customerId,
-        status: 'completed',
-        completed_at: new Date().toISOString(),
-      });
-
-    if (achatError) {
-      console.error('❌ Erreur enregistrement achat:', achatError);
-    }
+    updates.flashcards_5_themes = true;
+    updates.flashcards_purchased_at = new Date().toISOString();
+    productType = 'flashcards_5_themes';
   }
-  // Vérifier si c'est Mode sans chrono
   else if (priceId === STRIPE_PLANS.noTimer.priceId) {
-    console.log('⏱️ Mode sans chrono acheté');
-
-    // Vérifier si l'utilisateur a un abonnement actif OU en période d'essai
-    const hasActiveSubscription = profile.subscription_status === 'active' || profile.subscription_status === 'trialing';
-    if (!hasActiveSubscription) {
-      console.error('❌ Achat Mode sans chrono refusé - Pas d\'abonnement actif (status:', profile.subscription_status, ')');
-      return;
-    }
-
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({
-        no_timer_enabled: true,
-        last_purchase_at: new Date().toISOString(),
-        stripe_customer_id: profile.stripe_customer_id || customerId,
-      })
-      .ilike('email', customerEmail);
-
-    if (updateError) {
-      console.error('❌ Erreur activation Mode sans chrono:', updateError);
-    } else {
-      console.log('✅ Mode sans chrono activé');
-    }
-
-    // Enregistrer l'achat
-    const { error: achatError } = await supabase
-      .from('achats')
-      .insert({
-        user_id: profile.id,
-        product_type: 'no_timer',
-        amount: 0.69,
-        currency: 'EUR',
-        stripe_payment_id: session.payment_intent as string,
-        stripe_customer_id: customerId,
-        status: 'completed',
-        completed_at: new Date().toISOString(),
-      });
-
-    if (achatError) {
-      console.error('❌ Erreur enregistrement achat:', achatError);
+    if (profile.subscription_status === 'active' || profile.subscription_status === 'trialing') {
+      updates.no_timer_enabled = true;
+      updates.last_purchase_at = new Date().toISOString();
+      productType = 'no_timer';
     }
   }
-  // Vérifier si c'est Débloquer niveau suivant
   else if (priceId === STRIPE_PLANS.unlockLevel.priceId) {
-    console.log('🔓 Débloquer niveau suivant acheté');
-
-    // Vérifier si l'utilisateur a un abonnement actif OU en période d'essai
-    const hasActiveSubscription = profile.subscription_status === 'active' || profile.subscription_status === 'trialing';
-    if (!hasActiveSubscription) {
-      console.error('❌ Achat Débloquer niveau refusé - Pas d\'abonnement actif (status:', profile.subscription_status, ')');
-      return;
+    if (profile.subscription_status === 'active' || profile.subscription_status === 'trialing') {
+      updates.all_levels_unlocked = true;
+      updates.last_purchase_at = new Date().toISOString();
+      productType = 'unlock_level';
     }
+  }
 
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({
-        all_levels_unlocked: true,
-        last_purchase_at: new Date().toISOString(),
-        stripe_customer_id: profile.stripe_customer_id || customerId,
-      })
-      .ilike('email', customerEmail);
+  await supabase.from('profiles').update(updates).eq('id', profile.id);
 
-    if (updateError) {
-      console.error('❌ Erreur activation Débloquer niveau:', updateError);
-    } else {
-      console.log('✅ Débloquer niveau suivant activé');
-    }
-
-    // Enregistrer l'achat
-    const { error: achatError } = await supabase
-      .from('achats')
-      .insert({
-        user_id: profile.id,
-        product_type: 'unlock_level',
-        amount: 0.99,
-        currency: 'EUR',
-        stripe_payment_id: session.payment_intent as string,
-        stripe_customer_id: customerId,
-        status: 'completed',
-        completed_at: new Date().toISOString(),
-      });
-
-    if (achatError) {
-      console.error('❌ Erreur enregistrement achat:', achatError);
-    }
+  if (productType !== 'unknown') {
+    await supabase.from('achats').insert({
+      user_id: profile.id,
+      product_type: productType,
+      amount: amount,
+      currency: session.currency || 'EUR',
+      stripe_payment_id: session.payment_intent as string || session.id,
+      stripe_customer_id: customerId,
+      status: 'completed',
+      completed_at: new Date().toISOString(),
+    });
   }
 }
