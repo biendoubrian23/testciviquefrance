@@ -17,7 +17,7 @@ const pointsForts = [
 
 // Statistiques
 const stats = [
-  { value: '1,600+', label: 'Candidats préparés' },
+  { value: '300+', label: 'Candidats préparés' },
   { value: '95%', label: 'Taux de réussite' },
   { value: '4.6/5', label: 'Note moyenne' },
   { value: '2025', label: 'Référentiel officiel' },
@@ -55,7 +55,7 @@ export default function AProposPage() {
         {/* Hero Section avec image de fond */}
         <section className="py-16 lg:py-24 relative overflow-hidden">
           {/* Image de fond - Arc de Triomphe */}
-          <div 
+          <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
               backgroundImage: "url('https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=2070')",
@@ -63,7 +63,7 @@ export default function AProposPage() {
           />
           {/* Overlay avec dégradé */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-white/85 to-white/95" />
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6 animate-fade-in-up drop-shadow-sm">
@@ -72,7 +72,7 @@ export default function AProposPage() {
               <p className="text-xl text-gray-700 mb-8 animate-fade-in-up delay-100 drop-shadow-sm">
                 Préparez votre examen civique français en ligne, à votre rythme et en toute confiance.
               </p>
-              
+
               {/* Stats */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 animate-fade-in-up delay-200">
                 {stats.map((stat, index) => (
@@ -110,19 +110,19 @@ export default function AProposPage() {
                   <Check className="w-4 h-4" />
                   Conforme au référentiel officiel 2025
                 </div>
-                
+
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                   Une plateforme dédiée à la préparation de l'examen civique
                 </h2>
-                
+
                 <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                  <strong>Test Civique France</strong> est une plateforme moderne et accessible sur mobile, 
-                  tablette et ordinateur, dédiée à la préparation de <strong>l'examen civique français</strong>, 
+                  <strong>Test Civique France</strong> est une plateforme moderne et accessible sur mobile,
+                  tablette et ordinateur, dédiée à la préparation de <strong>l'examen civique français</strong>,
                   requis pour la naturalisation, le titre de séjour pluriannuel ou la carte de résident.
                 </p>
-                
+
                 <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                  Entraînez-vous, révisez et progressez à votre rythme grâce à des tests, leçons et 
+                  Entraînez-vous, révisez et progressez à votre rythme grâce à des tests, leçons et
                   outils interactifs conçus pour vous aider à réussir du premier coup.
                 </p>
 
@@ -198,15 +198,15 @@ export default function AProposPage() {
                 Notre mission
               </h2>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up delay-100">
-                Rendre la réussite à l'examen civique accessible à tous. Nous croyons qu'apprendre 
-                les valeurs, les institutions et l'histoire de la République française doit être 
+                Rendre la réussite à l'examen civique accessible à tous. Nous croyons qu'apprendre
+                les valeurs, les institutions et l'histoire de la République française doit être
                 une expérience claire, motivante et moderne.
               </p>
-              
+
               {/* Citation */}
               <div className="bg-primary-50 border-l-4 border-primary-500 p-6 text-left animate-fade-in-up delay-200">
                 <p className="text-lg text-gray-700 italic">
-                  <strong>Test Civique France</strong> vous accompagne tout au long de votre préparation — 
+                  <strong>Test Civique France</strong> vous accompagne tout au long de votre préparation —
                   du premier quiz jusqu'à la réussite du test officiel.
                 </p>
               </div>
