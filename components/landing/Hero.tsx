@@ -75,16 +75,15 @@ export default function Hero() {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6 animate-fade-in-up">
               Réussissez votre test civique français
             </h1>
-            
+
             {/* Carrousel visible uniquement sur mobile - entre titre et description */}
             <div className="lg:hidden mb-8 animate-fade-in-up delay-100">
               <div className="relative overflow-hidden bg-gray-900 aspect-[4/3]">
                 {carouselSlides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                      index === currentSlide ? 'opacity-100' : 'opacity-0'
-                    }`}
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                      }`}
                   >
                     <img
                       src={slide.image}
@@ -117,11 +116,10 @@ export default function Hero() {
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
-                      className={`rounded-full transition-all duration-300 ${
-                        index === currentSlide
+                      className={`rounded-full transition-all duration-300 ${index === currentSlide
                           ? 'w-6 h-2 bg-white'
                           : 'w-2 h-2 bg-white/50 hover:bg-white/70'
-                      }`}
+                        }`}
                       aria-label={`Aller à l'image ${index + 1}`}
                     />
                   ))}
@@ -147,8 +145,8 @@ export default function Hero() {
             </div>
 
             <p className="text-lg sm:text-xl text-gray-600 mb-8 leading-relaxed animate-fade-in-up delay-200 lg:delay-100">
-              Préparez-vous efficacement pour obtenir votre titre de séjour 
-              pluriannuel, son renouvellement ou votre naturalisation. Des centaines de questions 
+              Préparez-vous efficacement pour obtenir votre titre de séjour
+              pluriannuel, son renouvellement ou votre naturalisation. Des centaines de questions
               officielles, des cours complets et des examens blancs.
             </p>
 
@@ -172,7 +170,7 @@ export default function Hero() {
             {/* Social Proof */}
             <div className="mt-12 flex items-center gap-8 justify-center lg:justify-start text-sm text-gray-600 animate-fade-in-up delay-400 lg:delay-300">
               <div>
-                <div className="text-2xl font-bold text-gray-900">1,600+</div>
+                <div className="text-2xl font-bold text-gray-900">300+</div>
                 <div>Utilisateurs</div>
               </div>
               <div className="h-12 w-px bg-gray-300"></div>
@@ -195,9 +193,8 @@ export default function Hero() {
               {carouselSlides.map((slide, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
-                    index === currentSlide ? 'opacity-100' : 'opacity-0'
-                  }`}
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    }`}
                 >
                   <img
                     src={slide.image}
@@ -206,7 +203,7 @@ export default function Hero() {
                   />
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  
+
                   {/* Texte marketing */}
                   <div className="absolute bottom-16 left-6 right-6 text-white">
                     <h2 className="text-2xl sm:text-3xl font-bold mb-2">{slide.title}</h2>
@@ -237,11 +234,10 @@ export default function Hero() {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`rounded-full transition-all duration-300 ${
-                      index === currentSlide
+                    className={`rounded-full transition-all duration-300 ${index === currentSlide
                         ? 'w-8 h-2 bg-white'
                         : 'w-2 h-2 bg-white/50 hover:bg-white/70'
-                    }`}
+                      }`}
                     aria-label={`Aller à l'image ${index + 1}`}
                   />
                 ))}
