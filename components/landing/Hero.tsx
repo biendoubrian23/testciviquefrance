@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
@@ -26,16 +27,6 @@ const carouselSlides = [
     title: 'Examens blancs réalistes',
     subtitle: 'Conditions identiques au vrai test',
   },
-  // {
-  //   image: '/carousselle5.webp',
-  //   title: 'Devenez citoyen français',
-  //   subtitle: 'Votre parcours vers la citoyenneté commence ici',
-  // },
-  // {
-  //   image: '/carousselle6.webp',
-  //   title: 'La France vous attend',
-  //   subtitle: 'Maîtrisez les valeurs de la République',
-  // },
   {
     image: '/carousselle7_opt.webp',
     title: 'Réussissez du premier coup',
@@ -78,17 +69,20 @@ export default function Hero() {
 
             {/* Carrousel visible uniquement sur mobile - entre titre et description */}
             <div className="lg:hidden mb-8 animate-fade-in-up delay-100">
-              <div className="relative overflow-hidden bg-gray-900 aspect-[4/3]">
+              <div className="relative overflow-hidden bg-gray-900 aspect-[4/3] rounded-2xl shadow-xl">
                 {carouselSlides.map((slide, index) => (
                   <div
                     key={index}
                     className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
                       }`}
                   >
-                    <img
+                    <Image
                       src={slide.image}
                       alt={slide.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      priority={index === 0}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute bottom-12 left-4 right-4 text-white">
@@ -99,26 +93,26 @@ export default function Hero() {
                 ))}
                 <button
                   onClick={goToPrevious}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300"
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 rounded-full z-10"
                   aria-label="Image précédente"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
                   onClick={goToNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 rounded-full z-10"
                   aria-label="Image suivante"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
                   {carouselSlides.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => goToSlide(index)}
                       className={`rounded-full transition-all duration-300 ${index === currentSlide
-                          ? 'w-6 h-2 bg-white'
-                          : 'w-2 h-2 bg-white/50 hover:bg-white/70'
+                        ? 'w-6 h-2 bg-white'
+                        : 'w-2 h-2 bg-white/50 hover:bg-white/70'
                         }`}
                       aria-label={`Aller à l'image ${index + 1}`}
                     />
@@ -131,14 +125,14 @@ export default function Hero() {
             <div className="flex flex-col gap-4 lg:hidden animate-fade-in-up delay-300">
               <Link
                 href="/signup"
-                className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg inline-flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg inline-flex items-center justify-center gap-2 rounded-xl"
               >
                 Commencer gratuitement
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/login"
-                className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg hover:border-gray-400 hover:bg-gray-50 transition-colors inline-flex items-center justify-center"
+                className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg hover:border-gray-400 hover:bg-gray-50 transition-colors inline-flex items-center justify-center rounded-xl"
               >
                 Voir les cours
               </Link>
@@ -154,14 +148,14 @@ export default function Hero() {
             <div className="hidden lg:flex flex-row gap-4 justify-start animate-fade-in-up delay-200">
               <Link
                 href="/signup"
-                className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg inline-flex items-center justify-center gap-2"
+                className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg inline-flex items-center justify-center gap-2 rounded-xl"
               >
                 Commencer gratuitement
                 <ArrowRight className="w-5 h-5" />
               </Link>
               <Link
                 href="/login"
-                className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg hover:border-gray-400 hover:bg-gray-50 transition-colors inline-flex items-center justify-center"
+                className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg hover:border-gray-400 hover:bg-gray-50 transition-colors inline-flex items-center justify-center rounded-xl"
               >
                 Voir les cours
               </Link>
@@ -188,7 +182,7 @@ export default function Hero() {
 
           {/* Colonne droite - Carrousel d'images (visible uniquement sur desktop) */}
           <div className="relative animate-fade-in-right delay-200 hidden lg:block">
-            <div className="relative overflow-hidden bg-gray-900 aspect-[5/5]">
+            <div className="relative overflow-hidden bg-gray-900 aspect-[5/5] rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
               {/* Images */}
               {carouselSlides.map((slide, index) => (
                 <div
@@ -196,10 +190,13 @@ export default function Hero() {
                   className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
                     }`}
                 >
-                  <img
+                  <Image
                     src={slide.image}
                     alt={slide.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    priority={index === 0}
+                    sizes="50vw"
+                    className="object-cover"
                   />
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
@@ -215,28 +212,28 @@ export default function Hero() {
               {/* Boutons de navigation - Liquid Glass Effect */}
               <button
                 onClick={goToPrevious}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 shadow-lg"
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 shadow-lg rounded-full z-10"
                 aria-label="Image précédente"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={goToNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 shadow-lg"
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 shadow-lg rounded-full z-10"
                 aria-label="Image suivante"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
 
               {/* Indicateurs de position */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
                 {carouselSlides.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
                     className={`rounded-full transition-all duration-300 ${index === currentSlide
-                        ? 'w-8 h-2 bg-white'
-                        : 'w-2 h-2 bg-white/50 hover:bg-white/70'
+                      ? 'w-8 h-2 bg-white'
+                      : 'w-2 h-2 bg-white/50 hover:bg-white/70'
                       }`}
                     aria-label={`Aller à l'image ${index + 1}`}
                   />
@@ -245,8 +242,8 @@ export default function Hero() {
             </div>
 
             {/* Decorative elements */}
-            <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary-300 -z-10"></div>
-            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-emerald-200 -z-10"></div>
+            <div className="absolute -top-4 -right-4 w-32 h-32 bg-primary-300 -z-10 rounded-full blur-3xl opacity-60"></div>
+            <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-emerald-200 -z-10 rounded-full blur-3xl opacity-60"></div>
           </div>
         </div>
       </div>

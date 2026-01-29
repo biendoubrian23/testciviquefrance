@@ -200,7 +200,7 @@ export const metadata: Metadata = {
     'gouv.fr naturalisation',
     'gouv.fr titre séjour',
     'gouv.fr test civique',
-    
+
     // ORGANISMES ET INSTITUTIONS
     'ofpra naturalisation',
     'CAF titre séjour',
@@ -211,7 +211,7 @@ export const metadata: Metadata = {
     'consulat france naturalisation',
     'mairie naturalisation',
     'naturalisation en ligne',
-    
+
     // TERMES JURIDIQUES ET ADMINISTRATIFS
     'CESEDA naturalisation',
     'code entrée séjour étrangers',
@@ -226,7 +226,7 @@ export const metadata: Metadata = {
     'déclaration acquisition nationalité française',
     'déclaration nationalité française mariage',
     'réintégration nationalité française',
-    
+
     // ALTERNATIVES ET VARIATIONS
     'test de citoyenneté france',
     'examen citoyenneté française',
@@ -785,9 +785,11 @@ export default function RootLayout({
   return (
     <html lang="fr" className={montserrat.variable}>
       <head>
-        {/* DNS prefetch pour scripts tiers */}
+        {/* DNS prefetch et Preconnect pour scripts tiers */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
 
         {/* Favicons multiples */}
         <link rel="icon" type="image/png" href="/fav.png" />
@@ -826,14 +828,14 @@ export default function RootLayout({
         />
 
         {/* Ahrefs Web Analytics */}
-        <Script 
-          src="https://analytics.ahrefs.com/analytics.js" 
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
           data-key="hFBKQGItWXZ9na7DwxsrZw"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         {/* Google Tag Manager - Head */}
-        <Script id="gtm-script" strategy="afterInteractive">
+        <Script id="gtm-script" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -857,9 +859,9 @@ export default function RootLayout({
         {/* Google tag (gtag.js) - Google Ads Conversion Tracking */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17797146827"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-ads-tag" strategy="afterInteractive">
+        <Script id="google-ads-tag" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
