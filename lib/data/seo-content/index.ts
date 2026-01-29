@@ -9,13 +9,14 @@ export * from './articles-part2';
 export * from './articles-part3';
 export * from './articles-part4';
 export * from './articles-part5';
+export * from './articles-new';
 
 // Import des contenus individuels pour le mapping
-import { 
+import {
   reussirTestCiviqueContent,
   questionsCiviquesContent,
   naturalisationContent,
-  ArticleFullContent 
+  ArticleFullContent
 } from './articles-part1';
 
 import {
@@ -45,6 +46,12 @@ import {
   unionEuropeenneContent,
 } from './articles-part5';
 
+import {
+  titresSejourContent,
+  etudiantsEtrangersContent,
+  travailFranceContent,
+} from './articles-new';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -65,6 +72,9 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'geographie-france-regions-departements-villes': geographieFranceContent,
   'culture-francaise-patrimoine-monuments-artistes': cultureFranceContent,
   'union-europeenne-france-institutions-citoyennete': unionEuropeenneContent,
+  'titres-de-sejour-france-guide-complet-2026': titresSejourContent,
+  'guide-etudiants-etrangers-france-titres-demarches-2026': etudiantsEtrangersContent,
+  'travailler-en-france-guide-permis-contrats-etrangers-2026': travailFranceContent,
 };
 
 /**

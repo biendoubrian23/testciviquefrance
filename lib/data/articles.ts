@@ -118,7 +118,12 @@ export const articles: Article[] = [
 import { seoArticles } from './seo-articles';
 
 // Fusionner tous les articles
-export const allArticles: Article[] = [...articles, ...seoArticles];
+// Fusionner tous les articles et trier par date (plus récent en premier)
+export const allArticles: Article[] = [...articles, ...seoArticles].sort((a, b) => {
+  const dateA = new Date(a.date.split('/').reverse().join('-'));
+  const dateB = new Date(b.date.split('/').reverse().join('-'));
+  return dateB.getTime() - dateA.getTime();
+});
 
 export const getArticleBySlug = (slug: string): Article | undefined => {
   return allArticles.find((article) => article.slug === slug);
@@ -143,16 +148,16 @@ export const getPopularArticles = (limit: number = 3): Article[] => {
 export const getRelatedArticles = (currentSlug: string, limit: number = 3): Article[] => {
   const current = getArticleBySlug(currentSlug);
   if (!current) return getPopularArticles(limit);
-  
+
   // Articles de la même catégorie d'abord
   const sameCategory = allArticles.filter(
     (a) => a.categorySlug === current.categorySlug && a.slug !== currentSlug
   );
-  
+
   // Compléter avec d'autres articles si nécessaire
   const others = allArticles.filter(
     (a) => a.categorySlug !== current.categorySlug && a.slug !== currentSlug
   );
-  
+
   return [...sameCategory, ...others].slice(0, limit);
 };

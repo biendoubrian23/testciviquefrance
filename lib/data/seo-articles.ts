@@ -7,6 +7,54 @@ import { Article } from './articles';
 
 // Nouveaux articles SEO avec mots-clés à fort volume de recherche
 export const seoArticles: Article[] = [
+  // NOUVEAU: Titres de Séjour
+  {
+    id: 'seo-new-1',
+    slug: 'titres-de-sejour-france-guide-complet-2026',
+    title: "Titres de séjour en France : le guide complet 2026",
+    excerpt: "Tout sur les titres de séjour en 2026 : première demande, renouvellement, carte pluriannuelle et carte de résident 10 ans. Les nouvelles règles expliquées.",
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Équipe Le Test Civique',
+    date: '29/01/2026',
+    readTime: 20,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1569974498991-d3c12a504f95?q=80&w=2070',
+    featured: true,
+  },
+  // NOUVEAU: Étudiants Étrangers
+  {
+    id: 'seo-new-2',
+    slug: 'guide-etudiants-etrangers-france-titres-demarches-2026',
+    title: "Étudiants étrangers en France : visas, titres et changement de statut 2026",
+    excerpt: "Guide ultime pour étudiants étrangers : du visa étudiant au changement de statut salarié, en passant par la recherche d'emploi et l'APS. Démarches Campus France incluses.",
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Équipe Le Test Civique',
+    date: '28/01/2026',
+    readTime: 18,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070',
+    featured: true,
+  },
+  // NOUVEAU: Travail en France
+  {
+    id: 'seo-new-3',
+    slug: 'travailler-en-france-guide-permis-contrats-etrangers-2026',
+    title: "Travailler en France : permis, contrats et droits des étrangers 2026",
+    excerpt: "Comprendre le travail en France pour les étrangers : permis de travail, contrats CDI/CDD, droits du salarié et passeport talent. Tout ce qu'il faut savoir.",
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Équipe Le Test Civique',
+    date: '27/01/2026',
+    readTime: 15,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=2070',
+    featured: true,
+  },
   // ARTICLE 1: Comment réussir le test civique
   {
     id: 'seo-1',
