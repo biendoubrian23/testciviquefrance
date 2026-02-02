@@ -192,24 +192,34 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
     return;
   }
 
-  // ✅ CORRECTION 3 : PAS DE RESET ICI !
-  // On met à jour l'état, mais on laisse invoice.paid gérer le reset des compteurs
-  // pour éviter les doublons/conflits.
+  // ✅ CORRECTION 3 : Reset des crédits seulement pour les abonnements en période d'essai (trialing)
+  // Pour les abonnements avec paiement immédiat, invoice.paid gère le reset des compteurs
+  // Mais pour trialing, invoice.paid n'est pas déclenché donc on doit reset ici
+  const isTrialing = subscription.status === 'trialing';
+
+  const updateData: Record<string, any> = {
+    stripe_customer_id: customerId,
+    stripe_subscription_id: subscriptionId,
+    stripe_price_id: priceId,
+    subscription_status: subscription.status,
+    subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
+    subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
+    is_premium: true,
+  };
+
+  // Reset des crédits d'examens pour les périodes d'essai (trialing)
+  // Car invoice.paid ne sera pas appelé pendant l'essai gratuit
+  if (isTrialing) {
+    updateData.subscription_exams_used = 0;
+    console.log('🎁 Période d\'essai détectée - Reset des crédits d\'examens');
+  }
+
   await supabase
     .from('profiles')
-    .update({
-      stripe_customer_id: customerId,
-      stripe_subscription_id: subscriptionId,
-      stripe_price_id: priceId,
-      subscription_status: subscription.status,
-      subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
-      subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
-      is_premium: true,
-      // subscription_exams_used: 0, <--- SUPPRIMÉ (sera fait par invoice.paid)
-    })
+    .update(updateData)
     .eq('id', profile.id);
 
-  console.log('✅ Profil mis à jour (Checkout) - Sans reset crédits');
+  console.log(`✅ Profil mis à jour (Checkout) - Status: ${subscription.status}${isTrialing ? ' (crédits reset)' : ''}`);
 }
 
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
