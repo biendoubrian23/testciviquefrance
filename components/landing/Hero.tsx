@@ -38,12 +38,13 @@ export default function Hero() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // Défilement automatique
+  // Défilement automatique
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [currentSlide]); // Reset le timer à chaque changement de slide (auto ou manuel)
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index);
@@ -73,7 +74,7 @@ export default function Hero() {
                 {carouselSlides.map((slide, index) => (
                   <div
                     key={index}
-                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                    className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none z-0'
                       }`}
                   >
                     <Image
@@ -92,24 +93,33 @@ export default function Hero() {
                   </div>
                 ))}
                 <button
-                  onClick={goToPrevious}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 rounded-full z-10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToPrevious();
+                  }}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 rounded-full z-20 pointer-events-auto"
                   aria-label="Image précédente"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </button>
                 <button
-                  onClick={goToNext}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 rounded-full z-10"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToNext();
+                  }}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 rounded-full z-20 pointer-events-auto"
                   aria-label="Image suivante"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </button>
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20 pointer-events-auto">
                   {carouselSlides.map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => goToSlide(index)}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        goToSlide(index);
+                      }}
                       className={`rounded-full transition-all duration-300 ${index === currentSlide
                         ? 'w-6 h-2 bg-white'
                         : 'w-2 h-2 bg-white/50 hover:bg-white/70'
@@ -187,7 +197,7 @@ export default function Hero() {
               {carouselSlides.map((slide, index) => (
                 <div
                   key={index}
-                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100' : 'opacity-0'
+                  className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none z-0'
                     }`}
                 >
                   <Image
@@ -211,27 +221,36 @@ export default function Hero() {
 
               {/* Boutons de navigation - Liquid Glass Effect */}
               <button
-                onClick={goToPrevious}
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 shadow-lg rounded-full z-10"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToPrevious();
+                }}
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 shadow-lg rounded-full z-20 cursor-pointer pointer-events-auto"
                 aria-label="Image précédente"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
-                onClick={goToNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 shadow-lg rounded-full z-10"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  goToNext();
+                }}
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 transition-all duration-300 shadow-lg rounded-full z-20 cursor-pointer pointer-events-auto"
                 aria-label="Image suivante"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>
 
               {/* Indicateurs de position */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-10">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 z-20 pointer-events-auto">
                 {carouselSlides.map((_, index) => (
                   <button
                     key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`rounded-full transition-all duration-300 ${index === currentSlide
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      goToSlide(index);
+                    }}
+                    className={`rounded-full transition-all duration-300 cursor-pointer ${index === currentSlide
                       ? 'w-8 h-2 bg-white'
                       : 'w-2 h-2 bg-white/50 hover:bg-white/70'
                       }`}
