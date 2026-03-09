@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
 import { Loader2 } from 'lucide-react';
+import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
 
 // Validation email stricte
 const isValidEmail = (email: string): boolean => {
@@ -46,6 +47,7 @@ export default function LoginPage() {
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const { signIn, signInWithGoogle } = useAuth();
   const router = useRouter();
+  const { capture } = usePostHogEvent();
 
   // Validation en temps réel de l'email
   const handleEmailChange = (value: string) => {
@@ -89,22 +91,27 @@ export default function LoginPage() {
     }
 
     setIsLoading(true);
+    capture('login_submitted');
 
     const { error } = await signIn(email, password);
 
     if (error) {
       setError('Email ou mot de passe incorrect');
+      capture('login_failed', { error: 'invalid_credentials' });
       setIsLoading(false);
     } else {
+      capture('login_completed');
       router.push('/dashboard');
     }
   };
 
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
+    capture('login_submitted', { method: 'google' });
     const { error } = await signInWithGoogle();
     if (error) {
       setError('Erreur lors de la connexion avec Google');
+      capture('login_failed', { error: 'google_auth_error' });
       setIsGoogleLoading(false);
     }
   };

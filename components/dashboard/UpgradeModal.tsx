@@ -3,6 +3,7 @@
 import { X } from 'lucide-react';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
 import { createClient } from '@/lib/supabase/client';
+import { posthog } from '@/components/analytics/PostHogProvider';
 
 interface UpgradeModalProps {
   isOpen: boolean;
@@ -23,6 +24,7 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
     }
 
     const plan = STRIPE_PLANS[planType];
+    posthog.capture('checkout_started', { plan: planType, price: plan.price, source: 'upgrade_modal' });
     const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email || '')}`;
     window.location.href = checkoutUrl;
   };

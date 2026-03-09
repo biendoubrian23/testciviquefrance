@@ -29,7 +29,7 @@ export const categories: Category[] = [
     name: 'Tous les articles',
     slug: 'tous',
     icon: '',
-    count: 21,
+    count: 23,
     color: 'primary',
   },
   {
@@ -37,7 +37,7 @@ export const categories: Category[] = [
     name: 'Cadre légal',
     slug: 'cadre-legal',
     icon: '',
-    count: 7,
+    count: 8,
     color: 'blue',
   },
   {
@@ -53,7 +53,7 @@ export const categories: Category[] = [
     name: 'Préparation',
     slug: 'preparation',
     icon: '',
-    count: 2,
+    count: 3,
     color: 'purple',
   },
   {

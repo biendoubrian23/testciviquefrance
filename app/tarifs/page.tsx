@@ -6,6 +6,8 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CountdownTimer, { usePromoActive } from '@/components/ui/CountdownTimer';
 import { Check, ArrowRight, ChevronDown, Gift } from 'lucide-react';
+import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
+import { useEffect } from 'react';
 
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
@@ -35,6 +37,11 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function TarifsPage() {
   const isPromoActive = usePromoActive();
+  const { capture } = usePostHogEvent();
+
+  useEffect(() => {
+    capture('pricing_page_viewed', { promoActive: isPromoActive });
+  }, [capture, isPromoActive]);
 
   return (
     <>

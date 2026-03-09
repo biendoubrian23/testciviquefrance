@@ -11,6 +11,7 @@ import {
   ChevronRight,
   BarChart3
 } from 'lucide-react';
+import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
 
 interface QuizResults {
   score: number;
@@ -29,11 +30,18 @@ export default function OnboardingResultsPage() {
   const router = useRouter();
   const { user } = useAuth();
   const [results, setResults] = useState<QuizResults | null>(null);
+  const { capture } = usePostHogEvent();
 
   useEffect(() => {
     const stored = sessionStorage.getItem('onboardingResults');
     if (stored) {
-      setResults(JSON.parse(stored));
+      const parsed = JSON.parse(stored);
+      setResults(parsed);
+      capture('quiz_results_viewed', {
+        score: parsed.score,
+        totalQuestions: parsed.totalQuestions,
+        percentage: Math.round((parsed.score / parsed.totalQuestions) * 100),
+      });
       
       // Marquer l'onboarding comme complété dès qu'on voit les résultats
       const markOnboardingComplete = async () => {

@@ -10,6 +10,7 @@ export * from './articles-part3';
 export * from './articles-part4';
 export * from './articles-part5';
 export * from './articles-new';
+export * from './articles-ai-seo';
 
 // Import des contenus individuels pour le mapping
 import {
@@ -52,6 +53,11 @@ import {
   travailFranceContent,
 } from './articles-new';
 
+import {
+  erreursTestCiviqueContent,
+  contratIntegrationRepublicaineContent,
+} from './articles-ai-seo';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -75,6 +81,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'titres-de-sejour-france-guide-complet-2026': titresSejourContent,
   'guide-etudiants-etrangers-france-titres-demarches-2026': etudiantsEtrangersContent,
   'travailler-en-france-guide-permis-contrats-etrangers-2026': travailFranceContent,
+  'erreurs-frequentes-test-civique-2026-pieges-qcm': erreursTestCiviqueContent,
+  'contrat-integration-republicaine-cir-2026-formation-civique': contratIntegrationRepublicaineContent,
 };
 
 /**

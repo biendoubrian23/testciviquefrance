@@ -8,6 +8,7 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Loader2, Check, X } from 'lucide-react';
 import LegalModal from '@/components/ui/LegalModal';
 import { conditionsUtilisation, politiqueConfidentialite } from '@/lib/data/legal-content';
+import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
 
 // Validation email stricte
 const isValidEmail = (email: string): boolean => {
@@ -53,12 +54,22 @@ export default function SignupPage() {
   const [showPolitique, setShowPolitique] = useState(false);
   const { signUp, signInWithGoogle } = useAuth();
   const router = useRouter();
+  const { capture } = usePostHogEvent();
+  const [formStarted, setFormStarted] = useState(false);
 
   // Critères du mot de passe
   const passwordCriteria = {
     minLength: password.length >= 8,
     hasLetter: /[a-zA-Z]/.test(password),
     hasNumber: /[0-9]/.test(password),
+  };
+
+  // Track premier focus sur un champ
+  const handleFormFocus = () => {
+    if (!formStarted) {
+      setFormStarted(true);
+      capture('signup_form_started');
+    }
   };
 
   // Validation en temps réel de l'email
@@ -93,17 +104,21 @@ export default function SignupPage() {
     }
 
     setIsLoading(true);
+    capture('signup_submitted', { method: 'email' });
 
     const { error } = await signUp(email, password, prenom, nom, acceptMarketing);
 
     if (error) {
       if (error.message.includes('already registered')) {
         setError('Cet email est déjà utilisé');
+        capture('signup_failed', { error: 'already_registered' });
       } else {
         setError('Erreur lors de l\'inscription. Veuillez réessayer.');
+        capture('signup_failed', { error: error.message });
       }
       setIsLoading(false);
     } else {
+      capture('signup_completed', { method: 'email' });
       // Rediriger directement vers l'onboarding (profil puis quiz)
       router.push('/onboarding/profil');
     }
@@ -111,9 +126,11 @@ export default function SignupPage() {
 
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
+    capture('signup_submitted', { method: 'google' });
     const { error } = await signInWithGoogle();
     if (error) {
       setError('Erreur lors de la connexion avec Google');
+      capture('signup_failed', { error: 'google_auth_error' });
       setIsGoogleLoading(false);
     }
   };
@@ -194,6 +211,7 @@ export default function SignupPage() {
                   type="text"
                   value={prenom}
                   onChange={(e) => setPrenom(e.target.value)}
+                  onFocus={handleFormFocus}
                   className="w-full px-4 py-3 border border-gray-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all"
                   placeholder="Jean"
                   required

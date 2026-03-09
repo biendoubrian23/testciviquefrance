@@ -1,0 +1,13 @@
+{
+  "servers": {
+    "posthog": {
+      "command": "npx",
+      "args": ["-y", "@andrew_eragon/mcp-server-posthog"],
+      "env": {
+        "POSTHOG_API_KEY": "phx_vvkQOsC4T8wD68CBl6grsHF0ZYpbDVK9F9tRAsxkno6REhw",
+        "POSTHOG_HOST": "https://eu.i.posthog.com",
+        "POSTHOG_PROJECT_ID": "112119"
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ import CelebrationToast from '@/components/ui/CelebrationToast'
 import ErrorModal from '@/components/ui/ErrorModal'
 import { createClient } from '@/lib/supabase/client'
 import { STRIPE_PLANS } from '@/lib/stripe/plans'
+import { posthog } from '@/components/analytics/PostHogProvider'
 
 // Import des questions locales (hashées) - Principes et valeurs
 import {
@@ -656,6 +657,15 @@ export default function QuizPage() {
 
     const score = reponses.filter(r => r.is_correct).length
     const tempsTotal = reponses.reduce((acc, r) => acc + r.temps_reponse, 0)
+
+    posthog.capture('training_quiz_completed', {
+      categorieId,
+      niveau,
+      score,
+      totalQuestions: questions.length,
+      percentage: Math.round((score / questions.length) * 100),
+      tempsTotal,
+    })
 
     // Sauvegarder les résultats dans la base de données
     try {

@@ -6,6 +6,7 @@ import { useSupabase } from '@/hooks/useSupabase';
 import { useAuth } from '@/contexts/AuthContext';
 import { ChevronRight, CheckCircle, XCircle, Loader2 } from 'lucide-react';
 import type { OnboardingQuestion, OnboardingAnswer } from '@/types/onboarding';
+import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
 
 export default function OnboardingQuizPage() {
   const router = useRouter();
@@ -19,6 +20,8 @@ export default function OnboardingQuizPage() {
   const [answers, setAnswers] = useState<OnboardingAnswer[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
+  const { capture } = usePostHogEvent();
+  const quizStartedRef = { current: false };
 
   const currentQuestion = questions[currentIndex];
   const progress = questions.length > 0 ? ((currentIndex + 1) / questions.length) * 100 : 0;
@@ -37,6 +40,10 @@ export default function OnboardingQuizPage() {
 
         if (data && data.length > 0) {
           setQuestions(data as OnboardingQuestion[]);
+          if (!quizStartedRef.current) {
+            quizStartedRef.current = true;
+            capture('quiz_started', { totalQuestions: data.length });
+          }
         }
       } catch (error) {
         console.error('Erreur chargement questions:', error);
@@ -67,6 +74,12 @@ export default function OnboardingQuizPage() {
     
     setAnswers([...answers, answer]);
     setShowExplanation(true);
+    capture('quiz_question_answered', {
+      questionId: currentQuestion.id,
+      domaine: currentQuestion.domaine,
+      isCorrect,
+      questionNumber: currentIndex + 1,
+    });
   };
 
   const handleNext = async () => {
@@ -128,6 +141,12 @@ export default function OnboardingQuizPage() {
         strengths,
         weaknesses,
       }));
+
+      capture('quiz_completed', {
+        score,
+        percentage: Math.round((score / questions.length) * 100),
+        totalQuestions: questions.length,
+      });
 
       router.push('/onboarding/resultats');
     } else {

@@ -17,6 +17,7 @@ import {
   Activity,
   Menu,
   X,
+  Eye,
 } from 'lucide-react';
 
 interface SidebarItem {
@@ -67,6 +68,12 @@ const sidebarSections: SidebarSection[] = [
     title: 'Config',
     items: [
       { label: 'Paramètres', href: '/parametres', icon: Settings },
+    ],
+  },
+  {
+    title: 'Analytics',
+    items: [
+      { label: 'PostHog Stats', href: '/analytics', icon: Eye },
     ],
   },
 ];

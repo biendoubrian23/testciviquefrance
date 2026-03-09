@@ -7,6 +7,38 @@ import { Article } from './articles';
 
 // Nouveaux articles SEO avec mots-clés à fort volume de recherche
 export const seoArticles: Article[] = [
+  // NOUVEAU: Erreurs fréquentes test civique (optimisé IA)
+  {
+    id: 'seo-ai-1',
+    slug: 'erreurs-frequentes-test-civique-2026-pieges-qcm',
+    title: "Erreurs fréquentes au test civique 2026 : les pièges du QCM à éviter absolument",
+    excerpt: "Découvrez les erreurs les plus courantes au test civique de naturalisation : confusions entre institutions, pièges des mises en situation, dates à ne pas mélanger. Stratégies et astuces pour obtenir 32/40 du premier coup.",
+    content: '',
+    category: 'Préparation',
+    categorySlug: 'preparation',
+    author: 'Équipe Le Test Civique',
+    date: '09/03/2026',
+    readTime: 18,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=2070',
+    featured: true,
+  },
+  // NOUVEAU: Contrat d'Intégration Républicaine (optimisé IA)
+  {
+    id: 'seo-ai-2',
+    slug: 'contrat-integration-republicaine-cir-2026-formation-civique',
+    title: "Contrat d'Intégration Républicaine (CIR) 2026 : formation civique, obligations et lien avec le test civique",
+    excerpt: "Guide complet sur le CIR : formation civique de 4 jours, cours de français OFII, obligations légales et lien avec le test civique de naturalisation. Tout ce que vous devez savoir pour votre parcours d'intégration en France.",
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Équipe Le Test Civique',
+    date: '09/03/2026',
+    readTime: 22,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070',
+    featured: true,
+  },
   // NOUVEAU: Titres de Séjour
   {
     id: 'seo-new-1',

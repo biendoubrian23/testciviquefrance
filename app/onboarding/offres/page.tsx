@@ -9,12 +9,14 @@ import {
   ChevronRight
 } from 'lucide-react';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
 
 export default function OnboardingOffersPage() {
   const router = useRouter();
   const { user } = useAuth();
   const supabase = useSupabase();
   const [isProcessing, setIsProcessing] = useState(false);
+  const { capture } = usePostHogEvent();
 
   // Rediriger vers le checkout Stripe avec le lien de paiement approprié
   const handleCheckout = async (planKey: 'standard' | 'premium' | 'examen') => {
@@ -37,6 +39,7 @@ export default function OnboardingOffersPage() {
 
     // Construire l'URL de checkout avec l'email pré-rempli
     const plan = STRIPE_PLANS[planKey];
+    capture('checkout_started', { plan: planKey, price: plan.price });
     const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`;
 
     // Rediriger vers Stripe Checkout
@@ -50,6 +53,7 @@ export default function OnboardingOffersPage() {
 
   // Passer et aller au dashboard en tant que membre gratuit
   const handleSkip = async () => {
+    capture('checkout_skipped');
     if (user) {
       try {
         await supabase

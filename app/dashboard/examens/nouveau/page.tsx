@@ -16,6 +16,7 @@ import {
   Loader2
 } from 'lucide-react';
 import { EXAMEN_1, verifyAnswerExam1, findCorrectIndexExam1 } from '@/lib/data/examens/examen1';
+import { posthog } from '@/components/analytics/PostHogProvider';
 
 // ==================== EXAMEN BLANC #1 ====================
 const EXAM_NUMBER = 1;
@@ -106,6 +107,7 @@ export default function NouvelExamen1Page() {
             setUserAnswers(initialAnswers);
             setCurrentQuestionIndex(0);
             setTimeRemaining(45 * 60);
+            posthog.capture('exam_started', { examNumber: EXAM_NUMBER, totalQuestions: 40 });
             // ✅ Le crédit a déjà été débité dans ExamSelectionModal
             console.log(`✅ Session créée pour l'examen ${EXAM_NUMBER}`);
           } else {
@@ -212,6 +214,14 @@ export default function NouvelExamen1Page() {
     const score = calculateScore();
     const tempsTotal = 45 * 60 - timeRemaining;
     const passed = score >= 32;
+
+    posthog.capture('exam_completed', {
+      examNumber: EXAM_NUMBER,
+      score,
+      percentage: Math.round((score / 40) * 100),
+      passed,
+      timeSpent: tempsTotal,
+    });
 
     if (user && sessionId) {
       try {
