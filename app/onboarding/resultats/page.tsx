@@ -137,19 +137,13 @@ export default function OnboardingResultsPage() {
               ? 'Avec un entraînement régulier sur notre plateforme, vous maximiserez vos chances de réussir l\'examen civique officiel (80% requis).'
               : 'L\'examen civique nécessite 80% de bonnes réponses. Avec notre plateforme de préparation complète, vous pourrez progresser rapidement dans tous les domaines.'}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button
-              onClick={handleContinue}
-              className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200 shadow-md hover:shadow-lg"
-            >
-              🎁 Essayer gratuitement • 0€
-              <ChevronRight className="w-5 h-5" />
-            </button>
+          <div className="flex">
             <button
               onClick={() => router.push('/dashboard')}
-              className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-white text-gray-700 font-semibold border border-gray-300 hover:bg-gray-50 transition-all duration-200"
+              className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200 shadow-md hover:shadow-lg"
             >
-              Continuer au Dashboard
+              Continuer
+              <ChevronRight className="w-5 h-5" />
             </button>
           </div>
         </div>

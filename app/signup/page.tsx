@@ -135,9 +135,6 @@ export default function SignupPage() {
             <h1 className="text-2xl font-bold text-gray-900 mb-1">
               Créer un compte
             </h1>
-            <p className="text-gray-600">
-              Commencez gratuitement avec 5 crédits offerts
-            </p>
           </div>
 
           {error && (
