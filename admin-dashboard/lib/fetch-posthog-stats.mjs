@@ -4,8 +4,12 @@ import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const API_KEY = process.env.POSTHOG_PERSONAL_API_KEY || 'phx_vvkQOsC4T8wD68CBl6grsHF0ZYpbDVK9F9tRAsxkno6REhw';
-const PROJECT_ID = process.env.POSTHOG_PROJECT_ID || '112119';
+const API_KEY = process.env.POSTHOG_PERSONAL_API_KEY;
+const PROJECT_ID = process.env.POSTHOG_PROJECT_ID;
+if (!API_KEY || !PROJECT_ID) {
+  console.error('Erreur: POSTHOG_PERSONAL_API_KEY et POSTHOG_PROJECT_ID doivent être définis dans les variables d\'environnement.');
+  process.exit(1);
+}
 const HOST = 'https://eu.i.posthog.com';
 
 async function hogql(query) {

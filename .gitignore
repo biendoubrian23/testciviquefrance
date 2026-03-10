@@ -18,6 +18,9 @@ public/sw.js.map
 public/workbox-*.js
 public/workbox-*.js.map
 
+# IDE / Editor
+.vscode/
+
 # Misc
 .DS_Store
 *.pem
