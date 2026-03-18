@@ -32,8 +32,14 @@ export async function updateSession(request: NextRequest) {
   // IMPORTANT: Vérifier si l'utilisateur est VRAIMENT connecté
   let isAuthenticated = false;
   try {
-    const { data: { user } } = await supabase.auth.getUser();
-    isAuthenticated = !!user;
+    if (process.env.NODE_ENV === 'development') {
+      // In local dev behind SSL interception, session lookup is more resilient than user verification.
+      const { data: { session } } = await supabase.auth.getSession();
+      isAuthenticated = !!session;
+    } else {
+      const { data: { user } } = await supabase.auth.getUser();
+      isAuthenticated = !!user;
+    }
   } catch {
     // Erreur silencieuse - considérer comme non connecté
     console.warn('Middleware: Impossible de vérifier l\'utilisateur');

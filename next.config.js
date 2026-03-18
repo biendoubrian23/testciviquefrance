@@ -48,6 +48,8 @@ const nextConfig = {
 
   // Optimisation des images
   images: {
+    // In dev behind corporate/self-signed TLS, let the browser fetch remote images directly.
+    unoptimized: process.env.NODE_ENV === 'development',
     remotePatterns: [
       {
         protocol: 'https',

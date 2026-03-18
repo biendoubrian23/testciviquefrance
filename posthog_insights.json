@@ -1,0 +1,4946 @@
+{
+  "dashboards": [
+    {
+      "id": 472878,
+      "name": "My App Dashboard",
+      "description": "",
+      "pinned": true,
+      "created_at": "2025-12-31T13:38:44.850697Z",
+      "created_by": null,
+      "last_accessed_at": "2026-03-17T10:40:08.518708Z",
+      "last_viewed_at": "2026-03-17T15:16:11.879219Z",
+      "is_shared": false,
+      "deleted": false,
+      "creation_mode": "default",
+      "restriction_level": 21,
+      "effective_restriction_level": 21,
+      "effective_privilege_level": 37,
+      "user_access_level": "manager",
+      "access_control_version": "v2",
+      "last_refresh": null,
+      "team_id": 112119,
+      "tags": []
+    }
+  ],
+  "insights": [
+    {
+      "id": 3016724,
+      "short_id": "urmWykN0",
+      "name": "Daily active users (DAUs)",
+      "derived_name": null,
+      "filters": {},
+      "query": {
+        "kind": "InsightVizNode",
+        "source": {
+          "kind": "TrendsQuery",
+          "series": [
+            {
+              "kind": "EventsNode",
+              "math": "dau",
+              "name": "$pageview",
+              "event": "$pageview"
+            }
+          ],
+          "interval": "day",
+          "dateRange": {
+            "date_from": "-30d",
+            "explicitDate": false
+          },
+          "properties": [],
+          "trendsFilter": {
+            "display": "ActionsLineGraph",
+            "showLegend": false,
+            "yAxisScaleType": "linear",
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "showPercentStackView": false,
+            "aggregationAxisFormat": "numeric",
+            "showAlertThresholdLines": false
+          },
+          "breakdownFilter": {
+            "breakdown_type": "event"
+          },
+          "filterTestAccounts": false,
+          "version": 2
+        }
+      },
+      "order": null,
+      "deleted": false,
+      "dashboards": [
+        472878
+      ],
+      "dashboard_tiles": [
+        {
+          "id": 3023069,
+          "dashboard_id": 472878,
+          "deleted": null
+        }
+      ],
+      "last_refresh": "2026-03-17T10:40:09.209736Z",
+      "cache_target_age": "2026-03-17T16:40:09.209736Z",
+      "next_allowed_client_refresh": "2026-03-17T10:55:09.209736Z",
+      "result": [
+        {
+          "data": [
+            20,
+            18,
+            14,
+            18,
+            19,
+            18,
+            12,
+            15,
+            14,
+            18,
+            23,
+            30,
+            27,
+            14,
+            15,
+            20,
+            16,
+            28,
+            18,
+            19,
+            7,
+            15,
+            20,
+            27,
+            19,
+            14,
+            14,
+            18,
+            15,
+            10,
+            5
+          ],
+          "labels": [
+            "15-Feb-2026",
+            "16-Feb-2026",
+            "17-Feb-2026",
+            "18-Feb-2026",
+            "19-Feb-2026",
+            "20-Feb-2026",
+            "21-Feb-2026",
+            "22-Feb-2026",
+            "23-Feb-2026",
+            "24-Feb-2026",
+            "25-Feb-2026",
+            "26-Feb-2026",
+            "27-Feb-2026",
+            "28-Feb-2026",
+            "1-Mar-2026",
+            "2-Mar-2026",
+            "3-Mar-2026",
+            "4-Mar-2026",
+            "5-Mar-2026",
+            "6-Mar-2026",
+            "7-Mar-2026",
+            "8-Mar-2026",
+            "9-Mar-2026",
+            "10-Mar-2026",
+            "11-Mar-2026",
+            "12-Mar-2026",
+            "13-Mar-2026",
+            "14-Mar-2026",
+            "15-Mar-2026",
+            "16-Mar-2026",
+            "17-Mar-2026"
+          ],
+          "days": [
+            "2026-02-15",
+            "2026-02-16",
+            "2026-02-17",
+            "2026-02-18",
+            "2026-02-19",
+            "2026-02-20",
+            "2026-02-21",
+            "2026-02-22",
+            "2026-02-23",
+            "2026-02-24",
+            "2026-02-25",
+            "2026-02-26",
+            "2026-02-27",
+            "2026-02-28",
+            "2026-03-01",
+            "2026-03-02",
+            "2026-03-03",
+            "2026-03-04",
+            "2026-03-05",
+            "2026-03-06",
+            "2026-03-07",
+            "2026-03-08",
+            "2026-03-09",
+            "2026-03-10",
+            "2026-03-11",
+            "2026-03-12",
+            "2026-03-13",
+            "2026-03-14",
+            "2026-03-15",
+            "2026-03-16",
+            "2026-03-17"
+          ],
+          "count": 540,
+          "label": "$pageview",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-02-15T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsLineGraph",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-02-15T00:00:00Z",
+              "2026-02-16T00:00:00Z",
+              "2026-02-17T00:00:00Z",
+              "2026-02-18T00:00:00Z",
+              "2026-02-19T00:00:00Z",
+              "2026-02-20T00:00:00Z",
+              "2026-02-21T00:00:00Z",
+              "2026-02-22T00:00:00Z",
+              "2026-02-23T00:00:00Z",
+              "2026-02-24T00:00:00Z",
+              "2026-02-25T00:00:00Z",
+              "2026-02-26T00:00:00Z",
+              "2026-02-27T00:00:00Z",
+              "2026-02-28T00:00:00Z",
+              "2026-03-01T00:00:00Z",
+              "2026-03-02T00:00:00Z",
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "order": 0
+        }
+      ],
+      "hasMore": false,
+      "columns": null,
+      "created_at": "2025-12-31T13:38:44.865551Z",
+      "created_by": null,
+      "description": "Shows the number of unique users that use your app every day.",
+      "updated_at": "2025-12-31T13:38:44.865641Z",
+      "favorited": false,
+      "saved": false,
+      "last_modified_at": "2025-12-31T13:38:44.865050Z",
+      "last_modified_by": null,
+      "is_sample": true,
+      "effective_restriction_level": 21,
+      "effective_privilege_level": 37,
+      "user_access_level": "manager",
+      "timezone": "UTC",
+      "is_cached": true,
+      "query_status": null,
+      "hogql": "SELECT\n    arrayMap(number -> plus(toStartOfInterval(assumeNotNull(toDateTime('2026-02-15 00:00:00')), toIntervalDay(1)), toIntervalDay(number)), range(0, plus(coalesce(dateDiff('day', toStartOfInterval(assumeNotNull(toDateTime('2026-02-15 00:00:00')), toIntervalDay(1)), toStartOfInterval(assumeNotNull(toDateTime('2026-03-17 23:59:59')), toIntervalDay(1)))), 1))) AS date,\n    arrayMap(_match_date -> arraySum(arraySlice(groupArray(ifNull(count, 0)), indexOf(groupArray(day_start) AS _days_for_count, _match_date) AS _index, plus(minus(arrayLastIndex(x -> equals(x, _match_date), _days_for_count), _index), 1))), date) AS total\nFROM\n    (SELECT\n        sum(total) AS count,\n        day_start\n    FROM\n        (SELECT\n            count(DISTINCT e.person_id) AS total,\n            toStartOfDay(timestamp) AS day_start\n        FROM\n            events AS e\n        WHERE\n            and(greaterOrEquals(timestamp, toStartOfInterval(assumeNotNull(toDateTime('2026-02-15 00:00:00')), toIntervalDay(1))), lessOrEquals(timestamp, assumeNotNull(toDateTime('2026-03-17 23:59:59'))), equals(event, '$pageview'))\n        GROUP BY\n            day_start)\n    GROUP BY\n        day_start\n    ORDER BY\n        day_start ASC)\nORDER BY\n    arraySum(total) DESC\nLIMIT 50000",
+      "types": null,
+      "resolved_date_range": {
+        "date_from": "2026-02-15T00:00:00Z",
+        "date_to": "2026-03-17T23:59:59.999999Z"
+      },
+      "alerts": [],
+      "last_viewed_at": "2026-03-17T15:16:11.891346Z",
+      "tags": [],
+      "filters_hash": "cache_112119_e42431754e548947fbadbae99f6485d563c2d67e513d4b981db17f47f576532e"
+    },
+    {
+      "id": 3016725,
+      "short_id": "y8qxARMs",
+      "name": "Weekly active users (WAUs)",
+      "derived_name": null,
+      "filters": {},
+      "query": {
+        "kind": "InsightVizNode",
+        "source": {
+          "kind": "TrendsQuery",
+          "series": [
+            {
+              "kind": "EventsNode",
+              "math": "dau",
+              "name": "$pageview",
+              "event": "$pageview"
+            }
+          ],
+          "interval": "week",
+          "dateRange": {
+            "date_from": "-90d",
+            "explicitDate": false
+          },
+          "properties": [],
+          "trendsFilter": {
+            "display": "ActionsLineGraph",
+            "showLegend": false,
+            "yAxisScaleType": "linear",
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "showPercentStackView": false,
+            "aggregationAxisFormat": "numeric",
+            "showAlertThresholdLines": false
+          },
+          "breakdownFilter": {
+            "breakdown_type": "event"
+          },
+          "filterTestAccounts": false,
+          "version": 2
+        }
+      },
+      "order": null,
+      "deleted": false,
+      "dashboards": [
+        472878
+      ],
+      "dashboard_tiles": [
+        {
+          "id": 3023070,
+          "dashboard_id": 472878,
+          "deleted": null
+        }
+      ],
+      "last_refresh": "2026-03-17T10:40:09.219540Z",
+      "cache_target_age": "2026-03-18T10:40:09.219540Z",
+      "next_allowed_client_refresh": "2026-03-17T10:55:09.219540Z",
+      "result": [
+        {
+          "data": [
+            0,
+            0,
+            205,
+            306,
+            618,
+            278,
+            181,
+            147,
+            132,
+            94,
+            118,
+            104,
+            111,
+            26
+          ],
+          "labels": [
+            "17–20 Dec",
+            "21–27 Dec",
+            "28-Dec-2025 – 3-Jan-2026",
+            "4–10 Jan",
+            "11–17 Jan",
+            "18–24 Jan",
+            "25–31 Jan",
+            "1–7 Feb",
+            "8–14 Feb",
+            "15–21 Feb",
+            "22–28 Feb",
+            "1–7 Mar",
+            "8–14 Mar",
+            "15–17 Mar"
+          ],
+          "days": [
+            "2025-12-14",
+            "2025-12-21",
+            "2025-12-28",
+            "2026-01-04",
+            "2026-01-11",
+            "2026-01-18",
+            "2026-01-25",
+            "2026-02-01",
+            "2026-02-08",
+            "2026-02-15",
+            "2026-02-22",
+            "2026-03-01",
+            "2026-03-08",
+            "2026-03-15"
+          ],
+          "count": 2320,
+          "label": "$pageview",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2025-12-17T00:00:00Z",
+            "entity_type": "events",
+            "interval": "week",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsLineGraph",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2025-12-14T00:00:00Z",
+              "2025-12-21T00:00:00Z",
+              "2025-12-28T00:00:00Z",
+              "2026-01-04T00:00:00Z",
+              "2026-01-11T00:00:00Z",
+              "2026-01-18T00:00:00Z",
+              "2026-01-25T00:00:00Z",
+              "2026-02-01T00:00:00Z",
+              "2026-02-08T00:00:00Z",
+              "2026-02-15T00:00:00Z",
+              "2026-02-22T00:00:00Z",
+              "2026-03-01T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-15T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "order": 0
+        }
+      ],
+      "hasMore": false,
+      "columns": null,
+      "created_at": "2025-12-31T13:38:44.887820Z",
+      "created_by": null,
+      "description": "Shows the number of unique users that use your app every week.",
+      "updated_at": "2025-12-31T13:38:44.887906Z",
+      "favorited": false,
+      "saved": false,
+      "last_modified_at": "2025-12-31T13:38:44.887372Z",
+      "last_modified_by": null,
+      "is_sample": true,
+      "effective_restriction_level": 21,
+      "effective_privilege_level": 37,
+      "user_access_level": "manager",
+      "timezone": "UTC",
+      "is_cached": true,
+      "query_status": null,
+      "hogql": "SELECT\n    arrayMap(number -> plus(toStartOfWeek(assumeNotNull(toDateTime('2025-12-17 00:00:00'))), toIntervalWeek(number)), range(0, plus(coalesce(dateDiff('week', toStartOfWeek(assumeNotNull(toDateTime('2025-12-17 00:00:00'))), toStartOfWeek(assumeNotNull(toDateTime('2026-03-17 23:59:59'))))), 1))) AS date,\n    arrayMap(_match_date -> arraySum(arraySlice(groupArray(ifNull(count, 0)), indexOf(groupArray(day_start) AS _days_for_count, _match_date) AS _index, plus(minus(arrayLastIndex(x -> equals(x, _match_date), _days_for_count), _index), 1))), date) AS total\nFROM\n    (SELECT\n        sum(total) AS count,\n        day_start\n    FROM\n        (SELECT\n            count(DISTINCT e.person_id) AS total,\n            toStartOfWeek(timestamp) AS day_start\n        FROM\n            events AS e\n        WHERE\n            and(greaterOrEquals(timestamp, toStartOfInterval(assumeNotNull(toDateTime('2025-12-17 00:00:00')), toIntervalDay(1))), lessOrEquals(timestamp, assumeNotNull(toDateTime('2026-03-17 23:59:59'))), equals(event, '$pageview'))\n        GROUP BY\n            day_start)\n    GROUP BY\n        day_start\n    ORDER BY\n        day_start ASC)\nORDER BY\n    arraySum(total) DESC\nLIMIT 50000",
+      "types": null,
+      "resolved_date_range": {
+        "date_from": "2025-12-17T00:00:00Z",
+        "date_to": "2026-03-17T23:59:59.999999Z"
+      },
+      "alerts": [],
+      "last_viewed_at": "2026-03-17T15:16:11.891346Z",
+      "tags": [],
+      "filters_hash": "cache_112119_778b27ebb050a3110952fc148dd5a1e3654486f88bde2f05fd13cf42f623af81"
+    },
+    {
+      "id": 3016726,
+      "short_id": "i7PwoIVe",
+      "name": "Retention",
+      "derived_name": null,
+      "filters": {},
+      "query": {
+        "kind": "InsightVizNode",
+        "source": {
+          "kind": "RetentionQuery",
+          "dateRange": {
+            "date_from": "-7d",
+            "explicitDate": false
+          },
+          "properties": [],
+          "retentionFilter": {
+            "period": "Week",
+            "targetEntity": {
+              "id": "$pageview",
+              "type": "events"
+            },
+            "retentionType": "retention_first_time",
+            "totalIntervals": 11,
+            "returningEntity": {
+              "id": "$pageview",
+              "type": "events"
+            }
+          },
+          "filterTestAccounts": false,
+          "version": 2
+        }
+      },
+      "order": null,
+      "deleted": false,
+      "dashboards": [
+        472878
+      ],
+      "dashboard_tiles": [
+        {
+          "id": 3023071,
+          "dashboard_id": 472878,
+          "deleted": null
+        }
+      ],
+      "last_refresh": "2026-03-17T10:40:09.230083Z",
+      "cache_target_age": "2026-03-18T10:40:09.230083Z",
+      "next_allowed_client_refresh": "2026-03-17T10:55:09.230083Z",
+      "result": [
+        {
+          "breakdown_value": null,
+          "date": "2026-03-08T00:00:00Z",
+          "label": "Week 0",
+          "values": [
+            {
+              "aggregation_value": null,
+              "count": 94,
+              "label": "Week 0"
+            },
+            {
+              "aggregation_value": null,
+              "count": 4,
+              "label": "Week 1"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 2"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 3"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 4"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 5"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 6"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 7"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 8"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 9"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 10"
+            }
+          ]
+        },
+        {
+          "breakdown_value": null,
+          "date": "2026-03-15T00:00:00Z",
+          "label": "Week 1",
+          "values": [
+            {
+              "aggregation_value": null,
+              "count": 20,
+              "label": "Week 0"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 1"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 2"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 3"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 4"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 5"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 6"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 7"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 8"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 9"
+            },
+            {
+              "aggregation_value": null,
+              "count": 0,
+              "label": "Week 10"
+            }
+          ]
+        }
+      ],
+      "hasMore": null,
+      "columns": null,
+      "created_at": "2025-12-31T13:38:44.905849Z",
+      "created_by": null,
+      "description": "Weekly retention of your users.",
+      "updated_at": "2025-12-31T13:38:44.905936Z",
+      "favorited": false,
+      "saved": false,
+      "last_modified_at": "2025-12-31T13:38:44.905477Z",
+      "last_modified_by": null,
+      "is_sample": true,
+      "effective_restriction_level": 21,
+      "effective_privilege_level": 37,
+      "user_access_level": "manager",
+      "timezone": "UTC",
+      "is_cached": true,
+      "query_status": null,
+      "hogql": "SELECT\n    actor_activity.start_interval_index AS start_event_matching_interval,\n    actor_activity.intervals_from_base AS intervals_from_base,\n    COUNT(DISTINCT actor_activity.actor_id) AS count\nFROM\n    (SELECT\n        events.person_id AS actor_id,\n        if(has(arraySort(groupUniqArrayIf(toStartOfWeek(events.timestamp, 0), and(equals(events.event, '$pageview'), and(greaterOrEquals(events.timestamp, toStartOfWeek(assumeNotNull(toDateTime('2026-03-08 00:00:00')))), less(events.timestamp, toDateTime('2026-03-22 00:00:00.000000')))))) AS _start_event_timestamps, toStartOfWeek(minIf(events.timestamp, equals(events.event, '$pageview')))), _start_event_timestamps, []) AS start_event_timestamps,\n        arrayMap(x -> plus(toStartOfWeek(assumeNotNull(toDateTime('2026-03-08 00:00:00'))), toIntervalWeek(x)), range(0, 2)) AS date_range,\n        arraySort(groupUniqArrayIf(toStartOfWeek(events.timestamp, 0), and(equals(events.event, '$pageview'), and(greaterOrEquals(events.timestamp, toStartOfWeek(assumeNotNull(toDateTime('2026-03-08 00:00:00')))), less(events.timestamp, toDateTime('2026-03-22 00:00:00.000000')))))) AS return_event_timestamps,\n        arrayJoin(arrayFilter(x -> greater(x, -1), arrayMap((interval_index, interval_date) -> if(equals(start_event_timestamps[1], interval_date), minus(interval_index, 1), -1), arrayEnumerate(date_range), date_range))) AS start_interval_index,\n        arrayJoin(arrayConcat(if(equals(start_event_timestamps[1], date_range[plus(start_interval_index, 1)]), [0], []), arrayFilter(x -> greater(x, 0), arrayMap(_timestamp -> minus(indexOf(arraySlice(date_range, plus(start_interval_index, 1), 11), _timestamp), 1), return_event_timestamps)))) AS intervals_from_base\n    FROM\n        events\n    WHERE\n        and(in(event, tuple('$pageview')), or(equals(events.event, '$pageview'), equals(events.event, '$pageview')))\n    GROUP BY\n        actor_id\n    HAVING\n        and(1, 1)) AS actor_activity\nGROUP BY\n    start_event_matching_interval,\n    intervals_from_base\nORDER BY\n    start_event_matching_interval ASC,\n    intervals_from_base ASC\nLIMIT 50000",
+      "types": null,
+      "resolved_date_range": null,
+      "alerts": [],
+      "last_viewed_at": "2026-03-17T15:16:11.891346Z",
+      "tags": [],
+      "filters_hash": "cache_112119_17b6c199eae5dc6391bafa409872920a9d4f5837b9aafcae8cbcac4dee999caf"
+    },
+    {
+      "id": 3016727,
+      "short_id": "6FVkytE2",
+      "name": "Growth accounting",
+      "derived_name": null,
+      "filters": {},
+      "query": {
+        "kind": "InsightVizNode",
+        "source": {
+          "kind": "LifecycleQuery",
+          "series": [
+            {
+              "kind": "EventsNode",
+              "name": "$pageview",
+              "event": "$pageview"
+            }
+          ],
+          "interval": "week",
+          "dateRange": {
+            "date_from": "-30d",
+            "explicitDate": false
+          },
+          "properties": [],
+          "lifecycleFilter": {
+            "showLegend": false
+          },
+          "filterTestAccounts": false
+        }
+      },
+      "order": null,
+      "deleted": false,
+      "dashboards": [
+        472878
+      ],
+      "dashboard_tiles": [
+        {
+          "id": 3023072,
+          "dashboard_id": 472878,
+          "deleted": null
+        }
+      ],
+      "last_refresh": "2026-03-17T10:40:09.218988Z",
+      "cache_target_age": "2026-03-18T10:40:09.218988Z",
+      "next_allowed_client_refresh": "2026-03-17T10:55:09.218988Z",
+      "result": [
+        {
+          "action": {
+            "id": "$pageview",
+            "name": "$pageview",
+            "type": "events",
+            "order": 0,
+            "math": "total"
+          },
+          "data": [
+            18,
+            17,
+            25,
+            28,
+            5
+          ],
+          "count": 93,
+          "labels": [
+            "15–21 Feb",
+            "22–28 Feb",
+            "1–7 Mar",
+            "8–14 Mar",
+            "15–17 Mar"
+          ],
+          "days": [
+            "2026-02-15",
+            "2026-02-22",
+            "2026-03-01",
+            "2026-03-08",
+            "2026-03-15"
+          ],
+          "label": "$pageview - new",
+          "status": "new"
+        },
+        {
+          "action": {
+            "id": "$pageview",
+            "name": "$pageview",
+            "type": "events",
+            "order": 0,
+            "math": "total"
+          },
+          "data": [
+            6,
+            4,
+            4,
+            3,
+            2
+          ],
+          "count": 19,
+          "labels": [
+            "15–21 Feb",
+            "22–28 Feb",
+            "1–7 Mar",
+            "8–14 Mar",
+            "15–17 Mar"
+          ],
+          "days": [
+            "2026-02-15",
+            "2026-02-22",
+            "2026-03-01",
+            "2026-03-08",
+            "2026-03-15"
+          ],
+          "label": "$pageview - returning",
+          "status": "returning"
+        },
+        {
+          "action": {
+            "id": "$pageview",
+            "name": "$pageview",
+            "type": "events",
+            "order": 0,
+            "math": "total"
+          },
+          "data": [
+            1,
+            3,
+            1,
+            3,
+            0
+          ],
+          "count": 8,
+          "labels": [
+            "15–21 Feb",
+            "22–28 Feb",
+            "1–7 Mar",
+            "8–14 Mar",
+            "15–17 Mar"
+          ],
+          "days": [
+            "2026-02-15",
+            "2026-02-22",
+            "2026-03-01",
+            "2026-03-08",
+            "2026-03-15"
+          ],
+          "label": "$pageview - resurrecting",
+          "status": "resurrecting"
+        },
+        {
+          "action": {
+            "id": "$pageview",
+            "name": "$pageview",
+            "type": "events",
+            "order": 0,
+            "math": "total"
+          },
+          "data": [
+            -25,
+            -21,
+            -20,
+            -27,
+            -32
+          ],
+          "count": -125,
+          "labels": [
+            "15–21 Feb",
+            "22–28 Feb",
+            "1–7 Mar",
+            "8–14 Mar",
+            "15–17 Mar"
+          ],
+          "days": [
+            "2026-02-15",
+            "2026-02-22",
+            "2026-03-01",
+            "2026-03-08",
+            "2026-03-15"
+          ],
+          "label": "$pageview - dormant",
+          "status": "dormant"
+        }
+      ],
+      "hasMore": null,
+      "columns": null,
+      "created_at": "2025-12-31T13:38:44.923040Z",
+      "created_by": null,
+      "description": "How many of your users are new, returning, resurrecting, or dormant each week.",
+      "updated_at": "2025-12-31T13:38:44.923125Z",
+      "favorited": false,
+      "saved": false,
+      "last_modified_at": "2025-12-31T13:38:44.922679Z",
+      "last_modified_by": null,
+      "is_sample": true,
+      "effective_restriction_level": 21,
+      "effective_privilege_level": 37,
+      "user_access_level": "manager",
+      "timezone": "UTC",
+      "is_cached": true,
+      "query_status": null,
+      "hogql": "SELECT\n    groupArray(start_of_period) AS date,\n    groupArray(counts) AS total,\n    status\nFROM\n    (SELECT\n        if(equals(status, 'dormant'), negate(sum(counts)), negate(negate(sum(counts)))) AS counts,\n        start_of_period,\n        status\n    FROM\n        (SELECT\n            periods.start_of_period AS start_of_period,\n            0 AS counts,\n            status\n        FROM\n            (SELECT\n                minus(toStartOfWeek(assumeNotNull(toDateTime('2026-03-17 23:59:59'))), toIntervalWeek(number)) AS start_of_period\n            FROM\n                numbers(dateDiff('week', toStartOfWeek(assumeNotNull(toDateTime('2026-02-15 00:00:00'))), toStartOfWeek(plus(assumeNotNull(toDateTime('2026-03-17 23:59:59')), toIntervalWeek(1))))) AS numbers) AS periods\n            CROSS JOIN (SELECT\n                status\n            FROM\n                (SELECT\n                    1)\n            ARRAY JOIN ['new', 'returning', 'resurrecting', 'dormant'] AS status) AS sec\n        ORDER BY\n            status ASC,\n            start_of_period ASC\n        UNION ALL\n        SELECT\n            start_of_period,\n            count(DISTINCT actor_id) AS counts,\n            status\n        FROM\n            (SELECT\n                min(events.person.created_at) AS created_at,\n                arraySort(groupUniqArray(toStartOfWeek(events.timestamp))) AS all_activity,\n                arrayPopBack(arrayPushFront(all_activity, toStartOfWeek(created_at))) AS previous_activity,\n                arrayPopFront(arrayPushBack(all_activity, toStartOfWeek(toDateTime('1970-01-01 00:00:00')))) AS following_activity,\n                arrayMap((previous, current, index) -> if(equals(previous, current), 'new', if(and(equals(minus(current, toIntervalWeek(1)), previous), notEquals(index, 1)), 'returning', 'resurrecting')), previous_activity, all_activity, arrayEnumerate(all_activity)) AS initial_status,\n                arrayMap((current, next) -> if(equals(plus(current, toIntervalWeek(1)), next), '', 'dormant'), all_activity, following_activity) AS dormant_status,\n                arrayMap(x -> plus(x, toIntervalWeek(1)), arrayFilter((current, is_dormant) -> equals(is_dormant, 'dormant'), all_activity, dormant_status)) AS dormant_periods,\n                arrayMap(x -> 'dormant', dormant_periods) AS dormant_label,\n                arrayConcat(arrayZip(all_activity, initial_status), arrayZip(dormant_periods, dormant_label)) AS temp_concat,\n                arrayJoin(temp_concat) AS period_status_pairs,\n                period_status_pairs.1 AS start_of_period,\n                period_status_pairs.2 AS status,\n                person_id AS actor_id\n            FROM\n                events\n            WHERE\n                and(notEquals(properties.$process_person_profile, 'false'), greaterOrEquals(events.timestamp, minus(toStartOfWeek(assumeNotNull(toDateTime('2026-02-15 00:00:00'))), toIntervalWeek(1))), less(events.timestamp, plus(toStartOfWeek(assumeNotNull(toDateTime('2026-03-17 23:59:59'))), toIntervalWeek(1))), equals(event, '$pageview'))\n            GROUP BY\n                actor_id)\n        GROUP BY\n            start_of_period,\n            status)\n    WHERE\n        and(lessOrEquals(start_of_period, toStartOfWeek(assumeNotNull(toDateTime('2026-03-17 23:59:59')))), greaterOrEquals(start_of_period, toStartOfWeek(assumeNotNull(toDateTime('2026-02-15 00:00:00')))))\n    GROUP BY\n        start_of_period,\n        status\n    ORDER BY\n        start_of_period ASC)\nGROUP BY\n    status\nLIMIT 50000",
+      "types": null,
+      "resolved_date_range": {
+        "date_from": "2026-02-15T00:00:00Z",
+        "date_to": "2026-03-17T23:59:59.999999Z"
+      },
+      "alerts": [],
+      "last_viewed_at": "2026-03-17T15:16:11.891346Z",
+      "tags": [],
+      "filters_hash": "cache_112119_094486c67110f752aa6fc8e8c9f16e11e114845cd26063b6d00e45f1002fb84e"
+    },
+    {
+      "id": 3016728,
+      "short_id": "kdXprz8a",
+      "name": "Referring domain (last 14 days)",
+      "derived_name": null,
+      "filters": {},
+      "query": {
+        "kind": "InsightVizNode",
+        "source": {
+          "kind": "TrendsQuery",
+          "series": [
+            {
+              "kind": "EventsNode",
+              "math": "dau",
+              "name": "$pageview",
+              "event": "$pageview"
+            }
+          ],
+          "interval": "day",
+          "dateRange": {
+            "date_from": "-14d",
+            "explicitDate": false
+          },
+          "properties": [],
+          "trendsFilter": {
+            "display": "ActionsBarValue",
+            "showLegend": false,
+            "yAxisScaleType": "linear",
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "showPercentStackView": false,
+            "aggregationAxisFormat": "numeric",
+            "showAlertThresholdLines": false
+          },
+          "breakdownFilter": {
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "filterTestAccounts": false,
+          "version": 2
+        }
+      },
+      "order": null,
+      "deleted": false,
+      "dashboards": [
+        472878
+      ],
+      "dashboard_tiles": [
+        {
+          "id": 3023073,
+          "dashboard_id": 472878,
+          "deleted": null
+        }
+      ],
+      "last_refresh": "2026-03-17T10:40:10.236605Z",
+      "cache_target_age": "2026-03-17T16:40:10.236605Z",
+      "next_allowed_client_refresh": "2026-03-17T10:55:10.236605Z",
+      "result": [
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 127,
+          "label": "$direct",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "$direct",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 41,
+          "label": "chatgpt.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "chatgpt.com",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 20,
+          "label": "www.google.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "www.google.com",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 7,
+          "label": "www.testciviquefrance.fr",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "www.testciviquefrance.fr",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 6,
+          "label": "www.bing.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "www.bing.com",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 3,
+          "label": "com.google.android.googlequicksearchbox",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "com.google.android.googlequicksearchbox",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 2,
+          "label": "www.perplexity.ai",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "www.perplexity.ai",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 1,
+          "label": "accounts.google.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "accounts.google.com",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 1,
+          "label": "fr.search.yahoo.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "fr.search.yahoo.com",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 1,
+          "label": "l.instagram.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "l.instagram.com",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 1,
+          "label": "lu847.r.a.d.sendibm1.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "lu847.r.a.d.sendibm1.com",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 1,
+          "label": "vercel.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "vercel.com",
+          "order": 0
+        },
+        {
+          "data": [],
+          "days": [],
+          "count": 0,
+          "aggregated_value": 1,
+          "label": "www.qwant.com",
+          "filter": {
+            "insight": "TRENDS",
+            "properties": [],
+            "filter_test_accounts": false,
+            "date_to": "2026-03-17T23:59:59.999999Z",
+            "date_from": "2026-03-03T00:00:00Z",
+            "entity_type": "events",
+            "interval": "day",
+            "aggregationAxisFormat": "numeric",
+            "display": "ActionsBarValue",
+            "hideWeekends": false,
+            "resultCustomizationBy": "value",
+            "showAlertThresholdLines": false,
+            "showLegend": false,
+            "showMultipleYAxes": false,
+            "showPercentStackView": false,
+            "showValuesOnSeries": false,
+            "smoothingIntervals": 1,
+            "yAxisScaleType": "linear",
+            "breakdown": "$referring_domain",
+            "breakdown_type": "event"
+          },
+          "action": {
+            "days": [
+              "2026-03-03T00:00:00Z",
+              "2026-03-04T00:00:00Z",
+              "2026-03-05T00:00:00Z",
+              "2026-03-06T00:00:00Z",
+              "2026-03-07T00:00:00Z",
+              "2026-03-08T00:00:00Z",
+              "2026-03-09T00:00:00Z",
+              "2026-03-10T00:00:00Z",
+              "2026-03-11T00:00:00Z",
+              "2026-03-12T00:00:00Z",
+              "2026-03-13T00:00:00Z",
+              "2026-03-14T00:00:00Z",
+              "2026-03-15T00:00:00Z",
+              "2026-03-16T00:00:00Z",
+              "2026-03-17T00:00:00Z"
+            ],
+            "id": "$pageview",
+            "type": "events",
+            "order": 0,
+            "name": "$pageview",
+            "custom_name": null,
+            "math": "dau",
+            "math_property": null,
+            "math_hogql": null,
+            "math_group_type_index": null,
+            "properties": {}
+          },
+          "breakdown_value": "www.qwant.com",
+          "order": 0
+        }
+      ],
+      "hasMore": false,
+      "columns": null,
+      "created_at": "2025-12-31T13:38:44.941157Z",
+      "created_by": null,
+      "description": "Shows the most common referring domains for your users over the past 14 days.",
+      "updated_at": "2025-12-31T13:38:44.941246Z",
+      "favorited": false,
+      "saved": false,
+      "last_modified_at": "2025-12-31T13:38:44.940702Z",
+      "last_modified_by": null,
+      "is_sample": true,
+      "effective_restriction_level": 21,
+      "effective_privilege_level": 37,
+      "user_access_level": "manager",
+      "timezone": "UTC",
+      "is_cached": true,
+      "query_status": null,
+      "hogql": "SELECT\n    sum(total) AS total,\n    if(ifNull(greaterOrEquals(row_number, 26), 0), '$$_posthog_breakdown_other_$$', breakdown_value) AS breakdown_value\nFROM\n    (SELECT\n        count AS total,\n        breakdown_value AS breakdown_value,\n        row_number() OVER (ORDER BY total DESC) AS row_number\n    FROM\n        (SELECT\n            sum(total) AS count,\n            breakdown_value\n        FROM\n            (SELECT\n                count(DISTINCT e.person_id) AS total,\n                ifNull(nullIf(left(toString(properties.$referring_domain), 400), ''), '$$_posthog_breakdown_null_$$') AS breakdown_value\n            FROM\n                events AS e\n            WHERE\n                and(greaterOrEquals(timestamp, toStartOfInterval(assumeNotNull(toDateTime('2026-03-03 00:00:00')), toIntervalDay(1))), lessOrEquals(timestamp, assumeNotNull(toDateTime('2026-03-17 23:59:59'))), equals(event, '$pageview'))\n            GROUP BY\n                breakdown_value)\n        GROUP BY\n            breakdown_value\n        ORDER BY\n            breakdown_value ASC)\n    ORDER BY\n        total DESC,\n        breakdown_value ASC)\nWHERE\n    notEquals(breakdown_value, NULL)\nGROUP BY\n    breakdown_value\nORDER BY\n    if(equals(breakdown_value, '$$_posthog_breakdown_other_$$'), 2, if(equals(breakdown_value, '$$_posthog_breakdown_null_$$'), 1, 0)) ASC,\n    total DESC,\n    breakdown_value ASC\nLIMIT 50000",
+      "types": null,
+      "resolved_date_range": {
+        "date_from": "2026-03-03T00:00:00Z",
+        "date_to": "2026-03-17T23:59:59.999999Z"
+      },
+      "alerts": [],
+      "last_viewed_at": "2026-03-17T15:16:11.891346Z",
+      "tags": [],
+      "filters_hash": "cache_112119_31370dc146a6502396b00142e00ea5c1c2863650c63e95ef7b335e6447b33ffb"
+    },
+    {
+      "id": 3016729,
+      "short_id": "olTn0Kde",
+      "name": "Pageview funnel, by browser",
+      "derived_name": null,
+      "filters": {},
+      "query": {
+        "kind": "InsightVizNode",
+        "source": {
+          "kind": "FunnelsQuery",
+          "series": [
+            {
+              "kind": "EventsNode",
+              "name": "$pageview",
+              "event": "$pageview",
+              "custom_name": "First page view"
+            },
+            {
+              "kind": "EventsNode",
+              "name": "$pageview",
+              "event": "$pageview",
+              "custom_name": "Second page view"
+            },
+            {
+              "kind": "EventsNode",
+              "name": "$pageview",
+              "event": "$pageview",
+              "custom_name": "Third page view"
+            }
+          ],
+          "interval": "day",
+          "dateRange": {
+            "date_from": "-7d",
+            "explicitDate": false
+          },
+          "properties": [],
+          "funnelsFilter": {
+            "layout": "horizontal",
+            "exclusions": [],
+            "funnelVizType": "steps",
+            "funnelOrderType": "ordered",
+            "funnelStepReference": "total",
+            "funnelWindowInterval": 14,
+            "breakdownAttributionType": "first_touch",
+            "funnelWindowIntervalUnit": "day"
+          },
+          "breakdownFilter": {
+            "breakdown": "$browser",
+            "breakdown_type": "event"
+          },
+          "filterTestAccounts": false
+        }
+      },
+      "order": null,
+      "deleted": false,
+      "dashboards": [
+        472878
+      ],
+      "dashboard_tiles": [
+        {
+          "id": 3023074,
+          "dashboard_id": 472878,
+          "deleted": null
+        }
+      ],
+      "last_refresh": "2026-03-17T10:40:10.377483Z",
+      "cache_target_age": "2026-03-17T16:40:10.377483Z",
+      "next_allowed_client_refresh": "2026-03-17T10:55:10.377483Z",
+      "result": [
+        [
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "First page view",
+            "order": 0,
+            "people": [],
+            "count": 42,
+            "type": "events",
+            "average_conversion_time": null,
+            "median_conversion_time": null,
+            "breakdown": [
+              "Mobile Safari"
+            ],
+            "breakdown_value": [
+              "Mobile Safari"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Second page view",
+            "order": 1,
+            "people": [],
+            "count": 27,
+            "type": "events",
+            "average_conversion_time": 407.9346666689272,
+            "median_conversion_time": 13.57200002670288,
+            "breakdown": [
+              "Mobile Safari"
+            ],
+            "breakdown_value": [
+              "Mobile Safari"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Third page view",
+            "order": 2,
+            "people": [],
+            "count": 21,
+            "type": "events",
+            "average_conversion_time": 5802.973714283535,
+            "median_conversion_time": 36.00599980354309,
+            "breakdown": [
+              "Mobile Safari"
+            ],
+            "breakdown_value": [
+              "Mobile Safari"
+            ]
+          }
+        ],
+        [
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "First page view",
+            "order": 0,
+            "people": [],
+            "count": 41,
+            "type": "events",
+            "average_conversion_time": null,
+            "median_conversion_time": null,
+            "breakdown": [
+              "Chrome"
+            ],
+            "breakdown_value": [
+              "Chrome"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Second page view",
+            "order": 1,
+            "people": [],
+            "count": 24,
+            "type": "events",
+            "average_conversion_time": 712.6138333082199,
+            "median_conversion_time": 8.669000029563904,
+            "breakdown": [
+              "Chrome"
+            ],
+            "breakdown_value": [
+              "Chrome"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Third page view",
+            "order": 2,
+            "people": [],
+            "count": 21,
+            "type": "events",
+            "average_conversion_time": 8081.226333322979,
+            "median_conversion_time": 17.40999984741211,
+            "breakdown": [
+              "Chrome"
+            ],
+            "breakdown_value": [
+              "Chrome"
+            ]
+          }
+        ],
+        [
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "First page view",
+            "order": 0,
+            "people": [],
+            "count": 4,
+            "type": "events",
+            "average_conversion_time": null,
+            "median_conversion_time": null,
+            "breakdown": [
+              "Safari"
+            ],
+            "breakdown_value": [
+              "Safari"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Second page view",
+            "order": 1,
+            "people": [],
+            "count": 4,
+            "type": "events",
+            "average_conversion_time": 90794.8180000782,
+            "median_conversion_time": 21416.47049999237,
+            "breakdown": [
+              "Safari"
+            ],
+            "breakdown_value": [
+              "Safari"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Third page view",
+            "order": 2,
+            "people": [],
+            "count": 3,
+            "type": "events",
+            "average_conversion_time": 5549.180333296458,
+            "median_conversion_time": 35.04899978637695,
+            "breakdown": [
+              "Safari"
+            ],
+            "breakdown_value": [
+              "Safari"
+            ]
+          }
+        ],
+        [
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "First page view",
+            "order": 0,
+            "people": [],
+            "count": 2,
+            "type": "events",
+            "average_conversion_time": null,
+            "median_conversion_time": null,
+            "breakdown": [
+              "Samsung Internet"
+            ],
+            "breakdown_value": [
+              "Samsung Internet"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Second page view",
+            "order": 1,
+            "people": [],
+            "count": 2,
+            "type": "events",
+            "average_conversion_time": 69.7059999704361,
+            "median_conversion_time": 69.7059999704361,
+            "breakdown": [
+              "Samsung Internet"
+            ],
+            "breakdown_value": [
+              "Samsung Internet"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Third page view",
+            "order": 2,
+            "people": [],
+            "count": 2,
+            "type": "events",
+            "average_conversion_time": 84.00249993801117,
+            "median_conversion_time": 84.00249993801117,
+            "breakdown": [
+              "Samsung Internet"
+            ],
+            "breakdown_value": [
+              "Samsung Internet"
+            ]
+          }
+        ],
+        [
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "First page view",
+            "order": 0,
+            "people": [],
+            "count": 7,
+            "type": "events",
+            "average_conversion_time": null,
+            "median_conversion_time": null,
+            "breakdown": [
+              "Microsoft Edge"
+            ],
+            "breakdown_value": [
+              "Microsoft Edge"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Second page view",
+            "order": 1,
+            "people": [],
+            "count": 4,
+            "type": "events",
+            "average_conversion_time": 10.489750027656555,
+            "median_conversion_time": 9.652999997138977,
+            "breakdown": [
+              "Microsoft Edge"
+            ],
+            "breakdown_value": [
+              "Microsoft Edge"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Third page view",
+            "order": 2,
+            "people": [],
+            "count": 1,
+            "type": "events",
+            "average_conversion_time": 9.19700002670288,
+            "median_conversion_time": 9.19700002670288,
+            "breakdown": [
+              "Microsoft Edge"
+            ],
+            "breakdown_value": [
+              "Microsoft Edge"
+            ]
+          }
+        ],
+        [
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "First page view",
+            "order": 0,
+            "people": [],
+            "count": 1,
+            "type": "events",
+            "average_conversion_time": null,
+            "median_conversion_time": null,
+            "breakdown": [
+              "Firefox"
+            ],
+            "breakdown_value": [
+              "Firefox"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Second page view",
+            "order": 1,
+            "people": [],
+            "count": 1,
+            "type": "events",
+            "average_conversion_time": 20.83400011062622,
+            "median_conversion_time": 20.83400011062622,
+            "breakdown": [
+              "Firefox"
+            ],
+            "breakdown_value": [
+              "Firefox"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Third page view",
+            "order": 2,
+            "people": [],
+            "count": 1,
+            "type": "events",
+            "average_conversion_time": 2.0279998779296875,
+            "median_conversion_time": 2.0279998779296875,
+            "breakdown": [
+              "Firefox"
+            ],
+            "breakdown_value": [
+              "Firefox"
+            ]
+          }
+        ],
+        [
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "First page view",
+            "order": 0,
+            "people": [],
+            "count": 3,
+            "type": "events",
+            "average_conversion_time": null,
+            "median_conversion_time": null,
+            "breakdown": [
+              "Chrome iOS"
+            ],
+            "breakdown_value": [
+              "Chrome iOS"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Second page view",
+            "order": 1,
+            "people": [],
+            "count": 1,
+            "type": "events",
+            "average_conversion_time": 213255.4049999714,
+            "median_conversion_time": 213255.4049999714,
+            "breakdown": [
+              "Chrome iOS"
+            ],
+            "breakdown_value": [
+              "Chrome iOS"
+            ]
+          },
+          {
+            "action_id": "$pageview",
+            "name": "$pageview",
+            "custom_name": "Third page view",
+            "order": 2,
+            "people": [],
+            "count": 0,
+            "type": "events",
+            "average_conversion_time": null,
+            "median_conversion_time": null,
+            "breakdown": [
+              "Chrome iOS"
+            ],
+            "breakdown_value": [
+              "Chrome iOS"
+            ]
+          }
+        ]
+      ],
+      "hasMore": null,
+      "columns": null,
+      "created_at": "2025-12-31T13:38:44.959047Z",
+      "created_by": null,
+      "description": "This example funnel shows how many of your users have completed 3 page views, broken down by browser.",
+      "updated_at": "2025-12-31T13:38:44.959136Z",
+      "favorited": false,
+      "saved": false,
+      "last_modified_at": "2025-12-31T13:38:44.958604Z",
+      "last_modified_by": null,
+      "is_sample": true,
+      "effective_restriction_level": 21,
+      "effective_privilege_level": 37,
+      "user_access_level": "manager",
+      "timezone": "UTC",
+      "is_cached": true,
+      "query_status": null,
+      "hogql": "SELECT\n    sum(step_1) AS step_1,\n    sum(step_2) AS step_2,\n    sum(step_3) AS step_3,\n    arrayMap(x -> if(isNaN(x), NULL, x), [avgArray(step_1_conversion_times)])[1] AS step_1_average_conversion_time,\n    arrayMap(x -> if(isNaN(x), NULL, x), [avgArray(step_2_conversion_times)])[1] AS step_2_average_conversion_time,\n    arrayMap(x -> if(isNaN(x), NULL, x), [medianArray(step_1_conversion_times)])[1] AS step_1_median_conversion_time,\n    arrayMap(x -> if(isNaN(x), NULL, x), [medianArray(step_2_conversion_times)])[1] AS step_2_median_conversion_time,\n    groupArray(row_number) AS row_number,\n    final_prop\nFROM\n    (SELECT\n        countIf(notEquals(bitAnd(steps_bitfield, 1), 0)) AS step_1,\n        countIf(notEquals(bitAnd(steps_bitfield, 2), 0)) AS step_2,\n        countIf(notEquals(bitAnd(steps_bitfield, 4), 0)) AS step_3,\n        groupArrayIf(timings[1], greater(timings[1], 0)) AS step_1_conversion_times,\n        groupArrayIf(timings[2], greater(timings[2], 0)) AS step_2_conversion_times,\n        rowNumberInAllBlocks() AS row_number,\n        if(less(row_number, 25), breakdown, ['Other']) AS final_prop\n    FROM\n        (SELECT\n            arraySort(t -> t.1, groupArray(tuple(toFloat(timestamp), uuid, arrayMap(x -> ifNull(x, ''), prop_basic), arrayFilter(x -> notEquals(x, 0), [multiply(1, step_0), multiply(2, step_1), multiply(3, step_2)])))) AS events_array,\n            argMinIf(prop_basic, timestamp, notEmpty(arrayFilter(x -> notEmpty(x), prop_basic))) AS prop,\n            arrayJoin(aggregate_funnel_array(3, 1209600, 'first_touch', 'ordered', [if(empty(prop), [''], prop)], [], arrayFilter((x, x_before, x_after) -> not(and(lessOrEquals(length(x.4), 1), equals(x.4, x_before.4), equals(x.4, x_after.4), equals(x.3, x_before.3), equals(x.3, x_after.3), greater(x.1, x_before.1), less(x.1, x_after.1))), events_array, arrayRotateRight(events_array, 1), arrayRotateLeft(events_array, 1)))) AS af_tuple,\n            af_tuple.1 AS step_reached,\n            plus(af_tuple.1, 1) AS steps,\n            af_tuple.2 AS breakdown,\n            af_tuple.3 AS timings,\n            af_tuple.5 AS steps_bitfield,\n            aggregation_target\n        FROM\n            (SELECT\n                e.timestamp AS timestamp,\n                person_id AS aggregation_target,\n                e.uuid AS uuid,\n                e.$session_id AS $session_id,\n                e.$window_id AS $window_id,\n                if(equals(event, '$pageview'), 1, 0) AS step_0,\n                if(equals(event, '$pageview'), 1, 0) AS step_1,\n                if(equals(event, '$pageview'), 1, 0) AS step_2,\n                [ifNull(toString(properties.$browser), '')] AS prop_basic,\n                prop_basic AS prop\n            FROM\n                events AS e\n            WHERE\n                and(and(and(greaterOrEquals(e.timestamp, toDateTime('2026-03-10 00:00:00.000000')), lessOrEquals(e.timestamp, toDateTime('2026-03-17 23:59:59.999999'))), in(event, tuple('$pageview'))), or(equals(step_0, 1), equals(step_1, 1), equals(step_2, 1))))\n        GROUP BY\n            aggregation_target\n        HAVING\n            greaterOrEquals(step_reached, 0))\n    GROUP BY\n        breakdown\n    ORDER BY\n        step_3 DESC,\n        step_2 DESC,\n        step_1 DESC)\nGROUP BY\n    final_prop\nORDER BY\n    step_3 DESC,\n    step_2 DESC,\n    step_1 DESC\nLIMIT 26",
+      "types": null,
+      "resolved_date_range": {
+        "date_from": "2026-03-10T00:00:00Z",
+        "date_to": "2026-03-17T23:59:59.999999Z"
+      },
+      "alerts": [],
+      "last_viewed_at": "2026-03-17T15:16:11.891346Z",
+      "tags": [],
+      "filters_hash": "cache_112119_f6f59ee67f9f57adb3c2f0e7c3f003b8b50ce7824c73c55aa2742ed3df1c12fb"
+    }
+  ],
+  "events": [
+    {
+      "id": "019cfc55-8e0c-798d-aaaa-d2846703e530",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$autocapture_disabled_server_side": false,
+        "$time": 1773759991.309,
+        "$timezone": "Europe/Paris",
+        "$exception_capture_enabled_server_side": false,
+        "$browser_language_prefix": "fr",
+        "$pageview_id": "019cfc55-7662-7f58-bb19-d8f48ef337c6",
+        "$prev_pageview_duration": 6.058,
+        "$snapshot_max_depth_exceeded": false,
+        "$feature_flag_payloads": {},
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$session_entry_referring_domain": "www.google.com",
+        "$viewport_width": 1440,
+        "$product_tours_enabled_server_side": false,
+        "$session_entry_pathname": "/",
+        "$search_engine": "google",
+        "$sdk_debug_replay_flushed_size": 596803,
+        "$screen_height": 900,
+        "$sdk_debug_replay_internal_buffer_length": 0,
+        "$referring_domain": "www.google.com",
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$web_vitals_enabled_server_side": false,
+        "$session_entry_referrer": "https://www.google.com/",
+        "$prev_pageview_last_content": 831,
+        "$prev_pageview_max_content_percentage": 1,
+        "$session_entry_search_engine": "google",
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$browser": "Chrome",
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$is_identified": true,
+        "$os": "Mac OS X",
+        "$os_version": "10.15.7",
+        "$lib_version": "1.311.0",
+        "$session_recording_start_reason": "recording_initialized",
+        "$screen_width": 1440,
+        "$viewport_height": 778,
+        "$active_feature_flags": [],
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "$sdk_debug_current_session_duration": null,
+        "$device_type": "Desktop",
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$config_defaults": "unset",
+        "$prev_pageview_id": "019cfc55-7662-7f58-bb19-d8f48ef337c6",
+        "$prev_pageview_max_scroll_percentage": 1,
+        "$recording_status": "active",
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$prev_pageview_max_scroll": 498,
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$sdk_debug_retry_queue_size": 0,
+        "$sdk_debug_replay_internal_buffer_size": 0,
+        "$sess_rec_flush_size": 596803,
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$pathname": "/dashboard/flashcards",
+        "$configured_session_timeout_ms": 1800000,
+        "$lib": "web",
+        "$prev_pageview_last_scroll": 53,
+        "$host": "www.testciviquefrance.fr",
+        "$prev_pageview_last_scroll_percentage": 0.10642570281124498,
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$sdk_debug_replay_rrweb_error": false,
+        "$referrer": "https://www.google.com/",
+        "$prev_pageview_pathname": "/dashboard/flashcards",
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$timezone_offset": -60,
+        "$dead_clicks_enabled_server_side": false,
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$browser_language": "fr-FR",
+        "$insert_id": "3vlelwh08ahjmbkv",
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$prev_pageview_max_content": 1276,
+        "$current_url": "https://www.testciviquefrance.fr/dashboard/flashcards",
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$prev_pageview_last_content_percentage": 0.6512539184952978,
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$sdk_debug_session_start": 1773759761885,
+        "$browser_version": 144,
+        "$lib_rate_limit_remaining_tokens": 98.03,
+        "$web_vitals_allowed_metrics": null,
+        "$sent_at": "2026-03-17T15:06:31.309Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard/flashcards",
+          "$pathname": "/dashboard/flashcards",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard/flashcards",
+          "$initial_pathname": "/dashboard/flashcards",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$pageleave",
+      "timestamp": "2026-03-17T15:06:31.385000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [],
+      "elements_chain": ""
+    },
+    {
+      "id": "019cfc55-7662-7f58-bb19-d8f48ef337c6",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$browser": "Chrome",
+        "$browser_language": "fr-FR",
+        "$session_entry_referring_domain": "www.google.com",
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$current_url": "https://www.testciviquefrance.fr/dashboard/flashcards",
+        "$browser_version": 144,
+        "$sdk_debug_replay_flushed_size": 577826,
+        "$sdk_debug_replay_rrweb_error": false,
+        "$pageview_id": "019cfc55-7662-7f58-bb19-d8f48ef337c6",
+        "$prev_pageview_max_content": 1276,
+        "$timezone": "Europe/Paris",
+        "$viewport_width": 1440,
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$prev_pageview_duration": 7.519,
+        "$exception_capture_enabled_server_side": false,
+        "$prev_pageview_last_scroll_percentage": 0.10642570281124498,
+        "$browser_language_prefix": "fr",
+        "$session_entry_search_engine": "google",
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$configured_session_timeout_ms": 1800000,
+        "$product_tours_enabled_server_side": false,
+        "$config_defaults": "unset",
+        "$os": "Mac OS X",
+        "$timezone_offset": -60,
+        "$lib_version": "1.311.0",
+        "$recording_status": "active",
+        "$prev_pageview_last_scroll": 53,
+        "$screen_width": 1440,
+        "$insert_id": "aj0dat0hm06orwf2",
+        "$device_type": "Desktop",
+        "$session_entry_referrer": "https://www.google.com/",
+        "$prev_pageview_last_content_percentage": 0.6512539184952978,
+        "$is_identified": true,
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$dead_clicks_enabled_server_side": false,
+        "$sdk_debug_current_session_duration": 223340,
+        "$prev_pageview_pathname": "/dashboard/examens",
+        "$pathname": "/dashboard/flashcards",
+        "$web_vitals_allowed_metrics": null,
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$autocapture_disabled_server_side": false,
+        "$session_entry_pathname": "/",
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$referring_domain": "www.google.com",
+        "$snapshot_max_depth_exceeded": false,
+        "$prev_pageview_max_content_percentage": 1,
+        "$prev_pageview_max_scroll_percentage": 1,
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$time": 1773759985.251,
+        "$referrer": "https://www.google.com/",
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$prev_pageview_max_scroll": 498,
+        "$web_vitals_enabled_server_side": false,
+        "$active_feature_flags": [],
+        "$sess_rec_flush_size": 577826,
+        "$sdk_debug_replay_internal_buffer_size": 740,
+        "$screen_height": 900,
+        "$session_recording_start_reason": "recording_initialized",
+        "$prev_pageview_id": "019cfc55-5903-7af5-aa8d-a3fca95acca1",
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$os_version": "10.15.7",
+        "$viewport_height": 778,
+        "$lib": "web",
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$host": "www.testciviquefrance.fr",
+        "$sdk_debug_replay_internal_buffer_length": 6,
+        "$search_engine": "google",
+        "$prev_pageview_last_content": 831,
+        "title": "Test Civique 2026 - Préparation Gratuite | Test Civique France",
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$sdk_debug_session_start": 1773759761885,
+        "$sdk_debug_retry_queue_size": 0,
+        "$feature_flag_payloads": {},
+        "$lib_rate_limit_remaining_tokens": 98.27,
+        "$sent_at": "2026-03-17T15:06:28.105Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard/flashcards",
+          "$pathname": "/dashboard/flashcards",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard/flashcards",
+          "$initial_pathname": "/dashboard/flashcards",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$pageview",
+      "timestamp": "2026-03-17T15:06:25.323000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [],
+      "elements_chain": ""
+    },
+    {
+      "id": "019cfc55-7648-7555-a439-1dfa57247426",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$browser_language": "fr-FR",
+        "$session_entry_pathname": "/",
+        "$session_recording_start_reason": "recording_initialized",
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$sdk_debug_retry_queue_size": 0,
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$browser_version": 144,
+        "$sdk_debug_replay_internal_buffer_size": 634,
+        "$ce_version": 1,
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$insert_id": "q4udivh1nmot498f",
+        "$session_entry_referrer": "https://www.google.com/",
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$is_identified": true,
+        "$sdk_debug_replay_flushed_size": 577826,
+        "$product_tours_enabled_server_side": false,
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$sess_rec_flush_size": 577826,
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$config_defaults": "unset",
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$recording_status": "active",
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$browser_language_prefix": "fr",
+        "$os": "Mac OS X",
+        "$configured_session_timeout_ms": 1800000,
+        "$search_engine": "google",
+        "$viewport_height": 778,
+        "$dead_clicks_enabled_server_side": false,
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$device_type": "Desktop",
+        "$session_entry_referring_domain": "www.google.com",
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$feature_flag_payloads": {},
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$lib": "web",
+        "$sdk_debug_replay_internal_buffer_length": 5,
+        "$timezone_offset": -60,
+        "$pageview_id": "019cfc55-5903-7af5-aa8d-a3fca95acca1",
+        "$current_url": "https://www.testciviquefrance.fr/dashboard/examens",
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$screen_height": 900,
+        "$screen_width": 1440,
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$timezone": "Europe/Paris",
+        "$viewport_width": 1440,
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$session_entry_search_engine": "google",
+        "$web_vitals_allowed_metrics": null,
+        "$lib_rate_limit_remaining_tokens": 99,
+        "$snapshot_max_depth_exceeded": false,
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "$os_version": "10.15.7",
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$autocapture_disabled_server_side": false,
+        "$browser": "Chrome",
+        "$time": 1773759985.224,
+        "$sdk_debug_replay_rrweb_error": false,
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$exception_capture_enabled_server_side": false,
+        "$web_vitals_enabled_server_side": false,
+        "$active_feature_flags": [],
+        "$referrer": "https://www.google.com/",
+        "$sdk_debug_session_start": 1773759761885,
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$event_type": "click",
+        "$pathname": "/dashboard/examens",
+        "$lib_version": "1.311.0",
+        "$sdk_debug_current_session_duration": 223337,
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$host": "www.testciviquefrance.fr",
+        "$referring_domain": "www.google.com",
+        "$sent_at": "2026-03-17T15:06:28.105Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard/examens",
+          "$pathname": "/dashboard/examens",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard/examens",
+          "$initial_pathname": "/dashboard/examens",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$autocapture",
+      "timestamp": "2026-03-17T15:06:25.297000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "a",
+          "attr_class": [
+            "active:bg-gray-100",
+            "duration-150",
+            "flex",
+            "hover:bg-gray-50",
+            "hover:text-gray-900",
+            "items-center",
+            "justify-between",
+            "px-4",
+            "py-3",
+            "text-gray-600",
+            "transition-all"
+          ],
+          "href": "/dashboard/flashcards",
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex items-center justify-between px-4 py-3 transition-all duration-150 text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100",
+            "attr__href": "/dashboard/flashcards",
+            "attr__style": "-webkit-tap-highlight-color: transparent;"
+          },
+          "order": 0
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "li",
+          "attr_class": null,
+          "href": null,
+          "attr_id": null,
+          "nth_child": 4,
+          "nth_of_type": 4,
+          "attributes": {},
+          "order": 1
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "ul",
+          "attr_class": [
+            "px-3",
+            "space-y-1"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "space-y-1 px-3"
+          },
+          "order": 2
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "nav",
+          "attr_class": [
+            "flex-1",
+            "min-h-0",
+            "overflow-y-auto",
+            "pb-3",
+            "pt-4"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 3,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex-1 pt-4 pb-3 overflow-y-auto min-h-0"
+          },
+          "order": 3
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "aside",
+          "attr_class": [
+            "-translate-x-full",
+            "bg-white",
+            "border-gray-200",
+            "border-r",
+            "duration-300",
+            "ease-in-out",
+            "fixed",
+            "flex",
+            "flex-col",
+            "h-[100dvh]",
+            "left-0",
+            "lg:!translate-x-0",
+            "lg:h-screen",
+            "top-0",
+            "transition-transform",
+            "w-64",
+            "z-50"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out -translate-x-full lg:!translate-x-0 lg:h-screen"
+          },
+          "order": 4
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "div",
+          "attr_class": [
+            "bg-gray-50",
+            "min-h-screen"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 29,
+          "nth_of_type": 2,
+          "attributes": {
+            "attr__class": "min-h-screen bg-gray-50"
+          },
+          "order": 5
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "body",
+          "attr_class": [
+            "antialiased"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 2,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "antialiased"
+          },
+          "order": 6
+        }
+      ],
+      "elements_chain": "a.active:bg-gray-100.duration-150.flex.hover:bg-gray-50.hover:text-gray-900.items-center.justify-between.px-4.py-3.text-gray-600.transition-all:attr__class=\"flex items-center justify-between px-4 py-3 transition-all duration-150 text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100\"attr__href=\"/dashboard/flashcards\"attr__style=\"-webkit-tap-highlight-color: transparent;\"href=\"/dashboard/flashcards\"nth-child=\"1\"nth-of-type=\"1\";li:nth-child=\"4\"nth-of-type=\"4\";ul.px-3.space-y-1:attr__class=\"space-y-1 px-3\"nth-child=\"1\"nth-of-type=\"1\";nav.flex-1.min-h-0.overflow-y-auto.pb-3.pt-4:attr__class=\"flex-1 pt-4 pb-3 overflow-y-auto min-h-0\"nth-child=\"3\"nth-of-type=\"1\";aside.-translate-x-full.bg-white.border-gray-200.border-r.duration-300.ease-in-out.fixed.flex.flex-col.h-[100dvh].left-0.lg:!translate-x-0.lg:h-screen.top-0.transition-transform.w-64.z-50:attr__class=\"fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out -translate-x-full lg:!translate-x-0 lg:h-screen\"nth-child=\"1\"nth-of-type=\"1\";div.bg-gray-50.min-h-screen:attr__class=\"min-h-screen bg-gray-50\"nth-child=\"29\"nth-of-type=\"2\";body.antialiased:attr__class=\"antialiased\"nth-child=\"2\"nth-of-type=\"1\""
+    },
+    {
+      "id": "019cfc55-5903-7af5-aa8d-a3fca95acca1",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$snapshot_max_depth_exceeded": false,
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$device_type": "Desktop",
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$config_defaults": "unset",
+        "$lib_version": "1.311.0",
+        "$browser": "Chrome",
+        "$viewport_height": 778,
+        "$active_feature_flags": [],
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$current_url": "https://www.testciviquefrance.fr/dashboard/examens",
+        "$browser_language_prefix": "fr",
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$search_engine": "google",
+        "$prev_pageview_id": "019cfc55-44c3-78c2-a2ea-7494558a9bc2",
+        "$session_entry_search_engine": "google",
+        "$session_entry_pathname": "/",
+        "$viewport_width": 1440,
+        "$web_vitals_enabled_server_side": false,
+        "$pathname": "/dashboard/examens",
+        "$web_vitals_allowed_metrics": null,
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$lib": "web",
+        "$prev_pageview_last_scroll_percentage": 0,
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "$sdk_debug_current_session_duration": 215825,
+        "$prev_pageview_max_content_percentage": 1,
+        "$sdk_debug_session_start": 1773759761885,
+        "$os_version": "10.15.7",
+        "$screen_height": 900,
+        "$referrer": "https://www.google.com/",
+        "$is_identified": true,
+        "$host": "www.testciviquefrance.fr",
+        "$prev_pageview_last_scroll": 0,
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$sdk_debug_replay_rrweb_error": false,
+        "$os": "Mac OS X",
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$feature_flag_payloads": {},
+        "$session_entry_referrer": "https://www.google.com/",
+        "$recording_status": "active",
+        "$sdk_debug_retry_queue_size": 0,
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "title": "Test Civique 2026 - Préparation Gratuite | Test Civique France",
+        "$browser_version": 144,
+        "$configured_session_timeout_ms": 1800000,
+        "$prev_pageview_max_content": 1276,
+        "$referring_domain": "www.google.com",
+        "$screen_width": 1440,
+        "$session_recording_start_reason": "recording_initialized",
+        "$insert_id": "ugin62k2k28uytb0",
+        "$sdk_debug_replay_internal_buffer_length": 7,
+        "$session_entry_referring_domain": "www.google.com",
+        "$product_tours_enabled_server_side": false,
+        "$time": 1773759977.731,
+        "$prev_pageview_max_scroll": 498,
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$sdk_debug_replay_internal_buffer_size": 1077,
+        "$exception_capture_enabled_server_side": false,
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$pageview_id": "019cfc55-5903-7af5-aa8d-a3fca95acca1",
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$timezone_offset": -60,
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$sdk_debug_replay_flushed_size": 553313,
+        "$prev_pageview_duration": 5.184,
+        "$sess_rec_flush_size": 553313,
+        "$timezone": "Europe/Paris",
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$autocapture_disabled_server_side": false,
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$browser_language": "fr-FR",
+        "$prev_pageview_max_scroll_percentage": 1,
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$prev_pageview_last_content": 778,
+        "$dead_clicks_enabled_server_side": false,
+        "$prev_pageview_last_content_percentage": 0.609717868338558,
+        "$prev_pageview_pathname": "/dashboard",
+        "$lib_rate_limit_remaining_tokens": 98.22,
+        "$sent_at": "2026-03-17T15:06:20.712Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard/examens",
+          "$pathname": "/dashboard/examens",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard/examens",
+          "$initial_pathname": "/dashboard/examens",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$pageview",
+      "timestamp": "2026-03-17T15:06:17.778000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [],
+      "elements_chain": ""
+    },
+    {
+      "id": "019cfc55-58ed-7a9c-86bb-cdaff2cff327",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$browser_language_prefix": "fr",
+        "$exception_capture_enabled_server_side": false,
+        "$event_type": "click",
+        "$product_tours_enabled_server_side": false,
+        "$os_version": "10.15.7",
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$el_text": "Examens blancs",
+        "$web_vitals_allowed_metrics": null,
+        "$session_recording_start_reason": "recording_initialized",
+        "$lib": "web",
+        "$search_engine": "google",
+        "$screen_width": 1440,
+        "$device_type": "Desktop",
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$config_defaults": "unset",
+        "$session_entry_search_engine": "google",
+        "$pageview_id": "019cfc55-44c3-78c2-a2ea-7494558a9bc2",
+        "$timezone": "Europe/Paris",
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$sdk_debug_replay_rrweb_error": false,
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$web_vitals_enabled_server_side": false,
+        "$feature_flag_payloads": {},
+        "$sdk_debug_replay_flushed_size": 553313,
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$sdk_debug_replay_internal_buffer_length": 6,
+        "$sdk_debug_session_start": 1773759761885,
+        "$configured_session_timeout_ms": 1800000,
+        "$insert_id": "89i7ekqe3yymcp27",
+        "$recording_status": "active",
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$referring_domain": "www.google.com",
+        "$lib_rate_limit_remaining_tokens": 99,
+        "$ce_version": 1,
+        "$session_entry_pathname": "/",
+        "$host": "www.testciviquefrance.fr",
+        "$browser": "Chrome",
+        "$pathname": "/dashboard",
+        "$is_identified": true,
+        "$timezone_offset": -60,
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$sdk_debug_current_session_duration": 215823,
+        "$sdk_debug_replay_internal_buffer_size": 971,
+        "$viewport_height": 778,
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$viewport_width": 1440,
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$autocapture_disabled_server_side": false,
+        "$os": "Mac OS X",
+        "$browser_language": "fr-FR",
+        "$sess_rec_flush_size": 553313,
+        "$screen_height": 900,
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$session_entry_referrer": "https://www.google.com/",
+        "$browser_version": 144,
+        "$lib_version": "1.311.0",
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$current_url": "https://www.testciviquefrance.fr/dashboard",
+        "$active_feature_flags": [],
+        "$dead_clicks_enabled_server_side": false,
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$time": 1773759977.709,
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "$session_entry_referring_domain": "www.google.com",
+        "$sdk_debug_retry_queue_size": 0,
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$referrer": "https://www.google.com/",
+        "$snapshot_max_depth_exceeded": false,
+        "$sent_at": "2026-03-17T15:06:20.712Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard",
+          "$pathname": "/dashboard",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard",
+          "$initial_pathname": "/dashboard",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$autocapture",
+      "timestamp": "2026-03-17T15:06:17.756000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [
+        {
+          "event": null,
+          "text": "Examens blancs",
+          "tag_name": "span",
+          "attr_class": [
+            "font-medium"
+          ],
+          "href": "/dashboard/examens",
+          "attr_id": null,
+          "nth_child": 2,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "font-medium",
+            "attr__href": "/dashboard/examens"
+          },
+          "order": 0
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "div",
+          "attr_class": [
+            "flex",
+            "gap-3",
+            "items-center"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex items-center gap-3"
+          },
+          "order": 1
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "a",
+          "attr_class": [
+            "active:bg-gray-100",
+            "duration-150",
+            "flex",
+            "hover:bg-gray-50",
+            "hover:text-gray-900",
+            "items-center",
+            "justify-between",
+            "px-4",
+            "py-3",
+            "text-gray-600",
+            "transition-all"
+          ],
+          "href": "/dashboard/examens",
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex items-center justify-between px-4 py-3 transition-all duration-150 text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100",
+            "attr__href": "/dashboard/examens",
+            "attr__style": "-webkit-tap-highlight-color: transparent;"
+          },
+          "order": 2
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "li",
+          "attr_class": null,
+          "href": null,
+          "attr_id": null,
+          "nth_child": 3,
+          "nth_of_type": 3,
+          "attributes": {},
+          "order": 3
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "ul",
+          "attr_class": [
+            "px-3",
+            "space-y-1"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "space-y-1 px-3"
+          },
+          "order": 4
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "nav",
+          "attr_class": [
+            "flex-1",
+            "min-h-0",
+            "overflow-y-auto",
+            "pb-3",
+            "pt-4"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 3,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex-1 pt-4 pb-3 overflow-y-auto min-h-0"
+          },
+          "order": 5
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "aside",
+          "attr_class": [
+            "-translate-x-full",
+            "bg-white",
+            "border-gray-200",
+            "border-r",
+            "duration-300",
+            "ease-in-out",
+            "fixed",
+            "flex",
+            "flex-col",
+            "h-[100dvh]",
+            "left-0",
+            "lg:!translate-x-0",
+            "lg:h-screen",
+            "top-0",
+            "transition-transform",
+            "w-64",
+            "z-50"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out -translate-x-full lg:!translate-x-0 lg:h-screen"
+          },
+          "order": 6
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "div",
+          "attr_class": [
+            "bg-gray-50",
+            "min-h-screen"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 29,
+          "nth_of_type": 2,
+          "attributes": {
+            "attr__class": "min-h-screen bg-gray-50"
+          },
+          "order": 7
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "body",
+          "attr_class": [
+            "antialiased"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 2,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "antialiased"
+          },
+          "order": 8
+        }
+      ],
+      "elements_chain": "span.font-medium:attr__class=\"font-medium\"attr__href=\"/dashboard/examens\"href=\"/dashboard/examens\"nth-child=\"2\"nth-of-type=\"1\"text=\"Examens blancs\";div.flex.gap-3.items-center:attr__class=\"flex items-center gap-3\"nth-child=\"1\"nth-of-type=\"1\";a.active:bg-gray-100.duration-150.flex.hover:bg-gray-50.hover:text-gray-900.items-center.justify-between.px-4.py-3.text-gray-600.transition-all:attr__class=\"flex items-center justify-between px-4 py-3 transition-all duration-150 text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100\"attr__href=\"/dashboard/examens\"attr__style=\"-webkit-tap-highlight-color: transparent;\"href=\"/dashboard/examens\"nth-child=\"1\"nth-of-type=\"1\";li:nth-child=\"3\"nth-of-type=\"3\";ul.px-3.space-y-1:attr__class=\"space-y-1 px-3\"nth-child=\"1\"nth-of-type=\"1\";nav.flex-1.min-h-0.overflow-y-auto.pb-3.pt-4:attr__class=\"flex-1 pt-4 pb-3 overflow-y-auto min-h-0\"nth-child=\"3\"nth-of-type=\"1\";aside.-translate-x-full.bg-white.border-gray-200.border-r.duration-300.ease-in-out.fixed.flex.flex-col.h-[100dvh].left-0.lg:!translate-x-0.lg:h-screen.top-0.transition-transform.w-64.z-50:attr__class=\"fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out -translate-x-full lg:!translate-x-0 lg:h-screen\"nth-child=\"1\"nth-of-type=\"1\";div.bg-gray-50.min-h-screen:attr__class=\"min-h-screen bg-gray-50\"nth-child=\"29\"nth-of-type=\"2\";body.antialiased:attr__class=\"antialiased\"nth-child=\"2\"nth-of-type=\"1\""
+    },
+    {
+      "id": "019cfc55-44c3-78c2-a2ea-7494558a9bc2",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$host": "www.testciviquefrance.fr",
+        "$pageview_id": "019cfc55-44c3-78c2-a2ea-7494558a9bc2",
+        "$dead_clicks_enabled_server_side": false,
+        "$sess_rec_flush_size": 527262,
+        "$search_engine": "google",
+        "$viewport_width": 1440,
+        "$current_url": "https://www.testciviquefrance.fr/dashboard",
+        "$session_entry_referring_domain": "www.google.com",
+        "$timezone_offset": -60,
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$prev_pageview_last_content_percentage": 0.609717868338558,
+        "$device_type": "Desktop",
+        "$viewport_height": 778,
+        "$lib_rate_limit_remaining_tokens": 98.17,
+        "$web_vitals_enabled_server_side": false,
+        "$web_vitals_allowed_metrics": null,
+        "$referring_domain": "www.google.com",
+        "$sdk_debug_replay_internal_buffer_length": 5,
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$prev_pageview_last_scroll": 0,
+        "$session_entry_referrer": "https://www.google.com/",
+        "$snapshot_max_depth_exceeded": false,
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$prev_pageview_max_scroll_percentage": 1,
+        "$prev_pageview_duration": 3.448,
+        "$prev_pageview_max_scroll": 498,
+        "$browser_version": 144,
+        "$timezone": "Europe/Paris",
+        "$pathname": "/dashboard",
+        "$time": 1773759972.547,
+        "$screen_width": 1440,
+        "$prev_pageview_last_content": 778,
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$prev_pageview_last_scroll_percentage": 0,
+        "$sdk_debug_current_session_duration": 210646,
+        "$browser_language": "fr-FR",
+        "$sdk_debug_session_start": 1773759761885,
+        "$browser_language_prefix": "fr",
+        "$lib_version": "1.311.0",
+        "$exception_capture_enabled_server_side": false,
+        "$insert_id": "qispfjwdjb24jkqw",
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "title": "Test Civique 2026 - Préparation Gratuite | Test Civique France",
+        "$referrer": "https://www.google.com/",
+        "$prev_pageview_pathname": "/dashboard/entrainement",
+        "$prev_pageview_max_content_percentage": 1,
+        "$configured_session_timeout_ms": 1800000,
+        "$os_version": "10.15.7",
+        "$active_feature_flags": [],
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$sdk_debug_replay_internal_buffer_size": 492,
+        "$prev_pageview_max_content": 1276,
+        "$config_defaults": "unset",
+        "$feature_flag_payloads": {},
+        "$sdk_debug_replay_flushed_size": 527262,
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$autocapture_disabled_server_side": false,
+        "$sdk_debug_replay_rrweb_error": false,
+        "$screen_height": 900,
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$session_recording_start_reason": "recording_initialized",
+        "$lib": "web",
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$session_entry_search_engine": "google",
+        "$browser": "Chrome",
+        "$is_identified": true,
+        "$session_entry_pathname": "/",
+        "$recording_status": "active",
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$sdk_debug_retry_queue_size": 0,
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$os": "Mac OS X",
+        "$prev_pageview_id": "019cfc55-374b-78c8-a2d9-a172804c0743",
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$product_tours_enabled_server_side": false,
+        "$sent_at": "2026-03-17T15:06:13.044Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard",
+          "$pathname": "/dashboard",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard",
+          "$initial_pathname": "/dashboard",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$pageview",
+      "timestamp": "2026-03-17T15:06:12.618000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [],
+      "elements_chain": ""
+    },
+    {
+      "id": "019cfc55-44b3-7b2e-b9ab-0e1d97b8f04d",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$autocapture_disabled_server_side": false,
+        "$referrer": "https://www.google.com/",
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$lib_version": "1.311.0",
+        "$viewport_height": 778,
+        "$time": 1773759972.531,
+        "$event_type": "click",
+        "$el_text": "Tableau de bord",
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$session_entry_search_engine": "google",
+        "$product_tours_enabled_server_side": false,
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "$viewport_width": 1440,
+        "$pathname": "/dashboard/entrainement",
+        "$active_feature_flags": [],
+        "$sess_rec_flush_size": 527262,
+        "$session_recording_start_reason": "recording_initialized",
+        "$sdk_debug_retry_queue_size": 0,
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$lib_rate_limit_remaining_tokens": 99,
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$session_entry_pathname": "/",
+        "$os_version": "10.15.7",
+        "$host": "www.testciviquefrance.fr",
+        "$recording_status": "active",
+        "$os": "Mac OS X",
+        "$ce_version": 1,
+        "$snapshot_max_depth_exceeded": false,
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$device_type": "Desktop",
+        "$exception_capture_enabled_server_side": false,
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$screen_height": 900,
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$browser_version": 144,
+        "$browser_language": "fr-FR",
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$sdk_debug_replay_flushed_size": 527262,
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$pageview_id": "019cfc55-374b-78c8-a2d9-a172804c0743",
+        "$configured_session_timeout_ms": 1800000,
+        "$session_entry_referrer": "https://www.google.com/",
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$current_url": "https://www.testciviquefrance.fr/dashboard/entrainement",
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$sdk_debug_replay_internal_buffer_size": 386,
+        "$lib": "web",
+        "$browser": "Chrome",
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$referring_domain": "www.google.com",
+        "$config_defaults": "unset",
+        "$session_entry_referring_domain": "www.google.com",
+        "$screen_width": 1440,
+        "$timezone": "Europe/Paris",
+        "$browser_language_prefix": "fr",
+        "$web_vitals_allowed_metrics": null,
+        "$sdk_debug_current_session_duration": 210644,
+        "$sdk_debug_session_start": 1773759761885,
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$web_vitals_enabled_server_side": false,
+        "$sdk_debug_replay_rrweb_error": false,
+        "$is_identified": true,
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$sdk_debug_replay_internal_buffer_length": 4,
+        "$search_engine": "google",
+        "$timezone_offset": -60,
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$insert_id": "0t4j1io0dawwr5ve",
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$feature_flag_payloads": {},
+        "$dead_clicks_enabled_server_side": false,
+        "$sent_at": "2026-03-17T15:06:13.044Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard/entrainement",
+          "$pathname": "/dashboard/entrainement",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard/entrainement",
+          "$initial_pathname": "/dashboard/entrainement",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$autocapture",
+      "timestamp": "2026-03-17T15:06:12.602000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [
+        {
+          "event": null,
+          "text": "Tableau de bord",
+          "tag_name": "span",
+          "attr_class": [
+            "font-medium"
+          ],
+          "href": "/dashboard",
+          "attr_id": null,
+          "nth_child": 2,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "font-medium",
+            "attr__href": "/dashboard"
+          },
+          "order": 0
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "div",
+          "attr_class": [
+            "flex",
+            "gap-3",
+            "items-center"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex items-center gap-3"
+          },
+          "order": 1
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "a",
+          "attr_class": [
+            "active:bg-gray-100",
+            "duration-150",
+            "flex",
+            "hover:bg-gray-50",
+            "hover:text-gray-900",
+            "items-center",
+            "justify-between",
+            "px-4",
+            "py-3",
+            "text-gray-600",
+            "transition-all"
+          ],
+          "href": "/dashboard",
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex items-center justify-between px-4 py-3 transition-all duration-150 text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100",
+            "attr__href": "/dashboard",
+            "attr__style": "-webkit-tap-highlight-color: transparent;"
+          },
+          "order": 2
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "li",
+          "attr_class": null,
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {},
+          "order": 3
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "ul",
+          "attr_class": [
+            "px-3",
+            "space-y-1"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "space-y-1 px-3"
+          },
+          "order": 4
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "nav",
+          "attr_class": [
+            "flex-1",
+            "min-h-0",
+            "overflow-y-auto",
+            "pb-3",
+            "pt-4"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 3,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex-1 pt-4 pb-3 overflow-y-auto min-h-0"
+          },
+          "order": 5
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "aside",
+          "attr_class": [
+            "-translate-x-full",
+            "bg-white",
+            "border-gray-200",
+            "border-r",
+            "duration-300",
+            "ease-in-out",
+            "fixed",
+            "flex",
+            "flex-col",
+            "h-[100dvh]",
+            "left-0",
+            "lg:!translate-x-0",
+            "lg:h-screen",
+            "top-0",
+            "transition-transform",
+            "w-64",
+            "z-50"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out -translate-x-full lg:!translate-x-0 lg:h-screen"
+          },
+          "order": 6
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "div",
+          "attr_class": [
+            "bg-gray-50",
+            "min-h-screen"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 29,
+          "nth_of_type": 2,
+          "attributes": {
+            "attr__class": "min-h-screen bg-gray-50"
+          },
+          "order": 7
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "body",
+          "attr_class": [
+            "antialiased"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 2,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "antialiased"
+          },
+          "order": 8
+        }
+      ],
+      "elements_chain": "span.font-medium:attr__class=\"font-medium\"attr__href=\"/dashboard\"href=\"/dashboard\"nth-child=\"2\"nth-of-type=\"1\"text=\"Tableau de bord\";div.flex.gap-3.items-center:attr__class=\"flex items-center gap-3\"nth-child=\"1\"nth-of-type=\"1\";a.active:bg-gray-100.duration-150.flex.hover:bg-gray-50.hover:text-gray-900.items-center.justify-between.px-4.py-3.text-gray-600.transition-all:attr__class=\"flex items-center justify-between px-4 py-3 transition-all duration-150 text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100\"attr__href=\"/dashboard\"attr__style=\"-webkit-tap-highlight-color: transparent;\"href=\"/dashboard\"nth-child=\"1\"nth-of-type=\"1\";li:nth-child=\"1\"nth-of-type=\"1\";ul.px-3.space-y-1:attr__class=\"space-y-1 px-3\"nth-child=\"1\"nth-of-type=\"1\";nav.flex-1.min-h-0.overflow-y-auto.pb-3.pt-4:attr__class=\"flex-1 pt-4 pb-3 overflow-y-auto min-h-0\"nth-child=\"3\"nth-of-type=\"1\";aside.-translate-x-full.bg-white.border-gray-200.border-r.duration-300.ease-in-out.fixed.flex.flex-col.h-[100dvh].left-0.lg:!translate-x-0.lg:h-screen.top-0.transition-transform.w-64.z-50:attr__class=\"fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out -translate-x-full lg:!translate-x-0 lg:h-screen\"nth-child=\"1\"nth-of-type=\"1\";div.bg-gray-50.min-h-screen:attr__class=\"min-h-screen bg-gray-50\"nth-child=\"29\"nth-of-type=\"2\";body.antialiased:attr__class=\"antialiased\"nth-child=\"2\"nth-of-type=\"1\""
+    },
+    {
+      "id": "019cfc55-374b-78c8-a2d9-a172804c0743",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$lib_version": "1.311.0",
+        "$timezone": "Europe/Paris",
+        "$configured_session_timeout_ms": 1800000,
+        "$config_defaults": "unset",
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$viewport_width": 1440,
+        "$prev_pageview_last_content": 778,
+        "$prev_pageview_max_content_percentage": 1,
+        "$browser_version": 144,
+        "$search_engine": "google",
+        "$pageview_id": "019cfc55-374b-78c8-a2d9-a172804c0743",
+        "$sdk_debug_replay_internal_buffer_size": 984,
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$timezone_offset": -60,
+        "$referring_domain": "www.google.com",
+        "$viewport_height": 778,
+        "$lib": "web",
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$time": 1773759969.099,
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$dead_clicks_enabled_server_side": false,
+        "$os": "Mac OS X",
+        "$browser": "Chrome",
+        "$prev_pageview_id": "019cfc55-1e21-73d1-b52d-0e49e8ae132f",
+        "$prev_pageview_max_content": 1276,
+        "$autocapture_disabled_server_side": false,
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$web_vitals_enabled_server_side": false,
+        "$sdk_debug_replay_internal_buffer_length": 7,
+        "$prev_pageview_duration": 6.442,
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$sess_rec_flush_size": 483158,
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$prev_pageview_max_scroll": 498,
+        "$sdk_debug_replay_rrweb_error": false,
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$session_recording_start_reason": "recording_initialized",
+        "$prev_pageview_last_content_percentage": 0.609717868338558,
+        "$current_url": "https://www.testciviquefrance.fr/dashboard/entrainement",
+        "$sdk_debug_replay_flushed_size": 483158,
+        "$host": "www.testciviquefrance.fr",
+        "$sdk_debug_current_session_duration": 207185,
+        "title": "Test Civique 2026 - Préparation Gratuite | Test Civique France",
+        "$screen_width": 1440,
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$os_version": "10.15.7",
+        "$web_vitals_allowed_metrics": null,
+        "$device_type": "Desktop",
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$referrer": "https://www.google.com/",
+        "$session_entry_referring_domain": "www.google.com",
+        "$session_entry_search_engine": "google",
+        "$prev_pageview_max_scroll_percentage": 1,
+        "$active_feature_flags": [],
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$prev_pageview_last_scroll_percentage": 0,
+        "$recording_status": "active",
+        "$snapshot_max_depth_exceeded": false,
+        "$lib_rate_limit_remaining_tokens": 98.29,
+        "$session_entry_referrer": "https://www.google.com/",
+        "$product_tours_enabled_server_side": false,
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$sdk_debug_retry_queue_size": 0,
+        "$browser_language_prefix": "fr",
+        "$prev_pageview_last_scroll": 0,
+        "$exception_capture_enabled_server_side": false,
+        "$feature_flag_payloads": {},
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$prev_pageview_pathname": "/dashboard",
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$is_identified": true,
+        "$browser_language": "fr-FR",
+        "$insert_id": "spn42fes36sx1urz",
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$session_entry_pathname": "/",
+        "$sdk_debug_session_start": 1773759761885,
+        "$pathname": "/dashboard/entrainement",
+        "$screen_height": 900,
+        "$sent_at": "2026-03-17T15:06:09.494Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard/entrainement",
+          "$pathname": "/dashboard/entrainement",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard/entrainement",
+          "$initial_pathname": "/dashboard/entrainement",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$pageview",
+      "timestamp": "2026-03-17T15:06:09.154000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [],
+      "elements_chain": ""
+    },
+    {
+      "id": "019cfc55-372d-70d9-93d0-5f62e86c4de0",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$lib_rate_limit_remaining_tokens": 99,
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$screen_width": 1440,
+        "$browser_language_prefix": "fr",
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$os": "Mac OS X",
+        "$sess_rec_flush_size": 483158,
+        "$is_identified": true,
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$pathname": "/dashboard",
+        "$session_entry_search_engine": "google",
+        "$configured_session_timeout_ms": 1800000,
+        "$device_type": "Desktop",
+        "$referring_domain": "www.google.com",
+        "$web_vitals_allowed_metrics": null,
+        "$session_recording_start_reason": "recording_initialized",
+        "$config_defaults": "unset",
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$session_entry_referring_domain": "www.google.com",
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$sdk_debug_replay_internal_buffer_length": 6,
+        "$viewport_width": 1440,
+        "$viewport_height": 778,
+        "$referrer": "https://www.google.com/",
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$sdk_debug_retry_queue_size": 0,
+        "$lib": "web",
+        "$pageview_id": "019cfc55-1e21-73d1-b52d-0e49e8ae132f",
+        "$insert_id": "sqv00bp3wxfzjhoo",
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$screen_height": 900,
+        "$sdk_debug_replay_flushed_size": 483158,
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$web_vitals_enabled_server_side": false,
+        "$recording_status": "active",
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$sdk_debug_session_start": 1773759761885,
+        "$active_feature_flags": [],
+        "$os_version": "10.15.7",
+        "$browser_version": 144,
+        "$autocapture_disabled_server_side": false,
+        "$session_entry_referrer": "https://www.google.com/",
+        "$sdk_debug_replay_internal_buffer_size": 878,
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$product_tours_enabled_server_side": false,
+        "$time": 1773759969.07,
+        "$feature_flag_payloads": {},
+        "$timezone": "Europe/Paris",
+        "$host": "www.testciviquefrance.fr",
+        "$sdk_debug_replay_rrweb_error": false,
+        "$sdk_debug_current_session_duration": 207183,
+        "$lib_version": "1.311.0",
+        "$exception_capture_enabled_server_side": false,
+        "$ce_version": 1,
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "$timezone_offset": -60,
+        "$browser_language": "fr-FR",
+        "$search_engine": "google",
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$event_type": "click",
+        "$session_entry_pathname": "/",
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$browser": "Chrome",
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "$snapshot_max_depth_exceeded": false,
+        "$current_url": "https://www.testciviquefrance.fr/dashboard",
+        "$dead_clicks_enabled_server_side": false,
+        "$sent_at": "2026-03-17T15:06:09.494Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard",
+          "$pathname": "/dashboard",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard",
+          "$initial_pathname": "/dashboard",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$autocapture",
+      "timestamp": "2026-03-17T15:06:09.124000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "a",
+          "attr_class": [
+            "active:bg-gray-100",
+            "duration-150",
+            "flex",
+            "hover:bg-gray-50",
+            "hover:text-gray-900",
+            "items-center",
+            "justify-between",
+            "px-4",
+            "py-3",
+            "text-gray-600",
+            "transition-all"
+          ],
+          "href": "/dashboard/entrainement",
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex items-center justify-between px-4 py-3 transition-all duration-150 text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100",
+            "attr__href": "/dashboard/entrainement",
+            "attr__style": "-webkit-tap-highlight-color: transparent;"
+          },
+          "order": 0
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "li",
+          "attr_class": null,
+          "href": null,
+          "attr_id": null,
+          "nth_child": 2,
+          "nth_of_type": 2,
+          "attributes": {},
+          "order": 1
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "ul",
+          "attr_class": [
+            "px-3",
+            "space-y-1"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "space-y-1 px-3"
+          },
+          "order": 2
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "nav",
+          "attr_class": [
+            "flex-1",
+            "min-h-0",
+            "overflow-y-auto",
+            "pb-3",
+            "pt-4"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 3,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "flex-1 pt-4 pb-3 overflow-y-auto min-h-0"
+          },
+          "order": 3
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "aside",
+          "attr_class": [
+            "-translate-x-full",
+            "bg-white",
+            "border-gray-200",
+            "border-r",
+            "duration-300",
+            "ease-in-out",
+            "fixed",
+            "flex",
+            "flex-col",
+            "h-[100dvh]",
+            "left-0",
+            "lg:!translate-x-0",
+            "lg:h-screen",
+            "top-0",
+            "transition-transform",
+            "w-64",
+            "z-50"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 1,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out -translate-x-full lg:!translate-x-0 lg:h-screen"
+          },
+          "order": 4
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "div",
+          "attr_class": [
+            "bg-gray-50",
+            "min-h-screen"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 29,
+          "nth_of_type": 2,
+          "attributes": {
+            "attr__class": "min-h-screen bg-gray-50"
+          },
+          "order": 5
+        },
+        {
+          "event": null,
+          "text": null,
+          "tag_name": "body",
+          "attr_class": [
+            "antialiased"
+          ],
+          "href": null,
+          "attr_id": null,
+          "nth_child": 2,
+          "nth_of_type": 1,
+          "attributes": {
+            "attr__class": "antialiased"
+          },
+          "order": 6
+        }
+      ],
+      "elements_chain": "a.active:bg-gray-100.duration-150.flex.hover:bg-gray-50.hover:text-gray-900.items-center.justify-between.px-4.py-3.text-gray-600.transition-all:attr__class=\"flex items-center justify-between px-4 py-3 transition-all duration-150 text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100\"attr__href=\"/dashboard/entrainement\"attr__style=\"-webkit-tap-highlight-color: transparent;\"href=\"/dashboard/entrainement\"nth-child=\"1\"nth-of-type=\"1\";li:nth-child=\"2\"nth-of-type=\"2\";ul.px-3.space-y-1:attr__class=\"space-y-1 px-3\"nth-child=\"1\"nth-of-type=\"1\";nav.flex-1.min-h-0.overflow-y-auto.pb-3.pt-4:attr__class=\"flex-1 pt-4 pb-3 overflow-y-auto min-h-0\"nth-child=\"3\"nth-of-type=\"1\";aside.-translate-x-full.bg-white.border-gray-200.border-r.duration-300.ease-in-out.fixed.flex.flex-col.h-[100dvh].left-0.lg:!translate-x-0.lg:h-screen.top-0.transition-transform.w-64.z-50:attr__class=\"fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50 transition-transform duration-300 ease-in-out -translate-x-full lg:!translate-x-0 lg:h-screen\"nth-child=\"1\"nth-of-type=\"1\";div.bg-gray-50.min-h-screen:attr__class=\"min-h-screen bg-gray-50\"nth-child=\"29\"nth-of-type=\"2\";body.antialiased:attr__class=\"antialiased\"nth-child=\"2\"nth-of-type=\"1\""
+    },
+    {
+      "id": "019cfc55-1e21-73d1-b52d-0e49e8ae132f",
+      "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+      "properties": {
+        "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36",
+        "$prev_pageview_max_scroll_percentage": 1,
+        "$prev_pageview_pathname": "/onboarding/resultats",
+        "$screen_height": 900,
+        "$web_vitals_enabled_server_side": false,
+        "$dead_clicks_enabled_server_side": false,
+        "$sdk_debug_replay_event_trigger_status": "trigger_disabled",
+        "$sess_rec_flush_size": 409025,
+        "$session_recording_start_reason": "recording_initialized",
+        "$sdk_debug_retry_queue_size": 0,
+        "$prev_pageview_last_content": 778,
+        "$session_recording_remote_config": {
+          "canvasRecording": {},
+          "consoleLogRecordingEnabled": true,
+          "enabled": true,
+          "endpoint": "/s/",
+          "eventTriggers": [],
+          "linkedFlag": null,
+          "masking": {
+            "maskAllInputs": true
+          },
+          "minimumDurationMilliseconds": null,
+          "networkPayloadCapture": {
+            "capturePerformance": {
+              "network_timing": true,
+              "web_vitals": false,
+              "web_vitals_allowed_metrics": null
+            }
+          },
+          "recorderVersion": "v2",
+          "sampleRate": null,
+          "scriptConfig": {
+            "script": "posthog-recorder"
+          },
+          "triggerMatchType": null,
+          "urlBlocklist": [],
+          "urlTriggers": []
+        },
+        "$lib_rate_limit_remaining_tokens": 99,
+        "$sdk_debug_replay_rrweb_error": false,
+        "$device_type": "Desktop",
+        "$viewport_width": 1440,
+        "$search_engine": "google",
+        "$session_entry_pathname": "/",
+        "$timezone": "Europe/Paris",
+        "$sdk_debug_replay_internal_buffer_length": 20,
+        "$prev_pageview_max_content_percentage": 1,
+        "$feature_flag_request_id": "29c705a8-be79-4011-9f0b-0dcb4ab4fc1d",
+        "$sdk_debug_replay_flushed_size": 409025,
+        "$session_entry_url": "https://www.testciviquefrance.fr/",
+        "$sdk_debug_extensions_init_method": "synchronous",
+        "$session_id": "019cfc52-0dec-7309-b7c6-16cb590550fe",
+        "$configured_session_timeout_ms": 1800000,
+        "$sdk_debug_current_session_duration": 200769,
+        "$user_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$timezone_offset": -60,
+        "$is_identified": true,
+        "$config_defaults": "unset",
+        "$feature_flag_payloads": {},
+        "$prev_pageview_id": "019cfc54-fc4b-7ec6-93ab-c4d00e6858ea",
+        "$prev_pageview_max_content": 1276,
+        "$os_version": "10.15.7",
+        "$referrer": "https://www.google.com/",
+        "$viewport_height": 778,
+        "$time": 1773759962.657,
+        "$browser_language_prefix": "fr",
+        "$window_id": "019cfc52-0dec-7309-b7c6-16cc8ed76673",
+        "$prev_pageview_last_scroll": 0,
+        "$web_vitals_allowed_metrics": null,
+        "$prev_pageview_max_scroll": 498,
+        "$screen_width": 1440,
+        "$lib_version": "1.311.0",
+        "$prev_pageview_last_content_percentage": 0.609717868338558,
+        "$lib": "web",
+        "$pathname": "/dashboard",
+        "$current_url": "https://www.testciviquefrance.fr/dashboard",
+        "$os": "Mac OS X",
+        "$sdk_debug_extensions_init_time_ms": 2,
+        "$sdk_debug_replay_internal_buffer_size": 27967,
+        "title": "Test Civique 2026 - Préparation Gratuite | Test Civique France",
+        "$browser": "Chrome",
+        "$autocapture_disabled_server_side": false,
+        "$feature_flag_evaluated_at": 1773759788751,
+        "$device_id": "019cfc52-0d71-7393-9420-e5d6d8b40b9d",
+        "distinct_id": "7bec4fa0-2038-4bdb-816b-2b0b33d988f8",
+        "$active_feature_flags": [],
+        "$snapshot_max_depth_exceeded": false,
+        "$host": "www.testciviquefrance.fr",
+        "$browser_version": 144,
+        "$browser_language": "fr-FR",
+        "$referring_domain": "www.google.com",
+        "$recording_status": "active",
+        "$insert_id": "j1ipskpc3f9x4l06",
+        "$sdk_debug_replay_remote_trigger_matching_config": null,
+        "$sdk_debug_session_start": 1773759761885,
+        "$session_entry_host": "www.testciviquefrance.fr",
+        "$sdk_debug_replay_full_snapshots": [
+          [
+            "019cfc52-0dec-7309-b7c6-16cb590550fe",
+            1773759788416
+          ]
+        ],
+        "token": "phc_yydJaZlE2RdsKHSbn0YfMFiMiwNp5LwgK42xi0JSsMO",
+        "$prev_pageview_last_scroll_percentage": 0,
+        "$initialization_time": "2026-03-17T15:03:08.272Z",
+        "$exception_capture_enabled_server_side": false,
+        "$sdk_debug_replay_linked_flag_trigger_status": "trigger_disabled",
+        "$session_entry_search_engine": "google",
+        "$pageview_id": "019cfc55-1e21-73d1-b52d-0e49e8ae132f",
+        "$prev_pageview_duration": 8.662,
+        "$product_tours_enabled_server_side": false,
+        "$sdk_debug_replay_url_trigger_status": "trigger_disabled",
+        "$session_entry_referring_domain": "www.google.com",
+        "$session_entry_referrer": "https://www.google.com/",
+        "$sent_at": "2026-03-17T15:06:04.846Z",
+        "$set": {
+          "$geoip_city_name": "Saint-André-lez-Lille",
+          "$geoip_city_confidence": null,
+          "$geoip_subdivision_2_name": "North",
+          "$geoip_subdivision_2_code": "59",
+          "$geoip_subdivision_1_name": "Hauts-de-France",
+          "$geoip_subdivision_1_code": "HDF",
+          "$geoip_country_name": "France",
+          "$geoip_country_code": "FR",
+          "$geoip_continent_name": "Europe",
+          "$geoip_continent_code": "EU",
+          "$geoip_postal_code": "59350",
+          "$geoip_latitude": 50.6662,
+          "$geoip_longitude": 3.0536,
+          "$geoip_accuracy_radius": 500,
+          "$geoip_time_zone": "Europe/Paris",
+          "$browser": "Chrome",
+          "$browser_version": 144,
+          "$device_type": "Desktop",
+          "$current_url": "https://www.testciviquefrance.fr/dashboard",
+          "$pathname": "/dashboard",
+          "$os": "Mac OS X",
+          "$os_version": "10.15.7",
+          "$referring_domain": "www.google.com",
+          "$referrer": "https://www.google.com/",
+          "$screen_height": 900,
+          "$screen_width": 1440,
+          "$viewport_height": 778,
+          "$viewport_width": 1440,
+          "$raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$set_once": {
+          "$initial_geoip_city_name": "Saint-André-lez-Lille",
+          "$initial_geoip_city_confidence": null,
+          "$initial_geoip_subdivision_2_name": "North",
+          "$initial_geoip_subdivision_2_code": "59",
+          "$initial_geoip_subdivision_1_name": "Hauts-de-France",
+          "$initial_geoip_subdivision_1_code": "HDF",
+          "$initial_geoip_country_name": "France",
+          "$initial_geoip_country_code": "FR",
+          "$initial_geoip_continent_name": "Europe",
+          "$initial_geoip_continent_code": "EU",
+          "$initial_geoip_postal_code": "59350",
+          "$initial_geoip_latitude": 50.6662,
+          "$initial_geoip_longitude": 3.0536,
+          "$initial_geoip_accuracy_radius": 500,
+          "$initial_geoip_time_zone": "Europe/Paris",
+          "$initial_browser": "Chrome",
+          "$initial_browser_version": 144,
+          "$initial_device_type": "Desktop",
+          "$initial_current_url": "https://www.testciviquefrance.fr/dashboard",
+          "$initial_pathname": "/dashboard",
+          "$initial_os": "Mac OS X",
+          "$initial_os_version": "10.15.7",
+          "$initial_referring_domain": "www.google.com",
+          "$initial_referrer": "https://www.google.com/",
+          "$initial_screen_height": 900,
+          "$initial_screen_width": 1440,
+          "$initial_viewport_height": 778,
+          "$initial_viewport_width": 1440,
+          "$initial_raw_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36"
+        },
+        "$geoip_city_name": "Saint-André-lez-Lille",
+        "$geoip_country_name": "France",
+        "$geoip_country_code": "FR",
+        "$geoip_continent_name": "Europe",
+        "$geoip_continent_code": "EU",
+        "$geoip_postal_code": "59350",
+        "$geoip_latitude": 50.6662,
+        "$geoip_longitude": 3.0536,
+        "$geoip_accuracy_radius": 500,
+        "$geoip_time_zone": "Europe/Paris",
+        "$geoip_subdivision_1_code": "HDF",
+        "$geoip_subdivision_1_name": "Hauts-de-France",
+        "$geoip_subdivision_2_code": "59",
+        "$geoip_subdivision_2_name": "North",
+        "$transformations_succeeded": [
+          "GeoIP (019b74a1-e1cd-0000-8a64-90501322e67b)"
+        ]
+      },
+      "event": "$pageview",
+      "timestamp": "2026-03-17T15:06:02.717000+00:00",
+      "person": {
+        "is_identified": true,
+        "distinct_ids": [
+          "019cfc52-0d71-7393-9420-e5d6d8b40b9d"
+        ],
+        "properties": {
+          "email": "wiam.grini@gmail.com"
+        }
+      },
+      "elements": [],
+      "elements_chain": ""
+    }
+  ]
+}

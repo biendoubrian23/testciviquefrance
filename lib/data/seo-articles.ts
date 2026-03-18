@@ -7,6 +7,38 @@ import { Article } from './articles';
 
 // Nouveaux articles SEO avec mots-clés à fort volume de recherche
 export const seoArticles: Article[] = [
+  // NOUVEAU: Documents et convocation test civique (optimise IA)
+  {
+    id: 'seo-ai-3',
+    slug: 'documents-test-civique-2026-convocation-piece-identite',
+    title: 'Documents pour le test civique 2026 : convocation, piece d\'identite et erreurs a eviter le jour J',
+    excerpt: 'Checklist complete des documents a apporter pour le test civique 2026 : piece d\'identite, convocation, justificatifs. Que faire en cas d\'oubli, retard ou absence pour eviter un report de dossier.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Equipe Le Test Civique',
+    date: '18/03/2026',
+    readTime: 14,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070',
+    featured: true,
+  },
+  // NOUVEAU: Niveaux de francais A2/B1/B2 (optimise IA)
+  {
+    id: 'seo-ai-4',
+    slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation',
+    title: 'Niveau de francais A2, B1, B2 en 2026 : quel niveau pour titre de sejour, carte de resident et naturalisation ?',
+    excerpt: 'Comprendre les niveaux A2, B1 et B2 en 2026 selon votre demarche: carte pluriannuelle, resident 10 ans ou naturalisation. Equivalences CECRL, preuves acceptees et plan de preparation efficace.',
+    content: '',
+    category: 'Cadre legal',
+    categorySlug: 'cadre-legal',
+    author: 'Equipe Le Test Civique',
+    date: '18/03/2026',
+    readTime: 16,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070',
+    featured: true,
+  },
   // NOUVEAU: Erreurs fréquentes test civique (optimisé IA)
   {
     id: 'seo-ai-1',

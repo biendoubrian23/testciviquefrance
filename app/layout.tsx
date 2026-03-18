@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Analytics } from '@vercel/analytics/react';
@@ -7,14 +6,6 @@ import Script from 'next/script';
 import { StructuredData, getOrganizationSchema, getWebSiteSchema } from '@/components/seo/StructuredData';
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
-
-// Police Montserrat optimisée avec next/font (self-hosted, pas de blocage)
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800'],
-  display: 'swap',
-  variable: '--font-montserrat',
-});
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -783,7 +774,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className={montserrat.variable}>
+    <html lang="fr">
       <head>
         {/* DNS prefetch et Preconnect pour scripts tiers */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />

@@ -11,6 +11,7 @@ export * from './articles-part4';
 export * from './articles-part5';
 export * from './articles-new';
 export * from './articles-ai-seo';
+export * from './articles-2026-additions';
 
 // Import des contenus individuels pour le mapping
 import {
@@ -58,6 +59,11 @@ import {
   contratIntegrationRepublicaineContent,
 } from './articles-ai-seo';
 
+import {
+  documentsTestCiviqueContent,
+  niveauxFrancais2026Content,
+} from './articles-2026-additions';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -83,6 +89,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'travailler-en-france-guide-permis-contrats-etrangers-2026': travailFranceContent,
   'erreurs-frequentes-test-civique-2026-pieges-qcm': erreursTestCiviqueContent,
   'contrat-integration-republicaine-cir-2026-formation-civique': contratIntegrationRepublicaineContent,
+  'documents-test-civique-2026-convocation-piece-identite': documentsTestCiviqueContent,
+  'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation': niveauxFrancais2026Content,
 };
 
 /**
