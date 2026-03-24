@@ -451,7 +451,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'votre-code-verification-google',
+    google: 'fkcq-fjlXitjuDI6R7G_hyCPdWM4JHbamdz-63pLXsk',
     yandex: 'votre-code-yandex',
     other: {
       'msvalidate.01': 'votre-code-bing',
