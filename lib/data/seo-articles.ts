@@ -7,6 +7,38 @@ import { Article } from './articles';
 
 // Nouveaux articles SEO avec mots-clés à fort volume de recherche
 export const seoArticles: Article[] = [
+  // NOUVEAU: Entretien de naturalisation 2026
+  {
+    id: 'seo-ai-5',
+    slug: 'entretien-naturalisation-2026-preparation-assimilation-prefecture',
+    title: 'Entretien de naturalisation 2026 : comment se préparer et réussir l\'entretien d\'assimilation en préfecture',
+    excerpt: 'Guide complet de l\'entretien d\'assimilation en préfecture : déroulement, 30 questions les plus posées, critères d\'évaluation, erreurs fatales à éviter et plan de préparation en 4 semaines.',
+    content: '',
+    category: 'Préparation',
+    categorySlug: 'preparation',
+    author: 'Équipe Le Test Civique',
+    date: '24/03/2026',
+    readTime: 20,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&w=2070',
+    featured: true,
+  },
+  // NOUVEAU: Droit de vote et élections en France 2026
+  {
+    id: 'seo-ai-6',
+    slug: 'droit-de-vote-elections-france-2026-guide-citoyen',
+    title: 'Droit de vote et élections en France 2026 : guide complet pour les nouveaux citoyens',
+    excerpt: 'Comprendre le système électoral français : types d\'élections, inscription sur les listes, déroulement du scrutin, référendum et devoir civique. Tout ce qu\'il faut savoir pour le test civique et pour exercer votre citoyenneté.',
+    content: '',
+    category: 'Thématiques officielles',
+    categorySlug: 'thematiques',
+    author: 'Équipe Le Test Civique',
+    date: '24/03/2026',
+    readTime: 18,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1540910419892-4a36d2c3266c?q=80&w=2070',
+    featured: true,
+  },
   // NOUVEAU: Documents et convocation test civique (optimise IA)
   {
     id: 'seo-ai-3',

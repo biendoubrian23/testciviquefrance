@@ -29,7 +29,7 @@ export const categories: Category[] = [
     name: 'Tous les articles',
     slug: 'tous',
     icon: '',
-    count: 23,
+    count: 25,
     color: 'primary',
   },
   {
@@ -45,7 +45,7 @@ export const categories: Category[] = [
     name: 'Thématiques officielles',
     slug: 'thematiques',
     icon: '',
-    count: 9,
+    count: 10,
     color: 'green',
   },
   {
@@ -53,7 +53,7 @@ export const categories: Category[] = [
     name: 'Préparation',
     slug: 'preparation',
     icon: '',
-    count: 3,
+    count: 4,
     color: 'purple',
   },
   {

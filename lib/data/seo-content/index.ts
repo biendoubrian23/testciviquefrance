@@ -12,6 +12,7 @@ export * from './articles-part5';
 export * from './articles-new';
 export * from './articles-ai-seo';
 export * from './articles-2026-additions';
+export * from './articles-2026-part2';
 
 // Import des contenus individuels pour le mapping
 import {
@@ -64,6 +65,11 @@ import {
   niveauxFrancais2026Content,
 } from './articles-2026-additions';
 
+import {
+  entretienNaturalisationContent,
+  droitVoteElectionsContent,
+} from './articles-2026-part2';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -91,6 +97,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'contrat-integration-republicaine-cir-2026-formation-civique': contratIntegrationRepublicaineContent,
   'documents-test-civique-2026-convocation-piece-identite': documentsTestCiviqueContent,
   'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation': niveauxFrancais2026Content,
+  'entretien-naturalisation-2026-preparation-assimilation-prefecture': entretienNaturalisationContent,
+  'droit-de-vote-elections-france-2026-guide-citoyen': droitVoteElectionsContent,
 };
 
 /**
