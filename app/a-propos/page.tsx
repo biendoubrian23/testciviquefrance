@@ -20,14 +20,14 @@ const stats = [
   { value: '300+', label: 'Candidats préparés' },
   { value: '95%', label: 'Taux de réussite' },
   { value: '4.6/5', label: 'Note moyenne' },
-  { value: '2025', label: 'Référentiel officiel' },
+  { value: '2026', label: 'Référentiel officiel' },
 ];
 
 // Pourquoi nous choisir
 const avantages = [
   {
     icon: Target,
-    title: 'Conforme au référentiel officiel 2025',
+    title: 'Conforme au référentiel officiel 2026',
     description: 'Nos contenus sont mis à jour régulièrement pour correspondre aux exigences actuelles du test civique.',
   },
   {
@@ -108,7 +108,7 @@ export default function AProposPage() {
               <div className="animate-fade-in-left delay-100">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-100 text-emerald-700 text-sm font-medium mb-6">
                   <Check className="w-4 h-4" />
-                  Conforme au référentiel officiel 2025
+                  Conforme au référentiel officiel 2026
                 </div>
 
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">

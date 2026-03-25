@@ -69,6 +69,27 @@ const nextConfig = {
     contentDispositionType: 'attachment',
   },
 
+  // Redirections SEO
+  async redirects() {
+    return [
+      {
+        source: '/prix',
+        destination: '/articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture',
+        permanent: true,
+      },
+      {
+        source: '/tarifs-test-civique',
+        destination: '/articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture',
+        permanent: true,
+      },
+      {
+        source: '/prix-test-civique',
+        destination: '/articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture',
+        permanent: true,
+      },
+    ];
+  },
+
   // Headers pour cache et sécurité
   async headers() {
     return [

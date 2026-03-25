@@ -115,7 +115,7 @@ const homeJsonLd = {
 const organizationSchema = getOrganizationSchema();
 const websiteSchema = getWebSiteSchema();
 const courseSchema = getCourseSchema({
-  name: 'Préparation Complète au Test Civique Français 2025',
+  name: 'Préparation Complète au Test Civique Français 2026',
   description: 'Formation complète pour réussir le test civique à 80% (32/40). Plus de 800 questions QCM, cours complets, examens blancs. Préparation pour la naturalisation, carte de séjour pluriannuelle et titre de séjour étudiant.',
   url: 'https://www.testciviquefrance.fr/cours',
   duration: 'P4W',

@@ -410,22 +410,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'fr_FR',
     url: 'https://www.testciviquefrance.fr',
-    title: 'Test Civique France 2025 - Préparation Examen Naturalisation & Titre de Séjour',
-    description: 'Préparez le test civique 2025 pour la naturalisation, carte de séjour pluriannuelle, titre de séjour étudiant. 800+ questions QCM conformes nouvelle loi immigration. Gratuit.',
+    title: 'Test Civique France 2026 - Préparation Examen Naturalisation & Titre de Séjour',
+    description: 'Préparez le test civique 2026 pour la naturalisation, carte de séjour pluriannuelle, titre de séjour étudiant. 800+ questions QCM conformes nouvelle loi immigration. Gratuit.',
     siteName: 'Test Civique France',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Test Civique France - Préparation Examen Naturalisation et Titre de Séjour 2025',
+        alt: 'Test Civique France - Préparation Examen Naturalisation et Titre de Séjour 2026',
         type: 'image/png',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Test Civique France 2025 - Naturalisation & Titre de Séjour',
+    title: 'Test Civique France 2026 - Naturalisation & Titre de Séjour',
     description: 'Préparation test civique obligatoire. 800+ questions, examens blancs. Conforme nouvelle loi immigration. Taux réussite 95%.',
     images: ['/twitter-image.png'],
     creator: '@testciviquefr',
@@ -472,7 +472,7 @@ export const metadata: Metadata = {
     'resource-type': 'document',
     // Meta tags additionnels pour SEO immigration et étudiants
     'subject': 'Test civique France, naturalisation française, titre de séjour, carte de séjour, immigration France, loi immigration 2024, étudiant étranger France',
-    'abstract': 'Plateforme de préparation au test civique obligatoire pour la naturalisation française, la carte de séjour pluriannuelle et le titre de séjour. Conforme à la nouvelle loi immigration 2024-2025.',
+    'abstract': 'Plateforme de préparation au test civique obligatoire pour la naturalisation française, la carte de séjour pluriannuelle et le titre de séjour. Conforme à la nouvelle loi immigration 2024-2026.',
     'topic': 'Immigration France, Naturalisation, Titre de séjour, Test civique, Examen civique, Carte de séjour pluriannuelle, Étudiant étranger',
     'summary': 'Test Civique France est la plateforme n°1 de préparation au test civique obligatoire. Préparation complète pour naturalisation, carte de séjour pluriannuelle (4 ans, 10 ans), titre de séjour étudiant, regroupement familial.',
   },
@@ -487,7 +487,7 @@ const jsonLd = {
       '@id': 'https://www.testciviquefrance.fr/#website',
       url: 'https://www.testciviquefrance.fr',
       name: 'Test Civique France',
-      description: 'Préparation au test civique obligatoire 2025 pour la naturalisation française, carte de séjour pluriannuelle et titre de séjour étudiant. Conforme nouvelle loi immigration.',
+      description: 'Préparation au test civique obligatoire 2026 pour la naturalisation française, carte de séjour pluriannuelle et titre de séjour étudiant. Conforme nouvelle loi immigration.',
       publisher: {
         '@id': 'https://www.testciviquefrance.fr/#organization',
       },
@@ -556,7 +556,7 @@ const jsonLd = {
     {
       '@type': 'Course',
       '@id': 'https://www.testciviquefrance.fr/#course',
-      name: 'Préparation au Test Civique Français 2025',
+      name: 'Préparation au Test Civique Français 2026',
       description: 'Formation complète pour réussir le test civique obligatoire à 80% (32/40 bonnes réponses) pour la naturalisation française, la carte de séjour pluriannuelle, la carte de résident ou le titre de séjour étudiant. Conforme à la nouvelle loi immigration 2024.',
       provider: {
         '@id': 'https://www.testciviquefrance.fr/#organization',

@@ -1,0 +1,35 @@
+# *
+User-agent: *
+Allow: /
+Allow: /llms.txt
+Allow: /llms-full.txt
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /admin/
+
+# AI Bots - Explicitly allow access to AI-optimized content
+User-agent: GPTBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /articles/
+Allow: /faq
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /articles/
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Host
+Host: https://www.testciviquefrance.fr
+
+# Sitemaps
+Sitemap: https://www.testciviquefrance.fr/sitemap.xml

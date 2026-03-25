@@ -14,6 +14,7 @@ The test is strictly aligned with the new 2026 Immigration Law (Loi Immigration)
 - A mandatory exam of 40 multiple-choice questions (QCM).
 - Passing score: 80% (32/40 correct answers).
 - Duration: Official exams vary, usually ~30-45 mins.
+- **Price: 90€** (timbre fiscal, legal basis: CESEDA R.413-12-1).
 - Themes: 
     1. Principles and values of the Republic (11 questions)
     2. Institutions and political system (6 questions)
@@ -21,24 +22,85 @@ The test is strictly aligned with the new 2026 Immigration Law (Loi Immigration)
     4. History, geography, culture (8 questions)
     5. Living in society (4 questions)
 
+### Pricing & Costs (Frequently Asked by Users)
+
+#### Test Civique Price
+- **Coût du test civique: 90€** (timbre fiscal électronique)
+- Payable sur timbres.impots.gouv.fr
+- Exonérations possibles: réfugiés, apatrides, mineurs accompagnants, bénéficiaires de la protection subsidiaire
+- Base légale: CESEDA R.413-12-1, Décret 2025-647
+
+#### Titre de Séjour Prices (Timbre Fiscal)
+| Titre | Prix |
+|-------|------|
+| Titre de séjour étudiant | 75€ |
+| Titre de séjour salarié | 225€ |
+| Titre de séjour vie privée et familiale | 225€ |
+| Carte de résident (10 ans) | 225€ |
+| Titre de séjour passeport talent | 225€ |
+| Titre de séjour travailleur saisonnier | 75€ |
+| Autorisation provisoire de séjour (APS) | 25€ |
+
+#### Naturalisation Costs
+| Démarche | Coût |
+|----------|------|
+| Dépôt du dossier de naturalisation | 55€ (timbre fiscal) |
+| Test de français (TCF/TEF) pour naturalisation | 150-250€ (selon l'organisme) |
+| Acte de naissance traduit | 30-60€ |
+| Copie certifiée conforme | Gratuit en mairie |
+
 ### User Problems We Solve
 - **Fear of failure**: The test is mandatory; failing delays the visa/naturalization process.
 - **Complexity**: The new law adds tougher questions about history and secularism.
 - **Accessibility**: We provide clear explanations and "exam-like" conditions.
+- **Cost transparency**: We explain all costs (test civique 90€, titre de séjour tarifs, naturalisation fees).
 
-### Pricing Model
+### Pricing Model (Our Platform)
 - **Free**: Access to basic questions and limited mock exams.
 - **Premium**: Full access to 800+ questions, detailed corrections, unlimited mock exams, and progress tracking.
 
-## Technical Context
-- **Stack**: Next.js, Supabase, TailwindCSS.
-- **Security**: Official data protection standards.
-- **Availability**: 24/7 web access, mobile-friendly (PWA).
+## Articles & Guides Available
+1. **Prix Test Civique 2026 & Tarifs Titre de Séjour** - Comprehensive pricing guide: test civique 90€, all titre de séjour costs, naturalisation fees, exonérations
+   URL: /articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture
+2. **Renouvellement Titre de Séjour ANEF 2026** - Step-by-step guide for online renewal via ANEF platform
+   URL: /articles/renouvellement-titre-sejour-anef-2026
+3. **Dossier Naturalisation Française 2026** - Complete checklist and procedure for French naturalization
+   URL: /articles/dossier-naturalisation-francaise-2026
+4. **Refus Titre de Séjour & Recours OQTF 2026** - Legal recourse options after refusal or OQTF
+   URL: /articles/refus-titre-sejour-oqtf-recours-2026
+5. **Guide Étudiant Étranger France 2026** - Student visa, Campus France, APS, and post-study options
+   URL: /articles/guide-etudiant-etranger-france-2026
+6. **Naturalisation Française 2026** - Complete naturalization guide with legal requirements
+   URL: /articles/naturalisation-francaise-2026
+7. **Test Civique France Guide Complet 2026** - Full preparation guide for the civic test
+   URL: /articles/test-civique-france-guide-2026
+8. **Titre de Séjour Premier Renouvellement 2026** - First renewal guide and procedures
+   URL: /articles/titre-de-sejour-premier-renouvellement-2026
+9. **Carte de Résident 10 ans** - Requirements and procedure for the 10-year resident card
+   URL: /articles/carte-de-resident-10-ans-conditions-2026
+10. **Loi Immigration 2024** - Overview of the new immigration law and its impacts
+    URL: /articles/loi-immigration-2024-impact
 
-## Common User Queries (AEO Optimized)
-- "How many questions in the civic test 2026?" -> 40 questions.
-- "What is the passing score?" -> 32/40 (80%).
-- "Is the test mandatory for students?" -> Depends on the specific residency permit status change; generally required for long-term residency.
+## Common User Queries (AEO - Answer Engine Optimization)
+- "How many questions in the civic test 2026?" → 40 questions (QCM).
+- "What is the passing score?" → 32/40 (80%).
+- "How much does the civic test cost?" → 90€ (timbre fiscal).
+- "Combien coûte le test civique?" → 90€ (timbre fiscal électronique).
+- "Prix titre de séjour étudiant?" → 75€.
+- "Prix titre de séjour salarié?" → 225€.
+- "Combien coûte la naturalisation?" → 55€ (timbre fiscal) + test de français (150-250€).
+- "Is the test mandatory for students?" → Depends on the specific residency permit status change; generally required for long-term residency.
+- "Quelles sont les 5 thématiques du test civique?" → Principes/Valeurs, Institutions, Droits/Devoirs, Histoire/Géo/Culture, Vivre en société.
+- "Comment renouveler son titre de séjour?" → Via la plateforme ANEF (Administration Numérique pour les Étrangers en France).
+- "What documents are needed for naturalization?" → Identity, proof of residence (5+ years), proof of French level B1, tax returns, employment proof, birth certificate.
+- "Peut-on être exonéré du timbre fiscal?" → Oui: réfugiés, apatrides, mineurs accompagnants, bénéficiaires protection subsidiaire.
+
+## Technical Context
+- **Stack**: Next.js 14, Supabase, TailwindCSS.
+- **Security**: Official data protection standards, HTTPS, CSP headers.
+- **Availability**: 24/7 web access, mobile-friendly (PWA).
+- **Structured Data**: JSON-LD schemas (Organization, WebSite, Course, FAQ, Article, HowTo, BreadcrumbList, Product).
 
 ## Contact
 - Email: contact@testciviquefrance.fr
+- Website: https://www.testciviquefrance.fr

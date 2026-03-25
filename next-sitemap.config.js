@@ -1,18 +1,9 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://www.testciviquefrance.fr',
-  generateRobotsTxt: true,
+  generateRobotsTxt: false,
   generateIndexSitemap: false,
   exclude: ['/api/*', '/dashboard/*'],
-  robotsTxtOptions: {
-    policies: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/dashboard/', '/admin/'],
-      },
-    ],
-  },
   transform: async (config, path) => {
     let priority = 0.7;
     let changefreq = 'weekly';

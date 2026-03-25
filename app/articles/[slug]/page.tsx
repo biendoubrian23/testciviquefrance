@@ -7,7 +7,7 @@ import SEOArticleRenderer from '@/components/blog/SEOArticleRenderer';
 import RelatedArticles from '@/components/seo/RelatedArticles';
 import { getArticleBySlug, allArticles, getRelatedArticles } from '@/lib/data/articles';
 import { getArticleContent, getAllSEOArticleSlugs } from '@/lib/data/seo-content';
-import { getArticleSchema } from '@/lib/seo/schemas';
+import { getArticleSchema, getBreadcrumbSchema } from '@/lib/seo/schemas';
 import { SEO_CONFIG } from '@/lib/seo/constants';
 
 interface ArticlePageProps {
@@ -115,11 +115,23 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const isSEOArticle = seoArticleSlugs.includes(slug);
   const seoContent = isSEOArticle ? getArticleContent(slug) : null;
 
+  // Breadcrumb schema pour Google
+  const breadcrumbJsonLd = getBreadcrumbSchema([
+    { name: 'Accueil', url: SEO_CONFIG.siteUrl },
+    { name: 'Articles', url: `${SEO_CONFIG.siteUrl}/articles` },
+    { name: article.category, url: `${SEO_CONFIG.siteUrl}/articles?category=${encodeURIComponent(article.category)}` },
+    { name: article.title, url: `${SEO_CONFIG.siteUrl}/articles/${article.slug}` },
+  ]);
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <Header />
       <main className="min-h-screen bg-white">

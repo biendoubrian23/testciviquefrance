@@ -44,7 +44,6 @@ next-env.d.ts
 
 # Sitemap
 public/sitemap*.xml
-public/robots.txt
 
 # =====================================================
 # FICHIERS SENSIBLES ADMIN - NE JAMAIS PUSH

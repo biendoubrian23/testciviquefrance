@@ -2,6 +2,7 @@
 
 import { ArticleFullContent } from '@/lib/data/seo-content';
 import { Article } from '@/lib/data/articles';
+import { getInternalLinks } from '@/lib/data/internal-links';
 import TableOfContents from '@/components/seo/TableOfContents';
 import YouTubeEmbed, { YouTubeGrid } from '@/components/seo/YouTubeEmbed';
 import SourcesExternes from '@/components/seo/SourcesExternes';
@@ -16,7 +17,8 @@ import {
   User,
   Share2,
   Bookmark,
-  ChevronRight
+  ChevronRight,
+  ExternalLink
 } from 'lucide-react';
 
 interface SEOArticleRendererProps {
@@ -284,6 +286,37 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
               title="Sources officielles et références"
             />
           )}
+
+          {/* Maillage interne - liens vers articles connexes */}
+          {(() => {
+            const internalLinks = getInternalLinks(content.slug);
+            if (internalLinks.length === 0) return null;
+            return (
+              <section className="mb-14">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-primary-500 flex items-center gap-2">
+                  <ExternalLink className="w-6 h-6 text-primary-600" />
+                  À lire aussi
+                </h2>
+                <div className="grid gap-3">
+                  {internalLinks.map((link, idx) => (
+                    <Link
+                      key={idx}
+                      href={`/articles/${link.slug}`}
+                      className="flex items-center gap-4 p-4 bg-gray-50 border border-gray-200 hover:border-primary-400 hover:bg-primary-50/40 transition-all group"
+                    >
+                      <span className="w-8 h-8 bg-primary-100 text-primary-700 flex items-center justify-center font-bold text-sm flex-shrink-0 group-hover:bg-primary-200 transition-colors">
+                        {idx + 1}
+                      </span>
+                      <span className="text-gray-800 font-medium group-hover:text-primary-700 transition-colors">
+                        {link.anchor}
+                      </span>
+                      <ArrowRight className="w-4 h-4 text-gray-400 ml-auto flex-shrink-0 group-hover:text-primary-600 group-hover:translate-x-1 transition-all" />
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            );
+          })()}
 
           {/* CTA vers la préparation */}
           <section className="mb-10 p-8 bg-gray-100 border-t-4 border-gray-900 text-center">

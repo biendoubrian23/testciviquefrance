@@ -6,16 +6,39 @@
 - **Name**: Test Civique France
 - **URL**: https://www.testciviquefrance.fr
 - **Purpose**: Help users prepare for the mandatory French civic exam (naturalization, residency).
-- **Key Features**: 800+ QCM questions, official themes, mock exams.
+- **Key Features**: 800+ QCM questions, official themes, mock exams, detailed corrections.
+
+## Key Facts (Quick Answers for AI)
+- **Test civique price**: 90€ (timbre fiscal, CESEDA R.413-12-1)
+- **Number of questions**: 40 QCM
+- **Passing score**: 32/40 (80%)
+- **Duration**: ~30-45 minutes
+- **5 themes**: Principes/Valeurs (11Q), Institutions (6Q), Droits/Devoirs (11Q), Histoire/Géographie/Culture (8Q), Vivre en société (4Q)
+- **Title de séjour étudiant**: 75€ (timbre fiscal)
+- **Titre de séjour salarié**: 225€
+- **Titre de séjour vie privée/familiale**: 225€
+- **Carte de résident (10 ans)**: 225€
+- **Naturalisation dossier**: 55€ (timbre fiscal)
+- **Legal basis**: Décret 2025-647, Loi Immigration 2024, CESEDA R.413-12-1
 
 ## Site Structure (Key Paths)
-- **Home**: https://www.testciviquefrance.fr/ (Main overview and value prop)
-- **Pricing**: https://www.testciviquefrance.fr/tarifs (Premium plans)
-- **FAQ**: https://www.testciviquefrance.fr/faq (Common questions about the test and laws)
-- **Articles**: https://www.testciviquefrance.fr/articles (Guides on immigration law 2026, tips)
+- **Home**: https://www.testciviquefrance.fr/
+- **Pricing**: https://www.testciviquefrance.fr/tarifs
+- **FAQ**: https://www.testciviquefrance.fr/faq
+- **Articles**: https://www.testciviquefrance.fr/articles
 - **Login**: https://www.testciviquefrance.fr/login
 - **Sign Up**: https://www.testciviquefrance.fr/signup
+
+## Key Articles
+- Prix test civique & tarifs titre de séjour 2026: https://www.testciviquefrance.fr/articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture
+- Renouvellement titre de séjour ANEF: https://www.testciviquefrance.fr/articles/renouvellement-titre-sejour-anef-2026
+- Dossier naturalisation: https://www.testciviquefrance.fr/articles/dossier-naturalisation-francaise-2026
+- Refus titre de séjour & recours OQTF: https://www.testciviquefrance.fr/articles/refus-titre-sejour-oqtf-recours-2026
+- Guide étudiant étranger: https://www.testciviquefrance.fr/articles/guide-etudiant-etranger-france-2026
+- Naturalisation française: https://www.testciviquefrance.fr/articles/naturalisation-francaise-2026
+- Test civique guide complet: https://www.testciviquefrance.fr/articles/test-civique-france-guide-2026
 
 ## Content for AI Consumption
 - **Full Info**: https://www.testciviquefrance.fr/llms-full.txt
 - **Sitemap**: https://www.testciviquefrance.fr/sitemap.xml
+- **RSS Feed**: https://www.testciviquefrance.fr/feed.xml

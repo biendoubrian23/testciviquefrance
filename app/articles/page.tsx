@@ -44,7 +44,7 @@ export default function ArticlesPage() {
             {/* Stats */}
             <div className="flex items-center justify-center gap-8 mt-8 animate-fade-in-up delay-200">
               <div className="text-center">
-                <div className="text-3xl font-bold text-white">2025</div>
+                <div className="text-3xl font-bold text-white">2026</div>
                 <div className="text-sm text-white/70">Actualités</div>
               </div>
               <div className="w-px h-10 bg-white/20" />
