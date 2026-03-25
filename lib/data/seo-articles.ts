@@ -7,6 +7,70 @@ import { Article } from './articles';
 
 // Nouveaux articles SEO avec mots-clés à fort volume de recherche
 export const seoArticles: Article[] = [
+  // NOUVEAU: Prix test civique et tarifs titres de sejour 2026
+  {
+    id: 'seo-ai-10',
+    slug: 'prix-test-civique-2026-cout-tarif-titre-sejour-prefecture',
+    title: 'Prix du test civique 2026 (90€) et tarifs titres de sejour : cout etudiant, salarie, naturalisation et timbres fiscaux',
+    excerpt: 'Combien coute le test civique en 2026 ? 90 euros. Decouvrez aussi le prix du titre de sejour etudiant (75€), salarie (225€), vie privee et familiale, timbres fiscaux et budget naturalisation complet.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Equipe Le Test Civique',
+    date: '25/03/2026',
+    readTime: 22,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070',
+    featured: true,
+  },
+  // NOUVEAU: Renouvellement titre de sejour ANEF 2026
+  {
+    id: 'seo-ai-7',
+    slug: 'renouvellement-titre-sejour-2026-anef-prefecture-documents-delais',
+    title: 'Renouvellement titre de sejour 2026 : guide ANEF, documents, delais prefecture et erreurs a eviter',
+    excerpt: 'Mode d emploi complet pour renouveler son titre de sejour en 2026: calendrier ideal, liste des pieces, suivi ANEF, convocation prefecture et solutions en cas de dossier bloque.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Equipe Le Test Civique',
+    date: '25/03/2026',
+    readTime: 17,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070',
+    featured: true,
+  },
+  // NOUVEAU: Dossier naturalisation 2026
+  {
+    id: 'seo-ai-8',
+    slug: 'dossier-naturalisation-2026-documents-delais-prefecture-anef',
+    title: 'Dossier naturalisation 2026 : documents, delais prefecture, ANEF et strategie pour maximiser vos chances',
+    excerpt: 'Le guide de reference pour monter un dossier de naturalisation solide: pieces indispensables, chronologie realiste, test civique, entretien et erreurs qui menent a l ajournement.',
+    content: '',
+    category: 'Cadre legal',
+    categorySlug: 'cadre-legal',
+    author: 'Equipe Le Test Civique',
+    date: '25/03/2026',
+    readTime: 19,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=2070',
+    featured: true,
+  },
+  // NOUVEAU: Refus titre de sejour et recours 2026
+  {
+    id: 'seo-ai-9',
+    slug: 'refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france',
+    title: 'Refus de titre de sejour et OQTF en 2026 : recours, delais legaux et plan d action pour les etrangers en France',
+    excerpt: 'Comment reagir apres un refus prefecture ou une OQTF: delais de recours, dossier de defense, recours gracieux/contentieux et strategie pour proteger votre situation administrative.',
+    content: '',
+    category: 'Cadre legal',
+    categorySlug: 'cadre-legal',
+    author: 'Equipe Le Test Civique',
+    date: '25/03/2026',
+    readTime: 18,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070',
+    featured: true,
+  },
   // NOUVEAU: Entretien de naturalisation 2026
   {
     id: 'seo-ai-5',

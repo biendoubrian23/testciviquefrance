@@ -13,6 +13,8 @@ export * from './articles-new';
 export * from './articles-ai-seo';
 export * from './articles-2026-additions';
 export * from './articles-2026-part2';
+export * from './articles-2026-part3';
+export * from './articles-prix-tarifs';
 
 // Import des contenus individuels pour le mapping
 import {
@@ -70,6 +72,16 @@ import {
   droitVoteElectionsContent,
 } from './articles-2026-part2';
 
+import {
+  renouvellementTitreSejourAnefContent,
+  dossierNaturalisation2026Content,
+  refusTitreSejourRecours2026Content,
+} from './articles-2026-part3';
+
+import {
+  prixTestCiviqueTarifsContent,
+} from './articles-prix-tarifs';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -99,6 +111,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation': niveauxFrancais2026Content,
   'entretien-naturalisation-2026-preparation-assimilation-prefecture': entretienNaturalisationContent,
   'droit-de-vote-elections-france-2026-guide-citoyen': droitVoteElectionsContent,
+  'renouvellement-titre-sejour-2026-anef-prefecture-documents-delais': renouvellementTitreSejourAnefContent,
+  'dossier-naturalisation-2026-documents-delais-prefecture-anef': dossierNaturalisation2026Content,
+  'refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france': refusTitreSejourRecours2026Content,
+  'prix-test-civique-2026-cout-tarif-titre-sejour-prefecture': prixTestCiviqueTarifsContent,
 };
 
 /**
