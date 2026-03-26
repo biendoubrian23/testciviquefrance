@@ -1,10 +1,13 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'FAQ Test Civique France - Questions Fréquentes Examen Naturalisation 2026',
+  title: 'FAQ Test Civique France 2026 - Examen Civique Naturalisation Test Gratuit',
   description:
-    "Réponses aux questions fréquentes sur le test civique obligatoire pour la naturalisation, carte de séjour pluriannuelle et carte de résident. Qui est concerné ? Où passer l'examen ? Format, durée, seuil de réussite. Conforme Décret 2025-647 et Arrêté 10 octobre 2025.",
+    "Réponses aux questions fréquentes sur le test civique 2026 : examen civique naturalisation test gratuit, carte de séjour, titre de séjour 10 ans. 40 QCM, seuil 80%, 5 thématiques. Conforme Décret 2025-647.",
   keywords: [
+    'examen civique naturalisation test gratuit',
+    'examen civique test gratuit',
+    'test civique entrainement',
     'faq test civique',
     'questions test civique',
     'examen civique faq',

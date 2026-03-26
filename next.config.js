@@ -87,6 +87,37 @@ const nextConfig = {
         destination: '/articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture',
         permanent: true,
       },
+      // Redirects 2026 → 2025 pour articles déjà indexés par Google
+      {
+        source: '/articles/naturalisation-francaise-conditions-demarches-2026',
+        destination: '/articles/naturalisation-francaise-conditions-demarches-2025',
+        permanent: true,
+      },
+      {
+        source: '/articles/carte-sejour-pluriannuelle-guide-complet-2026',
+        destination: '/articles/carte-sejour-pluriannuelle-guide-complet-2025',
+        permanent: true,
+      },
+      {
+        source: '/articles/carte-resident-10-ans-obtention-2026',
+        destination: '/articles/carte-resident-10-ans-obtention-2025',
+        permanent: true,
+      },
+      {
+        source: '/articles/titre-sejour-etudiant-france-guide-2026',
+        destination: '/articles/titre-sejour-etudiant-france-guide-2025',
+        permanent: true,
+      },
+      {
+        source: '/articles/regroupement-familial-france-procedure-2026',
+        destination: '/articles/regroupement-familial-france-procedure-2025',
+        permanent: true,
+      },
+      {
+        source: '/articles/questions-frequentes-test-civique-2026',
+        destination: '/articles/questions-frequentes-test-civique-2025',
+        permanent: true,
+      },
     ];
   },
 

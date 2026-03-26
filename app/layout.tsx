@@ -20,10 +20,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.testciviquefrance.fr'),
   title: {
-    default: 'Test Civique 2026 - Préparation Gratuite | Test Civique France',
+    default: 'Test Civique 2026 - Entraînement Gratuit Examen Civique | Test Civique France',
     template: '%s | Test Civique France 2026',
   },
-  description: 'Test civique 2026 : 800+ questions QCM gratuites. Préparation complète à l\'examen civique pour naturalisation française. Taux de réussite 95%.',
+  description: 'Test civique 2026 : entraînement gratuit à l\'examen civique pour naturalisation française, carte de séjour et titre de séjour 10 ans. 800+ questions QCM, examens blancs. Taux de réussite 95%.',
   keywords: [
     // Mots-clés PRIORITAIRES - test civique seul
     'test civique',

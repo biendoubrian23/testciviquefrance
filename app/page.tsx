@@ -15,12 +15,15 @@ import {
 import { SEO_CONFIG, FAQ_RICH_SNIPPETS } from '@/lib/seo/constants';
 
 export const metadata: Metadata = {
-  title: 'Test Civique 2026 - Préparation Gratuite Examen Naturalisation | Test Civique France',
-  description: 'Test civique 2026 : préparation gratuite à l\'examen civique pour naturalisation française. Comment passer le test civique ? 800+ questions QCM officielles. Nouvelle loi immigration. Taux réussite 95%.',
+  title: 'Test Civique 2026 - Entraînement Gratuit Examen Civique Naturalisation | Test Civique France',
+  description: 'Test civique 2026 : entraînement gratuit à l\'examen civique pour naturalisation française, carte de séjour et titre de séjour 10 ans. 800+ questions QCM officielles, examens blancs illimités. Conforme décret 2025-647. Taux de réussite 95%.',
   keywords: [
     // PRIORITAIRES - 2026
     'test civique', 'test civique 2026', 'test civique france', 'examen civique 2026',
     'préparation test civique', 'test civique gratuit', 'nouvelle loi immigration 2026',
+    'test civique entrainement', 'examen civique test gratuit', 'examen civique naturalisation test gratuit',
+    'test civique compte', 'test civique connexion', 'test-civique',
+    'carte séjour', 'titre de séjour 10 ans', 'r413-12-1 ceseda',
     // Par mois 2026 - PRIORITAIRES
     'test civique janvier 2026', 'test civique février 2026', 'test civique mars 2026',
     'test civique avril 2026', 'test civique mai 2026', 'test civique juin 2026',
@@ -42,8 +45,8 @@ export const metadata: Metadata = {
     canonical: 'https://www.testciviquefrance.fr',
   },
   openGraph: {
-    title: 'Test Civique 2026 - Préparation Gratuite | Réussissez votre examen',
-    description: 'Comment passer le test civique 2026 ? Préparation gratuite. 800+ questions QCM, examens blancs. Nouvelle loi immigration. Taux de réussite 95%.',
+    title: 'Test Civique 2026 - Entraînement Gratuit Examen Civique Naturalisation',
+    description: 'Test civique 2026 : entraînement gratuit. 800+ questions QCM, examens blancs. Carte de séjour, naturalisation, titre de séjour 10 ans. Taux de réussite 95%.',
     url: 'https://www.testciviquefrance.fr',
     type: 'website',
   },
