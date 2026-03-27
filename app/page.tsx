@@ -4,8 +4,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/landing/Hero';
 import { 
-  getOrganizationSchema, 
-  getWebSiteSchema, 
   getCourseSchema, 
   getFAQSchema 
 } from '@/lib/seo/schemas';
@@ -117,9 +115,7 @@ const homeJsonLd = {
   ],
 };
 
-// Schémas JSON-LD additionnels pour la page d'accueil
-const organizationSchema = getOrganizationSchema();
-const websiteSchema = getWebSiteSchema();
+// Schémas JSON-LD spécifiques à la page d'accueil (Organisation/WebSite déjà dans layout.tsx)
 const courseSchema = getCourseSchema({
   name: 'Préparation Complète au Test Civique Français 2026',
   description: 'Formation complète pour réussir le test civique à 80% (32/40). Plus de 800 questions QCM, cours complets, examens blancs. Préparation pour la naturalisation, carte de séjour pluriannuelle et titre de séjour étudiant.',
@@ -129,8 +125,8 @@ const courseSchema = getCourseSchema({
 });
 const faqSchema = getFAQSchema(FAQ_RICH_SNIPPETS);
 
-// Combiner tous les schémas
-const allHomeSchemas = [homeJsonLd, organizationSchema, websiteSchema, courseSchema, faqSchema];
+// Schémas spécifiques à l'accueil uniquement
+const allHomeSchemas = [homeJsonLd, courseSchema, faqSchema];
 
 export default function HomePage() {
   return (

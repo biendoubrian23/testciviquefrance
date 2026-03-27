@@ -4,7 +4,6 @@ import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
-import { StructuredData, getOrganizationSchema, getWebSiteSchema } from '@/components/seo/StructuredData';
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
 
@@ -793,11 +792,9 @@ export default function RootLayout({
           fetchPriority="high"
         />
 
-        {/* DNS prefetch et Preconnect pour scripts tiers */}
+        {/* DNS prefetch — différés car les scripts se chargent après 5s */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-        <link rel="preconnect" href="https://www.google-analytics.com" />
 
         {/* Favicons multiples */}
         <link rel="icon" type="image/png" href="/fav.png" />
@@ -825,33 +822,11 @@ export default function RootLayout({
         <meta name="geo.region" content="FR" />
         <meta name="geo.placename" content="France" />
         <meta name="ICBM" content="46.227638, 2.213749" />
-        {/* JSON-LD Structured Data - Organisation et WebSite */}
-        <StructuredData data={getOrganizationSchema()} />
-        <StructuredData data={getWebSiteSchema()} />
-
-        {/* JSON-LD Structured Data supplémentaire (FAQ, Course, etc.) */}
+        {/* JSON-LD Structured Data (Organisation, WebSite, Course, FAQ, etc.) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-
-        {/* Ahrefs Web Analytics */}
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="hFBKQGItWXZ9na7DwxsrZw"
-          strategy="lazyOnload"
-        />
-
-        {/* Google Tag Manager - Head */}
-        <Script id="gtm-script" strategy="lazyOnload">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-WFN8446P');
-          `}
-        </Script>
       </head>
       <body className="antialiased" suppressHydrationWarning>
         {/* Google Tag Manager - noscript (fallback) */}
@@ -864,31 +839,39 @@ export default function RootLayout({
           />
         </noscript>
 
-        {/* Google tag (gtag.js) - Google Ads Conversion Tracking */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=AW-17797146827"
-          strategy="lazyOnload"
-        />
-        <Script id="google-ads-tag" strategy="lazyOnload">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'AW-17797146827');
-          `}
-        </Script>
-
-        {/* Inspectlet, Smartlook, FullStory SUPPRIMÉS — PostHog couvre déjà :
-            - Session recording
-            - Heatmaps
-            - User behavior analytics
-            Gain estimé : ~200-300 KiO de JS en moins */}
-
         <AnnouncementBanner />
         <PostHogProvider>
           <AuthProvider>{children}</AuthProvider>
         </PostHogProvider>
         <Analytics />
+
+        {/* Scripts tiers différés de 5s pour ne pas bloquer LCP/TBT */}
+        <Script id="deferred-analytics" strategy="lazyOnload">
+          {`
+            setTimeout(function() {
+              // GTM
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-WFN8446P');
+
+              // Google Ads
+              var gs=document.createElement('script');gs.async=true;
+              gs.src='https://www.googletagmanager.com/gtag/js?id=AW-17797146827';
+              document.head.appendChild(gs);
+              window.dataLayer=window.dataLayer||[];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js',new Date());gtag('config','AW-17797146827');
+
+              // Ahrefs
+              var as=document.createElement('script');as.async=true;
+              as.src='https://analytics.ahrefs.com/analytics.js';
+              as.setAttribute('data-key','hFBKQGItWXZ9na7DwxsrZw');
+              document.head.appendChild(as);
+            }, 5000);
+          `}
+        </Script>
       </body>
     </html>
   );

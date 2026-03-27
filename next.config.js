@@ -226,6 +226,26 @@ const nextConfig = {
             value: 'public, max-age=86400'
           }
         ]
+      },
+      {
+        // Cache pour les fichiers PNG (logo, favicons, og-image)
+        source: '/:path*.png',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable'
+          }
+        ]
+      },
+      {
+        // Cache pour les fichiers JS statiques (SW, workbox)
+        source: '/:path(sw|workbox-*).js',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=2592000'
+          }
+        ]
       }
     ]
   },
@@ -245,7 +265,7 @@ const nextConfig = {
   // Optimisations de performance
   experimental: {
     optimizeCss: true,
-    optimizePackageImports: ['lucide-react', '@heroicons/react', 'posthog-js'],
+    optimizePackageImports: ['lucide-react', '@heroicons/react', 'posthog-js', '@supabase/ssr', '@supabase/supabase-js'],
   },
 };
 
