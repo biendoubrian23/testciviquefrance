@@ -15,6 +15,7 @@ export * from './articles-2026-additions';
 export * from './articles-2026-part2';
 export * from './articles-2026-part3';
 export * from './articles-prix-tarifs';
+export * from './articles-tendances-2026';
 
 // Import des contenus individuels pour le mapping
 import {
@@ -82,6 +83,12 @@ import {
   prixTestCiviqueTarifsContent,
 } from './articles-prix-tarifs';
 
+import {
+  penurieCarburantTestCiviqueContent,
+  tensionsGeopolitiquesTestCiviqueContent,
+  iaMetiersTestCiviqueContent,
+} from './articles-tendances-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -115,6 +122,9 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'dossier-naturalisation-2026-documents-delais-prefecture-anef': dossierNaturalisation2026Content,
   'refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france': refusTitreSejourRecours2026Content,
   'prix-test-civique-2026-cout-tarif-titre-sejour-prefecture': prixTestCiviqueTarifsContent,
+  'penurie-carburant-prix-essence-2026-economie-francaise-test-civique': penurieCarburantTestCiviqueContent,
+  'tensions-iran-usa-petrole-2026-geopolitique-france-test-civique': tensionsGeopolitiquesTestCiviqueContent,
+  'intelligence-artificielle-metiers-disparaissent-2026-travail-france-test-civique': iaMetiersTestCiviqueContent,
 };
 
 /**

@@ -2,29 +2,11 @@
 
 import posthog from 'posthog-js';
 import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react';
-import { useEffect, Suspense } from 'react';
+import { useEffect, useState, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-// Initialiser PostHog une seule fois
-if (typeof window !== 'undefined' && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
-    posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
-        api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com',
-        person_profiles: 'identified_only',
-        capture_pageview: false, // On capture manuellement pour avoir le pathname
-        capture_pageleave: true,
-        // Session recordings
-        disable_session_recording: false,
-        session_recording: {
-            maskAllInputs: false,
-            maskInputOptions: {
-                password: true,
-            },
-        },
-        // Heatmaps et autocapture
-        autocapture: true,
-        enable_heatmaps: true,
-    });
-}
+// Flag pour éviter double init
+let posthogInitialized = false;
 
 // Composant pour tracker les changements de page
 function PostHogPageView() {
@@ -61,9 +43,35 @@ interface PostHogProviderProps {
 }
 
 export function PostHogProvider({ children }: PostHogProviderProps) {
+    const [ready, setReady] = useState(posthogInitialized);
+
+    useEffect(() => {
+        if (!posthogInitialized && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
+            posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY, {
+                api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com',
+                person_profiles: 'identified_only',
+                capture_pageview: false,
+                capture_pageleave: true,
+                disable_session_recording: false,
+                session_recording: {
+                    maskAllInputs: false,
+                    maskInputOptions: {
+                        password: true,
+                    },
+                },
+                autocapture: true,
+                enable_heatmaps: true,
+                loaded: () => {
+                    setReady(true);
+                },
+            });
+            posthogInitialized = true;
+        }
+    }, []);
+
     return (
         <PHProvider client={posthog}>
-            <SuspendedPostHogPageView />
+            {ready && <SuspendedPostHogPageView />}
             {children}
         </PHProvider>
     );

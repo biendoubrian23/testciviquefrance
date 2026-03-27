@@ -7,6 +7,54 @@ import { Article } from './articles';
 
 // Nouveaux articles SEO avec mots-clés à fort volume de recherche
 export const seoArticles: Article[] = [
+  // TENDANCE: Pénurie carburant 2026 et test civique
+  {
+    id: 'seo-tendance-1',
+    slug: 'penurie-carburant-prix-essence-2026-economie-francaise-test-civique',
+    title: 'Pénurie de carburant 2026 : comprendre l\'économie française, la fiscalité et le rôle de l\'État pour le test civique',
+    excerpt: 'Prix de l\'essence en hausse, pêcheurs bloqués, stations en pénurie : la crise du carburant 2026 décryptée à travers les 5 thématiques du test civique. Fiscalité, institutions, solidarité nationale et droits des consommateurs.',
+    content: '',
+    category: 'Thématiques officielles',
+    categorySlug: 'thematiques',
+    author: 'Équipe Le Test Civique',
+    date: '27/03/2026',
+    readTime: 18,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // TENDANCE: Tensions Iran-USA, géopolitique et test civique
+  {
+    id: 'seo-tendance-2',
+    slug: 'tensions-iran-usa-petrole-2026-geopolitique-france-test-civique',
+    title: 'Tensions Iran–USA et pétrole 2026 : géopolitique, institutions françaises et ce que le test civique évalue',
+    excerpt: 'Ultimatum de Trump à l\'Iran, détroit d\'Ormuz, flambée du pétrole : décryptage géopolitique et lien avec les institutions françaises, l\'UE et les sujets du test civique de naturalisation.',
+    content: '',
+    category: 'Thématiques officielles',
+    categorySlug: 'thematiques',
+    author: 'Équipe Le Test Civique',
+    date: '27/03/2026',
+    readTime: 22,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // TENDANCE: IA, métiers qui disparaissent et test civique
+  {
+    id: 'seo-tendance-3',
+    slug: 'intelligence-artificielle-metiers-disparaissent-2026-travail-france-test-civique',
+    title: 'Intelligence artificielle et métiers qui disparaissent en 2026 : travailler en France et le test civique',
+    excerpt: 'L\'IA menace 40 % des emplois mondiaux. Quels métiers disparaissent en France ? Comment l\'État protège les travailleurs ? Le lien direct avec le test civique : droits sociaux, CPF, Code du travail et valeurs républicaines.',
+    content: '',
+    category: 'Thématiques officielles',
+    categorySlug: 'thematiques',
+    author: 'Équipe Le Test Civique',
+    date: '27/03/2026',
+    readTime: 20,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
   // NOUVEAU: Prix test civique et tarifs titres de sejour 2026
   {
     id: 'seo-ai-10',

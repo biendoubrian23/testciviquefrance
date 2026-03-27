@@ -34,6 +34,8 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
   // Fonction pour parser le markdown basique
   const parseMarkdown = (text: string): string => {
     return text
+      // Liens markdown [texte](url)
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary-600 underline hover:text-primary-800" target="_blank" rel="noopener noreferrer">$1</a>')
       // Gras
       .replace(/\*\*(.*?)\*\*/g, '<strong class="text-gray-900 font-semibold">$1</strong>')
       // Italique
@@ -44,6 +46,99 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
       .replace(/→/g, '<span class="text-primary-600 font-medium">→</span>')
       // Retours à la ligne
       .replace(/\n/g, '<br/>');
+  };
+
+  // Fonction utilitaire : détecter si une ligne est une ligne de tableau markdown
+  const isTableLine = (line: string): boolean => {
+    const trimmed = line.trim();
+    return trimmed.startsWith('|') && trimmed.endsWith('|') && trimmed.length > 2;
+  };
+
+  // Fonction utilitaire : détecter si une ligne est un séparateur de tableau
+  const isTableSeparator = (line: string): boolean => {
+    return /^\|[\s\-:|]+\|$/.test(line.trim());
+  };
+
+  // Parser un bloc de contenu en éléments typés (paragraphe, liste, tableau, etc.)
+  const parseContentBlocks = (content: string) => {
+    const lines = content.split('\n');
+    const blocks: Array<{ type: 'paragraph' | 'table' | 'bullets' | 'numbered' | 'blockquote'; content: string; lines?: string[] }> = [];
+    let i = 0;
+
+    while (i < lines.length) {
+      const line = lines[i];
+      const trimmed = line.trim();
+
+      // Ligne vide → skip
+      if (trimmed === '') {
+        i++;
+        continue;
+      }
+
+      // Détection d'un tableau : au moins header + separator
+      if (isTableLine(trimmed) && i + 1 < lines.length && isTableSeparator(lines[i + 1]?.trim() || '')) {
+        const tableRows: string[] = [];
+        while (i < lines.length && isTableLine(lines[i]?.trim() || '')) {
+          tableRows.push(lines[i]);
+          i++;
+        }
+        blocks.push({ type: 'table', content: '', lines: tableRows });
+        continue;
+      }
+
+      // Détection d'une citation (blockquote >)
+      if (trimmed.startsWith('> ')) {
+        const quoteLines: string[] = [];
+        while (i < lines.length && lines[i]?.trim().startsWith('> ')) {
+          quoteLines.push(lines[i].trim().replace(/^>\s*/, ''));
+          i++;
+        }
+        blocks.push({ type: 'blockquote', content: quoteLines.join('\n') });
+        continue;
+      }
+
+      // Détection d'une liste à puces
+      if (trimmed.startsWith('- ') || trimmed.startsWith('• ')) {
+        const items: string[] = [];
+        while (i < lines.length && (lines[i]?.trim().startsWith('- ') || lines[i]?.trim().startsWith('• '))) {
+          items.push(lines[i].trim().replace(/^[•-]\s*/, ''));
+          i++;
+        }
+        blocks.push({ type: 'bullets', content: '', lines: items });
+        continue;
+      }
+
+      // Détection d'une liste numérotée
+      if (/^\d+\.\s/.test(trimmed)) {
+        const items: string[] = [];
+        while (i < lines.length && /^\d+\.\s/.test(lines[i]?.trim() || '')) {
+          items.push(lines[i].trim().replace(/^\d+\.\s*/, ''));
+          i++;
+        }
+        blocks.push({ type: 'numbered', content: '', lines: items });
+        continue;
+      }
+
+      // Sinon c'est un paragraphe de texte (regrouper les lignes consécutives non-vides)
+      const paraLines: string[] = [];
+      while (
+        i < lines.length &&
+        lines[i]?.trim() !== '' &&
+        !isTableLine(lines[i]?.trim() || '') &&
+        !lines[i]?.trim().startsWith('- ') &&
+        !lines[i]?.trim().startsWith('• ') &&
+        !lines[i]?.trim().startsWith('> ') &&
+        !/^\d+\.\s/.test(lines[i]?.trim() || '')
+      ) {
+        paraLines.push(lines[i]);
+        i++;
+      }
+      if (paraLines.length > 0) {
+        blocks.push({ type: 'paragraph', content: paraLines.join('\n') });
+      }
+    }
+
+    return blocks;
   };
 
   // Image de fond par défaut ou de l'article
@@ -164,59 +259,99 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
               
               {/* Contenu de la section avec parsing intelligent */}
               <div className="space-y-4">
-                {section.content.split('\n\n').map((paragraph, pIdx) => {
-                  // Vérifier si c'est une liste à puces
-                  if (paragraph.includes('• ') || paragraph.includes('- ')) {
-                    const items = paragraph.split('\n').filter(line => line.trim().startsWith('• ') || line.trim().startsWith('- '));
-                    if (items.length > 0) {
-                      return (
-                        <ul key={pIdx} className="space-y-3">
-                          {items.map((item, iIdx) => (
-                            <li key={iIdx} className="flex items-start gap-4 text-gray-700">
-                              <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
-                              <span 
-                                className="text-base"
-                                dangerouslySetInnerHTML={{ 
-                                  __html: parseMarkdown(item.replace(/^[•-]\s*/, '')) 
-                                }}
-                              />
-                            </li>
-                          ))}
-                        </ul>
-                      );
-                    }
+                {parseContentBlocks(section.content).map((block, bIdx) => {
+                  // Rendu d'un tableau
+                  if (block.type === 'table' && block.lines) {
+                    const rows = block.lines.filter(l => !isTableSeparator(l));
+                    const headerCells = rows[0]?.split('|').filter(c => c.trim() !== '') || [];
+                    const bodyRows = rows.slice(1);
+                    
+                    return (
+                      <div key={bIdx} className="overflow-x-auto my-4">
+                        <table className="w-full border-collapse border border-gray-200 text-sm">
+                          <thead>
+                            <tr className="bg-primary-50">
+                              {headerCells.map((cell, cIdx) => (
+                                <th 
+                                  key={cIdx} 
+                                  className="border border-gray-200 px-4 py-3 text-left font-semibold text-gray-900"
+                                  dangerouslySetInnerHTML={{ __html: parseMarkdown(cell.trim()) }}
+                                />
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {bodyRows.map((row, rIdx) => {
+                              const cells = row.split('|').filter(c => c.trim() !== '');
+                              return (
+                                <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                                  {cells.map((cell, cIdx) => (
+                                    <td 
+                                      key={cIdx} 
+                                      className="border border-gray-200 px-4 py-3 text-gray-700"
+                                      dangerouslySetInnerHTML={{ __html: parseMarkdown(cell.trim()) }}
+                                    />
+                                  ))}
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    );
+                  }
+
+                  // Rendu d'une liste à puces
+                  if (block.type === 'bullets' && block.lines) {
+                    return (
+                      <ul key={bIdx} className="space-y-3">
+                        {block.lines.map((item, iIdx) => (
+                          <li key={iIdx} className="flex items-start gap-4 text-gray-700">
+                            <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                            <span 
+                              className="text-base"
+                              dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+
+                  // Rendu d'une liste numérotée
+                  if (block.type === 'numbered' && block.lines) {
+                    return (
+                      <ol key={bIdx} className="space-y-4">
+                        {block.lines.map((item, iIdx) => (
+                          <li key={iIdx} className="flex items-start gap-4 p-4 border border-gray-200 hover:border-primary-300 hover:bg-primary-50/30 transition-all">
+                            <span className="w-8 h-8 bg-primary-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
+                              {iIdx + 1}
+                            </span>
+                            <span 
+                              className="text-gray-700"
+                              dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }}
+                            />
+                          </li>
+                        ))}
+                      </ol>
+                    );
+                  }
+
+                  // Rendu d'une citation
+                  if (block.type === 'blockquote') {
+                    return (
+                      <blockquote key={bIdx} className="border-l-4 border-primary-400 bg-primary-50/40 p-4 my-4 italic text-gray-700">
+                        <p dangerouslySetInnerHTML={{ __html: parseMarkdown(block.content) }} />
+                      </blockquote>
+                    );
                   }
                   
-                  // Vérifier si c'est une liste numérotée
-                  if (/^\d+\.\s/.test(paragraph.trim())) {
-                    const items = paragraph.split('\n').filter(line => /^\d+\.\s/.test(line.trim()));
-                    if (items.length > 0) {
-                      return (
-                        <ol key={pIdx} className="space-y-4">
-                          {items.map((item, iIdx) => (
-                            <li key={iIdx} className="flex items-start gap-4 p-4 border border-gray-200 hover:border-primary-300 hover:bg-primary-50/30 transition-all">
-                              <span className="w-8 h-8 bg-primary-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
-                                {iIdx + 1}
-                              </span>
-                              <span 
-                                className="text-gray-700"
-                                dangerouslySetInnerHTML={{ 
-                                  __html: parseMarkdown(item.replace(/^\d+\.\s*/, '')) 
-                                }}
-                              />
-                            </li>
-                          ))}
-                        </ol>
-                      );
-                    }
-                  }
-                  
-                  // Paragraphe normal
+                  // Rendu d'un paragraphe normal
                   return (
                     <p 
-                      key={pIdx}
+                      key={bIdx}
                       className="text-gray-700 leading-relaxed text-lg"
-                      dangerouslySetInnerHTML={{ __html: parseMarkdown(paragraph) }}
+                      dangerouslySetInnerHTML={{ __html: parseMarkdown(block.content) }}
                     />
                   );
                 })}
