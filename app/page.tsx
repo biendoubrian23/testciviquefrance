@@ -1,11 +1,8 @@
 import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Hero from '@/components/landing/Hero';
-import ProgressSection from '@/components/landing/ProgressSection';
-import Features from '@/components/landing/Features';
-import Pricing from '@/components/landing/Pricing';
-import SEOContent from '@/components/seo/SEOContent';
 import { 
   getOrganizationSchema, 
   getWebSiteSchema, 
@@ -13,6 +10,12 @@ import {
   getFAQSchema 
 } from '@/lib/seo/schemas';
 import { SEO_CONFIG, FAQ_RICH_SNIPPETS } from '@/lib/seo/constants';
+
+// Lazy load des composants below-the-fold pour améliorer LCP/TBT
+const ProgressSection = dynamic(() => import('@/components/landing/ProgressSection'), { ssr: true });
+const Features = dynamic(() => import('@/components/landing/Features'), { ssr: true });
+const Pricing = dynamic(() => import('@/components/landing/Pricing'), { ssr: true });
+const SEOContent = dynamic(() => import('@/components/seo/SEOContent'), { ssr: true });
 
 export const metadata: Metadata = {
   title: 'Test Civique 2026 - Entraînement Gratuit Examen Civique Naturalisation | Test Civique France',

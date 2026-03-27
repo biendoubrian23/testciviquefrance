@@ -77,14 +77,18 @@ export default function Hero() {
                     className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none z-0'
                       }`}
                   >
+                    {/* Ne rendre que les slides proches pour éviter le chargement inutile */}
+                    {(index === currentSlide || index === (currentSlide + 1) % carouselSlides.length || index === 0) && (
                     <Image
                       src={slide.image}
                       alt={slide.title}
                       fill
                       priority={index === 0}
+                      loading={index === 0 ? 'eager' : 'lazy'}
                       sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-cover"
                     />
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                     <div className="absolute bottom-12 left-4 right-4 text-white">
                       <h2 className="text-xl font-bold mb-1">{slide.title}</h2>
@@ -200,14 +204,17 @@ export default function Hero() {
                   className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none z-0'
                     }`}
                 >
+                  {(index === currentSlide || index === (currentSlide + 1) % carouselSlides.length || index === 0) && (
                   <Image
                     src={slide.image}
                     alt={slide.title}
                     fill
                     priority={index === 0}
+                    loading={index === 0 ? 'eager' : 'lazy'}
                     sizes="50vw"
                     className="object-cover"
                   />
+                  )}
                   {/* Overlay gradient */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 

@@ -5,13 +5,11 @@ import { X, ExternalLink } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function AnnouncementBanner() {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState<boolean | null>(null);
 
   useEffect(() => {
     const closed = localStorage.getItem('announcement-banner-closed');
-    if (closed === 'true') {
-      setIsVisible(false);
-    }
+    setIsVisible(closed !== 'true');
   }, []);
 
   const handleClose = () => {
@@ -19,6 +17,8 @@ export default function AnnouncementBanner() {
     localStorage.setItem('announcement-banner-closed', 'true');
   };
 
+  // Retourner un placeholder de même hauteur pendant le check pour éviter le CLS
+  if (isVisible === null) return <div className="h-[52px] bg-pink-50 border-b border-pink-200" />;
   if (!isVisible) return null;
 
   return (
