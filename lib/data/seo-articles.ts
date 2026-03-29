@@ -7,6 +7,54 @@ import { Article } from './articles';
 
 // Nouveaux articles SEO avec mots-clés à fort volume de recherche
 export const seoArticles: Article[] = [
+  // TENDANCE: Élections municipales 2026, Bally Bagayoko et valeurs républicaines
+  {
+    id: 'seo-tendance-4',
+    slug: 'elections-municipales-2026-bally-bagayoko-valeurs-republicaines-test-civique',
+    title: 'Élections municipales 2026, affaire Bally Bagayoko et lutte contre le racisme : valeurs républicaines et test civique',
+    excerpt: 'Élections municipales 2026, polémique raciste CNews, Bally Bagayoko élu maire de Saint-Denis : décryptage des valeurs républicaines (égalité, liberté d\'expression, lutte contre les discriminations), des institutions locales et du droit de vote pour le test civique.',
+    content: '',
+    category: 'Thématiques officielles',
+    categorySlug: 'thematiques',
+    author: 'Équipe Le Test Civique',
+    date: '29/03/2026',
+    readTime: 20,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1555848962-6e79363ec58f?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // TENDANCE: Attentat déjoué Bank of America Paris et sécurité nationale
+  {
+    id: 'seo-tendance-5',
+    slug: 'attentat-dejoue-paris-2026-securite-nationale-vigipirate-test-civique',
+    title: 'Attentat déjoué à Paris (Bank of America) mars 2026 : sécurité nationale, Vigipirate, droits et libertés au test civique',
+    excerpt: 'Attentat déjoué contre Bank of America à Paris en mars 2026, arrestations, DGSI, plan Vigipirate : comprendre la sécurité nationale, le rôle du préfet, les droits fondamentaux et la justice pour le test civique de naturalisation.',
+    content: '',
+    category: 'Thématiques officielles',
+    categorySlug: 'thematiques',
+    author: 'Équipe Le Test Civique',
+    date: '29/03/2026',
+    readTime: 22,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // TENDANCE: Coupe du Monde 2026, équipe de France et intégration par le sport
+  {
+    id: 'seo-tendance-6',
+    slug: 'coupe-du-monde-2026-equipe-de-france-integration-sport-test-civique',
+    title: 'Coupe du Monde 2026, équipe de France et intégration par le sport : Marseillaise, symboles et test civique',
+    excerpt: 'Coupe du Monde 2026 au USA-Mexique-Canada, France-Colombie, chant des Bleus et CAN 2026 : comment le sport illustre les valeurs de la République (diversité, fraternité, symboles nationaux) et prépare au test civique.',
+    content: '',
+    category: 'Thématiques officielles',
+    categorySlug: 'thematiques',
+    author: 'Équipe Le Test Civique',
+    date: '29/03/2026',
+    readTime: 19,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
   // TENDANCE: Pénurie carburant 2026 et test civique
   {
     id: 'seo-tendance-1',

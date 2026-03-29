@@ -1,28 +1,23 @@
 /**
  * Index des contenus SEO
  * Point d'entrée pour accéder à tous les contenus d'articles
+ *
+ * NOTE: On évite "export *" combiné avec des imports nommés depuis les mêmes
+ * modules — ce pattern provoque un bug webpack runtime
+ * "Cannot read properties of undefined (reading 'call')".
+ * Les types/interfaces sont re-exportés explicitement ci-dessous.
  */
 
-// Re-export de tous les contenus
-export * from './articles-part1';
-export * from './articles-part2';
-export * from './articles-part3';
-export * from './articles-part4';
-export * from './articles-part5';
-export * from './articles-new';
-export * from './articles-ai-seo';
-export * from './articles-2026-additions';
-export * from './articles-2026-part2';
-export * from './articles-2026-part3';
-export * from './articles-prix-tarifs';
-export * from './articles-tendances-2026';
+// Re-export explicite des types (définis uniquement dans articles-part1)
+export type { ArticleFullContent, ArticleSection, VideoEmbed, ExternalSource } from './articles-part1';
 
 // Import des contenus individuels pour le mapping
+import type { ArticleFullContent } from './articles-part1';
+
 import {
   reussirTestCiviqueContent,
   questionsCiviquesContent,
   naturalisationContent,
-  ArticleFullContent
 } from './articles-part1';
 
 import {
@@ -89,6 +84,12 @@ import {
   iaMetiersTestCiviqueContent,
 } from './articles-tendances-2026';
 
+import {
+  electionsMunicipales2026TestCiviqueContent,
+  attentatDejoueSecuriteTestCiviqueContent,
+  coupeDuMonde2026IntegrationTestCiviqueContent,
+} from './articles-actualites-mars-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -125,6 +126,9 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'penurie-carburant-prix-essence-2026-economie-francaise-test-civique': penurieCarburantTestCiviqueContent,
   'tensions-iran-usa-petrole-2026-geopolitique-france-test-civique': tensionsGeopolitiquesTestCiviqueContent,
   'intelligence-artificielle-metiers-disparaissent-2026-travail-france-test-civique': iaMetiersTestCiviqueContent,
+  'elections-municipales-2026-bally-bagayoko-valeurs-republicaines-test-civique': electionsMunicipales2026TestCiviqueContent,
+  'attentat-dejoue-paris-2026-securite-nationale-vigipirate-test-civique': attentatDejoueSecuriteTestCiviqueContent,
+  'coupe-du-monde-2026-equipe-de-france-integration-sport-test-civique': coupeDuMonde2026IntegrationTestCiviqueContent,
 };
 
 /**
