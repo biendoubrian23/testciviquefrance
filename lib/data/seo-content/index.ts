@@ -90,6 +90,12 @@ import {
   coupeDuMonde2026IntegrationTestCiviqueContent,
 } from './articles-actualites-mars-2026';
 
+import {
+  testCiviqueGratuitBlancContent,
+  niveauLangueNationaliteFrancaiseContent,
+  carteSejourFranceGuideCompletContent,
+} from './articles-requetes-fortes-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -129,6 +135,9 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'elections-municipales-2026-bally-bagayoko-valeurs-republicaines-test-civique': electionsMunicipales2026TestCiviqueContent,
   'attentat-dejoue-paris-2026-securite-nationale-vigipirate-test-civique': attentatDejoueSecuriteTestCiviqueContent,
   'coupe-du-monde-2026-equipe-de-france-integration-sport-test-civique': coupeDuMonde2026IntegrationTestCiviqueContent,
+  'test-civique-gratuit-en-ligne-2026-examen-blanc-entrainement-qcm': testCiviqueGratuitBlancContent,
+  'niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026': niveauLangueNationaliteFrancaiseContent,
+  'carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement': carteSejourFranceGuideCompletContent,
 };
 
 /**

@@ -48,9 +48,14 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   const canonicalUrl = `${SEO_CONFIG.siteUrl}/articles/${article.slug}`;
 
+  // Meta description optimisée pour le CTR — chiffres, urgence, concret
+  const metaDescription = article.excerpt.length > 120
+    ? `${article.excerpt.substring(0, 145)}… ✅ Guide 2026 vérifié.`
+    : `${article.excerpt} ✅ 40 questions, 95% de réussite — Guide 2026 mis à jour.`;
+
   return {
     title: `${article.title} | Test Civique France`,
-    description: `${article.excerpt} Guide complet pour réussir le test civique de naturalisation française.`,
+    description: metaDescription,
     keywords: articleKeywords,
     authors: [{ name: article.author }],
     alternates: {

@@ -7,6 +7,54 @@ import { Article } from './articles';
 
 // Nouveaux articles SEO avec mots-clés à fort volume de recherche
 export const seoArticles: Article[] = [
+  // REQUÊTE FORTE: "test civique gratuit" / "test civique blanc" (57+ impressions GSC)
+  {
+    id: 'seo-requete-1',
+    slug: 'test-civique-gratuit-en-ligne-2026-examen-blanc-entrainement-qcm',
+    title: 'Test civique gratuit en ligne 2026 : examen blanc, QCM d\'entraînement et 800+ questions',
+    excerpt: 'Entraînez-vous gratuitement au test civique 2026 avec nos examens blancs en conditions réelles (40 questions, 45 min, chronomètre). 800+ QCM, corrections détaillées, 95% de réussite. Gratuit et accessible 24h/24.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Équipe Le Test Civique',
+    date: '29/03/2026',
+    readTime: 18,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // REQUÊTE FORTE: "niveau de langue nationalité française" (recherche précise GSC)
+  {
+    id: 'seo-requete-2',
+    slug: 'niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026',
+    title: 'Niveau de langue français pour la nationalité et le titre de séjour 2026 : A2, B1, DELF, TCF — guide complet',
+    excerpt: 'Quel niveau de français pour la nationalité française ? B1 obligatoire. Pour le titre de séjour ? A2. Comparatif DELF vs TCF vs TEF, prix, dispenses et méthodes gratuites pour atteindre le niveau requis en 2026.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Équipe Le Test Civique',
+    date: '29/03/2026',
+    readTime: 20,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // REQUÊTE FORTE: "carte séjour" (terme large, gros volume GSC)
+  {
+    id: 'seo-requete-3',
+    slug: 'carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement',
+    title: 'Carte de séjour en France 2026 : tous les types, documents, ANEF, renouvellement et recours — guide ultra-complet',
+    excerpt: 'Les 15+ types de carte de séjour en France expliqués : temporaire, pluriannuelle, résident 10 ans, passeport talent. Documents, coûts (75-244 €), procédure ANEF en ligne, délais préfecture et recours en cas de refus.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Équipe Le Test Civique',
+    date: '29/03/2026',
+    readTime: 25,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
   // TENDANCE: Élections municipales 2026, Bally Bagayoko et valeurs républicaines
   {
     id: 'seo-tendance-4',
