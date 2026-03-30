@@ -7,7 +7,7 @@ import SEOArticleRenderer from '@/components/blog/SEOArticleRenderer';
 import RelatedArticles from '@/components/seo/RelatedArticles';
 import { getArticleBySlug, allArticles, getRelatedArticles } from '@/lib/data/articles';
 import { getArticleContent, getAllSEOArticleSlugs } from '@/lib/data/seo-content';
-import { getArticleSchema, getBreadcrumbSchema } from '@/lib/seo/schemas';
+import { getArticleSchema, getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas';
 import { SEO_CONFIG } from '@/lib/seo/constants';
 
 interface ArticlePageProps {
@@ -31,20 +31,30 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     };
   }
 
-  const articleKeywords = [
+  // Récupérer les keywords spécifiques de l'article SEO si disponibles
+  const seoContent = getArticleContent(slug);
+
+  const baseKeywords = [
     article.title,
     article.category,
     'test civique',
     'examen civique',
     'naturalisation française',
     'préparation test civique',
-    '40 questions',
-    'QCM naturalisation',
-    'décret 2025-647',
-    'CESEDA',
-    'seuil 80%',
-    '32 bonnes réponses',
   ];
+
+  // Fusionner keywords génériques + keywords spécifiques de l'article
+  const articleKeywords = seoContent?.keywords?.length
+    ? [...new Set([...baseKeywords, ...seoContent.keywords])]
+    : [
+        ...baseKeywords,
+        '40 questions',
+        'QCM naturalisation',
+        'décret 2025-647',
+        'CESEDA',
+        'seuil 80%',
+        '32 bonnes réponses',
+      ];
 
   const canonicalUrl = `${SEO_CONFIG.siteUrl}/articles/${article.slug}`;
 
@@ -128,6 +138,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     { name: article.title, url: `${SEO_CONFIG.siteUrl}/articles/${article.slug}` },
   ]);
 
+  // FAQ schema pour les rich snippets Google (si l'article a des FAQ)
+  const faqJsonLd = seoContent?.faq?.length ? getFAQSchema(seoContent.faq) : null;
+
   return (
     <>
       <script
@@ -138,6 +151,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <Header />
       <main className="min-h-screen bg-white">
         {/* Afficher le contenu SEO complet ou le contenu classique */}
