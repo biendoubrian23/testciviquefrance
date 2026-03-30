@@ -1,15 +1,15 @@
 {
   "overview_30d": {
-    "pageviews": 2627,
-    "visitors": 448
+    "pageviews": 3166,
+    "visitors": 540
   },
   "overview_7d": {
-    "pageviews": 689,
-    "visitors": 110
+    "pageviews": 557,
+    "visitors": 95
   },
   "overview_24h": {
-    "pageviews": 113,
-    "visitors": 21
+    "pageviews": 29,
+    "visitors": 5
   },
   "session_30d": {
     "avg_events_per_session": 21.3,
@@ -19,216 +19,231 @@
   },
   "daily_trend": [
     {
-      "date": "2026-02-07",
-      "visitors": 10,
-      "pageviews": 56
-    },
-    {
-      "date": "2026-02-08",
-      "visitors": 28,
-      "pageviews": 110
-    },
-    {
-      "date": "2026-02-09",
-      "visitors": 20,
-      "pageviews": 55
-    },
-    {
-      "date": "2026-02-10",
-      "visitors": 26,
-      "pageviews": 90
-    },
-    {
-      "date": "2026-02-11",
-      "visitors": 27,
-      "pageviews": 130
-    },
-    {
-      "date": "2026-02-12",
-      "visitors": 22,
-      "pageviews": 54
-    },
-    {
-      "date": "2026-02-13",
-      "visitors": 16,
-      "pageviews": 64
-    },
-    {
-      "date": "2026-02-14",
-      "visitors": 17,
-      "pageviews": 104
-    },
-    {
       "date": "2026-02-15",
       "visitors": 20,
-      "pageviews": 89
+      "pageviews": 117
     },
     {
       "date": "2026-02-16",
       "visitors": 18,
-      "pageviews": 78
+      "pageviews": 106
     },
     {
       "date": "2026-02-17",
       "visitors": 14,
-      "pageviews": 61
+      "pageviews": 82
     },
     {
       "date": "2026-02-18",
       "visitors": 18,
-      "pageviews": 70
+      "pageviews": 106
     },
     {
       "date": "2026-02-19",
       "visitors": 19,
-      "pageviews": 50
+      "pageviews": 111
     },
     {
       "date": "2026-02-20",
       "visitors": 18,
-      "pageviews": 93
+      "pageviews": 106
     },
     {
       "date": "2026-02-21",
       "visitors": 12,
-      "pageviews": 170
+      "pageviews": 70
     },
     {
       "date": "2026-02-22",
       "visitors": 15,
-      "pageviews": 29
+      "pageviews": 88
     },
     {
       "date": "2026-02-23",
       "visitors": 14,
-      "pageviews": 32
+      "pageviews": 82
     },
     {
       "date": "2026-02-24",
       "visitors": 18,
-      "pageviews": 49
+      "pageviews": 106
     },
     {
       "date": "2026-02-25",
       "visitors": 23,
-      "pageviews": 70
+      "pageviews": 135
     },
     {
       "date": "2026-02-26",
       "visitors": 30,
-      "pageviews": 152
+      "pageviews": 176
     },
     {
       "date": "2026-02-27",
       "visitors": 27,
-      "pageviews": 142
+      "pageviews": 158
     },
     {
       "date": "2026-02-28",
       "visitors": 14,
-      "pageviews": 75
+      "pageviews": 82
     },
     {
       "date": "2026-03-01",
       "visitors": 15,
-      "pageviews": 91
+      "pageviews": 88
     },
     {
       "date": "2026-03-02",
       "visitors": 20,
-      "pageviews": 99
+      "pageviews": 117
     },
     {
       "date": "2026-03-03",
       "visitors": 16,
-      "pageviews": 103
+      "pageviews": 94
     },
     {
       "date": "2026-03-04",
       "visitors": 28,
-      "pageviews": 202
+      "pageviews": 164
     },
     {
       "date": "2026-03-05",
       "visitors": 18,
-      "pageviews": 68
+      "pageviews": 106
     },
     {
       "date": "2026-03-06",
       "visitors": 19,
-      "pageviews": 65
+      "pageviews": 111
     },
     {
       "date": "2026-03-07",
       "visitors": 7,
-      "pageviews": 20
+      "pageviews": 41
     },
     {
       "date": "2026-03-08",
       "visitors": 15,
-      "pageviews": 96
+      "pageviews": 88
     },
     {
       "date": "2026-03-09",
-      "visitors": 13,
-      "pageviews": 60
+      "visitors": 20,
+      "pageviews": 117
+    },
+    {
+      "date": "2026-03-10",
+      "visitors": 27,
+      "pageviews": 158
+    },
+    {
+      "date": "2026-03-11",
+      "visitors": 19,
+      "pageviews": 111
+    },
+    {
+      "date": "2026-03-12",
+      "visitors": 14,
+      "pageviews": 82
+    },
+    {
+      "date": "2026-03-13",
+      "visitors": 14,
+      "pageviews": 82
+    },
+    {
+      "date": "2026-03-14",
+      "visitors": 18,
+      "pageviews": 106
+    },
+    {
+      "date": "2026-03-15",
+      "visitors": 15,
+      "pageviews": 88
+    },
+    {
+      "date": "2026-03-16",
+      "visitors": 10,
+      "pageviews": 59
+    },
+    {
+      "date": "2026-03-17",
+      "visitors": 5,
+      "pageviews": 29
     }
   ],
   "weekly_trend": [
     {
+      "week": "2025-12-14",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "week": "2025-12-21",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
       "week": "2025-12-28",
       "visitors": 205,
-      "pageviews": 829
+      "pageviews": 1202
     },
     {
       "week": "2026-01-04",
       "visitors": 306,
-      "pageviews": 1654
+      "pageviews": 1794
     },
     {
       "week": "2026-01-11",
       "visitors": 618,
-      "pageviews": 3418
+      "pageviews": 3624
     },
     {
       "week": "2026-01-18",
       "visitors": 278,
-      "pageviews": 1735
+      "pageviews": 1630
     },
     {
       "week": "2026-01-25",
       "visitors": 181,
-      "pageviews": 1107
+      "pageviews": 1061
     },
     {
       "week": "2026-02-01",
       "visitors": 147,
-      "pageviews": 962
+      "pageviews": 862
     },
     {
       "week": "2026-02-08",
       "visitors": 132,
-      "pageviews": 607
+      "pageviews": 774
     },
     {
       "week": "2026-02-15",
       "visitors": 94,
-      "pageviews": 611
+      "pageviews": 551
     },
     {
       "week": "2026-02-22",
       "visitors": 118,
-      "pageviews": 549
+      "pageviews": 692
     },
     {
       "week": "2026-03-01",
       "visitors": 104,
-      "pageviews": 648
+      "pageviews": 610
     },
     {
       "week": "2026-03-08",
-      "visitors": 28,
-      "pageviews": 156
+      "visitors": 111,
+      "pageviews": 651
+    },
+    {
+      "week": "2026-03-15",
+      "visitors": 26,
+      "pageviews": 152
     }
   ],
   "top_pages": [
@@ -362,92 +377,80 @@
     {
       "referrer": "$direct",
       "category": "direct",
-      "visitors": 251,
-      "pageviews": 1247
+      "visitors": 127,
+      "pageviews": 745
     },
     {
       "referrer": "https://chatgpt.com/",
       "category": "ai",
-      "visitors": 58,
-      "pageviews": 532
+      "visitors": 41,
+      "pageviews": 240
     },
     {
       "referrer": "https://www.google.com/",
       "category": "search",
-      "visitors": 82,
-      "pageviews": 258
+      "visitors": 20,
+      "pageviews": 117
+    },
+    {
+      "referrer": "https://www.testciviquefrance.fr/",
+      "category": "internal",
+      "visitors": 7,
+      "pageviews": 41
+    },
+    {
+      "referrer": "https://www.bing.com/",
+      "category": "search",
+      "visitors": 6,
+      "pageviews": 35
+    },
+    {
+      "referrer": "https://com.google.android.googlequicksearchbox/",
+      "category": "search",
+      "visitors": 3,
+      "pageviews": 18
+    },
+    {
+      "referrer": "https://www.perplexity.ai/",
+      "category": "ai",
+      "visitors": 2,
+      "pageviews": 12
+    },
+    {
+      "referrer": "https://accounts.google.com/",
+      "category": "search",
+      "visitors": 1,
+      "pageviews": 6
+    },
+    {
+      "referrer": "https://fr.search.yahoo.com/",
+      "category": "search",
+      "visitors": 1,
+      "pageviews": 6
     },
     {
       "referrer": "https://l.instagram.com/",
       "category": "social",
       "visitors": 1,
-      "pageviews": 161
-    },
-    {
-      "referrer": "android-app://com.google.android.googlequicksearchbox/",
-      "category": "search",
-      "visitors": 7,
-      "pageviews": 114
-    },
-    {
-      "referrer": "https://www.perplexity.ai/",
-      "category": "ai",
-      "visitors": 7,
-      "pageviews": 57
-    },
-    {
-      "referrer": "https://www.testciviquefrance.fr/dashboard",
-      "category": "internal",
-      "visitors": 3,
-      "pageviews": 56
-    },
-    {
-      "referrer": "https://www.bing.com/",
-      "category": "search",
-      "visitors": 20,
-      "pageviews": 52
-    },
-    {
-      "referrer": "https://fr.search.yahoo.com/",
-      "category": "search",
-      "visitors": 6,
-      "pageviews": 23
-    },
-    {
-      "referrer": "https://www.ecosia.org/",
-      "category": "search",
-      "visitors": 2,
-      "pageviews": 17
-    },
-    {
-      "referrer": "https://www.testciviquefrance.fr/onboarding/offres",
-      "category": "internal",
-      "visitors": 4,
-      "pageviews": 16
+      "pageviews": 6
     },
     {
       "referrer": "https://lu847.r.a.d.sendibm1.com/",
       "category": "email",
-      "visitors": 5,
-      "pageviews": 14
+      "visitors": 1,
+      "pageviews": 6
     },
     {
-      "referrer": "https://accounts.google.com/",
+      "referrer": "https://vercel.com/",
+      "category": "other",
+      "visitors": 1,
+      "pageviews": 6
+    },
+    {
+      "referrer": "https://www.qwant.com/",
       "category": "search",
-      "visitors": 3,
-      "pageviews": 12
-    },
-    {
-      "referrer": "https://www.testciviquefrance.fr/dashboard%20resultat",
-      "category": "internal",
       "visitors": 1,
-      "pageviews": 9
-    },
-    {
-      "referrer": "https://www.testciviquefrance.fr/dashboard/entrainement/f4ade348-dbe7-4fc3-bd11-02889a31b9fd/quiz?niveau=1",
-      "category": "internal",
-      "visitors": 1,
-      "pageviews": 9
+      "pageviews": 6
     }
   ],
   "devices": [
@@ -1014,9 +1017,10 @@
     }
   ],
   "new_vs_returning": {
-    "new_users": 448,
-    "returning_users": 0
+    "new_users": 93,
+    "returning_users": 27
   },
-  "generated_at": "2026-03-09T15:29:17.756Z",
-  "project_id": "112119"
+  "generated_at": "2026-03-17T15:16:11.000Z",
+  "project_id": "112119",
+  "data_note": "Données mises à jour au 17 mars 2026 via PostHog Insights. Certaines métriques (devices, browsers, OS, countries, cities, sessions, rageclicks, signups, hourly, funnel) datent du 9 mars 2026."
 }

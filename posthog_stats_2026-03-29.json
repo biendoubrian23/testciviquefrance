@@ -1,0 +1,250 @@
+{
+  "overview_30d": {
+    "pageviews": 0,
+    "visitors": 0
+  },
+  "overview_7d": {
+    "pageviews": 0,
+    "visitors": 0
+  },
+  "overview_24h": {
+    "pageviews": 0,
+    "visitors": 0
+  },
+  "session_30d": {
+    "avg_events_per_session": 21.3,
+    "avg_duration_minutes": 5,
+    "bounce_rate": 25,
+    "total_sessions": 769
+  },
+  "daily_trend": [],
+  "weekly_trend": [],
+  "top_pages": [],
+  "traffic_sources": [],
+  "devices": [],
+  "browsers": [],
+  "operating_systems": [],
+  "countries": [],
+  "cities_france": [],
+  "funnel": [
+    {
+      "path": "/",
+      "label": "Homepage",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/signup",
+      "label": "Inscription",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/login",
+      "label": "Login",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/onboarding/profil",
+      "label": "Onboarding Profil",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/onboarding/quiz",
+      "label": "Onboarding Quiz",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/onboarding/resultats",
+      "label": "Résultats Quiz",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/onboarding/offres",
+      "label": "Offres",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/tarifs",
+      "label": "Tarifs",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/dashboard",
+      "label": "Dashboard",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/dashboard/entrainement",
+      "label": "Entraînement",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/dashboard/examens",
+      "label": "Examens",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/dashboard/credits",
+      "label": "Crédits",
+      "visitors": 0,
+      "pageviews": 0
+    },
+    {
+      "path": "/dashboard/flashcards",
+      "label": "Flashcards",
+      "visitors": 0,
+      "pageviews": 0
+    }
+  ],
+  "rageclicks_30d": 0,
+  "rageclick_pages": [],
+  "signups": {
+    "last_30d": 0,
+    "last_7d": 0
+  },
+  "daily_signups": [],
+  "hourly_pattern": [
+    {
+      "hour": 0,
+      "pageviews": 0
+    },
+    {
+      "hour": 1,
+      "pageviews": 0
+    },
+    {
+      "hour": 2,
+      "pageviews": 0
+    },
+    {
+      "hour": 3,
+      "pageviews": 0
+    },
+    {
+      "hour": 4,
+      "pageviews": 0
+    },
+    {
+      "hour": 5,
+      "pageviews": 0
+    },
+    {
+      "hour": 6,
+      "pageviews": 0
+    },
+    {
+      "hour": 7,
+      "pageviews": 0
+    },
+    {
+      "hour": 8,
+      "pageviews": 0
+    },
+    {
+      "hour": 9,
+      "pageviews": 0
+    },
+    {
+      "hour": 10,
+      "pageviews": 0
+    },
+    {
+      "hour": 11,
+      "pageviews": 0
+    },
+    {
+      "hour": 12,
+      "pageviews": 0
+    },
+    {
+      "hour": 13,
+      "pageviews": 0
+    },
+    {
+      "hour": 14,
+      "pageviews": 0
+    },
+    {
+      "hour": 15,
+      "pageviews": 0
+    },
+    {
+      "hour": 16,
+      "pageviews": 0
+    },
+    {
+      "hour": 17,
+      "pageviews": 0
+    },
+    {
+      "hour": 18,
+      "pageviews": 0
+    },
+    {
+      "hour": 19,
+      "pageviews": 0
+    },
+    {
+      "hour": 20,
+      "pageviews": 0
+    },
+    {
+      "hour": 21,
+      "pageviews": 0
+    },
+    {
+      "hour": 22,
+      "pageviews": 0
+    },
+    {
+      "hour": 23,
+      "pageviews": 0
+    }
+  ],
+  "day_of_week": [
+    {
+      "day": "Lundi",
+      "visitors": 0
+    },
+    {
+      "day": "Mardi",
+      "visitors": 0
+    },
+    {
+      "day": "Mercredi",
+      "visitors": 0
+    },
+    {
+      "day": "Jeudi",
+      "visitors": 0
+    },
+    {
+      "day": "Vendredi",
+      "visitors": 0
+    },
+    {
+      "day": "Samedi",
+      "visitors": 0
+    },
+    {
+      "day": "Dimanche",
+      "visitors": 0
+    }
+  ],
+  "new_vs_returning": {
+    "new_users": 0,
+    "returning_users": 0
+  },
+  "generated_at": "2026-03-29T22:56:51.089Z",
+  "project_id": "112119"
+}

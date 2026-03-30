@@ -120,6 +120,104 @@ const internalLinksMap: Record<string, InternalLink[]> = {
     { slug: 'prix-test-civique-2026-cout-tarif-titre-sejour-prefecture', anchor: 'Combien coûte le test civique ?' },
     { slug: 'contrat-integration-republicaine-cir-2026-formation-civique', anchor: 'Le CIR : formation civique obligatoire' },
   ],
+
+  // ===== Batch 12 articles SEO - Mai 2026 =====
+
+  // Hausse frais titre séjour → récépissé, renouvellement, changement statut, ANEF
+  'hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux': [
+    { slug: 'renouvellement-titre-sejour-2026-anef-prefecture-documents-delais', anchor: 'Renouveler son titre de séjour via ANEF' },
+    { slug: 'recepisse-titre-de-sejour-droits-duree-voyage', anchor: 'Récépissé de titre de séjour : droits et durée' },
+    { slug: 'changement-statut-etudiant-salarie-2026-demarches-anef', anchor: 'Changement de statut étudiant à salarié' },
+    { slug: 'guide-anef-complet-2026-creer-compte-deposer-demande', anchor: 'Guide ANEF complet 2026' },
+  ],
+
+  // Résultats test civique → inscription, erreurs, prix, CER
+  'premiers-resultats-test-civique-2026-taux-reussite-retours-experience': [
+    { slug: 'inscription-test-civique-2026-ou-quand-comment-sinscrire', anchor: 'Comment s\'inscrire au test civique 2026' },
+    { slug: 'erreurs-frequentes-test-civique-2026-pieges-qcm', anchor: 'Erreurs fréquentes au test civique' },
+    { slug: 'prix-test-civique-2026-cout-tarif-titre-sejour-prefecture', anchor: 'Prix et coût du test civique' },
+    { slug: 'contrat-engagement-republicain-2026-obligations-formation-civique', anchor: 'Le Contrat d\'Engagement Républicain' },
+  ],
+
+  // Inscription test civique → résultats, ANEF, documents, comment réussir
+  'inscription-test-civique-2026-ou-quand-comment-sinscrire': [
+    { slug: 'premiers-resultats-test-civique-2026-taux-reussite-retours-experience', anchor: 'Résultats et taux de réussite du test civique 2026' },
+    { slug: 'guide-anef-complet-2026-creer-compte-deposer-demande', anchor: 'Créer un compte ANEF pas à pas' },
+    { slug: 'documents-test-civique-2026-convocation-piece-identite', anchor: 'Documents à apporter le jour du test' },
+    { slug: 'comment-reussir-test-civique-premier-coup', anchor: 'Réussir le test civique du premier coup' },
+  ],
+
+  // Changement statut étudiant→salarié → ANEF, passeport talent, frais, VLS-TS
+  'changement-statut-etudiant-salarie-2026-demarches-anef': [
+    { slug: 'guide-anef-complet-2026-creer-compte-deposer-demande', anchor: 'Tutoriel ANEF complet 2026' },
+    { slug: 'passeport-talent-2026-conditions-metiers-demarches', anchor: 'Passeport talent : alternative au changement de statut' },
+    { slug: 'hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux', anchor: 'Tarifs et frais du changement de statut' },
+    { slug: 'visa-long-sejour-vls-ts-validation-ofii-2026', anchor: 'Validation du VLS-TS étudiant' },
+  ],
+
+  // Récépissé → renouvellement, ANEF, refus/OQTF, frais
+  'recepisse-titre-de-sejour-droits-duree-voyage': [
+    { slug: 'renouvellement-titre-sejour-2026-anef-prefecture-documents-delais', anchor: 'Renouveler son titre de séjour avant expiration' },
+    { slug: 'guide-anef-complet-2026-creer-compte-deposer-demande', anchor: 'Suivre son dossier sur ANEF' },
+    { slug: 'refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france', anchor: 'Que faire en cas de refus de titre de séjour ?' },
+    { slug: 'hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux', anchor: 'Frais de titre de séjour 2026' },
+  ],
+
+  // Guide ANEF → récépissé, changement statut, renouvellement, inscription test
+  'guide-anef-complet-2026-creer-compte-deposer-demande': [
+    { slug: 'recepisse-titre-de-sejour-droits-duree-voyage', anchor: 'Comprendre le récépissé de titre de séjour' },
+    { slug: 'changement-statut-etudiant-salarie-2026-demarches-anef', anchor: 'Changer de statut étudiant à salarié via ANEF' },
+    { slug: 'renouvellement-titre-sejour-2026-anef-prefecture-documents-delais', anchor: 'Renouveler son titre via ANEF' },
+    { slug: 'inscription-test-civique-2026-ou-quand-comment-sinscrire', anchor: 'S\'inscrire au test civique' },
+  ],
+
+  // VLS-TS → validation OFII, CER, premiers pas, passeport talent
+  'visa-long-sejour-vls-ts-validation-ofii-2026': [
+    { slug: 'contrat-engagement-republicain-2026-obligations-formation-civique', anchor: 'Le Contrat d\'Engagement Républicain (CER)' },
+    { slug: 'premiers-pas-france-etranger-banque-logement-caf-ameli', anchor: 'Premiers pas en France après validation du visa' },
+    { slug: 'passeport-talent-2026-conditions-metiers-demarches', anchor: 'Passeport talent : un VLS-TS spécifique' },
+    { slug: 'guide-anef-complet-2026-creer-compte-deposer-demande', anchor: 'Valider son VLS-TS sur ANEF' },
+  ],
+
+  // Passeport talent → changement statut, VLS-TS, frais, ANEF
+  'passeport-talent-2026-conditions-metiers-demarches': [
+    { slug: 'changement-statut-etudiant-salarie-2026-demarches-anef', anchor: 'Changement de statut étudiant à passeport talent' },
+    { slug: 'visa-long-sejour-vls-ts-validation-ofii-2026', anchor: 'VLS-TS et validation OFII' },
+    { slug: 'hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux', anchor: 'Tarifs du passeport talent 2026' },
+    { slug: 'guide-anef-complet-2026-creer-compte-deposer-demande', anchor: 'Démarches passeport talent sur ANEF' },
+  ],
+
+  // Premiers pas France → VLS-TS, CER, récépissé, test civique
+  'premiers-pas-france-etranger-banque-logement-caf-ameli': [
+    { slug: 'visa-long-sejour-vls-ts-validation-ofii-2026', anchor: 'Valider son VLS-TS dès l\'arrivée' },
+    { slug: 'contrat-engagement-republicain-2026-obligations-formation-civique', anchor: 'Le CER : votre premier engagement républicain' },
+    { slug: 'recepisse-titre-de-sejour-droits-duree-voyage', anchor: 'Le récépissé en attendant votre titre de séjour' },
+    { slug: 'inscription-test-civique-2026-ou-quand-comment-sinscrire', anchor: 'Anticiper l\'inscription au test civique' },
+  ],
+
+  // Titre séjour étranger malade → récépissé, recours, AME, ANEF
+  'titre-sejour-etranger-malade-raisons-sante-2026': [
+    { slug: 'recepisse-titre-de-sejour-droits-duree-voyage', anchor: 'Le récépissé pendant la procédure médicale' },
+    { slug: 'refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france', anchor: 'Recours en cas de refus de titre de séjour' },
+    { slug: 'premiers-pas-france-etranger-banque-logement-caf-ameli', anchor: 'Démarches CAF et Ameli pour les étrangers' },
+    { slug: 'guide-anef-complet-2026-creer-compte-deposer-demande', anchor: 'Déposer sa demande sur ANEF' },
+  ],
+
+  // Contrat Engagement Républicain → test civique, inscription, VLS-TS, résultats
+  'contrat-engagement-republicain-2026-obligations-formation-civique': [
+    { slug: 'inscription-test-civique-2026-ou-quand-comment-sinscrire', anchor: 'S\'inscrire au test civique après la formation civique' },
+    { slug: 'premiers-resultats-test-civique-2026-taux-reussite-retours-experience', anchor: 'Résultats du test civique 2026' },
+    { slug: 'visa-long-sejour-vls-ts-validation-ofii-2026', anchor: 'VLS-TS et signature du CIR' },
+    { slug: 'comment-reussir-test-civique-premier-coup', anchor: 'Réussir le test civique du premier coup' },
+  ],
+
+  // Demande asile → premiers pas, CER, récépissé, titre séjour santé
+  'demande-asile-france-2026-ofpra-cnda-procedure-delais': [
+    { slug: 'premiers-pas-france-etranger-banque-logement-caf-ameli', anchor: 'Premiers pas en France après obtention du statut' },
+    { slug: 'contrat-engagement-republicain-2026-obligations-formation-civique', anchor: 'Le CER pour les réfugiés reconnus' },
+    { slug: 'titre-sejour-etranger-malade-raisons-sante-2026', anchor: 'Titre de séjour pour raisons de santé' },
+    { slug: 'recepisse-titre-de-sejour-droits-duree-voyage', anchor: 'L\'attestation de demande d\'asile et le récépissé' },
+  ],
 };
 
 /**

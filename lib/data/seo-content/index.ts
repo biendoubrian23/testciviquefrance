@@ -96,6 +96,18 @@ import {
   carteSejourFranceGuideCompletContent,
 } from './articles-requetes-fortes-2026';
 
+// ===== Batch 12 articles SEO - Mai 2026 =====
+import { fraisTitreSejourContent } from './articles-frais-titre-sejour-2026';
+import { premiersResultatsTestCiviqueContent } from './articles-resultats-test-civique';
+import { inscriptionTestCiviqueContent } from './articles-inscription-test-civique';
+import { changementStatutEtudiantSalarieContent } from './articles-changement-statut';
+import { recepisseContent, guideAnefContent } from './articles-recepisse-anef';
+import { vlsTsContent, passeportTalentContent } from './articles-vls-ts-passeport-talent';
+import { premiersPasFranceContent } from './articles-premiers-pas-france';
+import { titreSejouRaisonsSanteContent } from './articles-titre-sejour-sante';
+import { contratEngagementRepublicainContent } from './articles-contrat-republicain';
+import { demandeAsileFranceContent } from './articles-demande-asile';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -138,6 +150,19 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'test-civique-gratuit-en-ligne-2026-examen-blanc-entrainement-qcm': testCiviqueGratuitBlancContent,
   'niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026': niveauLangueNationaliteFrancaiseContent,
   'carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement': carteSejourFranceGuideCompletContent,
+  // Batch 12 articles SEO - Mai 2026
+  'hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux': fraisTitreSejourContent,
+  'premiers-resultats-test-civique-2026-taux-reussite-retours-experience': premiersResultatsTestCiviqueContent,
+  'inscription-test-civique-2026-ou-quand-comment-sinscrire': inscriptionTestCiviqueContent,
+  'changement-statut-etudiant-salarie-2026-demarches-anef': changementStatutEtudiantSalarieContent,
+  'recepisse-titre-de-sejour-droits-duree-voyage': recepisseContent,
+  'guide-anef-complet-2026-creer-compte-deposer-demande': guideAnefContent,
+  'visa-long-sejour-vls-ts-validation-ofii-2026': vlsTsContent,
+  'passeport-talent-2026-conditions-metiers-demarches': passeportTalentContent,
+  'premiers-pas-france-etranger-banque-logement-caf-ameli': premiersPasFranceContent,
+  'titre-sejour-etranger-malade-raisons-sante-2026': titreSejouRaisonsSanteContent,
+  'contrat-engagement-republicain-2026-obligations-formation-civique': contratEngagementRepublicainContent,
+  'demande-asile-france-2026-ofpra-cnda-procedure-delais': demandeAsileFranceContent,
 };
 
 /**
