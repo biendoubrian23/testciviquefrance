@@ -108,6 +108,13 @@ import { titreSejouRaisonsSanteContent } from './articles-titre-sejour-sante';
 import { contratEngagementRepublicainContent } from './articles-contrat-republicain';
 import { demandeAsileFranceContent } from './articles-demande-asile';
 
+// ===== Batch 3 articles SEO impôts - Juillet 2026 =====
+import {
+  declarationImpotEtrangerContent,
+  residanceFiscaleEtrangerContent,
+  titreSejourImpotsContent,
+} from './articles-impots-etrangers';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -163,6 +170,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'titre-sejour-etranger-malade-raisons-sante-2026': titreSejouRaisonsSanteContent,
   'contrat-engagement-republicain-2026-obligations-formation-civique': contratEngagementRepublicainContent,
   'demande-asile-france-2026-ofpra-cnda-procedure-delais': demandeAsileFranceContent,
+  // Batch 3 articles SEO - Impôts étrangers - Juillet 2026
+  'declaration-impots-etranger-france-2026-obligations-seuils-risques': declarationImpotEtrangerContent,
+  'residance-fiscale-france-etranger-imposabilite-test-2026': residanceFiscaleEtrangerContent,
+  'titre-sejour-declaration-impots-etranger-droits-obligations-2026': titreSejourImpotsContent,
 };
 
 /**

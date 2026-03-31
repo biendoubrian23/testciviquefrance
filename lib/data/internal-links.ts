@@ -218,6 +218,31 @@ const internalLinksMap: Record<string, InternalLink[]> = {
     { slug: 'titre-sejour-etranger-malade-raisons-sante-2026', anchor: 'Titre de séjour pour raisons de santé' },
     { slug: 'recepisse-titre-de-sejour-droits-duree-voyage', anchor: 'L\'attestation de demande d\'asile et le récépissé' },
   ],
+
+  // ===== Articles impôts étrangers - Liens internes =====
+  // Article 1: Déclaration impôts étrangers
+  'declaration-impots-etranger-france-2026-obligations-seuils-risques': [
+    { slug: 'residance-fiscale-france-etranger-imposabilite-test-2026', anchor: 'Qui est résidant fiscal France ?' },
+    { slug: 'titre-sejour-declaration-impots-etranger-droits-obligations-2026', anchor: 'Lien titre de séjour et impôts' },
+    { slug: 'changement-statut-etudiant-salarie-2026-demarches-anef', anchor: 'Changement de statut et impôts' },
+    { slug: 'premiers-pas-france-etranger-banque-logement-caf-ameli', anchor: 'Aides CAF et allocations familiales' },
+  ],
+
+  // Article 2: Résidance fiscale étrangers
+  'residance-fiscale-france-etranger-imposabilite-test-2026': [
+    { slug: 'declaration-impots-etranger-france-2026-obligations-seuils-risques', anchor: 'Qui doit déclarer ses impôts' },
+    { slug: 'titre-sejour-declaration-impots-etranger-droits-obligations-2026', anchor: 'Résidance fiscale et titre de séjour' },
+    { slug: 'titres-de-sejour-france-guide-complet-2026', anchor: 'Les types de titres de séjour' },
+    { slug: 'guide-etudiants-etrangers-france-titres-demarches-2026', anchor: 'Résidance fiscale des étudiants' },
+  ],
+
+  // Article 3: Titre de séjour et impôts
+  'titre-sejour-declaration-impots-etranger-droits-obligations-2026': [
+    { slug: 'declaration-impots-etranger-france-2026-obligations-seuils-risques', anchor: 'Obligations fiscales complètes' },
+    { slug: 'residance-fiscale-france-etranger-imposabilite-test-2026', anchor: 'Déterminer sa résidance fiscale' },
+    { slug: 'dossier-naturalisation-2026-documents-delais-prefecture-anef', anchor: 'Naturalisation et antécédent fiscal' },
+    { slug: 'renouvellement-titre-sejour-2026-anef-prefecture-documents-delais', anchor: 'Renouvellement titre et transparence fiscale' },
+  ],
 };
 
 /**

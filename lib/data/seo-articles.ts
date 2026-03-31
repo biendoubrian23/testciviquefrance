@@ -840,6 +840,55 @@ export const seoArticles: Article[] = [
     image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=1200&auto=format&fit=crop',
     featured: true,
   },
+  // ===== Article 13-15: Impôts pour étrangers - Juillet 2026 =====
+  // Article 13: Déclaration d'impôts pour étrangers
+  {
+    id: 'seo-batch3-1',
+    slug: 'declaration-impots-etranger-france-2026-obligations-seuils-risques',
+    title: 'Déclaration d\'impôts en tant qu\'étranger en France 2026 : obligations, seuils, risques légaux',
+    excerpt: 'Guide complet : qui doit déclarer (résidant fiscal), seuils d\'exonération (15 547 €), documents obligatoires, pénalités non-déclaration (80 %), conventions fiscales, et aides pour remplir déclaration 2026.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Équipe Le Test Civique',
+    date: '15/07/2026',
+    readTime: 25,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article 14: Résidance fiscale
+  {
+    id: 'seo-batch3-2',
+    slug: 'residance-fiscale-france-etranger-imposabilite-test-2026',
+    title: 'Résidance fiscale en France : test des 183 jours, critères, double imposition, conventions — guide 2026',
+    excerpt: 'Êtes-vous résidant fiscal France ? 4 critères légaux : foyer principal, 183 jours, centre d\'intérêts économiques, intérêts permanents. Comment calculer, conventions fiscales, double résidance, changement statut.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Équipe Le Test Civique',
+    date: '16/07/2026',
+    readTime: 22,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article 15: Titre de séjour et impôts
+  {
+    id: 'seo-batch3-3',
+    slug: 'titre-sejour-declaration-impots-etranger-droits-obligations-2026',
+    title: 'Titre de séjour et déclaration d\'impôts : droits sociaux, CAF, renouvellement, naturalisation — guide 2026',
+    excerpt: 'Lien titre de séjour et impôts : tous les titres imposent déclaration si résidant fiscal. Allocations CAF, perte titre de séjour en cas non-déclaration, impact naturalisation, aides spécifiques par titre.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Équipe Le Test Civique',
+    date: '17/07/2026',
+    readTime: 23,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
 ];
 
 /**
