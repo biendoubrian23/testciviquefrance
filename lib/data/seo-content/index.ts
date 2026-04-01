@@ -115,6 +115,13 @@ import {
   titreSejourImpotsContent,
 } from './articles-impots-etrangers';
 
+// ===== Articles ciblés Maghreb (Maroc, Algérie, Tunisie) - Avril 2026 =====
+import {
+  doubleNationaliteMarocContent,
+  circulaireMaghreb2026Content,
+  binationnaliteMaghrebObligationsContent,
+} from './articles-maghreb';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -174,6 +181,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'declaration-impots-etranger-france-2026-obligations-seuils-risques': declarationImpotEtrangerContent,
   'residance-fiscale-france-etranger-imposabilite-test-2026': residanceFiscaleEtrangerContent,
   'titre-sejour-declaration-impots-etranger-droits-obligations-2026': titreSejourImpotsContent,
+  // Articles Maghreb - Avril 2026
+  'double-nationalite-franco-marocaine-2026-test-civique-demarches': doubleNationaliteMarocContent,
+  'circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie': circulaireMaghreb2026Content,
+  'binationaux-franco-maghrebins-obligations-service-national-vote-consulaire': binationnaliteMaghrebObligationsContent,
 };
 
 /**

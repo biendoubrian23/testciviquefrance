@@ -889,6 +889,55 @@ export const seoArticles: Article[] = [
     image: 'https://images.unsplash.com/photo-1507842072343-583f20270319?q=80&w=1200&auto=format&fit=crop',
     featured: true,
   },
+  // ===== Articles ciblés Maghreb (Maroc, Algérie, Tunisie) - Avril 2026 =====
+  // Article Maghreb 1: Double nationalité franco-marocaine
+  {
+    id: 'seo-maghreb-1',
+    slug: 'double-nationalite-franco-marocaine-2026-test-civique-demarches',
+    title: 'Double nationalité franco-marocaine 2026 : démarches, test civique, avantages et obligations',
+    excerpt: 'Guide complet de la double nationalité franco-marocaine : conservation nationalité marocaine, démarches naturalisation France, test civique obligatoire, niveau B1, délais préfecture, droits vote, retraite binational.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Équipe Le Test Civique',
+    date: '01/04/2026',
+    readTime: 28,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Maghreb 2: Circulaire naturalisation Maghreb 2026
+  {
+    id: 'seo-maghreb-2',
+    slug: 'circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie',
+    title: 'Nouvelle circulaire avril 2026 : accélération naturalisations Maroc, Algérie, Tunisie – impact test civique',
+    excerpt: 'Circulaire ministère Intérieur 15 avril 2026 suite accord Rabat : délais réduits 12 mois, quotas +30%, 15 nouveaux centres test civique, assouplissement revenus 0,9 SMIC. Opportunité historique Maghrébins.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Équipe Le Test Civique',
+    date: '01/04/2026',
+    readTime: 25,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1471623320832-752e8bbf8413?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Maghreb 3: Obligations binationaux franco-maghrébins
+  {
+    id: 'seo-maghreb-3',
+    slug: 'binationaux-franco-maghrebins-obligations-service-national-vote-consulaire',
+    title: 'Binationaux franco-maghrébins 2026 : service national, vote consulaire, fiscalité, retraite, succession',
+    excerpt: 'Après test civique et naturalisation : obligations binationaux Maroc/Algérie/Tunisie. Service militaire (exemption comment), vote 2 pays, impôts double nationalité, cumul pensions retraite, succession internationale.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Équipe Le Test Civique',
+    date: '01/04/2026',
+    readTime: 30,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
 ];
 
 /**
