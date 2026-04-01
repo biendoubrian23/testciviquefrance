@@ -196,7 +196,7 @@ export default function Hero() {
 
           {/* Colonne droite - Carrousel d'images (visible uniquement sur desktop) */}
           <div className="relative animate-fade-in-right delay-200 hidden lg:block">
-            <div className="relative overflow-hidden bg-gray-900 aspect-[5/5] rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-transform duration-500">
+            <div className="relative overflow-hidden bg-gray-900 aspect-[5/5] rounded-3xl shadow-2xl">
               {/* Images */}
               {carouselSlides.map((slide, index) => (
                 <div
