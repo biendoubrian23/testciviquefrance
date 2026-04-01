@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { LayoutDashboard, BookOpen, FileQuestion, Layers } from 'lucide-react';
+import { LayoutDashboard, BookOpen, FileQuestion, CreditCard } from 'lucide-react';
 
 const navItems = [
   {
@@ -21,9 +21,9 @@ const navItems = [
     icon: FileQuestion,
   },
   {
-    href: '/dashboard/flashcards',
-    label: 'Flashcards',
-    icon: Layers,
+    href: '/dashboard/credits',
+    label: 'Offres',
+    icon: CreditCard,
   },
 ];
 

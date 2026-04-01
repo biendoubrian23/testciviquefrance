@@ -94,7 +94,7 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
                   onClick={() => handlePurchase('standard')}
                   className="w-full py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
                 >
-                  Choisir Standard
+                  Commencer gratuitement
                 </button>
               </div>
             )}
@@ -145,7 +145,7 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
                   onClick={() => handlePurchase('premium')}
                   className="w-full py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors"
                 >
-                  Choisir Premium
+                  Commencer gratuitement
                 </button>
               </div>
             )}

@@ -90,22 +90,7 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
           </button>
         </div>
 
-        {/* Alerte si pas de crédits */}
-        {!hasCredits && (
-          <div className="mx-6 mt-6 p-4 bg-amber-50 border border-amber-200 flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <p className="text-sm font-medium text-amber-800">
-                Vous n&apos;avez pas de crédit de session d&apos;examen blanc
-              </p>
-              <p className="text-xs text-amber-600 mt-1">
-                Achetez un pack ou un abonnement pour accéder aux examens
-              </p>
-            </div>
-          </div>
-        )}
-
-          <div className="mx-6 mt-4 p-3 bg-gray-50 border border-gray-200">
+          <div className="mx-6 mt-6 p-3 bg-gray-50 border border-gray-200">
             <p className="text-sm text-gray-600 text-center">
               <span className="font-bold text-gray-900">{examCredits}</span> session{examCredits !== 1 ? 's' : ''} d&apos;examen blanc{examCredits !== 1 ? 's' : ''} disponible{examCredits !== 1 ? 's' : ''}
             </p>
