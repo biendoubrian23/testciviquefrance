@@ -92,9 +92,9 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
                 <button
                   onClick={() => handlePurchase('standard')}
-                  className="w-full py-3 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors"
+                  className="w-full py-3 bg-white border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors flex items-center justify-center gap-2"
                 >
-                  Commencer gratuitement
+                  <span>🎁</span> Commencer gratuitement
                 </button>
               </div>
             )}
@@ -143,9 +143,9 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
                 <button
                   onClick={() => handlePurchase('premium')}
-                  className="w-full py-3 bg-purple-600 text-white font-semibold rounded-lg hover:bg-purple-700 transition-colors"
+                  className="w-full py-3 bg-white border-2 border-purple-600 text-purple-600 font-semibold rounded-lg hover:bg-purple-50 transition-colors flex items-center justify-center gap-2"
                 >
-                  Commencer gratuitement
+                  <span>🎁</span> Commencer gratuitement
                 </button>
               </div>
             )}
