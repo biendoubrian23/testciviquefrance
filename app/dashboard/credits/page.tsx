@@ -215,7 +215,7 @@ export default function OffresPage() {
       )}
 
       {/* En-tête */}
-      <div>
+      <div className="text-center md:text-left">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Nos Offres</h1>
         <p className="text-gray-600 text-lg">
           {isPromoActive ? 'Profitez de -30% pour le Nouvel An !' : 'Choisissez la formule adaptée à votre préparation'}

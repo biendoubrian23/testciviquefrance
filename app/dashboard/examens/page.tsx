@@ -160,7 +160,7 @@ export default function ExamensPage() {
       />
 
       {/* En-tête */}
-      <div>
+      <div className="text-center md:text-left">
         <h1 className="text-3xl font-bold text-gray-900 mb-2">Examens blancs</h1>
         <p className="text-gray-600 text-lg">
           Testez-vous dans les conditions réelles de l&apos;examen civique

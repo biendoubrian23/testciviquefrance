@@ -132,12 +132,9 @@ export default function QuizPage() {
 
         if (profile) {
           setUserProfile(profile)
-          // Mode sans chrono activé si:
-          // 1. L'utilisateur a acheté le mode sans chrono (no_timer_enabled)
-          // 2. OU l'utilisateur est membre gratuit (pas premium et pas d'abonnement actif)
-          const isPremium = profile.is_premium || profile.subscription_status === 'active' || profile.subscription_status === 'trialing'
-          const isFreeMember = !isPremium
-          setNoTimerMode(profile.no_timer_enabled || isFreeMember)
+          // Mode sans chrono désactivé pour TOUS les utilisateurs (quiz uniquement)
+          // Le chrono reste actif uniquement pour les examens blancs
+          setNoTimerMode(true)
           setAllLevelsUnlocked(profile.all_levels_unlocked || false)
         }
       }
