@@ -709,7 +709,7 @@ Vous pouvez **repousser** votre service national tunisien jusqu'à 35 ans si :
     },
     {
       id: 'vote-consulaire',
-      title: 'Droits de vote et élections : France et pays d'origine',
+      title: 'Droits de vote et élections : France et pays d\'origine',
       content: `**DROITS DE VOTE EN FRANCE (après naturalisation)**
 
 Une fois naturalisé français, vous bénéficiez du **droit de vote intégral** :
