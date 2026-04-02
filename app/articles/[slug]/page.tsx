@@ -77,7 +77,14 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
       url: canonicalUrl,
       siteName: SEO_CONFIG.siteName,
       type: 'article',
-      publishedTime: article.date,
+      publishedTime: (() => {
+        const parts = article.date.split('/');
+        return `${parts[2]}-${parts[1]}-${parts[0]}T08:00:00+02:00`;
+      })(),
+      modifiedTime: (() => {
+        const parts = article.date.split('/');
+        return `${parts[2]}-${parts[1]}-${parts[0]}T08:00:00+02:00`;
+      })(),
       authors: [article.author],
       section: article.category,
       tags: articleKeywords,

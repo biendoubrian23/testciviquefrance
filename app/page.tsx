@@ -14,6 +14,7 @@ const ProgressSection = dynamic(() => import('@/components/landing/ProgressSecti
 const Features = dynamic(() => import('@/components/landing/Features'), { ssr: true });
 const Pricing = dynamic(() => import('@/components/landing/Pricing'), { ssr: true });
 const SEOContent = dynamic(() => import('@/components/seo/SEOContent'), { ssr: true });
+const RecentArticles = dynamic(() => import('@/components/landing/RecentArticles'), { ssr: true });
 
 export const metadata: Metadata = {
   title: 'Test Civique 2026 - Entraînement Gratuit Examen Civique Naturalisation | Test Civique France',
@@ -144,6 +145,7 @@ export default function HomePage() {
         <ProgressSection />
         <Features />
         <Pricing />
+        <RecentArticles />
         <SEOContent />
       </main>
       <Footer />

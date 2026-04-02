@@ -67,18 +67,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
-    // Onboarding (accessibles sans login)
-    {
-      url: `${baseUrl}/onboarding/quiz`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/onboarding/offres`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.75,
-    },
+    // Note : onboarding exclu du sitemap car bloqué par robots.txt
   ];
 }
