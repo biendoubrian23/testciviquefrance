@@ -64,6 +64,14 @@ export const categories: Category[] = [
     count: 3,
     color: 'orange',
   },
+  {
+    id: '6',
+    name: 'Actualités',
+    slug: 'actualites',
+    icon: '',
+    count: 5,
+    color: 'red',
+  },
 ];
 
 export const articles: Article[] = [
@@ -115,11 +123,11 @@ export const articles: Article[] = [
 ];
 
 // Import des articles SEO
-import { seoArticles } from './seo-articles';
+import { seoArticles, quotidienImmigrationArticles } from './seo-articles';
 
 // Fusionner tous les articles
 // Fusionner tous les articles et trier par date (plus récent en premier)
-export const allArticles: Article[] = [...articles, ...seoArticles].sort((a, b) => {
+export const allArticles: Article[] = [...articles, ...seoArticles, ...quotidienImmigrationArticles].sort((a, b) => {
   const dateA = new Date(a.date.split('/').reverse().join('-'));
   const dateB = new Date(b.date.split('/').reverse().join('-'));
   return dateB.getTime() - dateA.getTime();

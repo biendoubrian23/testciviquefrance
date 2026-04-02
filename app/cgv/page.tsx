@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -355,7 +355,7 @@ export default function CGVPage() {
                 <p>
                   Si le Client n'a accédé à aucun Service Premium dans les 14 jours suivant la souscription, 
                   il conserve son droit de rétractation et peut demander un remboursement intégral en contactant 
-                  notre service client à <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a>.
+                  notre service client à <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a>.
                 </p>
                 
                 <h3 className="font-semibold mt-6 mb-3">5.4. Modalités d'exercice du droit de rétractation :</h3>
@@ -364,7 +364,7 @@ export default function CGVPage() {
                   sa décision de manière claire et non équivoque :
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
-                  <li>Par email à : <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a></li>
+                  <li>Par email à : <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></li>
                   <li>Via le formulaire de contact : <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></li>
                 </ul>
                 
@@ -467,7 +467,7 @@ export default function CGVPage() {
                   <strong>Méthode alternative :</strong> Par email
                 </p>
                 <p className="ml-4">
-                  Envoyer une demande de résiliation à <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a> en 
+                  Envoyer une demande de résiliation à <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a> en 
                   précisant vos nom, prénom et adresse email associée au compte.
                 </p>
                 
@@ -661,7 +661,7 @@ export default function CGVPage() {
                 </p>
                 
                 <div className="bg-gray-50 p-4 rounded mt-3">
-                  <p><strong>Email :</strong> <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a></p>
+                  <p><strong>Email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></p>
                   <p className="mt-2"><strong>Formulaire :</strong> <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
                   <p className="mt-3 text-sm text-gray-600">Délai de réponse : 48 heures ouvrées maximum</p>
                 </div>
@@ -771,7 +771,7 @@ export default function CGVPage() {
             <div className="bg-gray-50 p-4 rounded mt-6 text-center text-sm text-gray-600">
               <p>
                 Ces CGV ont été mises à jour en janvier 2026. Vous acceptez les présentes CGV lors de la souscription 
-                de votre abonnement. Pour toute question : <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a>
+                de votre abonnement. Pour toute question : <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a>
               </p>
             </div>
           </div>

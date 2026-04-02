@@ -122,6 +122,24 @@ import {
   binationnaliteMaghrebObligationsContent,
 } from './articles-maghreb';
 
+// ===== Articles Actualités - Avril 2026 (Google News) =====
+import {
+  circulaireAvril2026NaturalisationsContent,
+  nouveauxCentresTestCiviqueMai2026Content,
+  statistiquesTestCivique2026Content,
+  reformeTestCiviqueJuin2026Content,
+  prefecturesDelaisAvril2026Content,
+} from './articles-actualites-avril-2026';
+
+// ===== Articles Quotidien Immigration - Avril 2026 =====
+import {
+  mariageEtrangerFranceContent,
+  voyagerTitreSejourContent,
+  echangePermisConduireEtrangerContent,
+  titreSejourPerduVoleExpireContent,
+  attestationAccueilFamilleContent,
+} from './articles-quotidien-immigration';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -185,6 +203,18 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'double-nationalite-franco-marocaine-2026-test-civique-demarches': doubleNationaliteMarocContent,
   'circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie': circulaireMaghreb2026Content,
   'binationaux-franco-maghrebins-obligations-service-national-vote-consulaire': binationnaliteMaghrebObligationsContent,
+  // Articles Actualités - Avril 2026 (Google News)
+  'circulaire-avril-2026-delais-naturalisation-reduits-12-mois-maghreb': circulaireAvril2026NaturalisationsContent,
+  'nouveaux-centres-test-civique-mai-2026-liste-complete': nouveauxCentresTestCiviqueMai2026Content,
+  'statistiques-test-civique-2026-taux-reussite-72-pourcent': statistiquesTestCivique2026Content,
+  'reforme-test-civique-50-questions-juin-2026': reformeTestCiviqueJuin2026Content,
+  'prefectures-delais-rendez-vous-avril-2026-solutions': prefecturesDelaisAvril2026Content,
+  // Articles Quotidien Immigration - Avril 2026
+  'mariage-etranger-france-2026-papiers-visa-conjoint-titre-sejour': mariageEtrangerFranceContent,
+  'voyager-titre-sejour-francais-2026-pays-sans-visa-schengen': voyagerTitreSejourContent,
+  'echanger-permis-conduire-etranger-france-2026-ants-demarches': echangePermisConduireEtrangerContent,
+  'titre-sejour-perdu-vole-expire-2026-demarches-urgence': titreSejourPerduVoleExpireContent,
+  'attestation-accueil-inviter-famille-france-2026-mairie-conditions': attestationAccueilFamilleContent,
 };
 
 /**

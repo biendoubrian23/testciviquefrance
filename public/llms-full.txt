@@ -1,4 +1,4 @@
-# Test Civique France - Full Documentation for AI Agents
+﻿# Test Civique France - Full Documentation for AI Agents
 
 ## Overview
 Test Civique France is a specialized educational platform designed to help candidates prepare for the mandatory French civic test (test civique) required for:
@@ -102,5 +102,5 @@ The test is strictly aligned with the new 2026 Immigration Law (Loi Immigration)
 - **Structured Data**: JSON-LD schemas (Organization, WebSite, Course, FAQ, Article, HowTo, BreadcrumbList, Product).
 
 ## Contact
-- Email: contact@testciviquefrance.fr
+- Email: notification@testciviquefrance.fr
 - Website: https://www.testciviquefrance.fr

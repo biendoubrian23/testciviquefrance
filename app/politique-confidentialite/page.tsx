@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -56,7 +56,7 @@ export default function PolitiqueConfidentialitePage() {
                 
                 <div className="bg-gray-50 p-4 rounded mt-4">
                   <p><strong>Raison sociale :</strong> Test Civique France</p>
-                  <p><strong>Adresse email :</strong> <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a></p>
+                  <p><strong>Adresse email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></p>
                   <p><strong>Site web :</strong> <a href="https://www.testciviquefrance.fr" className="text-blue-600 hover:underline">www.testciviquefrance.fr</a></p>
                 </div>
                 
@@ -322,7 +322,7 @@ export default function PolitiqueConfidentialitePage() {
                 <p className="mt-6 bg-gray-50 p-4 rounded">
                   <strong>Suppression de compte :</strong> Vous pouvez demander la suppression complète de votre compte 
                   et de toutes vos données personnelles à tout moment en nous contactant à 
-                  <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline"> contact@testciviquefrance.fr</a>. 
+                  <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a>. 
                   La suppression sera effective sous 30 jours maximum, sauf pour les données devant être conservées pour des obligations légales.
                 </p>
               </div>
@@ -453,7 +453,7 @@ export default function PolitiqueConfidentialitePage() {
                 <h3 className="font-semibold mt-6 mb-3">Comment exercer vos droits :</h3>
                 <p>
                   Pour exercer l'un de ces droits, vous pouvez nous contacter par email à 
-                  <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline"> contact@testciviquefrance.fr</a> en précisant :
+                  <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a> en précisant :
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
                   <li>Vos nom et prénom</li>
@@ -587,7 +587,7 @@ export default function PolitiqueConfidentialitePage() {
                 
                 <div className="bg-gray-50 p-6 rounded mt-4">
                   <p className="font-semibold mb-3">Test Civique France - Service Protection des Données</p>
-                  <p><strong>Email :</strong> <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a></p>
+                  <p><strong>Email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></p>
                   <p className="mt-2"><strong>Formulaire de contact :</strong> <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
                   <p className="mt-4 text-sm text-gray-600">
                     Délai de réponse : Nous nous engageons à répondre à toutes vos demandes dans un délai maximum d'un mois.

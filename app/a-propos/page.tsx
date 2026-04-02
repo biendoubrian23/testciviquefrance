@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Check, Target, Users, BookOpen, Award, ArrowRight, Star } from 'lucide-react';
+import { Check, Target, Users, BookOpen, Award, ArrowRight, Star, Shield, Mail, FileText, User } from 'lucide-react';
 
 // Points forts de la plateforme
 const pointsForts = [
@@ -209,6 +209,180 @@ export default function AProposPage() {
                   <strong>Test Civique France</strong> vous accompagne tout au long de votre préparation —
                   du premier quiz jusqu'à la réussite du test officiel.
                 </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Politique éditoriale */}
+        <section className="py-16 lg:py-24 bg-gray-50" id="politique-editoriale">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 text-primary-700 text-sm font-medium mb-4">
+                  <Shield className="w-4 h-4" />
+                  Transparence
+                </div>
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                  Politique éditoriale
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Notre engagement envers la fiabilité et la transparence de l&apos;information.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="bg-white p-6 border border-gray-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-blue-100 flex items-center justify-center">
+                      <FileText className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">Sources officielles uniquement</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Tous nos contenus s&apos;appuient exclusivement sur les sources officielles : service-public.fr, Legifrance, Journal officiel, sites des préfectures et du ministère de l&apos;Intérieur.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 border border-gray-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-green-100 flex items-center justify-center">
+                      <Check className="w-5 h-5 text-green-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">Vérification systématique</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Chaque information juridique est vérifiée avant publication. Nos articles sont relus et mis à jour mensuellement en cas de changements législatifs ou réglementaires.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 border border-gray-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-purple-100 flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">Neutralité politique</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Test Civique France est une plateforme éducative indépendante. Nous ne sommes affiliés à aucun parti politique, syndicat ou organisation gouvernementale.
+                  </p>
+                </div>
+
+                <div className="bg-white p-6 border border-gray-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-amber-100 flex items-center justify-center">
+                      <Star className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-900">Mise à jour continue</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm leading-relaxed">
+                    Nos contenus sont mis à jour en continu pour refléter les derniers décrets, circulaires et évolutions législatives concernant le test civique et la naturalisation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Équipe éditoriale */}
+        <section className="py-16 lg:py-24" id="equipe">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                  Équipe éditoriale
+                </h2>
+                <p className="text-lg text-gray-600">
+                  Les personnes derrière le contenu de Test Civique France.
+                </p>
+              </div>
+
+              <div className="bg-white border border-gray-200 p-8">
+                <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+                  <div className="w-20 h-20 rounded-full bg-primary-600 flex items-center justify-center text-white text-2xl font-bold flex-shrink-0">
+                    BB
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-900">Brian BIENDOU</h3>
+                    <p className="text-primary-600 font-medium mb-3">Fondateur & Rédacteur en chef</p>
+                    <p className="text-gray-600 leading-relaxed mb-4">
+                      Fondateur de Test Civique France depuis 2024, Brian accompagne les candidats à la naturalisation française
+                      et au renouvellement de titre de séjour. Spécialiste du test civique obligatoire (décret 2025-647),
+                      il s&apos;appuie sur les sources officielles pour produire des contenus fiables et à jour.
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {['Test civique', 'Naturalisation', 'Titres de séjour', 'Droit des étrangers', 'Réforme 2026'].map((tag) => (
+                        <span key={tag} className="px-3 py-1 bg-primary-50 text-primary-700 text-xs rounded-full border border-primary-200">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <Link
+                      href="/auteurs/brian-biendou"
+                      className="inline-flex items-center gap-1.5 text-sm text-primary-600 hover:text-primary-700 mt-4"
+                    >
+                      <User className="w-4 h-4" />
+                      Voir tous ses articles
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Financement et contact */}
+        <section className="py-16 lg:py-24 bg-gray-50" id="financement">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="grid md:grid-cols-2 gap-8">
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Financement</h2>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Test Civique France est financé exclusivement par les abonnements de ses utilisateurs.
+                    Nous ne recevons aucun financement public ni subvention. Ce modèle garantit notre
+                    indépendance éditoriale totale et l&apos;absence d&apos;influence externe sur nos contenus.
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      Aucune publicité sur la plateforme
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      Aucune influence externe sur le contenu
+                    </li>
+                    <li className="flex items-center gap-2">
+                      <Check className="w-4 h-4 text-green-500" />
+                      Indépendance éditoriale garantie
+                    </li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-4">Contact</h2>
+                  <p className="text-gray-600 leading-relaxed mb-4">
+                    Pour toute question concernant nos contenus, notre politique éditoriale
+                    ou la plateforme, n&apos;hésitez pas à nous contacter.
+                  </p>
+                  <div className="space-y-3">
+                    <a
+                      href="mailto:notification@testciviquefrance.fr"
+                      className="flex items-center gap-3 text-primary-600 hover:text-primary-700"
+                    >
+                      <Mail className="w-5 h-5" />
+                      notification@testciviquefrance.fr
+                    </a>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 mt-4 text-sm text-primary-600 hover:text-primary-700"
+                  >
+                    Formulaire de contact
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

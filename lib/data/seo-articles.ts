@@ -938,13 +938,183 @@ export const seoArticles: Article[] = [
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop',
     featured: true,
   },
+
+  // ===== ACTUALITÉS - Avril 2026 (Google News) =====
+  // Article Actualité 1: Circulaire délais naturalisation Maghreb
+  {
+    id: 'actu-1',
+    slug: 'circulaire-avril-2026-delais-naturalisation-reduits-12-mois-maghreb',
+    title: 'Nouvelle circulaire avril 2026 : les délais de naturalisation réduits à 12 mois pour les ressortissants du Maghreb',
+    excerpt: 'Le ministère de l\'Intérieur réduit de 18 à 12 mois le délai de traitement des demandes de naturalisation pour les ressortissants marocains, algériens et tunisiens. 45 000 dossiers concernés.',
+    content: '',
+    category: 'Actualités',
+    categorySlug: 'actualites',
+    author: 'Brian BIENDOU',
+    date: '02/04/2026',
+    readTime: 8,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Actualité 2: 15 nouveaux centres test civique
+  {
+    id: 'actu-2',
+    slug: 'nouveaux-centres-test-civique-mai-2026-liste-complete',
+    title: '15 nouveaux centres agréés pour le test civique ouvrent en mai 2026',
+    excerpt: 'L\'OFII annonce l\'ouverture de 15 nouveaux centres d\'examen en mai 2026 : Créteil, Saint-Denis, Grenoble, Nice, Montpellier... Délais d\'attente réduits de 6 à 2-3 semaines.',
+    content: '',
+    category: 'Actualités',
+    categorySlug: 'actualites',
+    author: 'Brian BIENDOU',
+    date: '02/04/2026',
+    readTime: 6,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Actualité 3: Statistiques test civique T1 2026
+  {
+    id: 'actu-3',
+    slug: 'statistiques-test-civique-2026-taux-reussite-72-pourcent',
+    title: 'Statistiques test civique 2026 : 72 % de réussite, en hausse de 5 points par rapport à 2025',
+    excerpt: '23 400 candidats au T1 2026, taux de réussite en hausse à 72 %. Analyse par région, thématiques les mieux maîtrisées et perspectives pour le reste de l\'année.',
+    content: '',
+    category: 'Actualités',
+    categorySlug: 'actualites',
+    author: 'Brian BIENDOU',
+    date: '01/04/2026',
+    readTime: 7,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Actualité 4: Réforme 50 questions
+  {
+    id: 'actu-4',
+    slug: 'reforme-test-civique-50-questions-juin-2026',
+    title: 'Réforme du test civique : le gouvernement envisage un passage à 50 questions en juin 2026',
+    excerpt: 'Un document de travail du ministère de l\'Intérieur prévoit 10 questions supplémentaires sur le développement durable et le numérique. Seuil maintenu à 80 %, durée portée à 55 minutes.',
+    content: '',
+    category: 'Actualités',
+    categorySlug: 'actualites',
+    author: 'Brian BIENDOU',
+    date: '01/04/2026',
+    readTime: 7,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Actualité 5: Délais préfectures
+  {
+    id: 'actu-5',
+    slug: 'prefectures-delais-rendez-vous-avril-2026-solutions',
+    title: 'Préfectures : les délais de rendez-vous explosent en avril 2026, voici les solutions',
+    excerpt: 'Les délais atteignent 22 semaines à Paris, 20 en Seine-Saint-Denis. Causes de l\'engorgement, alternatives (ANEF, sous-préfectures) et recommandations du Défenseur des droits.',
+    content: '',
+    category: 'Actualités',
+    categorySlug: 'actualites',
+    author: 'Brian BIENDOU',
+    date: '02/04/2026',
+    readTime: 8,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
 ];
+
+// ===== ARTICLES QUOTIDIEN IMMIGRATION - Avril 2026 =====
+
+const quotidienImmigrationArticles: Article[] = [
+  // Article Quotidien 1: Mariage avec un étranger
+  {
+    id: 'quotidien-1',
+    slug: 'mariage-etranger-france-2026-papiers-visa-conjoint-titre-sejour',
+    title: 'Se marier avec un étranger en France en 2026 : papiers, visa conjoint, titre de séjour',
+    excerpt: 'Dossier mairie, certificat de capacité matrimoniale, transcription du mariage, visa conjoint de Français, titre « vie privée et familiale » : toutes les étapes détaillées.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '02/04/2026',
+    readTime: 14,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Quotidien 2: Voyager avec un titre de séjour
+  {
+    id: 'quotidien-2',
+    slug: 'voyager-titre-sejour-francais-2026-pays-sans-visa-schengen',
+    title: 'Voyager avec un titre de séjour français : pays sans visa, zone Schengen, précautions',
+    excerpt: 'Libre circulation dans les 27 pays Schengen, règle des 90 jours, cas des récépissés, précautions avant le départ : le guide complet pour voyager sereinement.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Brian BIENDOU',
+    date: '02/04/2026',
+    readTime: 12,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1436491865332-7a61a109db05?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Quotidien 3: Échange permis de conduire étranger
+  {
+    id: 'quotidien-3',
+    slug: 'echanger-permis-conduire-etranger-france-2026-ants-demarches',
+    title: 'Échanger son permis de conduire étranger en France : démarches ANTS, délais, pays éligibles',
+    excerpt: 'Pays éligibles à l\'échange, procédure ANTS en ligne, délais par nationalité en 2026 et solutions si votre permis n\'est pas échangeable.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Brian BIENDOU',
+    date: '02/04/2026',
+    readTime: 13,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1449965408869-ebd13bc0c637?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Quotidien 4: Titre de séjour perdu, volé ou expiré
+  {
+    id: 'quotidien-4',
+    slug: 'titre-sejour-perdu-vole-expire-2026-demarches-urgence',
+    title: 'Titre de séjour perdu, volé ou expiré : que faire en urgence, démarches et délais 2026',
+    excerpt: 'Déclaration de perte ou vol, demande de duplicata, titre expiré : vos droits pendant l\'attente et les démarches à suivre immédiatement.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '02/04/2026',
+    readTime: 11,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article Quotidien 5: Attestation d'accueil
+  {
+    id: 'quotidien-5',
+    slug: 'attestation-accueil-inviter-famille-france-2026-mairie-conditions',
+    title: 'Attestation d\'accueil pour inviter sa famille en France : mairie, conditions, visa',
+    excerpt: 'Conditions de logement, démarches en mairie, coût du timbre fiscal, documents pour le visa : le guide complet pour faire venir vos proches en France.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '02/04/2026',
+    readTime: 12,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+];
+
+// On fusionne les articles quotidien dans le tableau principal
+export { quotidienImmigrationArticles };
 
 /**
  * Récupère tous les articles (existants + SEO)
  */
 export function getAllArticlesWithSEO(existingArticles: Article[]): Article[] {
-  return [...existingArticles, ...seoArticles];
+  return [...existingArticles, ...seoArticles, ...quotidienImmigrationArticles];
 }
 
 /**

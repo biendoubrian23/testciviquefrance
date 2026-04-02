@@ -1,4 +1,4 @@
-// Contenu légal du site - Conditions d'Utilisation et Politique de Confidentialité
+﻿// Contenu légal du site - Conditions d'Utilisation et Politique de Confidentialité
 
 export const conditionsUtilisation = {
   title: "Conditions Générales d'Utilisation",
@@ -156,7 +156,7 @@ Conformément à l'article L.612-1 du Code de la consommation, vous pouvez recou
     {
       title: "10. Contact",
       content: `Pour toute question relative aux présentes CGU, vous pouvez nous contacter :
-- Par email : contact@testciviquefrance.fr
+- Par email : notification@testciviquefrance.fr
 - Via le formulaire de contact disponible sur le Site
 
 Nous nous engageons à vous répondre dans les meilleurs délais.`
@@ -183,7 +183,7 @@ Notre traitement des données personnelles est conforme au Règlement Général 
 
 **Responsable du traitement**
 Test Civique France
-Email : contact@testciviquefrance.fr`
+Email : notification@testciviquefrance.fr`
     },
     {
       title: "2. Données personnelles collectées",
@@ -366,7 +366,7 @@ Vous pouvez définir des directives concernant le sort de vos données après vo
 
 **Comment exercer vos droits ?**
 Pour exercer vos droits, contactez-nous :
-- Par email : contact@testciviquefrance.fr (en joignant une copie de votre pièce d'identité)
+- Par email : notification@testciviquefrance.fr (en joignant une copie de votre pièce d'identité)
 - Depuis votre espace personnel : Section "Paramètres" > "Mes données"
 
 Nous nous engageons à répondre dans un **délai maximum d'1 mois** suivant votre demande.
@@ -405,7 +405,7 @@ La date de dernière mise à jour est indiquée en haut de cette page.`
 
 **Responsable du traitement**
 Test Civique France
-Email : contact@testciviquefrance.fr
+Email : notification@testciviquefrance.fr
 
 Nous nous engageons à vous répondre dans les meilleurs délais et à apporter toute clarification nécessaire sur le traitement de vos données personnelles.`
     }

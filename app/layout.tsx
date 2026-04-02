@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next';
+﻿import type { Metadata, Viewport } from 'next';
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
@@ -537,7 +537,7 @@ const jsonLd = {
         '@type': 'ContactPoint',
         contactType: 'customer service',
         availableLanguage: ['French', 'English'],
-        email: 'contact@testciviquefrance.fr',
+        email: 'notification@testciviquefrance.fr',
       },
     },
     {

@@ -111,14 +111,18 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   }
 
   // Générer le JSON-LD avec la nouvelle fonction centralisée
+  const dateParts = article.date.split('/');
+  const isoDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}T08:00:00+02:00`;
+
   const articleJsonLd = getArticleSchema({
     title: article.title,
     description: article.excerpt,
     url: `${SEO_CONFIG.siteUrl}/articles/${article.slug}`,
-    image: `${SEO_CONFIG.siteUrl}${article.image}`,
-    datePublished: article.date,
-    dateModified: article.date,
+    image: article.image?.startsWith('http') ? article.image : `${SEO_CONFIG.siteUrl}${article.image}`,
+    datePublished: isoDate,
+    dateModified: isoDate,
     author: article.author,
+    authorUrl: article.author === 'Brian BIENDOU' ? `${SEO_CONFIG.siteUrl}/auteurs/brian-biendou` : undefined,
     category: article.category,
     readTime: article.readTime,
   });

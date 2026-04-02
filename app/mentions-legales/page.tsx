@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -26,7 +26,7 @@ export default function MentionsLegalesPage() {
                 <p><strong>Nom du site :</strong> Test Civique France</p>
                 <p><strong>URL du site :</strong> <a href="https://www.testciviquefrance.fr" className="text-blue-600 hover:underline">www.testciviquefrance.fr</a></p>
                 <p><strong>Directeur de la publication :</strong> Test Civique France</p>
-                <p><strong>Adresse email de contact :</strong> <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a></p>
+                <p><strong>Adresse email de contact :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></p>
                 
                 <p className="mt-4">Le responsable de la publication est une personne physique.</p>
                 
@@ -104,7 +104,7 @@ export default function MentionsLegalesPage() {
                 <p>
                   Conformément au RGPD, vous disposez des droits d'accès, de rectification, d'effacement, de limitation, de portabilité 
                   et d'opposition concernant vos données personnelles. Pour exercer ces droits, contactez-nous à : 
-                  <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline"> contact@testciviquefrance.fr</a>
+                  <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a>
                 </p>
               </div>
             </section>
@@ -206,7 +206,7 @@ export default function MentionsLegalesPage() {
                 </p>
                 
                 <ul className="list-none space-y-2 ml-4 mt-4">
-                  <li><strong>Par email :</strong> <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a></li>
+                  <li><strong>Par email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></li>
                   <li><strong>Via notre formulaire de contact :</strong> <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></li>
                 </ul>
                 

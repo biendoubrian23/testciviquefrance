@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 
@@ -316,7 +316,7 @@ export default function CGUPage() {
                 <h3 className="font-semibold mt-6 mb-3">4.6. Suppression du compte :</h3>
                 <p>
                   L'Utilisateur peut demander la suppression de son Compte à tout moment en nous contactant à 
-                  <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline"> contact@testciviquefrance.fr</a>. 
+                  <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a>. 
                   La suppression entraîne la perte définitive de toutes les données associées au compte (progression, statistiques, historique). 
                   En cas d'abonnement actif, les conditions de résiliation prévues aux CGV s'appliquent.
                 </p>
@@ -458,7 +458,7 @@ export default function CGUPage() {
                 
                 <p className="mt-4">
                   Si vous constatez une utilisation non autorisée de nos contenus, merci de nous en informer à 
-                  <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline"> contact@testciviquefrance.fr</a>.
+                  <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a>.
                 </p>
               </div>
             </section>
@@ -491,7 +491,7 @@ export default function CGUPage() {
                 <p className="mt-4">
                   L'Utilisateur est invité à se référer aux sources officielles pour toute information critique. 
                   En cas d'erreur constatée, nous vous remercions de nous en informer à 
-                  <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline"> contact@testciviquefrance.fr</a>.
+                  <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a>.
                 </p>
                 
                 <h3 className="font-semibold mt-6 mb-3">7.3. Disponibilité des Services :</h3>
@@ -581,7 +581,7 @@ export default function CGUPage() {
                 
                 <p className="mt-4">
                   Pour toute question ou exercice de vos droits, contactez-nous à 
-                  <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline"> contact@testciviquefrance.fr</a>.
+                  <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a>.
                 </p>
               </div>
             </section>
@@ -643,7 +643,7 @@ export default function CGUPage() {
                 
                 <p className="mt-4">
                   L'Utilisateur est invité à nous contacter en priorité à 
-                  <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline"> contact@testciviquefrance.fr</a> ou via notre 
+                  <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a> ou via notre 
                   <Link href="/contact" className="text-blue-600 hover:underline"> formulaire de contact</Link> pour toute réclamation. 
                   Nous nous engageons à répondre dans les meilleurs délais et à rechercher une solution satisfaisante.
                 </p>
@@ -734,7 +734,7 @@ export default function CGUPage() {
                 
                 <div className="bg-gray-50 p-6 rounded mt-4">
                   <p className="font-semibold mb-3">Test Civique France - Service Client</p>
-                  <p><strong>Email :</strong> <a href="mailto:contact@testciviquefrance.fr" className="text-blue-600 hover:underline">contact@testciviquefrance.fr</a></p>
+                  <p><strong>Email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></p>
                   <p className="mt-2"><strong>Formulaire de contact :</strong> <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
                   <p className="mt-4 text-sm text-gray-600">
                     Nous nous engageons à répondre à toutes vos demandes dans un délai de 48 heures ouvrées.

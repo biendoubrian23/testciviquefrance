@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import Link from 'next/link';
@@ -157,11 +157,11 @@ export default function AidePage() {
               Notre équipe est disponible du lundi au dimanche, de 9h à 18h pour répondre à vos questions.
             </p>
             <a 
-              href="mailto:contact@testciviquefrance.fr"
+              href="mailto:notification@testciviquefrance.fr"
               className="inline-flex items-center gap-2 text-primary-600 font-medium hover:text-primary-700 transition-colors"
             >
               <Mail className="w-5 h-5" />
-              contact@testciviquefrance.fr
+              notification@testciviquefrance.fr
             </a>
           </div>
         </div>

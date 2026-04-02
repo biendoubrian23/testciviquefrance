@@ -14,7 +14,7 @@ export const SEO_CONFIG = {
   author: 'Équipe Test Civique France',
   
   // Contact
-  email: 'contact@testciviquefrance.fr',
+  email: 'notification@testciviquefrance.fr',
   phone: '+33-1-XX-XX-XX-XX',
   
   // Social media

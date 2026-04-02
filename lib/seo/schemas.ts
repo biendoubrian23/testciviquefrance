@@ -28,7 +28,8 @@ export function getOrganizationSchema() {
     foundingDate: '2024',
     founder: {
       '@type': 'Person',
-      name: 'Équipe Test Civique France',
+      name: 'Brian BIENDOU',
+      url: `${SEO_CONFIG.siteUrl}/auteurs/brian-biendou`,
     },
     address: {
       '@type': 'PostalAddress',
@@ -207,25 +208,35 @@ export function getArticleSchema(article: {
   datePublished: string;
   dateModified?: string;
   author?: string;
+  authorUrl?: string;
   image?: string;
   category?: string;
   wordCount?: number;
   readTime?: number;
 }) {
+  // Déterminer si l'auteur est une personne identifiée ou l'organisation
+  const isPersonAuthor = article.author && article.author !== 'Équipe Le Test Civique' && article.author !== SEO_CONFIG.author;
+
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'NewsArticle',
     '@id': `${article.url}/#article`,
     headline: article.title,
     description: article.description,
     url: article.url,
     datePublished: article.datePublished,
     dateModified: article.dateModified || article.datePublished,
-    author: {
-      '@type': 'Organization',
-      name: article.author || SEO_CONFIG.author,
-      url: SEO_CONFIG.siteUrl,
-    },
+    author: isPersonAuthor
+      ? {
+          '@type': 'Person',
+          name: article.author,
+          url: article.authorUrl || `${SEO_CONFIG.siteUrl}/auteurs/brian-biendou`,
+        }
+      : {
+          '@type': 'Organization',
+          name: article.author || SEO_CONFIG.author,
+          url: SEO_CONFIG.siteUrl,
+        },
     publisher: {
       '@id': `${SEO_CONFIG.siteUrl}/#organization`,
     },
