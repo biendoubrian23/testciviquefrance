@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { allArticles } from '@/lib/data/articles';
 
-const INDEXNOW_KEY = '8a87c068beb74ed1862dcac708d9f59b';
+const INDEXNOW_KEY = '70856d61c94c4fbb84426195ce988ff5';
 const SITE_URL = 'https://www.testciviquefrance.fr';
 
 export async function POST(request: NextRequest) {
