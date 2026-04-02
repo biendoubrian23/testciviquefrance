@@ -20,6 +20,7 @@ import {
   ChevronRight,
   ExternalLink
 } from 'lucide-react';
+import AdSenseBlock from '@/components/ui/AdSenseBlock';
 
 interface SEOArticleRendererProps {
   content: ArticleFullContent;
@@ -244,6 +245,9 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
             </div>
           </section>
 
+          {/* AdSense - après l'introduction */}
+          <AdSenseBlock slot="4450490909" format="auto" className="my-8" />
+
           {/* Sections de contenu */}
           {content.sections.map((section, index) => (
             <section key={section.id} className="mb-14">
@@ -452,6 +456,9 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
               </section>
             );
           })()}
+
+          {/* AdSense - avant le CTA */}
+          <AdSenseBlock slot="9125999446" format="autorelaxed" className="my-8" />
 
           {/* CTA vers la préparation */}
           <section className="mb-10 p-8 bg-gray-100 border-t-4 border-gray-900 text-center">
