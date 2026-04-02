@@ -818,6 +818,9 @@ export default function RootLayout({
         <meta name="DC.coverage" content="France" />
         <meta name="DC.rights" content="Copyright Test Civique France" />
 
+        {/* Google AdSense verification */}
+        <meta name="google-adsense-account" content="ca-pub-3632266086082682" />
+
         {/* Geo tags */}
         <meta name="geo.region" content="FR" />
         <meta name="geo.placename" content="France" />
@@ -844,6 +847,14 @@ export default function RootLayout({
           <AuthProvider>{children}</AuthProvider>
         </PostHogProvider>
         <Analytics />
+
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3632266086082682"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
 
         {/* Scripts tiers différés de 5s pour ne pas bloquer LCP/TBT */}
         <Script id="deferred-analytics" strategy="lazyOnload">
