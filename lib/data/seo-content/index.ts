@@ -140,6 +140,15 @@ import {
   attestationAccueilFamilleContent,
 } from './articles-quotidien-immigration';
 
+// ===== Articles Vie Pratique - Avril 2026 =====
+import {
+  aidesSocialesEtrangersFranceContent,
+  divorceTitreSejourContent,
+  autoEntrepreneurEtrangerContent,
+  scolariserEnfantsEtrangerContent,
+  chomagePerteEmploiEtrangerContent,
+} from './articles-vie-pratique-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -215,6 +224,12 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'echanger-permis-conduire-etranger-france-2026-ants-demarches': echangePermisConduireEtrangerContent,
   'titre-sejour-perdu-vole-expire-2026-demarches-urgence': titreSejourPerduVoleExpireContent,
   'attestation-accueil-inviter-famille-france-2026-mairie-conditions': attestationAccueilFamilleContent,
+  // Articles Vie Pratique - Avril 2026
+  'aides-sociales-etrangers-france-2026-caf-rsa-apl-prime-activite': aidesSocialesEtrangersFranceContent,
+  'divorce-separation-titre-sejour-2026-droits-renouvellement-etranger': divorceTitreSejourContent,
+  'auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour': autoEntrepreneurEtrangerContent,
+  'scolariser-enfants-etranger-france-2026-inscription-ecole-droits': scolariserEnfantsEtrangerContent,
+  'chomage-perte-emploi-etranger-france-2026-are-france-travail-droits': chomagePerteEmploiEtrangerContent,
 };
 
 /**

@@ -1110,11 +1110,95 @@ const quotidienImmigrationArticles: Article[] = [
 // On fusionne les articles quotidien dans le tableau principal
 export { quotidienImmigrationArticles };
 
+// ===== Articles Vie Pratique - Avril 2026 =====
+export const viePratiqueArticles: Article[] = [
+  // Article 1: Aides sociales étrangers (CAF, RSA, APL)
+  {
+    id: 'vie-pratique-1',
+    slug: 'aides-sociales-etrangers-france-2026-caf-rsa-apl-prime-activite',
+    title: 'Aides sociales pour les étrangers en France 2026 : CAF, RSA, APL, prime d\'activité — guide complet',
+    excerpt: 'Quelles aides un étranger peut-il toucher en France ? RSA (5 ans de carence), APL (dès l\'arrivée), allocations familiales, prime d\'activité : conditions par titre de séjour, montants 2026 et démarches CAF.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Brian BIENDOU',
+    date: '03/04/2026',
+    readTime: 22,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article 2: Divorce et titre de séjour
+  {
+    id: 'vie-pratique-2',
+    slug: 'divorce-separation-titre-sejour-2026-droits-renouvellement-etranger',
+    title: 'Divorce et titre de séjour 2026 : conséquences, renouvellement, violences conjugales — vos droits',
+    excerpt: 'Que se passe-t-il pour votre titre de séjour en cas de divorce ? Impact sur la carte conjoint de Français, protection en cas de violences, garde des enfants et naturalisation. Guide juridique complet.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '03/04/2026',
+    readTime: 20,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article 3: Auto-entrepreneur étranger
+  {
+    id: 'vie-pratique-3',
+    slug: 'auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour',
+    title: 'Auto-entrepreneur étranger en France 2026 : quels titres, procédure, fiscalité et pièges à éviter',
+    excerpt: 'Créer une micro-entreprise en tant qu\'étranger : titres de séjour compatibles, changement de statut, immatriculation URSSAF, cotisations et les 5 erreurs qui mettent en danger votre titre.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Brian BIENDOU',
+    date: '03/04/2026',
+    readTime: 21,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article 4: Scolariser ses enfants en France
+  {
+    id: 'vie-pratique-4',
+    slug: 'scolariser-enfants-etranger-france-2026-inscription-ecole-droits',
+    title: 'Scolariser ses enfants en France quand on est étranger : inscription, UPE2A, aides et recours 2026',
+    excerpt: 'L\'école est un droit pour TOUS les enfants en France, même sans papiers. Inscription maternelle au lycée, classes allophones UPE2A, bourses, ARS et que faire si la mairie refuse.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Brian BIENDOU',
+    date: '03/04/2026',
+    readTime: 19,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article 5: Chômage et perte d'emploi étranger
+  {
+    id: 'vie-pratique-5',
+    slug: 'chomage-perte-emploi-etranger-france-2026-are-france-travail-droits',
+    title: 'Chômage et perte d\'emploi quand on est étranger en France 2026 : ARE, France Travail, titre de séjour',
+    excerpt: 'Perdre son emploi en tant qu\'étranger : droits au chômage (ARE), inscription France Travail, impact sur le renouvellement du titre de séjour salarié et solutions pour rebondir.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Brian BIENDOU',
+    date: '03/04/2026',
+    readTime: 20,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+];
+
 /**
  * Récupère tous les articles (existants + SEO)
  */
 export function getAllArticlesWithSEO(existingArticles: Article[]): Article[] {
-  return [...existingArticles, ...seoArticles, ...quotidienImmigrationArticles];
+  return [...existingArticles, ...seoArticles, ...quotidienImmigrationArticles, ...viePratiqueArticles];
 }
 
 /**
