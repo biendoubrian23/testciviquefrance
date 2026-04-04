@@ -149,6 +149,14 @@ import {
   chomagePerteEmploiEtrangerContent,
 } from './articles-vie-pratique-2026';
 
+// ===== Nouveaux articles Avril 2026 =====
+import {
+  regroupementFamilial2026Content,
+  oqtf2026Content,
+  declarationImpots2026Content,
+  etudiantEtranger2026Content,
+} from './articles-nouveaux-avril-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -230,6 +238,11 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour': autoEntrepreneurEtrangerContent,
   'scolariser-enfants-etranger-france-2026-inscription-ecole-droits': scolariserEnfantsEtrangerContent,
   'chomage-perte-emploi-etranger-france-2026-are-france-travail-droits': chomagePerteEmploiEtrangerContent,
+  // Nouveaux articles Avril 2026
+  'regroupement-familial-france-2026-guide-complet-conditions-documents-delais': regroupementFamilial2026Content,
+  'oqtf-2026-droits-recours-expulsion-aide-juridictionnelle-test-civique': oqtf2026Content,
+  'declaration-impots-etrangers-france-2026-guide-pratique-formulaires-dates-remboursement': declarationImpots2026Content,
+  'etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester': etudiantEtranger2026Content,
 };
 
 /**
