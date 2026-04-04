@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'FAQ Test Civique France 2026 - Questions Naturalisation, Titre Séjour & Immigration',
-  description: 'Toutes les réponses sur le test civique 2026 : 40 QCM, seuil 80%, 5 thématiques. FAQ nouvelle loi immigration, titre de séjour étudiant, naturalisation française, carte de résident.',
+  title: 'FAQ Test Civique 2026 — 40 QCM, Seuil 80%, Naturalisation & Titre de Séjour',
+  description: 'Réponses claires sur le test civique 2026 : combien de questions, comment réussir à 80%, qui est concerné (naturalisation, carte de résident, titre séjour). Préparez-vous gratuitement.',
   keywords: [
     'FAQ test civique', 'questions fréquentes naturalisation', 'comment passer test civique',
     'combien questions test civique', 'seuil réussite test civique', 'durée test civique',

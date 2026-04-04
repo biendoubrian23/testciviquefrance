@@ -12,8 +12,10 @@ export const config = {
      * - _next/static (fichiers statiques)
      * - _next/image (optimisation d'images)
      * - favicon.ico (favicon)
-     * - images publiques
+     * - fichiers statiques publics (images, txt, xml, json, js, css...)
+     *   ads.txt, robots.txt, sitemap.xml, manifest.json, sw.js etc.
+     *   doivent être servis SANS passer par Supabase
      */
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|txt|xml|json|js|css|woff|woff2|ttf|eot)$).*)',
   ],
 };

@@ -178,7 +178,7 @@ export default function Hero() {
             {/* Social Proof */}
             <div className="mt-12 flex items-center gap-8 justify-center lg:justify-start text-sm text-gray-600 animate-fade-in-up delay-400 lg:delay-300">
               <div>
-                <div className="text-2xl font-bold text-gray-900">300+</div>
+                <div className="text-2xl font-bold text-gray-900">600+</div>
                 <div>Utilisateurs</div>
               </div>
               <div className="h-12 w-px bg-gray-300"></div>

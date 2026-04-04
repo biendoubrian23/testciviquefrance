@@ -155,12 +155,12 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://vercel.live https://www.youtube.com https://s.ytimg.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://eu.i.posthog.com https://eu-assets.i.posthog.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://va.vercel-scripts.com https://vercel.live https://www.youtube.com https://s.ytimg.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com https://adservice.google.com https://adservice.google.fr https://analytics.ahrefs.com https://eu.i.posthog.com https://eu-assets.i.posthog.com",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://vercel.live",
               "font-src 'self' https://fonts.gstatic.com https://vercel.live",
-              "img-src 'self' data: https: blob: https://www.googletagmanager.com https://www.google-analytics.com https://img.youtube.com https://i.ytimg.com https://www.google.com https://www.google.fr https://googleads.g.doubleclick.net https://vercel.live",
-              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://js.stripe.com https://api.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://api.web3forms.com https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com https://vercel.live wss://ws-us3.pusher.com",
-              "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://www.googletagmanager.com https://www.youtube.com https://www.youtube-nocookie.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://vercel.live",
+              "img-src 'self' data: https: blob: https://www.googletagmanager.com https://www.google-analytics.com https://img.youtube.com https://i.ytimg.com https://www.google.com https://www.google.fr https://googleads.g.doubleclick.net https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://www.gstatic.com https://adservice.google.com https://adservice.google.fr https://vercel.live",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://js.stripe.com https://api.stripe.com https://www.google-analytics.com https://www.googletagmanager.com https://api.web3forms.com https://www.google.com https://www.youtube.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com https://adservice.google.com https://adservice.google.fr https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com https://analytics.ahrefs.com https://vercel.live wss://ws-us3.pusher.com",
+              "frame-src 'self' https://js.stripe.com https://hooks.stripe.com https://www.googletagmanager.com https://www.youtube.com https://www.youtube-nocookie.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://pagead2.googlesyndication.com https://tpc.googlesyndication.com https://vercel.live",
               "object-src 'none'",
               "base-uri 'self'",
               "form-action 'self'",
@@ -244,6 +244,24 @@ const nextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=2592000'
+          }
+        ]
+      },
+      {
+        // ads.txt — doit être accessible sans cache agressif pour Google AdSense
+        source: '/ads.txt',
+        headers: [
+          {
+            key: 'Content-Type',
+            value: 'text/plain; charset=utf-8'
+          },
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400'
+          },
+          {
+            key: 'Access-Control-Allow-Origin',
+            value: '*'
           }
         ]
       }

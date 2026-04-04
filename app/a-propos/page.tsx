@@ -17,7 +17,7 @@ const pointsForts = [
 
 // Statistiques
 const stats = [
-  { value: '300+', label: 'Candidats préparés' },
+  { value: '600+', label: 'Candidats préparés' },
   { value: '95%', label: 'Taux de réussite' },
   { value: '4.6/5', label: 'Note moyenne' },
   { value: '2026', label: 'Référentiel officiel' },

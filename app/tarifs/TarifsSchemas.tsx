@@ -16,32 +16,24 @@ export function TarifsSchemas() {
       description: 'Accès gratuit aux cours et fiches de révision pour le test civique français',
       price: 0,
       sku: 'tcf-gratuit',
-      ratingValue: 4.8,
-      reviewCount: 850,
     },
     {
       name: 'Test Civique France - Pack Standard',
       description: 'Pack Standard avec tests thématiques, 1 examen blanc et cours détaillés. Accès 7 jours.',
       price: 2.99,
       sku: 'tcf-standard',
-      ratingValue: 4.7,
-      reviewCount: 420,
     },
     {
       name: 'Test Civique France - Premium',
       description: 'Pack Premium avec tests illimités, 3 examens blancs, statistiques avancées et support prioritaire. Accès 7 jours.',
       price: 6.99,
       sku: 'tcf-premium',
-      ratingValue: 4.9,
-      reviewCount: 280,
     },
     {
       name: 'Test Civique France - Découverte',
       description: '2 sessions d\'examen blanc dans les conditions réelles de l\'examen civique',
       price: 2.50,
       sku: 'tcf-decouverte',
-      ratingValue: 4.6,
-      reviewCount: 150,
     },
   ];
 
