@@ -1257,6 +1257,38 @@ export const viePratiqueArticles: Article[] = [
     image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop',
     featured: true,
   },
+  // Article 10: Naturalisation française 2026 — délais, conditions, dossier complet
+  {
+    id: 'vie-pratique-10',
+    slug: 'naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet',
+    title: 'Naturalisation française 2026 : délais réels par préfecture, conditions, dossier complet et 7 pièges à éviter',
+    excerpt: 'Guide complet naturalisation 2026 : délais réels (6 à 28 mois selon préfecture), nouvelles conditions loi 2024 (B1, test civique 80%), checklist des documents, 7 motifs de refus fréquents et comment rédiger un exposé des motifs convaincant.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '05/04/2026',
+    readTime: 22,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // Article 11: Passeport Talent France 2026 — guide complet 10 catégories
+  {
+    id: 'vie-pratique-11',
+    slug: 'passeport-talent-france-2026-guide-complet-10-categories-famille-naturalisation',
+    title: 'Passeport Talent France 2026 : les 10 catégories, salaires, famille et chemin vers la naturalisation',
+    excerpt: 'Passeport Talent 2026 : titre de séjour 4 ans pour profils qualifiés. Tableau des 10 catégories avec conditions précises, salaire minimum (1,5× SMIC), comment faire venir son conjoint immédiatement, accès à la carte de résident en 3 ans et naturalisation.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '05/04/2026',
+    readTime: 20,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
 ];
 
 /**

@@ -157,6 +157,12 @@ import {
   etudiantEtranger2026Content,
 } from './articles-nouveaux-avril-2026';
 
+// ===== Articles Naturalisation & Passeport Talent 2026 =====
+import {
+  naturalisation2026Content,
+  passeportTalent2026GuideContent,
+} from './articles-naturalisation-passeport-talent-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -243,6 +249,9 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'oqtf-2026-droits-recours-expulsion-aide-juridictionnelle-test-civique': oqtf2026Content,
   'declaration-impots-etrangers-france-2026-guide-pratique-formulaires-dates-remboursement': declarationImpots2026Content,
   'etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester': etudiantEtranger2026Content,
+  // Articles Naturalisation & Passeport Talent 2026
+  'naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet': naturalisation2026Content,
+  'passeport-talent-france-2026-guide-complet-10-categories-famille-naturalisation': passeportTalent2026GuideContent,
 };
 
 /**
