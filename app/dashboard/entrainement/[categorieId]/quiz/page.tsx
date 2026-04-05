@@ -425,7 +425,8 @@ export default function QuizPage() {
 
         setAllLevelsUnlocked(hasAllLevelsUnlocked)
         setHasActiveSubscription(hasActiveSubscription)
-        setNoTimerMode(profileData.no_timer_enabled || false)
+        // Mode sans chrono actif pour TOUS les utilisateurs (le chrono reste uniquement sur les examens blancs)
+        setNoTimerMode(true)
 
         // RESTRICTION : Membres gratuits = niveau 1 uniquement
         if (!hasPremiumAccess && niveau > 1) {
@@ -1095,18 +1096,6 @@ export default function QuizPage() {
 
         <div className="ml-3 flex-shrink-0 relative">
           {renderTimer()}
-
-          {/* Badge "Retirer le chrono" - uniquement pour abonnés Standard/Premium et si pas déjà en mode sans chrono */}
-          {hasActiveSubscription && !noTimerMode && (
-            <button
-              onClick={handleNoTimerPurchase}
-              className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-amber-500 hover:bg-amber-600 text-white text-[8px] px-1 py-[1px] rounded shadow-sm transition-all hover:scale-105 flex items-center gap-0.5 whitespace-nowrap"
-              title="Supprimez le chrono pour répondre sans stress"
-            >
-              <Clock className="w-2 h-2" />
-              <span>Retirer chrono</span>
-            </button>
-          )}
         </div>
       </div>
 
