@@ -276,7 +276,7 @@ Si vous passez le test civique dans le cadre de votre naturalisation, sachez que
       description: 'Identifiez la procédure pour votre profession réglementée',
     },
     {
-      title: 'Service-public.fr — Reconnaissance d'un diplôme étranger',
+      title: 'Service-public.fr — Reconnaissance d\'un diplôme étranger',
       url: 'https://www.service-public.fr/particuliers/vosdroits/F2272',
       type: 'official',
       description: 'Page officielle du gouvernement sur la reconnaissance des diplômes',
