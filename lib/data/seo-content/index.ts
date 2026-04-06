@@ -163,6 +163,11 @@ import {
   passeportTalent2026GuideContent,
 } from './articles-naturalisation-passeport-talent-2026';
 
+// ===== Articles Diplômes, Mariage, Retraite - Avril 2026 =====
+import { reconnaissanceDiplomesContent } from './articles-reconnaissance-diplomes';
+import { nationaliteParMariageContent } from './articles-nationalite-mariage';
+import { retraiteEtrangersFranceContent } from './articles-retraite-etrangers';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -252,6 +257,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   // Articles Naturalisation & Passeport Talent 2026
   'naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet': naturalisation2026Content,
   'passeport-talent-france-2026-guide-complet-10-categories-famille-naturalisation': passeportTalent2026GuideContent,
+  // Articles Diplômes, Mariage, Retraite - Avril 2026
+  'reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences': reconnaissanceDiplomesContent,
+  'nationalite-francaise-par-mariage-2026-conditions-delai-4-ans-dossier': nationaliteParMariageContent,
+  'retraite-etranger-france-2026-droits-aspa-pension-retour-pays': retraiteEtrangersFranceContent,
 };
 
 /**
