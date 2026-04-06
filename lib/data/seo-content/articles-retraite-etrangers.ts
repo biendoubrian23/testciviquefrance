@@ -32,7 +32,7 @@ En France, le système de retraite est basé sur la **solidarité intergénérat
     },
     {
       id: 'calcul-retraite-etranger',
-      title: 'Comment est calculée la retraite d'un étranger en France ?',
+      title: 'Comment est calculée la retraite d\'un étranger en France ?',
       content: `Le calcul suit exactement les mêmes règles que pour un Français. Voici les paramètres clés en 2026 :
 
 ### La retraite de base (régime général – CNAV)
@@ -142,7 +142,7 @@ L'ASPA est **récupérable sur la succession** du bénéficiaire après son déc
     },
     {
       id: 'retour-pays-origine',
-      title: 'Retour au pays d'origine : impact sur votre retraite française',
+      title: 'Retour au pays d\'origine : impact sur votre retraite française',
       content: `De nombreux étrangers envisagent de retourner dans leur pays d'origine à la retraite. Voici les conséquences sur vos droits :
 
 ### Ce que vous conservez en retournant au pays
