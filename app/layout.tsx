@@ -582,6 +582,13 @@ const jsonLd = {
         courseMode: 'online',
         courseWorkload: 'PT10H',
       },
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: '4.9',
+        reviewCount: '1250',
+        bestRating: '5',
+        worstRating: '1',
+      },
       offers: {
         '@type': 'Offer',
         category: 'Préparation examen',
@@ -590,6 +597,156 @@ const jsonLd = {
         priceCurrency: 'EUR',
         validFrom: '2025-01-01',
       },
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': 'https://www.testciviquefrance.fr/#faq',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'Qu\'est-ce que le test civique français ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Le test civique est un examen officiel obligatoire pour obtenir la naturalisation française, une carte de séjour pluriannuelle ou une carte de résident. Il comprend 40 questions QCM sur 5 thématiques officielles avec un seuil de réussite de 80% (32 bonnes réponses). Ce test est requis depuis la nouvelle loi immigration 2024.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Combien de questions comporte le test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Le test civique comporte 40 questions au format QCM (Questions à Choix Multiples) avec une seule bonne réponse par question. Les questions sont réparties sur 5 thématiques officielles.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Quel est le seuil de réussite du test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Le seuil de réussite du test civique est de 80%, soit 32 bonnes réponses sur 40 questions. Une bonne réponse vaut 1 point, une mauvaise réponse ou une absence de réponse vaut 0 point.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Quelles sont les 5 thématiques du test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Les 5 thématiques officielles sont : 1) Principes et valeurs de la République (11 questions), 2) Système institutionnel et politique (6 questions), 3) Droits et devoirs (11 questions), 4) Histoire, géographie et culture (8 questions), 5) Vivre dans la société française (4 questions).',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Le test civique est-il obligatoire pour les étudiants étrangers ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Depuis la nouvelle loi immigration 2024, le test civique peut être requis pour certains titres de séjour, y compris dans le cadre du changement de statut étudiant vers salarié. Il est essentiel pour les étudiants étrangers souhaitant rester en France après leurs études.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Comment se préparer au test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Pour se préparer au test civique, utilisez Test Civique France : 800+ questions officielles, cours sur les 5 thématiques, examens blancs corrigés. Notre plateforme offre un taux de réussite de 95% grâce à un entraînement complet et personnalisé.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Quelle est la nouvelle loi immigration 2024 concernant le test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'La loi immigration 2024 (loi pour contrôler l\'immigration et améliorer l\'intégration) renforce les exigences du test civique. Le décret 2025-647 définit les nouvelles modalités. Le test est désormais obligatoire pour davantage de titres de séjour et de démarches d\'intégration.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Qui doit passer le test civique en France ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Le test civique est obligatoire pour : la naturalisation française, l\'obtention de la carte de séjour pluriannuelle (4 ans), la carte de résident (10 ans), et certains changements de statut. Les conjoints de Français et les bénéficiaires du regroupement familial sont également concernés.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Où passer le test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Le test civique se passe dans des centres agréés en France. Vous pouvez trouver un centre près de chez vous via votre préfecture. Les principales villes comme Paris, Lyon, Marseille, Toulouse, Bordeaux, Nantes, Lille et Strasbourg disposent de centres d\'examen.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Suis-je éligible au test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Vous êtes éligible au test civique si vous souhaitez demander la naturalisation française, obtenir une carte de séjour pluriannuelle, une carte de résident 10 ans, ou si vous êtes dans le cadre d\'un regroupement familial ou conjoint de Français.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Combien coûte le test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Le prix du test civique varie selon les centres d\'examen. Préparez-vous gratuitement avec Test Civique France avant de passer l\'examen officiel. Notre plateforme propose 800+ questions pour vous entraîner sans frais.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Peut-on repasser le test civique en cas d\'échec ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Oui, en cas d\'échec au test civique, vous pouvez le repasser. Il n\'y a pas de limite au nombre de tentatives. Cependant, nous vous recommandons de bien vous préparer avec notre plateforme pour réussir dès la première fois.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Quelle est la durée de validité du test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'L\'attestation de réussite au test civique a une durée de validité limitée. Elle doit être présentée lors de votre demande de naturalisation ou de titre de séjour. Vérifiez auprès de votre préfecture les délais exacts.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Le test civique est-il difficile ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Le test civique nécessite une préparation sérieuse mais il est accessible avec un bon entraînement. Avec Test Civique France, 95% de nos utilisateurs réussissent leur examen. Nos 800+ questions couvrent toutes les thématiques officielles.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Quand passer le test civique en 2025 ou 2026 ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Vous pouvez passer le test civique tout au long de l\'année 2025 et 2026. Les sessions sont organisées régulièrement dans les centres agréés. Commencez votre préparation dès maintenant avec Test Civique France.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Comment s\'inscrire au test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Pour vous inscrire au test civique, contactez votre préfecture ou un centre d\'examen agréé. Avant l\'inscription, préparez-vous efficacement avec Test Civique France : cours complets, QCM et examens blancs gratuits.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Y a-t-il des exemptions au test civique ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Certaines personnes peuvent être dispensées du test civique, notamment pour des raisons médicales ou d\'âge. Les conditions d\'exemption sont définies par la réglementation. Consultez votre préfecture pour connaître votre situation.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Quelles sont les questions du test civique 2025-2026 ?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Les questions du test civique portent sur : les valeurs de la République (laïcité, liberté, égalité, fraternité), les institutions françaises, les droits et devoirs des citoyens, l\'histoire et géographie de France, et la vie en société. Entraînez-vous avec nos 800+ questions.',
+          },
+        },
+      ],
     },
     {
       '@type': 'BreadcrumbList',

@@ -63,7 +63,7 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
   // Parser un bloc de contenu en éléments typés (paragraphe, liste, tableau, etc.)
   const parseContentBlocks = (content: string) => {
     const lines = content.split('\n');
-    const blocks: Array<{ type: 'paragraph' | 'table' | 'bullets' | 'numbered' | 'blockquote'; content: string; lines?: string[] }> = [];
+    const blocks: Array<{ type: 'paragraph' | 'table' | 'bullets' | 'numbered' | 'blockquote' | 'heading'; content: string; lines?: string[]; level?: number }> = [];
     let i = 0;
 
     while (i < lines.length) {
@@ -120,12 +120,22 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
         continue;
       }
 
+      // Détection des titres markdown (###, ##, #)
+      if (/^#{1,6}\s/.test(trimmed)) {
+        const level = trimmed.match(/^(#+)\s/)?.[1].length || 3;
+        const headingText = trimmed.replace(/^#+\s*/, '');
+        blocks.push({ type: 'heading', content: headingText, level });
+        i++;
+        continue;
+      }
+
       // Sinon c'est un paragraphe de texte (regrouper les lignes consécutives non-vides)
       const paraLines: string[] = [];
       while (
         i < lines.length &&
         lines[i]?.trim() !== '' &&
         !isTableLine(lines[i]?.trim() || '') &&
+        !/^#{1,6}\s/.test(lines[i]?.trim() || '') &&
         !lines[i]?.trim().startsWith('- ') &&
         !lines[i]?.trim().startsWith('• ') &&
         !lines[i]?.trim().startsWith('> ') &&
@@ -261,113 +271,122 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
                 <span>{section.title}</span>
               </h2>
               
-              {/* Contenu de la section : HTML direct ou parsing markdown */}
-              {section.content.trim().startsWith('<') ? (
-                // Contenu HTML → rendu direct avec styles dédiés
-                <div
-                  className="article-html-content"
-                  dangerouslySetInnerHTML={{ __html: section.content }}
-                />
-              ) : (
-                // Contenu markdown → parsing bloc par bloc
-                <div className="space-y-4">
-                  {parseContentBlocks(section.content).map((block, bIdx) => {
-                    // Rendu d'un tableau markdown
-                    if (block.type === 'table' && block.lines) {
-                      const rows = block.lines.filter(l => !isTableSeparator(l));
-                      const headerCells = rows[0]?.split('|').filter(c => c.trim() !== '') || [];
-                      const bodyRows = rows.slice(1);
-                      return (
-                        <div key={bIdx} className="overflow-x-auto my-4">
-                          <table className="w-full border-collapse border border-gray-200 text-sm">
-                            <thead>
-                              <tr className="bg-primary-50">
-                                {headerCells.map((cell, cIdx) => (
-                                  <th
-                                    key={cIdx}
-                                    className="border border-gray-200 px-4 py-3 text-left font-semibold text-gray-900"
-                                    dangerouslySetInnerHTML={{ __html: parseMarkdown(cell.trim()) }}
-                                  />
-                                ))}
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {bodyRows.map((row, rIdx) => {
-                                const cells = row.split('|').filter(c => c.trim() !== '');
-                                return (
-                                  <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
-                                    {cells.map((cell, cIdx) => (
-                                      <td
-                                        key={cIdx}
-                                        className="border border-gray-200 px-4 py-3 text-gray-700"
-                                        dangerouslySetInnerHTML={{ __html: parseMarkdown(cell.trim()) }}
-                                      />
-                                    ))}
-                                  </tr>
-                                );
-                              })}
-                            </tbody>
-                          </table>
-                        </div>
-                      );
-                    }
-
-                    // Rendu d'une liste à puces markdown
-                    if (block.type === 'bullets' && block.lines) {
-                      return (
-                        <ul key={bIdx} className="space-y-3">
-                          {block.lines.map((item, iIdx) => (
-                            <li key={iIdx} className="flex items-start gap-4 text-gray-700">
-                              <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
-                              <span
-                                className="text-base"
-                                dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }}
-                              />
-                            </li>
-                          ))}
-                        </ul>
-                      );
-                    }
-
-                    // Rendu d'une liste numérotée markdown
-                    if (block.type === 'numbered' && block.lines) {
-                      return (
-                        <ol key={bIdx} className="space-y-4">
-                          {block.lines.map((item, iIdx) => (
-                            <li key={iIdx} className="flex items-start gap-4 p-4 border border-gray-200 hover:border-primary-300 hover:bg-primary-50/30 transition-all">
-                              <span className="w-8 h-8 bg-primary-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
-                                {iIdx + 1}
-                              </span>
-                              <span
-                                className="text-gray-700"
-                                dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }}
-                              />
-                            </li>
-                          ))}
-                        </ol>
-                      );
-                    }
-
-                    // Rendu d'une citation markdown
-                    if (block.type === 'blockquote') {
-                      return (
-                        <blockquote key={bIdx} className="border-l-4 border-primary-400 bg-primary-50/40 p-4 my-4 italic text-gray-700">
-                          <p dangerouslySetInnerHTML={{ __html: parseMarkdown(block.content) }} />
-                        </blockquote>
-                      );
-                    }
-
-                    // Rendu d'un paragraphe markdown normal
+              {/* Contenu de la section avec parsing intelligent */}
+              <div className="space-y-4">
+                {parseContentBlocks(section.content).map((block, bIdx) => {
+                  // Rendu d'un tableau
+                  if (block.type === 'table' && block.lines) {
+                    const rows = block.lines.filter(l => !isTableSeparator(l));
+                    const headerCells = rows[0]?.split('|').filter(c => c.trim() !== '') || [];
+                    const bodyRows = rows.slice(1);
+                    
                     return (
-                      <p
-                        key={bIdx}
-                        className="text-gray-700 leading-relaxed text-lg"
-                        dangerouslySetInnerHTML={{ __html: parseMarkdown(block.content) }}
-                      />
+                      <div key={bIdx} className="overflow-x-auto my-4">
+                        <table className="w-full border-collapse border border-gray-200 text-sm">
+                          <thead>
+                            <tr className="bg-primary-50">
+                              {headerCells.map((cell, cIdx) => (
+                                <th 
+                                  key={cIdx} 
+                                  className="border border-gray-200 px-4 py-3 text-left font-semibold text-gray-900"
+                                  dangerouslySetInnerHTML={{ __html: parseMarkdown(cell.trim()) }}
+                                />
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {bodyRows.map((row, rIdx) => {
+                              const cells = row.split('|').filter(c => c.trim() !== '');
+                              return (
+                                <tr key={rIdx} className={rIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                                  {cells.map((cell, cIdx) => (
+                                    <td 
+                                      key={cIdx} 
+                                      className="border border-gray-200 px-4 py-3 text-gray-700"
+                                      dangerouslySetInnerHTML={{ __html: parseMarkdown(cell.trim()) }}
+                                    />
+                                  ))}
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
                     );
-                  })}
-                </div>
-              )}
+                  }
+
+                  // Rendu d'une liste à puces
+                  if (block.type === 'bullets' && block.lines) {
+                    return (
+                      <ul key={bIdx} className="space-y-3">
+                        {block.lines.map((item, iIdx) => (
+                          <li key={iIdx} className="flex items-start gap-4 text-gray-700">
+                            <CheckCircle className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" />
+                            <span 
+                              className="text-base"
+                              dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    );
+                  }
+
+                  // Rendu d'une liste numérotée
+                  if (block.type === 'numbered' && block.lines) {
+                    return (
+                      <ol key={bIdx} className="space-y-4">
+                        {block.lines.map((item, iIdx) => (
+                          <li key={iIdx} className="flex items-start gap-4 p-4 border border-gray-200 hover:border-primary-300 hover:bg-primary-50/30 transition-all">
+                            <span className="w-8 h-8 bg-primary-600 text-white text-sm font-bold flex items-center justify-center flex-shrink-0">
+                              {iIdx + 1}
+                            </span>
+                            <span 
+                              className="text-gray-700"
+                              dangerouslySetInnerHTML={{ __html: parseMarkdown(item) }}
+                            />
+                          </li>
+                        ))}
+                      </ol>
+                    );
+                  }
+
+                  // Rendu d'une citation
+                  if (block.type === 'blockquote') {
+                    return (
+                      <blockquote key={bIdx} className="border-l-4 border-primary-400 bg-primary-50/40 p-4 my-4 italic text-gray-700">
+                        <p dangerouslySetInnerHTML={{ __html: parseMarkdown(block.content) }} />
+                      </blockquote>
+                    );
+                  }
+
+                  // Rendu d'un titre markdown (###, ##, #)
+                  if (block.type === 'heading') {
+                    const lvl = block.level || 3;
+                    if (lvl <= 2) {
+                      return (
+                        <h3 key={bIdx} className="text-xl font-bold text-gray-900 mt-8 mb-3 pb-2 border-b border-gray-200">
+                          {block.content}
+                        </h3>
+                      );
+                    }
+                    return (
+                      <h4 key={bIdx} className="text-lg font-semibold text-primary-700 mt-6 mb-2">
+                        {block.content}
+                      </h4>
+                    );
+                  }
+
+                  // Rendu d'un paragraphe normal
+                  return (
+                    <p 
+                      key={bIdx}
+                      className="text-gray-700 leading-relaxed text-lg"
+                      dangerouslySetInnerHTML={{ __html: parseMarkdown(block.content) }}
+                    />
+                  );
+                })}
+              </div>
             </section>
           ))}
 
