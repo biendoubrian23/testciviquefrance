@@ -168,6 +168,13 @@ import { reconnaissanceDiplomesContent } from './articles-reconnaissance-diplome
 import { nationaliteParMariageContent } from './articles-nationalite-mariage';
 import { retraiteEtrangersFranceContent } from './articles-retraite-etrangers';
 
+// ===== Articles Buzz Généraux - Avril 2026 =====
+import {
+  dixDroitsEtrangersContent,
+  coutRegularisationFranceContent,
+  cinqErreursRefusPrefectureContent,
+} from './articles-buzz-generaux';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -261,6 +268,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences': reconnaissanceDiplomesContent,
   'nationalite-francaise-par-mariage-2026-conditions-delai-4-ans-dossier': nationaliteParMariageContent,
   'retraite-etranger-france-2026-droits-aspa-pension-retour-pays': retraiteEtrangersFranceContent,
+  // Articles Buzz Généraux - Avril 2026
+  'droits-etrangers-france-2026-ce-que-vous-ne-saviez-pas': dixDroitsEtrangersContent,
+  'cout-regularisation-situation-france-2026-budget-complet': coutRegularisationFranceContent,
+  '5-erreurs-refus-dossier-prefecture-etranger-france-2026': cinqErreursRefusPrefectureContent,
 };
 
 /**
