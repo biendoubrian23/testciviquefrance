@@ -175,6 +175,13 @@ import {
   cinqErreursRefusPrefectureContent,
 } from './articles-buzz-generaux';
 
+// ===== Articles Buzz Généraux 2 - Avril 2026 =====
+import {
+  voyageTropAbsenceTitreContent,
+  envoyerArgentPaysFiscContent,
+  naturalisationRapide2AnsContent,
+} from './articles-buzz-generaux-2';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -272,6 +279,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'droits-etrangers-france-2026-ce-que-vous-ne-saviez-pas': dixDroitsEtrangersContent,
   'cout-regularisation-situation-france-2026-budget-complet': coutRegularisationFranceContent,
   '5-erreurs-refus-dossier-prefecture-etranger-france-2026': cinqErreursRefusPrefectureContent,
+  // Articles Buzz Généraux 2 - Avril 2026
+  'absence-france-voyage-perte-titre-sejour-duree-maximale-2026': voyageTropAbsenceTitreContent,
+  'envoyer-argent-pays-etranger-france-fisc-seuil-declaration-2026': envoyerArgentPaysFiscContent,
+  'naturalisation-francaise-2-ans-raccourcis-legaux-accelerer-2026': naturalisationRapide2AnsContent,
 };
 
 /**
