@@ -182,6 +182,13 @@ import {
   naturalisationRapide2AnsContent,
 } from './articles-buzz-generaux-2';
 
+// ===== Articles Buzz Généraux 3 - Avril 2026 =====
+import {
+  arnaquesEtrangersFranceContent,
+  controlePoliceEtrangerDroitsContent,
+  logementEtrangerRefusIllegauxContent,
+} from './articles-buzz-generaux-3';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -283,6 +290,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'absence-france-voyage-perte-titre-sejour-duree-maximale-2026': voyageTropAbsenceTitreContent,
   'envoyer-argent-pays-etranger-france-fisc-seuil-declaration-2026': envoyerArgentPaysFiscContent,
   'naturalisation-francaise-2-ans-raccourcis-legaux-accelerer-2026': naturalisationRapide2AnsContent,
+  // Articles Buzz Généraux 3 - Avril 2026
+  'arnaques-etrangers-france-2026-faux-avocats-prefecture-anef': arnaquesEtrangersFranceContent,
+  'controle-police-etranger-france-droits-2026': controlePoliceEtrangerDroitsContent,
+  'louer-appartement-etranger-france-discrimination-refus-illegaux-2026': logementEtrangerRefusIllegauxContent,
 };
 
 /**
