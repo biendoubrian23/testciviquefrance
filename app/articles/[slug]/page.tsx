@@ -14,6 +14,9 @@ interface ArticlePageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Force le rendu 100% statique — aucun SSR, aucun appel serveur à la demande
+export const dynamic = 'force-static';
+
 // Génère les paramètres statiques pour tous les articles
 export async function generateStaticParams() {
   return allArticles.map((article) => ({
