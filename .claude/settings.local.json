@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "Bash(npx tsc:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(ls d:/MesApps/deploy/testciviquefrance/app/articles/[slug]/)",
+      "Bash(grep -h \"title:\" d:/MesApps/deploy/testciviquefrance/lib/data/seo-content/articles-buzz-generaux*.ts)",
+      "Bash(grep -h \"slug:\" d:/MesApps/deploy/testciviquefrance/lib/data/seo-content/articles-part*.ts d:/MesApps/deploy/testciviquefrance/lib/data/seo-content/articles-2026*.ts)",
+      "Bash(grep -n \"import\\\\|getAllArticles\\\\|getArticleBySlug\\\\|articlesData\\\\|fullContent\\\\|buzz-generaux-3\\\\|nouveaux-avril\" d:/MesApps/deploy/testciviquefrance/app/articles/[slug]/page.tsx)",
+      "Bash(node -e \"require\\('./lib/data/seo-content/articles-vie-pratique-2.ts'\\)\")",
+      "Bash(npx tsx:*)",
+      "Bash(cmd /c \"cd d:\\\\MesApps\\\\deploy\\\\testciviquefrance && npx tsx lib/data/seo-content/articles-vie-pratique-2.ts 2>&1\")",
+      "Bash(cmd /c \"cd d:\\\\MesApps\\\\deploy\\\\testciviquefrance && npx tsc --noEmit --skipLibCheck 2>&1\")"
     ]
   }
 }

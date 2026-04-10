@@ -189,6 +189,14 @@ import {
   logementEtrangerRefusIllegauxContent,
 } from './articles-buzz-generaux-3';
 
+// ===== Articles Vie Pratique (Batch 2) - Avril 2026 =====
+import {
+  compteBancaireEtrangerFranceContent,
+  certificationFrancaisDELFTCFContent,
+  medecinTraitantSecuSocialeEtrangerContent,
+  mutuelleEtrangerFranceContent,
+} from './articles-vie-pratique-2';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -294,6 +302,11 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'arnaques-etrangers-france-2026-faux-avocats-prefecture-anef': arnaquesEtrangersFranceContent,
   'controle-police-etranger-france-droits-2026': controlePoliceEtrangerDroitsContent,
   'louer-appartement-etranger-france-discrimination-refus-illegaux-2026': logementEtrangerRefusIllegauxContent,
+  // Articles Vie Pratique (Batch 2) - Avril 2026
+  'ouvrir-compte-bancaire-france-etranger-2026-banques-neo-banques-droit-compte': compteBancaireEtrangerFranceContent,
+  'delf-tcf-dilf-certification-francais-2026-titre-sejour-naturalisation-laquelle-choisir': certificationFrancaisDELFTCFContent,
+  'medecin-traitant-secu-sociale-etranger-france-2026-ameli-carte-vitale': medecinTraitantSecuSocialeEtrangerContent,
+  'mutuelle-sante-etranger-france-2026-css-comparer-choisir-obligation': mutuelleEtrangerFranceContent,
 };
 
 /**
