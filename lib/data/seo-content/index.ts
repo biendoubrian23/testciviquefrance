@@ -197,6 +197,14 @@ import {
   mutuelleEtrangerFranceContent,
 } from './articles-vie-pratique-2';
 
+// ===== Articles Buzz Généraux 4 - Avril 2026 =====
+import {
+  travaillerSansPapiersFranceContent,
+  avoirEnfantFranceEtrangerContent,
+  oqtfEnfantsFranceContent,
+  primeRetourVolontaireFranceContent,
+} from './articles-buzz-generaux-4';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -307,6 +315,11 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'delf-tcf-dilf-certification-francais-2026-titre-sejour-naturalisation-laquelle-choisir': certificationFrancaisDELFTCFContent,
   'medecin-traitant-secu-sociale-etranger-france-2026-ameli-carte-vitale': medecinTraitantSecuSocialeEtrangerContent,
   'mutuelle-sante-etranger-france-2026-css-comparer-choisir-obligation': mutuelleEtrangerFranceContent,
+  // Articles Buzz Généraux 4 - Avril 2026
+  'travailler-sans-papiers-france-2026-risques-regularisation': travaillerSansPapiersFranceContent,
+  'avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations': avoirEnfantFranceEtrangerContent,
+  'oqtf-enfants-france-2026-expulsion-enfants-francais-scolarises': oqtfEnfantsFranceContent,
+  'prime-retour-volontaire-france-2026-conditions-demarches': primeRetourVolontaireFranceContent,
 };
 
 /**
