@@ -214,6 +214,7 @@ La loi immigration de 2024, pleinement en vigueur en 2026, a apporté des change
 Ne restez pas isolé. Contactez une **association d'aide aux étrangers** dans votre département. elles accompagnent gratuitement des milliers de dossiers chaque année. Le GISTI (Groupe d'information et de soutien des immigrés) publie des notes pratiques gratuites sur chaque voie de régularisation : gisti.org`,
     },
   ],
+  conclusion: `La régularisation en France n'est pas un hasard : c'est un parcours juridique balisé, exigeant mais réel. En 2026, les voies légales existent — circulaire Valls, métiers en tension, parent d'enfant français, étranger malade, victime de violences. La clé, c'est un dossier irréprochable, des preuves solides et un accompagnement associatif ou juridique. Ne restez jamais seul face à l'administration. Chaque année, des dizaines de milliers de personnes obtiennent un titre de séjour par admission exceptionnelle. Vous pouvez être la prochaine.`,
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -429,6 +430,7 @@ Après un ajournement de 2 ans :
 - **Ne déposez jamais de faux documents** : si la fraude est découverte (et elle l'est souvent), vous serez interdit de naturalisation pendant 10 ans et poursuivi pénalement`,
     },
   ],
+  conclusion: `Un refus de naturalisation n'est pas une fin. C'est souvent le résultat de critères flous appliqués de manière subjective par l'administration. En comprenant les vraies raisons derrière les formulations officielles, en préparant un recours solide (gracieux puis contentieux devant le tribunal de Nantes), et en corrigeant méthodiquement chaque motif de refus, vos chances de succès sont réelles — 40 à 55 % avec un avocat spécialisé. Faites-vous accompagner, ne baissez pas les bras, et préparez votre prochaine demande comme un dossier d'avocat.`,
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -678,4 +680,5 @@ Si vous êtes éligible à la carte de résident ET à la naturalisation en mêm
 | Coût du renouvellement (timbre fiscal) | 269 € |`,
     },
   ],
+  conclusion: `La carte de résident 10 ans reste le titre de séjour le plus puissant en France : stabilité, liberté de travail, protection contre l'éloignement et tremplin vers la nationalité. Malgré le durcissement des pratiques préfectorales, les voies d'obtention sont clairement définies par la loi — et les recours fonctionnent. Préparez un dossier solide, anticipez les motifs de refus, et n'hésitez pas à contester une décision injuste devant le tribunal administratif. Votre avenir en France en dépend.`,
 };
