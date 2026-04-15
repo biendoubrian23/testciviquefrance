@@ -205,6 +205,13 @@ import {
   primeRetourVolontaireFranceContent,
 } from './articles-buzz-generaux-4';
 
+// ===== Articles Buzz Généraux 5 - Avril 2026 =====
+import {
+  regularisationSansPapiers2026Content,
+  naturalisationRefusee2026Content,
+  carteResident10Ans2026Content,
+} from './articles-buzz-generaux-5';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -320,6 +327,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations': avoirEnfantFranceEtrangerContent,
   'oqtf-enfants-france-2026-expulsion-enfants-francais-scolarises': oqtfEnfantsFranceContent,
   'prime-retour-volontaire-france-2026-conditions-demarches': primeRetourVolontaireFranceContent,
+  // Articles Buzz Généraux 5 - Avril 2026
+  'regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls': regularisationSansPapiers2026Content,
+  'naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours': naturalisationRefusee2026Content,
+  'carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture': carteResident10Ans2026Content,
 };
 
 /**

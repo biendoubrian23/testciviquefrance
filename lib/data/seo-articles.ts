@@ -1020,6 +1020,55 @@ export const seoArticles: Article[] = [
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop',
     featured: true,
   },
+  // ===== Articles Buzz Généraux 5 - Avril 2026 =====
+  // BUZZ: Régularisation sans papiers 2026
+  {
+    id: 'buzz5-1',
+    slug: 'regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls',
+    title: 'Régularisation sans papiers en France 2026 : la méthode que personne ne vous explique (circulaire Valls, métiers en tension)',
+    excerpt: 'Les 5 voies légales pour se régulariser en France en 2026 : circulaire Valls, métiers en tension, parent d\'enfant français, étranger malade. Dossier type, preuves acceptées, délais préfecture et recours en cas de refus.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '15/04/2026',
+    readTime: 25,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // BUZZ: Naturalisation française refusée 2026
+  {
+    id: 'buzz5-2',
+    slug: 'naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours',
+    title: 'Naturalisation française refusée en 2026 : les vraies raisons cachées et comment contester (recours, tribunal)',
+    excerpt: 'Votre naturalisation a été refusée ou ajournée ? Découvrez les vraies raisons que la préfecture ne vous dit pas (assimilation, revenus, comportement fiscal) et la méthode complète pour contester devant le tribunal administratif de Nantes.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '15/04/2026',
+    readTime: 22,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+  // BUZZ: Carte de résident 10 ans 2026
+  {
+    id: 'buzz5-3',
+    slug: 'carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture',
+    title: 'Carte de résident 10 ans en France 2026 : qui peut l\'obtenir, comment, et pourquoi la préfecture refuse',
+    excerpt: 'Guide ultra-complet de la carte de résident 10 ans : 5 voies d\'obtention (conjoint, parent, 5 ans de résidence), conditions, motifs de refus des préfectures, recours et parcours vers la naturalisation.',
+    content: '',
+    category: 'Cadre légal',
+    categorySlug: 'cadre-legal',
+    author: 'Brian BIENDOU',
+    date: '15/04/2026',
+    readTime: 24,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
 ];
 
 // ===== ARTICLES QUOTIDIEN IMMIGRATION - Avril 2026 =====
