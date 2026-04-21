@@ -212,6 +212,16 @@ import {
   carteResident10Ans2026Content,
 } from './articles-buzz-generaux-5';
 
+// ===== Article Taxes Titres Séjour - Mai 2026 =====
+import { haussesTaxesTitresSejour2026Content } from './articles-taxes-titres-sejour-2026';
+
+// ===== Articles Buzz Actualité - Avril 2026 =====
+import {
+  espagneRegularisation2026Content,
+  craRetention7Mois2026Content,
+  dossiersBlockesPrefecture2026Content,
+} from './articles-buzz-actu-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -331,6 +341,12 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls': regularisationSansPapiers2026Content,
   'naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours': naturalisationRefusee2026Content,
   'carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture': carteResident10Ans2026Content,
+  // Article Taxes Titres Séjour - Mai 2026
+  'hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances': haussesTaxesTitresSejour2026Content,
+  // Articles Buzz Actualité - Avril 2026
+  'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
+  'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,
+  '930000-dossiers-bloques-prefecture-2026-droits-recours-etrangers-france': dossiersBlockesPrefecture2026Content,
 };
 
 /**
