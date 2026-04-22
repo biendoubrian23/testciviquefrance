@@ -144,6 +144,19 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const isSEOArticle = seoArticleSlugs.includes(slug);
   const seoContent = isSEOArticle ? getArticleContent(slug) : null;
 
+  // Slugs des articles avec un rendu dédié (composants riches sur mesure)
+  const hasDedicatedRenderer =
+    slug === 'cadre-general-examen-civique' ||
+    slug === 'centres-agrees-examen-civique-2026' ||
+    slug === 'tout-savoir-examen-civique-2026';
+
+  // Compliance AdSense : si un article n'a NI contenu SEO, NI rendu dédié,
+  // renvoyer 404 plutôt qu'une page placeholder "contenu bientôt disponible"
+  // (= thin content selon Google Publisher Policies)
+  if (!isSEOArticle && !hasDedicatedRenderer) {
+    notFound();
+  }
+
   // Breadcrumb schema pour Google
   const breadcrumbJsonLd = getBreadcrumbSchema([
     { name: 'Accueil', url: SEO_CONFIG.siteUrl },

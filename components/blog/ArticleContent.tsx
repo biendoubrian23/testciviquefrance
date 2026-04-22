@@ -310,13 +310,10 @@ export default function ArticleContent({ article }: ArticleContentProps) {
               </section>
             </>
           ) : (
-            // Contenu par défaut pour les autres articles
+            // Contenu par défaut : redirection vers le catalogue (évite le thin content AdSense)
             <div className="text-gray-700">
               <p className="text-xl leading-relaxed mb-8">{article.excerpt}</p>
               <div className="p-8 bg-gray-100 text-center border-t-4 border-primary-600">
-                <p className="text-gray-600 mb-6">
-                  Le contenu complet de cet article sera bientôt disponible.
-                </p>
                 <Link
                   href="/articles"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-colors"

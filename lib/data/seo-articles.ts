@@ -519,38 +519,6 @@ export const seoArticles: Article[] = [
     image: 'https://images.unsplash.com/photo-1555116505-38ab61800975?q=80&w=2070',
     featured: true,
   },
-  // ARTICLE 11: Histoire de France dates importantes
-  {
-    id: 'seo-11',
-    slug: 'histoire-france-50-dates-importantes',
-    title: "Histoire de France : les 50 dates importantes à connaître",
-    excerpt: "Les 50 dates clés de l'histoire de France à maîtriser pour le test civique : de la Révolution française à nos jours. Chronologie illustrée et moyens mnémotechniques.",
-    content: '',
-    category: 'Thématiques officielles',
-    categorySlug: 'thematiques',
-    author: 'Équipe Le Test Civique',
-    date: '10/12/2025',
-    readTime: 22,
-    views: 0,
-    image: 'https://images.unsplash.com/photo-1461360228754-6e81c478b882?q=80&w=2074',
-    featured: true,
-  },
-  // ARTICLE 12: Laïcité en France
-  {
-    id: 'seo-12',
-    slug: 'laicite-france-definition-principes-loi-1905',
-    title: "La laïcité en France : définition, principes et lois",
-    excerpt: "Tout comprendre sur la laïcité française : la loi de 1905, la séparation de l'Église et de l'État, application dans les services publics et l'école. Questions fréquentes au test civique.",
-    content: '',
-    category: 'Thématiques officielles',
-    categorySlug: 'thematiques',
-    author: 'Équipe Le Test Civique',
-    date: '09/12/2025',
-    readTime: 15,
-    views: 0,
-    image: 'https://images.unsplash.com/photo-1548625361-1adbed7b2f92?q=80&w=2070',
-    featured: false,
-  },
   // ARTICLE 13: Droits et devoirs des citoyens
   {
     id: 'seo-13',

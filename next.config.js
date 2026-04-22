@@ -118,6 +118,17 @@ const nextConfig = {
         destination: '/articles/questions-frequentes-test-civique-2025',
         permanent: true,
       },
+      // Redirects anti-thin-content : slugs doublons vers articles riches (AdSense compliance)
+      {
+        source: '/articles/histoire-france-50-dates-importantes',
+        destination: '/articles/histoire-france-dates-cles-test-civique',
+        permanent: true,
+      },
+      {
+        source: '/articles/laicite-france-definition-principes-loi-1905',
+        destination: '/articles/laicite-france-principe-loi-1905',
+        permanent: true,
+      },
     ];
   },
 
