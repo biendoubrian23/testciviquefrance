@@ -333,7 +333,7 @@ export function DashboardClient({
 
         {/* Graphique Revenus avec filtres */}
         <Card 
-          title="Revenus" 
+          title={`Revenus (${revenueData.reduce((sum, d) => sum + (d.amount || 0), 0).toFixed(2)}€ sur ${PERIOD_LABELS[revenuePeriod]})`}
           subtitle={PERIOD_LABELS[revenuePeriod]}
           actions={
             <div className="flex gap-1 flex-wrap">
