@@ -254,8 +254,8 @@ export function DashboardClient({
           title={`Revenus`}
           value={`${getDisplayedRevenue().toFixed(2)}€`}
           subtitle={filter === 'all' 
-            ? `${stats.standardRevenue.toFixed(0)}€ + ${stats.premiumRevenue.toFixed(0)}€`
-            : '/semaine'
+            ? `ce mois: ${stats.revenusThisMonth.toFixed(0)}€`
+            : filter === 'standard' ? 'Standard cumulé' : 'Premium cumulé'
           }
           icon={CreditCard}
           variant="success"

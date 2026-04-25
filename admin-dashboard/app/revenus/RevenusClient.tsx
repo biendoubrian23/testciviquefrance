@@ -27,6 +27,9 @@ interface RevenusClientProps {
     premium: number;
     total: number;
     revenue: number;
+    standardRevenue: number;
+    premiumRevenue: number;
+    oneTimeRevenue: number;
   }>;
 }
 
@@ -148,15 +151,16 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
           variant="primary"
         />
         <StatCard
-          title="Revenus/semaine"
+          title="Encaissé (7j)"
           value={`${stats.weeklyRevenue.toFixed(2)} €`}
+          subtitle="Paiements réels"
           icon={CreditCard}
           variant="success"
         />
         <StatCard
-          title="Revenus/mois"
+          title="Encaissé (30j)"
           value={`${stats.monthlyRevenue.toFixed(2)} €`}
-          subtitle="Projection 4 semaines"
+          subtitle="Paiements réels"
           icon={TrendingUp}
           variant="success"
         />
@@ -189,14 +193,14 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
 
       {/* Répartition des revenus */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <Card title="Revenus Standard" className="border-l-4 border-l-orange-500">
+        <Card title="Revenus Standard" subtitle="Paiements réels cumulés" className="border-l-4 border-l-orange-500">
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-3xl font-bold text-orange-600">{stats.standardRevenue.toFixed(2)} €</span>
-              <Badge variant="warning">{stats.totalStandard} abonnés</Badge>
+              <Badge variant="warning">{stats.totalStandard} actifs</Badge>
             </div>
             <div className="text-sm text-text-muted">
-              Prix: 2.99€/semaine
+              Prix: 2.99€/semaine — total encaissé depuis le début
             </div>
             <ProgressBar
               value={stats.totalStandard}
@@ -208,14 +212,14 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
           </div>
         </Card>
 
-        <Card title="Revenus Premium" className="border-l-4 border-l-green-500">
+        <Card title="Revenus Premium" subtitle="Paiements réels cumulés" className="border-l-4 border-l-green-500">
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-3xl font-bold text-green-600">{stats.premiumRevenue.toFixed(2)} €</span>
-              <Badge variant="success">{stats.totalPremium} abonnés</Badge>
+              <Badge variant="success">{stats.totalPremium} actifs</Badge>
             </div>
             <div className="text-sm text-text-muted">
-              Prix: 6.99€/semaine
+              Prix: 6.99€/semaine — total encaissé depuis le début
             </div>
             <ProgressBar
               value={stats.totalPremium}
@@ -227,14 +231,14 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
           </div>
         </Card>
 
-        <Card title="Projection annuelle" className="border-l-4 border-l-blue-500">
+        <Card title="Projection annuelle" subtitle="Basée sur le rythme actuel" className="border-l-4 border-l-blue-500">
           <div className="space-y-4">
             <div className="flex justify-between items-center">
               <span className="text-3xl font-bold text-blue-600">{stats.yearlyRevenue.toFixed(2)} €</span>
               <Badge variant="info">52 semaines</Badge>
             </div>
             <div className="text-sm text-text-muted">
-              Basé sur les abonnés actuels
+              Basé sur les encaissements réels des 7 derniers jours
             </div>
             <Link
               href="/revenus/projections"
@@ -264,16 +268,17 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
       </div>
 
       {/* Historique des revenus */}
-      <Card title="Historique des revenus" subtitle="12 dernières semaines" className="mb-8">
+      <Card title="Historique des revenus" subtitle="12 dernières semaines — paiements réels" className="mb-8">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
               <tr className="table-header">
                 <th className="px-4 py-3 text-left">Semaine</th>
+                <th className="px-4 py-3 text-center">Paiements sub.</th>
                 <th className="px-4 py-3 text-center">Standard</th>
                 <th className="px-4 py-3 text-center">Premium</th>
-                <th className="px-4 py-3 text-center">Total</th>
-                <th className="px-4 py-3 text-right">Revenus</th>
+                <th className="px-4 py-3 text-center">Achats ponctuels</th>
+                <th className="px-4 py-3 text-right">Total encaissé</th>
               </tr>
             </thead>
             <tbody>
@@ -284,20 +289,49 @@ export function RevenusClient({ initialSubscriptions, initialStats, revenueHisto
                     <div className="text-xs text-text-muted">{week.date}</div>
                   </td>
                   <td className="px-4 py-3 text-center">
-                    <Badge variant="warning">{week.standard}</Badge>
+                    <Badge variant="info">{week.standard + week.premium}</Badge>
                   </td>
                   <td className="px-4 py-3 text-center">
-                    <Badge variant="success">{week.premium}</Badge>
+                    <span className="text-orange-600 font-medium">
+                      {week.standardRevenue > 0 ? `${week.standardRevenue.toFixed(2)} €` : '—'}
+                    </span>
                   </td>
-                  <td className="px-4 py-3 text-center font-medium">
-                    {week.total}
+                  <td className="px-4 py-3 text-center">
+                    <span className="text-green-600 font-medium">
+                      {week.premiumRevenue > 0 ? `${week.premiumRevenue.toFixed(2)} €` : '—'}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3 text-center">
+                    <span className="text-blue-600 font-medium">
+                      {week.oneTimeRevenue > 0 ? `${week.oneTimeRevenue.toFixed(2)} €` : '—'}
+                    </span>
                   </td>
                   <td className="px-4 py-3 text-right font-bold text-green-600">
-                    {week.revenue.toFixed(2)} €
+                    {week.revenue > 0 ? `${week.revenue.toFixed(2)} €` : (
+                      <span className="text-gray-400 font-normal text-sm">0.00 €</span>
+                    )}
                   </td>
                 </tr>
               ))}
             </tbody>
+            <tfoot>
+              <tr className="bg-gray-50 font-bold">
+                <td className="px-4 py-3 text-sm text-text-muted">Total</td>
+                <td className="px-4 py-3 text-center">—</td>
+                <td className="px-4 py-3 text-center text-orange-600">
+                  {revenueHistory.reduce((s, w) => s + w.standardRevenue, 0).toFixed(2)} €
+                </td>
+                <td className="px-4 py-3 text-center text-green-600">
+                  {revenueHistory.reduce((s, w) => s + w.premiumRevenue, 0).toFixed(2)} €
+                </td>
+                <td className="px-4 py-3 text-center text-blue-600">
+                  {revenueHistory.reduce((s, w) => s + w.oneTimeRevenue, 0).toFixed(2)} €
+                </td>
+                <td className="px-4 py-3 text-right text-green-700">
+                  {revenueHistory.reduce((s, w) => s + w.revenue, 0).toFixed(2)} €
+                </td>
+              </tr>
+            </tfoot>
           </table>
         </div>
       </Card>

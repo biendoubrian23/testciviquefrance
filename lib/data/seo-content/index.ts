@@ -222,6 +222,13 @@ import {
   dossiersBlockesPrefecture2026Content,
 } from './articles-buzz-actu-2026';
 
+// ===== Articles Buzz Nouveaux - Avril 2026 =====
+import {
+  doubleNationaliteGeneralContent,
+  unEtrangerSurTroisNationaliteContent,
+  titreSejourExpireEtrangerContent,
+} from './articles-buzz-nouveaux-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -347,6 +354,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,
   '930000-dossiers-bloques-prefecture-2026-droits-recours-etrangers-france': dossiersBlockesPrefecture2026Content,
+  // Articles Buzz Nouveaux - Avril 2026
+  'double-nationalite-france-2026-pays-interdisent-risques-declaration': doubleNationaliteGeneralContent,
+  '1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026': unEtrangerSurTroisNationaliteContent,
+  'titre-sejour-expire-vacances-etranger-france-que-faire-visa-retour': titreSejourExpireEtrangerContent,
 };
 
 /**

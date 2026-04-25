@@ -160,7 +160,9 @@ export async function getSubscriptionStats(): Promise<SubscriptionStats> {
     { count: canceledThisMonth },
     { data: newThisWeekData },
     { data: newThisMonthData },
-    { count: trialingCount },
+    { data: revenueWeekData },
+    { data: revenueMonthData },
+    { data: revenueAllData },
   ] = await Promise.all([
     // Utilisateurs actifs (is_premium OU active OU trialing)
     supabase.from('profiles')
@@ -178,20 +180,47 @@ export async function getSubscriptionStats(): Promise<SubscriptionStats> {
       .select('id')
       .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
       .gte('subscription_start_date', oneMonthAgo.toISOString()),
-    // Comptage spécifique des utilisateurs en période d'essai
-    supabase.from('profiles')
-      .select('*', { count: 'exact', head: true })
-      .eq('subscription_status', 'trialing'),
+    // Revenus réels de la semaine (depuis revenue_events)
+    supabase.from('revenue_events')
+      .select('amount, product_type')
+      .eq('status', 'succeeded')
+      .gte('created_at', oneWeekAgo.toISOString()),
+    // Revenus réels du mois
+    supabase.from('revenue_events')
+      .select('amount, product_type')
+      .eq('status', 'succeeded')
+      .gte('created_at', oneMonthAgo.toISOString()),
+    // Revenus totaux tous types
+    supabase.from('revenue_events')
+      .select('amount, product_type')
+      .eq('status', 'succeeded'),
   ]);
 
   const users = activeUsers || [];
-  const totalActive = users.length;
-  const totalStandard = users.filter(u => u.stripe_price_id && STANDARD_PRICE_IDS.includes(u.stripe_price_id)).length;
-  const totalPremium = users.filter(u => u.stripe_price_id && PREMIUM_PRICE_IDS.includes(u.stripe_price_id)).length;
+  const totalActive = users.filter(u =>
+    u.subscription_status === 'active' || u.subscription_status === 'trialing'
+  ).length;
+  const totalStandard = users.filter(u =>
+    (u.subscription_status === 'active' || u.subscription_status === 'trialing') &&
+    u.stripe_price_id && STANDARD_PRICE_IDS.includes(u.stripe_price_id)
+  ).length;
+  const totalPremium = users.filter(u =>
+    (u.subscription_status === 'active' || u.subscription_status === 'trialing') &&
+    u.stripe_price_id && PREMIUM_PRICE_IDS.includes(u.stripe_price_id)
+  ).length;
 
-  const standardRevenue = totalStandard * STANDARD_PRICE;
-  const premiumRevenue = totalPremium * PREMIUM_PRICE;
-  const weeklyRevenue = standardRevenue + premiumRevenue;
+  // Revenus réels depuis revenue_events (pas une estimation)
+  const weeklyRevenue = (revenueWeekData || []).reduce((sum, e) => sum + (e.amount || 0), 0);
+  const monthlyRevenue = (revenueMonthData || []).reduce((sum, e) => sum + (e.amount || 0), 0);
+
+  // Répartition standard/premium sur le total
+  const allRevenue = revenueAllData || [];
+  const standardRevenue = allRevenue
+    .filter(e => e.product_type === 'standard')
+    .reduce((sum, e) => sum + (e.amount || 0), 0);
+  const premiumRevenue = allRevenue
+    .filter(e => e.product_type === 'premium')
+    .reduce((sum, e) => sum + (e.amount || 0), 0);
 
   const expiringThisWeek = users.filter(u => {
     const days = getDaysRemaining(u.subscription_end_date);
@@ -205,17 +234,20 @@ export async function getSubscriptionStats(): Promise<SubscriptionStats> {
 
   // Calcul du taux de churn
   const totalThisMonth = (newThisMonthData?.length || 0) + (canceledThisMonth || 0);
-  const churnRate = totalThisMonth > 0 
-    ? Math.round(((canceledThisMonth || 0) / totalThisMonth) * 100) 
+  const churnRate = totalThisMonth > 0
+    ? Math.round(((canceledThisMonth || 0) / totalThisMonth) * 100)
     : 0;
+
+  // Projection annuelle basée sur le revenu moyen des 4 dernières semaines
+  const yearlyRevenue = weeklyRevenue > 0 ? weeklyRevenue * 52 : (monthlyRevenue / 4) * 52;
 
   return {
     totalActive,
     totalStandard,
     totalPremium,
     weeklyRevenue,
-    monthlyRevenue: weeklyRevenue * 4,
-    yearlyRevenue: weeklyRevenue * 52,
+    monthlyRevenue,
+    yearlyRevenue,
     standardRevenue,
     premiumRevenue,
     expiringThisWeek,
@@ -229,38 +261,49 @@ export async function getSubscriptionStats(): Promise<SubscriptionStats> {
 export async function getRevenueHistory(weeks: number = 12) {
   const supabase = createAdminClient();
 
+  // Récupérer tous les revenue_events des X dernières semaines
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - weeks * 7);
+
+  const { data: events } = await supabase
+    .from('revenue_events')
+    .select('amount, product_type, event_type, created_at')
+    .eq('status', 'succeeded')
+    .gte('created_at', startDate.toISOString())
+    .order('created_at', { ascending: true });
+
   const data = [];
-  
+
   for (let i = weeks - 1; i >= 0; i--) {
     const weekEnd = new Date();
-    weekEnd.setDate(weekEnd.getDate() - (i * 7));
+    weekEnd.setDate(weekEnd.getDate() - i * 7);
     const weekStart = new Date(weekEnd);
     weekStart.setDate(weekStart.getDate() - 7);
 
-    // Compter les abonnés actifs à cette date
-    const { data: activeAtDate } = await supabase
-      .from('profiles')
-      .select('stripe_price_id')
-      .eq('is_premium', true)
-      .lte('subscription_start_date', weekEnd.toISOString());
+    const weekEvents = (events || []).filter(e => {
+      const d = new Date(e.created_at);
+      return d >= weekStart && d <= weekEnd;
+    });
 
-    const standardCount = activeAtDate?.filter(u => 
-      u.stripe_price_id && STANDARD_PRICE_IDS.includes(u.stripe_price_id)
-    ).length || 0;
-    
-    const premiumCount = activeAtDate?.filter(u => 
-      u.stripe_price_id && PREMIUM_PRICE_IDS.includes(u.stripe_price_id)
-    ).length || 0;
+    const standardEvents = weekEvents.filter(e => e.product_type === 'standard');
+    const premiumEvents = weekEvents.filter(e => e.product_type === 'premium');
+    const oneTimeEvents = weekEvents.filter(e => e.event_type === 'one_time');
 
-    const revenue = (standardCount * STANDARD_PRICE) + (premiumCount * PREMIUM_PRICE);
+    const standardRevenue = standardEvents.reduce((sum, e) => sum + (e.amount || 0), 0);
+    const premiumRevenue = premiumEvents.reduce((sum, e) => sum + (e.amount || 0), 0);
+    const oneTimeRevenue = oneTimeEvents.reduce((sum, e) => sum + (e.amount || 0), 0);
+    const revenue = standardRevenue + premiumRevenue + oneTimeRevenue;
 
     data.push({
       week: `Sem ${weeks - i}`,
       date: weekEnd.toLocaleDateString('fr-FR', { day: '2-digit', month: 'short' }),
-      standard: standardCount,
-      premium: premiumCount,
-      total: standardCount + premiumCount,
+      standard: standardEvents.length,
+      premium: premiumEvents.length,
+      total: weekEvents.length,
       revenue,
+      standardRevenue,
+      premiumRevenue,
+      oneTimeRevenue,
     });
   }
 

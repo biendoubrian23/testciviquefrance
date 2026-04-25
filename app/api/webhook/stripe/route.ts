@@ -284,20 +284,44 @@ async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<t
 
   if (!profile) return;
 
-  // ✅ CORRECTION 2 : On reset les compteurs et on active l'accès,
-  // MAIS ON N'INSÈRE PAS DANS LA TABLE ACHATS pour les renouvellements.
-
+  // ✅ CORRECTION 2 : On reset les compteurs et on active l'accès
   await supabase
     .from('profiles')
     .update({
       subscription_status: 'active',
       is_premium: true,
-      subscription_exams_used: 0, // C'est ICI qu'on reset les crédits de la semaine
+      subscription_exams_used: 0, // Reset des crédits de la semaine
       stripe_customer_id: customerId,
     })
     .eq('id', profile.id);
 
-  console.log('✅ Invoice paid : Renouvellement traité (Accès OK, Crédits reset). Pas d\'historique d\'achat généré.');
+  // 📊 AUDIT REVENUS : Enregistrer le paiement réel reçu
+  // On détermine le type d'abonnement depuis la subscription Stripe
+  const amountPaid = (invoice.amount_paid || 0) / 100;
+  if (amountPaid > 0) {
+    // Récupérer le price_id depuis l'invoice pour déterminer standard/premium
+    const priceId = invoice.lines?.data?.[0]?.price?.id || profile.stripe_price_id;
+    const isPremium = priceId && [
+      'price_1Sc3rPEuT9agNbEU65mDE4RP',
+      'price_1Sc3BYIUG5GUejFZaWexcxzz',
+    ].includes(priceId);
+
+    await supabase.from('revenue_events').upsert({
+      user_id: profile.id,
+      event_type: 'subscription',
+      product_type: isPremium ? 'premium' : 'standard',
+      amount: amountPaid,
+      currency: invoice.currency || 'eur',
+      stripe_invoice_id: invoice.id,
+      stripe_payment_id: invoice.payment_intent as string || null,
+      stripe_customer_id: customerId,
+      status: 'succeeded',
+    }, { onConflict: 'stripe_invoice_id', ignoreDuplicates: true });
+
+    console.log(`💰 Revenue event enregistré : subscription ${isPremium ? 'premium' : 'standard'} ${amountPaid}€`);
+  }
+
+  console.log('✅ Invoice paid : Renouvellement traité (Accès OK, Crédits reset).');
 }
 
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
@@ -381,16 +405,31 @@ async function handleOneTimePayment(
   await supabase.from('profiles').update(updates).eq('id', profile.id);
 
   if (productType !== 'unknown') {
+    const paymentId = session.payment_intent as string || session.id;
+
     await supabase.from('achats').insert({
       user_id: profile.id,
       product_type: productType,
       amount: amount,
       currency: session.currency || 'EUR',
-      stripe_payment_id: session.payment_intent as string || session.id,
+      stripe_payment_id: paymentId,
       stripe_customer_id: customerId,
       status: 'completed',
       completed_at: new Date().toISOString(),
     });
-    console.log(`💰 Achat unique enregistré : ${productType}`);
+
+    // 📊 AUDIT REVENUS : Aussi enregistrer dans revenue_events
+    await supabase.from('revenue_events').insert({
+      user_id: profile.id,
+      event_type: 'one_time',
+      product_type: productType,
+      amount: amount,
+      currency: (session.currency || 'eur').toLowerCase(),
+      stripe_payment_id: paymentId,
+      stripe_customer_id: customerId,
+      status: 'succeeded',
+    });
+
+    console.log(`💰 Achat unique enregistré : ${productType} (${amount}€)`);
   }
 }

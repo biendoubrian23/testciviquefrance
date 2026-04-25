@@ -8,16 +8,21 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
+  Legend,
 } from 'recharts';
 
 interface RevenueChartProps {
   data: {
     date: string;
     amount: number;
+    subscriptionAmount?: number;
+    oneTimeAmount?: number;
   }[];
 }
 
 export function RevenueChart({ data }: RevenueChartProps) {
+  const hasBreakdown = data.some(d => d.subscriptionAmount !== undefined);
+
   return (
     <ResponsiveContainer width="100%" height={300}>
       <BarChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
@@ -42,13 +47,24 @@ export function RevenueChart({ data }: RevenueChartProps) {
             boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
           }}
           labelStyle={{ color: '#111827', fontWeight: 600 }}
-          formatter={(value: number) => [`${value.toFixed(2)}€`, 'Revenus']}
+          formatter={(value: number, name: string) => {
+            const labels: Record<string, string> = {
+              subscriptionAmount: 'Abonnements',
+              oneTimeAmount: 'Achats ponctuels',
+              amount: 'Revenus',
+            };
+            return [`${value.toFixed(2)}€`, labels[name] || name];
+          }}
         />
-        <Bar 
-          dataKey="amount" 
-          fill="#2563EB"
-          radius={0}
-        />
+        {hasBreakdown ? (
+          <>
+            <Legend formatter={(v) => v === 'subscriptionAmount' ? 'Abonnements' : 'Achats ponctuels'} />
+            <Bar dataKey="subscriptionAmount" stackId="a" fill="#2563EB" radius={0} />
+            <Bar dataKey="oneTimeAmount" stackId="a" fill="#7C3AED" radius={0} />
+          </>
+        ) : (
+          <Bar dataKey="amount" fill="#2563EB" radius={0} />
+        )}
       </BarChart>
     </ResponsiveContainer>
   );
