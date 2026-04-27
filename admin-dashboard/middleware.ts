@@ -11,16 +11,3 @@ export const config = {
     '/((?!api/auth|_next/static|_next/image|favicon.ico).*)',
   ],
 };
-
-export const config = {
-  matcher: [
-    /*
-     * Match toutes les routes sauf:
-     * - api/auth/* (routes d'authentification)
-     * - _next/static (fichiers statiques)
-     * - _next/image (optimisation images)
-     * - favicon.ico
-     */
-    '/((?!api/auth|_next/static|_next/image|favicon.ico).*)',
-  ],
-};
