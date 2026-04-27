@@ -27,111 +27,65 @@ export async function getDashboardStats(subscriptionFilter: SubscriptionFilter =
   const now = new Date();
   const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
-  // Requetes paralleles pour optimiser les performances
-  const [
-    { count: totalUsers },
-    { count: newUsersThisMonth },
-    { count: premiumUsersCount },
-    { count: standardUsersCount },
-    { count: trialingUsersCount },
-    { count: totalQuestions },
-    { count: totalCategories },
-    { count: totalExamens },
-    { count: examensReussis },
-    { count: totalSessions },
-    { data: revenueAllData },
-    { data: revenueMonthData },
-    { data: statsData },
-  ] = await Promise.all([
-    // Total utilisateurs
-    supabase.from('profiles').select('*', { count: 'exact', head: true }),
-    // Nouveaux ce mois
-    supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .gte('created_at', startOfMonth.toISOString()),
-    // Utilisateurs premium (is_premium OU subscription_status active/trialing + price_id premium)
-    supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
-      .in('stripe_price_id', PREMIUM_PRICE_IDS),
-    // Utilisateurs standard (is_premium OU subscription_status active/trialing + price_id standard)
-    supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .or('is_premium.eq.true,subscription_status.eq.active,subscription_status.eq.trialing')
-      .in('stripe_price_id', STANDARD_PRICE_IDS),
-    // Utilisateurs en période d'essai (trialing)
-    supabase.from('profiles').select('*', { count: 'exact', head: true })
-      .eq('subscription_status', 'trialing'),
-    // Total questions
-    supabase.from('questions').select('*', { count: 'exact', head: true }),
-    // Total categories
-    supabase.from('categories').select('*', { count: 'exact', head: true }),
-    // Total examens blancs completes
-    supabase.from('examens_blancs').select('*', { count: 'exact', head: true })
-      .eq('is_completed', true),
-    // Examens reussis
-    supabase.from('examens_blancs').select('*', { count: 'exact', head: true })
-      .eq('passed', true),
-    // Total sessions quiz completees
-    supabase.from('sessions_quiz').select('*', { count: 'exact', head: true })
-      .eq('completed', true),
-    // Revenus réels totaux (depuis revenue_events — source de vérité)
-    supabase.from('revenue_events').select('amount, product_type').eq('status', 'succeeded'),
-    // Revenus réels ce mois
-    supabase.from('revenue_events').select('amount, product_type')
-      .eq('status', 'succeeded')
-      .gte('created_at', startOfMonth.toISOString()),
-    // Stats agregees
-    supabase.from('statistiques').select('total_questions_repondues, temps_total_etude'),
-  ]);
+  // Une seule requête RPC au lieu de 13 parallèles (évite la saturation du pool NANO)
+  const { data: rpcData, error } = await supabase.rpc('get_admin_dashboard_stats', {
+    p_start_of_month: startOfMonth.toISOString(),
+  });
 
-  const standardUsers = standardUsersCount || 0;
-  const premiumUsers = premiumUsersCount || 0;
-  const trialingUsers = trialingUsersCount || 0;
+  if (error || !rpcData) {
+    console.error('Erreur RPC dashboard stats:', error);
+    // Retourner des zéros plutôt que planter
+    return {
+      totalUsers: 0, newUsersToday: 0, newUsersThisWeek: 0, newUsersThisMonth: 0,
+      premiumUsers: 0, standardUsers: 0, trialingUsers: 0, activeUsersToday: 0,
+      totalQuestions: 0, totalCategories: 0, totalExamens: 0, examensReussis: 0,
+      tauxReussiteExamens: 0, totalSessions: 0, totalRevenus: 0, revenusThisMonth: 0,
+      standardRevenue: 0, premiumRevenue: 0, totalAchats: 0,
+      questionsRepondues: 0, tempsEtudeTotal: 0,
+    };
+  }
 
-  // Revenus réels depuis revenue_events
-  const allRevenue = revenueAllData || [];
-  const monthRevenue = revenueMonthData || [];
+  const d = rpcData as any;
+  const allRevenue: Array<{ amount: number; product_type: string }> = d.allRevenue || [];
+  const monthRevenue: Array<{ amount: number; product_type: string }> = d.monthRevenue || [];
 
   const totalRevenus = allRevenue.reduce((sum, e) => sum + (e.amount || 0), 0);
   const revenusThisMonth = monthRevenue.reduce((sum, e) => sum + (e.amount || 0), 0);
   const standardRevenue = allRevenue.filter(e => e.product_type === 'standard').reduce((sum, e) => sum + (e.amount || 0), 0);
   const premiumRevenue = allRevenue.filter(e => e.product_type === 'premium').reduce((sum, e) => sum + (e.amount || 0), 0);
 
-  const questionsRepondues = statsData?.reduce((sum, s) => sum + (s.total_questions_repondues || 0), 0) || 0;
-  const tempsEtudeTotal = statsData?.reduce((sum, s) => sum + (s.temps_total_etude || 0), 0) || 0;
-
-  const tauxReussiteExamens = totalExamens && totalExamens > 0
-    ? Math.round(((examensReussis || 0) / totalExamens) * 100)
+  const premiumUsers: number = d.premiumUsers || 0;
+  const standardUsers: number = d.standardUsers || 0;
+  const tauxReussiteExamens = d.totalExamens > 0
+    ? Math.round((d.examensReussis / d.totalExamens) * 100)
     : 0;
 
-  // Appliquer le filtre pour les stats affichées
-  let displayedPremiumUsers = premiumUsers + standardUsers; // Par défaut: tous les payants
-  if (subscriptionFilter === 'premium') {
-    displayedPremiumUsers = premiumUsers;
-  } else if (subscriptionFilter === 'standard') {
-    displayedPremiumUsers = standardUsers;
-  }
+  let displayedPremiumUsers = premiumUsers + standardUsers;
+  if (subscriptionFilter === 'premium') displayedPremiumUsers = premiumUsers;
+  else if (subscriptionFilter === 'standard') displayedPremiumUsers = standardUsers;
 
   return {
-    totalUsers: totalUsers || 0,
+    totalUsers: d.totalUsers || 0,
     newUsersToday: 0,
     newUsersThisWeek: 0,
-    newUsersThisMonth: newUsersThisMonth || 0,
-    premiumUsers: displayedPremiumUsers, // Affiche selon le filtre
+    newUsersThisMonth: d.newUsersThisMonth || 0,
+    premiumUsers: displayedPremiumUsers,
     standardUsers,
-    trialingUsers, // Utilisateurs en période d'essai
+    trialingUsers: d.trialingUsers || 0,
     activeUsersToday: 0,
-    totalQuestions: totalQuestions || 0,
-    totalCategories: totalCategories || 0,
-    totalExamens: totalExamens || 0,
-    examensReussis: examensReussis || 0,
+    totalQuestions: d.totalQuestions || 0,
+    totalCategories: d.totalCategories || 0,
+    totalExamens: d.totalExamens || 0,
+    examensReussis: d.examensReussis || 0,
     tauxReussiteExamens,
-    totalSessions: totalSessions || 0,
+    totalSessions: d.totalSessions || 0,
     totalRevenus,
     revenusThisMonth,
     standardRevenue,
     premiumRevenue,
     totalAchats: allRevenue.filter(e => e.product_type !== 'standard' && e.product_type !== 'premium').length,
-    questionsRepondues,
-    tempsEtudeTotal,
+    questionsRepondues: d.questionsRepondues || 0,
+    tempsEtudeTotal: d.tempsEtudeTotal || 0,
   };
 }
 
