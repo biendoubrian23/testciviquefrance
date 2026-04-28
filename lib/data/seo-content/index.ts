@@ -229,6 +229,37 @@ import {
   titreSejourExpireEtrangerContent,
 } from './articles-buzz-nouveaux-2026';
 
+// ===== Articles ANEF 2026 (Bing SEO) =====
+import {
+  anefMonCompteConnexionContent,
+  anefEtudiantEtrangerContent,
+  compteAnefCreerContent,
+  ouvrirCompteAnefProblemesContent,
+} from './articles-anef-2026';
+
+// ===== Articles ANTS 2026 (Bing SEO) =====
+import {
+  antsGouvFrToutesDemarchesContent,
+  antsPermisConduireDemandeContent,
+  antsPermisConduireEnLigneEtapesContent,
+  antsDemarchesEnLigneContent,
+} from './articles-ants-2026';
+
+// ===== Article Campus France 2026 (Bing SEO) =====
+import { campusFranceEtudeFranceContent } from './articles-campus-france-2026';
+
+// ===== Articles Passeport Talent par catégorie + Impôts variantes 2026 =====
+import {
+  passeportTalentChercheurContent,
+  passeportTalentSalarieQualifieContent,
+  passeportTalentCreationEntrepriseContent,
+  declarationImpotsNonResidentContent,
+  declarationImpotsPremiereAnneeContent,
+} from './articles-passeport-impots-2026';
+
+// ===== Page Ressources Backlinks 2026 =====
+import { ressourcesUtilesEtrangersContent } from './articles-ressources-2026';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -358,6 +389,27 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'double-nationalite-france-2026-pays-interdisent-risques-declaration': doubleNationaliteGeneralContent,
   '1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026': unEtrangerSurTroisNationaliteContent,
   'titre-sejour-expire-vacances-etranger-france-que-faire-visa-retour': titreSejourExpireEtrangerContent,
+  // Articles ANEF 2026 (Bing SEO)
+  'anef-mon-compte-connexion-probleme-solution-2026': anefMonCompteConnexionContent,
+  'anef-etudiant-etranger-2026': anefEtudiantEtrangerContent,
+  'compte-anef-creer-2026-guide-pas-a-pas': compteAnefCreerContent,
+  'ouvrir-compte-anef-2026-etapes-documents-problemes': ouvrirCompteAnefProblemesContent,
+  // Articles ANTS 2026 (Bing SEO)
+  'ants-gouv-fr-2026-toutes-demarches-guide-complet': antsGouvFrToutesDemarchesContent,
+  'ants-permis-conduire-2026-echange-demande-suivi': antsPermisConduireDemandeContent,
+  'ants-permis-conduire-en-ligne-2026-etapes': antsPermisConduireEnLigneEtapesContent,
+  'ants-demarches-en-ligne-2026-guide-complet': antsDemarchesEnLigneContent,
+  // Article Campus France 2026 (Bing SEO)
+  'campus-france-etude-france-2026-visa-inscription-procedure': campusFranceEtudeFranceContent,
+  // Articles Passeport Talent par catégorie 2026
+  'passeport-talent-chercheur-france-2026-conditions-demarches-salaire': passeportTalentChercheurContent,
+  'passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure': passeportTalentSalarieQualifieContent,
+  'passeport-talent-creation-entreprise-france-2026-conditions-investissement': passeportTalentCreationEntrepriseContent,
+  // Articles Impôts variantes 2026
+  'declaration-impots-non-resident-france-2026-formulaire-2042-nr-revenus-source-francaise': declarationImpotsNonResidentContent,
+  'declaration-impots-premiere-annee-france-etranger-2026-guide-debutant': declarationImpotsPremiereAnneeContent,
+  // Page Ressources Backlinks 2026
+  'ressources-utiles-etrangers-france-2026-outils-associations-aides': ressourcesUtilesEtrangersContent,
 };
 
 /**

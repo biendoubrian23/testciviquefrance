@@ -123,11 +123,11 @@ export const articles: Article[] = [
 ];
 
 // Import des articles SEO
-import { seoArticles, quotidienImmigrationArticles, viePratiqueArticles } from './seo-articles';
+import { seoArticles, quotidienImmigrationArticles, viePratiqueArticles, bingSeoArticles2026 } from './seo-articles';
 
 // Fusionner tous les articles
 // Fusionner tous les articles et trier par date (plus récent en premier)
-export const allArticles: Article[] = [...articles, ...seoArticles, ...quotidienImmigrationArticles, ...viePratiqueArticles].sort((a, b) => {
+export const allArticles: Article[] = [...articles, ...seoArticles, ...quotidienImmigrationArticles, ...viePratiqueArticles, ...bingSeoArticles2026].sort((a, b) => {
   const dateA = new Date(a.date.split('/').reverse().join('-'));
   const dateB = new Date(b.date.split('/').reverse().join('-'));
   return dateB.getTime() - dateA.getTime();
