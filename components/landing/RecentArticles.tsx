@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { allArticles } from '@/lib/data/articles';
+import ArticleViews from '@/components/blog/ArticleViews';
 
 export default function RecentArticles() {
   // 6 articles récents + variés (catégories différentes)
@@ -42,7 +43,11 @@ export default function RecentArticles() {
                 {article.excerpt}
               </p>
               <div className="mt-3 flex items-center text-xs text-gray-400 gap-3">
-                <span>{article.readTime}</span>
+                <ArticleViews
+                  slug={article.slug}
+                  fallbackViews={article.views}
+                  iconClassName="w-3.5 h-3.5"
+                />
                 <span>·</span>
                 <span>{article.date}</span>
               </div>

@@ -2,8 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { Article } from '@/lib/data/articles';
+import ArticleViews from '@/components/blog/ArticleViews';
 
 interface RelatedArticlesProps {
   articles: Article[];
@@ -74,10 +75,11 @@ export default function RelatedArticles({
                     <Calendar className="w-3.5 h-3.5" />
                     {article.date}
                   </span>
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5" />
-                    {article.readTime} min
-                  </span>
+                  <ArticleViews
+                    slug={article.slug}
+                    fallbackViews={article.views}
+                    iconClassName="w-3.5 h-3.5"
+                  />
                 </div>
               </div>
 

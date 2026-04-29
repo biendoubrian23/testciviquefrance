@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Calendar, Clock, Eye, ArrowRight } from 'lucide-react';
+import { Calendar, ArrowRight } from 'lucide-react';
 import { Article } from '@/lib/data/articles';
+import ArticleViews from './ArticleViews';
 
 interface ArticleCardProps {
   article: Article;
@@ -69,8 +70,12 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
               {article.date}
             </span>
             <span className="flex items-center gap-1">
-              <Eye className="w-3 h-3" />
-              {article.views}
+              <ArticleViews
+                slug={article.slug}
+                fallbackViews={article.views}
+                iconClassName="w-3 h-3"
+                label="none"
+              />
             </span>
           </div>
         </div>
@@ -114,10 +119,7 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
                 <Calendar className="w-4 h-4" />
                 {article.date}
               </span>
-              <span className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />
-                {article.readTime} min
-              </span>
+              <ArticleViews slug={article.slug} fallbackViews={article.views} />
             </div>
             <span className="text-primary-600 font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
               Lire

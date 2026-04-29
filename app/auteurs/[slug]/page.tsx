@@ -6,7 +6,8 @@ import Footer from '@/components/layout/Footer';
 import { getAuthorBySlug, getAllAuthors } from '@/lib/data/authors';
 import { allArticles } from '@/lib/data/articles';
 import { SEO_CONFIG } from '@/lib/seo/constants';
-import { Calendar, Clock, ArrowRight, Linkedin, ExternalLink } from 'lucide-react';
+import { Calendar, ArrowRight, Linkedin, ExternalLink } from 'lucide-react';
+import ArticleViews from '@/components/blog/ArticleViews';
 
 interface AuthorPageProps {
   params: Promise<{ slug: string }>;
@@ -159,10 +160,11 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
                           <Calendar className="w-3 h-3" />
                           {article.date}
                         </span>
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3 h-3" />
-                          {article.readTime} min
-                        </span>
+                        <ArticleViews
+                          slug={article.slug}
+                          fallbackViews={article.views}
+                          iconClassName="w-3 h-3"
+                        />
                       </div>
                     </div>
                     <ArrowRight className="w-5 h-5 text-gray-300 group-hover:text-primary-500 transition-colors flex-shrink-0 mt-2" />

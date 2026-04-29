@@ -13,7 +13,6 @@ import {
   CheckCircle, 
   Info, 
   Calendar, 
-  Clock, 
   User,
   Share2,
   Bookmark,
@@ -21,6 +20,7 @@ import {
   ExternalLink
 } from 'lucide-react';
 import AdSenseBlock from '@/components/ui/AdSenseBlock';
+import ArticleViews from './ArticleViews';
 
 interface SEOArticleRendererProps {
   content: ArticleFullContent;
@@ -203,10 +203,13 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
               <User className="w-5 h-5" />
               {article.author}
             </span>
-            <span className="flex items-center gap-2">
-              <Clock className="w-5 h-5" />
-              {article.readTime} min de lecture
-            </span>
+            <ArticleViews
+              slug={article.slug}
+              fallbackViews={article.views}
+              iconClassName="w-5 h-5"
+              label="long"
+              incrementOnMount
+            />
           </div>
         </div>
       </header>

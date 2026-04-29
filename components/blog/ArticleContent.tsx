@@ -1,12 +1,13 @@
 'use client';
 
 import Link from 'next/link';
-import { Calendar, Clock, User, ArrowLeft, Share2, Bookmark, ChevronRight } from 'lucide-react';
+import { Calendar, User, ArrowLeft, Share2, Bookmark, ChevronRight } from 'lucide-react';
 import { Article, getPopularArticles } from '@/lib/data/articles';
 import { cadreGeneralContent } from '@/lib/data/article-content';
 import ArticleCard from './ArticleCard';
 import CentresExamen2026Article from './CentresExamen2026Article';
 import ToutSavoirExamen2026Article from './ToutSavoirExamen2026Article';
+import ArticleViews from './ArticleViews';
 
 interface ArticleContentProps {
   article: Article;
@@ -80,10 +81,13 @@ export default function ArticleContent({ article }: ArticleContentProps) {
               <User className="w-5 h-5" />
               {article.author}
             </span>
-            <span className="flex items-center gap-2">
-              <Clock className="w-5 h-5" />
-              {article.readTime} min de lecture
-            </span>
+            <ArticleViews
+              slug={article.slug}
+              fallbackViews={article.views}
+              iconClassName="w-5 h-5"
+              label="long"
+              incrementOnMount
+            />
           </div>
         </div>
       </header>
