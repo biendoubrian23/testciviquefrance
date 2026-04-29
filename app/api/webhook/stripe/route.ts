@@ -97,6 +97,12 @@ export async function POST(req: NextRequest) {
         break;
       }
 
+      case 'payment_intent.succeeded': {
+        const paymentIntent = event.data.object as Stripe.PaymentIntent;
+        await handlePaymentIntentSucceeded(paymentIntent, supabase);
+        break;
+      }
+
       case 'invoice.payment_failed': {
         const invoice = event.data.object as Stripe.Invoice;
         await handleInvoicePaymentFailed(invoice, supabase);
@@ -156,6 +162,87 @@ async function findProfile(
 }
 
 // Gérer la création d'abonnement après paiement
+async function getCustomerEmail(customerId?: string | null) {
+  if (!customerId) return null;
+
+  try {
+    const customer = await stripe.customers.retrieve(customerId);
+    if (!customer.deleted) return (customer as Stripe.Customer).email;
+  } catch (error) {
+    console.warn('Impossible de recuperer le client Stripe:', customerId, error);
+  }
+
+  return null;
+}
+
+function getProductTypeFromPriceId(priceId?: string | null) {
+  if (!priceId) return 'unknown';
+  if (priceId === STRIPE_PLANS.standard.priceId) return 'standard';
+  if (priceId === STRIPE_PLANS.premium.priceId) return 'premium';
+  if (priceId === STRIPE_PLANS.examen.priceId) return 'pack_examen';
+  if (priceId === STRIPE_PLANS.flashcards2Themes.priceId) return 'flashcards_2_themes';
+  if (priceId === STRIPE_PLANS.flashcards5Themes.priceId) return 'flashcards_5_themes';
+  if (priceId === STRIPE_PLANS.noTimer.priceId) return 'no_timer';
+  if (priceId === STRIPE_PLANS.unlockLevel.priceId) return 'unlock_level';
+  return 'unknown';
+}
+
+async function insertRevenueEvent(
+  supabase: ReturnType<typeof getSupabaseClient>,
+  payload: {
+    user_id?: string | null;
+    event_type: 'subscription' | 'one_time';
+    product_type: string;
+    amount: number;
+    currency?: string | null;
+    stripe_invoice_id?: string | null;
+    stripe_payment_id?: string | null;
+    stripe_customer_id?: string | null;
+    created_at?: string;
+  }
+) {
+  if (payload.amount <= 0 || payload.product_type === 'unknown') return;
+
+  if (payload.stripe_invoice_id) {
+    await supabase.from('revenue_events').upsert({
+      user_id: payload.user_id || null,
+      event_type: payload.event_type,
+      product_type: payload.product_type,
+      amount: payload.amount,
+      currency: (payload.currency || 'eur').toLowerCase(),
+      stripe_invoice_id: payload.stripe_invoice_id,
+      stripe_payment_id: payload.stripe_payment_id || null,
+      stripe_customer_id: payload.stripe_customer_id || null,
+      status: 'succeeded',
+      ...(payload.created_at ? { created_at: payload.created_at } : {}),
+    }, { onConflict: 'stripe_invoice_id', ignoreDuplicates: true });
+    return;
+  }
+
+  if (payload.stripe_payment_id) {
+    const { data: existing } = await supabase
+      .from('revenue_events')
+      .select('id')
+      .eq('stripe_payment_id', payload.stripe_payment_id)
+      .maybeSingle();
+
+    if (existing) return;
+  }
+
+  await supabase.from('revenue_events').insert({
+    user_id: payload.user_id || null,
+    event_type: payload.event_type,
+    product_type: payload.product_type,
+    amount: payload.amount,
+    currency: (payload.currency || 'eur').toLowerCase(),
+    stripe_invoice_id: payload.stripe_invoice_id || null,
+    stripe_payment_id: payload.stripe_payment_id || null,
+    stripe_customer_id: payload.stripe_customer_id || null,
+    status: 'succeeded',
+    ...(payload.created_at ? { created_at: payload.created_at } : {}),
+  });
+}
+
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('✅ Checkout completed:', session.id);
 
@@ -280,10 +367,14 @@ async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<t
   if (!invoice.subscription) return;
 
   const customerId = invoice.customer as string;
-  const profile = await findProfile(supabase, customerId, invoice.customer_email);
+  const customerEmail = invoice.customer_email || await getCustomerEmail(customerId);
+  const profile = await findProfile(supabase, customerId, customerEmail);
 
-  if (!profile) return;
+  if (!profile) {
+    console.warn(`Profil introuvable pour invoice ${invoice.id}, revenu enregistre sans user_id.`);
+  }
 
+  if (profile) {
   // ✅ CORRECTION 2 : On reset les compteurs et on active l'accès
   await supabase
     .from('profiles')
@@ -294,34 +385,76 @@ async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<t
       stripe_customer_id: customerId,
     })
     .eq('id', profile.id);
+  }
 
   // 📊 AUDIT REVENUS : Enregistrer le paiement réel reçu
   // On détermine le type d'abonnement depuis la subscription Stripe
   const amountPaid = (invoice.amount_paid || 0) / 100;
   if (amountPaid > 0) {
     // Récupérer le price_id depuis l'invoice pour déterminer standard/premium
-    const priceId = invoice.lines?.data?.[0]?.price?.id || profile.stripe_price_id;
-    const isPremium = priceId && [
-      'price_1Sc3rPEuT9agNbEU65mDE4RP',
-      'price_1Sc3BYIUG5GUejFZaWexcxzz',
-    ].includes(priceId);
+    const priceId = invoice.lines?.data?.[0]?.price?.id || profile?.stripe_price_id;
+    const productType = getProductTypeFromPriceId(priceId);
 
-    await supabase.from('revenue_events').upsert({
-      user_id: profile.id,
+    await insertRevenueEvent(supabase, {
+      user_id: profile?.id,
       event_type: 'subscription',
-      product_type: isPremium ? 'premium' : 'standard',
+      product_type: productType === 'premium' ? 'premium' : 'standard',
       amount: amountPaid,
       currency: invoice.currency || 'eur',
       stripe_invoice_id: invoice.id,
       stripe_payment_id: invoice.payment_intent as string || null,
       stripe_customer_id: customerId,
-      status: 'succeeded',
-    }, { onConflict: 'stripe_invoice_id', ignoreDuplicates: true });
+      created_at: new Date(invoice.created * 1000).toISOString(),
+    });
 
-    console.log(`💰 Revenue event enregistré : subscription ${isPremium ? 'premium' : 'standard'} ${amountPaid}€`);
+    console.log(`💰 Revenue event enregistré : subscription ${productType} ${amountPaid}€`);
   }
 
   console.log('✅ Invoice paid : Renouvellement traité (Accès OK, Crédits reset).');
+}
+
+async function handlePaymentIntentSucceeded(
+  paymentIntent: Stripe.PaymentIntent,
+  supabase: ReturnType<typeof getSupabaseClient>
+) {
+  const amount = (paymentIntent.amount_received || paymentIntent.amount || 0) / 100;
+  if (amount <= 0) return;
+
+  if (paymentIntent.invoice) {
+    const invoice = await stripe.invoices.retrieve(paymentIntent.invoice as string);
+    await handleInvoicePaid(invoice, supabase);
+    return;
+  }
+
+  const sessions = await stripe.checkout.sessions.list({
+    payment_intent: paymentIntent.id,
+    limit: 1,
+    expand: ['data.line_items'],
+  } as any);
+  const session = sessions.data[0];
+
+  if (!session || session.mode !== 'payment' || session.payment_status !== 'paid') return;
+
+  const priceId = session.line_items?.data?.[0]?.price?.id;
+  const productType = getProductTypeFromPriceId(priceId);
+  const customerId = session.customer as string | null;
+  const email = session.customer_details?.email || await getCustomerEmail(customerId);
+  const profile = session.client_reference_id
+    ? (await supabase.from('profiles').select('*').eq('id', session.client_reference_id).single()).data
+    : await findProfile(supabase, customerId || '', email);
+
+  await insertRevenueEvent(supabase, {
+    user_id: profile?.id,
+    event_type: 'one_time',
+    product_type: productType,
+    amount,
+    currency: paymentIntent.currency || session.currency || 'eur',
+    stripe_payment_id: paymentIntent.id,
+    stripe_customer_id: customerId,
+    created_at: new Date(paymentIntent.created * 1000).toISOString(),
+  });
+
+  console.log(`ðŸ’° Revenue event fallback payment_intent : ${productType} ${amount}â‚¬`);
 }
 
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
@@ -419,7 +552,7 @@ async function handleOneTimePayment(
     });
 
     // 📊 AUDIT REVENUS : Aussi enregistrer dans revenue_events
-    await supabase.from('revenue_events').insert({
+    await insertRevenueEvent(supabase, {
       user_id: profile.id,
       event_type: 'one_time',
       product_type: productType,
@@ -427,7 +560,6 @@ async function handleOneTimePayment(
       currency: (session.currency || 'eur').toLowerCase(),
       stripe_payment_id: paymentId,
       stripe_customer_id: customerId,
-      status: 'succeeded',
     });
 
     console.log(`💰 Achat unique enregistré : ${productType} (${amount}€)`);

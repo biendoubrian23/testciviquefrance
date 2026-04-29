@@ -1,20 +1,61 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import ArticleCard from '@/components/blog/ArticleCard';
 import BlogSidebar from '@/components/blog/BlogSidebar';
 import { allArticles } from '@/lib/data/articles';
+import { createClient } from '@/lib/supabase/client';
+
+type SortMode = 'recent' | 'popular';
 
 export default function ArticlesPage() {
   const [selectedCategory, setSelectedCategory] = useState('tous');
+  const [sortMode, setSortMode] = useState<SortMode>('recent');
+  const [viewCounts, setViewCounts] = useState<Record<string, number>>({});
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadViewCounts() {
+      const supabase = createClient();
+      const { data, error } = await supabase
+        .from('article_views')
+        .select('slug, views');
+
+      if (cancelled || error || !data) return;
+
+      const counts: Record<string, number> = {};
+      data.forEach((row: { slug: string; views: number | string }) => {
+        counts[row.slug] = Number(row.views) || 0;
+      });
+      setViewCounts(counts);
+    }
+
+    loadViewCounts();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Filtrage réactif des articles basé sur la catégorie sélectionnée
   const sortedArticles = useMemo(() => {
-    if (selectedCategory === 'tous') return allArticles;
-    return allArticles.filter((article) => article.categorySlug === selectedCategory);
-  }, [selectedCategory]);
+    const filteredArticles = selectedCategory === 'tous'
+      ? allArticles
+      : allArticles.filter((article) => article.categorySlug === selectedCategory);
+
+    return [...filteredArticles].sort((a, b) => {
+      if (sortMode === 'popular') {
+        return (viewCounts[b.slug] ?? b.views) - (viewCounts[a.slug] ?? a.views);
+      }
+
+      const dateA = new Date(a.date.split('/').reverse().join('-'));
+      const dateB = new Date(b.date.split('/').reverse().join('-'));
+      return dateB.getTime() - dateA.getTime();
+    });
+  }, [selectedCategory, sortMode, viewCounts]);
 
   return (
     <>
@@ -77,13 +118,24 @@ export default function ArticlesPage() {
               <div className="flex-1 animate-fade-in-right delay-200">
                 {/* Tous les articles */}
                 <div>
-                  <div className="flex items-center justify-between mb-6">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
                     <h2 className="text-2xl font-bold text-gray-900">
                       Tous les articles{' '}
                       <span className="text-gray-400 font-normal">
                         ({sortedArticles.length})
                       </span>
                     </h2>
+                    <label className="inline-flex items-center gap-2 text-sm text-gray-600">
+                      <span className="font-medium">Trier</span>
+                      <select
+                        value={sortMode}
+                        onChange={(event) => setSortMode(event.target.value as SortMode)}
+                        className="h-10 border border-gray-200 bg-white px-3 text-sm font-medium text-gray-800 shadow-sm outline-none transition-colors hover:border-primary-300 focus:border-primary-500 focus:ring-2 focus:ring-primary-100"
+                      >
+                        <option value="recent">Récent</option>
+                        <option value="popular">Populaire</option>
+                      </select>
+                    </label>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
