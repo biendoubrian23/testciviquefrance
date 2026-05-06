@@ -14,26 +14,27 @@ import {
 // Composant FAQ déroulant
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
-  
+
   return (
-    <div className="border-b border-gray-200 last:border-b-0">
+    <div className="border-b border-white/40 last:border-b-0">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-4 px-5 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+        className="w-full py-4 px-5 flex items-center justify-between text-left hover:bg-white/30 transition-all duration-200"
+        style={{ WebkitTapHighlightColor: 'transparent' }}
       >
         <span className="font-medium text-gray-900 pr-4">{question}</span>
-        <ChevronDown 
-          className={`w-5 h-5 text-gray-400 flex-shrink-0 transition-transform duration-300 ${
+        <ChevronDown
+          className={`w-5 h-5 text-gray-500 flex-shrink-0 transition-transform duration-300 ${
             isOpen ? 'rotate-180' : ''
-          }`} 
+          }`}
         />
       </button>
-      <div 
+      <div
         className={`overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-48 pb-4 px-5' : 'max-h-0'
+          isOpen ? 'max-h-96 pb-4 px-5' : 'max-h-0'
         }`}
       >
-        <p className="text-gray-600">{answer}</p>
+        <p className="text-gray-700">{answer}</p>
       </div>
     </div>
   );
@@ -51,47 +52,49 @@ export default function AidePage() {
       </div>
 
       {/* Cartes d'aide rapide */}
-      <div className="grid sm:grid-cols-2 gap-6">
-        <Link 
+      <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+        <Link
           href="/faq"
-          className="bg-white border border-gray-200 p-5 hover:border-primary-600 transition-all group"
+          className="glass-card p-5 transition-all duration-200 active:scale-[0.98] hover:bg-white/40 group"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-primary-50 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-primary-100/70 flex items-center justify-center border border-white/60 flex-shrink-0">
               <Book className="w-6 h-6 text-primary-600" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <h3 className="font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
                 FAQ complète
               </h3>
-              <p className="text-sm text-gray-500">Toutes les questions fréquentes</p>
+              <p className="text-sm text-gray-600">Toutes les questions fréquentes</p>
             </div>
-            <ExternalLink className="w-5 h-5 text-gray-400" />
+            <ExternalLink className="w-5 h-5 text-gray-500 flex-shrink-0" />
           </div>
         </Link>
 
-        <Link 
+        <Link
           href="/contact"
-          className="bg-white border border-gray-200 p-5 hover:border-primary-600 transition-all group"
+          className="glass-card p-5 transition-all duration-200 active:scale-[0.98] hover:bg-white/40 group"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-emerald-50 flex items-center justify-center">
+            <div className="w-12 h-12 rounded-full bg-emerald-100/70 flex items-center justify-center border border-white/60 flex-shrink-0">
               <Mail className="w-6 h-6 text-emerald-600" />
             </div>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <h3 className="font-bold text-gray-900 group-hover:text-primary-600 transition-colors">
                 Nous contacter
               </h3>
-              <p className="text-sm text-gray-500">Envoyez-nous un message</p>
+              <p className="text-sm text-gray-600">Envoyez-nous un message</p>
             </div>
-            <ExternalLink className="w-5 h-5 text-gray-400" />
+            <ExternalLink className="w-5 h-5 text-gray-500 flex-shrink-0" />
           </div>
         </Link>
       </div>
 
       {/* FAQ rapide */}
-      <div className="bg-white border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
+      <div className="glass-card overflow-hidden">
+        <div className="p-5 sm:p-6 border-b border-white/40">
           <div className="flex items-center gap-3">
             <HelpCircle className="w-6 h-6 text-primary-600" />
             <h2 className="text-xl font-bold text-gray-900">Questions fréquentes</h2>
@@ -146,19 +149,20 @@ export default function AidePage() {
       </div>
 
       {/* Contact direct */}
-      <div className="bg-gray-50 border border-gray-200 p-6">
+      <div className="glass-subcard p-5 sm:p-6">
         <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-primary-50 flex items-center justify-center flex-shrink-0">
+          <div className="w-12 h-12 rounded-full bg-primary-100/70 flex items-center justify-center flex-shrink-0 border border-white/60">
             <MessageCircle className="w-6 h-6 text-primary-600" />
           </div>
           <div>
             <h3 className="font-bold text-gray-900 mb-1">Besoin d&apos;aide supplémentaire ?</h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-gray-700 mb-4">
               Notre équipe est disponible du lundi au dimanche, de 9h à 18h pour répondre à vos questions.
             </p>
-            <a 
+            <a
               href="mailto:notification@testciviquefrance.fr"
-              className="inline-flex items-center gap-2 text-primary-600 font-medium hover:text-primary-700 transition-colors"
+              className="inline-flex items-center gap-2 text-primary-700 font-medium hover:text-primary-800 transition-all duration-200 active:scale-95"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <Mail className="w-5 h-5" />
               notification@testciviquefrance.fr

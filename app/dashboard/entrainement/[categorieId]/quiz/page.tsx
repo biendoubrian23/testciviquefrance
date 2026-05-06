@@ -877,7 +877,7 @@ export default function QuizPage() {
         )}
 
         <div className="max-w-md mx-auto px-2 sm:px-4 py-6">
-          <div className="bg-white border border-gray-200 p-5 text-center">
+          <div className="glass-card p-5 text-center">
             <div className="text-xs text-gray-500 mb-2">Niveau {niveau}</div>
 
             {isSuccess ? (
@@ -901,8 +901,15 @@ export default function QuizPage() {
               }
             </p>
 
-            <div className={`inline-block px-6 py-3 mb-4 ${isSuccess ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'
-              }`}>
+            <div
+              className="inline-block px-6 py-3 mb-4 rounded-xl"
+              style={{
+                backgroundColor: isSuccess ? 'rgba(209,250,229,0.5)' : 'rgba(254,226,226,0.5)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                border: isSuccess ? '1px solid rgba(52,211,153,0.4)' : '1px solid rgba(239,68,68,0.4)',
+              }}
+            >
               <div className={`text-4xl font-bold ${isSuccess ? 'text-emerald-600' : 'text-red-500'}`}>
                 {percentage}%
               </div>
@@ -916,7 +923,13 @@ export default function QuizPage() {
                 <span className="text-gray-500">Votre score</span>
                 <span className="text-gray-500">Objectif : 80%</span>
               </div>
-              <div className="h-2 bg-gray-200 overflow-hidden relative">
+              <div
+                className="h-2 overflow-hidden relative rounded-full"
+                style={{
+                  backgroundColor: 'rgba(255,255,255,0.45)',
+                  border: '1px solid rgba(255,255,255,0.6)',
+                }}
+              >
                 <div className="absolute top-0 bottom-0 w-0.5 bg-gray-400" style={{ left: '80%' }} />
                 <div
                   className={`h-full transition-all duration-500 ${isSuccess ? 'bg-emerald-500' : 'bg-red-400'}`}
@@ -925,7 +938,7 @@ export default function QuizPage() {
               </div>
             </div>
 
-            <div className="bg-gray-50 p-3 mb-4">
+            <div className="glass-subcard p-3 mb-4">
               <h3 className="font-medium text-gray-800 mb-2 text-xs">Détail des réponses</h3>
               <div className="flex justify-center gap-1 flex-wrap">
                 {reponses.map((r, i) => (
@@ -951,7 +964,8 @@ export default function QuizPage() {
               {!hasActiveSubscription && !allLevelsUnlocked && niveau < 10 && (
                 <a
                   href={STRIPE_PLANS.standard.paymentLink}
-                  className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-3 px-4 font-semibold hover:from-primary-700 hover:to-primary-800 transition-all flex flex-col items-center justify-center gap-1 shadow-lg"
+                  className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-3 px-4 font-semibold hover:from-primary-700 hover:to-primary-800 transition-all flex flex-col items-center justify-center gap-1 rounded-xl active:scale-95"
+                  style={{ boxShadow: '0 4px 14px rgba(37,99,235,0.35)', WebkitTapHighlightColor: 'transparent' }}
                 >
                   <span className="text-xs font-medium opacity-90">⚠️ Ne perdez pas votre progression !</span>
                   <span className="flex items-center gap-2">
@@ -965,7 +979,8 @@ export default function QuizPage() {
               {hasActiveSubscription && !allLevelsUnlocked && !isSuccess && score >= 2 && score <= 7 && niveau < 10 && (
                 <button
                   onClick={handleUseUnlockLevel}
-                  className="w-full bg-amber-600 text-white py-2.5 px-4 font-semibold hover:bg-amber-700 transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-amber-600 text-white py-2.5 px-4 font-semibold hover:bg-amber-700 transition-all flex items-center justify-center gap-2 rounded-xl active:scale-95"
+                  style={{ boxShadow: '0 4px 14px rgba(217,119,6,0.35)', WebkitTapHighlightColor: 'transparent' }}
                 >
                   <Sparkles className="w-4 h-4" />
                   <span>Débloquer le niveau suivant</span>
@@ -981,10 +996,11 @@ export default function QuizPage() {
                     window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau + 1}`
                   }}
                   disabled={!isSuccess && !(allLevelsUnlocked && score >= 2 && score <= 7)}
-                  className={`w-full py-2.5 px-4 font-semibold transition-colors ${isSuccess || (allLevelsUnlocked && score >= 2 && score <= 7)
+                  className={`w-full py-2.5 px-4 font-semibold transition-all rounded-xl active:scale-95 ${isSuccess || (allLevelsUnlocked && score >= 2 && score <= 7)
                       ? 'bg-primary-600 text-white hover:bg-primary-700'
                       : 'bg-gray-200 text-gray-400 cursor-not-allowed'
                     }`}
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   {isSuccess
                     ? 'Passer au niveau suivant'
@@ -999,7 +1015,8 @@ export default function QuizPage() {
                   clearQuizState()
                   window.location.href = `/dashboard/entrainement/${categorieId}/quiz?niveau=${niveau}`
                 }}
-                className="w-full bg-gray-100 text-gray-700 py-2.5 px-4 font-medium hover:bg-gray-200 transition-colors"
+                className="glass-pill w-full py-2.5 px-4 font-medium"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 Recommencer ce niveau
               </button>
@@ -1024,7 +1041,7 @@ export default function QuizPage() {
   if (showOffer) {
     return (
       <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-        <div className="bg-white rounded-xl max-w-md w-full p-6 relative">
+        <div className="glass-card max-w-md w-full p-6 relative">
           <button
             onClick={handleDeclineOffer}
             className="absolute top-3 right-3 p-1 text-gray-300 hover:text-gray-400 transition-colors"
@@ -1052,14 +1069,15 @@ export default function QuizPage() {
               }
             </p>
 
-            <div className="bg-gray-50 border border-gray-200 rounded-lg p-4 mb-6">
+            <div className="glass-subcard p-4 mb-6">
               <div className="text-3xl font-bold text-primary-600 mb-1">1,50 €</div>
               <div className="text-sm text-gray-500">Accès illimité aux flashcards</div>
             </div>
 
             <button
               onClick={handleAcceptOffer}
-              className="w-full bg-primary-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+              className="glass-cta w-full py-3 px-4 rounded-xl font-semibold active:scale-95"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               Débloquer les flashcards
             </button>
@@ -1100,7 +1118,7 @@ export default function QuizPage() {
       </div>
 
       {/* Question */}
-      <div className="bg-white rounded-none border border-gray-200 p-4 sm:p-6 mb-4">
+      <div className="glass-card p-4 sm:p-6 mb-4">
         <div className="text-sm text-gray-500 mb-2">Question {currentIndex + 1}/10</div>
         <h2 className="text-lg sm:text-xl font-semibold text-gray-900">{currentQ.question}</h2>
       </div>
@@ -1112,18 +1130,18 @@ export default function QuizPage() {
           const showResult = phase === 'explanation'
           const isCorrectAnswer = index === currentQ.shuffledCorrectIndex
 
-          let buttonClass = 'bg-white border-gray-200 hover:border-primary-300'
+          let buttonClass = 'bg-white/30 border-white/50 hover:bg-white/50 hover:border-white/70'
 
           if (showResult) {
             if (isCorrectAnswer) {
-              buttonClass = 'bg-emerald-50 border-emerald-500'
+              buttonClass = 'bg-emerald-50/80 border-emerald-500'
             } else if (isSelected && !isCorrectAnswer) {
-              buttonClass = 'bg-red-50 border-red-500'
+              buttonClass = 'bg-red-50/80 border-red-500'
             } else {
-              buttonClass = 'bg-white border-gray-200 opacity-50'
+              buttonClass = 'bg-white/20 border-white/40 opacity-50'
             }
           } else if ((phase === 'waiting' || phase === 'playing') && isSelected) {
-            buttonClass = 'bg-primary-50 border-primary-500'
+            buttonClass = 'bg-primary-50/80 border-primary-500'
           }
 
           const canClick = phase === 'playing' || phase === 'waiting'
@@ -1133,11 +1151,12 @@ export default function QuizPage() {
               key={index}
               onClick={() => handleSelectAnswer(index)}
               disabled={!canClick}
-              className={`w-full py-3 px-4 rounded-none border-2 text-left transition-all ${buttonClass} ${canClick ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+              className={`w-full py-3 px-4 rounded-xl border-2 text-left transition-all active:scale-[0.98] ${buttonClass} ${canClick ? 'cursor-pointer' : 'cursor-not-allowed'}`}
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <span className="w-7 h-7 rounded-full bg-gray-100 flex items-center justify-center text-sm font-medium text-gray-600 flex-shrink-0">
+                  <span className="w-7 h-7 rounded-full bg-white/60 flex items-center justify-center text-sm font-medium text-gray-600 flex-shrink-0">
                     {String.fromCharCode(65 + index)}
                   </span>
                   <span className="text-gray-800 text-sm sm:text-base">{option}</span>
@@ -1158,9 +1177,17 @@ export default function QuizPage() {
 
       {/* Explication */}
       {phase === 'explanation' && (
-        <div className="bg-primary-50 border border-primary-200 rounded-none p-4 mb-6">
-          <h3 className="font-semibold text-primary-800 mb-2">Explication</h3>
-          <p className="text-primary-700 text-sm">{currentQ.explication}</p>
+        <div
+          className="p-4 mb-6 rounded-xl"
+          style={{
+            backgroundColor: 'rgba(219,234,254,0.5)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid rgba(147,197,253,0.5)',
+          }}
+        >
+          <h3 className="font-semibold text-blue-900 mb-2">Explication</h3>
+          <p className="text-blue-900 text-sm">{currentQ.explication}</p>
         </div>
       )}
 
@@ -1168,7 +1195,8 @@ export default function QuizPage() {
       {phase === 'explanation' && (
         <button
           onClick={handleNextQuestion}
-          className="w-full bg-primary-600 text-white py-3 px-4 rounded-none font-medium hover:bg-primary-700 transition-colors flex items-center justify-center gap-2"
+          className="glass-cta w-full py-3 px-4 rounded-xl font-medium flex items-center justify-center gap-2 active:scale-95"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           {currentIndex < questions.length - 1 ? (
             <>
@@ -1188,7 +1216,8 @@ export default function QuizPage() {
       {noTimerMode && phase === 'waiting' && selectedAnswerIndex !== null && (
         <button
           onClick={handleValidateAnswer}
-          className="w-full bg-emerald-600 text-white py-3 px-4 rounded-none font-semibold hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 mb-4"
+          className="glass-cta-emerald w-full py-3 px-4 rounded-xl font-semibold flex items-center justify-center gap-2 mb-4 active:scale-95"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <CheckCircle className="w-5 h-5" />
           <span>Valider ma réponse</span>

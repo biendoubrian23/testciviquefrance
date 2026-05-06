@@ -21,6 +21,7 @@ import {
 } from 'lucide-react';
 import AdSenseBlock from '@/components/ui/AdSenseBlock';
 import ArticleViews from './ArticleViews';
+import TestCiviqueCTA from './TestCiviqueCTA';
 
 interface SEOArticleRendererProps {
   content: ArticleFullContent;
@@ -262,9 +263,16 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
           <AdSenseBlock slot="4450490909" format="auto" className="my-8" />
 
           {/* Sections de contenu */}
-          {content.sections.map((section, index) => (
-            <section key={section.id} className="mb-14">
-              <h2 
+          {content.sections.map((section, index) => {
+            // CTA inline inséré juste après la section ~ au milieu de l'article
+            // (ne s'affiche que si l'article a au moins 4 sections, pour ne pas casser les courts).
+            const showInlineCTA =
+              content.sections.length >= 4 &&
+              index === Math.floor(content.sections.length / 2) - 1;
+            return (
+            <div key={section.id}>
+            <section className="mb-14">
+              <h2
                 id={section.id}
                 className="text-2xl font-bold text-gray-900 mb-6 pb-3 border-b-2 border-primary-500 scroll-mt-24 flex items-center gap-3"
               >
@@ -382,7 +390,7 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
 
                   // Rendu d'un paragraphe normal
                   return (
-                    <p 
+                    <p
                       key={bIdx}
                       className="text-gray-700 leading-relaxed text-lg"
                       dangerouslySetInnerHTML={{ __html: parseMarkdown(block.content) }}
@@ -391,7 +399,10 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
                 })}
               </div>
             </section>
-          ))}
+            {showInlineCTA && <TestCiviqueCTA variant="inline" />}
+            </div>
+            );
+          })}
 
           {/* Conclusion - Mise en valeur forte */}
           <section className="mb-14">
@@ -490,31 +501,8 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
           {/* AdSense - avant le CTA */}
           <AdSenseBlock slot="9125999446" format="autorelaxed" className="my-8" />
 
-          {/* CTA vers la préparation */}
-          <section className="mb-10 p-8 bg-gray-100 border-t-4 border-gray-900 text-center">
-            <h3 className="text-xl font-bold text-gray-900 mb-3">
-              Prêt à préparer le test civique ?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Accédez gratuitement à tous nos cours et testez vos connaissances avec nos QCM.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/cours"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-colors text-lg"
-              >
-                Voir les cours gratuits
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-              <Link
-                href="/signup"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-colors text-lg"
-              >
-                Créer un compte
-                <ArrowRight className="w-5 h-5" />
-              </Link>
-            </div>
-          </section>
+          {/* CTA final standardisé : inscription gratuite + test blanc */}
+          <TestCiviqueCTA variant="final" />
         </div>
       </div>
     </article>

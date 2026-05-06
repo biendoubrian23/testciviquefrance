@@ -37,11 +37,12 @@ export default function FlashcardsUpgradeModal({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-2 sm:p-4">
-      <div className="bg-white max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto relative">
+      <div className="glass-card max-w-2xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-y-auto relative">
         {/* Bouton fermer */}
         <button
           onClick={onClose}
-          className="absolute top-2 right-2 sm:top-4 sm:right-4 p-2 hover:bg-gray-100 transition-colors z-10"
+          className="absolute top-2 right-2 sm:top-4 sm:right-4 glass-pill !p-2 text-gray-500 z-10"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <X className="w-5 h-5 text-gray-500" />
         </button>
@@ -58,8 +59,8 @@ export default function FlashcardsUpgradeModal({
           {/* Packs Flashcards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {/* Flashcards 2 thèmes */}
-            <div className={`bg-white border-2 p-4 sm:p-6 shadow-lg flex flex-col ${
-              hasFlashcards2Themes ? 'border-emerald-600 bg-emerald-50' : 'border-emerald-600'
+            <div className={`glass-card p-4 sm:p-6 flex flex-col ${
+              hasFlashcards2Themes ? 'ring-2 ring-emerald-600' : 'ring-2 ring-emerald-600'
             }`}>
               <h3 className="text-lg sm:text-xl font-bold text-emerald-600 mb-2 text-center">
                 Flashcards 2 thèmes
@@ -89,13 +90,14 @@ export default function FlashcardsUpgradeModal({
               </ul>
 
               {hasFlashcards2Themes ? (
-                <div className="w-full py-3 bg-emerald-100 text-emerald-700 font-semibold text-center border-2 border-emerald-600">
+                <div className="w-full py-3 bg-emerald-100/70 text-emerald-700 font-semibold text-center border-2 border-emerald-600 rounded-xl">
                   ✅ Actif
                 </div>
               ) : (
                 <button
                   onClick={() => handlePurchase('flashcards2Themes')}
-                  className="w-full py-3 font-semibold transition-colors bg-emerald-600 text-white hover:bg-emerald-700"
+                  className="glass-cta-emerald w-full py-3 font-semibold rounded-xl active:scale-95"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   Acheter 1,20€
                 </button>
@@ -103,9 +105,7 @@ export default function FlashcardsUpgradeModal({
             </div>
 
             {/* Flashcards 5 thèmes */}
-            <div className={`bg-white border-2 p-4 sm:p-6 shadow-lg flex flex-col relative ${
-              hasFlashcards5Themes ? 'border-blue-600 bg-blue-50' : 'border-blue-600'
-            }`}>
+            <div className="glass-card p-4 sm:p-6 flex flex-col relative ring-2 ring-blue-600">
               {!hasFlashcards5Themes && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                   <span className="px-3 sm:px-4 py-1 bg-blue-600 text-white text-xs sm:text-sm font-bold whitespace-nowrap">
@@ -142,13 +142,14 @@ export default function FlashcardsUpgradeModal({
               </ul>
 
               {hasFlashcards5Themes ? (
-                <div className="w-full py-3 bg-blue-100 text-blue-700 font-semibold text-center border-2 border-blue-600">
+                <div className="w-full py-3 bg-blue-100/70 text-blue-700 font-semibold text-center border-2 border-blue-600 rounded-xl">
                   ✅ Actif
                 </div>
               ) : (
                 <button
                   onClick={() => handlePurchase('flashcards5Themes')}
-                  className="w-full py-3 font-semibold transition-colors bg-blue-600 text-white hover:bg-blue-700"
+                  className="glass-cta w-full py-3 font-semibold rounded-xl active:scale-95"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   Acheter 1,50€
                 </button>
@@ -157,7 +158,15 @@ export default function FlashcardsUpgradeModal({
           </div>
 
           {/* Note importante */}
-          <div className="mt-4 sm:mt-6 bg-emerald-50 border border-emerald-200 p-3 sm:p-4">
+          <div
+            className="mt-4 sm:mt-6 p-3 sm:p-4 rounded-xl"
+            style={{
+              backgroundColor: 'rgba(209,250,229,0.4)',
+              border: '1px solid rgba(52,211,153,0.35)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+            }}
+          >
             <p className="text-xs sm:text-sm text-emerald-800">
               <span className="font-semibold">💡 Note :</span> Les Flashcards sont des achats uniques permanents. 
               Aucun abonnement requis !
@@ -166,20 +175,22 @@ export default function FlashcardsUpgradeModal({
 
           {/* Section optionnelle pour s'abonner */}
           {!hasSubscription && (
-            <div className="mt-6 pt-6 border-t border-gray-200">
+            <div className="mt-6 pt-6 border-t border-white/40">
               <p className="text-center text-gray-600 text-sm mb-4">
                 Vous souhaitez aussi accéder aux tests et examens blancs ?
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <button
                   onClick={() => handlePurchase('standard')}
-                  className="px-4 py-2 border-2 border-primary-600 text-primary-600 font-medium hover:bg-primary-50 transition-colors text-sm"
+                  className="px-4 py-2 border-2 border-primary-600 text-primary-600 font-medium hover:bg-primary-50/50 transition-all text-sm rounded-xl active:scale-95 bg-white/30 backdrop-blur-sm"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   Pack Standard - 2,99€/sem
                 </button>
                 <button
                   onClick={() => handlePurchase('premium')}
-                  className="px-4 py-2 border-2 border-purple-600 text-purple-600 font-medium hover:bg-purple-50 transition-colors text-sm"
+                  className="px-4 py-2 border-2 border-purple-600 text-purple-600 font-medium hover:bg-purple-50/50 transition-all text-sm rounded-xl active:scale-95 bg-white/30 backdrop-blur-sm"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   Premium - 6,99€/sem
                 </button>

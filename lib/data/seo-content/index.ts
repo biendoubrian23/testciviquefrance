@@ -163,6 +163,9 @@ import {
   passeportTalent2026GuideContent,
 } from './articles-naturalisation-passeport-talent-2026';
 
+// ===== Articles Naturalisation Erreurs 2026 =====
+import { refusNaturalisationErreurs2026Content } from './articles-naturalisation-erreurs-2026';
+
 // ===== Articles Diplômes, Mariage, Retraite - Avril 2026 =====
 import { reconnaissanceDiplomesContent } from './articles-reconnaissance-diplomes';
 import { nationaliteParMariageContent } from './articles-nationalite-mariage';
@@ -260,6 +263,31 @@ import {
 // ===== Page Ressources Backlinks 2026 =====
 import { ressourcesUtilesEtrangersContent } from './articles-ressources-2026';
 
+// ===== Batch Mai 2026 — 12 articles =====
+// Les 3 premiers sont publiés (06/05/2026). Les 9 suivants sont en brouillon
+// (champ `publishedAt` futur) et seront publiés au fil de l'eau en retirant
+// leur `publishedAt` puis en pushant.
+import {
+  article1Content as anefDossierBloqueContent,
+  article2Content as antsRdvIndispoContent,
+  article3Content as naturalisationDecretMariageContent,
+} from './articles-batch-mai-2026-1';
+import {
+  article1Content as anefFranceConnectBloqueContent,
+  article2Content as anefErreursCourantesContent,
+  article3Content as echangePermisPaysAccordsContent,
+} from './articles-batch-mai-2026-2';
+import {
+  article1Content as famillePasseportTalentContent,
+  article2Content as naturalisationEnfantMineurContent,
+  article3Content as oqtfEtudiantContent,
+} from './articles-batch-mai-2026-3';
+import {
+  article1Content as refusNaturalisationCadaContent,
+  article2Content as antsPermisCategorieBContent,
+  article3Content as renouvellementResident10AnsContent,
+} from './articles-batch-mai-2026-4';
+
 // Map slug -> contenu complet
 export const articleContents: Record<string, ArticleFullContent> = {
   'comment-reussir-test-civique-premier-coup': reussirTestCiviqueContent,
@@ -349,6 +377,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   // Articles Naturalisation & Passeport Talent 2026
   'naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet': naturalisation2026Content,
   'passeport-talent-france-2026-guide-complet-10-categories-famille-naturalisation': passeportTalent2026GuideContent,
+  // Articles Naturalisation Erreurs 2026
+  'refus-naturalisation-7-erreurs-90-pourcent-candidats': refusNaturalisationErreurs2026Content,
   // Articles Diplômes, Mariage, Retraite - Avril 2026
   'reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences': reconnaissanceDiplomesContent,
   'nationalite-francaise-par-mariage-2026-conditions-delai-4-ans-dossier': nationaliteParMariageContent,
@@ -410,6 +440,19 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'declaration-impots-premiere-annee-france-etranger-2026-guide-debutant': declarationImpotsPremiereAnneeContent,
   // Page Ressources Backlinks 2026
   'ressources-utiles-etrangers-france-2026-outils-associations-aides': ressourcesUtilesEtrangersContent,
+  // Batch programmé Mai 2026 — publication automatique 3/jour à 8h/12h/16h Paris
+  'anef-dossier-bloque-en-attente-2026-debloquer-relancer': anefDossierBloqueContent,
+  'ants-rdv-indisponible-prefecture-2026-alternatives-solutions': antsRdvIndispoContent,
+  'naturalisation-decret-mariage-2026-comparatif-conditions-delais': naturalisationDecretMariageContent,
+  'anef-franceconnect-bloque-2026-erreur-connexion-solutions': anefFranceConnectBloqueContent,
+  'anef-erreurs-courantes-2026-page-blanche-session-expiree-500': anefErreursCourantesContent,
+  'echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete': echangePermisPaysAccordsContent,
+  'famille-passeport-talent-france-2026-conjoint-enfants-droits-titre': famillePasseportTalentContent,
+  'naturalisation-enfant-mineur-france-2026-effet-collectif-declaration': naturalisationEnfantMineurContent,
+  'oqtf-etudiant-etranger-france-2026-recours-droits-defense': oqtfEtudiantContent,
+  'dossier-naturalisation-refuse-sans-motif-2026-recours-cada-tribunal': refusNaturalisationCadaContent,
+  'ants-permis-conduire-categorie-b-2026-demande-etapes-tarifs': antsPermisCategorieBContent,
+  'renouvellement-carte-resident-10-ans-2026-conditions-documents-anef': renouvellementResident10AnsContent,
 };
 
 /**

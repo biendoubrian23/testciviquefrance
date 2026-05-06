@@ -94,21 +94,26 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         />
       )}
       
-      {/* Sidebar */}
-      <aside 
+      {/* Sidebar - Liquid Glass */}
+      <aside
         className={`
-          fixed left-0 top-0 h-[100dvh] w-64 bg-white border-r border-gray-200 flex flex-col z-50
+          fixed left-0 top-0 h-[100dvh] w-64 flex flex-col z-50
           transition-transform duration-300 ease-in-out
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
           lg:!translate-x-0 lg:h-screen
+          glass-bg
         `}
+        style={{
+          borderRight: '1px solid rgba(255, 255, 255, 0.5)',
+          boxShadow: '0 8px 32px rgba(0, 0, 0, 0.06), inset -1px 0 0 rgba(255, 255, 255, 0.6)',
+        }}
       >
         {/* Header mobile avec bouton fermer */}
-        <div className="lg:hidden flex items-center justify-between p-4 border-b border-gray-100">
+        <div className="lg:hidden flex items-center justify-between p-4">
           <span className="font-semibold text-gray-900">Menu</span>
-          <button 
+          <button
             onClick={onClose}
-            className="p-2 text-gray-500 hover:text-gray-700 hover:bg-gray-100 rounded-lg"
+            className="glass-pill !p-2 text-gray-700"
             aria-label="Fermer le menu"
           >
             <X className="w-5 h-5" />
@@ -130,20 +135,20 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
         {/* Menu principal */}
         <nav className="flex-1 pt-4 pb-3 overflow-y-auto min-h-0" style={{ WebkitOverflowScrolling: 'touch' }}>
-          <ul className="space-y-1 px-3">
+          <ul className="space-y-2 px-3">
             {menuItems.map((item) => {
               const Icon = item.icon;
               const active = isActive(item.href);
-              
+
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={handleLinkClick}
-                    className={`flex items-center justify-between px-4 py-3 transition-all duration-150 ${
+                    className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-200 active:scale-95 ${
                       active
-                        ? 'bg-primary-50 text-primary-600 border-l-2 border-primary-600 -ml-px'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100'
+                        ? 'glass-nav-active text-primary-700'
+                        : 'text-gray-700 hover:bg-white/40'
                     }`}
                     style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
@@ -159,34 +164,34 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
           </ul>
 
           {/* Séparateur */}
-          <div className="my-6 mx-6 border-t border-gray-100" />
+          <div className="my-6 mx-6 border-t border-white/40" />
 
           {/* Menu secondaire */}
           <div className="px-4 mb-2">
-            <span className="text-xs font-medium text-gray-400 uppercase tracking-wider">Compte</span>
+            <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Compte</span>
           </div>
-          <ul className="space-y-1 px-3">
+          <ul className="space-y-2 px-3">
             {bottomMenuItems.map((item) => {
               const Icon = item.icon;
               const active = isActive(item.href);
-              
+
               return (
                 <li key={item.href}>
                   <Link
                     href={item.href}
                     onClick={handleLinkClick}
-                    className={`flex items-center justify-between px-4 py-3 transition-all duration-150 ${
+                    className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-200 active:scale-95 ${
                       active
-                        ? 'bg-primary-50 text-primary-600 border-l-2 border-primary-600 -ml-px'
-                        : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900 active:bg-gray-100'
+                        ? 'glass-nav-active text-primary-700'
+                        : 'text-gray-700 hover:bg-white/40'
                     }`}
                     style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-2 min-w-0">
                       <Icon className="w-5 h-5 flex-shrink-0" />
-                      <span className="font-medium">{item.title}</span>
+                      <span className="font-medium truncate">{item.title}</span>
                       {item.badge && (
-                        <span className="text-[10px] bg-emerald-100 text-emerald-700 px-1.5 py-0.5 rounded-full font-medium whitespace-nowrap">
+                        <span className="text-[10px] bg-emerald-100/80 text-emerald-700 px-1.5 py-0.5 rounded-full font-medium whitespace-nowrap border border-emerald-200/60">
                           {item.badge}
                         </span>
                       )}
@@ -200,29 +205,31 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
         </nav>
 
         {/* Profil utilisateur - toujours visible en bas */}
-        <div className="p-4 border-t border-gray-100 flex-shrink-0 bg-white">
-          <button
-            onClick={() => {
-              signOut();
-              if (onClose) onClose();
-            }}
-            className="flex items-center justify-center gap-2 w-full px-4 py-2.5 bg-red-600 text-white rounded-lg hover:bg-red-700 active:bg-red-800 transition-colors mb-3"
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-          >
-            <LogOut className="w-5 h-5" />
-            <span>Déconnexion</span>
-          </button>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-primary-100 flex items-center justify-center text-primary-600 font-semibold flex-shrink-0">
-              {profile?.prenom?.[0]?.toUpperCase() || profile?.email?.[0]?.toUpperCase() || 'U'}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="font-medium text-gray-900 truncate">
-                {profile?.prenom ? `${profile.prenom} ${profile.nom || ''}`.trim() : 'Utilisateur'}
-              </p>
-              <p className="text-sm text-gray-500 truncate">
-                {profile?.email}
-              </p>
+        <div className="p-4 flex-shrink-0">
+          <div className="glass-card p-3">
+            <button
+              onClick={() => {
+                signOut();
+                if (onClose) onClose();
+              }}
+              className="glass-cta-red w-full mb-3"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+              <LogOut className="w-5 h-5" />
+              <span>Déconnexion</span>
+            </button>
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-full bg-primary-100/80 flex items-center justify-center text-primary-700 font-semibold flex-shrink-0 border border-white/60">
+                {profile?.prenom?.[0]?.toUpperCase() || profile?.email?.[0]?.toUpperCase() || 'U'}
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="font-medium text-gray-900 truncate">
+                  {profile?.prenom ? `${profile.prenom} ${profile.nom || ''}`.trim() : 'Utilisateur'}
+                </p>
+                <p className="text-sm text-gray-600 truncate">
+                  {profile?.email}
+                </p>
+              </div>
             </div>
           </div>
         </div>

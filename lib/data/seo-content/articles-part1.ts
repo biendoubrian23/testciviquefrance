@@ -30,6 +30,13 @@ export interface ArticleFullContent {
   keywords: string[];
   videos?: VideoEmbed[];
   sources?: ExternalSource[];
+  /**
+   * Date/heure de publication programmée au format ISO 8601 (ex: '2026-05-07T08:00:00+02:00').
+   * Si défini ET dans le futur : l'article est masqué (404, non listé, exclu du sitemap).
+   * Si absent ou dans le passé : l'article est publié immédiatement.
+   * Cette valeur est immuable une fois écrite — elle ne se reset jamais (timestamp ISO hardcodé).
+   */
+  publishedAt?: string;
 }
 
 // Article 1: Comment réussir le test civique

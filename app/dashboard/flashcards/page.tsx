@@ -312,7 +312,7 @@ export default function FlashcardsPage() {
                 className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-all ${
                   selectedTheme.id === theme.id
                     ? `${theme.bgColor} ${theme.color} border-2 ${theme.borderColor}`
-                    : 'bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300'
+                    : 'bg-white/40 border border-white/60 text-gray-600 hover:bg-white/55'
                 }`}
               >
                 {theme.icon}
@@ -322,8 +322,8 @@ export default function FlashcardsPage() {
           </div>
         </div>
 
-        <div className="bg-white border-2 border-gray-900 rounded-xl p-8 text-center">
-          <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <div className="glass-card p-8 text-center">
+          <div className="w-20 h-20 bg-emerald-100/70 rounded-full flex items-center justify-center mx-auto mb-6">
             <Check className="w-10 h-10 text-emerald-600" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">
@@ -339,14 +339,15 @@ export default function FlashcardsPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={resetProgress}
-              className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-xl font-medium hover:bg-primary-700 transition-all active:scale-95"
+              style={{ boxShadow: '0 4px 14px rgba(37,99,235,0.35)' }}
             >
               <RotateCcw className="w-5 h-5" />
               Recommencer
             </button>
             <button
               onClick={shuffleCards}
-              className="flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-gray-900 rounded-lg font-medium hover:bg-gray-50 transition-colors"
+              className="flex items-center justify-center gap-2 px-6 py-3 glass-pill font-medium"
             >
               <Shuffle className="w-5 h-5" />
               Mélanger
@@ -382,9 +383,18 @@ export default function FlashcardsPage() {
           <span className="text-sm sm:text-base font-medium">Voir les offres</span>
         </a>
         
-        <div className="bg-white border-2 border-amber-500 p-6 sm:p-8 text-center">
+        <div
+          className="p-6 sm:p-8 text-center rounded-2xl"
+          style={{
+            backgroundColor: 'rgba(255,251,235,0.6)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            border: '1px solid rgba(251,191,36,0.4)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
+          }}
+        >
           <div className="flex justify-center mb-4 sm:mb-6">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-amber-100 flex items-center justify-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-amber-100/70 rounded-full flex items-center justify-center">
               <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-amber-600" />
             </div>
           </div>
@@ -398,15 +408,24 @@ export default function FlashcardsPage() {
             les thèmes clés de l&apos;examen civique.
           </p>
           
-          <div className="bg-emerald-50 border border-emerald-200 p-3 sm:p-4 mb-4 sm:mb-6">
+          <div
+            className="p-3 sm:p-4 mb-4 sm:mb-6 rounded-xl"
+            style={{
+              backgroundColor: 'rgba(209,250,229,0.5)',
+              border: '1px solid rgba(52,211,153,0.4)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+            }}
+          >
             <p className="text-xs sm:text-sm text-emerald-800 font-medium">
               🃏 Achetez les flashcards à l&apos;unité - sans abonnement requis !
             </p>
           </div>
-          
+
           <button
             onClick={() => setShowUpgradeModal(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white font-semibold hover:bg-emerald-700 transition-all rounded-xl active:scale-95"
+            style={{ boxShadow: '0 4px 14px rgba(5,150,105,0.35)' }}
           >
             <span>Voir les packs Flashcards</span>
             <ArrowRight className="w-5 h-5" />
@@ -460,8 +479,8 @@ export default function FlashcardsPage() {
                   selectedTheme.id === theme.id
                     ? `${theme.bgColor} ${theme.color} border-2 ${theme.borderColor}`
                     : isUnlocked
-                      ? 'bg-white border-2 border-gray-200 text-gray-600 hover:border-gray-300'
-                      : 'bg-gray-100 border-2 border-gray-300 text-gray-400 cursor-pointer hover:border-amber-400'
+                      ? 'bg-white/40 border border-white/60 text-gray-600 hover:bg-white/55'
+                      : 'bg-white/20 border border-white/40 text-gray-400 cursor-pointer hover:border-amber-300/60'
                 }`}
               >
                 {!isUnlocked && <Lock className="w-4 h-4" />}
@@ -487,15 +506,33 @@ export default function FlashcardsPage() {
 
       {/* Stats rapides */}
       <div className="grid grid-cols-3 gap-3 mb-6">
-        <div className="bg-white border-2 border-gray-900 rounded-lg p-4 text-center">
+        <div className="glass-card p-4 text-center">
           <p className="text-2xl font-bold text-gray-900">{currentDeck.length}</p>
           <p className="text-xs text-gray-500">Cartes</p>
         </div>
-        <div className="bg-white border-2 border-emerald-500 rounded-lg p-4 text-center">
+        <div
+          className="p-4 text-center rounded-2xl"
+          style={{
+            backgroundColor: 'rgba(209,250,229,0.4)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(52,211,153,0.3)',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9)',
+          }}
+        >
           <p className="text-2xl font-bold text-emerald-600">{knownCards.size}</p>
           <p className="text-xs text-gray-500">Maîtrisées</p>
         </div>
-        <div className="bg-white border-2 border-amber-500 rounded-lg p-4 text-center">
+        <div
+          className="p-4 text-center rounded-2xl"
+          style={{
+            backgroundColor: 'rgba(254,243,199,0.4)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
+            border: '1px solid rgba(251,191,36,0.3)',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9)',
+          }}
+        >
           <p className="text-2xl font-bold text-amber-600">{reviewCards.length}</p>
           <p className="text-xs text-gray-500">À revoir</p>
         </div>
@@ -507,7 +544,14 @@ export default function FlashcardsPage() {
           <span>Progression</span>
           <span>{currentIndex + 1}/{currentDeck.length}</span>
         </div>
-        <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+        <div
+          className="h-2 rounded-full overflow-hidden"
+          style={{
+            backgroundColor: 'rgba(255,255,255,0.45)',
+            border: '1px solid rgba(255,255,255,0.6)',
+            boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.04)',
+          }}
+        >
           <div 
             className={`h-full transition-all duration-300 ${
               selectedTheme.id === 'principes' ? 'bg-blue-500' :
@@ -523,7 +567,7 @@ export default function FlashcardsPage() {
 
       {/* Carte verrouillée si thème non accessible */}
       {!isThemeUnlocked(selectedTheme.id) ? (
-        <div className="mb-6 bg-gradient-to-br from-gray-50 to-gray-100 border-2 border-gray-300 rounded-xl p-8 text-center">
+        <div className="mb-6 glass-card p-8 text-center">
           <div className="flex justify-center mb-4">
             <div className="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center">
               <Lock className="w-8 h-8 text-amber-600" />
@@ -538,7 +582,7 @@ export default function FlashcardsPage() {
             Ce thème nécessite l&apos;achat d&apos;un pack Flashcards
           </p>
           
-          <div className="bg-white border border-gray-200 rounded-lg p-4 mb-4 text-sm text-left">
+          <div className="glass-subcard p-4 mb-4 text-sm text-left">
             {hasFlashcards2 ? (
               <div>
                 <p className="font-medium text-gray-900 mb-2">✓ Pack 2 thèmes débloqué</p>
@@ -555,7 +599,8 @@ export default function FlashcardsPage() {
           
           <button
             onClick={() => setShowUpgradeModal(true)}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all active:scale-95"
+            style={{ boxShadow: '0 4px 14px rgba(245,158,11,0.35)' }}
           >
             <span>Débloquer ce thème</span>
             <ArrowRight className="w-5 h-5" />
@@ -576,11 +621,16 @@ export default function FlashcardsPage() {
             }}
           >
           {/* Face avant - Question */}
-          <div 
-            className="absolute inset-0 bg-white border-2 border-gray-900 rounded-xl p-6 sm:p-8 flex flex-col"
-            style={{ 
+          <div
+            className="absolute inset-0 rounded-xl p-6 sm:p-8 flex flex-col"
+            style={{
               backfaceVisibility: 'hidden',
-              WebkitBackfaceVisibility: 'hidden'
+              WebkitBackfaceVisibility: 'hidden',
+              backgroundColor: 'rgba(255,255,255,0.55)',
+              backdropFilter: 'blur(24px)',
+              WebkitBackdropFilter: 'blur(24px)',
+              border: '1px solid rgba(255,255,255,0.70)',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9)',
             }}
           >
             {/* Catégorie */}
@@ -648,7 +698,13 @@ export default function FlashcardsPage() {
         <button
           onClick={markAsReview}
           disabled={isAnimating || !isThemeUnlocked(selectedTheme.id)}
-          className="flex items-center justify-center gap-2 py-4 bg-amber-50 border-2 border-amber-400 text-amber-700 rounded-xl font-semibold hover:bg-amber-100 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center justify-center gap-2 py-4 text-amber-700 rounded-xl font-semibold active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{
+            backgroundColor: 'rgba(254,243,199,0.6)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '2px solid rgba(251,191,36,0.5)',
+          }}
         >
           <X className="w-5 h-5" />
           <span>À revoir</span>
@@ -656,7 +712,13 @@ export default function FlashcardsPage() {
         <button
           onClick={markAsKnown}
           disabled={isAnimating || !isThemeUnlocked(selectedTheme.id)}
-          className="flex items-center justify-center gap-2 py-4 bg-emerald-50 border-2 border-emerald-500 text-emerald-700 rounded-xl font-semibold hover:bg-emerald-100 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          className="flex items-center justify-center gap-2 py-4 text-emerald-700 rounded-xl font-semibold active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+          style={{
+            backgroundColor: 'rgba(209,250,229,0.6)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '2px solid rgba(52,211,153,0.5)',
+          }}
         >
           <Check className="w-5 h-5" />
           <span>Je sais !</span>
@@ -668,7 +730,7 @@ export default function FlashcardsPage() {
         <button
           onClick={goToPrevious}
           disabled={currentIndex === 0 || isAnimating || !isThemeUnlocked(selectedTheme.id)}
-          className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className="glass-pill !p-3 disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <ChevronLeft className="w-5 h-5 text-gray-600" />
         </button>
@@ -677,7 +739,7 @@ export default function FlashcardsPage() {
           <button
             onClick={shuffleCards}
             disabled={!isThemeUnlocked(selectedTheme.id)}
-            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            className="glass-pill flex items-center gap-2 px-4 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Shuffle className="w-4 h-4" />
             <span className="hidden sm:inline">Mélanger</span>
@@ -685,7 +747,7 @@ export default function FlashcardsPage() {
           <button
             onClick={resetProgress}
             disabled={!isThemeUnlocked(selectedTheme.id)}
-            className="flex items-center gap-2 px-4 py-2 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+            className="glass-pill flex items-center gap-2 px-4 py-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <RotateCcw className="w-4 h-4" />
             <span className="hidden sm:inline">Recommencer</span>
@@ -695,7 +757,7 @@ export default function FlashcardsPage() {
         <button
           onClick={goToNext}
           disabled={isAnimating || !isThemeUnlocked(selectedTheme.id)}
-          className="p-3 bg-white border-2 border-gray-300 rounded-lg hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+          className="glass-pill !p-3 disabled:opacity-30 disabled:cursor-not-allowed"
         >
           <ChevronRight className="w-5 h-5 text-gray-600" />
         </button>
@@ -703,7 +765,15 @@ export default function FlashcardsPage() {
 
       {/* Info mode révision */}
       {reviewCards.length > 0 && !isReviewMode && (
-        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg text-center">
+        <div
+          className="mt-6 p-4 rounded-xl text-center"
+          style={{
+            backgroundColor: 'rgba(254,243,199,0.5)',
+            border: '1px solid rgba(251,191,36,0.35)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+          }}
+        >
           <p className="text-amber-700 text-sm">
             💡 Les cartes "À revoir" seront présentées à nouveau à la fin
           </p>

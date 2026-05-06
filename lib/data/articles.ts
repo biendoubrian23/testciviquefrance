@@ -61,7 +61,7 @@ export const categories: Category[] = [
     name: 'Conseils pratiques',
     slug: 'conseils',
     icon: '',
-    count: 3,
+    count: 4,
     color: 'orange',
   },
   {
@@ -123,15 +123,38 @@ export const articles: Article[] = [
 ];
 
 // Import des articles SEO
-import { seoArticles, quotidienImmigrationArticles, viePratiqueArticles, bingSeoArticles2026 } from './seo-articles';
+import { seoArticles, quotidienImmigrationArticles, viePratiqueArticles, bingSeoArticles2026, articlesMai2026Programmes } from './seo-articles';
 
-// Fusionner tous les articles
-// Fusionner tous les articles et trier par date (plus récent en premier)
-export const allArticles: Article[] = [...articles, ...seoArticles, ...quotidienImmigrationArticles, ...viePratiqueArticles, ...bingSeoArticles2026].sort((a, b) => {
+// Import des articles SEO avec contenu complet
+import { articleContents, getAllSEOArticleSlugs } from './seo-content';
+
+// Import du système de publication différée
+import { isArticlePublished } from './publishing';
+
+// Liste complète (publiés + programmés) — utilisée pour `generateStaticParams`
+// afin que les pages des articles futurs soient bien pré-rendues. Le route
+// handler renvoie 404 tant que `publishedAt` n'est pas atteint.
+export const allArticlesIncludingScheduled: Article[] = [
+  ...articles,
+  ...seoArticles,
+  ...quotidienImmigrationArticles,
+  ...viePratiqueArticles,
+  ...bingSeoArticles2026,
+  ...articlesMai2026Programmes,
+].sort((a, b) => {
   const dateA = new Date(a.date.split('/').reverse().join('-'));
   const dateB = new Date(b.date.split('/').reverse().join('-'));
   return dateB.getTime() - dateA.getTime();
 });
+
+// Liste publique — exclut les articles dont `publishedAt` est encore dans le futur.
+// Utilisée par les listings, le sitemap, getArticleBySlug, getRelatedArticles, etc.
+export const allArticles: Article[] = allArticlesIncludingScheduled.filter((a) =>
+  isArticlePublished(a.slug)
+);
+
+// Récupérer tous les slugs d'articles SEO
+export const seoArticleSlugs = getAllSEOArticleSlugs();
 
 export const getArticleBySlug = (slug: string): Article | undefined => {
   return allArticles.find((article) => article.slug === slug);

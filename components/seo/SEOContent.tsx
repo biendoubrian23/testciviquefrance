@@ -6,7 +6,8 @@ export default function SEOContent() {
   return (
     <div className="sr-only" aria-hidden="true">
       {/* Contenu SEO caché - uniquement pour les moteurs de recherche */}
-      <h1>Test Civique France - Préparation Examen Civique Naturalisation Française</h1>
+      {/* Note : le H1 principal est dans Hero.tsx — ici on utilise un H2 pour éviter le double H1 (Bing High severity warning) */}
+      <h2>Test Civique France - Préparation Examen Civique Naturalisation Française</h2>
       
       <section>
         <h2>Qu'est-ce que le test civique français ?</h2>

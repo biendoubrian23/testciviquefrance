@@ -349,16 +349,19 @@ export default function CategorieDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600"></div>
+        <div className="glass-card p-8 text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600 mx-auto mb-3"></div>
+          <p className="text-gray-600 text-sm">Chargement...</p>
+        </div>
       </div>
     )
   }
 
   if (!categorie) {
     return (
-      <div className="text-center py-12">
-        <p className="text-gray-500">Catégorie non trouvée</p>
-        <Link href="/dashboard/entrainement" className="text-primary-600 hover:underline mt-4 inline-block">
+      <div className="glass-card p-8 text-center max-w-md mx-auto">
+        <p className="text-gray-600 mb-4">Catégorie non trouvée</p>
+        <Link href="/dashboard/entrainement" className="glass-cta">
           Retour aux catégories
         </Link>
       </div>
@@ -372,11 +375,12 @@ export default function CategorieDetailPage() {
   const niveauActuel = Math.max(...niveaux.filter(n => n.is_unlocked).map(n => n.niveau), 0)
 
   return (
-    <div className="max-w-4xl mx-auto px-0 sm:px-4 py-6">
+    <div className="max-w-4xl mx-auto px-0 sm:px-4 py-6 space-y-5">
       {/* Header avec navigation */}
-      <Link 
-        href="/dashboard/entrainement" 
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-primary-600 mb-6 transition-colors"
+      <Link
+        href="/dashboard/entrainement"
+        className="inline-flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-all duration-200 active:scale-95 font-medium"
+        style={{ WebkitTapHighlightColor: 'transparent' }}
       >
         <ArrowLeft className="w-4 h-4" />
         <span>Retour aux catégories</span>
@@ -384,7 +388,16 @@ export default function CategorieDetailPage() {
 
       {/* Message info pour membres gratuits */}
       {!hasActiveSubscription && !allLevelsUnlocked && (
-        <div className="bg-amber-50 border border-amber-300 p-3 mb-6 rounded-lg">
+        <div
+          className="rounded-2xl p-3"
+          style={{
+            backgroundColor: 'rgba(251, 191, 36, 0.15)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid rgba(251, 191, 36, 0.35)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.7)',
+          }}
+        >
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-2">
               <Lock className="w-4 h-4 text-amber-600 flex-shrink-0" />
@@ -394,7 +407,8 @@ export default function CategorieDetailPage() {
             </div>
             <button
               onClick={() => router.push('/dashboard/credits')}
-              className="flex-shrink-0 bg-amber-600 text-white px-3 py-1.5 text-xs font-medium rounded hover:bg-amber-700 transition-colors"
+              className="flex-shrink-0 glass-cta-amber !py-1.5 !px-3 !text-xs"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               Voir les offres
             </button>
@@ -403,114 +417,109 @@ export default function CategorieDetailPage() {
       )}
 
       {/* Info catégorie */}
-      <div className="bg-white border-2 border-gray-900 p-6 mb-6">
+      <div className="glass-card p-5 sm:p-6">
         <h1 className="text-2xl font-bold text-gray-900 mb-2">{categorie.nom}</h1>
-        <p className="text-gray-600 mb-4">{categorie.description}</p>
-        
+        <p className="text-gray-700 mb-4">{categorie.description}</p>
+
         {/* Barre de progression globale */}
         <div className="mb-4">
-          <div className="flex justify-between text-sm text-gray-600 mb-1">
+          <div className="flex justify-between text-sm text-gray-700 mb-2">
             <span>Progression</span>
-            <span>{niveauActuel}/10 niveaux</span>
+            <span className="font-semibold">{niveauActuel}/10 niveaux</span>
           </div>
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-primary-600 transition-all duration-500"
+          <div
+            className="h-2.5 rounded-full overflow-hidden"
+            style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.45)',
+              border: '1px solid rgba(255, 255, 255, 0.6)',
+              boxShadow: 'inset 0 1px 2px rgba(0,0,0,0.04)',
+            }}
+          >
+            <div
+              className="h-full bg-primary-600 rounded-full transition-all duration-500"
               style={{ width: `${(niveauActuel / 10) * 100}%` }}
             />
           </div>
         </div>
 
         {/* Stats rapides */}
-        <div className="flex gap-6 text-sm">
-          {gamification && (
-            <>
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-amber-500" />
-                <span className="text-gray-700">{gamification.points_totaux} points</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Trophy className="w-4 h-4 text-primary-600" />
-                <span className="text-gray-700">{gamification.serie_jours} jours consécutifs</span>
-              </div>
-            </>
-          )}
-        </div>
+        {gamification && (
+          <div className="flex gap-4 text-sm">
+            <div className="glass-subcard flex items-center gap-2 px-3 py-1.5">
+              <Star className="w-4 h-4 text-amber-500" />
+              <span className="text-gray-800 font-medium">{gamification.points_totaux} points</span>
+            </div>
+            <div className="glass-subcard flex items-center gap-2 px-3 py-1.5">
+              <Trophy className="w-4 h-4 text-primary-600" />
+              <span className="text-gray-800 font-medium">{gamification.serie_jours} jours consécutifs</span>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Grille des niveaux */}
       <div className="grid gap-3">
         {niveaux.map((niveau) => {
-          // Permettre le clic sur les niveaux verrouillés pour rediriger vers la page credits
           const isLockedForFreeUser = !hasActiveSubscription && !allLevelsUnlocked && niveau.niveau > 1
           const canPlay = niveau.is_unlocked || isLockedForFreeUser
-          
+
           return (
             <div
               key={niveau.niveau}
-              className={`bg-white rounded-xl border-2 p-4 transition-all ${
-                niveau.is_unlocked 
-                  ? 'border-gray-900 hover:border-primary-600' 
-                  : 'border-gray-400 bg-gray-50 opacity-60'
+              className={`glass-card p-4 transition-all duration-200 ${
+                !niveau.is_unlocked && !isLockedForFreeUser ? 'opacity-50' : ''
               }`}
             >
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div className="flex items-center gap-4">
                   {/* Indicateur de statut */}
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${
-                    niveau.is_completed 
-                      ? 'bg-emerald-100' 
-                      : niveau.is_unlocked 
-                        ? 'bg-primary-100' 
-                        : 'bg-gray-100'
-                  }`}>
+                  <div
+                    className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 border border-white/60"
+                    style={{
+                      backgroundColor: niveau.is_completed
+                        ? 'rgba(209, 250, 229, 0.8)'
+                        : niveau.is_unlocked
+                          ? 'rgba(219, 234, 254, 0.8)'
+                          : 'rgba(243, 244, 246, 0.8)',
+                    }}
+                  >
                     {niveau.is_completed ? (
                       <CheckCircle className="w-5 h-5 text-emerald-600" />
                     ) : niveau.is_unlocked ? (
-                      <span className="text-primary-600 font-bold">{niveau.niveau}</span>
+                      <span className="text-primary-700 font-bold">{niveau.niveau}</span>
                     ) : (
                       <Lock className="w-4 h-4 text-gray-400" />
                     )}
                   </div>
-                  
+
                   {/* Info niveau */}
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2">
                       <h3 className="font-semibold text-gray-900">
                         <span className="font-bold">Niveau</span> {niveau.niveau}: {getNiveauNom(niveau.niveau)}
                       </h3>
-                      <span className={`text-xs px-2 py-0.5 rounded-full whitespace-nowrap ${getDifficulteColor(niveau.niveau)}`}>
+                      <span className={`text-xs px-2 py-0.5 rounded-full whitespace-nowrap font-medium ${getDifficulteColor(niveau.niveau)}`}>
                         {getDifficulteLabel(niveau.niveau)}
                       </span>
-                      
-                      {/* Badge "Déblocable avec achat" - COMMENTÉ POUR SIMPLIFIER L'UI
-                      {(() => {
-                        const previousLevelScore = niveau.niveau > 1 ? (niveaux.find(n => n.niveau === niveau.niveau - 1)?.meilleur_score || null) : null
-                        const canUnlockWithPurchase = allLevelsUnlocked && niveau.niveau > 1 && !niveau.is_completed && previousLevelScore !== null && previousLevelScore >= 5
-                        return canUnlockWithPurchase && (
-                          <span className="text-xs px-2 py-0.5 rounded-full bg-amber-100 text-amber-700 border border-amber-300 whitespace-nowrap flex items-center gap-1">
-                            <Sparkles className="w-3 h-3" />
-                            Déblocable
-                          </span>
-                        )
-                      })()}
-                      */}
                     </div>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-600">
                       {getNombreQuestions(niveau.niveau)} questions
                     </p>
-                    
+
                     {/* Affichage du score si niveau joué */}
                     {niveau.meilleur_score !== null && (
                       <div className="flex flex-wrap items-center gap-3 mt-2">
-                        <div className={`text-sm font-medium px-2 py-1 rounded ${
-                          niveau.is_completed 
-                            ? 'bg-emerald-100 text-emerald-700' 
-                            : 'bg-amber-100 text-amber-700'
-                        }`}>
+                        <div
+                          className={`text-sm font-medium px-2.5 py-1 rounded-full ${
+                            niveau.is_completed
+                              ? 'bg-emerald-100/80 text-emerald-700'
+                              : 'bg-amber-100/80 text-amber-700'
+                          }`}
+                          style={{ border: '1px solid rgba(255,255,255,0.6)' }}
+                        >
                           {(() => {
                             const nbQuestions = getNombreQuestions(niveau.niveau)
-                            const pourcentage = Math.round((niveau.meilleur_score / nbQuestions) * 100)
+                            const pourcentage = Math.round((niveau.meilleur_score! / nbQuestions) * 100)
                             return niveau.is_completed ? (
                               <>✓ Meilleur score : {niveau.meilleur_score}/{nbQuestions} ({pourcentage}%)</>
                             ) : (
@@ -519,7 +528,7 @@ export default function CategorieDetailPage() {
                           })()}
                         </div>
                         {niveau.tentatives > 0 && (
-                          <span className="text-xs text-gray-400">
+                          <span className="text-xs text-gray-500">
                             {niveau.tentatives} tentative{niveau.tentatives > 1 ? 's' : ''}
                           </span>
                         )}
@@ -532,12 +541,12 @@ export default function CategorieDetailPage() {
                 <button
                   onClick={() => handleStartQuiz(niveau.niveau)}
                   disabled={!canPlay}
-                  className={`w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-3 sm:py-2 rounded-none font-medium transition-colors ${
-                    canPlay
-                      ? 'bg-primary-600 text-white hover:bg-primary-700 active:bg-primary-800'
+                  className={`w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl font-medium transition-all duration-200 active:scale-95 ${
+                    canPlay && niveau.is_unlocked
+                      ? 'glass-cta'
                       : !hasActiveSubscription && !allLevelsUnlocked && niveau.niveau > 1
-                        ? 'bg-amber-100 text-amber-700 hover:bg-amber-200 border-2 border-amber-300 cursor-pointer'
-                        : 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                        ? 'glass-cta-amber'
+                        : 'bg-gray-100/70 text-gray-400 cursor-not-allowed'
                   }`}
                   style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
@@ -554,8 +563,8 @@ export default function CategorieDetailPage() {
                   ) : !hasActiveSubscription && !allLevelsUnlocked && niveau.niveau > 1 ? (
                     <>
                       <Lock className="w-4 h-4" />
-                      <span className="hidden sm:inline">S'abonner pour débloquer</span>
-                      <span className="sm:hidden">S'abonner</span>
+                      <span className="hidden sm:inline">S&apos;abonner pour débloquer</span>
+                      <span className="sm:hidden">S&apos;abonner</span>
                     </>
                   ) : (
                     <>
@@ -572,18 +581,24 @@ export default function CategorieDetailPage() {
 
       {/* Message encouragement */}
       {niveauxCompletes === 10 && (
-        <div className="mt-6 bg-gradient-to-r from-emerald-50 to-primary-50 border border-emerald-200 rounded-none p-6 text-center">
+        <div
+          className="rounded-2xl p-6 text-center"
+          style={{
+            background: 'linear-gradient(135deg, rgba(209,250,229,0.6) 0%, rgba(219,234,254,0.6) 100%)',
+            backdropFilter: 'blur(24px)',
+            WebkitBackdropFilter: 'blur(24px)',
+            border: '1px solid rgba(255,255,255,0.6)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.9)',
+          }}
+        >
           <Trophy className="w-12 h-12 text-amber-500 mx-auto mb-3" />
           <h3 className="text-lg font-bold text-gray-900 mb-1">Félicitations !</h3>
-          <p className="text-gray-600">
-            Vous avez complété tous les niveaux de cette catégorie. 
+          <p className="text-gray-700">
+            Vous avez complété tous les niveaux de cette catégorie.
             Continuez à vous entraîner pour améliorer vos scores !
           </p>
         </div>
       )}
-
-      {/* NOTE : Le popup de déblocage de niveau a été supprimé de cette page.
-          Il s'affiche UNIQUEMENT dans le récapitulatif du quiz (après avoir terminé un niveau). */}
     </div>
   )
 }

@@ -45,51 +45,51 @@ export default function ResultatsPage() {
       </div>
 
       {/* Statistiques de la semaine */}
-      <div className="grid sm:grid-cols-4 gap-6">
-        <div className="bg-white border border-gray-200 p-6">
+      <div className="grid sm:grid-cols-4 gap-4 sm:gap-6">
+        <div className="glass-card p-5 sm:p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-primary-100/70 flex items-center justify-center border border-white/60">
               <Calendar className="w-5 h-5 text-primary-600" />
             </div>
-            <span className="text-sm text-gray-600">Cette semaine</span>
+            <span className="text-sm text-gray-700">Cette semaine</span>
           </div>
-          <p className="text-4xl font-bold text-gray-900">{totalQuestions}</p>
-          <p className="text-sm text-gray-500">questions</p>
+          <p className="text-3xl sm:text-4xl font-bold text-gray-900">{totalQuestions}</p>
+          <p className="text-sm text-gray-600">questions</p>
         </div>
 
-        <div className="bg-white border border-gray-200 p-6">
+        <div className="glass-card p-5 sm:p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-emerald-50 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-emerald-100/70 flex items-center justify-center border border-white/60">
               <CheckCircle2 className="w-5 h-5 text-emerald-600" />
             </div>
-            <span className="text-sm text-gray-600">Bonnes réponses</span>
+            <span className="text-sm text-gray-700">Bonnes réponses</span>
           </div>
-          <p className="text-4xl font-bold text-emerald-600">{totalCorrect}</p>
+          <p className="text-3xl sm:text-4xl font-bold text-emerald-600">{totalCorrect}</p>
         </div>
 
-        <div className="bg-white border border-gray-200 p-6">
+        <div className="glass-card p-5 sm:p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-gray-100 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-white/70 flex items-center justify-center border border-white/60">
               <XCircle className="w-5 h-5 text-gray-500" />
             </div>
-            <span className="text-sm text-gray-600">Mauvaises réponses</span>
+            <span className="text-sm text-gray-700">Mauvaises réponses</span>
           </div>
-          <p className="text-4xl font-bold text-gray-500">{totalIncorrect}</p>
+          <p className="text-3xl sm:text-4xl font-bold text-gray-500">{totalIncorrect}</p>
         </div>
 
-        <div className="bg-white border border-gray-200 p-6">
+        <div className="glass-card p-5 sm:p-6">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+            <div className="w-10 h-10 rounded-full bg-primary-100/70 flex items-center justify-center border border-white/60">
               <TrendingUp className="w-5 h-5 text-primary-600" />
             </div>
-            <span className="text-sm text-gray-600">Taux de réussite</span>
+            <span className="text-sm text-gray-700">Taux de réussite</span>
           </div>
-          <p className="text-4xl font-bold text-primary-600">{successRate}%</p>
+          <p className="text-3xl sm:text-4xl font-bold text-primary-600">{successRate}%</p>
         </div>
       </div>
 
       {/* Graphique de la semaine */}
-      <div className="bg-white border border-gray-200 p-6">
+      <div className="glass-card p-5 sm:p-6">
         <h2 className="text-xl font-bold text-gray-900 mb-6">Activité de la semaine</h2>
         <div className="flex items-end justify-between gap-2 h-40">
           {weeklyProgress.map((day, index) => {
@@ -97,51 +97,51 @@ export default function ResultatsPage() {
             const maxHeight = 120;
             const correctHeight = total > 0 ? (day.correct / Math.max(...weeklyProgress.map(d => d.correct + d.incorrect))) * maxHeight : 0;
             const incorrectHeight = total > 0 ? (day.incorrect / Math.max(...weeklyProgress.map(d => d.correct + d.incorrect))) * maxHeight : 0;
-            
+
             return (
               <div key={day.day} className="flex-1 flex flex-col items-center gap-2">
                 <div className="w-full flex flex-col items-center justify-end" style={{ height: maxHeight }}>
                   {incorrectHeight > 0 && (
-                    <div 
-                      className="w-8 bg-gray-300"
-                      style={{ height: incorrectHeight }}
+                    <div
+                      className="w-8 bg-gray-300 rounded-t"
+                      style={{ height: incorrectHeight, boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.6)' }}
                     />
                   )}
                   {correctHeight > 0 && (
-                    <div 
-                      className="w-8 bg-primary-600"
-                      style={{ height: correctHeight }}
+                    <div
+                      className="w-8 bg-primary-600 rounded-t"
+                      style={{ height: correctHeight, boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.4)' }}
                     />
                   )}
                   {total === 0 && (
-                    <div className="w-8 h-2 bg-gray-200" />
+                    <div className="w-8 h-2 bg-white/40 rounded-full" />
                   )}
                 </div>
-                <span className="text-xs text-gray-500">{day.day}</span>
+                <span className="text-xs text-gray-600 font-medium">{day.day}</span>
               </div>
             );
           })}
         </div>
-        <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-100">
+        <div className="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-white/40">
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-primary-600" />
-            <span className="text-sm text-gray-600">Bonnes réponses</span>
+            <div className="w-3 h-3 bg-primary-600 rounded" />
+            <span className="text-sm text-gray-700">Bonnes réponses</span>
           </div>
           <div className="flex items-center gap-2">
-            <div className="w-3 h-3 bg-gray-300" />
-            <span className="text-sm text-gray-600">Mauvaises réponses</span>
+            <div className="w-3 h-3 bg-gray-300 rounded" />
+            <span className="text-sm text-gray-700">Mauvaises réponses</span>
           </div>
         </div>
       </div>
 
       {/* Historique détaillé */}
-      <div className="bg-white border border-gray-200">
-        <div className="p-6 border-b border-gray-200">
+      <div className="glass-card overflow-hidden">
+        <div className="p-5 sm:p-6 border-b border-white/40">
           <h2 className="text-xl font-bold text-gray-900">Historique récent</h2>
         </div>
-        <div className="divide-y divide-gray-100">
+        <div className="divide-y divide-white/40">
           {recentResults.map((result) => (
-            <div key={result.id} className="p-4 flex items-center gap-4 hover:bg-gray-50 transition-colors">
+            <div key={result.id} className="p-4 flex items-center gap-4 hover:bg-white/30 transition-colors">
               {result.correct ? (
                 <CheckCircle2 className="w-6 h-6 text-emerald-600 flex-shrink-0" />
               ) : (
@@ -149,9 +149,9 @@ export default function ResultatsPage() {
               )}
               <div className="flex-1 min-w-0">
                 <p className="text-gray-900 truncate">{result.question}</p>
-                <p className="text-sm text-gray-500">{result.theme}</p>
+                <p className="text-sm text-gray-600">{result.theme}</p>
               </div>
-              <span className="text-sm text-gray-400 flex-shrink-0">{result.date}</span>
+              <span className="text-sm text-gray-500 flex-shrink-0">{result.date}</span>
             </div>
           ))}
         </div>

@@ -5,8 +5,9 @@ import Footer from '@/components/layout/Footer';
 import ArticleContent from '@/components/blog/ArticleContent';
 import SEOArticleRenderer from '@/components/blog/SEOArticleRenderer';
 import RelatedArticles from '@/components/seo/RelatedArticles';
-import { getArticleBySlug, allArticles, getRelatedArticles } from '@/lib/data/articles';
+import { getArticleBySlug, allArticlesIncludingScheduled, getRelatedArticles } from '@/lib/data/articles';
 import { getArticleContent, getAllSEOArticleSlugs } from '@/lib/data/seo-content';
+import { isArticlePublished } from '@/lib/data/publishing';
 import { getArticleSchema, getBreadcrumbSchema, getFAQSchema } from '@/lib/seo/schemas';
 import { SEO_CONFIG } from '@/lib/seo/constants';
 
@@ -14,18 +15,31 @@ interface ArticlePageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Force le rendu 100% statique — aucun SSR, aucun appel serveur à la demande
+// Force le rendu 100% statique — aucun SSR, aucun appel serveur à la demande.
+// Les articles en brouillon (publishedAt futur) génèrent une page 404 statique
+// au build et deviennent visibles au prochain push qui retire leur publishedAt.
 export const dynamic = 'force-static';
 
-// Génère les paramètres statiques pour tous les articles
+// Génère les paramètres statiques pour tous les articles, y compris les brouillons.
+// Au build, isArticlePublished gate le rendu : 404 si publishedAt encore futur,
+// contenu publié sinon.
 export async function generateStaticParams() {
-  return allArticles.map((article) => ({
+  return allArticlesIncludingScheduled.map((article) => ({
     slug: article.slug,
   }));
 }
 
 export async function generateMetadata({ params }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params;
+
+  // Articles en brouillon : pas de metadata indexable tant que `publishedAt` n'est pas atteint.
+  if (!isArticlePublished(slug)) {
+    return {
+      title: 'Article non trouvé',
+      robots: { index: false, follow: false },
+    };
+  }
+
   const article = getArticleBySlug(slug);
 
   if (!article) {
@@ -114,6 +128,13 @@ const seoArticleSlugs = getAllSEOArticleSlugs();
 
 export default async function ArticlePage({ params }: ArticlePageProps) {
   const { slug } = await params;
+
+  // Articles en brouillon : 404 tant que `publishedAt` (ISO 8601) n'est pas atteint.
+  // La page sera générée publiée au prochain build qui retire ce champ.
+  if (!isArticlePublished(slug)) {
+    notFound();
+  }
+
   const article = getArticleBySlug(slug);
 
   if (!article) {

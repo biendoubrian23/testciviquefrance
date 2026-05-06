@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface AdSenseBlockProps {
   slot: string;
@@ -21,7 +21,11 @@ export default function AdSenseBlock({
   fullWidthResponsive = true,
   className = '',
 }: AdSenseBlockProps) {
+  const insRef = useRef<HTMLModElement>(null);
+
   useEffect(() => {
+    const el = insRef.current;
+    if (!el || el.getAttribute('data-adsbygoogle-status')) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch {
@@ -32,6 +36,7 @@ export default function AdSenseBlock({
   return (
     <div className={`adsense-container ${className}`}>
       <ins
+        ref={insRef}
         className="adsbygoogle"
         style={{ display: 'block' }}
         data-ad-client="ca-pub-3632266086082682"

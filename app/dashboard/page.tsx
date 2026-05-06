@@ -357,100 +357,137 @@ export default function DashboardPage() {
   }, [user, supabase]);
 
   return (
-    <div className="space-y-6 sm:space-y-8">
-      {/* En-tête de bienvenue */}
-      <div className="bg-primary-600 p-5 sm:p-8 text-white -mx-4 sm:mx-0">
-        <h1 className="text-2xl sm:text-3xl font-bold mb-2">
-          Bonjour {profile?.prenom || 'là'}
-        </h1>
-        {/* Message personnalisé selon le profil */}
-        <p className="text-primary-100 mb-5 sm:mb-6 text-base sm:text-lg">
-          {profile?.test_deadline === 'urgent' 
-            ? 'Votre test approche ! Entraînez-vous régulièrement pour être prêt le jour J.'
-            : profile?.test_deadline === 'soon'
-            ? 'Vous avez le temps de bien vous préparer. Continuez votre entraînement !'
-            : profile?.test_deadline === 'relaxed'
-            ? 'Prenez votre temps et progressez à votre rythme.'
-            : profile?.test_deadline === 'exploration'
-            ? 'Explorez librement les questions, sans pression !'
-            : 'Testez vos connaissances sur les thématiques clés de l\'examen civique !'
-          }
-        </p>
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-          {/* Bouton Flashcards - maintenant visible sur tous les écrans */}
-          <Link 
-            href="/dashboard/flashcards"
-            className="inline-flex items-center justify-center gap-2 bg-white text-emerald-600 px-5 py-3 sm:py-2.5 rounded-md font-medium hover:bg-emerald-50 active:bg-emerald-100 transition-colors"
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-          >
-            🃏 Flashcards
-          </Link>
-          <Link 
-            href="/dashboard/entrainement"
-            className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-5 py-3 sm:py-2.5 rounded-md font-medium hover:bg-primary-50 active:bg-primary-100 transition-colors"
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-          >
-            <BookOpen className="w-5 h-5" />
-            Quiz thématiques
-          </Link>
-          <Link 
-            href="/dashboard/examens"
-            className="inline-flex items-center justify-center gap-2 bg-white text-indigo-700 px-5 py-3 sm:py-2.5 rounded-md font-medium hover:bg-indigo-50 active:bg-indigo-100 transition-colors"
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-          >
-            <FileQuestion className="w-5 h-5" />
-            Session d&apos;examen blanc
-          </Link>
-          {/* Bouton essai gratuit - maintenant visible sur tous les écrans */}
-          <Link 
-            href="/dashboard/credits"
-            className="inline-flex items-center justify-center gap-2 bg-amber-500 text-white px-5 py-3 sm:py-2.5 rounded-md font-semibold hover:bg-amber-600 active:bg-amber-700 transition-colors"
-            style={{ WebkitTapHighlightColor: 'transparent' }}
-          >
-            🎁 Essai gratuit → Cliquez ici
-          </Link>
+    <div className="space-y-5 sm:space-y-7">
+      {/* En-tête de bienvenue - Liquid Glass coloré */}
+      <div
+        className="relative overflow-hidden rounded-2xl p-5 sm:p-8 text-white"
+        style={{
+          background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #4F46E5 100%)',
+          boxShadow: '0 12px 40px rgba(37, 99, 235, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
+        }}
+      >
+        {/* Reflets décoratifs */}
+        <div
+          className="absolute -top-20 -right-20 w-64 h-64 rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.18) 0%, transparent 70%)' }}
+        />
+        <div
+          className="absolute -bottom-16 -left-16 w-56 h-56 rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 70%)' }}
+        />
+
+        <div className="relative">
+          <h1 className="text-2xl sm:text-3xl font-bold mb-2">
+            Bonjour {profile?.prenom || 'là'}
+          </h1>
+          <p className="text-primary-50 mb-5 sm:mb-6 text-base sm:text-lg">
+            {profile?.test_deadline === 'urgent'
+              ? 'Votre test approche ! Entraînez-vous régulièrement pour être prêt le jour J.'
+              : profile?.test_deadline === 'soon'
+              ? 'Vous avez le temps de bien vous préparer. Continuez votre entraînement !'
+              : profile?.test_deadline === 'relaxed'
+              ? 'Prenez votre temps et progressez à votre rythme.'
+              : profile?.test_deadline === 'exploration'
+              ? 'Explorez librement les questions, sans pression !'
+              : 'Testez vos connaissances sur les thématiques clés de l\'examen civique !'
+            }
+          </p>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
+            {/* Boutons sur le hero : pilule blanche translucide */}
+            <Link
+              href="/dashboard/flashcards"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-emerald-700 font-medium transition-all duration-200 active:scale-95"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.6)',
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+                WebkitTapHighlightColor: 'transparent',
+              }}
+            >
+              🃏 Flashcards
+            </Link>
+            <Link
+              href="/dashboard/entrainement"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-primary-700 font-medium transition-all duration-200 active:scale-95"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.6)',
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+                WebkitTapHighlightColor: 'transparent',
+              }}
+            >
+              <BookOpen className="w-5 h-5" />
+              Quiz thématiques
+            </Link>
+            <Link
+              href="/dashboard/examens"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-indigo-700 font-medium transition-all duration-200 active:scale-95"
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.92)',
+                backdropFilter: 'blur(12px)',
+                WebkitBackdropFilter: 'blur(12px)',
+                border: '1px solid rgba(255, 255, 255, 0.6)',
+                boxShadow: '0 4px 14px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+                WebkitTapHighlightColor: 'transparent',
+              }}
+            >
+              <FileQuestion className="w-5 h-5" />
+              Session d&apos;examen blanc
+            </Link>
+            <Link
+              href="/dashboard/credits"
+              className="glass-cta-amber !rounded-full !px-5"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
+            >
+              🎁 Essai gratuit → Cliquez ici
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Statistiques rapides - Design épuré sans icônes colorées */}
+      {/* Statistiques rapides - Liquid Glass cards */}
       <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-        <div className="bg-white p-4 sm:p-5 border border-gray-200">
-          <p className="text-xs sm:text-sm text-gray-500 mb-1">Questions répondues</p>
+        <div className="glass-card p-4 sm:p-5">
+          <p className="text-xs sm:text-sm text-gray-600 mb-1">Questions répondues</p>
           <p className="text-2xl sm:text-3xl font-bold text-gray-900">
             {loading ? '—' : stats.questionsRepondues}
           </p>
         </div>
 
-        <div className="bg-white p-4 sm:p-5 border border-gray-200">
-          <p className="text-xs sm:text-sm text-gray-500 mb-1">Taux de réussite</p>
+        <div className="glass-card p-4 sm:p-5">
+          <p className="text-xs sm:text-sm text-gray-600 mb-1">Taux de réussite</p>
           <p className="text-2xl sm:text-3xl font-bold text-gray-900">
             {loading ? '—' : `${stats.tauxReussite}%`}
           </p>
         </div>
 
-        <div className="bg-white p-4 sm:p-5 border border-gray-200">
-          <p className="text-xs sm:text-sm text-gray-500 mb-1">Temps d&apos;étude</p>
+        <div className="glass-card p-4 sm:p-5">
+          <p className="text-xs sm:text-sm text-gray-600 mb-1">Temps d&apos;étude</p>
           <p className="text-2xl sm:text-3xl font-bold text-gray-900">
             {loading ? '—' : `${stats.tempsEtude}h`}
           </p>
         </div>
 
-        <div className="bg-white p-4 sm:p-5 border border-gray-200">
-          <p className="text-xs sm:text-sm text-gray-500 mb-1">Série en cours</p>
+        <div className="glass-card p-4 sm:p-5">
+          <p className="text-xs sm:text-sm text-gray-600 mb-1">Série en cours</p>
           <p className="text-2xl sm:text-3xl font-bold text-gray-900">
             {loading ? '—' : `${stats.serieJours} jour${stats.serieJours > 1 ? 's' : ''}`}
           </p>
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-3 gap-4 sm:gap-6 overflow-hidden">
+      <div className="grid lg:grid-cols-3 gap-4 sm:gap-6">
         {/* Progression par thème */}
-        <div className="lg:col-span-2 bg-white border-2 border-gray-900 p-4 sm:p-6 overflow-hidden">
+        <div className="lg:col-span-2 glass-card p-4 sm:p-6 overflow-hidden">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">Progression par thème</h2>
-            <Link 
-              href="/dashboard/statistiques" 
-              className="text-sm text-primary-600 hover:text-primary-700 active:text-primary-800 font-medium flex items-center gap-1"
+            <Link
+              href="/dashboard/statistiques"
+              className="text-sm text-primary-600 hover:text-primary-700 active:text-primary-800 font-medium flex items-center gap-1 transition-all duration-200 active:scale-95"
               style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               Voir tout <ArrowRight className="w-4 h-4" />
@@ -460,8 +497,8 @@ export default function DashboardPage() {
             <div className="space-y-5">
               {[1, 2, 3, 4, 5, 6].map((i) => (
                 <div key={i} className="animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded w-1/3 mb-2"></div>
-                  <div className="h-2 bg-gray-100 rounded"></div>
+                  <div className="h-4 bg-white/40 rounded w-1/3 mb-2"></div>
+                  <div className="h-2 bg-white/30 rounded"></div>
                 </div>
               ))}
             </div>
@@ -472,11 +509,18 @@ export default function DashboardPage() {
                 return (
                   <div key={category.id}>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-gray-700">{category.name}</span>
+                      <span className="text-sm font-medium text-gray-800">{category.name}</span>
                       <span className="text-sm font-semibold text-gray-900">{category.progress}%</span>
                     </div>
-                    <div className="h-2.5 bg-gray-100 rounded-full overflow-hidden">
-                      <div 
+                    <div
+                      className="h-2.5 rounded-full overflow-hidden"
+                      style={{
+                        backgroundColor: 'rgba(255, 255, 255, 0.45)',
+                        border: '1px solid rgba(255, 255, 255, 0.6)',
+                        boxShadow: 'inset 0 1px 2px rgba(0, 0, 0, 0.04)',
+                      }}
+                    >
+                      <div
                         className={`h-full ${colorClass} rounded-full transition-all duration-500`}
                         style={{ width: `${category.progress}%` }}
                       />
@@ -486,23 +530,23 @@ export default function DashboardPage() {
               })}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8">
+            <p className="text-gray-600 text-center py-8">
               Commencez à vous entraîner pour voir votre progression
             </p>
           )}
         </div>
 
         {/* Activité récente */}
-        <div className="bg-white border-2 border-gray-900 p-4 sm:p-6 overflow-hidden">
+        <div className="glass-card p-4 sm:p-6 overflow-hidden">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-4 sm:mb-6">Activité récente</h2>
           {loading ? (
             <div className="space-y-4">
               {[1, 2, 3, 4].map((i) => (
                 <div key={i} className="animate-pulse flex gap-3">
-                  <div className="w-5 h-5 bg-gray-200 rounded-full"></div>
+                  <div className="w-5 h-5 bg-white/40 rounded-full"></div>
                   <div className="flex-1">
-                    <div className="h-4 bg-gray-200 rounded w-3/4 mb-1"></div>
-                    <div className="h-3 bg-gray-100 rounded w-1/4"></div>
+                    <div className="h-4 bg-white/40 rounded w-3/4 mb-1"></div>
+                    <div className="h-3 bg-white/30 rounded w-1/4"></div>
                   </div>
                 </div>
               ))}
@@ -510,7 +554,7 @@ export default function DashboardPage() {
           ) : recentActivity.length > 0 ? (
             <div className="space-y-4">
               {recentActivity.map((activity) => (
-                <div key={activity.id} className="flex items-start gap-3 pb-4 border-b border-gray-100 last:border-0 last:pb-0">
+                <div key={activity.id} className="flex items-start gap-3 pb-4 border-b border-white/40 last:border-0 last:pb-0">
                   {activity.correct ? (
                     <CheckCircle2 className="w-5 h-5 text-emerald-600 mt-0.5 flex-shrink-0" />
                   ) : (
@@ -521,51 +565,51 @@ export default function DashboardPage() {
                       {activity.theme}
                     </p>
                     <div className="flex items-center gap-2 mt-1">
-                      <span className={`text-xs font-medium ${activity.correct ? 'text-emerald-600' : 'text-amber-600'}`}>
+                      <span className={`text-xs font-medium ${activity.correct ? 'text-emerald-700' : 'text-amber-700'}`}>
                         {activity.score}/{activity.total} ({Math.round((activity.score || 0) / (activity.total || 1) * 100)}%)
                       </span>
-                      <span className="text-xs text-gray-400">•</span>
-                      <span className="text-xs text-gray-500">{activity.time}</span>
+                      <span className="text-xs text-gray-500">•</span>
+                      <span className="text-xs text-gray-600">{activity.time}</span>
                     </div>
                   </div>
                 </div>
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center py-8 text-sm">
+            <p className="text-gray-600 text-center py-8 text-sm">
               Aucune activité récente
             </p>
           )}
         </div>
       </div>
 
-      {/* Actions rapides - Design simplifié */}
+      {/* Actions rapides - cards Liquid Glass */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        <Link 
+        <Link
           href="/dashboard/entrainement"
-          className="group bg-white border border-gray-200 p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 transition-all"
+          className="group glass-card p-5 sm:p-6 transition-all duration-200 active:scale-[0.98] hover:bg-white/40"
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <h3 className="font-bold text-gray-900 mb-2">Entraînement libre</h3>
-          <p className="text-sm text-gray-600">Répondez à des questions par thème à votre rythme</p>
+          <p className="text-sm text-gray-700">Répondez à des questions par thème à votre rythme</p>
         </Link>
 
-        <Link 
+        <Link
           href="/dashboard/examens"
-          className="group bg-white border border-gray-200 p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 transition-all"
+          className="group glass-card p-5 sm:p-6 transition-all duration-200 active:scale-[0.98] hover:bg-white/40"
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
-          <h3 className="font-bold text-gray-900 mb-2">Session d'examen blanc</h3>
-          <p className="text-sm text-gray-600">Testez-vous dans les conditions réelles (40 questions)</p>
+          <h3 className="font-bold text-gray-900 mb-2">Session d&apos;examen blanc</h3>
+          <p className="text-sm text-gray-700">Testez-vous dans les conditions réelles (40 questions)</p>
         </Link>
 
-        <Link 
+        <Link
           href="/dashboard/statistiques"
-          className="group bg-white border border-gray-200 p-5 sm:p-6 hover:border-primary-600 active:bg-gray-50 transition-all sm:col-span-2 lg:col-span-1"
+          className="group glass-card p-5 sm:p-6 transition-all duration-200 active:scale-[0.98] hover:bg-white/40 sm:col-span-2 lg:col-span-1"
           style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <h3 className="font-bold text-gray-900 mb-2">Mes résultats</h3>
-          <p className="text-sm text-gray-600">Consultez votre historique et vos performances</p>
+          <p className="text-sm text-gray-700">Consultez votre historique et vos performances</p>
         </Link>
       </div>
     </div>

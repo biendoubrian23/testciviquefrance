@@ -14,10 +14,10 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200 last:border-b-0">
+    <div className="border-b border-white/40 last:border-b-0">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-4 px-4 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+        className="w-full py-4 px-4 flex items-center justify-between text-left hover:bg-white/30 transition-colors"
       >
         <h4 className="font-semibold text-gray-900 pr-4">{question}</h4>
         <ChevronDown
@@ -201,7 +201,7 @@ export default function OffresPage() {
 
       {/* Bandeau Promo Nouvel An */}
       {isPromoActive && (
-        <div className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white p-4 rounded-lg shadow-lg">
+        <div className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 text-white p-4 rounded-xl shadow-lg">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
             <div className="flex items-center gap-2">
               <Gift className="w-6 h-6 animate-bounce" />
@@ -223,7 +223,7 @@ export default function OffresPage() {
       </div>
 
       {/* Statut actuel + Achats */}
-      <div className="bg-gray-50 border border-gray-200 p-6">
+      <div className="glass-card p-5 sm:p-6">
         <div className="flex items-center justify-between mb-4">
           <div>
             <p className="text-sm text-gray-500 mb-1">Votre statut</p>
@@ -242,7 +242,7 @@ export default function OffresPage() {
         </div>
 
         {/* Afficher les achats actifs */}
-        <div className="border-t border-gray-200 pt-4 mt-4">
+        <div className="border-t border-white/40 pt-4 mt-4">
           <div className="flex items-center justify-between mb-2">
             <p className="text-sm font-medium text-gray-700">Vos achats actifs :</p>
           </div>
@@ -291,7 +291,7 @@ export default function OffresPage() {
 
         {/* Bouton de gestion d'abonnement pour tous ceux qui ont un historique */}
         {extendedProfile?.stripe_customer_id && (
-          <div className="mt-4 pt-3 border-t border-gray-100 flex justify-end">
+          <div className="mt-4 pt-3 border-t border-white/40 flex justify-end">
             <ManageSubscriptionButton variant="discrete" />
           </div>
         )}
@@ -304,8 +304,8 @@ export default function OffresPage() {
         {/* Pack Standard - 2,99€/semaine - Recommandé */}
         <div
           onClick={() => handleSelectOffer('pack_standard')}
-          className={`relative cursor-pointer transition-all duration-200 mt-4 ${selectedOffer === 'pack_standard'
-            ? 'ring-2 ring-primary-600 rounded-lg'
+          className={`relative cursor-pointer transition-all duration-200 mt-4 rounded-2xl ${selectedOffer === 'pack_standard'
+            ? 'ring-2 ring-primary-600'
             : ''
             }`}
         >
@@ -316,7 +316,7 @@ export default function OffresPage() {
             </span>
           </div>
 
-          <div className="bg-primary-600 text-white p-6 pt-8 h-full flex flex-col relative rounded-lg">
+          <div className="bg-primary-600 text-white p-6 pt-8 h-full flex flex-col relative rounded-2xl" style={{ boxShadow: '0 8px 32px rgba(37,99,235,0.25)' }}>
             {/* Badge -30% */}
             {isPromoActive && (
               <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg animate-pulse z-20">
@@ -360,13 +360,13 @@ export default function OffresPage() {
             </ul>
 
             {ALL_STANDARD_PRICE_IDS.includes(extendedProfile?.stripe_price_id || '') && (extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') ? (
-              <div className="w-full py-3 bg-white text-primary-600 font-semibold text-center border-2 border-primary-600">
+              <div className="w-full py-3 bg-white text-primary-600 font-semibold text-center rounded-xl border-2 border-primary-600">
                 ✓ Plan actuel
               </div>
             ) : (
               <button
                 onClick={(e) => { e.stopPropagation(); handleStripePurchase('standard'); }}
-                className="w-full py-3 bg-white text-primary-600 font-semibold hover:bg-gray-50 transition-colors"
+                className="w-full py-3 bg-white text-primary-600 font-semibold hover:bg-gray-50 transition-all rounded-xl active:scale-95"
               >
                 🎁 Essai gratuit à 0€
               </button>
@@ -377,10 +377,10 @@ export default function OffresPage() {
         {/* Pack Premium - 6,99€/semaine */}
         <div
           onClick={() => setSelectedOffer('pack_premium')}
-          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 rounded-lg ${selectedOffer === 'pack_premium'
-            ? 'border-primary-600 ring-2 ring-primary-600'
-            : 'border-gray-200'
-            } p-6 h-full flex flex-col`}
+          className={`relative cursor-pointer transition-all duration-200 glass-card p-6 h-full flex flex-col ${selectedOffer === 'pack_premium'
+            ? 'ring-2 ring-primary-600'
+            : ''
+            }`}
         >
           {/* Badge -30% */}
           {isPromoActive && (
@@ -422,13 +422,13 @@ export default function OffresPage() {
           </ul>
 
           {ALL_PREMIUM_PRICE_IDS.includes(extendedProfile?.stripe_price_id || '') && (extendedProfile?.subscription_status === 'active' || extendedProfile?.subscription_status === 'trialing') ? (
-            <div className="w-full py-3 font-semibold text-center border-2 bg-primary-600 text-white border-primary-600">
+            <div className="w-full py-3 font-semibold text-center rounded-xl bg-primary-600 text-white border-2 border-primary-600">
               ✓ Plan actuel
             </div>
           ) : (
             <button
               onClick={(e) => { e.stopPropagation(); handleStripePurchase('premium'); }}
-              className={`w-full py-3 font-semibold transition-colors border-2 ${selectedOffer === 'pack_premium'
+              className={`w-full py-3 font-semibold transition-all rounded-xl active:scale-95 border-2 ${selectedOffer === 'pack_premium'
                 ? 'bg-primary-600 text-white border-primary-600'
                 : 'border-primary-600 text-primary-600 hover:bg-primary-50'
                 }`}
@@ -441,10 +441,10 @@ export default function OffresPage() {
         {/* Pack Examen - 2,50€ à l'unité */}
         <div
           onClick={() => setSelectedOffer('pack_examen')}
-          className={`relative cursor-pointer transition-all duration-200 bg-white border-2 rounded-lg ${selectedOffer === 'pack_examen'
-            ? 'border-primary-600 ring-2 ring-primary-600'
-            : 'border-gray-200'
-            } p-6 h-full flex flex-col`}
+          className={`relative cursor-pointer transition-all duration-200 glass-card p-6 h-full flex flex-col ${selectedOffer === 'pack_examen'
+            ? 'ring-2 ring-primary-600'
+            : ''
+            }`}
         >
           {/* Badge -30% */}
           {isPromoActive && (
@@ -483,7 +483,7 @@ export default function OffresPage() {
 
           <button
             onClick={(e) => { e.stopPropagation(); handleStripePurchase('examen'); }}
-            className={`w-full py-3 font-semibold transition-colors border-2 ${selectedOffer === 'pack_examen'
+            className={`w-full py-3 font-semibold transition-all rounded-xl active:scale-95 border-2 ${selectedOffer === 'pack_examen'
               ? 'bg-primary-600 text-white border-primary-600'
               : 'border-primary-600 text-primary-600 hover:bg-primary-50'
               }`}
@@ -494,11 +494,11 @@ export default function OffresPage() {
       </div>
 
       {/* Micro-transactions - Accordéon déroulant */}
-      <div className="bg-white border border-gray-200 rounded-lg mx-3 sm:mx-0">
+      <div className="glass-card mx-3 sm:mx-0">
         {/* En-tête cliquable */}
         <button
           onClick={() => setShowMicroservices(!showMicroservices)}
-          className="w-full py-5 px-6 flex items-center justify-between text-left hover:bg-gray-50 transition-colors"
+          className="w-full py-5 px-6 flex items-center justify-between text-left hover:bg-white/30 transition-colors"
         >
           <div>
             <h3 className="text-lg font-bold text-gray-900">Services annexes</h3>
@@ -540,7 +540,7 @@ export default function OffresPage() {
                 - Stripe product_id : À configurer
               */}
               {/* Débloquer niveau suivant */}
-              <div className="bg-gray-50 border border-gray-200 p-5 rounded-lg hover:border-primary-300 transition-colors">
+              <div className="glass-subcard p-5 hover:bg-white/10 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">Débloquer le niveau suivant</h3>
@@ -549,19 +549,19 @@ export default function OffresPage() {
                     </p>
                     <p className="text-xs text-gray-400 mt-2">Valable si score entre 2/10 et 7/10</p>
                   </div>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/40">
                     <div className="text-2xl font-bold text-gray-900">0,99€</div>
                     {extendedProfile?.all_levels_unlocked ? (
                       <button
                         disabled
-                        className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2"
+                        className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2 rounded-lg"
                       >
                         <CheckCircle className="w-4 h-4" /> Activé
                       </button>
                     ) : (
                       <button
                         onClick={() => redirectToStripeCheckout('unlockLevel')}
-                        className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-colors flex items-center gap-2"
+                        className="bg-primary-600 text-white px-4 py-2 text-sm font-medium hover:bg-primary-700 transition-all flex items-center gap-2 rounded-lg active:scale-95"
                       >
                         Acheter
                       </button>
@@ -577,7 +577,7 @@ export default function OffresPage() {
                 - Stripe product_id : À configurer
               */}
               {/* Mode sans chrono */}
-              <div className="bg-gray-50 border border-gray-200 p-5 rounded-lg hover:border-gray-400 transition-colors">
+              <div className="glass-subcard p-5 hover:bg-white/10 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">Mode sans chrono</h3>
@@ -586,19 +586,19 @@ export default function OffresPage() {
                     </p>
                     <p className="text-xs text-gray-400 mt-2">Par quiz</p>
                   </div>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/40">
                     <div className="text-2xl font-bold text-gray-900">0,69€</div>
                     {extendedProfile?.no_timer_enabled ? (
                       <button
                         disabled
-                        className="bg-gray-100 text-gray-700 px-4 py-2 text-sm font-medium border-2 border-gray-600 cursor-not-allowed flex items-center gap-2"
+                        className="bg-gray-100 text-gray-700 px-4 py-2 text-sm font-medium border-2 border-gray-600 cursor-not-allowed flex items-center gap-2 rounded-lg"
                       >
                         <CheckCircle className="w-4 h-4" /> Activé
                       </button>
                     ) : (
                       <button
                         onClick={() => redirectToStripeCheckout('noTimer')}
-                        className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-colors flex items-center gap-2"
+                        className="bg-gray-800 text-white px-4 py-2 text-sm font-medium hover:bg-gray-900 transition-all flex items-center gap-2 rounded-lg active:scale-95"
                       >
                         Acheter
                       </button>
@@ -608,7 +608,7 @@ export default function OffresPage() {
               </div>
 
               {/* Flashcards 2 thèmes - Achat indépendant */}
-              <div className="bg-gray-50 border border-gray-200 p-5 rounded-lg hover:border-emerald-300 transition-colors">
+              <div className="glass-subcard p-5 hover:bg-white/10 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">Flashcards 2 thèmes</h3>
@@ -617,19 +617,19 @@ export default function OffresPage() {
                     </p>
                     <p className="text-xs text-gray-400 mt-2">20 fiches de révision</p>
                   </div>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/40">
                     <div className="text-2xl font-bold text-gray-900">1,20€</div>
                     {extendedProfile?.flashcards_2_themes ? (
                       <button
                         disabled
-                        className="bg-emerald-100 text-emerald-700 px-4 py-2 text-sm font-medium border-2 border-emerald-600 cursor-not-allowed flex items-center gap-2"
+                        className="bg-emerald-100 text-emerald-700 px-4 py-2 text-sm font-medium border-2 border-emerald-600 cursor-not-allowed flex items-center gap-2 rounded-lg"
                       >
                         <CheckCircle className="w-4 h-4" /> Activé
                       </button>
                     ) : (
                       <button
                         onClick={() => redirectToStripeCheckout('flashcards2Themes')}
-                        className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                        className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-all flex items-center gap-2 rounded-lg active:scale-95"
                       >
                         Acheter
                       </button>
@@ -639,7 +639,7 @@ export default function OffresPage() {
               </div>
 
               {/* Flashcards 5 thèmes - Achat indépendant */}
-              <div className="bg-gray-50 border border-gray-200 p-5 rounded-lg hover:border-emerald-300 transition-colors">
+              <div className="glass-subcard p-5 hover:bg-white/10 transition-colors">
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <h3 className="font-semibold text-gray-900">Flashcards 5 thèmes</h3>
@@ -648,19 +648,19 @@ export default function OffresPage() {
                     </p>
                     <p className="text-xs text-gray-400 mt-2">50 fiches de révision</p>
                   </div>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-200">
+                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-white/40">
                     <div className="text-2xl font-bold text-gray-900">1,50€</div>
                     {extendedProfile?.flashcards_5_themes ? (
                       <button
                         disabled
-                        className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2"
+                        className="bg-blue-100 text-blue-700 px-4 py-2 text-sm font-medium border-2 border-blue-600 cursor-not-allowed flex items-center gap-2 rounded-lg"
                       >
                         <CheckCircle className="w-4 h-4" /> Activé
                       </button>
                     ) : (
                       <button
                         onClick={() => redirectToStripeCheckout('flashcards5Themes')}
-                        className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                        className="bg-emerald-600 text-white px-4 py-2 text-sm font-medium hover:bg-emerald-700 transition-all flex items-center gap-2 rounded-lg active:scale-95"
                       >
                         Acheter
                       </button>
@@ -678,7 +678,7 @@ export default function OffresPage() {
       {/* Section FAQ */}
       <div className="mt-12 px-3 sm:px-0">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">Questions fréquentes</h2>
-        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
+        <div className="glass-card overflow-hidden">
           <FAQItem
             question="Comment fonctionne l'abonnement ?"
             answer="L'abonnement est hebdomadaire et se renouvelle automatiquement. Vous pouvez l'annuler à tout moment depuis votre espace membre."

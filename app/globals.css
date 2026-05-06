@@ -62,6 +62,209 @@
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
+  /* ================================
+     LIQUID GLASS DESIGN SYSTEM
+     ================================ */
+
+  /* Fond light mode - très légèrement teinté pour activer le backdrop-blur */
+  .glass-bg {
+    background:
+      radial-gradient(circle at 10% 10%, rgba(219, 234, 254, 0.18) 0%, transparent 40%),
+      radial-gradient(circle at 90% 5%, rgba(224, 231, 255, 0.14) 0%, transparent 40%),
+      radial-gradient(circle at 50% 95%, rgba(209, 229, 255, 0.10) 0%, transparent 45%),
+      #f8fafc;
+    background-attachment: fixed;
+  }
+
+  /* Card principale Liquid Glass */
+  .glass-card {
+    background-color: rgba(255, 255, 255, 0.30);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    border-radius: 1rem;
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  /* Sous-card / panneau interne (hiérarchie visuelle) */
+  .glass-subcard {
+    background-color: rgba(255, 255, 255, 0.25);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    border-radius: 1rem;
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  /* Pill / bouton secondaire en pilule */
+  .glass-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: rgba(255, 255, 255, 0.40);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.60);
+    border-radius: 9999px;
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transition: all 200ms ease;
+  }
+  .glass-pill:hover {
+    background-color: rgba(255, 255, 255, 0.55);
+  }
+  .glass-pill:active {
+    transform: scale(0.95);
+  }
+
+  /* Variante de pill pour items déjà actifs (état coloré conservé) */
+  .glass-pill-active {
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.60);
+    border-radius: 9999px;
+    box-shadow:
+      0 4px 16px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transition: all 200ms ease;
+  }
+
+  /* CTA principal - bouton plein avec lueur colorée (couleur primary du projet) */
+  .glass-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background-color: #2563EB; /* primary-600 */
+    color: white;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    transition: all 200ms ease;
+  }
+  .glass-cta:hover {
+    background-color: #1D4ED8; /* primary-700 */
+    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
+  }
+  .glass-cta:active {
+    transform: scale(0.95);
+  }
+
+  /* CTA ambre (essai gratuit, etc.) */
+  .glass-cta-amber {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background-color: #F59E0B;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.40);
+    transition: all 200ms ease;
+  }
+  .glass-cta-amber:hover {
+    background-color: #D97706;
+    box-shadow: 0 6px 18px rgba(245, 158, 11, 0.50);
+  }
+  .glass-cta-amber:active {
+    transform: scale(0.95);
+  }
+
+  /* CTA rouge (déconnexion) */
+  .glass-cta-red {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1rem;
+    background-color: #DC2626;
+    color: white;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.35);
+    transition: all 200ms ease;
+  }
+  .glass-cta-red:hover {
+    background-color: #B91C1C;
+    box-shadow: 0 6px 18px rgba(220, 38, 38, 0.45);
+  }
+  .glass-cta-red:active {
+    transform: scale(0.95);
+  }
+
+  /* CTA emeraude (flashcards / succès) */
+  .glass-cta-emerald {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.625rem 1.25rem;
+    background-color: #10B981;
+    color: white;
+    font-weight: 500;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.35);
+    transition: all 200ms ease;
+  }
+  .glass-cta-emerald:hover {
+    background-color: #059669;
+    box-shadow: 0 6px 18px rgba(16, 185, 129, 0.45);
+  }
+  .glass-cta-emerald:active {
+    transform: scale(0.95);
+  }
+
+  /* Input / select / textarea Liquid Glass */
+  .glass-input {
+    width: 100%;
+    padding: 0.625rem 1rem;
+    background-color: rgba(255, 255, 255, 0.60);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.70);
+    border-radius: 0.5rem;
+    outline: none;
+    transition: all 200ms ease;
+    color: #111827;
+  }
+  .glass-input:focus {
+    background-color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(37, 99, 235, 0.50);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+  .glass-input::placeholder {
+    color: #6B7280;
+  }
+
+  /* Pill de navigation : utilisé pour les items de menu actifs */
+  .glass-nav-active {
+    background-color: rgba(255, 255, 255, 0.55);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.70);
+    box-shadow:
+      0 4px 14px rgba(37, 99, 235, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  /* Effets cliquables : appliquer cette classe à tout élément interactif */
+  .glass-tap {
+    transition: all 200ms ease;
+  }
+  .glass-tap:active {
+    transform: scale(0.95);
+  }
+
   /* Animation de flottement élégante */
   .float-animation {
     animation: float 6s ease-in-out infinite;
@@ -227,14 +430,13 @@
   }
 }
 
-/* Bottom navigation fixe - toujours visible */
+/* Bottom navigation fixe - toujours visible (Liquid Glass compatible) */
 .bottom-nav-fixed {
   position: fixed !important;
   bottom: 0 !important;
   left: 0 !important;
   right: 0 !important;
   z-index: 9999 !important;
-  background: white !important;
   padding-bottom: env(safe-area-inset-bottom, 0px);
   /* Forcer le contexte d'empilement indépendant */
   isolation: isolate;

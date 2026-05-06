@@ -36,11 +36,12 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
+      <div className="glass-card max-w-4xl w-full max-h-[90vh] overflow-y-auto relative">
         {/* Bouton fermer */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 hover:bg-gray-100 rounded-full transition-colors"
+          className="absolute top-4 right-4 glass-pill !p-2 text-gray-500"
+          style={{ WebkitTapHighlightColor: 'transparent' }}
         >
           <X className="w-5 h-5 text-gray-500" />
         </button>
@@ -62,7 +63,7 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
             
             {/* Pack Standard - Uniquement pour gratuit */}
             {showStandard && (
-              <div className="bg-white border-2 border-primary-600 rounded-lg p-6 shadow-lg flex flex-col">
+              <div className="glass-card p-6 flex flex-col ring-2 ring-primary-600">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <h3 className="text-xl font-bold text-primary-600">Pack Standard</h3>
                 </div>
@@ -92,7 +93,8 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
                 <button
                   onClick={() => handlePurchase('standard')}
-                  className="w-full py-3 bg-white border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors flex items-center justify-center gap-2"
+                  className="glass-cta w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 active:scale-95"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   <span>🎁</span> Commencer gratuitement
                 </button>
@@ -101,7 +103,7 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
             {/* Pack Premium */}
             {showPremium && (
-              <div className="bg-white border-2 border-purple-600 rounded-lg p-6 shadow-lg relative flex flex-col">
+              <div className="glass-card p-6 relative flex flex-col ring-2 ring-purple-600">
                 {userType === 'free' && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="px-4 py-1 bg-purple-600 text-white text-sm font-bold rounded-full whitespace-nowrap">
@@ -143,7 +145,8 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
                 <button
                   onClick={() => handlePurchase('premium')}
-                  className="w-full py-3 bg-white border-2 border-purple-600 text-purple-600 font-semibold rounded-lg hover:bg-purple-50 transition-colors flex items-center justify-center gap-2"
+                  className="w-full py-3 border-2 border-purple-600 text-purple-600 font-semibold rounded-xl hover:bg-purple-50/50 transition-all flex items-center justify-center gap-2 active:scale-95 bg-white/30 backdrop-blur-sm"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   <span>🎁</span> Commencer gratuitement
                 </button>
@@ -152,7 +155,7 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
             {/* Pack Examen - Toujours visible */}
             {showExamen && (
-              <div className="bg-white border-2 border-green-600 rounded-lg p-6 shadow-lg flex flex-col">
+              <div className="glass-card p-6 flex flex-col ring-2 ring-green-600">
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <h3 className="text-xl font-bold text-green-600">Pack Examen</h3>
                 </div>
@@ -186,7 +189,8 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
                 <button
                   onClick={() => handlePurchase('examen')}
-                  className="w-full py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"
+                  className="glass-cta-emerald w-full py-3 font-semibold rounded-xl active:scale-95"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   Acheter Pack Examen
                 </button>

@@ -78,9 +78,9 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
       />
       
       {/* Modal */}
-      <div className="relative bg-white w-full max-w-md mx-4 shadow-lg">
+      <div className="glass-card relative w-full max-w-md mx-4">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-6 border-b border-white/40">
           <h2 className="text-xl font-bold text-gray-900">Choisissez votre examen</h2>
           <button
             onClick={onClose}
@@ -90,7 +90,7 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
           </button>
         </div>
 
-          <div className="mx-6 mt-6 p-3 bg-gray-50 border border-gray-200">
+          <div className="mx-6 mt-6 glass-subcard p-3">
             <p className="text-sm text-gray-600 text-center">
               <span className="font-bold text-gray-900">{examCredits}</span> session{examCredits !== 1 ? 's' : ''} d&apos;examen blanc{examCredits !== 1 ? 's' : ''} disponible{examCredits !== 1 ? 's' : ''}
             </p>
@@ -106,13 +106,14 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
               <button
                 key={examNumber}
                 onClick={() => handleExamClick(examNumber)}
-                className={`w-full p-4 text-left border-2 transition-all ${
+                className={`w-full p-4 text-left border-2 rounded-xl transition-all active:scale-[0.98] ${
                   isAvailable
-                    ? hasCredits 
-                      ? 'border-primary-600 bg-primary-50 hover:bg-primary-100 cursor-pointer'
-                      : 'border-amber-400 bg-amber-50 hover:bg-amber-100 cursor-pointer'
-                    : 'border-gray-200 bg-gray-50 cursor-not-allowed opacity-60'
+                    ? hasCredits
+                      ? 'border-primary-600 bg-primary-50/60 hover:bg-primary-50/80 cursor-pointer'
+                      : 'border-amber-400 bg-amber-50/60 hover:bg-amber-50/80 cursor-pointer'
+                    : 'border-white/40 bg-white/20 cursor-not-allowed opacity-60'
                 }`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
                 disabled={isDisabled}
               >
                 <div className="flex items-center justify-between">
@@ -133,7 +134,7 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
         </div>
 
         {/* Footer */}
-        <div className="p-6 border-t border-gray-200 bg-gray-50">
+        <div className="p-6 border-t border-white/40">
           {hasCredits ? (
             <p className="text-sm text-gray-600 text-center">
               Les examens blancs 1 à 5 sont actuellement disponibles
@@ -141,7 +142,8 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
           ) : (
             <button
               onClick={onNeedCredits}
-              className="w-full flex items-center justify-center gap-2 bg-primary-600 text-white px-4 py-3 font-bold hover:bg-primary-700 transition-colors"
+              className="glass-cta w-full flex items-center justify-center gap-2 px-4 py-3 font-bold rounded-xl active:scale-95"
+              style={{ WebkitTapHighlightColor: 'transparent' }}
             >
               <ShoppingCart className="w-5 h-5" />
               Obtenir des sessions d'examen blanc
@@ -153,9 +155,9 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
       {/* Popup d'avertissement avant de commencer l'examen */}
       {showWarning && (
         <div className="absolute inset-0 bg-black/70 flex items-center justify-center z-10 p-4">
-          <div className="bg-white max-w-lg w-full p-6 shadow-2xl">
+          <div className="glass-card max-w-lg w-full p-6">
             <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-12 h-12 bg-amber-100 flex items-center justify-center">
+              <div className="flex-shrink-0 w-12 h-12 bg-amber-100/70 rounded-full flex items-center justify-center">
                 <AlertTriangle className="w-7 h-7 text-amber-600" />
               </div>
               <div>
@@ -184,14 +186,16 @@ export default function ExamSelectionModal({ isOpen, onClose, examCredits, onNee
             <div className="flex flex-col sm:flex-row gap-3">
               <button
                 onClick={handleCancelWarning}
-                className="flex-1 px-4 py-3 border-2 border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
+                className="glass-pill flex-1 px-4 py-3 font-medium rounded-xl"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 Retour au choix
               </button>
               <button
                 onClick={handleConfirmStart}
                 disabled={isConsuming}
-                className="flex-1 px-4 py-3 bg-primary-600 hover:bg-primary-700 text-white font-bold transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="glass-cta flex-1 px-4 py-3 font-bold rounded-xl active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 {isConsuming ? (
                   <>

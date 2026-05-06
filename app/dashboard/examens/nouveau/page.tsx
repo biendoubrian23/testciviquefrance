@@ -287,7 +287,7 @@ export default function NouvelExamen1Page() {
   if (isLoading) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-12">
-        <div className="bg-white border border-gray-200 p-8 text-center">
+        <div className="glass-card p-8 text-center">
           <Loader2 className="w-12 h-12 animate-spin text-primary-600 mx-auto mb-4" />
           <h2 className="text-lg font-semibold text-gray-900 mb-2">Chargement de l&apos;examen 1...</h2>
           <p className="text-gray-500 text-sm">
@@ -310,7 +310,7 @@ export default function NouvelExamen1Page() {
           
           {/* Panneau gauche - Progression */}
           <div className="lg:col-span-1 order-2 lg:order-1">
-            <div className="bg-white border border-gray-200 p-3 sm:p-4 lg:sticky lg:top-4">
+            <div className="glass-card p-3 sm:p-4 lg:sticky lg:top-4">
               <div className="flex items-center justify-between mb-3 sm:mb-4">
                 <h3 className="font-bold text-gray-900 text-sm sm:text-base">Progression</h3>
                 <div className="flex items-center gap-2 text-primary-600">
@@ -334,12 +334,12 @@ export default function NouvelExamen1Page() {
                     <button
                       key={idx}
                       onClick={() => handleGoToQuestion(idx)}
-                      className={`w-7 h-7 sm:w-8 sm:h-8 text-xs font-medium border transition-colors ${
+                      className={`w-7 h-7 sm:w-8 sm:h-8 text-xs font-medium border rounded-lg transition-all active:scale-95 ${
                         isCurrent
                           ? 'bg-primary-600 text-white border-primary-600'
                           : isAnswered
-                            ? 'bg-emerald-100 text-emerald-700 border-emerald-300'
-                            : 'bg-white text-gray-600 border-gray-200 hover:border-gray-400'
+                            ? 'bg-emerald-100/80 text-emerald-700 border-emerald-300'
+                            : 'bg-white/40 text-gray-600 border-white/60 hover:bg-white/60'
                       }`}
                     >
                       {idx + 1}
@@ -348,7 +348,7 @@ export default function NouvelExamen1Page() {
                 })}
               </div>
 
-              <div className="hidden sm:block mt-4 pt-4 border-t border-gray-100 space-y-2 text-xs">
+              <div className="hidden sm:block mt-4 pt-4 border-t border-white/40 space-y-2 text-xs">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 bg-primary-600"></div>
                   <span>Question actuelle</span>
@@ -358,7 +358,7 @@ export default function NouvelExamen1Page() {
                   <span>Répondue</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 bg-white border border-gray-200"></div>
+                  <div className="w-4 h-4 bg-white/40 border border-white/60 rounded"></div>
                   <span>Non répondue</span>
                 </div>
               </div>
@@ -367,8 +367,8 @@ export default function NouvelExamen1Page() {
 
           {/* Panneau droit - Question */}
           <div className="lg:col-span-2 order-1 lg:order-2">
-            <div className="bg-white border-0 sm:border sm:border-gray-200 p-2 sm:p-6">
-              <div className="flex sm:hidden items-center justify-between mb-3 pb-2 border-b border-gray-100">
+            <div className="glass-card p-2 sm:p-6">
+              <div className="flex sm:hidden items-center justify-between mb-3 pb-2 border-b border-white/40">
                 <span className="text-xs text-gray-500">{answeredCount}/40 répondues</span>
                 <div className="flex items-center gap-1 text-primary-600">
                   <Clock className="w-3 h-3" />
@@ -395,17 +395,18 @@ export default function NouvelExamen1Page() {
                     <button
                       key={optIdx}
                       onClick={() => handleSelectAnswer(optIdx)}
-                      className={`w-full text-left p-3 sm:p-4 border-2 transition-all ${
+                      className={`w-full text-left p-3 sm:p-4 border-2 transition-all rounded-xl active:scale-[0.98] ${
                         isSelected
-                          ? 'border-primary-600 bg-primary-50'
-                          : 'border-gray-200 hover:border-gray-300'
+                          ? 'border-primary-600 bg-primary-50/80'
+                          : 'border-white/50 bg-white/30 hover:bg-white/50 hover:border-white/70'
                       }`}
+                      style={{ WebkitTapHighlightColor: 'transparent' }}
                     >
                       <div className="flex items-center gap-2 sm:gap-3">
-                        <div className={`w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0 flex items-center justify-center text-xs sm:text-sm font-bold ${
+                        <div className={`w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0 flex items-center justify-center text-xs sm:text-sm font-bold rounded-lg ${
                           isSelected
                             ? 'bg-primary-600 text-white'
-                            : 'bg-gray-100 text-gray-600'
+                            : 'bg-white/60 text-gray-600'
                         }`}>
                           {String.fromCharCode(65 + optIdx)}
                         </div>
@@ -416,15 +417,16 @@ export default function NouvelExamen1Page() {
                 })}
               </div>
 
-              <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+              <div className="flex items-center justify-between pt-4 border-t border-white/40">
                 <button
                   onClick={handlePrevious}
                   disabled={currentQuestionIndex === 0}
-                  className={`flex items-center gap-2 px-4 py-2 border border-gray-200 ${
+                  className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all active:scale-95 ${
                     currentQuestionIndex === 0
-                      ? 'text-gray-300 cursor-not-allowed'
-                      : 'text-gray-600 hover:bg-gray-50'
+                      ? 'bg-white/30 text-gray-400 cursor-not-allowed'
+                      : 'glass-pill text-gray-700'
                   }`}
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   <ChevronLeft className="w-4 h-4" />
                   Précédent
@@ -433,14 +435,16 @@ export default function NouvelExamen1Page() {
                 {currentQuestionIndex === QUESTIONS_EXAMEN.length - 1 ? (
                   <button
                     onClick={handleFinishExam}
-                    className="flex items-center gap-2 px-6 py-2 bg-primary-600 text-white font-semibold hover:bg-primary-700"
+                    className="glass-cta flex items-center gap-2 px-6 py-2 rounded-xl active:scale-95"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
                     Terminer l&apos;examen
                   </button>
                 ) : (
                   <button
                     onClick={handleNext}
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-800 text-white hover:bg-gray-900"
+                    className="glass-cta flex items-center gap-2 px-4 py-2 rounded-xl active:scale-95"
+                    style={{ WebkitTapHighlightColor: 'transparent' }}
                   >
                     Suivant
                     <ChevronRight className="w-4 h-4" />
@@ -458,7 +462,7 @@ export default function NouvelExamen1Page() {
   if (phase === 'termine') {
     return (
       <div className="max-w-2xl mx-auto px-0 sm:px-4 py-2 sm:py-12">
-        <div className="bg-white border border-gray-200 p-2 sm:p-8 text-center">
+        <div className="glass-card p-2 sm:p-8 text-center">
           {isSaving ? (
             <div className="py-12">
               <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-600 mx-auto mb-4"></div>
@@ -466,8 +470,8 @@ export default function NouvelExamen1Page() {
             </div>
           ) : (
             <>
-              <div className={`w-20 h-20 mx-auto mb-6 flex items-center justify-center ${
-                passed ? 'bg-emerald-100' : 'bg-red-100'
+              <div className={`w-20 h-20 mx-auto mb-6 flex items-center justify-center rounded-full ${
+                passed ? 'bg-emerald-100/70' : 'bg-red-100/70'
               }`}>
                 {passed ? (
                   <Trophy className="w-10 h-10 text-emerald-600" />
@@ -485,9 +489,15 @@ export default function NouvelExamen1Page() {
                   : 'Vous devez obtenir au moins 32/40 (80%) pour réussir.'}
               </p>
 
-              <div className={`inline-block px-8 py-6 mb-8 ${
-                passed ? 'bg-emerald-50 border border-emerald-200' : 'bg-red-50 border border-red-200'
-              }`}>
+              <div
+                className="inline-block px-8 py-6 mb-8 rounded-2xl"
+                style={{
+                  backgroundColor: passed ? 'rgba(209,250,229,0.5)' : 'rgba(254,226,226,0.5)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: passed ? '1px solid rgba(52,211,153,0.4)' : '1px solid rgba(239,68,68,0.4)',
+                }}
+              >
                 <div className={`text-5xl font-bold mb-2 ${passed ? 'text-emerald-600' : 'text-red-500'}`}>
                   {score}/40
                 </div>
@@ -497,7 +507,7 @@ export default function NouvelExamen1Page() {
               </div>
 
               <div className="grid grid-cols-3 gap-4 mb-8 text-center">
-                <div className="p-4 bg-gray-50">
+                <div className="glass-subcard p-4">
                   <div className="text-2xl font-bold text-emerald-600">{score}</div>
                   <div className="text-sm text-gray-500">Bonnes réponses</div>
                 </div>
@@ -516,13 +526,15 @@ export default function NouvelExamen1Page() {
               <div className="flex flex-col gap-3">
                 <button
                   onClick={handleStartRevision}
-                  className="w-full bg-primary-600 text-white py-3 px-4 font-semibold hover:bg-primary-700 transition-colors"
+                  className="glass-cta w-full py-3 px-4 font-semibold rounded-xl active:scale-95"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   Revoir les réponses
                 </button>
                 <button
                   onClick={() => router.push('/dashboard/examens')}
-                  className="w-full bg-gray-100 text-gray-700 py-3 px-4 font-medium hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
+                  className="glass-pill w-full py-3 px-4 font-medium flex items-center justify-center gap-2"
+                  style={{ WebkitTapHighlightColor: 'transparent' }}
                 >
                   <Home className="w-4 h-4" />
                   Retour aux examens
@@ -545,7 +557,7 @@ export default function NouvelExamen1Page() {
 
     return (
       <div className="max-w-4xl mx-auto px-0 sm:px-4 py-1 sm:py-6">
-        <div className="bg-white border border-gray-200 p-2 sm:p-4 mb-2 sm:mb-6 flex items-center justify-between">
+        <div className="glass-card p-2 sm:p-4 mb-2 sm:mb-6 flex items-center justify-between">
           <div>
             <h2 className="font-bold text-gray-900">Révision des réponses</h2>
             <p className="text-sm text-gray-500">Question {revisionQuestionIndex + 1} / 40</p>
@@ -564,11 +576,11 @@ export default function NouvelExamen1Page() {
           </div>
         </div>
 
-        <div className="bg-white border border-gray-200 p-2 sm:p-6">
-          <div className={`inline-flex items-center gap-2 px-2 py-1 mb-2 text-sm font-medium ${
+        <div className="glass-card p-2 sm:p-6">
+          <div className={`inline-flex items-center gap-2 px-3 py-1 mb-2 text-sm font-medium rounded-full ${
             isCorrect
-              ? 'bg-emerald-50 text-emerald-700'
-              : 'bg-red-50 text-red-700'
+              ? 'bg-emerald-100/70 text-emerald-700'
+              : 'bg-red-100/70 text-red-700'
           }`}>
             {isCorrect ? (
               <>
@@ -591,26 +603,26 @@ export default function NouvelExamen1Page() {
               const isCorrectOption = optIdx === correctIndex;
               const isUserChoice = currentAnswer.selectedIndex === optIdx;
 
-              let optionClass = 'border-gray-200 bg-white';
+              let optionClass = 'border-white/50 bg-white/30';
               if (isCorrectOption) {
-                optionClass = 'border-emerald-500 bg-emerald-50';
+                optionClass = 'border-emerald-500 bg-emerald-50/80';
               } else if (isUserChoice && !isCorrectOption) {
-                optionClass = 'border-red-500 bg-red-50';
+                optionClass = 'border-red-500 bg-red-50/80';
               }
 
               return (
                 <div
                   key={optIdx}
-                  className={`p-4 border-2 ${optionClass}`}
+                  className={`p-4 border-2 rounded-xl ${optionClass}`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className={`w-8 h-8 flex items-center justify-center text-sm font-bold ${
+                      <div className={`w-8 h-8 flex items-center justify-center text-sm font-bold rounded-lg ${
                         isCorrectOption
                           ? 'bg-emerald-600 text-white'
                           : isUserChoice
                             ? 'bg-red-500 text-white'
-                            : 'bg-gray-100 text-gray-600'
+                            : 'bg-white/60 text-gray-600'
                       }`}>
                         {String.fromCharCode(65 + optIdx)}
                       </div>
@@ -633,12 +645,20 @@ export default function NouvelExamen1Page() {
             })}
           </div>
 
-          <div className="bg-primary-50 border border-primary-200 p-4">
-            <h4 className="font-semibold text-primary-800 mb-2">Explication</h4>
-            <p className="text-primary-700 text-sm">{currentQuestion.explication}</p>
+          <div
+            className="p-4 rounded-xl"
+            style={{
+              backgroundColor: 'rgba(219,234,254,0.5)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(147,197,253,0.5)',
+            }}
+          >
+            <h4 className="font-semibold text-blue-900 mb-2">Explication</h4>
+            <p className="text-blue-900 text-sm">{currentQuestion.explication}</p>
           </div>
 
-          <div className="mt-6 pt-4 border-t border-gray-100">
+          <div className="mt-6 pt-4 border-t border-white/40">
             <div className="flex flex-wrap justify-center gap-1 mb-4">
               {QUESTIONS_EXAMEN.map((q, idx) => {
                 const answer = userAnswers[idx];
@@ -665,11 +685,12 @@ export default function NouvelExamen1Page() {
               <button
                 onClick={handleRevisionPrevious}
                 disabled={revisionQuestionIndex === 0}
-                className={`flex items-center gap-2 px-4 py-2 border border-gray-200 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all active:scale-95 ${
                   revisionQuestionIndex === 0
-                    ? 'text-gray-300 cursor-not-allowed'
-                    : 'text-gray-600 hover:bg-gray-50'
+                    ? 'bg-white/30 text-gray-400 cursor-not-allowed'
+                    : 'glass-pill text-gray-700'
                 }`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 <ChevronLeft className="w-4 h-4" />
                 Précédent
@@ -682,11 +703,12 @@ export default function NouvelExamen1Page() {
               <button
                 onClick={handleRevisionNext}
                 disabled={revisionQuestionIndex === QUESTIONS_EXAMEN.length - 1}
-                className={`flex items-center gap-2 px-4 py-2 border border-gray-200 ${
+                className={`flex items-center gap-2 px-4 py-2 rounded-xl transition-all active:scale-95 ${
                   revisionQuestionIndex === QUESTIONS_EXAMEN.length - 1
-                    ? 'text-gray-300 cursor-not-allowed'
-                    : 'text-gray-600 hover:bg-gray-50'
+                    ? 'bg-white/30 text-gray-400 cursor-not-allowed'
+                    : 'glass-cta-emerald'
                 }`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 Suivant
                 <ChevronRight className="w-4 h-4" />

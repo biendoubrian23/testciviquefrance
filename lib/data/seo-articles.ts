@@ -1960,13 +1960,43 @@ export const bingSeoArticles2026: Article[] = [
     image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop',
     featured: true,
   },
+  // Article Naturalisation Erreurs 2026
+  {
+    id: 'naturalisation-erreurs-2026',
+    slug: 'refus-naturalisation-7-erreurs-90-pourcent-candidats',
+    title: 'Refus de naturalisation : les 7 erreurs qui détruisent votre dossier (et que 90% des candidats font)',
+    excerpt: '90% des dossiers de naturalisation échouent à cause d\'erreurs évitables. Découvrez les 7 erreurs fatales (dossier incomplet, situation fiscale irrégulière, niveau de français insuffisant, etc.) et comment les éviter pour maximiser vos chances d\'obtenir la nationalité française.',
+    content: '',
+    category: 'Conseils pratiques',
+    categorySlug: 'conseils',
+    author: 'Brian BIENDOU',
+    date: '30/04/2026',
+    readTime: 25,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
+];
+
+// ===== Batch programmé Mai 2026 — 12 articles publiés sur 4 jours =====
+// Métadonnées Article. Le champ `publishedAt` (côté contenu SEO) gère la publication différée.
+import { batch1Metadata } from './seo-content/articles-batch-mai-2026-1';
+import { batch2Metadata } from './seo-content/articles-batch-mai-2026-2';
+import { batch3Metadata } from './seo-content/articles-batch-mai-2026-3';
+import { batch4Metadata } from './seo-content/articles-batch-mai-2026-4';
+
+export const articlesMai2026Programmes: Article[] = [
+  ...batch1Metadata,
+  ...batch2Metadata,
+  ...batch3Metadata,
+  ...batch4Metadata,
 ];
 
 /**
  * Récupère tous les articles (existants + SEO)
  */
 export function getAllArticlesWithSEO(existingArticles: Article[]): Article[] {
-  return [...existingArticles, ...seoArticles, ...quotidienImmigrationArticles, ...viePratiqueArticles, ...bingSeoArticles2026];
+  return [...existingArticles, ...seoArticles, ...quotidienImmigrationArticles, ...viePratiqueArticles, ...bingSeoArticles2026, ...articlesMai2026Programmes];
 }
 
 /**

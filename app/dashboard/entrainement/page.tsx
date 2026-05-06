@@ -18,65 +18,13 @@ interface Category {
   progress?: number;
 }
 
-// Couleurs élégantes inspirées de la France - réparties pour alterner haut/bas
-const themeColors: Record<number, { 
-  border: string; 
-  bg: string; 
-  accent: string; 
-  progress: string;
-  text: string;
-}> = {
-  1: { // Principes et valeurs - Bleu Marine (couleur officielle)
-    border: 'border-[#002395]',
-    bg: 'bg-[#002395]/10',
-    accent: 'text-[#002395]',
-    progress: 'bg-[#002395]',
-    text: 'group-hover:text-[#002395]',
-  },
-  2: { // Vivre en société - Rouge France
-    border: 'border-[#C8102E]',
-    bg: 'bg-[#C8102E]/10',
-    accent: 'text-[#C8102E]',
-    progress: 'bg-[#C8102E]',
-    text: 'group-hover:text-[#C8102E]',
-  },
-  3: { // Histoire - Violet Impérial
-    border: 'border-[#7C3AED]',
-    bg: 'bg-[#7C3AED]/10',
-    accent: 'text-[#7C3AED]',
-    progress: 'bg-[#7C3AED]',
-    text: 'group-hover:text-[#7C3AED]',
-  },
-  4: { // Institutions - Bleu Océan
-    border: 'border-[#0369A1]',
-    bg: 'bg-[#0369A1]/10',
-    accent: 'text-[#0369A1]',
-    progress: 'bg-[#0369A1]',
-    text: 'group-hover:text-[#0369A1]',
-  },
-  5: { // Droits et devoirs - Or/Doré
-    border: 'border-[#B45309]',
-    bg: 'bg-[#B45309]/10',
-    accent: 'text-[#B45309]',
-    progress: 'bg-[#B45309]',
-    text: 'group-hover:text-[#B45309]',
-  },
-  6: { // Symboles - Vert Émeraude
-    border: 'border-[#059669]',
-    bg: 'bg-[#059669]/10',
-    accent: 'text-[#059669]',
-    progress: 'bg-[#059669]',
-    text: 'group-hover:text-[#059669]',
-  },
-};
-
-// Couleur par défaut
-const defaultColor = {
-  border: 'border-gray-900',
-  bg: 'bg-gray-100',
-  accent: 'text-primary-600',
-  progress: 'bg-primary-600',
-  text: 'group-hover:text-primary-600',
+const categoryHex: Record<number, string> = {
+  1: '#002395', // Bleu Marine — Principes et valeurs
+  2: '#C8102E', // Rouge France — Vivre en société
+  3: '#7C3AED', // Violet Impérial — Histoire
+  4: '#0369A1', // Bleu Océan — Institutions
+  5: '#D97706', // Ambre — Droits et devoirs
+  6: '#059669', // Émeraude — Symboles
 };
 
 export default function EntrainementPage() {
@@ -200,58 +148,80 @@ export default function EntrainementPage() {
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {[1, 2, 3, 4, 5, 6].map((i) => (
-            <div key={i} className="bg-white border border-gray-200 p-5 sm:p-6 animate-pulse">
-              <div className="h-6 bg-gray-200 rounded w-3/4 mb-3"></div>
-              <div className="h-4 bg-gray-100 rounded w-full mb-4"></div>
-              <div className="h-2 bg-gray-100 rounded"></div>
+            <div key={i} className="glass-card p-5 sm:p-6 animate-pulse">
+              <div className="h-6 bg-white/40 rounded w-3/4 mb-3"></div>
+              <div className="h-4 bg-white/30 rounded w-full mb-4"></div>
+              <div className="h-2 bg-white/30 rounded"></div>
             </div>
           ))}
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {categories.map((category) => {
-            const colors = themeColors[category.ordre] || defaultColor;
+            const hex = categoryHex[category.ordre] ?? '#4F46E5';
+            const isComplete = category.niveauxCompletes === 10;
+            const fillColor = isComplete ? '#10B981' : hex;
             return (
               <Link
                 key={category.id}
                 href={`/dashboard/entrainement/${category.id}`}
-                className={`group ${colors.bg} border-2 ${colors.border} rounded-xl p-5 sm:p-6 hover:shadow-lg active:opacity-90 transition-all`}
-                style={{ WebkitTapHighlightColor: 'transparent' }}
+                className="group glass-card p-5 sm:p-6 transition-all duration-200 active:scale-[0.98]"
+                style={{
+                  background: `linear-gradient(160deg, ${hex}14 0%, rgba(255,255,255,0.28) 42%)`,
+                  WebkitTapHighlightColor: 'transparent',
+                }}
               >
-                <h3 className={`font-bold text-gray-900 mb-2 ${colors.text} transition-colors`}>
+                <h3
+                  className="font-bold mb-2 transition-colors"
+                  style={{ color: hex }}
+                >
                   {category.nom}
                 </h3>
-                <p className="text-sm text-gray-900 mb-4">
+                <p className="text-sm text-gray-600 mb-4 leading-relaxed">
                   {category.description}
                 </p>
-                
+
                 <div className="flex items-center justify-between text-sm mb-3">
-                  <span className="text-gray-700 font-medium">
-                    {category.questionsCount} question{category.questionsCount !== 1 ? 's' : ''}
+                  <span className="text-gray-500 font-medium">
+                    {category.questionsCount} questions
                   </span>
                   {user && (
-                    <span className="font-semibold text-gray-900 flex items-center gap-1">
-                      {category.niveauxCompletes === 10 && (
-                        <CheckCircle className="w-4 h-4 text-emerald-500" />
-                      )}
+                    <span className="font-semibold text-gray-800 flex items-center gap-1">
+                      {isComplete && <CheckCircle className="w-4 h-4 text-emerald-500" />}
                       Niveau {category.niveauxCompletes}/{category.totalNiveaux}
                     </span>
                   )}
                 </div>
-                
+
                 {user && (
-                  <div className="h-2 bg-white/60 rounded-full overflow-hidden">
-                    <div 
-                      className={`h-full transition-all duration-500 rounded-full ${
-                        category.niveauxCompletes === 10 ? 'bg-emerald-500' : colors.progress
-                      }`}
-                      style={{ width: `${category.progress}%` }}
+                  <div
+                    className="h-1.5 rounded-full overflow-hidden"
+                    style={{
+                      backgroundColor: `${hex}20`,
+                    }}
+                  >
+                    <div
+                      className="h-full rounded-full transition-all duration-500"
+                      style={{
+                        width: `${category.progress}%`,
+                        backgroundColor: fillColor,
+                      }}
                     />
                   </div>
                 )}
-                
-                <div className={`mt-4 flex items-center ${colors.accent} font-medium text-sm`}>
-                  Commencer <ArrowRight className="w-4 h-4 ml-1" />
+
+                <div
+                  className="mt-4 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full font-semibold text-sm transition-all duration-200 group-hover:scale-[1.03]"
+                  style={{
+                    color: hex,
+                    background: `linear-gradient(135deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.38) 100%)`,
+                    backdropFilter: 'blur(12px)',
+                    WebkitBackdropFilter: 'blur(12px)',
+                    border: `1px solid rgba(255,255,255,0.70)`,
+                    boxShadow: `0 2px 8px ${hex}18, inset 0 1px 0 rgba(255,255,255,0.9)`,
+                  }}
+                >
+                  Commencer <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                 </div>
               </Link>
             );
@@ -260,11 +230,11 @@ export default function EntrainementPage() {
       )}
 
       {/* Info sur le fonctionnement */}
-      <div className="bg-gray-50 border border-gray-200 p-5 sm:p-6">
+      <div className="glass-subcard p-5 sm:p-6">
         <h3 className="font-bold text-gray-900 mb-2">Comment fonctionne l&apos;entraînement ?</h3>
-        <p className="text-gray-600 text-sm">
-          Chaque thème comporte 10 niveaux de difficulté croissante. Pour valider un niveau et débloquer le suivant, 
-          vous devez obtenir au moins <strong>8 bonnes réponses sur 10</strong> (80%). 
+        <p className="text-gray-700 text-sm">
+          Chaque thème comporte 10 niveaux de difficulté croissante. Pour valider un niveau et débloquer le suivant,
+          vous devez obtenir au moins <strong>8 bonnes réponses sur 10</strong> (80%).
           Une explication détaillée est fournie après chaque question pour vous aider à progresser.
         </p>
       </div>

@@ -59,8 +59,8 @@ export default function DashboardLayout({
   // 🔴 Écran d'erreur avec bouton Retry
   if (authError) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center max-w-md px-4">
+      <div className="min-h-screen flex items-center justify-center glass-bg">
+        <div className="glass-card p-8 max-w-md mx-4 text-center">
           <WifiOff className="w-12 h-12 text-orange-500 mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-gray-800 mb-2">
             Problème de connexion
@@ -71,7 +71,7 @@ export default function DashboardLayout({
           <button
             onClick={handleRetry}
             disabled={isRetrying}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition disabled:opacity-50"
+            className="glass-cta disabled:opacity-50"
           >
             {isRetrying ? (
               <>
@@ -97,10 +97,10 @@ export default function DashboardLayout({
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
+      <div className="min-h-screen flex items-center justify-center glass-bg">
+        <div className="glass-card p-8 text-center">
           <Loader2 className="w-10 h-10 animate-spin text-primary-600 mx-auto mb-4" />
-          <p className="text-gray-600">Chargement...</p>
+          <p className="text-gray-700">Chargement...</p>
         </div>
       </div>
     );
@@ -109,27 +109,27 @@ export default function DashboardLayout({
   // Afficher le loader pendant la redirection
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50">
-        <div className="text-center">
+      <div className="min-h-screen flex items-center justify-center glass-bg">
+        <div className="glass-card p-8 text-center">
           <Loader2 className="w-10 h-10 animate-spin text-primary-600 mx-auto mb-4" />
-          <p className="text-gray-600">Redirection...</p>
+          <p className="text-gray-700">Redirection...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen glass-bg">
       {/* Sidebar - contrôlée par état sur mobile */}
-      <Sidebar 
-        isOpen={sidebarOpen} 
-        onClose={() => setSidebarOpen(false)} 
+      <Sidebar
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
       />
-      
+
       {/* Contenu principal */}
       <div className="lg:ml-64 min-h-screen flex flex-col">
         <DashboardHeader onMenuClick={() => setSidebarOpen(true)} />
-        <main className="flex-1 p-1 sm:p-6 pb-20 lg:pb-6 pt-16 sm:pt-20">
+        <main className="flex-1 p-3 sm:p-6 pb-20 lg:pb-6 pt-16 sm:pt-20">
           {children}
         </main>
       </div>

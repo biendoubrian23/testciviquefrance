@@ -171,66 +171,83 @@ export default function ExamensPage() {
       {examCredits && (
         <>
           {/* Card principale - Lancer un examen */}
-          <div className="bg-primary-600 p-8 text-white">
-            <div className="flex flex-col gap-6">
+          <div
+            className="relative overflow-hidden rounded-2xl p-6 sm:p-8 text-white"
+            style={{
+              background: 'linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #4F46E5 100%)',
+              boxShadow: '0 12px 40px rgba(37, 99, 235, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
+            }}
+          >
+            {/* Reflets décoratifs */}
+            <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%)' }} />
+            <div className="flex flex-col gap-5 relative">
               <div>
-                <h2 className="text-2xl font-bold mb-3">Prêt pour une session d&apos;examen blanc ?</h2>
-                <p className="text-primary-100 mb-4 max-w-xl">
+                <h2 className="text-xl sm:text-2xl font-bold mb-2">Prêt pour une session d&apos;examen blanc ?</h2>
+                <p className="text-primary-100 mb-4 max-w-xl text-sm sm:text-base">
                   L&apos;examen civique officiel comporte 40 questions. Vous devez obtenir au moins 32 bonnes réponses (80%) pour réussir.
-                  Testez-vous dans les mêmes conditions !
                 </p>
-                
-                {/* Bouton Commencer l'examen - Positionné après la description sur mobile */}
+
+                {/* Bouton mobile */}
                 <button
                   onClick={handleStartExam}
-                  className="sm:hidden w-full inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-6 py-3 font-bold hover:bg-primary-50 transition-colors mb-4"
+                  className="sm:hidden w-full inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-200 active:scale-95 mb-4"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.95)',
+                    color: '#1D4ED8',
+                    boxShadow: '0 4px 14px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,1)',
+                    WebkitTapHighlightColor: 'transparent',
+                  }}
                 >
                   Commencer l&apos;examen
                   <ArrowRight className="w-5 h-5" />
                 </button>
-                
+
                 {/* Compteur d'examens disponibles */}
                 {examCredits && (
-                  <div className="mb-6">
-                    <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg text-green-100">
-                      <Trophy className="w-5 h-5" />
-                      <span className="font-semibold">
-                        {examCredits.totalAvailable} session{examCredits.totalAvailable > 1 ? 's' : ''} d&apos;examen blanc{examCredits.totalAvailable > 1 ? 's' : ''} disponible{examCredits.totalAvailable > 1 ? 's' : ''}
+                  <div className="mb-5">
+                    <div
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white text-sm font-semibold"
+                      style={{
+                        backgroundColor: 'rgba(255,255,255,0.18)',
+                        backdropFilter: 'blur(12px)',
+                        WebkitBackdropFilter: 'blur(12px)',
+                        border: '1px solid rgba(255,255,255,0.35)',
+                      }}
+                    >
+                      <Trophy className="w-4 h-4" />
+                      <span>
+                        {examCredits.totalAvailable} session{examCredits.totalAvailable > 1 ? 's' : ''} disponible{examCredits.totalAvailable > 1 ? 's' : ''}
                       </span>
-                      {examCredits.examCredits > 0 && (
-                        <span className="text-green-200 text-sm">
-                          ({examCredits.examCredits} Pack Examen)
-                        </span>
-                      )}
-                      {examCredits.subscriptionExamsRemaining > 0 && (
-                        <span className="text-green-200 text-sm">
-                          ({examCredits.subscriptionExamsRemaining}/{examCredits.subscriptionExamsLimit} {examCredits.isStandard ? 'Standard' : 'Premium'})
-                        </span>
-                      )}
                     </div>
                   </div>
                 )}
 
-                <div className="flex flex-wrap gap-6 text-sm">
+                <div className="flex flex-wrap gap-4 text-sm text-primary-100">
                   <div className="flex items-center gap-2">
-                    <FileQuestion className="w-5 h-5" />
+                    <FileQuestion className="w-4 h-4" />
                     <span>40 questions</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Clock className="w-5 h-5" />
+                    <Clock className="w-4 h-4" />
                     <span>45 minutes</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Target className="w-5 h-5" />
+                    <Target className="w-4 h-4" />
                     <span>32/40 pour réussir (80%)</span>
                   </div>
                 </div>
               </div>
-              {/* Bouton Commencer l'examen - Version desktop (cachée sur mobile) */}
-              <div className="hidden sm:flex flex-col gap-3">
+              {/* Bouton desktop */}
+              <div className="hidden sm:flex">
                 <button
                   onClick={handleStartExam}
-                  className="inline-flex items-center justify-center gap-2 bg-white text-primary-600 px-6 py-3 font-bold hover:bg-primary-50 transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-200 active:scale-95"
+                  style={{
+                    backgroundColor: 'rgba(255,255,255,0.95)',
+                    color: '#1D4ED8',
+                    boxShadow: '0 4px 14px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,1)',
+                    WebkitTapHighlightColor: 'transparent',
+                  }}
                 >
                   Commencer l&apos;examen
                   <ArrowRight className="w-5 h-5" />
@@ -243,46 +260,46 @@ export default function ExamensPage() {
 
       {/* Statistiques - Visibles pour tous */}
       {examCredits && (
-        <div className="grid sm:grid-cols-3 gap-6">
-          <div className="bg-white border border-gray-200 p-6">
+        <div className="grid sm:grid-cols-3 gap-4 sm:gap-6">
+          <div className="glass-card p-5 sm:p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-primary-100/70 flex items-center justify-center border border-white/60">
                 <FileQuestion className="w-5 h-5 text-primary-600" />
               </div>
-              <span className="text-sm text-gray-600">Examens passés</span>
+              <span className="text-sm text-gray-700">Examens passés</span>
             </div>
             {isLoading ? (
               <Loader2 className="w-6 h-6 animate-spin text-gray-400" />
             ) : (
-              <p className="text-4xl font-bold text-gray-900">{stats.totalExamens}</p>
+              <p className="text-3xl sm:text-4xl font-bold text-gray-900">{stats.totalExamens}</p>
             )}
           </div>
 
-          <div className="bg-white border border-gray-200 p-6">
+          <div className="glass-card p-5 sm:p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-emerald-50 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-emerald-100/70 flex items-center justify-center border border-white/60">
                 <Trophy className="w-5 h-5 text-emerald-600" />
               </div>
-              <span className="text-sm text-gray-600">Taux de réussite</span>
+              <span className="text-sm text-gray-700">Taux de réussite</span>
             </div>
             {isLoading ? (
               <Loader2 className="w-6 h-6 animate-spin text-gray-400" />
             ) : (
-              <p className="text-4xl font-bold text-gray-900">{stats.tauxReussite}%</p>
+              <p className="text-3xl sm:text-4xl font-bold text-gray-900">{stats.tauxReussite}%</p>
             )}
           </div>
 
-          <div className="bg-white border border-gray-200 p-6">
+          <div className="glass-card p-5 sm:p-6">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-primary-50 flex items-center justify-center">
+              <div className="w-10 h-10 rounded-full bg-primary-100/70 flex items-center justify-center border border-white/60">
                 <Award className="w-5 h-5 text-primary-600" />
               </div>
-              <span className="text-sm text-gray-600">Meilleur score</span>
+              <span className="text-sm text-gray-700">Meilleur score</span>
             </div>
             {isLoading ? (
               <Loader2 className="w-6 h-6 animate-spin text-gray-400" />
             ) : (
-              <p className="text-4xl font-bold text-gray-900">
+              <p className="text-3xl sm:text-4xl font-bold text-gray-900">
                 {stats.meilleurScore > 0 ? `${stats.meilleurScore}/40` : '-'}
               </p>
             )}
@@ -290,28 +307,29 @@ export default function ExamensPage() {
         </div>
       )}
 
-      {/* Historique des examens - Accessible pour tous ceux qui ont un historique */}
+      {/* Historique des examens */}
       {examensHistory.length > 0 && (
-        <div className="bg-white border border-gray-200">
-          <div className="p-6 border-b border-gray-200">
+        <div className="glass-card overflow-hidden">
+          <div className="p-5 sm:p-6 border-b border-white/40">
             <h2 className="text-xl font-bold text-gray-900">Historique des examens</h2>
             <p className="text-sm text-gray-600 mt-1">
               Consultez vos résultats et revoyez vos corrections
             </p>
           </div>
-          <div className="divide-y divide-gray-100">
+          <div className="divide-y divide-white/40">
             {isLoading ? (
               <div className="p-12 text-center">
                 <Loader2 className="w-8 h-8 animate-spin text-primary-600 mx-auto mb-4" />
-                <p className="text-gray-500">Chargement...</p>
+                <p className="text-gray-600">Chargement...</p>
               </div>
             ) : (
               examensHistory.map((examen) => (
-                <div key={examen.id} className="p-6 flex items-center justify-between hover:bg-gray-50 transition-colors">
+                <div key={examen.id} className="p-4 sm:p-6 flex items-center justify-between hover:bg-white/30 transition-colors">
                   <div className="flex items-center gap-4">
-                    <div className={`w-12 h-12 flex items-center justify-center ${
-                      examen.passed ? 'bg-emerald-50' : 'bg-red-50'
-                    }`}>
+                    <div
+                      className="w-11 h-11 rounded-full flex items-center justify-center border border-white/60"
+                      style={{ backgroundColor: examen.passed ? 'rgba(209,250,229,0.7)' : 'rgba(254,226,226,0.7)' }}
+                    >
                       {examen.passed ? (
                         <CheckCircle2 className="w-6 h-6 text-emerald-600" />
                       ) : (
@@ -319,25 +337,28 @@ export default function ExamensPage() {
                       )}
                     </div>
                     <div>
-                      <p className="font-medium text-gray-900">
+                      <p className="font-semibold text-gray-900">
                         Score : {examen.score}/{examen.total_questions}
                       </p>
-                      <p className="text-sm text-gray-500">
+                      <p className="text-sm text-gray-600">
                         {formatDate(examen.completed_at)} • {formatDuration(examen.temps_total)}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <span className={`px-3 py-1 text-sm font-medium ${
-                      examen.passed 
-                        ? 'bg-emerald-50 text-emerald-700' 
-                        : 'bg-red-50 text-red-600'
-                    }`}>
+                  <div className="flex items-center gap-3">
+                    <span
+                      className={`px-3 py-1 text-sm font-medium rounded-full ${
+                        examen.passed
+                          ? 'bg-emerald-100/80 text-emerald-700'
+                          : 'bg-red-100/80 text-red-600'
+                      }`}
+                    >
                       {examen.passed ? 'Réussi' : 'Échoué'}
                     </span>
-                    <Link 
+                    <Link
                       href={`/dashboard/examens/${examen.id}`}
-                      className="text-primary-600 hover:text-primary-700 font-medium text-sm"
+                      className="text-primary-700 hover:text-primary-800 font-medium text-sm transition-all duration-200 active:scale-95"
+                      style={{ WebkitTapHighlightColor: 'transparent' }}
                     >
                       Voir détails
                     </Link>

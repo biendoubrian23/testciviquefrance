@@ -147,7 +147,7 @@ export default function ExamenDetailPage() {
   if (isLoading) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-12">
-        <div className="bg-white border border-gray-200 p-8 text-center">
+        <div className="glass-card p-8 text-center">
           <Loader2 className="w-12 h-12 animate-spin text-primary-600 mx-auto mb-4" />
           <h2 className="text-lg font-semibold text-gray-900 mb-2">Chargement de l&apos;examen...</h2>
         </div>
@@ -173,49 +173,37 @@ export default function ExamenDetailPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 space-y-6">
       {/* En-tête avec résumé */}
-      <div className="bg-white border border-gray-200 p-6">
+      <div className="glass-card p-5 sm:p-6">
         <div className="flex items-start justify-between mb-4">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900 mb-2">Détails de l&apos;examen</h1>
-            <p className="text-sm text-gray-500">{examen.completed_at ? formatDate(examen.completed_at) : 'Non terminé'}</p>
+            <h1 className="text-2xl font-bold text-gray-900 mb-1">Détails de l&apos;examen</h1>
+            <p className="text-sm text-gray-600">{examen.completed_at ? formatDate(examen.completed_at) : 'Non terminé'}</p>
           </div>
           <button
             onClick={() => router.push('/dashboard/examens')}
-            className="flex items-center gap-2 text-gray-600 hover:text-gray-900"
+            className="glass-pill text-gray-700 text-sm gap-1.5"
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
-            <Home className="w-5 h-5" />
-            <span className="text-sm font-medium">Retour</span>
+            <Home className="w-4 h-4" />
+            <span>Retour</span>
           </button>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <div className="bg-gray-50 p-4 text-center">
-            <div className={`text-3xl font-bold mb-1 ${examen.passed ? 'text-emerald-600' : 'text-red-500'}`}>
-              {examen.score}/{examen.total_questions}
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {[
+            { label: 'Score final', value: `${examen.score}/${examen.total_questions}`, color: examen.passed ? 'text-emerald-600' : 'text-red-500' },
+            { label: 'Pourcentage', value: `${percentage}%`, color: 'text-gray-900' },
+            { label: 'Temps utilisé', value: formatTime(examen.temps_total), color: 'text-gray-900' },
+          ].map((item) => (
+            <div key={item.label} className="glass-subcard p-3 sm:p-4 text-center">
+              <div className={`text-2xl sm:text-3xl font-bold mb-1 ${item.color}`}>{item.value}</div>
+              <div className="text-xs text-gray-600">{item.label}</div>
             </div>
-            <div className="text-xs text-gray-600">Score final</div>
-          </div>
-          <div className="bg-gray-50 p-4 text-center">
-            <div className="text-3xl font-bold text-gray-900 mb-1">{percentage}%</div>
-            <div className="text-xs text-gray-600">Pourcentage</div>
-          </div>
-          <div className="bg-gray-50 p-4 text-center">
-            <div className="text-3xl font-bold text-gray-900 mb-1">{formatTime(examen.temps_total)}</div>
-            <div className="text-xs text-gray-600">Temps utilisé</div>
-          </div>
-          <div className="bg-gray-50 p-4 text-center">
-            <div className={`flex items-center justify-center gap-2 ${examen.passed ? 'text-emerald-600' : 'text-red-500'}`}>
-              {examen.passed ? (
-                <>
-                  <Trophy className="w-6 h-6" />
-                  <span className="text-xl font-bold">Réussi</span>
-                </>
-              ) : (
-                <>
-                  <Target className="w-6 h-6" />
-                  <span className="text-xl font-bold">Échoué</span>
-                </>
-              )}
+          ))}
+          <div className="glass-subcard p-3 sm:p-4 text-center">
+            <div className={`flex items-center justify-center gap-1.5 ${examen.passed ? 'text-emerald-600' : 'text-red-500'}`}>
+              {examen.passed ? <Trophy className="w-5 h-5" /> : <Target className="w-5 h-5" />}
+              <span className="text-xl font-bold">{examen.passed ? 'Réussi' : 'Échoué'}</span>
             </div>
             <div className="text-xs text-gray-600 mt-1">Résultat</div>
           </div>
@@ -223,14 +211,13 @@ export default function ExamenDetailPage() {
       </div>
 
       {/* Navigation par points */}
-      <div className="bg-white border border-gray-200 p-4">
+      <div className="glass-card p-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="font-semibold text-gray-900">Question {currentQuestionIndex + 1} / {questions.length}</h3>
-          <div className="text-sm text-gray-500">
+          <div className="text-sm text-gray-600 font-medium">
             {examen.current_answers.filter((a) => {
               const q = questions.find(question => question.id === a.questionId);
               if (!q) return false;
-              const examNum = examen.exam_number || 1;
               const correct = getCorrectAnswerIndex(examNumber, q.id, q.correctHash);
               return a.selectedIndex === correct;
             }).length} réponses correctes
@@ -239,24 +226,24 @@ export default function ExamenDetailPage() {
         <div className="grid grid-cols-10 gap-1">
           {questions.map((q, idx) => {
             const answer = examen.current_answers[idx];
-            const examNum = examen.exam_number || 1;
             const qCorrectIndex = getCorrectAnswerIndex(examNumber, q.id, q.correctHash);
             const qWasAnswered = answer?.selectedIndex !== null && answer?.selectedIndex !== undefined;
             const qCorrect = qWasAnswered && answer.selectedIndex === qCorrectIndex;
-            
+
             return (
               <button
                 key={q.id}
                 onClick={() => setCurrentQuestionIndex(idx)}
-                className={`p-2 text-xs font-medium border ${
+                className={`p-2 text-xs font-semibold rounded-lg transition-all duration-200 active:scale-95 border ${
                   idx === currentQuestionIndex
-                    ? 'bg-primary-600 text-white border-primary-600'
+                    ? 'bg-primary-600 text-white border-primary-600 shadow-sm'
                     : qCorrect
-                    ? 'bg-emerald-100 text-emerald-700 border-emerald-300'
+                    ? 'bg-emerald-100/80 text-emerald-700 border-emerald-200'
                     : qWasAnswered
-                    ? 'bg-red-100 text-red-700 border-red-300'
-                    : 'bg-gray-100 text-gray-500 border-gray-200'
+                    ? 'bg-red-100/80 text-red-700 border-red-200'
+                    : 'bg-white/40 text-gray-600 border-white/60'
                 }`}
+                style={{ WebkitTapHighlightColor: 'transparent' }}
               >
                 {idx + 1}
               </button>
@@ -266,7 +253,7 @@ export default function ExamenDetailPage() {
       </div>
 
       {/* Question actuelle */}
-      <div className="bg-white border border-gray-200 p-6">
+      <div className="glass-card p-5 sm:p-6">
         <div className="flex items-start gap-3 mb-4">
           {wasAnswered ? (
             isCorrect ? (
@@ -275,55 +262,55 @@ export default function ExamenDetailPage() {
               <XCircle className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" />
             )
           ) : (
-            <div className="w-6 h-6 rounded-full bg-gray-200 flex-shrink-0 mt-1" />
+            <div className="w-6 h-6 rounded-full bg-white/50 border border-white/60 flex-shrink-0 mt-1" />
           )}
           <div>
-            <span className="text-xs text-primary-600 font-medium">{currentQuestion.categorie}</span>
+            <span className="text-xs text-primary-700 font-semibold">{currentQuestion.categorie}</span>
             <h2 className="text-lg font-semibold text-gray-900 mt-1">{currentQuestion.question}</h2>
           </div>
         </div>
 
-        <div className="space-y-3 mb-6">
+        <div className="space-y-3 mb-5">
           {currentQuestion.options.map((option, optIdx) => {
             const isSelected = currentAnswer?.selectedIndex === optIdx;
             const isOptionCorrect = optIdx === correctIndex;
-            
+
             return (
               <div
                 key={optIdx}
-                className={`p-4 border-2 rounded-lg ${
-                  isOptionCorrect
-                    ? 'border-emerald-500 bg-emerald-50'
+                className="p-4 rounded-xl border-2 transition-all duration-200"
+                style={{
+                  backgroundColor: isOptionCorrect
+                    ? 'rgba(209, 250, 229, 0.7)'
                     : isSelected && !isOptionCorrect
-                    ? 'border-red-500 bg-red-50'
-                    : 'border-gray-200'
-                }`}
+                    ? 'rgba(254, 226, 226, 0.7)'
+                    : 'rgba(255, 255, 255, 0.30)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  borderColor: isOptionCorrect
+                    ? '#10B981'
+                    : isSelected && !isOptionCorrect
+                    ? '#EF4444'
+                    : 'rgba(255, 255, 255, 0.5)',
+                }}
               >
                 <div className="flex items-center gap-3">
-                  <div className={`w-6 h-6 rounded-full flex items-center justify-center text-sm font-medium ${
-                    isOptionCorrect
-                      ? 'bg-emerald-500 text-white'
-                      : isSelected && !isOptionCorrect
-                      ? 'bg-red-500 text-white'
-                      : 'bg-gray-100 text-gray-600'
+                  <div className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold flex-shrink-0 ${
+                    isOptionCorrect ? 'bg-emerald-500 text-white'
+                      : isSelected && !isOptionCorrect ? 'bg-red-500 text-white'
+                      : 'bg-white/60 text-gray-700'
                   }`}>
                     {String.fromCharCode(65 + optIdx)}
                   </div>
                   <span className={`${
-                    isOptionCorrect
-                      ? 'text-emerald-700 font-medium'
-                      : isSelected && !isOptionCorrect
-                      ? 'text-red-700'
-                      : 'text-gray-700'
+                    isOptionCorrect ? 'text-emerald-800 font-semibold'
+                      : isSelected && !isOptionCorrect ? 'text-red-800'
+                      : 'text-gray-800'
                   }`}>
                     {option}
                   </span>
-                  {isOptionCorrect && (
-                    <CheckCircle className="w-5 h-5 text-emerald-600 ml-auto" />
-                  )}
-                  {isSelected && !isOptionCorrect && (
-                    <XCircle className="w-5 h-5 text-red-500 ml-auto" />
-                  )}
+                  {isOptionCorrect && <CheckCircle className="w-5 h-5 text-emerald-600 ml-auto flex-shrink-0" />}
+                  {isSelected && !isOptionCorrect && <XCircle className="w-5 h-5 text-red-500 ml-auto flex-shrink-0" />}
                 </div>
               </div>
             );
@@ -331,40 +318,51 @@ export default function ExamenDetailPage() {
         </div>
 
         {/* Explication */}
-        <div className="bg-blue-50 border border-blue-200 p-4 rounded-lg">
+        <div
+          className="p-4 rounded-xl"
+          style={{
+            backgroundColor: 'rgba(219, 234, 254, 0.5)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid rgba(147, 197, 253, 0.5)',
+            boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8)',
+          }}
+        >
           <h4 className="font-semibold text-blue-900 mb-2">Explication</h4>
-          <p className="text-blue-800 text-sm">{currentQuestion.explication}</p>
+          <p className="text-blue-900 text-sm">{currentQuestion.explication}</p>
         </div>
       </div>
 
       {/* Navigation */}
-      <div className="bg-white border border-gray-200 p-4">
+      <div className="glass-card p-4">
         <div className="flex items-center justify-between gap-2">
           <button
             onClick={handlePrevious}
             disabled={currentQuestionIndex === 0}
-            className={`flex items-center gap-1 px-3 py-2 text-sm font-medium ${
+            className={`flex items-center gap-1 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 active:scale-95 ${
               currentQuestionIndex === 0
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-primary-600 text-white hover:bg-primary-700'
+                ? 'bg-white/30 text-gray-400 cursor-not-allowed'
+                : 'glass-cta'
             }`}
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             <ChevronLeft className="w-4 h-4" />
             Préc.
           </button>
 
-          <span className="text-sm text-gray-700 font-medium">
-            Question {currentQuestionIndex + 1} / {questions.length}
+          <span className="text-sm text-gray-700 font-semibold">
+            {currentQuestionIndex + 1} / {questions.length}
           </span>
 
           <button
             onClick={handleNext}
             disabled={currentQuestionIndex === questions.length - 1}
-            className={`flex items-center gap-1 px-3 py-2 text-sm font-medium ${
+            className={`flex items-center gap-1 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200 active:scale-95 ${
               currentQuestionIndex === questions.length - 1
-                ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-emerald-600 text-white hover:bg-emerald-700'
+                ? 'bg-white/30 text-gray-400 cursor-not-allowed'
+                : 'glass-cta-emerald'
             }`}
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
             Suivant
             <ChevronRight className="w-4 h-4" />
