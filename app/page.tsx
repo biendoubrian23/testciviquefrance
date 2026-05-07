@@ -133,14 +133,6 @@ const allHomeSchemas = [homeJsonLd, courseSchema, faqSchema];
 export default function HomePage() {
   return (
     <>
-      {/* Preload LCP image (première image carrousel Hero) — uniquement sur la home */}
-      <link
-        rel="preload"
-        href="/carousselle1_opt.webp"
-        as="image"
-        type="image/webp"
-        fetchPriority="high"
-      />
       {allHomeSchemas.map((schema, index) => (
         <script
           key={index}
@@ -153,8 +145,8 @@ export default function HomePage() {
         <Hero />
         <ProgressSection />
         <Features />
-        <AdSenseBlock slot="9125999446" format="autorelaxed" className="max-w-4xl mx-auto px-4" />
         <RecentArticles />
+        <AdSenseBlock slot="9125999446" format="autorelaxed" className="max-w-4xl mx-auto px-4" />
         <Pricing />
         <AdSenseBlock slot="4450490909" format="auto" className="max-w-4xl mx-auto px-4 my-4" />
         <SEOContent />
