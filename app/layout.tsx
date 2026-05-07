@@ -633,15 +633,6 @@ export default function RootLayout({
   return (
     <html lang="fr" className={montserrat.variable}>
       <head>
-        {/* Preload LCP image (première image carrousel Hero) */}
-        <link
-          rel="preload"
-          href="/carousselle1_opt.webp"
-          as="image"
-          type="image/webp"
-          fetchPriority="high"
-        />
-
         {/* DNS prefetch — différés car les scripts se chargent après 5s */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
