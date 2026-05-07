@@ -153,7 +153,7 @@ export default function HomePage() {
         <Hero />
         <ProgressSection />
         <Features />
-        <AdSenseBlock slot="9125999446" format="autorelaxed" className="max-w-4xl mx-auto px-4 my-4" />
+        <AdSenseBlock slot="9125999446" format="autorelaxed" className="max-w-4xl mx-auto px-4" />
         <RecentArticles />
         <Pricing />
         <AdSenseBlock slot="4450490909" format="auto" className="max-w-4xl mx-auto px-4 my-4" />
