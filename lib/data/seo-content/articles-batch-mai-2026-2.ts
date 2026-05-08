@@ -12,7 +12,6 @@ import type { Article } from '../articles';
 // =====================================================================
 export const article1Content: ArticleFullContent = {
   slug: 'anef-franceconnect-bloque-2026-erreur-connexion-solutions',
-  publishedAt: '2026-05-08T08:00:00+02:00',
   introduction: `Vous tentez de vous connecter à votre **espace ANEF** (Administration Numérique pour les Étrangers en France) via **FranceConnect** et rien ne va : "**compte non reconnu**", boucle de redirection infinie entre ANEF et Impots.gouv, captcha qui se rejoue trois fois, ou pire — une page blanche après avoir tapé votre mot de passe Ameli. Vous n'êtes pas seul. En 2026, ce sont des milliers d'usagers qui rencontrent ces blocages chaque semaine, particulièrement aux heures de pointe (entre 9h-11h et 18h-20h). La bonne nouvelle ? Dans 9 cas sur 10, le problème se règle en moins de **30 minutes** sans appeler la préfecture. Ce guide passe en revue les **6 fournisseurs d'identité FranceConnect**, les **8 erreurs les plus fréquentes** en 2026 et leurs solutions testées, ainsi que la procédure d'urgence pour créer un compte ANEF par e-mail si tout échoue.`,
   keywords: [
     'anef franceconnect bloque 2026',
@@ -257,7 +256,6 @@ Pendant que votre dossier ANEF se débloque, ce temps n'est pas perdu : si vous 
 // =====================================================================
 export const article2Content: ArticleFullContent = {
   slug: 'anef-erreurs-courantes-2026-page-blanche-session-expiree-500',
-  publishedAt: '2026-05-08T12:00:00+02:00',
   introduction: `Vous êtes en plein milieu de votre demande de titre de séjour sur **ANEF**, vous venez de téléverser 8 pièces justificatives, et voilà qu'une **page blanche** s'affiche. Ou pire : message "**session expirée**" qui efface tout votre travail. Ou encore une **erreur 500** moqueuse qui clignote sans explication. En 2026, malgré les améliorations de l'**Administration Numérique pour les Étrangers en France**, ces bugs restent fréquents — particulièrement aux heures de pointe et lors de l'envoi de pièces jointes volumineuses. Ce catalogue répertorie les **12 erreurs ANEF les plus courantes** classées par fréquence, avec pour chacune la cause technique, la solution testée, et un délai de résolution. Vous y trouverez aussi les **prérequis techniques** méconnus, les **horaires de maintenance** officieux, et une **checklist anti-bugs** à appliquer avant chaque dépôt de demande.`,
   keywords: [
     'anef erreur page blanche',
@@ -535,7 +533,6 @@ ANEF permet de **sauvegarder en brouillon** à chaque étape. Utilisez cette fon
 // =====================================================================
 export const article3Content: ArticleFullContent = {
   slug: 'echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete',
-  publishedAt: '2026-05-08T16:00:00+02:00',
   introduction: `Vous arrivez en France avec un **permis de conduire étranger** et vous vous demandez si vous pouvez l'**échanger** contre un permis français — ou s'il faudra repasser le code et la conduite ? La réponse dépend de **3 catégories** : votre permis vient d'un pays de l'**UE/EEE** (échange direct), d'un pays ayant un **accord bilatéral** avec la France (échange possible sous conditions), ou d'un pays **sans accord** (vous devrez repasser intégralement le permis français). En 2026, la France a des accords avec environ **70 pays** dans le monde — Maroc, Algérie, Tunisie, Canada, Suisse, Brésil, Japon, Corée du Sud, Sénégal, Côte d'Ivoire, et certains états américains seulement. Ce guide complet vous donne la **liste à jour des pays avec accord**, le **détail état par état pour les USA**, la **procédure ANTS pas à pas** (timbre fiscal de **45 €**), les délais, et les solutions si votre pays n'a pas d'accord.`,
   keywords: [
     'echange permis conduire etranger france 2026',
