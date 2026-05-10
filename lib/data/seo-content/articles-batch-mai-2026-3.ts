@@ -13,7 +13,6 @@ import type { Article } from '../articles';
 // =============================================================================
 export const article1Content: ArticleFullContent = {
   slug: 'famille-passeport-talent-france-2026-conjoint-enfants-droits-titre',
-  publishedAt: '2026-05-09T08:00:00+02:00',
   introduction: `Vous venez d'obtenir un **passeport talent** en France et votre famille est restée à l'étranger ? Bonne nouvelle : depuis la loi du 7 mars 2016 (et confirmée par les décrets de 2024-2026), votre conjoint et vos enfants mineurs bénéficient d'un régime ultra-favorable, le titre de séjour mention **"famille accompagnante"** (parfois appelé "passeport talent - famille"). Concrètement : un titre pluriannuel de la même durée que le vôtre (jusqu'à 4 ans), un **droit au travail immédiat pour le conjoint** sans autorisation préalable, et une procédure simplifiée à l'ANEF. Mais attention, des conditions strictes encadrent ce dispositif : mariage ou PACS reconnu, vie commune effective, ressources suffisantes du titulaire. Et en cas de divorce ou de perte d'emploi du titulaire, les règles changent rapidement. Ce guide complet 2026 détaille les conditions, le dossier à constituer, la procédure visa long séjour, le renouvellement, et surtout la **passerelle vers la naturalisation** que beaucoup de familles ignorent.`,
   keywords: [
     'famille passeport talent 2026',
@@ -343,7 +342,6 @@ Pour vos enfants nés en France ou arrivés mineurs, des règles particulières 
 // =============================================================================
 export const article2Content: ArticleFullContent = {
   slug: 'naturalisation-enfant-mineur-france-2026-effet-collectif-declaration',
-  publishedAt: '2026-05-09T12:00:00+02:00',
   introduction: `Vous avez un enfant mineur étranger né ou élevé en France ? Trois voies juridiques distinctes permettent à un mineur d'**acquérir la nationalité française** en 2026, chacune avec ses propres conditions, délais et avantages. La première — **l'effet collectif** — fait bénéficier l'enfant du décret de naturalisation de son parent, automatiquement et gratuitement. La deuxième — la **déclaration anticipée à 13 ou 16 ans** (article 21-11 du code civil) — permet à un enfant né en France de devenir français avant sa majorité, sans test civique. La troisième — l'**acquisition automatique à 18 ans par droit du sol** (article 21-7) — concerne les jeunes nés en France de parents étrangers. Mais beaucoup de familles confondent ces voies, ratent des délais critiques ou choisissent la mauvaise procédure. Ce guide complet 2026 explique précisément les **3 voies, les conditions, le dossier, et les cas particuliers** (parent unique, enfant adopté, parent au PACS), avec un tableau comparatif pour vous aider à choisir.`,
   keywords: [
     'naturalisation enfant mineur 2026',
@@ -684,7 +682,6 @@ Si l'enfant est placé sous tutelle française ou en famille d'accueil depuis l'
 // =============================================================================
 export const article3Content: ArticleFullContent = {
   slug: 'oqtf-etudiant-etranger-france-2026-recours-droits-defense',
-  publishedAt: '2026-05-09T16:00:00+02:00',
   introduction: `Vous êtes étudiant étranger en France et vous venez de recevoir une **OQTF (Obligation de Quitter le Territoire Français)** ? Ne paniquez pas, mais agissez **immédiatement**. Vous avez **48 heures** pour saisir le tribunal administratif en référé liberté, et **30 jours maximum** pour le recours au fond. Au-delà, l'OQTF devient quasi définitive et vous risquez l'éloignement forcé. La bonne nouvelle : en 2026, **7 motifs juridiques solides** permettent d'obtenir l'annulation de l'OQTF ou la délivrance d'un nouveau titre. Le taux de succès devant le tribunal administratif pour les OQTF étudiants atteint **35 à 45%** selon les juridictions et la qualité du dossier — bien plus élevé que pour les autres types d'OQTF. Ce guide juridique complet 2026 détaille les délais critiques, les 7 motifs de recours, la procédure devant le tribunal administratif, l'aide juridictionnelle gratuite, et les voies de régularisation alternatives. Lisez attentivement : chaque heure compte.`,
   keywords: [
     'OQTF étudiant 2026',

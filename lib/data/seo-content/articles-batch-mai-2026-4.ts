@@ -12,7 +12,6 @@ import type { Article } from '../articles';
 // =====================================================================
 export const article1Content: ArticleFullContent = {
   slug: 'dossier-naturalisation-refuse-sans-motif-2026-recours-cada-tribunal',
-  publishedAt: '2026-05-10T08:00:00+02:00',
   introduction: `Vous recevez une lettre laconique de votre préfecture ou du ministère de l'Intérieur : "Votre demande de naturalisation est rejetée." Aucune explication détaillée, juste une formule administrative comme **"défaut d'assimilation"**, **"insuffisance des ressources"** ou **"opportunité"**. Vous restez sans comprendre ce qui s'est réellement passé. Cette frustration est partagée par environ **35 000 candidats déboutés chaque année** en France selon les chiffres 2026 de la Sous-direction de l'accès à la nationalité française (SDANF). La bonne nouvelle : vous avez **le droit légal d'obtenir l'intégralité de votre dossier**, de comprendre les vraies raisons cachées du refus et de **contester la décision** par un recours gracieux ou contentieux. Ce guide complet 2026 vous explique la procédure exacte : différencier ajournement, refus et irrecevabilité ; saisir la **CADA** (Commission d'accès aux documents administratifs) pour récupérer les pièces ; rédiger un recours efficace ; saisir le **tribunal administratif de Nantes** ; et préparer une nouvelle demande qui aboutira.`,
   keywords: [
     'naturalisation refusée sans motif 2026',
@@ -270,7 +269,6 @@ Pour aller plus loin sur les conditions d'obtention de la **carte de résident 1
 // =====================================================================
 export const article2Content: ArticleFullContent = {
   slug: 'ants-permis-conduire-categorie-b-2026-demande-etapes-tarifs',
-  publishedAt: '2026-05-10T12:00:00+02:00',
   introduction: `Passer le **permis de conduire catégorie B** (voitures jusqu'à 3,5 tonnes) reste en 2026 l'un des examens les plus passés en France : environ **1,5 million de candidats** s'inscrivent chaque année. Depuis 2018, toutes les démarches sont **dématérialisées sur l'ANTS** (Agence nationale des titres sécurisés) : pas de passage en préfecture, tout se fait en ligne sur ants.gouv.fr. Mais le parcours reste long, parfois confus, et coûteux : entre **700 € en candidat libre** et **2 500 € en auto-école traditionnelle**. Ce guide détaille en 6 étapes l'intégralité du processus 2026 : prérequis, demande NEPH sur ANTS, code de la route, conduite, tarifs réels, fabrication du permis. Avec un tableau récapitulatif des coûts et toutes les solutions aux blocages les plus fréquents (numéro NEPH bloqué, place d'examen indisponible, code 96 pour les étrangers).`,
   keywords: [
     'ANTS permis B 2026',
@@ -508,7 +506,6 @@ Sur ants.gouv.fr → "Suivre ma démarche" → vous voyez chaque étape : "En co
 // =====================================================================
 export const article3Content: ArticleFullContent = {
   slug: 'renouvellement-carte-resident-10-ans-2026-conditions-documents-anef',
-  publishedAt: '2026-05-10T16:00:00+02:00',
   introduction: `Votre **carte de résident de 10 ans** approche de sa date d'expiration ? Bonne nouvelle : contrairement à la **première délivrance** (qui est le parcours le plus difficile du droit des étrangers), le **renouvellement** est en 2026 une procédure **largement simplifiée et de plein droit**, c'est-à-dire **automatique sauf motif grave**. Près de **350 000 étrangers** renouvellent chaque année leur carte de résident en France selon les chiffres du ministère de l'Intérieur. Depuis 2022, toute la démarche se fait en ligne sur **ANEF** (Administration Numérique des Étrangers en France) : pas de rendez-vous préfecture, pas de dossier papier, **récépissé délivré immédiatement**, et un coût stable de **75 €**. Ce guide 2026 détaille en 6 étapes : le principe du renouvellement de plein droit, le bon timing (2 à 6 mois avant expiration), la procédure ANEF pas-à-pas, les documents nécessaires (drastiquement réduits), les rares motifs de refus, et vos droits pendant l'attente du nouveau titre.`,
   keywords: [
     'renouvellement carte résident 10 ans 2026',
