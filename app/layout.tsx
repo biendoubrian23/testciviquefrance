@@ -633,6 +633,20 @@ export default function RootLayout({
   return (
     <html lang="fr" className={montserrat.variable}>
       <head>
+        {/* Ezoic — intégration JavaScript (programme Incubator).
+            À placer en tête du <head>. Les scripts de consentement (CMP)
+            DOIVENT précéder le script principal Ezoic. */}
+        <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js" />
+        <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js" />
+        <script async src="https://www.ezojs.com/ezoic/sa.min.js" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              'window.ezstandalone = window.ezstandalone || {}; ezstandalone.cmd = ezstandalone.cmd || [];',
+          }}
+        />
+        <script src="https://ezoicanalytics.com/analytics.js" />
+
         {/* DNS prefetch — différés car les scripts se chargent après 5s */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
