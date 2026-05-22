@@ -64,14 +64,14 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 | Brief | Sujet | Priorité |
 |---|---|---|
 | [03](03-MAJ-niveau-b2-naturalisation.md) | 🔄 Niveau B2 naturalisation — diplômes & tests | 🟠 Moyenne |
-| [05](05-MAJ-hausse-taxes-titres-sejour.md) | 🔄 Hausse des taxes titres de séjour (650 € / 350 €) | 🟢 Quick win |
+| ~~05~~ | ✅ Hausse des taxes titres de séjour — **rédigé le 22/05/2026**, à publier | Fait |
 | [MAJ-articles-existants.md](MAJ-articles-existants.md) | 🔄 12 articles existants à rafraîchir (ANEF, ANTS, Campus France, impôts…) | varié |
 
 ## ✅ Ordre de publication conseillé
 
 Suivre cet ordre, cocher au fur et à mesure. Rythme : **2 à 3 articles / semaine**.
 
-1. [ ] **05** — Hausse des taxes titres de séjour · 🔄 MAJ, quick win sans risque
+1. [x] **05** — Hausse des taxes titres de séjour · ✅ rédigé le 22/05/2026, à committer/publier
 2. [ ] **07** — Frais université hors-UE · 🔴 actu chaude (décret du 20 mai)
 3. [ ] **01** — Examen civique obligatoire (carte de séjour) · pilier
 4. [ ] **MAJ-A** — ANEF bloqué + décision Conseil d'État · 🔴 actu

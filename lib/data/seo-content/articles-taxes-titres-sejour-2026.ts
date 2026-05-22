@@ -1,6 +1,6 @@
 /**
- * Article Actualité - Mai 2026
- * Hausse des taxes titres de séjour au 1er mai 2026
+ * Article Actualité - Hausse des taxes titres de séjour au 1er mai 2026
+ * Mis à jour le 22/05/2026 — montants vérifiés sur service-public.fr et préfectures.
  */
 
 import type { ArticleFullContent } from './articles-part1';
@@ -10,253 +10,221 @@ import type { ArticleFullContent } from './articles-part1';
 // ─────────────────────────────────────────────────────────────────────────────
 export const haussesTaxesTitresSejour2026Content: ArticleFullContent = {
   slug: 'hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances',
-  introduction: `À partir du 1er mai 2026, obtenir ou renouveler un titre de séjour en France va coûter beaucoup plus cher. Les taxes préfectorales explosent — jusqu'à 650 € pour une première délivrance — et les associations parlent ouvertement de « racket institutionnel ». Qui est concerné ? Combien allez-vous devoir payer ? Qui est exonéré ? Et que faire si vous n'avez pas les moyens ? Ce guide complet vous donne tous les chiffres officiels issus de la loi de finances 2026, les exceptions à connaître, et les ressources pour ne pas vous retrouver bloqué à la préfecture faute d'argent.`,
+  introduction: `**Article mis à jour le 22 mai 2026.** Depuis le 1er mai 2026, obtenir ou renouveler un titre de séjour en France coûte nettement plus cher. La loi de finances pour 2026 a relevé l'ensemble des taxes et droits de timbre liés à l'immigration : jusqu'à **650 €** pour un premier titre de séjour en situation de régularisation, **255 €** de droit de timbre pour une demande de naturalisation (contre 55 € auparavant), **100 €** pour une autorisation provisoire de séjour jusque-là gratuite.
+
+Qui est concerné ? Combien allez-vous réellement payer selon votre situation ? Qui est exonéré ? Ce guide reprend **tous les montants officiels**, vérifiés sur service-public.fr et les sites des préfectures, et vous explique comment les anticiper.`,
   keywords: [
     'hausse taxes titre de séjour 2026',
     'nouveau tarif titre de séjour 2026',
-    'taxe préfecture titre séjour mai 2026',
-    'timbre fiscal titre de séjour 2026 prix',
-    'prix titre de séjour 2026',
-    'loi finances 2026 étrangers taxes',
-    'hausse frais naturalisation 2026',
-    'droit de visa régularisation 300 euros',
+    'prix titre de séjour 1er mai 2026',
+    'timbre fiscal titre de séjour 2026',
+    'timbre fiscal naturalisation 255 euros',
+    'droit de timbre 50 euros titre de séjour',
+    'tarif minoré titre de séjour étudiant',
+    'droit de visa de régularisation 300 euros',
     'autorisation provisoire de séjour 100 euros',
+    'loi finances 2026 taxes étrangers',
     'exonération taxe titre de séjour',
-    'Cimade racket institutionnel titre séjour',
-    'préfecture 650 euros titre de séjour',
-    'aide financière titre de séjour association',
-    'plan Nuñez préfecture délais titre séjour',
-    'ANEF titre de séjour 2026',
+    'coût renouvellement titre de séjour 2026',
+    'premier titre de séjour 350 euros',
   ],
   sections: [
     {
       id: 'ce-qui-change-le-1er-mai',
-      title: 'Ce qui change le 1er mai 2026 : les nouveaux tarifs en détail',
-      content: `La loi n° 2026-103 de finances pour 2026 (article 128) a profondément revu à la hausse toutes les taxes liées à l'immigration légale en France. Ces hausses entrent en vigueur le **1er mai 2026**. Elles s'appliquent à toutes les demandes déposées à partir de cette date.
+      title: 'Ce qui change le 1er mai 2026 : tous les nouveaux tarifs',
+      content: `La loi n° 2026-103 de finances pour 2026 (article 128) a revu à la hausse l'ensemble des taxes liées à l'immigration légale. Les nouveaux montants s'appliquent **à tout titre dont la décision de délivrance intervient à compter du 1er mai 2026** (voir plus bas la règle exacte).
 
-### La taxe principale : de 200 € à 300 €
+### Taxe et droit de timbre : deux choses différentes
 
-Pour la délivrance d'un **premier titre de séjour**, la taxe principale passe de **200 à 300 euros**. Mais ce n'est que le début du calcul.
+Le coût d'un titre de séjour se compose de **deux éléments distincts** :
+- la **taxe** proprement dite, dont le montant dépend du type de démarche ;
+- le **droit de timbre**, qui passe de **25 € à 50 €** pour quasiment toutes les démarches.
 
-### Le "droit de visa de régularisation" : 300 € supplémentaires
+C'est l'addition des deux qui donne le montant total à payer.
 
-Les personnes entrées en France **sans visa requis** (en situation irrégulière à leur arrivée) doivent payer un **droit de visa de régularisation de 300 euros** en plus de la taxe principale. Attention : **100 euros de ce montant sont prélevés dès le dépôt du dossier et ne sont jamais remboursés**, même en cas de refus du titre.
+### Le tableau officiel des nouveaux tarifs (1er mai 2026)
 
-### L'autorisation provisoire de séjour : nouvelle taxe de 100 €
+| Démarche | Taxe | Droit de timbre | Total |
+|---|---|---|---|
+| Première délivrance — tarif normal (carte temporaire, pluriannuelle ou carte de résident) | 300 € | 50 € | **350 €** |
+| Première délivrance — tarif minoré (étudiants, stagiaires, jeunes au pair, saisonniers) | 100 € | 50 € | **150 €** |
+| Renouvellement — tarif normal | 200 € | 50 € | **250 €** |
+| Renouvellement — tarif minoré | 50 € | 50 € | **100 €** |
 
-Jusqu'au 30 avril 2026, la délivrance d'une **autorisation provisoire de séjour (APS)** était gratuite. À partir du 1er mai, elle coûte **100 euros**. L'APS est un titre très précaire, de courte durée, délivré notamment aux **parents d'enfant gravement malade** ou à des personnes en situation très spécifique.
+### Les autres taxes qui augmentent
 
-### Le tableau complet des nouveaux tarifs 2026
-
-| Titre / Démarche | Ancien tarif | Nouveau tarif (1er mai 2026) |
+| Démarche | Ancien montant | Nouveau montant (1er mai 2026) |
 |---|---|---|
-| Première délivrance (règle générale) | 200 € + droit de timbre 19 € | **300 € + 19 €** |
-| + Droit de visa de régularisation | 225 € | **300 €** (dont 100 € non remboursables) |
-| Total premier titre (sans visa) | **~425 €** | **~619 €** |
-| Renouvellement carte temporaire | 225 € | **250 €** |
-| Renouvellement carte pluriannuelle | 225 € | **250 €** |
-| Carte de résident 10 ans | 225 € | **269 €** |
-| Naturalisation (droit de timbre) | 55 € | **55 €** (inchangé) |
-| Autorisation provisoire de séjour | Gratuit | **100 €** |
-| Échange permis conduire étranger | 25 € | **45 €** |
+| Droit de visa de régularisation | 200 € | **300 €** (dont 100 € non remboursables) |
+| Autorisation provisoire de séjour (APS) | Gratuit | **100 €** |
+| Droit de timbre — naturalisation et déclarations de nationalité | 55 € | **255 €** (127,50 € en Guyane) |
+| Échange d'un permis de conduire étranger | — | **40 €** |
 
-### Ce que ça représente concrètement
+Le **droit de visa de régularisation** concerne les personnes entrées irrégulièrement en France ou restées sans titre au-delà des délais réglementaires. Sur les 300 €, **100 € sont dus dès le dépôt de la demande et ne sont pas remboursables**, même en cas de refus.
 
-La Cimade a fait le calcul pour une personne entrée en France sans visa requis qui obtient sa régularisation :
-- Taxe principale : **300 €**
-- Droit de visa de régularisation : **300 €** (dont 100 € payés au dépôt)
-- Droit de timbre : **19 €**
-- Frais annexes (photos, photocopies, transport) : ~**30 €**
-- **Total : environ 650 euros** pour un titre valable 1 an
+Le **droit de timbre de naturalisation à 255 €** s'applique à toutes les demandes d'acquisition de la nationalité : naturalisation par décret, réintégration, et déclarations de nationalité (par mariage, comme ascendant ou comme frère ou sœur de Français).
 
-Et dans un an, pour le renouvellement : **250 euros supplémentaires**. En deux ans, une personne régularisée aura déboursé **900 euros** rien qu'en taxes administratives.`,
+> Sources : [service-public.fr — augmentation des taxes des titres de séjour](https://www.service-public.gouv.fr/particuliers/actualites/A18881) et [service-public.fr — timbre fiscal pour une demande de nationalité française](https://www.service-public.gouv.fr/particuliers/vosdroits/F32952).`,
+    },
+    {
+      id: 'combien-allez-vous-payer',
+      title: 'Combien allez-vous payer ? 5 situations concrètes',
+      content: `Le montant exact dépend de votre situation. Voici les cas les plus fréquents.
+
+### 1. Vous demandez un premier titre de séjour (cas général)
+**350 €** : 300 € de taxe + 50 € de droit de timbre.
+
+### 2. Vous êtes étudiant, stagiaire, jeune au pair ou saisonnier
+**150 €** : vous bénéficiez du tarif minoré (100 € de taxe + 50 € de droit de timbre).
+
+### 3. Vous renouvelez votre titre de séjour
+**250 €** : 200 € de taxe + 50 € de droit de timbre. Le montant est le même pour une carte temporaire ou une carte pluriannuelle. Voir notre guide du [renouvellement de titre de séjour](/articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais).
+
+### 4. Vous régularisez votre situation (entrée sans visa)
+C'est le cas le plus coûteux :
+- premier titre : **350 €** (taxe 300 € + droit de timbre 50 €) ;
+- droit de visa de régularisation : **300 €** (dont 100 € payés dès le dépôt) ;
+- **soit environ 650 €**, hors frais annexes (photos, traductions, déplacements).
+
+Au bout d'un an, le renouvellement coûtera **250 € supplémentaires**.
+
+### 5. Vous déposez une demande de naturalisation
+**255 €** de droit de timbre (contre 55 € auparavant), à régler au moment du dépôt du dossier — un montant multiplié par plus de quatre. La naturalisation entraîne aussi d'autres frais (test de langue, traductions) : voir notre guide de la [naturalisation française 2026](/articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet).`,
+    },
+    {
+      id: 'date-decision-regle',
+      title: 'Quand les nouveaux tarifs s\'appliquent : la règle de la date de décision',
+      content: `C'est le point qui crée le plus de confusion — et une erreur fréquente.
+
+**Ce n'est pas la date de dépôt de votre dossier qui détermine le tarif, mais la date de la décision de délivrance du titre.**
+
+Concrètement : tous les titres de séjour dont **la décision de délivrance intervient à compter du 1er mai 2026** sont soumis aux nouveaux montants — **même si le dossier a été déposé avant cette date**. Un dossier déposé en mars 2026 mais accordé en juin 2026 sera donc taxé au nouveau tarif.
+
+Il était donc inutile d'espérer « payer moins cher » en déposant son dossier juste avant le 1er mai : ce qui compte, c'est la date à laquelle la préfecture statue.
+
+Pour les demandes de régularisation dont une partie des frais a déjà été acquittée avant le 1er mai, le complément correspondant au nouveau tarif reste dû.
+
+> Source : [service-public.fr — actualité du 1er mai 2026](https://www.service-public.gouv.fr/particuliers/actualites/A18881).`,
     },
     {
       id: 'qui-est-exonere',
-      title: 'Qui est exonéré de ces taxes ? Les exceptions officielles',
-      content: `Toutes ces taxes ne s'appliquent pas à tout le monde. Voici les catégories **légalement exonérées** :
+      title: 'Qui est exonéré de ces taxes ?',
+      content: `Toutes ces taxes ne s'appliquent pas à tout le monde.
 
-### Exonérations totales
+### Personnes non concernées
+Les citoyens de l'**Union européenne, de l'EEE, de Suisse et d'Andorre** ne sont pas soumis à ces taxes : ils n'ont pas besoin d'un titre de séjour pour résider en France.
 
-| Catégorie | Base légale |
-|---|---|
-| Réfugiés statutaires reconnus par l'OFPRA ou la CNDA | Article L744-9 du CESEDA |
-| Bénéficiaires de la protection subsidiaire | Article L744-9 du CESEDA |
-| Apatrides reconnus | Article L744-9 du CESEDA |
-| Victimes de traite des êtres humains | Article L425-6 du CESEDA |
-| Étrangers malades (titre pour raisons de santé) | Article L425-9 du CESEDA |
-| Mineurs (carte de séjour délivrée à un mineur) | Article L414-13 du CESEDA |
-| Bénéficiaires de l'aide sociale à l'enfance (ASE) | Dispositif de protection |
+### Catégories exonérées
+Sont notamment **exonérés** du droit de visa de régularisation et, pour plusieurs d'entre eux, des taxes de titre de séjour :
+- les **réfugiés** et les bénéficiaires de la **protection subsidiaire** ;
+- les **apatrides** reconnus ;
+- les **victimes de la traite des êtres humains** et les **victimes de violences conjugales** ;
+- les **étrangers malades** (titre de séjour pour raison de santé) ;
+- les **mineurs** et les bénéficiaires de l'**aide sociale à l'enfance (ASE)** ;
+- les **anciens combattants** et anciens **légionnaires**.
 
-### Exonérations partielles
+### L'angle mort : pas d'exonération liée aux revenus
+Il n'existe **aucun barème de revenus** permettant de réduire ces taxes pour les personnes en grande précarité, contrairement à d'autres dispositifs (aide juridictionnelle, complémentaire santé solidaire). Le seul critère est le statut juridique. C'est l'une des principales critiques des associations.
 
-- Les demandeurs d'asile dont la demande est en cours ne paient pas de taxe pendant l'instruction
-- Les personnes titulaires d'une rente accident du travail ou maladie professionnelle bénéficient d'un tarif réduit
+Si une préfecture vous réclame une taxe alors que vous relevez d'une catégorie exonérée, contestez-le par écrit et conservez une preuve.
 
-### Ce qui n'est PAS exonéré (et qui choque)
-
-- Les parents d'enfant gravement malade qui demandent une APS : **désormais taxés 100 €**
-- Les personnes en attente de régularisation qui renouvellent leur récépissé : chaque renouvellement génère des frais
-- Les personnes en situation précaire qui ne peuvent pas prouver leurs ressources
-
-### L'absence de dispositif pour les plus précaires
-
-La Cimade et plusieurs associations dénoncent l'**absence totale de mécanisme d'exonération pour les personnes en grande précarité**. Contrairement à d'autres prestations (aide juridictionnelle, CMU), il n'existe pas de barème de revenus permettant de réduire ou d'annuler ces taxes. Le seul critère est le statut juridique — pas la situation financière réelle.
-
-Des associations comme **Médecins sans Frontières France**, la **CASE (Comité pour la Santé des Exilés)** et certains **PASS hospitaliers** ont mis en place des programmes d'aide financière pour couvrir ces frais dans les cas les plus graves. Contactez-les si vous êtes dans cette situation.`,
+> Les exonérations dépendent du fondement exact de votre demande : vérifiez votre situation précise sur [service-public.fr](https://www.service-public.gouv.fr/particuliers/actualites/A18881).`,
     },
     {
       id: 'pourquoi-ces-hausses',
-      title: 'Pourquoi ces hausses ? Ce que dit le gouvernement, ce que répondent les associations',
-      content: `### La version officielle : financer l'instruction des dossiers
+      title: 'Pourquoi ces hausses ? Gouvernement et associations s\'opposent',
+      content: `### La justification du gouvernement
+Le gouvernement présente ces hausses comme un moyen de **financer le traitement des dossiers** par les services préfectoraux. La loi de finances 2026 s'accompagne d'un plan visant à renforcer les effectifs des préfectures et à réduire les délais d'instruction.
 
-Le gouvernement justifie ces hausses par la nécessité de **financer les services préfectoraux** en charge de l'instruction des demandes. L'argument : les étrangers bénéficient d'un service public, il est normal qu'ils y contribuent davantage.
+### La critique des associations
+Plusieurs associations de défense des étrangers — dont **La Cimade** — dénoncent une hausse injuste. Leurs arguments :
+- la France figurerait, selon elles, **parmi les pays d'Europe où le coût du droit au séjour est le plus élevé** ;
+- les usagers paient davantage pour un service marqué par **un grand nombre de dossiers en attente** et des **délais d'instruction de plusieurs mois** ;
+- la plateforme **ANEF** connaît des dysfonctionnements réguliers, au point d'avoir donné lieu à des recours devant la justice administrative.
 
-La loi de finances 2026 prévoit également un **plan de recrutement de 500 vacataires** dans les préfectures pour réduire les délais de traitement — en partie financé par ces nouvelles recettes.
+Le sujet a aussi gagné le Parlement, plusieurs parlementaires ayant interpellé le gouvernement.
 
-### La version des associations : un racket institutionnel
-
-En octobre 2025, plusieurs organisations avaient dénoncé dans un communiqué commun un **« véritable racket institutionnel, qui fait payer aux étrangers le prix d'une politique fondée sur la suspicion, l'humiliation et l'entrave »**.
-
-La Cimade rappelle que la France est **l'un des pays d'Europe où le coût du droit au séjour est le plus élevé** — alors que la qualité du service public de l'immigration est régulièrement jugée défaillante par le Défenseur des droits, les tribunaux administratifs et les associations.
-
-### L'argument qui frappe : on paie pour un service qui ne fonctionne pas
-
-Le paradoxe est flagrant :
-- **930 000 dossiers** sont actuellement en attente dans les préfectures (chiffre officiel du ministère de l'Intérieur, avril 2026)
-- Le délai moyen de traitement est de **117 jours** (certaines préfectures dépassent 120 jours)
-- La plateforme ANEF (Administration Numérique pour les Étrangers en France) est régulièrement hors service ou dysfonctionnelle
-- La Défenseure des droits estime que **des milliers de personnes se retrouvent en situation irrégulière chaque année** par la seule faute de l'administration
-
-Payer 650 euros pour un service qui met 4 à 6 mois à traiter votre dossier — et qui vous place parfois en situation irrégulière faute de réponse dans les délais — c'est ce que les associations appellent le "racket institutionnel".
-
-### Ce que dit le Conseil d'État
-
-Le 10 avril 2026, le Conseil d'État a examiné une requête déposée par **dix associations** (dont le Secours catholique et Emmaüs) contre les dysfonctionnements de la plateforme ANEF. La décision devrait clarifier les obligations légales de l'administration en matière d'accessibilité du service public numérique.`,
+Quelle que soit la position que l'on adopte, le constat est le même pour l'usager : **il faut prévoir un budget nettement plus élevé** qu'avant le 1er mai 2026.`,
     },
     {
-      id: 'plan-desengorgement-prefectures',
-      title: 'Le plan du ministre pour désengorger les préfectures : ce qui va changer',
-      content: `Face au scandale des 930 000 dossiers en attente, le ministre de l'Intérieur **Laurent Nuñez** a présenté en avril 2026 un « plan global » pour réduire drastiquement les délais.
+      id: 'si-vous-ne-pouvez-pas-payer',
+      title: 'Que faire si vous ne pouvez pas payer ?',
+      content: `Des solutions existent, même si elles restent limitées.
 
-### L'objectif annoncé : diviser les délais par deux
+### 1. Vérifiez d'abord si vous êtes exonéré
+Relisez la section précédente : si vous êtes réfugié, bénéficiaire de la protection subsidiaire, victime de traite ou de violences, ou étranger malade, vous ne devez pas payer ces taxes.
 
-**Objectif officiel : 55 jours** de délai moyen de traitement, contre 117 jours actuellement. Pour y parvenir :
+### 2. Sollicitez une association
+Des associations disposent de fonds d'aide d'urgence ou peuvent vous orienter :
+- **La Cimade** — permanences juridiques et orientation (lacimade.org) ;
+- le **Secours catholique** — aide financière d'urgence (secours-catholique.org) ;
+- le **COMEDE** — situations médicales (comede.org) ;
+- **Médecins du Monde** — personnes précaires (medecinsdumonde.org).
 
-| Mesure | Détail |
-|---|---|
-| Recrutement de 500 vacataires | +20% des effectifs des services des étrangers |
-| 2 millions d'euros d'heures supplémentaires | Opérations de "déstockage" des dossiers en attente |
-| Simplification des pièces demandées | Plus de changement d'adresse obligatoire, liste de pièces actualisée |
-| Amélioration de la plateforme ANEF | Moins de bugs, meilleure accessibilité |
-| Automatisation des récépissés | Renouvellement automatique des récépissés pour maintenir les droits |
+### 3. La préfecture ne peut pas refuser de recevoir votre dossier
+Une préfecture n'a **pas le droit** de refuser l'accès au guichet ou le dépôt d'un dossier au seul motif que vous ne pouvez pas payer immédiatement. La taxe est due à la délivrance du titre (et, pour la régularisation, 100 € au dépôt). Si l'accès vous est refusé, saisissez le **Défenseur des droits** (defenseurdesdroits.fr — gratuit).
 
-### Ce qui change concrètement pour vous
-
-1. **Plus de déclaration de changement d'adresse** : l'administration ne pourra plus vous l'exiger lors du renouvellement
-2. **Liste de pièces normalisée** : « aucune exigence supplémentaire ne devra être sollicitée » (instruction aux préfets)
-3. **Récépissé automatique** : si votre titre expire et que votre dossier est en cours, le récépissé devra être automatiquement renouvelé — ce qui maintient vos droits (travail, accès aux soins, etc.)
-4. **Accompagnement humain** : pour les publics les plus fragiles qui ne maîtrisent pas le numérique, des dispositifs d'accompagnement devront être mis en place
-
-### Ce que les associations en pensent
-
-Les associations accueillent favorablement les intentions mais restent sceptiques. Pour la Cimade, **supprimer les dysfonctionnements de l'ANEF et réduire les délais** est nécessaire — mais cela n'empêche pas la hausse des taxes d'être injuste et discriminatoire.
-
-Le paradoxe demeure : vous allez payer plus cher pour un service qu'on promet d'améliorer, mais qui ne fonctionnait pas correctement quand il était moins cher.`,
+### 4. Attention aux intermédiaires
+Ne payez **jamais** un intermédiaire qui prétend « accélérer » ou « faciliter » vos paiements : les démarches officielles se font uniquement auprès de la préfecture et sur les sites en .gouv.fr.`,
     },
     {
-      id: 'que-faire-si-vous-ne-pouvez-pas-payer',
-      title: 'Que faire si vous ne pouvez pas payer ces nouvelles taxes ?',
-      content: `C'est la question que beaucoup se posent et que personne ne pose officiellement. La réponse est complexe — mais des solutions existent.
+      id: 'comment-payer-conseils',
+      title: 'Comment payer le timbre fiscal et bien anticiper',
+      content: `### Acheter le timbre fiscal électronique
+Le droit de timbre se règle sous forme de **timbre fiscal électronique**. Vous pouvez l'acheter :
+- en ligne sur **timbres.impots.gouv.fr** (paiement par carte bancaire, reçu immédiat) ;
+- dans un **bureau de tabac** agréé.
 
-### Option 1 : Vérifier si vous êtes exonéré
+Conservez le **numéro de référence** du timbre : c'est lui qui est saisi dans votre démarche ANEF ou remis à la préfecture. Un timbre non utilisé est remboursable pendant sa durée de validité.
 
-Relisez la liste des exonérations dans la section précédente. Si vous êtes réfugié, bénéficiaire de la protection subsidiaire, victime de traite ou étranger malade, **vous ne devez pas payer ces taxes**. Si la préfecture vous demande de payer malgré votre situation, contestez immédiatement.
+### Checklist avant de déposer votre demande
+1. **Identifiez le bon tarif** selon votre situation (normal ou minoré, première délivrance ou renouvellement).
+2. **Vérifiez vos droits à exonération** avant tout paiement.
+3. **Préparez le montant exact** à l'avance.
+4. **Gardez tous vos justificatifs de paiement** — indispensables en cas de recours.
+5. En cas de doute sur un montant, **vérifiez-le sur service-public.fr** ou auprès de votre préfecture avant de payer.
 
-### Option 2 : Contacter une association spécialisée
-
-Des associations ont mis en place des **fonds d'aide financière d'urgence** pour couvrir les taxes préfectorales des personnes dans les situations les plus précaires :
-
-| Association | Spécialité | Comment les contacter |
-|---|---|---|
-| **COMEDE** (Comité pour la Santé des Exilés) | Étrangers malades, situations médicales | comede.org |
-| **CASE** (Comité pour la Santé des Exilés) | Aide financière titre séjour santé | — |
-| **Médecins du Monde** | Personnes précaires sans accès aux soins | medecinsdumonde.org |
-| **Secours catholique** | Aide financière d'urgence toutes situations | secours-catholique.org |
-| **France Fraternités** | Accompagnement administratif et aide | — |
-| **La Cimade** (locale) | Permanences juridiques, orientation | lacimade.org |
-
-### Option 3 : Demander un délai de paiement (rare mais possible)
-
-Certaines préfectures acceptent, dans des cas très exceptionnels, un **délai de paiement**. Cela nécessite une demande écrite motivée, des justificatifs de revenus et une situation clairement précaire. Il n'existe pas de droit formalisé à l'échelonnement — c'est une mesure gracieuse.
-
-### Option 4 : Déposer quand même le dossier et payer partiellement
-
-Dans certains cas, notamment pour le **droit de visa de régularisation (300 €)**, les **100 premiers euros** doivent être payés au dépôt. Les 200 euros restants ne sont dus qu'à la délivrance du titre. Si votre dossier est accepté mais que vous n'avez pas les 200 euros au moment de la délivrance, la préfecture peut bloquer la remise du titre — même si la décision est favorable. Les associations travaillent à éviter ces situations.
-
-### Ce que dit le droit : la préfecture ne peut pas refuser de recevoir votre dossier
-
-Une préfecture n'a légalement pas le droit de refuser de recevoir votre dossier au motif que vous ne pouvez pas payer. Le paiement est dû à la délivrance (ou au dépôt pour les 100 €), pas avant. Si une préfecture vous refuse l'accès au guichet, contactez immédiatement le **Défenseur des droits** (defenseursdesdroits.fr — gratuit et accessible à tous).`,
+### Si votre titre est refusé après paiement
+Le **droit de timbre** et la part non remboursable du droit de visa de régularisation (100 €) ne sont **pas restitués**. En cas de recours contre un refus, vous pouvez demander l'**aide juridictionnelle**.`,
     },
     {
-      id: 'comparaison-europe',
-      title: 'La France parmi les pays les plus chers d\'Europe : comparaison internationale',
-      content: `La Cimade affirme que la France est « parmi les pays d'Europe où le coût du droit au séjour est le plus élevé ». Qu'en est-il réellement ?
+      id: 'sources-officielles',
+      title: 'Sources officielles',
+      content: `Tous les montants de ce guide proviennent de sources officielles, à jour au 22 mai 2026 :
+- [service-public.fr — Titres de séjour : augmentation des taxes au 1er mai 2026](https://www.service-public.gouv.fr/particuliers/actualites/A18881)
+- [service-public.fr — Timbre fiscal pour une demande de nationalité française](https://www.service-public.gouv.fr/particuliers/vosdroits/F32952)
+- Préfectures, rubriques « Étrangers en France » — tableaux d'application de la loi de finances 2026
+- Loi n° 2026-103 de finances pour 2026, article 128
+- Achat du timbre fiscal : [timbres.impots.gouv.fr](https://timbres.impots.gouv.fr)
 
-### Comparatif européen (données 2025-2026)
-
-| Pays | Coût d'un premier titre de séjour | Observations |
-|---|---|---|
-| **Allemagne** | 100 à 140 € | Pas de droit de visa de régularisation |
-| **Espagne** | 70 à 120 € | + l'Espagne régularise 500 000 sans-papiers en 2026 |
-| **Italie** | 70 à 200 € | Variable selon les régions |
-| **Belgique** | 50 à 215 € | Pas de cumul de taxes comme en France |
-| **Portugal** | 60 à 80 € | Politique d'accueil plus ouverte |
-| **Pays-Bas** | 170 à 320 € | Mais service bien plus rapide |
-| **France (avant mai 2026)** | ~425 € | Avec droit de visa de régularisation |
-| **France (après mai 2026)** | **~619 à 650 €** | + APS désormais taxée à 100 € |
-
-### Ce que révèle cette comparaison
-
-La France est **2 à 8 fois plus chère** que ses voisins européens pour obtenir un titre de séjour — pour un service qui est objectivement moins performant (930 000 dossiers en attente, délais de 4 à 6 mois).
-
-### L'exemple espagnol qui interpelle
-
-Alors que la France durcit les conditions financières d'accès au séjour, l'Espagne vient à l'inverse d'ouvrir officiellement ses guichets pour **régulariser près d'un demi-million de sans-papiers** (avril 2026) — à des coûts bien moindres. Ce contraste alimente un débat de fond sur les choix politiques en matière d'immigration légale.`,
-    },
-    {
-      id: 'conseils-pratiques-mai-2026',
-      title: 'Conseils pratiques : quoi faire avant et après le 1er mai 2026',
-      content: `### Si votre dossier est en cours ou à déposer : agissez maintenant
-
-**Avant le 1er mai :** si vous pouvez déposer votre dossier avant le 1er mai 2026, faites-le. Les anciens tarifs s'appliquent aux dossiers déposés avant cette date.
-
-**Après le 1er mai :** les nouveaux tarifs s'appliquent à tous les dossiers, quelle que soit la date d'entrée en France ou la nature de votre situation.
-
-### Checklist pour minimiser les coûts
-
-1. **Vérifiez vos droits à l'exonération** avant tout dépôt
-2. **Préparez la somme exacte** à l'avance (les préfectures n'acceptent pas les chèques en retard ou les virements non confirmés)
-3. **Gardez tous vos reçus de paiement** — indispensable pour un recours en cas d'erreur
-4. **Renseignez-vous auprès d'une association** si vous avez le moindre doute sur les montants
-5. **Ne payez jamais à un intermédiaire** qui prétend « faciliter » vos paiements — c'est une arnaque
-
-### Si votre titre est refusé après avoir payé
-
-- Les **19 € de droit de timbre** ne sont jamais remboursés
-- Les **100 € de droit de visa de régularisation** (sur les 300 €) ne sont jamais remboursés
-- En cas de recours contre le refus, **l'aide juridictionnelle** peut être demandée
-- Si vous obtenez l'annulation du refus par le tribunal, les taxes payées sont théoriquement récupérables (demandez à votre avocat)
-
-### Ressources officielles
-
-| Ressource | Utilité | Lien |
-|---|---|---|
-| Préfecture de l'Oise (tableau des tarifs) | Tableau récapitulatif officiel des hausses | oise.gouv.fr |
-| Portail ANEF | Démarches en ligne | administration-etrangers-en-france.interieur.gouv.fr |
-| Défenseur des droits | Signalement d'abus | defenseursdesdroits.fr |
-| La Cimade | Aide juridique, orientation | lacimade.org |`,
+Les tarifs administratifs peuvent évoluer : en cas de doute, vérifiez toujours le montant applicable à votre démarche sur service-public.fr avant de payer.`,
     },
   ],
-  conclusion: `La hausse des taxes au 1er mai 2026 constitue un tournant dans la politique migratoire française : elle rend l'accès légal au séjour significativement plus coûteux, sans amélioration proportionnelle du service. À 650 euros pour un premier titre, la France devient l'un des pays les plus chers d'Europe — dans un contexte où 930 000 dossiers sont bloqués et où les délais dépassent souvent 4 mois. Si vous êtes concerné, vérifiez vos droits à l'exonération, anticipez les paiements, et rapprochez-vous d'une association si vous ne pouvez pas assumer ces coûts. Le droit au séjour ne devrait pas dépendre du portefeuille.`,
+  conclusion: `La hausse des taxes du 1er mai 2026 alourdit nettement le coût de l'accès au séjour : 350 € pour un premier titre, 250 € pour un renouvellement, jusqu'à 650 € en cas de régularisation et 255 € de droit de timbre pour une naturalisation. Pour éviter les mauvaises surprises, retenez trois réflexes : identifier le tarif exact correspondant à votre situation, vérifier vos droits à exonération, et toujours confirmer le montant sur service-public.fr avant de payer. Anticiper ce budget, c'est aussi sécuriser la continuité de vos droits — et, si la naturalisation est votre objectif, préparer sereinement la suite de votre parcours.`,
+  faq: [
+    {
+      question: `Combien coûte un premier titre de séjour depuis le 1er mai 2026 ?`,
+      answer: `Pour un premier titre de séjour, comptez 350 € au tarif normal (300 € de taxe + 50 € de droit de timbre), ou 150 € au tarif minoré pour les étudiants, stagiaires, jeunes au pair et saisonniers. En cas de régularisation, s'ajoute un droit de visa de régularisation de 300 €, soit environ 650 € au total.`,
+    },
+    {
+      question: `La hausse s'applique-t-elle si j'ai déposé mon dossier avant le 1er mai 2026 ?`,
+      answer: `Oui. Ce qui compte n'est pas la date de dépôt mais la date de la décision de délivrance du titre. Tout titre délivré à compter du 1er mai 2026 est soumis aux nouveaux tarifs, même si le dossier a été déposé avant cette date.`,
+    },
+    {
+      question: `Combien coûte le timbre fiscal pour une demande de naturalisation en 2026 ?`,
+      answer: `Le droit de timbre pour une demande de naturalisation ou une déclaration de nationalité française est passé de 55 € à 255 € depuis le 1er mai 2026 (127,50 € en Guyane).`,
+    },
+    {
+      question: `Combien coûte le renouvellement d'un titre de séjour ?`,
+      answer: `Le renouvellement coûte 250 € au tarif normal (200 € de taxe + 50 € de droit de timbre), ou 100 € au tarif minoré. Le montant est identique pour une carte temporaire ou pluriannuelle.`,
+    },
+    {
+      question: `Qui est exonéré de ces taxes ?`,
+      answer: `Les réfugiés, les bénéficiaires de la protection subsidiaire, les apatrides, les victimes de traite ou de violences conjugales, les étrangers malades, les mineurs et les bénéficiaires de l'aide sociale à l'enfance en sont notamment exonérés. Les citoyens de l'UE, de l'EEE, de Suisse et d'Andorre ne sont pas concernés.`,
+    },
+    {
+      question: `Comment payer le timbre fiscal d'un titre de séjour ?`,
+      answer: `Le timbre fiscal électronique s'achète sur timbres.impots.gouv.fr (paiement par carte bancaire) ou dans un bureau de tabac agréé. Conservez le numéro de référence, à saisir dans votre démarche ANEF ou à remettre à la préfecture.`,
+    },
+  ],
 };
