@@ -1,452 +1,444 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
-import { StatCard, Card, Badge, ProgressBar } from '@/components/ui';
-import {
-  CreditCard,
-  TrendingUp,
-  Users,
-  Calendar,
-  Clock,
-  RefreshCw,
-  ChevronRight,
-  AlertTriangle,
-  Sparkles,
-  Filter
-} from 'lucide-react';
-import Link from 'next/link';
-import { Subscription, SubscriptionStats, SubscriptionFilter } from '@/lib/actions/subscriptions';
+import { useMemo, useState } from 'react';
+import { StatCard, Card, Badge } from '@/components/ui';
+import { CreditCard, Wallet, RefreshCw, Users } from 'lucide-react';
+import type { RevenueEventRow } from '@/lib/actions/revenue-events';
 
-interface RevenusClientProps {
-  initialSubscriptions: Subscription[];
-  initialStats: SubscriptionStats;
-  revenueHistory: Array<{
-    week: string;
-    date: string;
-    standard: number;
-    premium: number;
-    total: number;
-    revenue: number;
-    standardRevenue: number;
-    premiumRevenue: number;
-    oneTimeRevenue: number;
-  }>;
+interface Props {
+  initialEvents: RevenueEventRow[];
 }
 
-export function RevenusClient({ initialSubscriptions, initialStats, revenueHistory }: RevenusClientProps) {
-  const [subscriptions, setSubscriptions] = useState(initialSubscriptions);
-  const [stats, setStats] = useState(initialStats);
-  const [filter, setFilter] = useState<SubscriptionFilter>({
-    type: 'all',
-    status: 'all',
-    period: 'all',
+type EventTypeFilter = 'all' | 'subscription' | 'one_time';
+type StatusFilter = 'all' | 'succeeded' | 'refunded';
+type Tab = 'list' | 'by-customer';
+
+const PRODUCT_LABELS: Record<string, string> = {
+  standard: 'Standard',
+  premium: 'Premium',
+  pack_examen: 'Pack Examen',
+  pack_standard: 'Pack Standard (legacy)',
+  pack_premium: 'Pack Premium (legacy)',
+  flashcards_2_themes: 'Flashcards 2 thèmes',
+  flashcards_5_themes: 'Flashcards 5 thèmes',
+  no_timer: 'Mode sans chrono',
+  unlock_level: 'Déblocage niveau',
+};
+
+function labelProduct(t: string) {
+  return PRODUCT_LABELS[t] || t;
+}
+
+function fmtMoney(n: number) {
+  return `${n.toFixed(2)} €`;
+}
+
+function fmtDateTime(iso: string) {
+  return new Date(iso).toLocaleString('fr-FR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
   });
-  const [loading, setLoading] = useState(false);
-  const [refreshingStats, setRefreshingStats] = useState(false);
-  const [lastUpdate, setLastUpdate] = useState(new Date());
+}
 
-  // Fonction pour rafraîchir les statistiques (churn inclus)
-  const refreshStats = async () => {
-    setRefreshingStats(true);
-    try {
-      const response = await fetch('/api/subscriptions/stats');
-      const data = await response.json();
-      if (data.stats) {
-        setStats(data.stats);
+function fmtDate(iso: string) {
+  return new Date(iso).toLocaleDateString('fr-FR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+}
+
+export function RevenusClient({ initialEvents }: Props) {
+  const [tab, setTab] = useState<Tab>('list');
+  const [typeFilter, setTypeFilter] = useState<EventTypeFilter>('all');
+  const [statusFilter, setStatusFilter] = useState<StatusFilter>('all');
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
+  const [search, setSearch] = useState('');
+
+  const hasActiveFilter =
+    typeFilter !== 'all' ||
+    statusFilter !== 'all' ||
+    fromDate !== '' ||
+    toDate !== '' ||
+    search !== '';
+
+  const resetFilters = () => {
+    setTypeFilter('all');
+    setStatusFilter('all');
+    setFromDate('');
+    setToDate('');
+    setSearch('');
+  };
+
+  // --- Filtrage ---
+  const filteredEvents = useMemo(() => {
+    const fromTs = fromDate ? new Date(fromDate).getTime() : null;
+    const toTs = toDate
+      ? (() => { const d = new Date(toDate); d.setHours(23, 59, 59, 999); return d.getTime(); })()
+      : null;
+    const q = search.trim().toLowerCase();
+
+    return initialEvents.filter(e => {
+      if (typeFilter !== 'all' && e.event_type !== typeFilter) return false;
+      if (statusFilter !== 'all' && e.status !== statusFilter) return false;
+      const ts = new Date(e.created_at).getTime();
+      if (fromTs !== null && ts < fromTs) return false;
+      if (toTs !== null && ts > toTs) return false;
+      if (q) {
+        const haystack = [
+          e.user_email,
+          e.user_name,
+          e.stripe_customer_id,
+          e.stripe_invoice_id,
+          e.stripe_payment_id,
+          labelProduct(e.product_type),
+        ].filter(Boolean).join(' ').toLowerCase();
+        if (!haystack.includes(q)) return false;
       }
-      setLastUpdate(new Date());
-    } catch (error) {
-      console.error('Error refreshing stats:', error);
-    } finally {
-      setRefreshingStats(false);
-    }
-  };
-
-  // Fonction de rafraîchissement global
-  const refreshAll = useCallback(async () => {
-    try {
-      const params = new URLSearchParams();
-      if (filter.type !== 'all') params.set('type', filter.type!);
-      if (filter.status !== 'all') params.set('status', filter.status!);
-      if (filter.period !== 'all') params.set('period', filter.period!);
-
-      const [subsResponse, statsResponse] = await Promise.all([
-        fetch(`/api/subscriptions?${params.toString()}`),
-        fetch('/api/subscriptions/stats')
-      ]);
-
-      const subsData = await subsResponse.json();
-      const statsData = await statsResponse.json();
-
-      if (subsData.subscriptions) setSubscriptions(subsData.subscriptions);
-      if (statsData.stats) setStats(statsData.stats);
-      setLastUpdate(new Date());
-    } catch (error) {
-      console.error('Error refreshing:', error);
-    }
-  }, [filter]);
-
-  // Rafraîchissement automatique toutes les 15 secondes
-  useEffect(() => {
-    const interval = setInterval(refreshAll, 15000);
-    return () => clearInterval(interval);
-  }, [refreshAll]);
-
-  const handleFilterChange = async () => {
-    setLoading(true);
-    try {
-      const params = new URLSearchParams();
-      if (filter.type !== 'all') params.set('type', filter.type!);
-      if (filter.status !== 'all') params.set('status', filter.status!);
-      if (filter.period !== 'all') params.set('period', filter.period!);
-
-      const response = await fetch(`/api/subscriptions?${params.toString()}`);
-      const data = await response.json();
-      setSubscriptions(data.subscriptions);
-      setLastUpdate(new Date());
-    } catch (error) {
-      console.error('Error fetching subscriptions:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    handleFilterChange();
-  }, [filter]);
-
-  const formatDate = (dateString: string | null) => {
-    if (!dateString) return '-';
-    return new Date(dateString).toLocaleDateString('fr-FR', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
+      return true;
     });
-  };
+  }, [initialEvents, typeFilter, statusFilter, fromDate, toDate, search]);
+
+  // --- Totaux ---
+  const totals = useMemo(() => {
+    const succeeded = filteredEvents.filter(e => e.status === 'succeeded');
+    const refunded = filteredEvents.filter(e => e.status === 'refunded');
+    return {
+      count: filteredEvents.length,
+      net: succeeded.reduce((s, e) => s + e.amount, 0),
+      gross: filteredEvents.reduce((s, e) => s + e.amount, 0),
+      refundedSum: refunded.reduce((s, e) => s + e.amount, 0),
+      refundedCount: refunded.length,
+    };
+  }, [filteredEvents]);
+
+  // --- Agrégation par client ---
+  const byCustomer = useMemo(() => {
+    const map = new Map<string, {
+      key: string;
+      email: string;
+      name: string | null;
+      stripeCustomerId: string | null;
+      n: number;
+      nRefunded: number;
+      totalNet: number;
+      lastPaidAt: string | null;
+    }>();
+
+    for (const e of filteredEvents) {
+      const key = e.user_email || e.stripe_customer_id || 'inconnu';
+      const existing = map.get(key) || {
+        key,
+        email: e.user_email || (e.stripe_customer_id ? `(Stripe ${e.stripe_customer_id})` : 'Inconnu'),
+        name: e.user_name,
+        stripeCustomerId: e.stripe_customer_id,
+        n: 0,
+        nRefunded: 0,
+        totalNet: 0,
+        lastPaidAt: null as string | null,
+      };
+      existing.n++;
+      if (e.status === 'refunded') {
+        existing.nRefunded++;
+      } else if (e.status === 'succeeded') {
+        existing.totalNet += e.amount;
+      }
+      if (!existing.lastPaidAt || new Date(e.created_at) > new Date(existing.lastPaidAt)) {
+        existing.lastPaidAt = e.created_at;
+      }
+      if (!existing.name && e.user_name) existing.name = e.user_name;
+      if (!existing.stripeCustomerId && e.stripe_customer_id) existing.stripeCustomerId = e.stripe_customer_id;
+      map.set(key, existing);
+    }
+
+    return Array.from(map.values()).sort((a, b) => b.totalNet - a.totalNet);
+  }, [filteredEvents]);
 
   return (
-    <div className={loading ? 'opacity-60' : ''}>
-      {/* Barre d'actualisation */}
-      <div className="mb-4 flex items-center justify-end gap-4 p-3 bg-gray-50 border border-gray-200">
-        <span className="text-xs text-text-muted">
-          Dernière mise à jour: {lastUpdate.toLocaleTimeString('fr-FR')}
-        </span>
-        <button
-          onClick={refreshAll}
-          className="flex items-center gap-1 px-3 py-1 text-xs bg-primary-600 text-white hover:bg-primary-700 transition-colors"
-          title="Rafraîchir les données"
-        >
-          <RefreshCw className="w-3 h-3" />
-          Actualiser
-        </button>
-      </div>
-
-      {/* Stats principales */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
+    <div>
+      {/* Tuiles haut de page */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
         <StatCard
-          title="Abonnes actifs"
-          value={stats.totalActive}
-          subtitle={`${stats.totalStandard} Std + ${stats.totalPremium} Prem`}
-          icon={Users}
+          title="Encaissé net"
+          value={fmtMoney(totals.net)}
+          subtitle={`${totals.count} paiement${totals.count > 1 ? 's' : ''}`}
+          icon={Wallet}
+          variant="success"
+        />
+        <StatCard
+          title="Encaissé brut"
+          value={fmtMoney(totals.gross)}
+          subtitle="Avant remboursements"
+          icon={CreditCard}
           variant="primary"
         />
         <StatCard
-          title="Encaissé (7j)"
-          value={`${stats.weeklyRevenue.toFixed(2)} €`}
-          subtitle="Paiements réels"
-          icon={CreditCard}
-          variant="success"
+          title="Remboursé"
+          value={fmtMoney(totals.refundedSum)}
+          subtitle={`${totals.refundedCount} ligne${totals.refundedCount > 1 ? 's' : ''}`}
+          icon={RefreshCw}
+          variant={totals.refundedCount > 0 ? 'warning' : 'default'}
         />
         <StatCard
-          title="Encaissé (30j)"
-          value={`${stats.monthlyRevenue.toFixed(2)} €`}
-          subtitle="Paiements réels"
-          icon={TrendingUp}
-          variant="success"
-        />
-        <StatCard
-          title="Nouveaux ce mois"
-          value={stats.newThisMonth}
-          icon={Sparkles}
+          title="Clients distincts"
+          value={byCustomer.length}
+          subtitle="Sur le filtre actif"
+          icon={Users}
           variant="info"
         />
-        <StatCard
-          title="Expirent cette sem."
-          value={stats.expiringThisWeek}
-          icon={Clock}
-          variant={stats.expiringThisWeek > 0 ? 'warning' : 'default'}
-        />
-        <StatCard
-          title="Taux de churn"
-          value={`${stats.churnRate}%`}
-          subtitle="Ce mois"
-          icon={RefreshCw}
-          variant={stats.churnRate > 10 ? 'error' : 'default'}
-          action={{
-            icon: RefreshCw,
-            onClick: refreshStats,
-            loading: refreshingStats,
-            tooltip: 'Recalculer le taux de churn'
-          }}
-        />
       </div>
 
-      {/* Répartition des revenus */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-        <Card title="Revenus Standard" subtitle="Paiements réels cumulés" className="border-l-4 border-l-orange-500">
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-3xl font-bold text-orange-600">{stats.standardRevenue.toFixed(2)} €</span>
-              <Badge variant="warning">{stats.totalStandard} actifs</Badge>
-            </div>
-            <div className="text-sm text-text-muted">
-              Prix: 2.99€/semaine — total encaissé depuis le début
-            </div>
-            <ProgressBar
-              value={stats.totalStandard}
-              max={stats.totalActive || 1}
-              variant="warning"
-              showPercentage
-              label={`${Math.round((stats.totalStandard / (stats.totalActive || 1)) * 100)}%`}
+      {/* Filtres */}
+      <Card noPadding className="mb-4">
+        <div className="p-4 flex flex-wrap gap-3 items-end">
+          <div>
+            <label className="text-xs text-text-muted block mb-1">Du</label>
+            <input
+              type="date"
+              aria-label="Date de début"
+              value={fromDate}
+              onChange={e => setFromDate(e.target.value)}
+              className="px-3 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
           </div>
-        </Card>
-
-        <Card title="Revenus Premium" subtitle="Paiements réels cumulés" className="border-l-4 border-l-green-500">
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-3xl font-bold text-green-600">{stats.premiumRevenue.toFixed(2)} €</span>
-              <Badge variant="success">{stats.totalPremium} actifs</Badge>
-            </div>
-            <div className="text-sm text-text-muted">
-              Prix: 6.99€/semaine — total encaissé depuis le début
-            </div>
-            <ProgressBar
-              value={stats.totalPremium}
-              max={stats.totalActive || 1}
-              variant="success"
-              showPercentage
-              label={`${Math.round((stats.totalPremium / (stats.totalActive || 1)) * 100)}%`}
+          <div>
+            <label className="text-xs text-text-muted block mb-1">Au</label>
+            <input
+              type="date"
+              aria-label="Date de fin"
+              value={toDate}
+              onChange={e => setToDate(e.target.value)}
+              className="px-3 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
             />
           </div>
-        </Card>
-
-        <Card title="Projection annuelle" subtitle="Basée sur le rythme actuel" className="border-l-4 border-l-blue-500">
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-3xl font-bold text-blue-600">{stats.yearlyRevenue.toFixed(2)} €</span>
-              <Badge variant="info">52 semaines</Badge>
-            </div>
-            <div className="text-sm text-text-muted">
-              Basé sur les encaissements réels des 7 derniers jours
-            </div>
-            <Link
-              href="/revenus/projections"
-              className="flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium"
+          <div>
+            <label className="text-xs text-text-muted block mb-1">Type</label>
+            <select
+              aria-label="Filtrer par type de paiement"
+              value={typeFilter}
+              onChange={e => setTypeFilter(e.target.value as EventTypeFilter)}
+              className="px-3 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
             >
-              <Sparkles className="w-4 h-4" />
-              Analyse intelligente
-              <ChevronRight className="w-4 h-4" />
-            </Link>
+              <option value="all">Tous</option>
+              <option value="subscription">Abonnements</option>
+              <option value="one_time">Achats uniques</option>
+            </select>
           </div>
-        </Card>
-      </div>
-
-      {/* Bouton Analyse intelligente */}
-      <div className="mb-8">
-        <Link
-          href="/revenus/projections"
-          className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold hover:from-purple-700 hover:to-blue-700 transition-all shadow-lg"
-        >
-          <Sparkles className="w-6 h-6" />
-          <div className="text-left">
-            <div className="text-lg">Analyse intelligente & Projections</div>
-            <div className="text-sm opacity-80">Simulez vos revenus futurs, objectifs et scénarios</div>
+          <div>
+            <label className="text-xs text-text-muted block mb-1">État</label>
+            <select
+              aria-label="Filtrer par état du paiement"
+              value={statusFilter}
+              onChange={e => setStatusFilter(e.target.value as StatusFilter)}
+              className="px-3 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+            >
+              <option value="all">Tous</option>
+              <option value="succeeded">Réussi</option>
+              <option value="refunded">Remboursé</option>
+            </select>
           </div>
-          <ChevronRight className="w-6 h-6" />
-        </Link>
-      </div>
-
-      {/* Historique des revenus */}
-      <Card title="Historique des revenus" subtitle="12 dernières semaines — paiements réels" className="mb-8">
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="table-header">
-                <th className="px-4 py-3 text-left">Semaine</th>
-                <th className="px-4 py-3 text-center">Paiements sub.</th>
-                <th className="px-4 py-3 text-center">Standard</th>
-                <th className="px-4 py-3 text-center">Premium</th>
-                <th className="px-4 py-3 text-center">Achats ponctuels</th>
-                <th className="px-4 py-3 text-right">Total encaissé</th>
-              </tr>
-            </thead>
-            <tbody>
-              {revenueHistory.map((week, idx) => (
-                <tr key={idx} className="table-row">
-                  <td className="px-4 py-3">
-                    <div className="font-medium">{week.week}</div>
-                    <div className="text-xs text-text-muted">{week.date}</div>
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <Badge variant="info">{week.standard + week.premium}</Badge>
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <span className="text-orange-600 font-medium">
-                      {week.standardRevenue > 0 ? `${week.standardRevenue.toFixed(2)} €` : '—'}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <span className="text-green-600 font-medium">
-                      {week.premiumRevenue > 0 ? `${week.premiumRevenue.toFixed(2)} €` : '—'}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-center">
-                    <span className="text-blue-600 font-medium">
-                      {week.oneTimeRevenue > 0 ? `${week.oneTimeRevenue.toFixed(2)} €` : '—'}
-                    </span>
-                  </td>
-                  <td className="px-4 py-3 text-right font-bold text-green-600">
-                    {week.revenue > 0 ? `${week.revenue.toFixed(2)} €` : (
-                      <span className="text-gray-400 font-normal text-sm">0.00 €</span>
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr className="bg-gray-50 font-bold">
-                <td className="px-4 py-3 text-sm text-text-muted">Total</td>
-                <td className="px-4 py-3 text-center">—</td>
-                <td className="px-4 py-3 text-center text-orange-600">
-                  {revenueHistory.reduce((s, w) => s + w.standardRevenue, 0).toFixed(2)} €
-                </td>
-                <td className="px-4 py-3 text-center text-green-600">
-                  {revenueHistory.reduce((s, w) => s + w.premiumRevenue, 0).toFixed(2)} €
-                </td>
-                <td className="px-4 py-3 text-center text-blue-600">
-                  {revenueHistory.reduce((s, w) => s + w.oneTimeRevenue, 0).toFixed(2)} €
-                </td>
-                <td className="px-4 py-3 text-right text-green-700">
-                  {revenueHistory.reduce((s, w) => s + w.revenue, 0).toFixed(2)} €
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+          <div className="flex-1 min-w-[220px]">
+            <label className="text-xs text-text-muted block mb-1">Recherche (email, ID Stripe…)</label>
+            <input
+              type="text"
+              value={search}
+              onChange={e => setSearch(e.target.value)}
+              placeholder="ex. jean.dupont@gmail.com"
+              className="w-full px-3 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
+            />
+          </div>
+          {hasActiveFilter && (
+            <button
+              type="button"
+              onClick={resetFilters}
+              className="px-3 py-2 border border-gray-300 text-sm hover:bg-gray-50 transition-colors"
+            >
+              Réinitialiser
+            </button>
+          )}
         </div>
       </Card>
 
-      {/* Filtres et liste des abonnés */}
-      <Card title="Liste des abonnés" noPadding>
-        {/* Filtres */}
-        <div className="p-4 border-b border-gray-200 flex flex-wrap gap-4 items-center bg-gray-50">
-          <Filter className="w-5 h-5 text-text-muted" />
+      {/* Onglets */}
+      <div className="flex gap-0 border-b border-gray-200">
+        <button
+          type="button"
+          onClick={() => setTab('list')}
+          className={`px-4 py-2 -mb-px font-medium text-sm border-b-2 transition-colors ${
+            tab === 'list'
+              ? 'border-primary-600 text-primary-600 bg-white'
+              : 'border-transparent text-gray-500 hover:text-gray-700'
+          }`}
+        >
+          Liste des paiements ({filteredEvents.length})
+        </button>
+        <button
+          type="button"
+          onClick={() => setTab('by-customer')}
+          className={`px-4 py-2 -mb-px font-medium text-sm border-b-2 transition-colors ${
+            tab === 'by-customer'
+              ? 'border-primary-600 text-primary-600 bg-white'
+              : 'border-transparent text-gray-500 hover:text-gray-700'
+          }`}
+        >
+          Par client ({byCustomer.length})
+        </button>
+      </div>
 
-          <select
-            value={filter.type}
-            onChange={(e) => setFilter({ ...filter, type: e.target.value as SubscriptionFilter['type'] })}
-            className="px-3 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
-          >
-            <option value="all">Tous les types</option>
-            <option value="standard">Standard</option>
-            <option value="premium">Premium</option>
-          </select>
-
-          <select
-            value={filter.status}
-            onChange={(e) => setFilter({ ...filter, status: e.target.value as SubscriptionFilter['status'] })}
-            className="px-3 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
-          >
-            <option value="all">Tous les statuts</option>
-            <option value="active">Actifs</option>
-            <option value="expiring">Expirent bientôt</option>
-            <option value="canceled">Annulés</option>
-          </select>
-
-          <select
-            value={filter.period}
-            onChange={(e) => setFilter({ ...filter, period: e.target.value as SubscriptionFilter['period'] })}
-            className="px-3 py-2 border border-gray-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
-          >
-            <option value="all">Toutes les périodes</option>
-            <option value="week">Cette semaine</option>
-            <option value="month">Ce mois</option>
-            <option value="3months">3 derniers mois</option>
-          </select>
-        </div>
-
-        {/* Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full">
-            <thead>
-              <tr className="table-header">
-                <th className="px-4 py-3 text-left">Utilisateur</th>
-                <th className="px-4 py-3 text-center">Type</th>
-                <th className="px-4 py-3 text-center">Statut</th>
-                <th className="px-4 py-3 text-center">Prix</th>
-                <th className="px-4 py-3 text-center">Semaines actives</th>
-                <th className="px-4 py-3 text-center">Jours restants</th>
-                <th className="px-4 py-3 text-left">Début</th>
-                <th className="px-4 py-3 text-left">Fin</th>
-              </tr>
-            </thead>
-            <tbody>
-              {subscriptions.length === 0 ? (
-                <tr>
-                  <td colSpan={8} className="px-4 py-8 text-center text-text-muted">
-                    Aucun abonnement trouvé
-                  </td>
+      {/* Onglet : Liste des paiements */}
+      {tab === 'list' && (
+        <Card noPadding>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="table-header">
+                  <th className="px-4 py-3 text-left">Date</th>
+                  <th className="px-4 py-3 text-left">Type</th>
+                  <th className="px-4 py-3 text-left">Produit</th>
+                  <th className="px-4 py-3 text-left">Client</th>
+                  <th className="px-4 py-3 text-right">Montant</th>
+                  <th className="px-4 py-3 text-center">État</th>
                 </tr>
-              ) : (
-                subscriptions.map((sub) => (
-                  <tr key={sub.id} className="table-row">
-                    <td className="px-4 py-3">
-                      <div className="font-medium">
-                        {sub.prenom && sub.nom ? `${sub.prenom} ${sub.nom}` : 'Non renseigné'}
-                      </div>
-                      <div className="text-xs text-text-muted">{sub.email}</div>
-                    </td>
-                    <td className="px-4 py-3 text-center">
-                      <Badge variant={sub.type === 'premium' ? 'success' : 'warning'}>
-                        {sub.type === 'premium' ? 'Premium' : 'Standard'}
-                      </Badge>
-                    </td>
-                    <td className="px-4 py-3 text-center">
-                      <Badge variant={sub.status === 'active' ? 'success' : sub.status === 'canceled' ? 'error' : 'warning'}>
-                        {sub.status}
-                      </Badge>
-                    </td>
-                    <td className="px-4 py-3 text-center font-semibold">
-                      {sub.price.toFixed(2)} €/sem
-                    </td>
-                    <td className="px-4 py-3 text-center">
-                      <Badge variant="info">{sub.weeks_active}</Badge>
-                    </td>
-                    <td className="px-4 py-3 text-center">
-                      {sub.days_remaining <= 2 ? (
-                        <span className="flex items-center justify-center gap-1 text-red-600 font-medium">
-                          <AlertTriangle className="w-4 h-4" />
-                          {sub.days_remaining}j
-                        </span>
-                      ) : (
-                        <Badge variant={sub.days_remaining <= 3 ? 'warning' : 'success'}>
-                          {sub.days_remaining}j
-                        </Badge>
-                      )}
-                    </td>
-                    <td className="px-4 py-3 text-text-muted text-sm">
-                      {formatDate(sub.start_date)}
-                    </td>
-                    <td className="px-4 py-3 text-text-muted text-sm">
-                      {formatDate(sub.end_date)}
+              </thead>
+              <tbody>
+                {filteredEvents.length === 0 ? (
+                  <tr>
+                    <td colSpan={6} className="px-4 py-8 text-center text-text-muted">
+                      Aucun paiement trouvé avec ces filtres
                     </td>
                   </tr>
-                ))
+                ) : (
+                  filteredEvents.map(e => (
+                    <tr key={e.id} className={`table-row ${e.status === 'refunded' ? 'opacity-60' : ''}`}>
+                      <td className="px-4 py-3 text-sm whitespace-nowrap">{fmtDateTime(e.created_at)}</td>
+                      <td className="px-4 py-3">
+                        <Badge variant={e.event_type === 'subscription' ? 'info' : 'default'}>
+                          {e.event_type === 'subscription' ? 'Abonnement' : 'Achat unique'}
+                        </Badge>
+                      </td>
+                      <td className="px-4 py-3 text-sm">{labelProduct(e.product_type)}</td>
+                      <td className="px-4 py-3 text-sm">
+                        <div className="font-medium">{e.user_email || (e.stripe_customer_id ? `(Stripe ${e.stripe_customer_id})` : '—')}</div>
+                        {e.user_name && <div className="text-xs text-text-muted">{e.user_name}</div>}
+                      </td>
+                      <td
+                        className={`px-4 py-3 text-right font-semibold whitespace-nowrap ${
+                          e.status === 'refunded' ? 'line-through text-gray-400' : 'text-green-700'
+                        }`}
+                      >
+                        {fmtMoney(e.amount)}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        <Badge
+                          variant={
+                            e.status === 'succeeded'
+                              ? 'success'
+                              : e.status === 'refunded'
+                              ? 'warning'
+                              : 'error'
+                          }
+                        >
+                          {e.status === 'succeeded' ? 'Réussi' : e.status === 'refunded' ? 'Remboursé' : 'Échec'}
+                        </Badge>
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+              {filteredEvents.length > 0 && (
+                <tfoot>
+                  <tr className="bg-gray-50 font-bold">
+                    <td colSpan={4} className="px-4 py-3 text-sm text-text-muted">
+                      Total filtré ({filteredEvents.length} ligne{filteredEvents.length > 1 ? 's' : ''})
+                    </td>
+                    <td className="px-4 py-3 text-right text-green-700">
+                      {fmtMoney(totals.net)}{' '}
+                      <span className="text-xs text-text-muted font-normal">(net)</span>
+                    </td>
+                    <td className="px-4 py-3"></td>
+                  </tr>
+                </tfoot>
               )}
-            </tbody>
-          </table>
-        </div>
-      </Card>
+            </table>
+          </div>
+        </Card>
+      )}
+
+      {/* Onglet : Par client */}
+      {tab === 'by-customer' && (
+        <Card noPadding>
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="table-header">
+                  <th className="px-4 py-3 text-left">Client</th>
+                  <th className="px-4 py-3 text-center">Nb paiements</th>
+                  <th className="px-4 py-3 text-center">Remboursés</th>
+                  <th className="px-4 py-3 text-right">Total net</th>
+                  <th className="px-4 py-3 text-left">Dernier paiement</th>
+                </tr>
+              </thead>
+              <tbody>
+                {byCustomer.length === 0 ? (
+                  <tr>
+                    <td colSpan={5} className="px-4 py-8 text-center text-text-muted">
+                      Aucun client trouvé avec ces filtres
+                    </td>
+                  </tr>
+                ) : (
+                  byCustomer.map(c => (
+                    <tr key={c.key} className="table-row">
+                      <td className="px-4 py-3 text-sm">
+                        <div className="font-medium">{c.email}</div>
+                        {c.name && <div className="text-xs text-text-muted">{c.name}</div>}
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        <Badge variant="info">{c.n}</Badge>
+                      </td>
+                      <td className="px-4 py-3 text-center">
+                        {c.nRefunded > 0 ? (
+                          <Badge variant="warning">{c.nRefunded}</Badge>
+                        ) : (
+                          <span className="text-text-muted">—</span>
+                        )}
+                      </td>
+                      <td className="px-4 py-3 text-right font-semibold text-green-700 whitespace-nowrap">
+                        {fmtMoney(c.totalNet)}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-text-muted whitespace-nowrap">
+                        {c.lastPaidAt ? fmtDate(c.lastPaidAt) : '—'}
+                      </td>
+                    </tr>
+                  ))
+                )}
+              </tbody>
+              {byCustomer.length > 0 && (
+                <tfoot>
+                  <tr className="bg-gray-50 font-bold">
+                    <td className="px-4 py-3 text-sm text-text-muted">
+                      Total ({byCustomer.length} client{byCustomer.length > 1 ? 's' : ''})
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      {byCustomer.reduce((s, c) => s + c.n, 0)}
+                    </td>
+                    <td className="px-4 py-3 text-center">
+                      {byCustomer.reduce((s, c) => s + c.nRefunded, 0) || '—'}
+                    </td>
+                    <td className="px-4 py-3 text-right text-green-700">
+                      {fmtMoney(byCustomer.reduce((s, c) => s + c.totalNet, 0))}
+                    </td>
+                    <td className="px-4 py-3"></td>
+                  </tr>
+                </tfoot>
+              )}
+            </table>
+          </div>
+        </Card>
+      )}
     </div>
   );
 }

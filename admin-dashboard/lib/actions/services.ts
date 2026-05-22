@@ -73,19 +73,21 @@ const PRODUCT_TYPE_MAPPING: Record<string, ServiceType> = {
 export async function getServicesStats(): Promise<ServiceStats[]> {
   const supabase = createAdminClient();
 
-  // Récupérer les achats de services annexes depuis la table achats
-  const { data: achats, error } = await supabase
-    .from('achats')
+  // Source de vérité unique : revenue_events (alignée sur la tuile Revenus).
+  // L'ancienne table `achats` n'était pas toujours synchrone après backfill.
+  const { data: events, error } = await supabase
+    .from('revenue_events')
     .select('product_type, amount')
-    .eq('status', 'completed')
+    .eq('event_type', 'one_time')
+    .eq('status', 'succeeded')
     .in('product_type', [
-      'flashcards_2_themes', 'flashcards_5_themes', 
+      'flashcards_2_themes', 'flashcards_5_themes',
       'flashcards_2', 'flashcards_5',
-      'no_timer', 'unlock_level', 'pack_examen'
+      'no_timer', 'unlock_level', 'pack_examen',
     ]);
 
   if (error) {
-    console.error('Erreur récupération achats services:', error);
+    console.error('Erreur récupération events services:', error);
   }
 
   // Initialiser les stats pour tous les services
@@ -98,7 +100,7 @@ export async function getServicesStats(): Promise<ServiceStats[]> {
     exam_credits: { count: 0, revenue: 0 },
   };
 
-  if (!achats || achats.length === 0) {
+  if (!events || events.length === 0) {
     // Retourner des stats vides pour éviter les erreurs
     return Object.keys(SERVICE_CONFIG).map((key) => ({
       serviceType: key as ServiceType,
@@ -107,12 +109,12 @@ export async function getServicesStats(): Promise<ServiceStats[]> {
     }));
   }
 
-  // Agréger les achats par type de service
-  for (const achat of achats) {
-    const serviceType = PRODUCT_TYPE_MAPPING[achat.product_type];
+  // Agréger par type de service
+  for (const event of events) {
+    const serviceType = PRODUCT_TYPE_MAPPING[event.product_type];
     if (serviceType && statsMap[serviceType]) {
       statsMap[serviceType].count += 1;
-      statsMap[serviceType].revenue += achat.amount || 0;
+      statsMap[serviceType].revenue += Number(event.amount) || 0;
     }
   }
 

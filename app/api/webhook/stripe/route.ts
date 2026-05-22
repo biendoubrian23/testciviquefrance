@@ -109,6 +109,12 @@ export async function POST(req: NextRequest) {
         break;
       }
 
+      case 'charge.refunded': {
+        const charge = event.data.object as Stripe.Charge;
+        await handleChargeRefunded(charge, supabase);
+        break;
+      }
+
       default:
         console.log(`⚠️ Event non géré: ${event.type}`);
     }
@@ -455,6 +461,52 @@ async function handlePaymentIntentSucceeded(
   });
 
   console.log(`ðŸ’° Revenue event fallback payment_intent : ${productType} ${amount}â‚¬`);
+}
+
+// 🔁 Remboursement : marque le revenue_event correspondant en status='refunded'
+// (la ligne reste visible dans l'admin mais sort du total NET — voir admin-dashboard).
+// Ne touche PAS aux profils ni aux abonnements : seule la traçabilité revenu change.
+async function handleChargeRefunded(charge: Stripe.Charge, supabase: ReturnType<typeof getSupabaseClient>) {
+  console.log('🔁 Charge refunded:', charge.id, `(amount_refunded=${charge.amount_refunded || 0})`);
+  if (!charge.amount_refunded || charge.amount_refunded <= 0) return;
+
+  // 1) Essai via payment_intent (couvre les achats uniques et certaines invoices)
+  const paymentIntentId =
+    typeof charge.payment_intent === 'string'
+      ? charge.payment_intent
+      : (charge.payment_intent as Stripe.PaymentIntent | null)?.id || null;
+
+  if (paymentIntentId) {
+    const { data, error } = await supabase
+      .from('revenue_events')
+      .update({ status: 'refunded' })
+      .eq('stripe_payment_id', paymentIntentId)
+      .select('id');
+    if (!error && data && data.length > 0) {
+      console.log(`   ✅ ${data.length} revenue_event(s) marqué(s) "refunded" via payment_intent`);
+      return;
+    }
+  }
+
+  // 2) Fallback via invoice (couvre les renouvellements d'abonnement)
+  const invoiceId =
+    typeof charge.invoice === 'string'
+      ? charge.invoice
+      : (charge.invoice as Stripe.Invoice | null)?.id || null;
+
+  if (invoiceId) {
+    const { data, error } = await supabase
+      .from('revenue_events')
+      .update({ status: 'refunded' })
+      .eq('stripe_invoice_id', invoiceId)
+      .select('id');
+    if (!error && data && data.length > 0) {
+      console.log(`   ✅ ${data.length} revenue_event(s) marqué(s) "refunded" via invoice`);
+      return;
+    }
+  }
+
+  console.warn(`   ⚠️ Aucun revenue_event trouvé pour le charge ${charge.id} (PI=${paymentIntentId}, inv=${invoiceId})`);
 }
 
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
