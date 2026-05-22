@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { Calendar, User, ArrowLeft, Share2, Bookmark, ChevronRight } from 'lucide-react';
 import { Article, getPopularArticles } from '@/lib/data/articles';
+import { getAuthorByName } from '@/lib/data/authors';
 import { cadreGeneralContent } from '@/lib/data/article-content';
 import ArticleCard from './ArticleCard';
 import CentresExamen2026Article from './CentresExamen2026Article';
@@ -16,6 +17,7 @@ interface ArticleContentProps {
 export default function ArticleContent({ article }: ArticleContentProps) {
   const relatedArticles = getPopularArticles(3).filter((a) => a.id !== article.id);
   const content = cadreGeneralContent;
+  const author = getAuthorByName(article.author);
 
   // Pour l'article principal sur le cadre général
   const isMainArticle = article.slug === 'cadre-general-examen-civique';
@@ -79,7 +81,16 @@ export default function ArticleContent({ article }: ArticleContentProps) {
             </span>
             <span className="flex items-center gap-2">
               <User className="w-5 h-5" />
-              {article.author}
+              {author ? (
+                <Link
+                  href={`/auteurs/${author.slug}`}
+                  className="hover:text-white underline-offset-2 hover:underline transition-colors"
+                >
+                  {article.author}
+                </Link>
+              ) : (
+                article.author
+              )}
             </span>
             <ArticleViews
               slug={article.slug}

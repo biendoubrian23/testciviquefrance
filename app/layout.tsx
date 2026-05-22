@@ -703,14 +703,6 @@ export default function RootLayout({
         </PostHogProvider>
         <Analytics />
 
-        {/* Google AdSense */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3632266086082682"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
-
         {/* Scripts tiers différés de 5s pour ne pas bloquer LCP/TBT */}
         <Script id="deferred-analytics" strategy="lazyOnload">
           {`

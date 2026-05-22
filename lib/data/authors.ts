@@ -39,6 +39,14 @@ export function getAuthorBySlug(slug: string): Author | undefined {
 }
 
 /**
+ * Récupère un auteur par son nom d'affichage (ex. « Brian B »).
+ * Retourne undefined si aucune page auteur ne correspond à ce nom.
+ */
+export function getAuthorByName(name: string): Author | undefined {
+  return authors.find((a) => a.name === name);
+}
+
+/**
  * Récupère l'auteur par défaut (Brian B)
  */
 export function getDefaultAuthor(): Author {

@@ -340,14 +340,15 @@ export default function AProposPage() {
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900 mb-4">Financement</h2>
                   <p className="text-gray-600 leading-relaxed mb-4">
-                    Test Civique France est financé exclusivement par les abonnements de ses utilisateurs.
-                    Nous ne recevons aucun financement public ni subvention. Ce modèle garantit notre
-                    indépendance éditoriale totale et l&apos;absence d&apos;influence externe sur nos contenus.
+                    Test Civique France est financé par les abonnements de ses utilisateurs
+                    ainsi que par la publicité affichée sur le site. Nous ne recevons aucun
+                    financement public ni subvention. Notre indépendance éditoriale reste
+                    totale : les annonceurs n&apos;ont aucune influence sur nos contenus.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600">
                     <li className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-green-500" />
-                      Aucune publicité sur la plateforme
+                      Publicité non intrusive, sans influence sur nos contenus
                     </li>
                     <li className="flex items-center gap-2">
                       <Check className="w-4 h-4 text-green-500" />

@@ -2,6 +2,7 @@
 
 import { ArticleFullContent } from '@/lib/data/seo-content';
 import { Article } from '@/lib/data/articles';
+import { getAuthorByName } from '@/lib/data/authors';
 import { getInternalLinks } from '@/lib/data/internal-links';
 import TableOfContents from '@/components/seo/TableOfContents';
 import YouTubeEmbed, { YouTubeGrid } from '@/components/seo/YouTubeEmbed';
@@ -19,7 +20,6 @@ import {
   ChevronRight,
   ExternalLink
 } from 'lucide-react';
-import AdSenseBlock from '@/components/ui/AdSenseBlock';
 import ArticleViews from './ArticleViews';
 import TestCiviqueCTA from './TestCiviqueCTA';
 
@@ -33,6 +33,8 @@ interface SEOArticleRendererProps {
  * Design aligné avec ArticleContent pour une cohérence visuelle
  */
 export default function SEOArticleRenderer({ content, article }: SEOArticleRendererProps) {
+  const author = getAuthorByName(article.author);
+
   // Fonction pour parser le markdown basique
   const parseMarkdown = (text: string): string => {
     return text
@@ -202,7 +204,16 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
             </span>
             <span className="flex items-center gap-2">
               <User className="w-5 h-5" />
-              {article.author}
+              {author ? (
+                <Link
+                  href={`/auteurs/${author.slug}`}
+                  className="hover:text-white underline-offset-2 hover:underline transition-colors"
+                >
+                  {article.author}
+                </Link>
+              ) : (
+                article.author
+              )}
             </span>
             <ArticleViews
               slug={article.slug}
@@ -258,9 +269,6 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
               />
             </div>
           </section>
-
-          {/* AdSense - après l'introduction */}
-          <AdSenseBlock slot="4450490909" format="auto" className="my-8" />
 
           {/* Sections de contenu */}
           {content.sections.map((section, index) => {
@@ -497,9 +505,6 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
               </section>
             );
           })()}
-
-          {/* AdSense - avant le CTA */}
-          <AdSenseBlock slot="9125999446" format="autorelaxed" className="my-8" />
 
           {/* CTA final standardisé : inscription gratuite + test blanc */}
           <TestCiviqueCTA variant="final" />
