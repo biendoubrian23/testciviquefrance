@@ -60,3 +60,13 @@ admin-dashboard/supabase/admin-auth-tables.sql
 **/secrets*
 *.secret
 *.key
+
+# Artefacts de scripts de diagnostic (peuvent contenir des données clients)
+diagnostic_result.json
+check_*_result.json
+
+# MCP config locale (contient des tokens)
+.mcp.json
+
+# Codex config locale (contient une cle Stripe + un token Supabase)
+.codex/

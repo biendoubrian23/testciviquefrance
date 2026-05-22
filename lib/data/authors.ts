@@ -17,9 +17,9 @@ export interface Author {
 export const authors: Author[] = [
   {
     slug: 'brian-biendou',
-    name: 'Brian BIENDOU',
+    name: 'Brian B',
     role: 'Fondateur & Rédacteur en chef',
-    bio: 'Fondateur de Test Civique France, Brian BIENDOU accompagne depuis 2024 les candidats à la naturalisation française et au renouvellement de titre de séjour. Passionné par les questions d\'intégration et de citoyenneté, il s\'appuie sur les sources officielles (service-public.fr, Legifrance, préfectures) pour produire des contenus fiables et à jour sur le test civique obligatoire instauré en janvier 2026.',
+    bio: 'Fondateur de Test Civique France, Brian B accompagne depuis 2024 les candidats à la naturalisation française et au renouvellement de titre de séjour. Passionné par les questions d\'intégration et de citoyenneté, il s\'appuie sur les sources officielles (service-public.fr, Legifrance, préfectures) pour produire des contenus fiables et à jour sur le test civique obligatoire instauré en janvier 2026.',
     expertise: [
       'Test civique et naturalisation française',
       'Titres de séjour et démarches administratives',
@@ -39,7 +39,7 @@ export function getAuthorBySlug(slug: string): Author | undefined {
 }
 
 /**
- * Récupère l'auteur par défaut (Brian BIENDOU)
+ * Récupère l'auteur par défaut (Brian B)
  */
 export function getDefaultAuthor(): Author {
   return authors[0];

@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import MonetagAds from '@/components/ads/MonetagAds';
 
 export const metadata: Metadata = {
   title: 'Articles Test Civique 2026 - Guide Immigration, Naturalisation, Titre de Séjour & Prix',
@@ -48,10 +47,5 @@ export default function ArticlesLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return (
-    <>
-      {children}
-      <MonetagAds />
-    </>
-  );
+  return <>{children}</>;
 }

@@ -13,7 +13,11 @@
       "Bash(cmd /c \"cd d:\\\\MesApps\\\\deploy\\\\testciviquefrance && npx tsc --noEmit --skipLibCheck 2>&1\")",
       "Bash(grep -rn \"cookies\\(\\)\\\\|headers\\(\\)\\\\|createServerClient\\\\|createClient.*cookies\" d:/MesApps/deploy/testciviquefrance/app/articles/[slug]/page.tsx d:/MesApps/deploy/testciviquefrance/components/blog/ d:/MesApps/deploy/testciviquefrance/components/seo/)",
       "Bash(xargs wc -l)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\(JSON.stringify\\(p.scripts,null,2\\)\\)\")",
+      "Bash(powershell -Command \"Get-Content public/sitemap.xml -TotalCount 5\")",
+      "Bash(powershell -Command \"\\(Select-String -Path public/sitemap.xml -Pattern '<loc>' -AllMatches\\).Matches.Count\")",
+      "Bash(powershell -Command \"Select-String -Path public/sitemap.xml -Pattern 'naturalisation-enfant-mineur|ants-permis-conduire-categorie-b|famille-passeport-talent|dossier-naturalisation-refuse' | Measure-Object | Select-Object -ExpandProperty Count\")"
     ]
   }
 }

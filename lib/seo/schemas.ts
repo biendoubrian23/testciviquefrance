@@ -28,7 +28,7 @@ export function getOrganizationSchema() {
     foundingDate: '2024',
     founder: {
       '@type': 'Person',
-      name: 'Brian BIENDOU',
+      name: 'Brian B',
       url: `${SEO_CONFIG.siteUrl}/auteurs/brian-biendou`,
     },
     address: {

@@ -303,7 +303,7 @@ export default function AProposPage() {
                     BB
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900">Brian BIENDOU</h3>
+                    <h3 className="text-xl font-bold text-gray-900">Brian B</h3>
                     <p className="text-primary-600 font-medium mb-3">Fondateur & Rédacteur en chef</p>
                     <p className="text-gray-600 leading-relaxed mb-4">
                       Fondateur de Test Civique France depuis 2024, Brian accompagne les candidats à la naturalisation française

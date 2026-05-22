@@ -66,8 +66,8 @@ export async function GET() {
     <lastBuildDate>${currentDate}</lastBuildDate>
     <pubDate>${currentDate}</pubDate>
     <ttl>60</ttl>
-    <managingEditor>notification@testciviquefrance.fr (Brian BIENDOU)</managingEditor>
-    <webMaster>notification@testciviquefrance.fr (Brian BIENDOU)</webMaster>
+    <managingEditor>notification@testciviquefrance.fr (Brian B)</managingEditor>
+    <webMaster>notification@testciviquefrance.fr (Brian B)</webMaster>
     <copyright>Copyright ${new Date().getFullYear()} Test Civique France</copyright>
     <atom:link href="${baseUrl}/feed.xml" rel="self" type="application/rss+xml"/>
     <image>

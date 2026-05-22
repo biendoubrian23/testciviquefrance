@@ -662,9 +662,6 @@ export default function RootLayout({
         {/* Google AdSense verification */}
         <meta name="google-adsense-account" content="ca-pub-3632266086082682" />
 
-        {/* Monetag verification */}
-        <meta name="monetag" content="777e17a604918abc2185c5b834c56e19" />
-
         {/* Geo tags */}
         <meta name="geo.region" content="FR" />
         <meta name="geo.placename" content="France" />

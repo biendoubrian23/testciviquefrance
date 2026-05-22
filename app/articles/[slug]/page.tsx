@@ -75,9 +75,9 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
 
   const canonicalUrl = `${SEO_CONFIG.siteUrl}/articles/${article.slug}`;
 
-  // Meta description optimisée pour le CTR — chiffres, urgence, concret
+  // Meta description optimisée pour le CTR — coupée proprement sur un mot entier
   const metaDescription = article.excerpt.length > 120
-    ? `${article.excerpt.substring(0, 145)}… ✅ Guide 2026 vérifié.`
+    ? `${article.excerpt.substring(0, 140).replace(/\s+\S*$/, '')}… ✅ Guide 2026 vérifié.`
     : `${article.excerpt} ✅ 40 questions, 95% de réussite — Guide 2026 mis à jour.`;
 
   return {
@@ -153,7 +153,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     datePublished: isoDate,
     dateModified: isoDate,
     author: article.author,
-    authorUrl: article.author === 'Brian BIENDOU' ? `${SEO_CONFIG.siteUrl}/auteurs/brian-biendou` : undefined,
+    authorUrl: article.author === 'Brian B' ? `${SEO_CONFIG.siteUrl}/auteurs/brian-biendou` : undefined,
     category: article.category,
     readTime: article.readTime,
   });
