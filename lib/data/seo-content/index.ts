@@ -218,6 +218,9 @@ import {
 // ===== Article Taxes Titres Séjour - Mai 2026 =====
 import { haussesTaxesTitresSejour2026Content } from './articles-taxes-titres-sejour-2026';
 
+// ===== Article Frais Université Hors-UE - Mai 2026 =====
+import { fraisUniversiteHorsUe2026Content } from './articles-frais-universite-hors-ue-2026';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -411,6 +414,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture': carteResident10Ans2026Content,
   // Article Taxes Titres Séjour - Mai 2026
   'hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances': haussesTaxesTitresSejour2026Content,
+  // Article Frais Université Hors-UE - Mai 2026
+  'frais-inscription-universites-france-etudiants-hors-ue-2026': fraisUniversiteHorsUe2026Content,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

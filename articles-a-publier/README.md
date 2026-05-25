@@ -54,7 +54,7 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 | [02](02-inscription-examen-civique.md) | Inscription examen civique — centres agréés, prix | 🔴 Haute | Forte |
 | [04](04-rdv-prefecture-marche-noir-creneaux.md) | RDV préfecture introuvable — marché noir des créneaux | 🟠 Moyenne | Faible (trafic) |
 | [06](06-examen-civique-exemples-questions.md) | Examen civique — exemples de questions corrigées | 🟠 Moyenne | Forte |
-| [07](07-frais-inscription-universites-hors-ue.md) | Frais d'inscription universités hors-UE (décret 20 mai) | 🔴 Actu chaude | Moyenne |
+| ~~07~~ | ✅ Frais d'inscription universités hors-UE — **rédigé le 25/05/2026** | Fait |
 | [08](08-cout-total-naturalisation-2026.md) | Coût total de la naturalisation 2026 (timbre 255 €) | 🔴 Haute | Forte |
 | [09](09-entretien-naturalisation-2026.md) | Entretien de naturalisation 2026 | 🟠 Moyenne | Forte |
 | [10](10-delai-renouvellement-titre-sejour-nunez.md) | Délai renouvellement titre de séjour (instruction Nuñez) | 🟠 Moyenne | Moyenne |
@@ -72,7 +72,7 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 Suivre cet ordre, cocher au fur et à mesure. Rythme : **2 à 3 articles / semaine**.
 
 1. [x] **05** — Hausse des taxes titres de séjour · ✅ rédigé le 22/05/2026, à committer/publier
-2. [ ] **07** — Frais université hors-UE · 🔴 actu chaude (décret du 20 mai)
+2. [x] **07** — Frais université hors-UE · ✅ rédigé le 25/05/2026
 3. [ ] **01** — Examen civique obligatoire (carte de séjour) · pilier
 4. [ ] **MAJ-A** — ANEF bloqué + décision Conseil d'État · 🔴 actu
 5. [ ] **02** — Inscription examen civique · pilier transactionnel

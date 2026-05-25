@@ -1053,6 +1053,22 @@ export const seoArticles: Article[] = [
     image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop',
     featured: true,
   },
+  // Article Buzz 6-2: Frais université hors-UE — décret mai 2026
+  {
+    id: 'buzz6-2',
+    slug: 'frais-inscription-universites-france-etudiants-hors-ue-2026',
+    title: 'Frais université 2026 : 2 895 € en licence pour les étudiants hors-UE — ce que change le décret du 19 mai',
+    excerpt: 'Le décret n° 2026-385 du 19 mai 2026 met fin aux exonérations massives dans les universités françaises. À partir de septembre 2026, la plupart des étudiants hors UE/EEE/Suisse paieront 2 895 €/an en licence et 3 941 €/an en master. Qui est exonéré automatiquement, comment réduire la facture et quel impact sur votre titre de séjour.',
+    content: '',
+    category: 'Actualités',
+    categorySlug: 'actualites',
+    author: 'Brian B',
+    date: '25/05/2026',
+    readTime: 12,
+    views: 0,
+    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&auto=format&fit=crop',
+    featured: true,
+  },
   // Article Buzz Actu 1: Espagne régularisation 500 000 sans-papiers
   {
     id: 'buzz-actu-1',
