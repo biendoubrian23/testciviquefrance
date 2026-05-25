@@ -111,30 +111,40 @@ export default function MentionsLegalesPage() {
 
             <section className="bg-white p-6 border border-gray-200">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                4. Cookies et Technologies de Suivi
+                4. Hébergeur
+              </h2>
+              <div className="text-gray-700 space-y-3">
+                <p><strong>Raison sociale :</strong> Vercel Inc.</p>
+                <p><strong>Adresse :</strong> 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis</p>
+                <p><strong>Site web :</strong> <a href="https://vercel.com" className="text-blue-600 hover:underline" target="_blank" rel="noopener noreferrer">vercel.com</a></p>
+              </div>
+            </section>
+
+            <section className="bg-white p-6 border border-gray-200">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                5. Cookies et Technologies de Suivi
               </h2>
               <div className="text-gray-700 space-y-3">
                 <p>
-                  Le site Test Civique France utilise des cookies essentiels au fonctionnement technique du site et à la fourniture des services. 
-                  Aucun cookie publicitaire ou de traçage tiers n'est utilisé.
+                  Le site Test Civique France utilise plusieurs catégories de cookies détaillées ci-dessous.
                 </p>
-                
+
                 <h3 className="font-semibold mt-4 mb-2">Types de cookies utilisés :</h3>
                 <ul className="list-disc list-inside space-y-2 ml-4">
-                  <li><strong>Cookies de session</strong> : nécessaires pour l'authentification et la sécurité</li>
-                  <li><strong>Cookies fonctionnels</strong> : permettent de mémoriser vos préférences (langue, thème, etc.)</li>
-                  <li><strong>Cookies de performance</strong> : analysent l'utilisation du site pour améliorer nos services</li>
+                  <li><strong>Cookies essentiels</strong> : nécessaires pour l'authentification, la sécurité et le fonctionnement de la plateforme (Supabase). Ils ne nécessitent pas votre consentement.</li>
+                  <li><strong>Cookies analytiques</strong> : mesurent l'audience et l'utilisation du site (PostHog, Vercel Analytics). Déposés uniquement après votre consentement.</li>
+                  <li><strong>Cookies publicitaires</strong> : permettent l'affichage de publicités via Google AdSense. Déposés uniquement après votre consentement.</li>
                 </ul>
-                
+
                 <p className="mt-4">
-                  Vous pouvez configurer votre navigateur pour refuser les cookies, mais cela peut affecter certaines fonctionnalités du site.
+                  Vous pouvez retirer votre consentement à tout moment via le gestionnaire de cookies accessible en bas de page, ou configurer votre navigateur pour bloquer les cookies.
                 </p>
               </div>
             </section>
 
             <section className="bg-white p-6 border border-gray-200">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                5. Limitation de Responsabilité
+                6. Limitation de Responsabilité
               </h2>
               <div className="text-gray-700 space-y-3">
                 <p>
@@ -167,7 +177,7 @@ export default function MentionsLegalesPage() {
 
             <section className="bg-white p-6 border border-gray-200">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                6. Droit Applicable et Juridiction Compétente
+                7. Droit Applicable et Juridiction Compétente
               </h2>
               <div className="text-gray-700 space-y-3">
                 <p>
@@ -184,7 +194,7 @@ export default function MentionsLegalesPage() {
 
             <section className="bg-white p-6 border border-gray-200">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                7. Modifications des Mentions Légales
+                8. Modifications des Mentions Légales
               </h2>
               <div className="text-gray-700 space-y-3">
                 <p>
@@ -197,7 +207,7 @@ export default function MentionsLegalesPage() {
 
             <section className="bg-white p-6 border border-gray-200">
               <h2 className="text-xl font-semibold text-gray-900 mb-4">
-                8. Contact et Réclamations
+                9. Contact et Réclamations
               </h2>
               <div className="text-gray-700 space-y-3">
                 <p>
@@ -211,7 +221,7 @@ export default function MentionsLegalesPage() {
                 </ul>
                 
                 <p className="mt-6 text-sm text-gray-600">
-                  Dernière mise à jour des mentions légales : Décembre 2025
+                  Dernière mise à jour des mentions légales : Mai 2026
                 </p>
               </div>
             </section>

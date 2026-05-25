@@ -147,69 +147,6 @@ export const metadata: Metadata = {
     '80 pourcent test civique',
     '32 bonnes réponses',
 
-    // CONCURRENTS - Positionnement sur leurs recherches
-    'le test civique',
-    'letestcivique',
-    'le-test-civique',
-    'testcivique',
-    'test civique officiel',
-    'test-civique.fr',
-    'monexamencivique',
-    'mon examen civique',
-    'prepacivique',
-    'prépa civique',
-    'civique-test',
-    'france-naturalisation',
-    'naturalisationfrancaise',
-    'examen-civique.fr',
-    'quizzcivique',
-    'quiz civique france',
-    'preparation-naturalisation',
-    'test naturalisation gratuit',
-    'révision examen civique',
-    'révision naturalisation',
-    'testciviquefrance',
-
-    // SITES OFFICIELS GOUVERNEMENTAUX - Positionnement associé
-    'service public naturalisation',
-    'service-public.fr naturalisation',
-    'france-visas test civique',
-    'france visas titre séjour',
-    'ANEF titre séjour',
-    'ANEF naturalisation',
-    'administration numérique étrangers france',
-    'préfecture naturalisation',
-    'préfecture titre séjour',
-    'sous-préfecture titre séjour',
-    'OFII test civique',
-    'OFII naturalisation',
-    'office français immigration intégration',
-    'OFII formation civique',
-    'interieur.gouv.fr naturalisation',
-    'ministère intérieur naturalisation',
-    'ministère intérieur titre séjour',
-    'immigration.interieur.gouv.fr',
-    'demarches.interieur.gouv.fr',
-    'demarches-simplifiees.fr naturalisation',
-    'rendez-vous préfecture titre séjour',
-    'rendez vous anef',
-    'prise rendez-vous naturalisation',
-    'ants.gouv.fr titre séjour',
-    'gouv.fr naturalisation',
-    'gouv.fr titre séjour',
-    'gouv.fr test civique',
-
-    // ORGANISMES ET INSTITUTIONS
-    'ofpra naturalisation',
-    'CAF titre séjour',
-    'pôle emploi titre séjour',
-    'CPAM titre séjour',
-    'prefecture de police paris naturalisation',
-    'préfecture police titre séjour',
-    'consulat france naturalisation',
-    'mairie naturalisation',
-    'naturalisation en ligne',
-
     // TERMES JURIDIQUES ET ADMINISTRATIFS
     'CESEDA naturalisation',
     'code entrée séjour étrangers',
@@ -582,13 +519,6 @@ const jsonLd = {
         courseMode: 'online',
         courseWorkload: 'PT10H',
       },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '1250',
-        bestRating: '5',
-        worstRating: '1',
-      },
       offers: {
         '@type': 'Offer',
         category: 'Préparation examen',
@@ -633,20 +563,6 @@ export default function RootLayout({
   return (
     <html lang="fr" className={montserrat.variable}>
       <head>
-        {/* Ezoic — intégration JavaScript (programme Incubator).
-            À placer en tête du <head>. Les scripts de consentement (CMP)
-            DOIVENT précéder le script principal Ezoic. */}
-        <script data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js" />
-        <script data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js" />
-        <script async src="https://www.ezojs.com/ezoic/sa.min.js" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html:
-              'window.ezstandalone = window.ezstandalone || {}; ezstandalone.cmd = ezstandalone.cmd || [];',
-          }}
-        />
-        <script src="https://ezoicanalytics.com/analytics.js" />
-
         {/* DNS prefetch — différés car les scripts se chargent après 5s */}
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />

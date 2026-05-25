@@ -546,31 +546,22 @@ export default function PolitiqueConfidentialitePage() {
                   <li>Cookies analytiques : 13 mois maximum</li>
                 </ul>
 
-                <h3 className="font-semibold mt-6 mb-3">8.6. Cookies publicitaires et partenaire publicitaire (Ezoic) :</h3>
+                <h3 className="font-semibold mt-6 mb-3">8.6. Cookies publicitaires (Google AdSense) :</h3>
                 <p>
-                  Pour financer le site, Test Civique France diffuse de la publicité via{' '}
-                  <a href="https://www.ezoic.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Ezoic Inc.</a>,
-                  une plateforme de monétisation publicitaire. Ezoic et ses partenaires publicitaires
-                  (dont Google et d&apos;autres régies) peuvent déposer des cookies et traiter certaines
+                  Pour financer le site, Test Civique France diffuse de la publicité via Google AdSense.
+                  Google et ses partenaires publicitaires peuvent déposer des cookies et traiter certaines
                   données (identifiants de navigation, adresse IP, pages consultées) afin d&apos;afficher
                   des publicités, d&apos;en mesurer la performance et, sous réserve de votre consentement,
                   de les personnaliser.
                 </p>
-                <p className="mt-3">
-                  Le recueil et la gestion de votre consentement à ces traitements sont assurés par
-                  la plateforme de gestion du consentement (CMP) d&apos;Ezoic, conforme au cadre de
-                  transparence et de consentement de l&apos;IAB Europe (TCF) et au RGPD. Le bandeau de
-                  consentement s&apos;affiche lors de votre première visite ; vos choix peuvent être
-                  modifiés ou retirés à tout moment.
-                </p>
                 <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
                   <li>
-                    Politique de confidentialité d&apos;Ezoic :{' '}
-                    <a href="https://www.ezoic.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">www.ezoic.com/privacy-policy</a>
+                    Politique de confidentialité de Google :{' '}
+                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">policies.google.com/privacy</a>
                   </li>
                   <li>
-                    La liste complète des partenaires publicitaires et les options de retrait sont
-                    accessibles à tout moment via le bandeau de consentement.
+                    Options de retrait publicitaire Google :{' '}
+                    <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">adssettings.google.com</a>
                   </li>
                 </ul>
                 <p className="mt-3">
