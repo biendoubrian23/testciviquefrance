@@ -221,6 +221,9 @@ import { haussesTaxesTitresSejour2026Content } from './articles-taxes-titres-sej
 // ===== Article Frais Université Hors-UE - Mai 2026 =====
 import { fraisUniversiteHorsUe2026Content } from './articles-frais-universite-hors-ue-2026';
 
+// ===== Article Examen Civique Obligatoire 2026 (article pilier éditorial) =====
+import { examenCiviqueObligatoire2026Content } from './articles-examen-civique-obligatoire-2026';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -416,6 +419,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances': haussesTaxesTitresSejour2026Content,
   // Article Frais Université Hors-UE - Mai 2026
   'frais-inscription-universites-france-etudiants-hors-ue-2026': fraisUniversiteHorsUe2026Content,
+  // Article pilier éditorial — Examen Civique Obligatoire 2026
+  'examen-civique-obligatoire-carte-sejour-pluriannuelle-2026': examenCiviqueObligatoire2026Content,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

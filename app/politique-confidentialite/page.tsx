@@ -1,6 +1,15 @@
-﻿import Link from 'next/link';
+﻿import type { Metadata } from 'next';
+import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+
+export const metadata: Metadata = {
+  title: 'Politique de Confidentialité | Test Civique France',
+  description: 'Politique de confidentialité de Test Civique France : collecte des données personnelles, cookies Google AdSense, droits RGPD, Consent Mode v2. Mise à jour mai 2026.',
+  alternates: {
+    canonical: 'https://www.testciviquefrance.fr/politique-confidentialite',
+  },
+};
 
 export default function PolitiqueConfidentialitePage() {
   return (
@@ -39,8 +48,9 @@ export default function PolitiqueConfidentialitePage() {
                 </ul>
                 
                 <p className="mt-4">
-                  En utilisant notre site, vous acceptez les termes de cette Politique de Confidentialité. Si vous n'acceptez pas 
-                  cette politique, veuillez ne pas utiliser nos services.
+                  Lors de votre première visite, un bandeau de consentement vous permet de choisir les cookies
+                  que vous acceptez ou refusez. Vous pouvez modifier vos préférences à tout moment en cliquant
+                  sur &quot;Gérer les cookies&quot; en bas de chaque page du site, ou en configurant votre navigateur.
                 </p>
               </div>
             </section>
@@ -230,30 +240,68 @@ export default function PolitiqueConfidentialitePage() {
                 <h3 className="font-semibold mt-6 mb-3">4.1. Prestataires de services essentiels :</h3>
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li>
-                    <strong>Stripe (processeur de paiement) :</strong> pour le traitement sécurisé des paiements. 
+                    <strong>Stripe (processeur de paiement) :</strong> pour le traitement sécurisé des paiements.
                     Stripe est certifié PCI-DSS et conforme au RGPD. Vos données bancaires sont exclusivement traitées par Stripe.
                     <br />
                     <span className="text-sm text-gray-600">
                       Politique de confidentialité : <a href="https://stripe.com/fr/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://stripe.com/fr/privacy</a>
                     </span>
                   </li>
-                  
+
                   <li>
-                    <strong>Supabase (hébergement de la base de données) :</strong> pour le stockage sécurisé de vos données. 
+                    <strong>Supabase (hébergement de la base de données) :</strong> pour le stockage sécurisé de vos données.
                     Supabase est conforme au RGPD et héberge les données dans l'Union Européenne.
                     <br />
                     <span className="text-sm text-gray-600">
                       Politique de confidentialité : <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">https://supabase.com/privacy</a>
                     </span>
                   </li>
-                  
+
                   <li>
-                    <strong>Prestataire d'envoi d'emails :</strong> pour l'envoi d'emails transactionnels et newsletters (uniquement avec votre consentement). 
-                    Nos prestataires d'emailing sont conformes au RGPD.
+                    <strong>Brevo (prestataire d'envoi d'emails) :</strong> pour l'envoi d'emails transactionnels (confirmations d'inscription, rappels d'abonnement) et newsletters (uniquement avec votre consentement). Brevo est conforme au RGPD.
+                    <br />
+                    <span className="text-sm text-gray-600">
+                      Politique de confidentialité : <a href="https://www.brevo.com/fr/legal/privacypolicy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">brevo.com/fr/legal/privacypolicy</a>
+                    </span>
+                  </li>
+                </ul>
+
+                <h3 className="font-semibold mt-6 mb-3">4.2. Prestataires d'analyse et de publicité (soumis à consentement) :</h3>
+                <ul className="list-disc list-inside space-y-2 ml-4">
+                  <li>
+                    <strong>Google LLC (Google Analytics, Google Tag Manager, Google AdSense, Google Ads) :</strong> mesure d'audience, gestion des balises marketing et affichage de publicités contextuelles ou personnalisées. Google peut collecter l'adresse IP, des identifiants de navigation et des données d'utilisation. Ces traitements sont soumis à votre consentement préalable via notre bandeau de cookies (Google Consent Mode v2).
+                    <br />
+                    <span className="text-sm text-gray-600">
+                      Politique de confidentialité : <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">policies.google.com/privacy</a>
+                    </span>
+                  </li>
+
+                  <li>
+                    <strong>PostHog (analyse comportementale) :</strong> outil d'analyse de l'expérience utilisateur permettant de comprendre comment les visiteurs naviguent sur le site. Les données sont anonymisées. Ce traitement est soumis à votre consentement.
+                    <br />
+                    <span className="text-sm text-gray-600">
+                      Politique de confidentialité : <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">posthog.com/privacy</a>
+                    </span>
+                  </li>
+
+                  <li>
+                    <strong>Vercel Inc. (hébergement et Vercel Analytics) :</strong> hébergement de la plateforme et mesure de performance agrégée (temps de chargement, Core Web Vitals, pages vues). Vercel Analytics est un outil <em>sans cookie</em> qui collecte uniquement des données agrégées et anonymisées (aucun identifiant individuel, aucun cookie déposé sur votre appareil). Il est conforme au RGPD par conception et ne nécessite pas de consentement préalable.
+                    <br />
+                    <span className="text-sm text-gray-600">
+                      Politique de confidentialité : <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">vercel.com/legal/privacy-policy</a>
+                    </span>
+                  </li>
+
+                  <li>
+                    <strong>Ahrefs (analyse SEO) :</strong> outil d'analyse du référencement permettant de mesurer la visibilité du site dans les moteurs de recherche. Ahrefs collecte des données agrégées de trafic et de performance. Ce traitement est soumis à votre consentement.
+                    <br />
+                    <span className="text-sm text-gray-600">
+                      Politique de confidentialité : <a href="https://ahrefs.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">ahrefs.com/privacy</a>
+                    </span>
                   </li>
                 </ul>
                 
-                <h3 className="font-semibold mt-6 mb-3">4.2. Garanties contractuelles :</h3>
+                <h3 className="font-semibold mt-6 mb-3">4.3. Garanties contractuelles :</h3>
                 <p>
                   Tous nos prestataires de services sont soumis à des obligations contractuelles strictes en matière 
                   de protection des données personnelles. Ils ne sont autorisés à traiter vos données que dans le cadre 
@@ -261,7 +309,7 @@ export default function PolitiqueConfidentialitePage() {
                   utiliser vos données à leurs propres fins.
                 </p>
                 
-                <h3 className="font-semibold mt-6 mb-3">4.3. Transferts hors UE :</h3>
+                <h3 className="font-semibold mt-6 mb-3">4.4. Transferts hors UE :</h3>
                 <p>
                   Dans la mesure du possible, nous privilégions des prestataires dont les serveurs sont situés dans l'Union Européenne. 
                   Si un transfert de données hors UE est nécessaire, celui-ci est encadré par :
@@ -272,7 +320,7 @@ export default function PolitiqueConfidentialitePage() {
                   <li>L'obtention de garanties appropriées conformément au RGPD</li>
                 </ul>
                 
-                <h3 className="font-semibold mt-6 mb-3">4.4. Autorités légales :</h3>
+                <h3 className="font-semibold mt-6 mb-3">4.5. Autorités légales :</h3>
                 <p>
                   Nous pouvons être amenés à communiquer vos données aux autorités compétentes si la loi l'exige, 
                   notamment dans le cadre d'enquêtes judiciaires ou pour répondre à des réquisitions légales.
@@ -510,8 +558,25 @@ export default function PolitiqueConfidentialitePage() {
                 
                 <h4 className="font-semibold mt-4">c) Cookies analytiques :</h4>
                 <p className="ml-4">
-                  Ces cookies nous aident à comprendre comment vous utilisez le site (pages visitées, temps passé, etc.) 
-                  afin d'améliorer nos services. Les données collectées sont anonymisées et agrégées.
+                  Ces cookies nous aident à comprendre comment vous utilisez le site (pages visitées, temps passé, etc.)
+                  afin d'améliorer nos services. Les données collectées sont anonymisées et agrégées. Ils sont déposés
+                  uniquement avec votre consentement et incluent les outils suivants :
+                </p>
+                <ul className="list-disc list-inside space-y-1 ml-8 mt-2">
+                  <li><strong>Google Analytics</strong> (via Google Tag Manager) : mesure d'audience, pages vues, parcours de navigation</li>
+                  <li><strong>PostHog</strong> : analyse comportementale et expérience utilisateur</li>
+                  <li><strong>Ahrefs Analytics</strong> : analyse du référencement naturel et du trafic organique</li>
+                </ul>
+                <p className="ml-4 mt-2 text-xs text-gray-500">
+                  Note : Vercel Analytics est un outil sans cookie qui collecte des données agrégées et anonymisées. Il ne dépose aucun cookie sur votre appareil et ne nécessite pas de consentement préalable.
+                </p>
+
+                <h4 className="font-semibold mt-4">d) Cookies publicitaires :</h4>
+                <p className="ml-4">
+                  Ces cookies permettent d'afficher des publicités pertinentes via Google AdSense
+                  (identifiant éditeur : ca-pub-3632266086082682). Ils sont déposés uniquement avec votre
+                  consentement. En cas de refus, des publicités non personnalisées (contextuelles) continuent
+                  d'être affichées sans dépôt de cookie publicitaire individuel.
                 </p>
                 
                 <h3 className="font-semibold mt-6 mb-3">8.3. Gestion de vos préférences :</h3>
@@ -520,6 +585,7 @@ export default function PolitiqueConfidentialitePage() {
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
                   <li>Via le bandeau de consentement lors de votre première visite</li>
+                  <li>Via le lien <strong>&quot;Gérer les cookies&quot;</strong> accessible en bas de chaque page du site</li>
                   <li>Via les paramètres de votre navigateur (voir ci-dessous)</li>
                 </ul>
                 
@@ -543,30 +609,65 @@ export default function PolitiqueConfidentialitePage() {
                 <ul className="list-disc list-inside space-y-1 ml-4">
                   <li>Cookies de session : supprimés à la fermeture du navigateur</li>
                   <li>Cookies fonctionnels : 12 mois maximum</li>
-                  <li>Cookies analytiques : 13 mois maximum</li>
+                  <li>Cookies analytiques (Google Analytics, PostHog, Ahrefs) : 13 mois maximum</li>
+                  <li>Cookies publicitaires (Google AdSense) : 13 mois maximum</li>
                 </ul>
 
                 <h3 className="font-semibold mt-6 mb-3">8.6. Cookies publicitaires (Google AdSense) :</h3>
                 <p>
-                  Pour financer le site, Test Civique France diffuse de la publicité via Google AdSense.
-                  Google et ses partenaires publicitaires peuvent déposer des cookies et traiter certaines
-                  données (identifiants de navigation, adresse IP, pages consultées) afin d&apos;afficher
-                  des publicités, d&apos;en mesurer la performance et, sous réserve de votre consentement,
-                  de les personnaliser.
+                  Pour financer le site, Test Civique France diffuse de la publicité via Google AdSense
+                  (identifiant éditeur : ca-pub-3632266086082682). Google et ses partenaires publicitaires
+                  peuvent déposer des cookies et traiter certaines données (identifiants de navigation,
+                  adresse IP, pages consultées) afin d&apos;afficher des publicités, d&apos;en mesurer
+                  la performance et, sous réserve de votre consentement, de les personnaliser.
                 </p>
-                <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
+
+                <p className="mt-3 font-medium">Ce qui change selon votre choix :</p>
+                <ul className="list-disc list-inside space-y-2 ml-4 mt-2">
+                  <li>
+                    <strong>Si vous acceptez les cookies publicitaires :</strong> des publicités
+                    personnalisées adaptées à vos centres d&apos;intérêt sont affichées.
+                  </li>
+                  <li>
+                    <strong>Si vous refusez ou ne donnez pas votre consentement :</strong> des
+                    publicités non personnalisées (contextuelles) continuent d&apos;être affichées.
+                    Aucun cookie publicitaire n&apos;est déposé et aucune donnée personnelle n&apos;est
+                    utilisée pour le ciblage. L&apos;accès au contenu du site reste identique.
+                  </li>
+                </ul>
+
+                <p className="mt-3">
+                  Notre site utilise <strong>Google Consent Mode v2</strong>, qui transmet votre choix
+                  en temps réel à Google AdSense. En cas de refus, Google peut tout de même mesurer
+                  les conversions de façon agrégée et anonymisée (modélisation, sans cookie individuel).
+                </p>
+
+                <ul className="list-disc list-inside space-y-1 ml-4 mt-3">
                   <li>
                     Politique de confidentialité de Google :{' '}
                     <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">policies.google.com/privacy</a>
                   </li>
                   <li>
-                    Options de retrait publicitaire Google :{' '}
+                    Technologies publicitaires Google :{' '}
+                    <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">policies.google.com/technologies/ads</a>
+                  </li>
+                  <li>
+                    Paramètres des annonces Google (opt-out personnalisation) :{' '}
                     <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">adssettings.google.com</a>
                   </li>
+                  <li>
+                    Opt-out publicitaire européen :{' '}
+                    <a href="https://www.youronlinechoices.eu" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">youronlinechoices.eu</a>
+                  </li>
+                  <li>
+                    Opt-out publicitaire international (NAI) :{' '}
+                    <a href="https://optout.networkadvertising.org" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">optout.networkadvertising.org</a>
+                  </li>
                 </ul>
-                <p className="mt-3">
-                  Le refus ou le retrait de votre consentement aux cookies publicitaires n&apos;affecte
-                  pas l&apos;accès au contenu du site.
+
+                <p className="mt-4">
+                  Vous pouvez modifier vos préférences de cookies à tout moment en cliquant sur
+                  &quot;Gérer les cookies&quot; en bas de chaque page de notre site.
                 </p>
               </div>
             </section>

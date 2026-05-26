@@ -1,6 +1,15 @@
-﻿import Link from 'next/link';
+﻿import type { Metadata } from 'next';
+import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+
+export const metadata: Metadata = {
+  title: "Conditions Générales d'Utilisation (CGU) | Test Civique France",
+  description: "Conditions générales d'utilisation de la plateforme Test Civique France : accès aux services, responsabilités, propriété intellectuelle, résiliation. Organisme privé indépendant.",
+  alternates: {
+    canonical: 'https://www.testciviquefrance.fr/cgu',
+  },
+};
 
 export default function CGUPage() {
   return (

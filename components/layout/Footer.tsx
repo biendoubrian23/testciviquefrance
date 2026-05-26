@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ManageCookiesButton from '@/components/consent/ManageCookiesButton';
 
 export default function Footer() {
   return (
@@ -104,6 +105,9 @@ export default function Footer() {
                 >
                   CGV
                 </Link>
+              </li>
+              <li>
+                <ManageCookiesButton />
               </li>
             </ul>
           </div>

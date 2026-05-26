@@ -1,6 +1,15 @@
-﻿import Link from 'next/link';
+﻿import type { Metadata } from 'next';
+import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+
+export const metadata: Metadata = {
+  title: 'Conditions Générales de Vente (CGV) | Test Civique France',
+  description: 'Conditions générales de vente Test Civique France : abonnements Standard et Premium, tarification, droit de rétractation 14 jours, remboursements, support client.',
+  alternates: {
+    canonical: 'https://www.testciviquefrance.fr/cgv',
+  },
+};
 
 export default function CGVPage() {
   return (

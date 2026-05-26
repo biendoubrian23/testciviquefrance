@@ -2008,11 +2008,18 @@ export const articlesMai2026Programmes: Article[] = [
   ...batch4Metadata,
 ];
 
+// ===== Articles éditoriaux piliers — Mai 2026 =====
+import { examenCiviqueObligatoireMetadata } from './seo-content/articles-examen-civique-obligatoire-2026';
+
+export const articlesEditoriaux2026: Article[] = [
+  examenCiviqueObligatoireMetadata,
+];
+
 /**
  * Récupère tous les articles (existants + SEO)
  */
 export function getAllArticlesWithSEO(existingArticles: Article[]): Article[] {
-  return [...existingArticles, ...seoArticles, ...quotidienImmigrationArticles, ...viePratiqueArticles, ...bingSeoArticles2026, ...articlesMai2026Programmes];
+  return [...existingArticles, ...seoArticles, ...quotidienImmigrationArticles, ...viePratiqueArticles, ...bingSeoArticles2026, ...articlesMai2026Programmes, ...articlesEditoriaux2026];
 }
 
 /**

@@ -1,6 +1,15 @@
-﻿import Link from 'next/link';
+﻿import type { Metadata } from 'next';
+import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+
+export const metadata: Metadata = {
+  title: 'Mentions Légales | Test Civique France',
+  description: 'Mentions légales de Test Civique France : éditeur du site, hébergeur, propriété intellectuelle, responsabilité et protection des données personnelles. Conformité loi LCEN 2004.',
+  alternates: {
+    canonical: 'https://www.testciviquefrance.fr/mentions-legales',
+  },
+};
 
 export default function MentionsLegalesPage() {
   return (
@@ -132,8 +141,10 @@ export default function MentionsLegalesPage() {
                 <h3 className="font-semibold mt-4 mb-2">Types de cookies utilisés :</h3>
                 <ul className="list-disc list-inside space-y-2 ml-4">
                   <li><strong>Cookies essentiels</strong> : nécessaires pour l'authentification, la sécurité et le fonctionnement de la plateforme (Supabase). Ils ne nécessitent pas votre consentement.</li>
-                  <li><strong>Cookies analytiques</strong> : mesurent l'audience et l'utilisation du site (PostHog, Vercel Analytics). Déposés uniquement après votre consentement.</li>
-                  <li><strong>Cookies publicitaires</strong> : permettent l'affichage de publicités via Google AdSense. Déposés uniquement après votre consentement.</li>
+                  <li><strong>Cookies analytiques</strong> : mesurent l'audience et l'utilisation du site (Google Analytics via Google Tag Manager, PostHog, Ahrefs). Déposés uniquement après votre consentement. Vercel Analytics (mesure de performance sans cookie, données agrégées) ne nécessite pas de consentement préalable.</li>
+                  <li><strong>Cookies publicitaires</strong> : permettent l'affichage de publicités personnalisées ou contextuelles via Google AdSense (identifiant éditeur : ca-pub-3632266086082682). Déposés uniquement après votre consentement. En cas de refus, des publicités non personnalisées continuent d'être affichées.{' '}
+                    <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Politique publicitaire Google</a>.
+                  </li>
                 </ul>
 
                 <p className="mt-4">

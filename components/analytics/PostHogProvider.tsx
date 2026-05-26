@@ -5,8 +5,20 @@ import { PostHogProvider as PHProvider, usePostHog } from 'posthog-js/react';
 import { useEffect, useState, Suspense } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+const CONSENT_KEY = 'tcf_cookie_consent_v1';
+
 // Flag pour éviter double init
 let posthogInitialized = false;
+
+function hasAnalyticsConsent(): boolean {
+    try {
+        const raw = localStorage.getItem(CONSENT_KEY);
+        if (!raw) return false;
+        return JSON.parse(raw).analytics === true;
+    } catch {
+        return false;
+    }
+}
 
 // Composant pour tracker les changements de page
 function PostHogPageView() {
@@ -48,6 +60,8 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
     useEffect(() => {
         if (!posthogInitialized && process.env.NEXT_PUBLIC_POSTHOG_KEY) {
             const initPostHog = () => {
+                // Re-vérifier le consentement au moment de l'init (l'utilisateur peut avoir répondu entre-temps)
+                const analyticsConsent = hasAnalyticsConsent();
                 posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
                     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com',
                     person_profiles: 'identified_only',
@@ -62,6 +76,8 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
                     },
                     autocapture: true,
                     enable_heatmaps: true,
+                    // Désactiver la capture par défaut si pas de consentement analytique
+                    opt_out_capturing_by_default: !analyticsConsent,
                     loaded: () => {
                         setReady(true);
                     },
@@ -75,6 +91,21 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
                 setTimeout(initPostHog, 2000);
             }
         }
+
+        // Mettre à jour PostHog quand le consentement change (depuis CookieBanner)
+        // Si PostHog n'est pas encore initialisé, inutile d'agir : l'init lira le consentement depuis localStorage
+        const handleConsentUpdate = (e: Event) => {
+            if (!posthogInitialized) return;
+            const { analytics } = (e as CustomEvent<{ analytics: boolean; ads: boolean }>).detail;
+            if (analytics) {
+                posthog.opt_in_capturing();
+            } else {
+                posthog.opt_out_capturing();
+            }
+        };
+
+        window.addEventListener('tcf:consent-updated', handleConsentUpdate);
+        return () => window.removeEventListener('tcf:consent-updated', handleConsentUpdate);
     }, []);
 
     return (

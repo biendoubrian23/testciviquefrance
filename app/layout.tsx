@@ -6,6 +6,7 @@ import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
+import CookieBanner from '@/components/consent/CookieBanner';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -32,310 +33,34 @@ export const metadata: Metadata = {
   },
   description: 'Test civique 2026 : entraînement gratuit à l\'examen civique pour naturalisation française, carte de séjour et titre de séjour 10 ans. 800+ questions QCM, examens blancs. Taux de réussite 95%.',
   keywords: [
-    // Mots-clés PRIORITAIRES - test civique seul
     'test civique',
     'test civique 2026',
-    'test civique france',
     'examen civique',
     'test civique gratuit',
     'préparation test civique',
-    'examen civique 2026',
     'test civique naturalisation',
-    'examen civique naturalisation',
-    'test civique français',
-
-    // NOUVELLE LOI IMMIGRATION 2026
-    'loi immigration 2026',
-    'nouvelle loi immigration france',
-    'réforme immigration france',
-    'loi asile immigration',
-    'loi pour contrôler immigration',
-    'décret 2025-647',
-    'CESEDA',
-    'article R.413-12-1',
-    'conditions naturalisation 2026',
-    'nouvelles règles naturalisation',
-
-    // NATURALISATION
     'naturalisation française',
     'naturalisation france 2026',
-    'devenir français',
-    'devenir citoyen français',
-    'obtenir nationalité française',
-    'demande naturalisation',
-    'dossier naturalisation 2026',
-    'nationalité française conditions',
-    'procédure naturalisation',
-    'délai naturalisation france',
-
-    // TITRE DE SÉJOUR - CARTE DE SÉJOUR
     'titre de séjour',
-    'titre de séjour france',
-    'carte de séjour',
     'carte de séjour pluriannuelle',
-    'carte de résident',
     'carte résident france',
-    'renouvellement titre séjour',
-    'renouvellement carte séjour 2026',
-    'premier titre séjour france',
-    'titre séjour 4 ans',
-    'titre séjour 10 ans',
-    'carte séjour vie privée familiale',
-
-    // ÉTUDIANTS ÉTRANGERS
-    'titre séjour étudiant',
-    'visa étudiant france',
-    'carte séjour étudiant',
-    'étudiant étranger france',
-    'renouvellement titre séjour étudiant',
-    'changement statut étudiant salarié',
-    'APS autorisation provisoire séjour',
-    'passeport talent',
-    'recherche emploi après études',
-    'master france étranger',
-    'doctorat france étranger',
-    'campus france test civique',
-    'études supérieures france étranger',
-
-    // REGROUPEMENT FAMILIAL
-    'regroupement familial france',
-    'regroupement familial 2026',
-    'visa conjoint français',
-    'carte séjour conjoint',
-    'titre séjour famille',
-
-    // TRAVAIL ET IMMIGRATION
-    'travail france étranger',
-    'contrat travail étranger france',
-    'permis travail france',
-    'autorisation travail france',
-    'salarié étranger france',
-
-    // QUESTIONS ET PRÉPARATION
-    'questions test civique',
-    'questions examen civique',
     'QCM test civique',
-    'QCM naturalisation',
-    'révision test civique',
-    'préparation test civique',
-    'préparation examen civique',
     'entraînement test civique',
-    's\'entraîner test civique',
-    'exercices test civique',
-    'annales test civique',
-    'corrigé test civique',
-
-    // THÉMATIQUES OFFICIELLES
+    'examen blanc test civique',
+    'questions test civique',
     'valeurs république française',
-    'principes républicains',
-    'symboles république france',
     'institutions françaises',
-    'système politique français',
     'droits et devoirs citoyen',
     'histoire de france',
-    'géographie france',
     'culture française',
-    'vie en société france',
-    'laïcité france',
-    'devise française liberté égalité fraternité',
-    'Marianne symbole france',
-    'drapeau français bleu blanc rouge',
-    'hymne national Marseillaise',
-
-    // ASPECTS PRATIQUES EXAMEN
-    '40 questions test civique',
-    '80 pourcent test civique',
-    '32 bonnes réponses',
-
-    // TERMES JURIDIQUES ET ADMINISTRATIFS
-    'CESEDA naturalisation',
-    'code entrée séjour étrangers',
-    'décret naturalisation 2025',
-    'arrêté naturalisation',
-    'journal officiel naturalisation',
-    'JO naturalisation',
-    'récépissé titre séjour',
-    'attestation dépôt naturalisation',
-    'convocation test civique',
-    'convocation naturalisation',
-    'déclaration acquisition nationalité française',
-    'déclaration nationalité française mariage',
-    'réintégration nationalité française',
-
-    // ALTERNATIVES ET VARIATIONS
-    'test de citoyenneté france',
-    'examen citoyenneté française',
-    'épreuve civique naturalisation',
-    'QCM connaissance france',
-    'questions culture française',
-    'connaissances langue française naturalisation',
-    'niveau B1 naturalisation',
-    'diplôme français naturalisation',
-    'TCF naturalisation',
-    'DELF B1 naturalisation',
-    'attestation linguistique naturalisation',
-    'seuil réussite test civique',
-    'durée test civique',
-    'où passer test civique',
-    'prix test civique',
-    'inscription test civique',
-
-    // EXAMENS BLANCS
-    'session examen blanc test civique',
-    'examen blanc test civique',
-    'simulation test civique',
-    'test blanc naturalisation',
-    'entrainement gratuit test civique',
-
-    // ===== TEST CIVIQUE PAR MOIS 2026 (PRIORITAIRE) =====
-
-    // ===== TEST CIVIQUE PAR MOIS 2026 =====
-    'test civique 2026',
-    'test civique janvier 2026',
-    'test civique février 2026',
-    'test civique mars 2026',
-    'test civique avril 2026',
-    'test civique mai 2026',
-    'test civique juin 2026',
-    'test civique juillet 2026',
-    'test civique août 2026',
-    'test civique septembre 2026',
-    'test civique octobre 2026',
-    'test civique novembre 2026',
-    'test civique décembre 2026',
-
-    // ===== EXAMEN CIVIQUE PAR MOIS 2025-2026 =====
-    'examen civique 2026',
-    'examen civique janvier 2026',
-    'examen civique février 2026',
-    'naturalisation 2026',
-    'naturalisation janvier 2026',
-    'naturalisation février 2026',
-
-    // ===== QUESTIONS UTILISATEURS - OÙ PASSER =====
-    'où passer le test civique',
-    'où passer mon test civique',
-    'où se passe le test civique',
-    'lieu test civique',
-    'centre examen test civique',
-    'adresse test civique',
-    'test civique près de chez moi',
-    'test civique paris',
-    'test civique lyon',
-    'test civique marseille',
-    'test civique toulouse',
-    'test civique bordeaux',
-    'test civique nantes',
-    'test civique lille',
-    'test civique strasbourg',
-
-    // ===== QUESTIONS UTILISATEURS - ÉLIGIBILITÉ =====
-    'suis-je éligible au test civique',
-    'suis je eligible test civique',
-    'qui doit passer le test civique',
-    'qui est concerné par le test civique',
-    'test civique obligatoire pour qui',
-    'exemption test civique',
-    'dispense test civique',
-    'cas dispense test civique',
-    'dois-je passer le test civique',
-    'est-ce que je dois passer le test civique',
-
-    // ===== QUESTIONS UTILISATEURS - COMMENT =====
-    'comment s\'inscrire au test civique',
-    'comment réviser le test civique',
-    'comment se préparer au test civique',
-    'comment réussir le test civique du premier coup',
-    'comment avoir le test civique',
-    'comment obtenir le test civique',
-    'comment passer le test civique',
-
-    // ===== QUESTIONS UTILISATEURS - QUAND =====
-    'quand passer le test civique',
-    'quand dois-je passer le test civique',
-    'délai test civique',
-    'date test civique',
-    'prochaine session test civique',
-    'calendrier test civique 2026',
-
-    // ===== QUESTIONS UTILISATEURS - COMBIEN =====
-    'combien coûte le test civique',
-    'prix test civique 2026',
-    'tarif test civique',
-    'test civique gratuit ou payant',
-    'coût inscription test civique',
-
-    // ===== QUESTIONS UTILISATEURS - DIFFICULTÉ =====
-    'le test civique est-il difficile',
-    'test civique difficile',
-    'test civique facile',
-    'niveau difficulté test civique',
-    'peut-on rater le test civique',
-    'taux échec test civique',
-    'pourcentage réussite test civique',
-
-    // ===== QUESTIONS UTILISATEURS - EN CAS D\'ÉCHEC =====
-    'que faire si on rate le test civique',
-    'échec test civique que faire',
-    'repasser le test civique',
-    'combien de fois peut-on passer le test civique',
-    'délai entre deux test civique',
-    'rattrapage test civique',
-
-    // ===== QUESTIONS UTILISATEURS - RÉSULTATS =====
-    'résultat test civique',
-    'quand reçoit-on les résultats test civique',
-    'délai résultat test civique',
-    'attestation réussite test civique',
-    'certificat test civique',
-    'validité test civique',
-    'durée validité test civique',
-
-    // ===== QUESTIONS UTILISATEURS - CONTENU =====
-    'quelles questions au test civique',
-    'que faut-il savoir pour le test civique',
-    'sujets test civique',
-    'thèmes test civique',
-    'programme test civique',
-    'révisions test civique',
-    'fiches test civique',
-    'cours test civique',
-
-    // ===== PRÉPARATION SPÉCIFIQUE =====
-    's\'entraîner au test civique en ligne',
-    'test civique en ligne gratuit',
-    'QCM test civique gratuit',
-    'exercices test civique PDF',
-    'annales test civique 2024',
-    'annales test civique 2025',
-    'corrigés test civique',
-    'questions types test civique',
-
-    // VARIANTES ET RECHERCHES LONGUE TRAÎNE
+    'loi immigration 2026',
+    'conditions naturalisation 2026',
+    'titre séjour étudiant',
+    'regroupement familial france',
     'comment réussir test civique',
-    'comment préparer test civique',
-    'comment passer test civique',
-    'quand passer test civique',
-    'difficulté test civique',
-    'taux réussite test civique',
-    'résultats test civique',
-    'attestation test civique',
-    'certificat test civique',
-
-    // PRÉFECTURE ET ADMINISTRATION
-    'préfecture naturalisation',
-    'rdv préfecture titre séjour',
-    'documents naturalisation',
-    'pièces justificatives naturalisation',
-    'formulaire naturalisation',
-
-    // ANGLAIS POUR RÉFÉRENCEMENT INTERNATIONAL
+    'où passer le test civique',
     'french citizenship test',
-    'france citizenship exam',
     'civic test france',
-    'integration test france',
-    'french naturalization test',
-    'residence permit france test',
   ],
   authors: [
     { name: 'Test Civique France' },
@@ -357,21 +82,11 @@ export const metadata: Metadata = {
     title: 'Test Civique France 2026 - Préparation Examen Naturalisation & Titre de Séjour',
     description: 'Préparez le test civique 2026 pour la naturalisation, carte de séjour pluriannuelle, titre de séjour étudiant. 800+ questions QCM conformes nouvelle loi immigration. Gratuit.',
     siteName: 'Test Civique France',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Test Civique France - Préparation Examen Naturalisation et Titre de Séjour 2026',
-        type: 'image/png',
-      },
-    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Test Civique France 2026 - Naturalisation & Titre de Séjour',
     description: 'Préparation test civique obligatoire. 800+ questions, examens blancs. Conforme nouvelle loi immigration. Taux réussite 95%.',
-    images: ['/twitter-image.png'],
     creator: '@testciviquefr',
     site: '@testciviquefr',
   },
@@ -396,10 +111,6 @@ export const metadata: Metadata = {
   },
   verification: {
     google: 'fkcq-fjlXitjuDI6R7G_hyCPdWM4JHbamdz-63pLXsk',
-    yandex: 'votre-code-yandex',
-    other: {
-      'msvalidate.01': 'votre-code-bing',
-    },
   },
   other: {
     'geo.region': 'FR',
@@ -592,6 +303,25 @@ export default function RootLayout({
         {/* Google AdSense verification */}
         <meta name="google-adsense-account" content="ca-pub-3632266086082682" />
 
+        {/* Google Consent Mode v2 — doit s'exécuter AVANT GTM/AdSense */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent', 'default', {
+                analytics_storage: 'denied',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 1500
+              });
+              gtag('set', 'ads_data_redaction', true);
+              gtag('set', 'url_passthrough', true);
+            `,
+          }}
+        />
+
         {/* Geo tags */}
         <meta name="geo.region" content="FR" />
         <meta name="geo.placename" content="France" />
@@ -613,24 +343,32 @@ export default function RootLayout({
           />
         </noscript>
 
+        <CookieBanner />
         <AnnouncementBanner />
         <PostHogProvider>
           <AuthProvider>{children}</AuthProvider>
         </PostHogProvider>
         <Analytics />
 
+        {/* AdSense auto-ads — charge après interactivité, respecte Consent Mode v2 */}
+        <Script
+          id="adsense-auto-ads"
+          strategy="afterInteractive"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3632266086082682"
+          crossOrigin="anonymous"
+        />
+
         {/* Scripts tiers différés de 5s pour ne pas bloquer LCP/TBT */}
         <Script id="deferred-analytics" strategy="lazyOnload">
           {`
             setTimeout(function() {
-              // GTM
+              // GTM + Google Ads : respectent Consent Mode v2, chargement inconditionnel autorisé
               (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
               new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-WFN8446P');
 
-              // Google Ads
               var gs=document.createElement('script');gs.async=true;
               gs.src='https://www.googletagmanager.com/gtag/js?id=AW-17797146827';
               document.head.appendChild(gs);
@@ -638,11 +376,19 @@ export default function RootLayout({
               function gtag(){dataLayer.push(arguments);}
               gtag('js',new Date());gtag('config','AW-17797146827');
 
-              // Ahrefs
-              var as=document.createElement('script');as.async=true;
-              as.src='https://analytics.ahrefs.com/analytics.js';
-              as.setAttribute('data-key','hFBKQGItWXZ9na7DwxsrZw');
-              document.head.appendChild(as);
+              // Ahrefs : ne respecte pas Consent Mode v2 → chargement conditionné au consentement analytics
+              try {
+                var raw = localStorage.getItem('tcf_cookie_consent_v1');
+                if (raw) {
+                  var prefs = JSON.parse(raw);
+                  if (prefs.analytics) {
+                    var as=document.createElement('script');as.async=true;
+                    as.src='https://analytics.ahrefs.com/analytics.js';
+                    as.setAttribute('data-key','hFBKQGItWXZ9na7DwxsrZw');
+                    document.head.appendChild(as);
+                  }
+                }
+              } catch(e) {}
             }, 5000);
           `}
         </Script>
