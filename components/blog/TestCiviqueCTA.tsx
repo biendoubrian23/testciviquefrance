@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, GraduationCap, FileCheck, Sparkles } from 'lucide-react';
+import { ArrowRight, GraduationCap, FileCheck, Sparkles, Lock } from 'lucide-react';
 
 export type TestCiviqueCTAVariant = 'inline' | 'final';
 
@@ -58,10 +58,11 @@ export default function TestCiviqueCTA({
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
-              href="/dashboard/entrainement"
+              href="/login"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 bg-white border border-primary-600 text-primary-700 text-sm font-semibold hover:bg-primary-50 transition-colors rounded"
             >
-              Faire le test blanc
+              <Lock className="w-4 h-4" />
+              Déjà inscrit ? Se connecter
             </Link>
           </div>
         </div>
@@ -95,7 +96,7 @@ export default function TestCiviqueCTA({
         </h2>
         <p className="text-base md:text-lg text-blue-50 mb-8 leading-relaxed">
           {subtitle ??
-            "Le test civique conditionne votre naturalisation, votre carte de résident 10 ans ou votre carte de séjour pluriannuelle. Avec 800+ questions QCM officielles, des examens blancs en conditions réelles et 95 % de réussite chez nos abonnés, vous mettez toutes les chances de votre côté."}
+            "Le test civique conditionne votre naturalisation, votre carte de résident 10 ans ou votre carte de séjour pluriannuelle. Avec 800+ questions QCM officielles et des examens blancs en conditions réelles, conformes au décret 2025-647, vous mettez toutes les chances de votre côté."}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
@@ -108,11 +109,11 @@ export default function TestCiviqueCTA({
             <ArrowRight className="w-5 h-5" />
           </Link>
           <Link
-            href="/dashboard/entrainement"
+            href="/login"
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-4 bg-primary-800/40 hover:bg-primary-800/60 backdrop-blur text-white font-semibold transition-colors rounded-lg text-base md:text-lg ring-1 ring-white/30"
           >
-            <FileCheck className="w-5 h-5" />
-            Faire le test blanc
+            <Lock className="w-5 h-5" />
+            Déjà inscrit ? Se connecter
           </Link>
         </div>
 

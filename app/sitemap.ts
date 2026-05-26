@@ -67,6 +67,37 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.6,
     },
+    {
+      url: `${baseUrl}/cours`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.7,
+    },
+    // Pages légales — indexées pour transparence et conformité AdSense
+    {
+      url: `${baseUrl}/mentions-legales`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/politique-confidentialite`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/cgu`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
+    {
+      url: `${baseUrl}/cgv`,
+      lastModified: currentDate,
+      changeFrequency: 'yearly',
+      priority: 0.4,
+    },
     // Note : onboarding exclu du sitemap car bloqué par robots.txt
   ];
 }

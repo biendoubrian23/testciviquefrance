@@ -13,8 +13,8 @@ const highlights = [
   },
   {
     number: '02',
-    title: 'Rejoignez 1,600+ apprenants',
-    description: 'Une communauté diverse qui réussit ensemble',
+    title: 'Des centaines d\'apprenants nous font confiance',
+    description: 'Une communauté diverse qui progresse ensemble',
   },
   {
     number: '03',

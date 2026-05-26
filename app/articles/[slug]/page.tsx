@@ -78,7 +78,7 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
   // Meta description optimisée pour le CTR — coupée proprement sur un mot entier
   const metaDescription = article.excerpt.length > 120
     ? `${article.excerpt.substring(0, 140).replace(/\s+\S*$/, '')}… ✅ Guide 2026 vérifié.`
-    : `${article.excerpt} ✅ 40 questions, 95% de réussite — Guide 2026 mis à jour.`;
+    : `${article.excerpt} ✅ 40 questions, conforme décret 2025-647 — Guide 2026 mis à jour.`;
 
   return {
     title: `${article.title} | Test Civique France`,

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Check, Target, Users, BookOpen, Award, ArrowRight, Star, Shield, Mail, FileText, User } from 'lucide-react';
+import { Check, Target, Users, BookOpen, Award, ArrowRight, Shield, Mail, FileText, User } from 'lucide-react';
 
 // Points forts de la plateforme
 const pointsForts = [
@@ -17,9 +17,9 @@ const pointsForts = [
 
 // Statistiques
 const stats = [
-  { value: '600+', label: 'Candidats préparés' },
-  { value: '95%', label: 'Taux de réussite' },
-  { value: '4.6/5', label: 'Note moyenne' },
+  { value: '800+', label: 'Questions officielles' },
+  { value: '5', label: 'Thèmes du programme' },
+  { value: 'Gratuit', label: 'Accès de base' },
   { value: '2026', label: 'Référentiel officiel' },
 ];
 
@@ -85,17 +85,10 @@ export default function AProposPage() {
                 ))}
               </div>
 
-              {/* Rating */}
+              {/* Conformité */}
               <div className="flex items-center justify-center gap-2 mt-8 animate-fade-in-up delay-300">
-                <div className="flex">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star
-                      key={star}
-                      className={`w-5 h-5 ${star <= 4 ? 'text-amber-400 fill-amber-400' : 'text-amber-400 fill-amber-100'}`}
-                    />
-                  ))}
-                </div>
-                <span className="text-gray-700 font-medium drop-shadow-sm">4.6 / 5</span>
+                <Shield className="w-5 h-5 text-emerald-600" />
+                <span className="text-gray-700 font-medium drop-shadow-sm">Conforme au décret n°2025-647 du 15 juillet 2025</span>
               </div>
             </div>
           </div>

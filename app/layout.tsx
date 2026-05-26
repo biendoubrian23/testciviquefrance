@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     default: 'Test Civique 2026 - Entraînement Gratuit Examen Civique | Test Civique France',
     template: '%s | Test Civique France 2026',
   },
-  description: 'Test civique 2026 : entraînement gratuit à l\'examen civique pour naturalisation française, carte de séjour et titre de séjour 10 ans. 800+ questions QCM, examens blancs. Taux de réussite 95%.',
+  description: 'Test civique 2026 : entraînement gratuit à l\'examen civique pour naturalisation française, carte de séjour et titre de séjour 10 ans. 800+ questions QCM officielles, examens blancs. Conforme décret 2025-647.',
   keywords: [
     'test civique',
     'test civique 2026',
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Test Civique France 2026 - Naturalisation & Titre de Séjour',
-    description: 'Préparation test civique obligatoire. 800+ questions, examens blancs. Conforme nouvelle loi immigration. Taux réussite 95%.',
+    description: 'Préparation test civique obligatoire. 800+ questions officielles, examens blancs. Conforme décret 2025-647 et nouvelle loi immigration.',
     creator: '@testciviquefr',
     site: '@testciviquefr',
   },

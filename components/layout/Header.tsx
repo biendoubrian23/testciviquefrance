@@ -38,6 +38,12 @@ export default function Header() {
               Tarifs
             </Link>
             <Link
+              href="/cours"
+              className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
+            >
+              Cours
+            </Link>
+            <Link
               href="/articles"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
             >
@@ -75,6 +81,7 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <button
+            type="button"
             className="md:hidden p-2 text-gray-700"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
@@ -104,6 +111,13 @@ export default function Header() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Tarifs
+              </Link>
+              <Link
+                href="/cours"
+                className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Cours
               </Link>
               <Link
                 href="/articles"

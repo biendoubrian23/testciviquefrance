@@ -18,7 +18,7 @@ const RecentArticles = dynamic(() => import('@/components/landing/RecentArticles
 
 export const metadata: Metadata = {
   title: 'Test Civique 2026 - Entraînement Gratuit Examen Civique Naturalisation | Test Civique France',
-  description: 'Test civique 2026 : entraînement gratuit à l\'examen civique pour naturalisation française, carte de séjour et titre de séjour 10 ans. 800+ questions QCM officielles, examens blancs illimités. Conforme décret 2025-647. Taux de réussite 95%.',
+  description: 'Test civique 2026 : entraînement gratuit à l\'examen civique pour naturalisation française, carte de séjour et titre de séjour 10 ans. 800+ questions QCM officielles, examens blancs illimités. Conforme décret 2025-647.',
   keywords: [
     'test civique',
     'test civique 2026',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Test Civique 2026 - Entraînement Gratuit Examen Civique Naturalisation',
-    description: 'Test civique 2026 : entraînement gratuit. 800+ questions QCM, examens blancs. Carte de séjour, naturalisation, titre de séjour 10 ans. Taux de réussite 95%.',
+    description: 'Test civique 2026 : entraînement gratuit. 800+ questions QCM officielles, examens blancs. Carte de séjour, naturalisation, titre de séjour 10 ans. Conforme décret 2025-647.',
     url: 'https://www.testciviquefrance.fr',
     type: 'website',
   },

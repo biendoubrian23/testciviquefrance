@@ -109,7 +109,7 @@ export default function Image() {
               fontWeight: '600',
             }}
           >
-            Taux de réussite 95%
+            Conforme 2026
           </div>
         </div>
       </div>

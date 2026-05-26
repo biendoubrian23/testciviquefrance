@@ -15,7 +15,7 @@ const carouselSlides = [
   {
     image: '/carousselle2_opt.webp',
     title: 'Prêt pour le jour J',
-    subtitle: '95% de taux de réussite',
+    subtitle: 'Méthode éprouvée, conforme au décret 2025-647',
   },
   {
     image: '/carousselle3_opt.webp',
@@ -179,17 +179,17 @@ export default function Hero() {
             <div className="mt-12 flex items-center gap-8 justify-center lg:justify-start text-sm text-gray-600 animate-fade-in-up delay-400 lg:delay-300">
               <div>
                 <div className="text-2xl font-bold text-gray-900">800+</div>
-                <div>Utilisateurs</div>
+                <div>Questions officielles</div>
               </div>
               <div className="h-12 w-px bg-gray-300"></div>
               <div>
-                <div className="text-2xl font-bold text-gray-900">95%</div>
-                <div>Taux de réussite</div>
+                <div className="text-2xl font-bold text-gray-900">5</div>
+                <div>Thèmes du programme</div>
               </div>
               <div className="h-12 w-px bg-gray-300"></div>
               <div>
-                <div className="text-2xl font-bold text-gray-900">800+</div>
-                <div>Questions</div>
+                <div className="text-2xl font-bold text-gray-900">2026</div>
+                <div>Référentiel officiel</div>
               </div>
             </div>
           </div>
