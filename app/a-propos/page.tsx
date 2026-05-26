@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import { Check, Target, Users, BookOpen, Award, ArrowRight, Shield, Mail, FileText, User } from 'lucide-react';
+import { Check, Target, Users, BookOpen, Award, ArrowRight, Shield, Mail, FileText, User, Star } from 'lucide-react';
 
 // Points forts de la plateforme
 const pointsForts = [
