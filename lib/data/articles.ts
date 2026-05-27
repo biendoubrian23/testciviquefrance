@@ -123,7 +123,7 @@ export const articles: Article[] = [
 ];
 
 // Import des articles SEO
-import { seoArticles, quotidienImmigrationArticles, viePratiqueArticles, bingSeoArticles2026, articlesMai2026Programmes } from './seo-articles';
+import { seoArticles, quotidienImmigrationArticles, viePratiqueArticles, bingSeoArticles2026, articlesMai2026Programmes, articlesEditoriaux2026 } from './seo-articles';
 
 // Import des articles SEO avec contenu complet
 import { articleContents, getAllSEOArticleSlugs } from './seo-content';
@@ -141,6 +141,7 @@ export const allArticlesIncludingScheduled: Article[] = [
   ...viePratiqueArticles,
   ...bingSeoArticles2026,
   ...articlesMai2026Programmes,
+  ...articlesEditoriaux2026,
 ].sort((a, b) => {
   const dateA = new Date(a.date.split('/').reverse().join('-'));
   const dateB = new Date(b.date.split('/').reverse().join('-'));
