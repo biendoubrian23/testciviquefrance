@@ -1,337 +1,343 @@
+/**
+ * Article 02 — Inscription à l'examen civique 2026 : centres agréés, prix, étapes
+ * Priorité Haute — pilier transactionnel
+ * Réécriture complète le 01/06/2026 à partir du brief 02 (sources officielles citées).
+ * NB : le slug d'origine est conservé pour préserver les liens internes et l'historique SEO.
+ */
+
 import { ArticleFullContent } from './articles-part1';
 
 export const inscriptionTestCiviqueContent: ArticleFullContent = {
   slug: 'inscription-test-civique-2026-ou-quand-comment-sinscrire',
 
-  introduction: `Comment s'inscrire au test civique en 2026 ? Depuis que le test de connaissance de la société française est devenu obligatoire, la question de l'inscription est l'une des plus posées par les étrangers en France. Où s'inscrire ? Quand prendre rendez-vous ? Quels documents fournir ? Combien de temps avant son rendez-vous en préfecture faut-il passer le test ?
-
-Ce guide pratique détaille toutes les étapes de l'inscription au test civique : la liste des centres agréés en France, les documents nécessaires, le coût (90 €), les délais à respecter et les astuces pour obtenir un créneau rapidement. Vous trouverez également des conseils pour choisir le meilleur centre et préparer votre dossier.
-
-L'inscription au test civique est une étape administrative indispensable avant de pouvoir passer l'examen. Ne la confondez pas avec la préparation au test : l'inscription concerne les démarches administratives, tandis que la préparation concerne vos révisions. Les deux sont essentielles pour réussir.`,
+  introduction: `Vous avez compris que **l'examen civique** est obligatoire depuis le 1er janvier 2026 pour obtenir une carte de séjour pluriannuelle, une carte de résident de 10 ans ou la nationalité française. Vient maintenant la question concrète : **où s'inscrire, combien ça coûte, et combien de temps faut-il prévoir ?** Ce guide vous explique pas à pas la procédure officielle telle qu'elle est décrite par [Service-Public.fr](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426) et par les deux opérateurs agréés — **France Éducation international (FEI)** et la **CCI Paris Île-de-France** — pour réserver votre place sans mauvaise surprise. Vous saurez quel document indispensable préparer (le **numéro AGDREF**), à quoi vous attendre côté tarif (autour de **70 € à 90 €** selon le centre) et pourquoi il faut vous y prendre **au moins deux mois à l'avance** si vous tenez à votre calendrier administratif. Un conseil de méthode : **entraînez-vous gratuitement avant de payer la session officielle** — on vous explique pourquoi à la fin.`,
 
   sections: [
     {
-      id: 'qui-doit-passer-test-civique',
-      title: 'Qui doit passer le test civique en 2026 ?',
-      content: `Le test civique est obligatoire pour plusieurs catégories d'étrangers en France :
+      id: 'centres-agrees-examen-civique',
+      title: 'Où passer l\'examen civique : les centres agréés en 2026',
+      content: `L'examen civique n'est pas organisé directement par les préfectures ni par l'OFII. Selon [Service-Public.fr](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426), il est passé dans un **centre agréé** par l'État, qui gère l'inscription, le passage de l'épreuve et la délivrance de l'attestation.
 
-**Obligatoire pour :**
-- Les candidats à la **naturalisation française** (par décret ou par mariage)
-- Les demandeurs de **carte de résident** (10 ans)
-- Les demandeurs de **carte de séjour pluriannuelle** (sauf exceptions)
-- Les titulaires d'un visa long séjour valant titre de séjour (**VLS-TS**) souhaitant passer en pluriannuel
+**Les deux opérateurs agréés au niveau national**
 
-**Exempté du test civique :**
-- Les réfugiés statutaires et bénéficiaires de la protection subsidiaire
-- Les mineurs étrangers
-- Les personnes de plus de 65 ans (exonération partielle possible)
-- Les titulaires d'un diplôme français de niveau bac+3 ou supérieur (sous conditions)
-- Les personnes en situation de handicap lourd (adaptation possible)
+Deux organismes sont agréés en 2026 pour faire passer l'examen civique sur l'ensemble du territoire :
 
-**Cas particuliers :**
-- Les conjoints de Français doivent passer le test pour la carte de résident, mais pas pour le premier titre "vie privée et familiale"
-- Les étudiants étrangers ne passent le test que s'ils demandent un changement de statut vers un titre pluriannuel
+1. **France Éducation international (FEI)** — opérateur public déjà bien connu pour ses certifications de français (DELF, DILF, TCF). Le portail dédié regroupe l'ensemble des informations pratiques pour les candidats : [france-education-international.fr — examen civique](https://www.france-education-international.fr/examen-civique/examen-civique-informations-pour-les-candidats).
+2. **CCI Paris Île-de-France** — la Chambre de commerce et d'industrie de Paris Île-de-France, agréée pour faire passer l'examen dans ses centres en région parisienne.
 
-**Vérifiez votre situation :** en cas de doute, contactez votre préfecture ou consultez la page officielle du ministère de l'Intérieur.`
+Concrètement, chaque opérateur dispose d'un **réseau de centres partenaires** répartis dans plusieurs régions. Vous choisissez librement le centre où vous souhaitez passer l'examen — **vous n'êtes pas tenu de passer l'examen dans le département où vous résidez**.
+
+**Comment trouver le centre le plus proche**
+
+- Consultez d'abord la page candidats du **FEI** (lien ci-dessus) : la liste à jour des centres y est tenue par l'opérateur lui-même.
+- Pour Paris et l'Île-de-France, vérifiez également l'offre de la **CCI Paris Île-de-France**.
+- La fiche [Service-Public.fr — comment passer l'examen civique (F39426)](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426) renvoie vers la documentation officielle et tient à jour les conditions générales.
+
+**Bon réflexe**
+
+Si votre centre de rattachement naturel est saturé (cas fréquent en Île-de-France), élargissez votre recherche à un département voisin ou à une métropole régionale. Les délais y sont souvent plus courts, et l'attestation a la **même valeur juridique** quel que soit le centre.`
     },
     {
-      id: 'ou-sinscrire-centres-agrees',
-      title: 'Où s\'inscrire : liste des centres agréés en France',
-      content: `Le test civique se passe dans des centres agréés par le ministère de l'Intérieur. Voici comment trouver un centre près de chez vous :
+      id: 'creer-espace-personnel',
+      title: 'Étape 1 — Créer votre espace personnel « Examen civique »',
+      content: `L'inscription se fait **en ligne**, via un espace personnel ouvert sur le portail de l'opérateur agréé. La procédure est décrite par [Service-Public.fr — pré-inscription à l'examen civique (R75549)](https://www.service-public.gouv.fr/particuliers/vosdroits/R75549).
 
-**Comment trouver un centre agréé :**
-1. Consultez la liste officielle sur le site du ministère de l'Intérieur
-2. Recherchez par département ou par ville
-3. Vérifiez les disponibilités en ligne ou par téléphone
+**Le déroulé type**
 
-**Principaux centres par région :**
+1. **Accéder au portail** de France Éducation international ou de la CCI Paris IDF selon le centre visé.
+2. **Saisir une adresse e-mail valide** — celle qui recevra votre convocation, vos résultats et votre attestation.
+3. **Recevoir un lien de confirmation** envoyé sur cette adresse.
+4. **Définir un mot de passe** pour accéder à votre espace personnel.
+5. **Compléter votre profil candidat** avec votre identité (nom, prénom, date de naissance, nationalité).
 
-**Île-de-France :** Paris (plusieurs centres), Créteil, Bobigny, Nanterre, Pontoise, Évry, Melun, Versailles
-**Auvergne-Rhône-Alpes :** Lyon, Grenoble, Saint-Étienne, Clermont-Ferrand
-**Provence-Alpes-Côte d'Azur :** Marseille, Nice, Toulon, Avignon
-**Occitanie :** Toulouse, Montpellier, Nîmes, Perpignan
-**Nouvelle-Aquitaine :** Bordeaux, Limoges, Poitiers, Pau
-**Grand Est :** Strasbourg, Metz, Nancy, Reims
-**Hauts-de-France :** Lille, Amiens, Beauvais
-**Bretagne :** Rennes, Brest, Quimper
-**Normandie :** Rouen, Caen
-**Pays de la Loire :** Nantes, Angers, Le Mans
-**Outre-Mer :** Fort-de-France, Cayenne, Saint-Denis (La Réunion)
+**Préparez ces informations avant de commencer**
 
-**Conseils pour choisir un centre :**
-- Les centres en province ont généralement des délais d'attente plus courts
-- Certains centres proposent des sessions le samedi (vérifiez)
-- Vous pouvez vous inscrire dans n'importe quel centre, pas forcément celui de votre département de résidence`
+- Une adresse e-mail à laquelle vous accédez régulièrement (les convocations partent par mail).
+- Votre identité telle qu'elle figure sur votre titre de séjour ou votre passeport.
+- Votre **numéro AGDREF** (on y revient dans la section suivante).
+- Un moyen de paiement (carte bancaire, en règle générale).
+
+**Astuce calendrier**
+
+Pensez à utiliser une adresse e-mail **stable** — pas une adresse temporaire. L'attestation est valable longtemps et vous pourriez avoir besoin de la retélécharger depuis votre espace personnel des mois plus tard, par exemple si la préfecture demande un duplicata.
+
+> ⚠️ La plateforme exacte et son URL peuvent évoluer. Avant de créer un compte, vérifiez systématiquement le point d'entrée officiel sur [Service-Public.fr — F39426](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426) ou sur le site de l'opérateur agréé.`
     },
     {
-      id: 'etapes-inscription',
-      title: 'Les étapes d\'inscription au test civique : guide pas à pas',
-      content: `Voici la procédure complète d'inscription :
+      id: 'numero-agdref',
+      title: 'Étape 2 — Le document indispensable : votre numéro AGDREF',
+      content: `Pour s'inscrire à l'examen civique, vous devez fournir votre **numéro AGDREF**. Sans ce numéro, l'inscription n'est tout simplement pas possible. C'est l'identifiant qui relie votre passage de l'examen à votre dossier administratif d'étranger en France.
 
-**Étape 1 : Rassembler les documents nécessaires**
-- Pièce d'identité (passeport ou titre de séjour en cours de validité)
-- Justificatif de domicile de moins de 3 mois
-- Moyen de paiement (carte bancaire pour le paiement en ligne de 90 €)
+**Qu'est-ce que le numéro AGDREF ?**
 
-**Étape 2 : Choisir un centre agréé**
-- Consultez la liste officielle sur le site du ministère
-- Vérifiez les disponibilités
-- Choisissez un créneau qui vous convient
+**AGDREF** signifie **Application de Gestion des Dossiers des Ressortissants Étrangers en France**. C'est le fichier de référence du ministère de l'Intérieur qui contient le dossier individuel de chaque étranger ayant déposé une demande de titre de séjour.
 
-**Étape 3 : S'inscrire en ligne**
-La plupart des centres proposent une inscription en ligne :
-- Créez un compte sur la plateforme du centre ou sur le portail national
-- Renseignez vos informations personnelles
-- Téléchargez les documents demandés
-- Payez les 90 € en ligne par carte bancaire
+Le numéro AGDREF, c'est **votre identifiant unique** dans ce système. Il vous suit pendant toute la durée de votre séjour en France, même si vous changez de titre, de département ou de situation.
 
-**Étape 4 : Recevoir la confirmation**
-- Vous recevez un email de confirmation avec :
-  - La date et l'heure de votre convocation
-  - L'adresse du centre
-  - Les documents à apporter le jour J
-  - Les consignes pratiques
+**Où trouver votre numéro AGDREF**
 
-**Étape 5 : Préparer le test**
-Entre l'inscription et le jour J, utilisez ce temps pour réviser. Entraînez-vous sur testciviquefrance.fr avec des QCM thématiques et des examens blancs.`
-    },
-    {
-      id: 'delais-anticiper',
-      title: 'Quand s\'inscrire : délais à anticiper',
-      content: `Le timing de votre inscription au test civique est important :
+Le numéro est imprimé sur **plusieurs documents officiels** que vous avez probablement déjà :
 
-**Délai moyen entre l'inscription et le passage :**
-- Île-de-France : 3-6 semaines d'attente
-- Grandes métropoles (Lyon, Marseille, Toulouse) : 2-4 semaines
-- Villes moyennes et petites villes : 1-3 semaines
+| Document | Où exactement |
+|---|---|
+| Carte de séjour (toutes catégories) | En bas du titre, libellé « N° AGDREF » ou « N° étranger » |
+| Récépissé de demande de titre de séjour | Sur la première page, sous votre identité |
+| Attestation de prolongation d'instruction | Dans l'en-tête du document |
+| Espace personnel ANEF | Dans la rubrique « Mon profil » |
+| Visa long séjour valant titre (VLS-TS) validé | Numéro communiqué après validation OFII |
 
-**Quand passer le test par rapport à votre démarche en préfecture :**
+**Format du numéro**
 
-Pour la naturalisation :
-- Passez le test **avant** de déposer votre dossier de naturalisation
-- L'attestation de réussite est un document obligatoire du dossier
-- Validité de l'attestation : 2 ans
+Le numéro AGDREF comporte généralement **10 chiffres**. Notez-le **sans espaces ni tirets** lors de la saisie en ligne — c'est la cause la plus fréquente d'erreurs d'inscription.
 
-Pour la carte de résident :
-- Passez le test **avant** votre rendez-vous en préfecture
-- Prévoyez au moins 2 mois d'avance pour être sûr d'avoir l'attestation à temps
+**Si vous ne le trouvez pas**
 
-Pour la carte pluriannuelle :
-- Passez le test **pendant la période de validité** de votre titre actuel
-- Ne attendez pas le dernier moment
-
-**Calendrier recommandé :**
-1. 4 mois avant votre démarche : commencez à vous préparer
-2. 3 mois avant : inscrivez-vous au test civique
-3. 2 mois avant : passez le test
-4. 1 mois avant : déposez votre dossier complet en préfecture ou sur ANEF
-
-**Astuce :** certains centres proposent des créneaux de dernière minute. Vérifiez régulièrement les disponibilités si vous êtes pressé.`
+- Cherchez dans votre espace personnel sur la plateforme [ANEF](https://administration-etrangers-en-france.interieur.gouv.fr/) — il y est toujours indiqué.
+- À défaut, contactez votre préfecture de rattachement pour le récupérer.
+- Ne « devinez » jamais un numéro : une erreur empêchera la délivrance de votre attestation au bon nom.`
     },
     {
       id: 'cout-paiement',
-      title: 'Coût de l\'inscription : 90 € et moyens de paiement',
-      content: `Le test civique coûte **90 euros**, payables lors de l'inscription :
+      title: 'Étape 3 — Combien ça coûte et comment payer',
+      content: `Contrairement à un timbre fiscal, **le tarif de l'examen civique n'est pas fixé uniformément par l'État**. C'est l'opérateur agréé qui fixe son tarif, encadré par l'administration. En 2026, le prix observé se situe **généralement autour de 70 € à 90 €** selon le centre.
 
-**Ce que couvrent les 90 € :**
-- L'inscription administrative
-- Le passage de l'examen (40 questions, 30 minutes)
-- La correction automatique
-- La délivrance de l'attestation de réussite (si score ≥ 24/40)
+**Pourquoi cette variation**
 
-**Moyens de paiement acceptés :**
-- Carte bancaire en ligne (la plupart des centres)
-- Carte bancaire sur place (certains centres)
-- Virement bancaire (rare, vérifiez avec le centre)
+Chaque centre agréé applique son propre barème pour couvrir l'organisation de la session : location de la salle, matériel (tablettes ou ordinateurs), surveillance, correction et délivrance de l'attestation. Le tarif exact vous est communiqué **au moment de la pré-inscription**, avant tout paiement.
 
-**Pas de paiement en espèces** dans la majorité des centres.
+**Ce que le tarif couvre**
 
-**En cas d'échec :**
-Vous devez payer à nouveau 90 € pour chaque nouveau passage. Il n'existe pas de tarif réduit pour les repasses.
+- L'organisation de l'épreuve dans un centre agréé.
+- La passation des **40 questions** en conditions surveillées.
+- La correction et le calcul de votre score.
+- La délivrance de l'**attestation de réussite** si vous obtenez le score requis.
 
-**Remboursement :**
-- Annulation plus de 48h avant : remboursement possible (selon le centre)
-- Annulation moins de 48h avant : généralement non remboursable
-- Absence le jour J : pas de remboursement
-- Report : possible sous conditions, contactez le centre
+**Modalités de paiement**
 
-**Aides financières :**
-Certaines associations d'aide aux migrants peuvent financer le test pour les personnes en difficulté financière. Renseignez-vous auprès de la CIMADE, France Terre d'Asile ou du CCAS de votre commune.`
+Le paiement se fait **à l'inscription**, le plus souvent **en ligne par carte bancaire** au moment où vous validez le créneau choisi. Certains centres acceptent d'autres moyens (virement, paiement sur place) — c'est l'opérateur qui en précise les modalités sur sa page candidats.
+
+**En cas d'échec : il faut repayer**
+
+Si vous n'atteignez pas le score requis (32 bonnes réponses sur 40, soit 80 %), vous pouvez vous réinscrire — mais **chaque nouvelle session est payante**. C'est précisément pour cela que la préparation en amont est cruciale (voir la dernière section).
+
+**Aides possibles**
+
+Il n'existe pas d'aide nationale pour financer l'examen civique. En cas de difficulté financière, contactez le CCAS de votre commune ou les associations d'aide aux étrangers (CIMADE, France Terre d'Asile, La Cimade locale) : certaines ont des dispositifs ponctuels.
+
+> ⚠️ Vérifiez le prix exact **avant** de valider votre paiement sur la page candidats de votre centre. Les sources officielles évoluent et le tarif peut être ajusté chaque année.`
     },
     {
-      id: 'documents-jour-j',
-      title: 'Documents à apporter le jour du test civique',
-      content: `Le jour de l'examen, vous devez impérativement présenter :
+      id: 'delais-anticiper',
+      title: 'Étape 4 — Délais et disponibilité : anticipez au moins deux mois',
+      content: `L'erreur classique : s'inscrire à l'examen civique **trop tard**, juste avant le dépôt du dossier en préfecture. Les places sont limitées et les délais peuvent dépasser plusieurs semaines selon les régions.
 
-**Documents obligatoires :**
-1. **Pièce d'identité en cours de validité** : passeport, titre de séjour ou récépissé de demande de titre de séjour
-2. **Convocation** : l'email de confirmation ou la convocation imprimée
-3. **Justificatif de paiement** : reçu de paiement des 90 €
+**Combien de temps avant le dépôt de votre dossier ?**
 
-**Documents refusés :**
-- Carte d'identité consulaire seule (non acceptée dans certains centres)
-- Photocopie de passeport (il faut l'original)
-- Permis de conduire (ne vaut pas pièce d'identité)
+Le minimum raisonnable, c'est **2 mois entre votre inscription et le dépôt de votre dossier** auprès de la préfecture ou via [ANEF](https://administration-etrangers-en-france.interieur.gouv.fr/). Pourquoi 2 mois ?
 
-**Sans pièce d'identité valide, vous ne pourrez PAS passer le test.** Le personnel du centre ne fera aucune exception.
+1. Il faut **3 à 6 semaines** d'attente pour obtenir un créneau dans un centre agréé, surtout en Île-de-France.
+2. Il faut compter **quelques jours** pour recevoir l'attestation de réussite après l'épreuve.
+3. Il faut une marge en cas d'imprévu (maladie le jour J, échec, formulaire administratif à corriger).
 
-**Conseils pratiques :**
-- Arrivez 15-20 minutes avant l'heure de convocation
-- Mettez votre téléphone en mode silencieux (il sera interdit pendant le test)
-- Apportez un stylo (pour signer les documents d'émargement)
-- Pas besoin d'apporter de matériel : le test se passe sur tablette ou ordinateur fourni
+**Pourquoi la pression est forte sur les centres parisiens**
 
-**Ce qui est INTERDIT pendant le test :**
-- Téléphone portable (même éteint sur le bureau)
-- Notes, livres, fiches de révision
-- Calculatrice
-- Tout appareil électronique personnel`
+L'Île-de-France concentre une part très significative des demandes de titres pluriannuels. Les créneaux se remplissent rapidement, en particulier :
+
+- À la **rentrée de septembre** (renouvellements massifs).
+- En **janvier-février** (déposants qui démarrent leur année administrative).
+- Avant les **vacances scolaires** (les candidats anticipent leurs absences).
+
+**Stratégies pour obtenir un créneau rapidement**
+
+1. **Élargir la zone géographique** — Paris saturé ? Essayez la grande couronne, Rouen, Reims, Orléans. L'attestation a la même valeur partout.
+2. **Consulter plusieurs centres** — chaque opérateur a son propre planning. Ouvrez un compte dans plusieurs et comparez.
+3. **Surveiller les ouvertures de créneaux** — beaucoup de centres publient leurs nouvelles dates en début de semaine.
+4. **Activer les notifications** si la plateforme le permet.
+5. **Préférer l'après-midi ou le samedi** — les créneaux du matin sont les plus disputés.
+
+**Quand passer l'examen par rapport à votre projet**
+
+| Votre objectif | Passez l'examen civique idéalement |
+|---|---|
+| 1ʳᵉ carte pluriannuelle | Dès le 8ᵉ-9ᵉ mois de votre premier titre temporaire |
+| Carte de résident 10 ans | Au moins 2 mois avant le dépôt |
+| Naturalisation française | Avant la constitution du dossier — l'attestation est une pièce obligatoire |
+
+Pour aller plus loin sur la chronologie des démarches, voir notre guide [Examen civique obligatoire — carte de séjour pluriannuelle 2026](/articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026).`
     },
     {
-      id: 'inscription-anef-lien',
-      title: 'Inscription via ANEF : le lien avec votre demande de titre',
-      content: `Si vous faites votre demande de titre de séjour via la plateforme ANEF (Administration Numérique pour les Étrangers en France), voici comment le test civique s'intègre :
+      id: 'jour-de-examen',
+      title: 'Étape 5 — Le jour J : déroulé, format, ce qu\'il faut apporter',
+      content: `Une fois votre créneau réservé, vous recevez une **convocation par e-mail** précisant la date, l'heure, l'adresse exacte du centre et les documents à présenter. Voici à quoi vous attendre.
 
-**L'inscription au test civique est indépendante d'ANEF :**
-Vous ne pouvez pas vous inscrire au test civique directement sur ANEF. L'inscription se fait séparément, via le site du centre agréé de votre choix.
+**Le format de l'épreuve**
 
-**Comment joindre l'attestation à votre dossier ANEF :**
-1. Passez le test civique et obtenez votre attestation de réussite
-2. Connectez-vous à votre espace ANEF
-3. Dans votre demande en cours, ajoutez l'attestation aux pièces justificatives
-4. L'attestation est un PDF avec un QR code de vérification
+Selon la fiche officielle [Service-Public.fr — F39426](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426) et la documentation [France Éducation international](https://www.france-education-international.fr/examen-civique/examen-civique-informations-pour-les-candidats) :
 
-**Si votre dossier ANEF est déjà déposé sans l'attestation :**
-- La préfecture peut vous demander de compléter votre dossier
-- Vous recevrez une demande de pièce complémentaire
-- Vous aurez généralement 1 mois pour fournir l'attestation
+- **40 questions à choix multiple** (QCM), entièrement en français.
+- L'épreuve porte sur **5 thèmes** : valeurs et symboles de la République, institutions, droits et devoirs, histoire de France, vie en société.
+- **Score requis : 32 bonnes réponses sur 40**, soit **80 %**.
+- L'épreuve se déroule **sur tablette ou ordinateur**, en conditions surveillées.
+- La **durée précise** est indiquée par votre centre dans votre convocation (compter environ 45 minutes utiles).
 
-**Validité de l'attestation :**
-L'attestation de réussite au test civique est valable **2 ans** à compter de la date de passage. Planifiez votre démarche en conséquence : si votre dossier de naturalisation prend du temps, l'attestation ne doit pas expirer avant la décision.`
+> ⚠️ La durée exacte de l'épreuve peut varier d'un centre à l'autre. Référez-vous à votre convocation officielle, pas aux estimations qui circulent en ligne.
+
+**Documents à apporter le jour J**
+
+- **Une pièce d'identité en cours de validité** (passeport, titre de séjour ou récépissé). C'est **obligatoire** et non négociable — sans pièce d'identité valide, l'accès à la salle est refusé.
+- **Votre convocation** (imprimée ou sur smartphone selon ce que demande le centre).
+- Le **justificatif de paiement** si votre centre l'exige.
+
+**Ce qui est interdit pendant l'épreuve**
+
+- Téléphone portable, même éteint sur la table.
+- Notes manuscrites, livres, fiches.
+- Calculatrice, montre connectée.
+- Tout appareil électronique personnel.
+
+**Le résultat**
+
+Le score est calculé automatiquement. Selon les centres, vous l'obtenez **à l'issue de l'épreuve** ou dans les **jours qui suivent**, par e-mail dans votre espace personnel.
+
+**Si vous réussissez (≥ 32/40)**
+
+Vous recevez votre **attestation de réussite à l'examen civique**, en format PDF, à télécharger depuis votre espace personnel. C'est ce document que vous joindrez à votre dossier de carte pluriannuelle, de carte de résident ou de naturalisation.
+
+> ⚠️ La durée exacte de validité de l'attestation peut être précisée selon votre démarche. Vérifiez-la sur [Service-Public.fr — F39426](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426) ou demandez confirmation à votre préfecture avant le dépôt du dossier.`
     },
     {
-      id: 'astuces-obtenir-creneau',
-      title: 'Astuces pour obtenir un créneau rapidement',
-      content: `Les créneaux de test civique partent vite, surtout en Île-de-France. Voici des astuces :
+      id: 'preparation-reussir-premier-coup',
+      title: 'Étape 6 — Bien se préparer pour réussir du premier coup',
+      content: `C'est la partie la plus stratégique de votre démarche, et celle où vous pouvez **éviter de payer une deuxième session**. Quelques heures d'entraînement bien menées suffisent à transformer un passage hasardeux en passage maîtrisé.
 
-**1. Inscrivez-vous tôt le matin**
-Les nouveaux créneaux sont souvent publiés en début de semaine. Connectez-vous le lundi matin pour avoir le plus de choix.
+**Pourquoi s'entraîner avant de payer la session officielle**
 
-**2. Élargissez votre zone géographique**
-Si Paris est complet, essayez Créteil, Bobigny ou même Rouen (1h de train). Vous pouvez passer le test dans n'importe quel centre en France.
+Imaginez le scénario : vous payez 70 € à 90 €, vous bloquez une demi-journée, vous patientez 6 semaines pour votre créneau, vous découvrez l'épreuve au moment du test… et vous obtenez 28/40. **Vous devez tout recommencer** : payer à nouveau, attendre un nouveau créneau, retarder votre dépôt en préfecture.
 
-**3. Consultez plusieurs centres**
-Chaque centre gère son propre planning. En vérifiant 3-4 centres, vous augmentez vos chances de trouver un créneau rapide.
+C'est le scénario que la grande majorité des candidats peut **éviter** en faisant un seul examen blanc en conditions réelles **avant** de payer la session officielle.
 
-**4. Activez les alertes**
-Certains centres proposent une liste d'attente avec notification par email quand un créneau se libère.
+**Notre méthode en 4 étapes**
 
-**5. Évitez les périodes de forte demande**
-- Septembre-octobre : forte demande (rentrée, renouvellements)
-- Janvier-février : forte demande (après les fêtes, résolutions)
-- Été : demande plus faible, créneaux plus disponibles
+1. **Faites un examen blanc complet** (40 questions, 45 minutes chronométrées) — vous identifiez immédiatement vos points faibles parmi les 5 thèmes.
+2. **Révisez ciblé** sur les 1 ou 2 thèmes les plus fragiles — pas la peine de tout réviser uniformément.
+3. **Refaites un examen blanc** une fois la révision faite. Si vous atteignez 34/40 ou plus en conditions blanches, vous êtes prêt avec une marge de sécurité.
+4. **Réservez votre session officielle** seulement à ce stade-là.
 
-**6. Soyez flexible sur les horaires**
-Les créneaux en matinée sont les plus demandés. Choisissez l'après-midi ou le samedi si disponible.
+**Combien de temps de préparation prévoir**
 
-**7. En cas d'urgence :**
-Appelez directement le centre pour expliquer votre situation (rendez-vous en préfecture imminent). Certains centres peuvent débloquer un créneau en urgence.`
+| Votre niveau de départ | Temps d'entraînement |
+|---|---|
+| Bonne connaissance de la France et des institutions | 2 à 3 semaines (≈ 1 h/jour) |
+| Connaissance moyenne, quelques lacunes en histoire | 4 à 6 semaines (≈ 1 h/jour) |
+| Peu familier avec les institutions françaises | 6 à 8 semaines (≈ 1 h 30/jour) |
+
+**Préparez-vous gratuitement sur testciviquefrance.fr**
+
+Notre plateforme propose **800+ questions** organisées par thème, des **examens blancs en conditions réelles** (40 questions, chronomètre, score immédiat), et des **corrections détaillées** pour chaque question. L'accès de base est **gratuit** — vous pouvez situer votre niveau avant de payer la session officielle.
+
+> 🎯 **Avant de payer 70 € à 90 € votre session officielle, testez-vous gratuitement.** → [Commencer l'entraînement gratuit](/signup)
+
+Pour approfondir le contenu du programme, voir aussi notre guide [Examen civique obligatoire 2026 : qui est concerné, format, dispenses](/articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026).`
     }
   ],
 
-  conclusion: `L'inscription au test civique en 2026 est une démarche simple mais qui nécessite de l'anticipation. Prévoyez de vous inscrire au moins 2-3 mois avant votre rendez-vous en préfecture pour être sûr d'avoir votre attestation à temps. Le test coûte 90 €, se passe dans un centre agréé, et nécessite une pièce d'identité valide. N'oubliez pas : l'inscription, c'est l'administratif. La préparation, c'est votre entraînement. Commencez à réviser dès maintenant sur testciviquefrance.fr pour être prêt le jour J.`,
+  conclusion: `S'inscrire à l'examen civique en 2026, c'est une démarche **en ligne**, qui passe par un **centre agréé** (France Éducation international ou CCI Paris Île-de-France), qui exige votre **numéro AGDREF**, et qui coûte **généralement entre 70 € et 90 €** selon le centre. Le piège classique, c'est le retard : **prévoyez au moins deux mois** entre l'inscription et le dépôt de votre dossier en préfecture. Et avant de payer la session officielle, faites-vous un cadeau de bon sens : **entraînez-vous gratuitement** pour valider votre niveau. C'est la différence entre une session unique réussie et une série de tentatives coûteuses. Commencez maintenant sur [testciviquefrance.fr](/signup) — examen blanc en conditions réelles, score immédiat, et bilan par thème pour cibler vos révisions.`,
 
   faq: [
     {
-      question: 'Comment s\'inscrire au test civique en 2026 ?',
-      answer: 'L\'inscription se fait en ligne sur le site d\'un centre agréé par le ministère de l\'Intérieur. Choisissez un centre, créez un compte, renseignez vos informations, payez 90 € et recevez votre convocation par email.'
+      question: 'Combien coûte l\'inscription à l\'examen civique en 2026 ?',
+      answer: 'Le tarif est fixé par chaque centre agréé et n\'est pas uniforme à l\'échelle nationale. En 2026, il se situe généralement entre 70 € et 90 €. Le prix exact est communiqué au moment de la pré-inscription en ligne, avant tout paiement. Le tarif couvre l\'inscription, le passage de l\'épreuve et la délivrance de l\'attestation de réussite.'
     },
     {
-      question: 'Combien coûte l\'inscription au test civique ?',
-      answer: 'L\'inscription au test civique coûte 90 euros. Ce montant couvre l\'inscription, le passage de l\'examen et la délivrance de l\'attestation de réussite.'
+      question: 'Où peut-on passer l\'examen civique ?',
+      answer: 'Dans un centre agréé par l\'État. Les deux opérateurs agréés au niveau national sont **France Éducation international (FEI)** et la **CCI Paris Île-de-France**, qui disposent chacun d\'un réseau de centres partenaires. Vous pouvez vous inscrire dans n\'importe quel centre, indépendamment de votre département de résidence. Consultez la liste à jour sur la fiche [Service-Public.fr F39426](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426).'
     },
     {
-      question: 'Où se trouvent les centres agréés pour le test civique ?',
-      answer: 'Les centres agréés sont répartis dans toute la France : Paris, Lyon, Marseille, Toulouse, Bordeaux, Strasbourg, Lille, Nantes, et de nombreuses autres villes. Consultez la liste officielle sur le site du ministère de l\'Intérieur.'
+      question: 'Faut-il le numéro AGDREF pour s\'inscrire à l\'examen civique ?',
+      answer: 'Oui, le numéro AGDREF est obligatoire à l\'inscription. C\'est votre identifiant unique dans le système d\'information du ministère de l\'Intérieur. Vous le trouverez sur votre titre de séjour, votre récépissé, votre attestation de prolongation d\'instruction, ou dans votre espace personnel ANEF. Il comporte généralement 10 chiffres.'
     },
     {
-      question: 'Combien de temps à l\'avance faut-il s\'inscrire au test civique ?',
-      answer: 'Prévoyez 2-3 mois d\'avance. Le délai entre l\'inscription et le passage varie de 1 à 6 semaines selon le centre et la période de l\'année.'
+      question: 'Combien de temps à l\'avance faut-il s\'inscrire à l\'examen civique ?',
+      answer: 'Au minimum deux mois avant le dépôt de votre dossier en préfecture (ou via ANEF). Le délai d\'attente pour obtenir un créneau peut aller de 3 à 6 semaines en Île-de-France, plus court en province. Ajoutez quelques jours pour la réception de l\'attestation après l\'épreuve, et prévoyez une marge en cas d\'imprévu (échec, maladie, formulaire à corriger).'
     },
     {
-      question: 'Quels documents faut-il pour s\'inscrire au test civique ?',
-      answer: 'Pour l\'inscription : pièce d\'identité, justificatif de domicile et carte bancaire. Le jour du test : pièce d\'identité originale, convocation et justificatif de paiement.'
+      question: 'Peut-on s\'inscrire à l\'examen civique sans dossier de naturalisation déjà déposé ?',
+      answer: 'Oui. L\'inscription à l\'examen civique est **indépendante** du dépôt de votre dossier. Il est même recommandé de passer l\'examen **avant** de constituer votre dossier complet, car l\'attestation de réussite est une **pièce obligatoire** pour la naturalisation, la carte de résident et la première carte pluriannuelle. L\'attestation pourra ensuite être jointe à votre dossier dans votre espace ANEF ou lors du rendez-vous en préfecture.'
     },
     {
-      question: 'Peut-on s\'inscrire au test civique via ANEF ?',
-      answer: 'Non, l\'inscription au test civique se fait directement auprès d\'un centre agréé, indépendamment de vos démarches sur ANEF. L\'attestation de réussite sera ensuite ajoutée à votre dossier ANEF.'
+      question: 'Que se passe-t-il si j\'échoue à l\'examen civique ?',
+      answer: 'Vous pouvez vous réinscrire à une nouvelle session. Il n\'y a pas de limite au nombre de tentatives, mais **chaque nouvelle session est payante**. Un délai minimal peut être imposé entre deux passages — vérifiez les conditions exactes en vigueur sur [Service-Public.fr F39426](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426). En attendant, votre titre de séjour en cours reste valide, mais votre dossier de titre pluriannuel ou de naturalisation ne pourra pas être instruit sans l\'attestation de réussite.'
     },
     {
-      question: 'L\'attestation du test civique est-elle valable combien de temps ?',
-      answer: 'L\'attestation de réussite au test civique est valable 2 ans à compter de la date de passage du test.'
+      question: 'Peut-on passer l\'examen civique dans un département autre que celui où on réside ?',
+      answer: 'Oui. Vous êtes libre de choisir le centre agréé qui vous convient, où que vous résidiez en France. L\'attestation de réussite a la même valeur juridique quel que soit le centre. Si votre département est saturé (cas fréquent en Île-de-France), élargir votre recherche à une métropole régionale ou à un département voisin peut diviser le délai d\'attente par deux ou trois.'
     },
     {
-      question: 'Peut-on s\'inscrire dans un centre hors de son département ?',
-      answer: 'Oui, vous pouvez passer le test civique dans n\'importe quel centre agréé en France, quel que soit votre département de résidence.'
+      question: 'L\'inscription se fait-elle directement sur ANEF ?',
+      answer: 'Non. **L\'inscription à l\'examen civique se fait sur le portail de l\'opérateur agréé** (France Éducation international ou CCI Paris IDF), pas sur ANEF. ANEF est la plateforme où vous **déposez votre demande de titre de séjour** et où vous **joindrez ensuite votre attestation de réussite** comme pièce justificative. Les deux démarches sont distinctes.'
     },
     {
-      question: 'Que faire si tous les créneaux sont complets ?',
-      answer: 'Élargissez votre zone de recherche à d\'autres centres, consultez régulièrement les disponibilités, et appelez directement le centre pour signaler votre urgence.'
+      question: 'Peut-on annuler une session payée et se faire rembourser ?',
+      answer: 'Les conditions d\'annulation et de remboursement dépendent du centre agréé qui organise votre session. Elles sont précisées dans les conditions générales acceptées au moment du paiement. En règle générale, une annulation suffisamment anticipée donne droit à un remboursement ou à un report ; une absence non justifiée le jour J n\'est pas remboursée. Vérifiez les modalités précises de votre centre avant de payer.'
     },
     {
-      question: 'Peut-on annuler et se faire rembourser ?',
-      answer: 'Une annulation plus de 48h avant le test peut donner droit à un remboursement selon le centre. Moins de 48h ou absence le jour J : généralement pas de remboursement.'
+      question: 'Comment maximiser mes chances de réussite du premier coup ?',
+      answer: 'Faites un examen blanc complet **avant** de payer la session officielle pour identifier vos points faibles parmi les 5 thèmes. Révisez ensuite de manière ciblée pendant 2 à 6 semaines selon votre niveau de départ. Refaites un examen blanc 48 h avant la session officielle : si vous obtenez 34/40 ou plus en conditions chronométrées, vous êtes prêt avec une marge de sécurité. Vous pouvez vous entraîner gratuitement sur [testciviquefrance.fr](/signup) avec 800+ questions et des examens blancs en conditions réelles.'
     }
   ],
 
   keywords: [
+    'inscription examen civique 2026',
     'inscription test civique 2026',
-    'comment s inscrire test civique',
-    'centre agréé test civique',
-    'où passer test civique',
+    's\'inscrire examen civique',
+    'centre agréé examen civique',
+    'où passer examen civique',
+    'France Éducation international examen civique',
+    'CCI Paris examen civique',
+    'prix examen civique 2026',
+    'coût examen civique',
+    'numéro AGDREF examen civique',
+    'pré-inscription examen civique',
+    'espace personnel examen civique',
+    'délai inscription examen civique',
+    'convocation examen civique',
+    'examen civique naturalisation inscription',
+    'examen civique carte de séjour inscription',
     'inscription test civique en ligne',
-    'test civique rendez-vous',
-    'coût inscription test civique',
-    'documents test civique',
-    'convocation test civique',
-    'délai inscription test civique',
-    'test civique préfecture',
-    'inscription test civique Paris',
-    'test civique ANEF',
-    'attestation test civique',
-    'centres test civique France',
-    'quand passer test civique',
-    'test civique obligatoire 2026',
-    'planning test civique',
-    'créneau test civique',
-    'inscrire examen civique naturalisation',
-    'test connaissance société française inscription'
+    'créneau examen civique Paris',
+    'centres agréés FEI',
+    'attestation examen civique téléchargement',
+    'modalités paiement examen civique',
+    '40 questions QCM examen civique inscription',
+    'examen civique combien à l\'avance',
+    'examen civique anticiper deux mois',
+    'examen civique sans rendez-vous préfecture'
   ],
 
   sources: [
     {
-      title: 'Ministère de l\'Intérieur - Liste des centres agréés',
-      url: 'https://www.immigration.interieur.gouv.fr/Integration-et-Acces-a-la-nationalite/test-civique/centres',
+      title: 'Service-Public.fr — Comment passer l\'examen civique (fiche F39426)',
+      url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F39426',
       type: 'official',
-      description: 'Liste officielle des centres agréés pour passer le test civique en France.'
+      description: 'Fiche officielle Service-Public.fr décrivant les conditions, centres agréés, modalités d\'inscription et déroulé de l\'examen civique.'
     },
     {
-      title: 'Service-Public.fr - Test civique',
-      url: 'https://www.service-public.fr/particuliers/vosdroits/F35495',
+      title: 'Service-Public.fr — Pré-inscription mention naturalisation et examen civique (R75549)',
+      url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/R75549',
       type: 'official',
-      description: 'Informations officielles sur les conditions et l\'inscription au test civique.'
+      description: 'Téléservice et procédure officielle de pré-inscription en ligne à l\'examen civique.'
     },
     {
-      title: 'ANEF - Plateforme de dépôt des demandes',
+      title: 'France Éducation international — Examen civique, informations pour les candidats',
+      url: 'https://www.france-education-international.fr/examen-civique/examen-civique-informations-pour-les-candidats',
+      type: 'official',
+      description: 'Page candidats de l\'opérateur agréé France Éducation international : centres, calendrier, modalités pratiques.'
+    },
+    {
+      title: 'Administration Numérique pour les Étrangers en France (ANEF)',
       url: 'https://administration-etrangers-en-france.interieur.gouv.fr/',
       type: 'official',
-      description: 'Plateforme officielle pour les démarches titre de séjour en ligne.'
-    },
-    {
-      title: 'InfoMigrants - S\'inscrire au test civique',
-      url: 'https://www.infomigrants.net/fr/post/69750/comment-sinscrire-au-test-civique-en-france',
-      type: 'article',
-      description: 'Guide pratique pour l\'inscription au test civique.'
+      description: 'Plateforme officielle du ministère de l\'Intérieur pour déposer les demandes de titre de séjour et joindre les pièces justificatives, dont l\'attestation d\'examen civique.'
     }
   ]
 };

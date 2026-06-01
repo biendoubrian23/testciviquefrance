@@ -51,7 +51,7 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 | Brief | Sujet | Priorité | Conversion abo |
 |---|---|---|---|
 | [01](01-examen-civique-obligatoire-carte-sejour.md) | Examen civique obligatoire — carte de séjour & résident | 🔴 Haute | Forte |
-| [02](02-inscription-examen-civique.md) | Inscription examen civique — centres agréés, prix | 🔴 Haute | Forte |
+| ~~02~~ | ✅ Inscription examen civique — **rédigé le 01/06/2026** (MAJ de `inscription-test-civique-2026-ou-quand-comment-sinscrire`) | Fait |
 | [04](04-rdv-prefecture-marche-noir-creneaux.md) | RDV préfecture introuvable — marché noir des créneaux | 🟠 Moyenne | Faible (trafic) |
 | [06](06-examen-civique-exemples-questions.md) | Examen civique — exemples de questions corrigées | 🟠 Moyenne | Forte |
 | ~~07~~ | ✅ Frais d'inscription universités hors-UE — **rédigé le 25/05/2026** | Fait |
@@ -74,8 +74,8 @@ Suivre cet ordre, cocher au fur et à mesure. Rythme : **2 à 3 articles / semai
 1. [x] **05** — Hausse des taxes titres de séjour · ✅ rédigé le 22/05/2026, à committer/publier
 2. [x] **07** — Frais université hors-UE · ✅ rédigé le 25/05/2026
 3. [x] **01** — Examen civique obligatoire (carte de séjour) · ✅ rédigé le 26/05/2026
-4. [ ] **MAJ-A** — ANEF bloqué + décision Conseil d'État · 🔴 actu
-5. [ ] **02** — Inscription examen civique · pilier transactionnel
+4. [x] **MAJ-A** — ANEF bloqué + décision Conseil d'État · ✅ rédigé le 28/05/2026
+5. [x] **02** — Inscription examen civique · ✅ rédigé le 01/06/2026 (MAJ de l'article existant pour préserver le slug et les liens internes)
 6. [ ] **08** — Coût total de la naturalisation 2026 (timbre 255 €)
 7. [ ] **06** — Examen civique : exemples de questions corrigées
 8. [ ] **03** — Niveau B2 naturalisation · 🔄 MAJ

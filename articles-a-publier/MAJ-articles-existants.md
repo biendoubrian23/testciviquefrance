@@ -9,12 +9,6 @@ le corps de l'article, chaque chiffre vérifié sur la source officielle.
 
 ---
 
-## A. ANEF dossier bloqué + décision du Conseil d'État du 5 mai 2026 — 🔴 actu chaude
-- **Article existant :** `anef-dossier-bloque-en-attente-2026-debloquer-relancer`
-- **À ajouter :** une section « Décision du Conseil d'État du 5 mai 2026 » — l'État a été enjoint de corriger les dysfonctionnements de l'ANEF ; traduire la décision en conseils pratiques + modèle de courrier de relance citant la décision.
-- ⚠️ **Vérifier** : numéro et date exacts de la décision (la recherche source indique « n° 502860, 5 mai 2026 » — à confirmer sur le site du Conseil d'État avant toute mention).
-- **Sources à citer :** Conseil d'État (décision), Défenseur des droits.
-
 ## B. Échange de permis étranger — désormais payant 40 € — 🟠
 - **Articles existants :** `echanger-permis-conduire-etranger-france-2026-ants-demarches` et `echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete`
 - **À mettre à jour :** l'échange d'un permis étranger serait devenu payant (~40 €) ; permis international 100 % en ligne via ANTS.

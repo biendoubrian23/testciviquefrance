@@ -135,6 +135,36 @@ Certaines préfectures permettent de prendre un RDV "**point d\'étape dossier**
 **Délai global : prévoyez 6 à 8 semaines** entre les 3 étapes avant de passer aux recours juridiques.`,
     },
     {
+      id: 'decision-conseil-etat-mai-2026',
+      title: 'Décision du Conseil d\'État du 5 mai 2026 (n° 502860) : l\'État sommé de corriger l\'ANEF',
+      content: `Le **5 mai 2026**, le Conseil d\'État — réuni en formation d\'**Assemblée**, sa formation la plus solennelle — a rendu une décision historique pour tous les usagers dont le dossier est bloqué sur l\'ANEF. Saisi par **neuf associations** (Cimade, France Terre d\'Asile, Secours Catholique, Forum Réfugiés, JRS France, Emmaüs Solidarité, Groupe SOS Solidarités, Fédération des Acteurs de la Solidarité, Coallia), le Conseil d\'État a **enjoint à l\'État de prendre les mesures nécessaires pour mettre fin aux dysfonctionnements de la plateforme** portant atteinte au droit au séjour des ressortissants étrangers.
+
+**Les 4 injonctions concrètes de la décision n° 502860 :**
+
+| Injonction | Délai accordé à l\'État |
+|---|---|
+| **1. Délivrer les attestations de prolongation d\'instruction** en temps utile pour éviter toute rupture dans le droit au séjour | 6 mois |
+| **2. Faire figurer clairement** sur les attestations les droits sociaux et professionnels attachés (droit au travail, CAF, Sécurité sociale) | 6 mois |
+| **3. Permettre de signaler et corriger les erreurs** du dossier (adresse, pièce manquante, titre précédent non enregistré) pendant l\'instruction | 6 mois |
+| **4. Permettre le dépôt de plusieurs demandes simultanées** ou successives pour différents motifs, actuellement bloqué techniquement | 12 mois |
+
+**Ce que cette décision confirme sur vos droits actuels :**
+
+1. **L\'État reconnaît ses dysfonctionnements**. Le Conseil d\'État a posé un principe à portée générale : tout service public numérique doit garantir un accès effectif aux droits des usagers. Les blocages techniques de l\'ANEF ne sont **pas une excuse légale** pour dépasser les délais d\'instruction légaux.
+2. **Le non-renouvellement des attestations de prolongation est illégal**. Si votre attestation n\'est pas renouvelée en temps utile alors que votre dossier est toujours en cours, vous pouvez vous appuyer sur cette décision pour exiger une régularisation immédiate.
+3. **L\'impossibilité de corriger un dossier est reconnue comme une atteinte à vos droits**. Si vous êtes bloqué en « attente de complétude » sans pouvoir modifier les informations ni ajouter de pièces, la décision consolide votre recours.
+
+**Modèle de paragraphe à insérer dans votre courrier LRAR au préfet :**
+
+> *"Je me permets de porter à votre attention la décision du Conseil d\'État du 5 mai 2026 (n° 502860, Assemblée), par laquelle la haute juridiction administrative a enjoint à l\'État de mettre fin aux dysfonctionnements de l\'ANEF portant atteinte au droit au séjour. Cette décision consacre l\'illégalité de tout dépassement injustifié des délais légaux d\'instruction (4 mois — article R.431-12 du CESEDA) et l\'obligation de délivrer ou renouveler les attestations de prolongation d\'instruction en temps utile. Mon dossier, déposé le [DATE], est en attente depuis [N] mois sans décision motivée [/ sans renouvellement de mon attestation]. Je vous demande d\'y statuer ou de me délivrer l\'attestation requise sans délai supplémentaire. À défaut de réponse sous 15 jours, je saisirai le Défenseur des droits et envisagerai un référé liberté devant le tribunal administratif."*
+
+**Où consulter la décision :**
+
+Téléchargez gratuitement le texte intégral sur [conseil-etat.fr](https://www.conseil-etat.fr/fr/arianeweb/CE/decision/2026-05-05/502860) (décision n° 502860, 5 mai 2026). Joignez une copie à votre dossier de recours pour renforcer vos arguments devant la préfecture ou le tribunal administratif.
+
+**Sources :** [Conseil d\'État — décision n° 502860](https://www.conseil-etat.fr/actualites/services-publics-le-conseil-d-etat-enjoint-a-l-etat-de-garantir-un-acces-normal-a-la-plateforme-en-ligne-de-l-anef) · [Défenseur des droits — réaction à la décision](https://www.defenseurdesdroits.fr/anef-une-decision-majeure-du-conseil-detat-qui-converge-avec-les-analyses-du-defenseur-des-droits)`,
+    },
+    {
       id: 'defenseur-des-droits',
       title: 'Saisir le Défenseur des droits : gratuit et souvent efficace',
       content: `Le **Défenseur des droits** est une **autorité administrative indépendante** créée par la Constitution (article 71-1). Il intervient gratuitement quand l\'administration manque à ses obligations. En 2026, le défenseur a traité plus de **18 000 saisines** liées aux préfectures, avec un **taux de résolution amiable de 62 %**.
@@ -244,7 +274,7 @@ Si votre objectif final est la **naturalisation française**, profitez de ces mo
 Lisez [notre guide sur les 930 000 dossiers bloqués en préfecture](/articles/930000-dossiers-bloques-prefecture-2026-droits-recours-etrangers-france) pour anticiper. Préparez à l\'avance vos modèles de LRAR et identifiez votre tribunal administratif compétent.`,
     },
   ],
-  conclusion: `Un dossier ANEF bloqué n\'est jamais une fatalité en 2026. Entre les 9 causes identifiables, la procédure de relance amiable, la saisine gratuite du Défenseur des droits et le référé liberté au tribunal administratif, vous disposez d\'un **arsenal juridique complet** pour reprendre la main. La règle d\'or : agissez **méthodiquement**, **par écrit**, et **conservez toutes les preuves**. Pendant l\'attente, sécurisez votre récépissé, votre emploi et vos droits sociaux. Et si la naturalisation est votre objectif final, mettez à profit ces mois pour **préparer le test civique** : 40 questions, 80 % de réussite exigée, des connaissances précises sur les valeurs, institutions et histoire de France. Notre [plateforme d\'entraînement](/signup) vous propose des QCM officiels, des fiches révisions et un suivi personnalisé pour transformer cette attente subie en **préparation active** vers votre nationalité.`,
+  conclusion: `Un dossier ANEF bloqué n\'est jamais une fatalité en 2026. Entre les 9 causes identifiables, la procédure de relance amiable, et surtout la **décision historique du Conseil d\'État du 5 mai 2026 (n° 502860)** — qui contraint l\'État à corriger les dysfonctionnements de l\'ANEF et à garantir les attestations de prolongation —, vous disposez désormais d\'un **arsenal juridique renforcé** pour reprendre la main. La règle d\'or : agissez **méthodiquement**, **par écrit**, en citant cette décision dans toutes vos relances, et **conservez toutes les preuves**. Pendant l\'attente, sécurisez votre récépissé, votre emploi et vos droits sociaux. Et si la naturalisation est votre objectif final, mettez à profit ces mois pour **préparer le test civique** : 40 questions, 80 % de réussite exigée, des connaissances précises sur les valeurs, institutions et histoire de France. Notre [plateforme d\'entraînement](/signup) vous propose des QCM officiels, des fiches révisions et un suivi personnalisé pour transformer cette attente subie en **préparation active** vers votre nationalité.`,
   faq: [
     {
       question: 'Mon dossier ANEF est en attente depuis 8 mois sans réponse. Est-ce normal ?',
@@ -261,6 +291,10 @@ Lisez [notre guide sur les 930 000 dossiers bloqués en préfecture](/articles/9
     {
       question: 'Le Défenseur des droits peut-il vraiment débloquer mon dossier ?',
       answer: 'Oui, dans 62 % des cas selon le rapport 2026. Le Défenseur des droits envoie une demande d\'explication formelle à la préfecture, qui doit y répondre dans un délai contraint. Cette pression administrative débloque la majorité des dossiers en 2 à 4 mois. La saisine est gratuite et peut se faire en ligne sur defenseurdesdroits.fr.',
+    },
+    {
+      question: 'Que change concrètement la décision du Conseil d\'État du 5 mai 2026 pour mon dossier ANEF bloqué ?',
+      answer: 'La décision n° 502860 du 5 mai 2026 contraint l\'État à corriger quatre dysfonctionnements dans des délais de 6 à 12 mois : délivrance des attestations de prolongation d\'instruction en temps utile, mention claire des droits sociaux et professionnels sur ces attestations, possibilité de corriger les erreurs du dossier pendant l\'instruction, et possibilité de déposer plusieurs demandes simultanées. Concrètement, vous pouvez citer cette décision dans vos courriers de relance au préfet et dans vos recours devant le tribunal administratif — elle renforce considérablement votre position juridique. Le texte intégral est disponible sur conseil-etat.fr (recherche : 502860).',
     },
   ],
 };
