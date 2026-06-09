@@ -2011,10 +2011,12 @@ export const articlesMai2026Programmes: Article[] = [
 // ===== Articles éditoriaux piliers — Mai 2026 =====
 import { examenCiviqueObligatoireMetadata } from './seo-content/articles-examen-civique-obligatoire-2026';
 import { coutNaturalisation2026Metadata } from './seo-content/articles-cout-naturalisation-2026';
+import { exemplesQuestionsExamenCiviqueMetadata } from './seo-content/articles-exemples-questions-examen-civique';
 
 export const articlesEditoriaux2026: Article[] = [
   examenCiviqueObligatoireMetadata,
   coutNaturalisation2026Metadata,
+  exemplesQuestionsExamenCiviqueMetadata,
 ];
 
 /**

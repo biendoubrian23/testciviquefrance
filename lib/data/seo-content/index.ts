@@ -227,6 +227,9 @@ import { examenCiviqueObligatoire2026Content } from './articles-examen-civique-o
 // ===== Article Coût total de la naturalisation 2026 (timbre 255 €) =====
 import { coutNaturalisation2026Content } from './articles-cout-naturalisation-2026';
 
+// ===== Article 06 — Exemples de questions corrigées examen civique 2026 =====
+import { exemplesQuestionsExamenCiviqueContent } from './articles-exemples-questions-examen-civique';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -426,6 +429,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'examen-civique-obligatoire-carte-sejour-pluriannuelle-2026': examenCiviqueObligatoire2026Content,
   // Article éditorial — Coût total de la naturalisation 2026 (timbre 255 €)
   'cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal': coutNaturalisation2026Content,
+  // Article 06 — Exemples de questions corrigées examen civique 2026
+  'examen-civique-2026-exemples-questions-corrigees': exemplesQuestionsExamenCiviqueContent,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

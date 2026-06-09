@@ -53,7 +53,7 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 | [01](01-examen-civique-obligatoire-carte-sejour.md) | Examen civique obligatoire — carte de séjour & résident | 🔴 Haute | Forte |
 | ~~02~~ | ✅ Inscription examen civique — **rédigé le 01/06/2026** (MAJ de `inscription-test-civique-2026-ou-quand-comment-sinscrire`) | Fait |
 | [04](04-rdv-prefecture-marche-noir-creneaux.md) | RDV préfecture introuvable — marché noir des créneaux | 🟠 Moyenne | Faible (trafic) |
-| [06](06-examen-civique-exemples-questions.md) | Examen civique — exemples de questions corrigées | 🟠 Moyenne | Forte |
+| ~~06~~ | ✅ Examen civique : exemples de questions corrigées — **rédigé le 09/06/2026** (`examen-civique-2026-exemples-questions-corrigees`) | Fait |
 | ~~07~~ | ✅ Frais d'inscription universités hors-UE — **rédigé le 25/05/2026** | Fait |
 | ~~08~~ | ✅ Coût total de la naturalisation 2026 (timbre 255 €) — **rédigé le 04/06/2026** | Fait |
 | [09](09-entretien-naturalisation-2026.md) | Entretien de naturalisation 2026 | 🟠 Moyenne | Forte |
@@ -77,7 +77,7 @@ Suivre cet ordre, cocher au fur et à mesure. Rythme : **2 à 3 articles / semai
 4. [x] **MAJ-A** — ANEF bloqué + décision Conseil d'État · ✅ rédigé le 28/05/2026
 5. [x] **02** — Inscription examen civique · ✅ rédigé le 01/06/2026 (MAJ de l'article existant pour préserver le slug et les liens internes)
 6. [x] **08** — Coût total de la naturalisation 2026 (timbre 255 €) · ✅ rédigé le 04/06/2026
-7. [ ] **06** — Examen civique : exemples de questions corrigées
+7. [x] **06** — Examen civique : exemples de questions corrigées · ✅ rédigé le 09/06/2026
 8. [ ] **03** — Niveau B2 naturalisation · 🔄 MAJ
 9. [ ] **09** — Entretien de naturalisation 2026
 10. [ ] **10** — Délai renouvellement titre de séjour (instruction Nuñez)
