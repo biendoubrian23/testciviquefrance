@@ -31,7 +31,7 @@ const internalLinksMap: Record<string, InternalLink[]> = {
   'dossier-naturalisation-2026-documents-delais-prefecture-anef': [
     { slug: 'prix-test-civique-2026-cout-tarif-titre-sejour-prefecture', anchor: 'Combien coûte la naturalisation ? Tous les tarifs' },
     { slug: 'entretien-naturalisation-2026-preparation-assimilation-prefecture', anchor: 'Préparer son entretien de naturalisation' },
-    { slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation', anchor: 'Niveau de français B1 requis pour la naturalisation' },
+    { slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation', anchor: 'Niveau de français B2 requis pour la naturalisation' },
     { slug: 'droit-de-vote-elections-france-2026-guide-citoyen', anchor: 'Droits civiques après la naturalisation' },
   ],
 
@@ -60,7 +60,7 @@ const internalLinksMap: Record<string, InternalLink[]> = {
 
   // Niveaux français → naturalisation, renouvellement, CIR
   'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation': [
-    { slug: 'dossier-naturalisation-2026-documents-delais-prefecture-anef', anchor: 'Dossier de naturalisation : le français B1 est requis' },
+    { slug: 'dossier-naturalisation-2026-documents-delais-prefecture-anef', anchor: 'Dossier de naturalisation : le français B2 est requis' },
     { slug: 'renouvellement-titre-sejour-2026-anef-prefecture-documents-delais', anchor: 'Titre de séjour : le français A2 est requis' },
     { slug: 'contrat-integration-republicaine-cir-2026-formation-civique', anchor: 'Formation linguistique via le CIR' },
     { slug: 'guide-etudiants-etrangers-france-titres-demarches-2026', anchor: 'Guide étudiant étranger en France' },
@@ -69,7 +69,7 @@ const internalLinksMap: Record<string, InternalLink[]> = {
   // Entretien naturalisation → dossier, niveaux, droit de vote
   'entretien-naturalisation-2026-preparation-assimilation-prefecture': [
     { slug: 'dossier-naturalisation-2026-documents-delais-prefecture-anef', anchor: 'Constituer son dossier de naturalisation' },
-    { slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation', anchor: 'Prouver son niveau B1 de français' },
+    { slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation', anchor: 'Prouver son niveau B2 de français' },
     { slug: 'droit-de-vote-elections-france-2026-guide-citoyen', anchor: 'Vos droits après la naturalisation' },
     { slug: 'prix-test-civique-2026-cout-tarif-titre-sejour-prefecture', anchor: 'Budget total de la naturalisation' },
   ],
@@ -274,7 +274,7 @@ const internalLinksMap: Record<string, InternalLink[]> = {
   'naturalisation-francaise-conditions-demarches-2025': [
     { slug: 'dossier-naturalisation-2026-documents-delais-prefecture-anef', anchor: 'Dossier de naturalisation 2026' },
     { slug: 'entretien-naturalisation-2026-preparation-assimilation-prefecture', anchor: 'Préparer l\'entretien de naturalisation' },
-    { slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation', anchor: 'Niveau de français requis (B1)' },
+    { slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation', anchor: 'Niveau de français requis (B2)' },
     { slug: 'droit-de-vote-elections-france-2026-guide-citoyen', anchor: 'Droits civiques après naturalisation' },
   ],
   'carte-sejour-pluriannuelle-guide-complet-2025': [
@@ -414,7 +414,7 @@ const internalLinksMap: Record<string, InternalLink[]> = {
   'circulaire-avril-2026-delais-naturalisation-reduits-12-mois-maghreb': [
     { slug: 'dossier-naturalisation-2026-documents-delais-prefecture-anef', anchor: 'Constituer son dossier de naturalisation' },
     { slug: 'entretien-naturalisation-2026-preparation-assimilation-prefecture', anchor: 'Préparer l\'entretien d\'assimilation' },
-    { slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation', anchor: 'Niveau de français B1 requis' },
+    { slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation', anchor: 'Niveau de français B2 requis' },
     { slug: 'prefectures-delais-rendez-vous-avril-2026-solutions', anchor: 'Délais en préfecture avril 2026' },
   ],
   'nouveaux-centres-test-civique-mai-2026-liste-complete': [

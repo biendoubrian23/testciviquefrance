@@ -63,7 +63,7 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 
 | Brief | Sujet | Priorité |
 |---|---|---|
-| [03](03-MAJ-niveau-b2-naturalisation.md) | 🔄 Niveau B2 naturalisation — diplômes & tests | 🟠 Moyenne |
+| ~~03~~ | ✅ Niveau B2 naturalisation — diplômes & tests — **rédigé le 15/06/2026** (MAJ de `niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation`) | Fait |
 | ~~05~~ | ✅ Hausse des taxes titres de séjour — **rédigé le 22/05/2026**, à publier | Fait |
 | [MAJ-articles-existants.md](MAJ-articles-existants.md) | 🔄 12 articles existants à rafraîchir (ANEF, ANTS, Campus France, impôts…) | varié |
 
@@ -78,7 +78,7 @@ Suivre cet ordre, cocher au fur et à mesure. Rythme : **2 à 3 articles / semai
 5. [x] **02** — Inscription examen civique · ✅ rédigé le 01/06/2026 (MAJ de l'article existant pour préserver le slug et les liens internes)
 6. [x] **08** — Coût total de la naturalisation 2026 (timbre 255 €) · ✅ rédigé le 04/06/2026
 7. [x] **06** — Examen civique : exemples de questions corrigées · ✅ rédigé le 09/06/2026
-8. [ ] **03** — Niveau B2 naturalisation · 🔄 MAJ
+8. [x] **03** — Niveau B2 naturalisation · ✅ rédigé le 15/06/2026 (MAJ de l'article existant)
 9. [ ] **09** — Entretien de naturalisation 2026
 10. [ ] **10** — Délai renouvellement titre de séjour (instruction Nuñez)
 11. [ ] **04** — RDV préfecture : marché noir des créneaux

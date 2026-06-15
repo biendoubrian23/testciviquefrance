@@ -169,154 +169,244 @@ Pour vous entrainer, utilisez les examens blancs disponibles sur [LeTestCivique.
   ],
 };
 
-// ARTICLE 2 : Niveaux de francais A2/B1/B2 en 2026
+// ARTICLE 2 : Niveau B2 naturalisation 2026 — diplomes & tests acceptes (MAJ 15/06/2026)
 export const niveauxFrancais2026Content: ArticleFullContent = {
   slug: 'niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation',
-  introduction: `En 2026, la question du **niveau de francais** est devenue centrale pour les demarches de sejour et de naturalisation. Entre **A2, B1 et B2**, beaucoup de candidats hesitent: quel niveau est demande selon mon statut ? quelles preuves sont acceptees ? comment progresser rapidement sans se disperser ? Ce guide vous aide a comprendre les niveaux du **CECRL**, a relier chaque niveau a votre demarche administrative, et a construire un plan de progression realiste.`,
+  introduction: `Depuis le **1er janvier 2026, le niveau B2 est exigé pour la naturalisation française** — alors que le niveau B1 suffisait jusqu'à fin 2025. Ce relèvement, fixé par le [décret n° 2025-648 du 15 juillet 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519) et précisé par l'[arrêté du 22 décembre 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053164463), change concrètement la façon de constituer un dossier. Mais une question revient sans cesse : **quel niveau pour quelle démarche, et comment le justifier ?** Entre A2, B1 et B2, et entre diplômes et tests de langue (TCF, TEF, DELF), il est facile de se tromper de pièce — et un justificatif inadapté ou périmé peut bloquer un dossier entier. Ce guide remet les choses à plat : ce qui a changé en 2026, le niveau requis selon votre titre, comment prouver votre niveau (et pour combien de temps cette preuve reste valable), un comparatif TCF / TEF / DELF, les dispenses prévues par la loi, et le lien à ne pas confondre avec l'examen civique.`,
   sections: [
     {
+      id: 'ce-qui-change-2026',
+      title: 'Ce qui change au 1er janvier 2026 : le passage de B1 à B2 pour la naturalisation',
+      content: `Jusqu'au 31 décembre 2025, un niveau **B1** suffisait pour demander la nationalité française. Depuis le **1er janvier 2026, le niveau exigé est le B2** du Cadre européen commun de référence pour les langues (CECRL), à l'oral comme à l'écrit.
+
+**Le fondement juridique**
+
+Deux textes officiels encadrent ce changement :
+
+- Le [décret n° 2025-648 du 15 juillet 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519), qui modifie le décret n° 93-1362 du 30 décembre 1993 relatif aux décisions de naturalisation. Il relève le niveau de français exigé de B1 à **B2** et introduit l'obligation de réussir un **examen civique**.
+- L'[arrêté du 22 décembre 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053164463), qui fixe la liste précise des **diplômes et certifications** attestant le niveau B2 requis. Son article 5 prévoit expressément qu'il « entre en vigueur le 1er janvier 2026 ».
+
+**Qui est concerné**
+
+Le niveau B2 s'applique à **toutes les voies d'acquisition de la nationalité** soumises à condition de langue :
+- la **naturalisation par décret** (la voie classique, après plusieurs années de résidence) ;
+- l'**acquisition par mariage** avec un ressortissant français (déclaration au titre de l'article 21-2 du Code civil), comme le confirme [France Diplomatie](https://ca.diplomatie.gouv.fr/fr/le-niveau-b2-en-francais-devient-obligatoire-pour-les-demandes-dacquisition-de-la-nationalite).
+
+**À partir de quand exactement ?**
+
+La règle s'applique à toute demande **déposée après le 31 décembre 2025**. Attention : elle vise aussi les dossiers déposés avant cette date mais **incomplets**, pour lesquels un complément serait demandé à partir du 1er janvier 2026. Autrement dit, un dossier ouvert en 2025 mais finalisé en 2026 peut se voir appliquer la nouvelle exigence B2.`,
+    },
+    {
+      id: 'tableau-niveau-par-titre',
+      title: 'Quel niveau de français pour quelle démarche en 2026 ?',
+      content: `Le niveau de langue exigé n'est pas le même selon le titre que vous demandez. Plus le titre engage durablement, plus le niveau attendu est élevé.
+
+| Démarche | Niveau de français requis | Évolution |
+|---|---|---|
+| **Carte de séjour pluriannuelle** | **A2** | Niveau élémentaire avancé |
+| **Carte de résident (10 ans)** | **B1** | Niveau intermédiaire |
+| **Naturalisation / nationalité (décret ou mariage)** | **B2** | ⬆️ Relevé de B1 à B2 le 1er janvier 2026 |
+
+Pour le détail des conditions de langue selon votre situation, la fiche de référence est celle de [Service-Public.fr — « Comment justifier de son niveau en français ? » (F11926)](https://www.service-public.gouv.fr/particuliers/vosdroits/F11926).
+
+**À retenir :** le passage à B2 ne concerne que la **naturalisation et l'acquisition de la nationalité**. Les niveaux exigés pour la carte pluriannuelle (A2) et la carte de résident (B1) restent inchangés. Vérifiez toujours le niveau applicable à **votre** démarche précise avant de réserver un test.`,
+    },
+    {
       id: 'comprendre-cecrl',
-      title: 'A2, B1, B2: comprendre les niveaux du CECRL simplement',
-      content: `Le CECRL (Cadre Europeen Commun de Reference pour les Langues) classe les competences linguistiques de A1 a C2.
+      title: 'A2, B1, B2 : comprendre les niveaux du CECRL simplement',
+      content: `Le **CECRL** (Cadre européen commun de référence pour les langues) classe les compétences linguistiques de A1 (débutant) à C2 (maîtrise quasi native). Voici concrètement ce que recouvrent les trois niveaux utiles pour vos démarches.
 
-**A2 (elementaire avance)**
+**A2 — élémentaire avancé** (carte pluriannuelle)
 - Comprendre des phrases simples du quotidien
-- Echanger sur des besoins immediats
-- Decrire son environnement avec un vocabulaire de base
+- Échanger sur des besoins immédiats
+- Décrire son environnement avec un vocabulaire de base
 
-**B1 (intermediaire)**
+**B1 — intermédiaire** (carte de résident 10 ans)
 - Comprendre l'essentiel d'une discussion claire
-- Exprimer un avis simple et coherent
-- Gerer la plupart des situations de la vie courante
+- Exprimer un avis simple et cohérent
+- Gérer la plupart des situations de la vie courante
 
-**B2 (intermediaire avance)**
-- Comprendre des contenus complexes
-- Argumenter avec nuance
-- Interagir avec aisance dans un contexte professionnel ou administratif`,
+**B2 — intermédiaire avancé** (naturalisation depuis 2026)
+- Comprendre des contenus complexes, y compris abstraits
+- Argumenter avec nuance et défendre un point de vue
+- Interagir avec aisance et spontanéité, y compris dans un contexte administratif
+
+L'écart entre B1 et B2 n'est pas anodin : il correspond souvent à **plusieurs mois de progression** pour un apprenant. Si vous visiez la naturalisation avec un ancien justificatif B1, prévoyez de réévaluer votre niveau (voir la section dispenses et la FAQ ci-dessous).`,
     },
     {
-      id: 'niveau-selon-demarche',
-      title: 'Quel niveau pour quelle demarche en 2026 ?',
-      content: `Les exigences varient selon le titre demande et votre parcours.
+      id: 'comment-justifier',
+      title: 'Comment justifier son niveau B2 : diplôme ou test de langue ?',
+      content: `Il existe deux grandes familles de justificatifs, et la différence entre les deux est **capitale** car elle ne joue pas du tout sur la durée de validité.
 
-**Carte de sejour pluriannuelle**
-- Le niveau **A2** est frequemment la reference pour justifier l'integration linguistique
-- Des preuves alternatives peuvent exister selon profil et parcours
+**1. Un diplôme — valable sans limitation de durée**
 
-**Carte de resident (10 ans)**
-- Le niveau **B1** est generalement attendu
-- Le dossier prend aussi en compte la stabilite de sejour et l'integration globale
+L'[arrêté du 22 décembre 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053164463) reconnaît notamment :
+- le **diplôme national du brevet** ;
+- tout **diplôme délivré au nom de l'État** attestant au moins le niveau 3 du cadre national de certification professionnelle ;
+- toute **certification professionnelle de niveau 3 minimum** inscrite au RNCP ;
+- tout **diplôme attestant un niveau de français au moins équivalent au B2** (par exemple le **DELF B2** ou le **DALF**).
 
-**Naturalisation francaise**
-- Le niveau **B2** peut etre demande selon les evolutions reglementaires et la nature de la procedure
-- L'administration examine egalement l'insertion sociale et professionnelle
+➡️ Un diplôme est acquis **définitivement** : il n'expire jamais. C'est l'option la plus sûre si vous l'avez déjà ou pouvez l'obtenir.
 
-→ Point cle: verifiez toujours la consigne la plus recente de votre prefecture et des textes officiels applicables a votre situation.`,
+**2. Une attestation de test de langue — validité limitée à 2 ans**
+
+Si vous n'avez pas de diplôme adéquat, vous pouvez passer un **test linguistique** reconnu (voir l'[arrêté du 22 décembre 2025 sur les tests linguistiques](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053164492)) :
+- le **TCF** (Test de connaissance du français), version IRN (Intégration, Résidence, Nationalité) ;
+- le **TEF** (Test d'évaluation de français), version IRN.
+
+➡️ L'attestation de test est valable **2 ans** au maximum. Au-delà, elle n'est plus recevable et il faut repasser l'examen.
+
+**Le réflexe à avoir**
+- Vérifiez que le justificatif atteste bien le niveau **B2** (et non B1).
+- Si c'est un test, contrôlez qu'il sera **encore valide au moment du dépôt ET de l'instruction** de votre dossier — un test périmé entre-temps rend la pièce inexploitable.
+- Joignez des copies lisibles et cohérentes avec votre identité.`,
     },
     {
-      id: 'preuves-acceptees',
-      title: 'Quelles preuves de niveau de francais sont generalement acceptees ?',
-      content: `Dans la pratique, l'administration peut demander une preuve objective de niveau:
+      id: 'comparatif-tcf-tef-delf',
+      title: 'TCF, TEF ou DELF B2 : quel test choisir pour la naturalisation ?',
+      content: `Les trois certifications sont acceptées pour justifier le niveau B2, mais elles ne fonctionnent pas de la même manière. Voici un comparatif pour choisir selon votre profil.
 
-- Diplome de langue reconnu (TCF, TEF, DELF, etc. selon la procedure)
-- Diplome francophone ou parcours scolaire superieur en francais
-- Attestations specifiees par l'administration competente
+| Critère | TCF (IRN) | TEF (IRN) | DELF B2 |
+|---|---|---|---|
+| Nature | Test (attestation de niveau) | Test (attestation de niveau) | **Diplôme** d'État |
+| Validité du résultat | **2 ans** | **2 ans** | **À vie** (diplôme) |
+| Résultat | Niveau atteint sur une échelle | Niveau atteint sur une échelle | Réussite / échec à un niveau visé (B2) |
+| Délai d'obtention | Rapide (quelques jours à semaines) | Rapide (quelques jours à semaines) | Sessions plus espacées dans l'année |
+| Où le passer | Centres agréés (Alliances françaises, organismes habilités) | Centres agréés (CCI, organismes habilités) | Centres d'examen DELF/DALF, Alliances françaises |
+| Prix indicatif | Variable selon le centre | Variable selon le centre | Variable selon le centre |
 
-**Bon reflexe**
-- Verifiez la duree de validite de votre test
-- Controlez que le niveau mentionne correspond a l'exigence de votre dossier
-- Joignez des copies lisibles et coherentes avec votre identite`,
+> ⚠️ **Prix** : les tarifs varient sensiblement d'un centre agréé à l'autre (souvent de l'ordre de **100 à 200 €** pour un TCF/TEF IRN). Demandez toujours le tarif exact et la disponibilité des sessions au centre avant de réserver — ne vous fiez pas à un montant trouvé sur un forum.
+
+**Comment choisir ?**
+- Vous voulez un justificatif **définitif** et avez le temps : visez le **DELF B2**, un diplôme qui ne périme jamais.
+- Vous avez besoin d'un résultat **rapidement** (échéance de dépôt proche) : le **TCF IRN** ou le **TEF IRN** s'obtiennent généralement plus vite, en gardant en tête la validité de 2 ans.
+- Dans tous les cas, confirmez auprès du centre que la version proposée est bien celle reconnue pour la **nationalité** (mention IRN pour le TCF/TEF).`,
     },
     {
-      id: 'erreurs-frequentes-candidats',
-      title: 'Les erreurs les plus frequentes des candidats',
-      content: `Voici les erreurs qui ralentissent souvent les dossiers:
+      id: 'dispenses',
+      title: 'Qui est dispensé de justifier son niveau de français ?',
+      content: `La loi prévoit des **dispenses**, c'est-à-dire des situations où vous n'avez pas à produire de justificatif de niveau. D'après la fiche officielle [Service-Public.fr (F11926)](https://www.service-public.gouv.fr/particuliers/vosdroits/F11926), sont notamment dispensées :
 
-**1. Confondre niveau oral et niveau global**
-Un resultat partiel peut ne pas suffire si la procedure exige un niveau global valide.
+- les personnes dont l'**état de santé ou le handicap** rend l'évaluation du niveau impossible (sur présentation d'un **certificat médical**) ;
+- les **réfugiés statutaires et apatrides âgés de plus de 70 ans** et résidant régulièrement en France depuis au moins **15 ans**.
 
-**2. Fournir un certificat non reconnu**
-Tous les tests ne sont pas acceptes pour toutes les procedures.
+> ⚠️ Les dispenses sont d'interprétation stricte et leur périmètre exact peut évoluer. Vérifiez votre éligibilité sur la fiche [Service-Public.fr F11926](https://www.service-public.gouv.fr/particuliers/vosdroits/F11926) ou auprès de votre préfecture avant de constituer votre dossier sans justificatif.
 
-**3. Attendre la derniere minute**
-Les places d'examen peuvent etre limitees selon les villes et periodes.
-
-**4. Ne pas aligner langue et projet administratif**
-Un niveau juste minimal peut etre fragile si votre dossier comporte d'autres points sensibles.
-
-**5. Oublier la coherence des dates**
-Un test perime au moment du depot peut rendre la piece inexploitable.`,
+En dehors de ces cas, **le niveau B2 doit être prouvé** par un diplôme ou un test, comme détaillé plus haut.`,
     },
     {
-      id: 'plan-progression-12-semaines',
-      title: 'Plan de progression A2 vers B1/B2 en 12 semaines',
-      content: `Un plan realiste combine comprehension, expression et regularite:
+      id: 'langue-vs-civique',
+      title: 'Niveau de langue ≠ examen civique : ne pas confondre les deux exigences',
+      content: `C'est une confusion fréquente depuis 2026 : le **niveau de français** et l'**examen civique** sont deux conditions **distinctes et cumulatives**. Réussir l'une ne dispense pas de l'autre.
 
-**Semaines 1 a 4**
-- Consolidation grammaire de base et vocabulaire administratif
-- 30 a 45 minutes de lecture quotidienne en francais
+| | Niveau de langue (B2) | Examen civique |
+|---|---|---|
+| Ce qui est évalué | Votre **maîtrise du français** (comprendre, parler, écrire) | Vos **connaissances** sur les valeurs, l'histoire et les institutions de la République |
+| Comment le prouver | Diplôme ou test (TCF, TEF, DELF) | Réussir le QCM officiel (32/40, soit 80 %) |
+| Introduit / relevé par | Décret n° 2025-648 (B1 → B2) | Décret n° 2025-648 (nouvel examen) |
+
+Pour un dossier de naturalisation complet en 2026, il faut donc **les deux** : un justificatif de niveau **B2** ET une attestation de réussite à l'**examen civique**. Préparez ces deux volets en parallèle pour ne pas retarder votre dépôt.
+
+Pour bien comprendre la nouvelle obligation d'examen civique selon votre titre, consultez notre guide [Examen civique obligatoire : ce qui change pour la carte de séjour et la naturalisation](/articles/examen-civique-2026-exemples-questions-corrigees).`,
+    },
+    {
+      id: 'plan-progression',
+      title: 'Plan de progression vers le B2 et préparation de l\'examen civique',
+      content: `Atteindre le B2 demande de la régularité. Voici un plan réaliste, à combiner avec la préparation de l'examen civique.
+
+**Semaines 1 à 4 — consolidation**
+- Grammaire et vocabulaire de la vie administrative et citoyenne
+- 30 à 45 minutes de lecture quotidienne en français (presse, démarches)
 - 3 sessions d'expression orale par semaine
 
-**Semaines 5 a 8**
-- Entrainement sur formats de test (comprehension ecrite/orale)
-- Production ecrite courte: email, argumentation simple, recit
-- Correction systematique des erreurs recurrentes
+**Semaines 5 à 8 — entraînement au format**
+- Compréhension écrite et orale sur des supports de niveau B2
+- Production écrite argumentée (courrier, prise de position)
+- Correction systématique des erreurs récurrentes
 
-**Semaines 9 a 12**
-- Simulations completes chronometrees
-- Travail specifique sur prononciation et fluidite
-- Revision ciblee selon vos points faibles
+**Semaines 9 à 12 — simulation**
+- Tests blancs chronométrés (format TCF/TEF ou DELF B2)
+- Travail de la fluidité et de la prononciation
+- Révision ciblée selon vos points faibles
 
-Resultat attendu: progression solide vers le niveau vise, avec des automatismes utiles en examen et en entretien administratif.`,
-    },
-    {
-      id: 'lien-test-civique',
-      title: 'Lien entre niveau de francais et test civique',
-      content: `Le niveau de langue et le test civique sont complementaires:
+En parallèle, ne négligez pas l'**examen civique** : c'est une condition à part entière. Vous pouvez vous entraîner sur des examens blancs en conditions réelles, avec score immédiat et bilan par thème.
 
-- Le **niveau de francais** evalue votre capacite a comprendre et communiquer
-- Le **test civique** evalue vos connaissances sur les valeurs, institutions et droits/devoirs
-
-Pour un dossier robuste, preparez les deux dimensions en parallele:
-- entrainement linguistique regulier
-- revisions thematiques et QCM chronometres
-
-Vous pouvez combiner cette preparation sur [LeTestCivique.fr](/dashboard) pour securiser votre calendrier et vos resultats.`,
+> 🎯 **Votre niveau de français est en bonne voie ? Il vous reste l'examen civique — préparez-le dès maintenant.** → [Commencer l'entraînement gratuit](/signup)`,
     },
   ],
-  conclusion: `A2, B1, B2 ne sont pas seulement des labels linguistiques: ce sont des **seuils strategiques** qui conditionnent vos demarches de sejour et de naturalisation. En verifiant les exigences exactes de votre procedure, en choisissant la bonne preuve et en suivant un plan de progression methodique, vous reduisez fortement le risque de blocage administratif et avancez plus sereinement vers votre objectif en France.`,
+  conclusion: `Depuis le 1er janvier 2026, la naturalisation française exige un **niveau B2** de français — un cran au-dessus de l'ancien B1 — au titre du décret n° 2025-648 et de l'arrêté du 22 décembre 2025. Retenez l'essentiel : le niveau dépend de votre démarche (A2 pour la carte pluriannuelle, B1 pour la carte de résident, **B2 pour la nationalité**) ; un **diplôme** vaut à vie tandis qu'une **attestation de test** (TCF, TEF) n'est valable que **2 ans** ; et le niveau de langue ne remplace pas l'**examen civique**, qui reste une condition distincte. En choisissant le bon justificatif, en surveillant sa validité et en préparant les deux volets en parallèle, vous évitez le principal motif de blocage : une pièce inadaptée ou périmée. Anticipez, vérifiez chaque exigence sur les sources officielles, et avancez sereinement vers votre objectif.`,
   faq: [
     {
-      question: 'Quelle est la difference principale entre A2 et B1 ?',
-      answer: 'A2 couvre la communication de base du quotidien. B1 exige davantage d\'autonomie, la capacite a exprimer un avis et a gerer des situations variees.',
+      question: 'Quel niveau de français faut-il pour la naturalisation en 2026 ?',
+      answer: 'Depuis le 1er janvier 2026, il faut justifier d\'un niveau B2 du CECRL, à l\'oral comme à l\'écrit. C\'est un relèvement par rapport au niveau B1 exigé jusqu\'à fin 2025, prévu par le décret n° 2025-648 du 15 juillet 2025 et l\'arrêté du 22 décembre 2025.',
     },
     {
-      question: 'Le niveau B2 est-il toujours obligatoire pour la naturalisation ?',
-      answer: 'Les exigences peuvent evoluer selon les textes et votre situation. Verifiez la regle la plus recente aupres des sources officielles et de votre prefecture.',
+      question: 'DELF ou TCF : quelle différence pour la naturalisation ?',
+      answer: 'Le DELF B2 est un diplôme : une fois obtenu, il est valable à vie. Le TCF (comme le TEF) est un test dont l\'attestation n\'est valable que 2 ans. Si vous avez le temps, le DELF B2 offre un justificatif définitif ; si vous êtes pressé, le TCF/TEF IRN s\'obtient généralement plus vite.',
     },
     {
-      question: 'Quels tests de langue sont generalement reconnus ?',
-      answer: 'Selon les procedures, des certifications comme TCF, TEF ou DELF peuvent etre acceptees. Il faut verifier la liste applicable a votre dossier.',
+      question: 'Mon ancien diplôme ou test B1 est-il encore valable pour la naturalisation ?',
+      answer: 'Non : depuis le 1er janvier 2026, le niveau exigé est le B2. Un justificatif attestant uniquement le B1 ne suffit plus pour une demande déposée (ou complétée) après le 31 décembre 2025. Il faut produire une preuve de niveau B2.',
     },
     {
-      question: 'Puis-je deposer mon dossier avec un test de langue bientot expire ?',
-      answer: 'C\'est risqué. Controlez la validite au moment du depot et de l\'instruction pour eviter un rejet de piece.',
+      question: 'Le niveau B2 est-il aussi exigé pour la naturalisation par mariage ?',
+      answer: 'Oui. Le niveau B2 s\'applique aussi bien à la naturalisation par décret qu\'à l\'acquisition de la nationalité par mariage (déclaration au titre de l\'article 21-2 du Code civil), comme le confirme France Diplomatie.',
     },
     {
-      question: 'Comment progresser vite de A2 vers B1 ?',
-      answer: 'Travaillez chaque semaine la comprehension orale/ecrite, l\'expression orale et ecrite, avec simulations chronometrees et correction active des erreurs.',
+      question: 'Combien de temps une attestation de test (TCF / TEF) reste-t-elle valable ?',
+      answer: 'Une attestation de test de langue est valable 2 ans au maximum. Assurez-vous qu\'elle sera encore valide au moment du dépôt et de l\'instruction de votre dossier, sous peine de devoir repasser le test.',
+    },
+    {
+      question: 'Qui est dispensé de justifier son niveau de français ?',
+      answer: 'Sont notamment dispensées les personnes dont l\'état de santé ou le handicap rend l\'évaluation impossible (certificat médical), ainsi que les réfugiés et apatrides de plus de 70 ans résidant en France depuis au moins 15 ans. Vérifiez votre situation sur la fiche Service-Public F11926.',
     },
   ],
   keywords: [
-    'niveau francais A2 B1 B2',
-    'CECRL immigration france',
-    'niveau francais carte pluriannuelle',
-    'niveau francais carte resident 10 ans',
-    'niveau francais naturalisation 2026',
-    'preuve niveau francais prefecture',
-    'TCF TEF DELF naturalisation',
-    'progresser de A2 vers B1',
-    'test civique et niveau de langue',
-    'integration linguistique france',
+    'niveau B2 naturalisation',
+    'niveau de langue naturalisation 2026',
+    'B2 nationalité française 2026',
+    'TCF naturalisation',
+    'TEF naturalisation',
+    'DELF B2 naturalisation',
+    'justificatif niveau de français naturalisation',
+    'arrêté 22 décembre 2025 niveau français',
+    'décret 2025-648 naturalisation B2',
+    'niveau français carte pluriannuelle A2',
+    'niveau français carte résident B1',
+    'dispense niveau français naturalisation',
+    'validité test TCF TEF naturalisation',
+    'niveau de langue et examen civique',
+  ],
+  sources: [
+    {
+      title: 'Service-Public.fr — Comment justifier de son niveau en français ? (F11926)',
+      url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F11926',
+      type: 'official',
+      description: 'Fiche officielle détaillant le niveau de français requis selon la démarche, les justificatifs acceptés (diplôme ou test), leur validité et les dispenses (santé, âge).',
+    },
+    {
+      title: 'Décret n° 2025-648 du 15 juillet 2025 (Légifrance)',
+      url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519',
+      type: 'legal',
+      description: 'Décret modifiant le décret de 1993 sur la nationalité : relève le niveau de français de B1 à B2 pour la naturalisation et instaure l\'examen civique.',
+    },
+    {
+      title: 'Arrêté du 22 décembre 2025 — diplômes et certifications (nationalité française)',
+      url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053164463',
+      type: 'legal',
+      description: 'Fixe la liste des diplômes et certifications attestant le niveau B2 requis des candidats à la nationalité ; entrée en vigueur le 1er janvier 2026.',
+    },
+    {
+      title: 'Arrêté du 22 décembre 2025 — tests linguistiques (nationalité française)',
+      url: 'https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000053164492',
+      type: 'legal',
+      description: 'Précise les tests linguistiques (TCF, TEF) recevables pour justifier le niveau de français requis pour la nationalité.',
+    },
+    {
+      title: 'France Diplomatie — Le niveau B2 devient obligatoire (acquisition par mariage)',
+      url: 'https://ca.diplomatie.gouv.fr/fr/le-niveau-b2-en-francais-devient-obligatoire-pour-les-demandes-dacquisition-de-la-nationalite',
+      type: 'official',
+      description: 'Confirme l\'application du niveau B2 à l\'acquisition de la nationalité par mariage à compter du 1er janvier 2026.',
+    },
   ],
 };
