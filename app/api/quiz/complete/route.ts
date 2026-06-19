@@ -107,15 +107,18 @@ export async function POST(request: NextRequest) {
 
     // 4. Mettre à jour la progression
     // Débloquer le niveau suivant si :
-    // - Score >= 8/10 (normal), OU
-    // - Score >= 5/10 ET l'utilisateur a all_levels_unlocked
+    // - Score >= 80% (normal), OU
+    // - Score >= 50% ET l'utilisateur a all_levels_unlocked
+    // IMPORTANT : on raisonne en pourcentage car le nombre de questions varie
+    // selon le niveau (10 pour les niveaux 1-4, 5 pour les niveaux 5-10).
     const { data: profileData } = await supabase
       .from('profiles')
       .select('all_levels_unlocked')
       .eq('id', user.id)
       .single()
 
-    const canUnlockNext = score >= 8 || (score >= 5 && profileData?.all_levels_unlocked)
+    const ratio = totalQuestions > 0 ? score / totalQuestions : 0
+    const canUnlockNext = ratio >= 0.8 || (ratio >= 0.5 && profileData?.all_levels_unlocked)
 
     if (canUnlockNext) {
       const { data: progression } = await supabase
@@ -183,7 +186,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       pointsGagnes,
-      niveauDebloque: score >= 8 && niveau < 10
+      niveauDebloque: canUnlockNext && niveau < 10
     })
 
   } catch (error) {
