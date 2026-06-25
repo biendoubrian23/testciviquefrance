@@ -467,6 +467,26 @@ const internalLinksMap: Record<string, InternalLink[]> = {
     { slug: 'histoire-france-dates-cles-test-civique', anchor: 'La France dans l\'Histoire mondiale' },
     { slug: 'penurie-carburant-prix-essence-2026-economie-francaise-test-civique', anchor: 'Impact sur l\'économie française' },
   ],
+
+  // ===== Cluster « Venir & s'installer en France » — Juin 2026 =====
+  'entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour': [
+    { slug: 'campus-france-etude-france-2026-visa-inscription-procedure', anchor: 'La procédure Campus France de A à Z' },
+    { slug: 'preparer-depart-france-2026-checklist-documents-avant-avion', anchor: 'Checklist des documents à préparer avant le départ' },
+    { slug: 'visa-long-sejour-vls-ts-validation-ofii-2026', anchor: 'Valider son VLS-TS à l\'arrivée' },
+    { slug: 'papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander', anchor: 'Les papiers à obtenir une fois en France' },
+  ],
+  'preparer-depart-france-2026-checklist-documents-avant-avion': [
+    { slug: 'entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour', anchor: 'Réussir son rendez-vous visa au consulat' },
+    { slug: 'papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander', anchor: 'Tous les papiers à obtenir en arrivant' },
+    { slug: 'reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences', anchor: 'Faire reconnaître son diplôme (ENIC-NARIC)' },
+    { slug: 'premiers-pas-france-etranger-banque-logement-caf-ameli', anchor: 'Premiers pas en France : banque, CAF, Ameli' },
+  ],
+  'papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander': [
+    { slug: 'visa-long-sejour-vls-ts-validation-ofii-2026', anchor: 'Valider son VLS-TS sur ANEF' },
+    { slug: 'premiers-pas-france-etranger-banque-logement-caf-ameli', anchor: 'Banque, logement, CAF et Ameli en arrivant' },
+    { slug: 'echanger-permis-conduire-etranger-france-2026-ants-demarches', anchor: 'Échanger son permis de conduire étranger' },
+    { slug: 'preparer-depart-france-2026-checklist-documents-avant-avion', anchor: 'Ce qu\'il faut préparer avant de partir' },
+  ],
 };
 
 /**

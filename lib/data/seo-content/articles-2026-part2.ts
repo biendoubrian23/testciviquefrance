@@ -10,18 +10,18 @@ import { ArticleFullContent } from './articles-part1';
 // ─────────────────────────────────────────────────────────────────────────────
 export const entretienNaturalisationContent: ArticleFullContent = {
   slug: 'entretien-naturalisation-2026-preparation-assimilation-prefecture',
-  introduction: `L'**entretien d'assimilation en préfecture** est l'une des étapes les plus redoutées du parcours de naturalisation française. Contrairement au **test civique** qui évalue vos connaissances par QCM, l'entretien est un **échange oral direct** avec un agent de préfecture qui juge votre **assimilation à la communauté française**. Durée moyenne : **20 à 40 minutes** face à face. C'est lors de cet entretien que se joue souvent la décision finale. Ce guide complet vous explique tout : le déroulement, les **questions les plus posées**, les **critères d'évaluation**, les **erreurs fatales** à éviter, et un plan de préparation concret pour arriver confiant le jour J.`,
+  introduction: `L'**entretien d'assimilation en préfecture** est l'une des étapes les plus redoutées du parcours de naturalisation française. Et c'est aussi l'une des plus mal comprises : depuis que l'**examen civique** est devenu obligatoire le 1er janvier 2026, beaucoup de candidats confondent les deux épreuves. Pourtant, **l'entretien n'est pas l'examen civique**. L'examen civique est un QCM de 40 questions passé dans un centre agréé ; l'entretien d'assimilation, lui, est un **échange oral direct** avec un agent de préfecture qui juge votre **assimilation à la communauté française**. Durée moyenne : **20 à 40 minutes** en face à face. C'est lors de cet entretien que se joue souvent la décision finale. Ce guide complet vous explique tout : la différence avec l'examen civique, le déroulement, les **questions les plus posées**, les **critères d'évaluation**, les **erreurs fatales** à éviter, et un plan de préparation concret pour arriver confiant le jour J.`,
 
   sections: [
     {
       id: 'role-entretien-naturalisation',
       title: "Quel est le rôle de l'entretien dans le processus de naturalisation ?",
-      content: `L'entretien d'assimilation est prévu par l'**article 21-24 du Code civil** et le **décret n° 93-1362 du 30 décembre 1993**. Il vise à évaluer votre **degré d'assimilation à la communauté française**.
+      content: `L'entretien d'assimilation est prévu par l'[article 21-24 du Code civil](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419874/) et le **décret n° 93-1362 du 30 décembre 1993** relatif aux décisions de naturalisation (modifié par le [décret n° 2025-648 du 15 juillet 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519)). Il vise à évaluer votre **degré d'assimilation à la communauté française**.
 
 **Ce que l'agent évalue lors de l'entretien :**
 
 **1. Votre maîtrise de la langue française**
-L'entretien se déroule intégralement en français. L'agent observe votre capacité à comprendre les questions, à formuler des réponses claires et à vous exprimer spontanément. Le niveau attendu est **B1 minimum** (oral).
+L'entretien se déroule intégralement en français. L'agent observe votre capacité à comprendre les questions, à formuler des réponses claires et à vous exprimer spontanément. Depuis le **1er janvier 2026**, le niveau de français exigé pour la naturalisation a été relevé de B1 à **B2** (à l'oral comme à l'écrit) par le [décret n° 2025-648 du 15 juillet 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519) : vous devez déjà avoir justifié ce niveau **avant** l'entretien, par un diplôme ou un test de langue reconnu. Le jour de l'entretien, l'agent vérifie surtout que vous savez **soutenir une conversation spontanée** à ce niveau.
 
 **2. Votre connaissance des valeurs républicaines**
 L'agent vérifie que vous comprenez et adhérez aux principes de la République : **laïcité**, **égalité femmes-hommes**, **liberté d'expression**, **fraternité**.
@@ -33,7 +33,7 @@ L'agent s'intéresse à votre vie quotidienne en France : travail, vie sociale, 
 Pourquoi souhaitez-vous acquérir la nationalité française ? L'agent cherche des motivations sincères et un **attachement réel** à la France.
 
 **5. Votre connaissance de l'histoire et de la culture française**
-Des questions sur l'histoire, la géographie, les institutions et la culture française peuvent être posées pour compléter l'évaluation du test civique.
+Des questions sur l'histoire, la géographie, les institutions et la culture française peuvent être posées pour compléter l'évaluation de l'examen civique.
 
 → L'entretien n'est **pas un examen de connaissances** mais une **évaluation globale** de votre intégration. Le naturel et la sincérité sont vos meilleurs atouts.`
     },
@@ -191,7 +191,7 @@ L'agent peut demander le nom de votre département, votre région, votre commune
 **Semaine 1 : Rassemblez vos connaissances de base**
 - Révisez les **symboles de la République** : devise, drapeau, Marianne, hymne
 - Apprenez le nom du **Président de la République**, du **Premier ministre** et du **maire de votre ville**
-- Révisez les **5 thématiques du test civique** (les mêmes sujets sont abordés à l'entretien)
+- Révisez les **5 thématiques de l'examen civique** (les mêmes sujets sont abordés à l'entretien)
 - Commencez à suivre l'actualité française quotidiennement (20 minutes/jour)
 
 **Semaine 2 : Préparez vos réponses personnelles**
@@ -212,31 +212,33 @@ L'agent peut demander le nom de votre département, votre région, votre commune
 - Relisez une dernière fois les **valeurs républicaines** et l'**actualité récente**
 - La veille : reposez-vous, mangez bien, préparez vos documents
 
-→ En combinant cet entretien avec vos révisions pour le **test civique**, vous doublez votre efficacité. Entraînez-vous sur [LeTestCivique.fr](/dashboard) pour consolider vos connaissances.`
+→ En combinant cet entretien avec vos révisions pour l'**examen civique**, vous doublez votre efficacité. Entraînez-vous sur [testciviquefrance.fr](/dashboard/entrainement) pour consolider vos connaissances.`
     },
     {
-      id: 'lien-test-civique-entretien',
-      title: "Entretien d'assimilation et test civique : deux épreuves complémentaires",
-      content: `Depuis le **décret n° 2025-647 du 15 juillet 2025**, le parcours de naturalisation comprend **deux évaluations distinctes** :
+      id: 'lien-examen-civique-entretien',
+      title: "Entretien d'assimilation ≠ examen civique : ne pas confondre les deux épreuves",
+      content: `C'est la confusion la plus fréquente depuis 2026. Le [décret n° 2025-648 du 15 juillet 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519) a rendu l'examen civique obligatoire pour la naturalisation à compter du **1er janvier 2026**, en plus de l'entretien d'assimilation qui, lui, existait déjà. Le parcours comprend donc désormais **deux évaluations bien distinctes** — l'une ne remplace pas l'autre :
 
-| | Test civique | Entretien d'assimilation |
+| | Examen civique | Entretien d'assimilation |
 |---|---|---|
 | **Format** | QCM (40 questions écrites) | Échange oral (20-40 min) |
-| **Lieu** | Centre agréé (CCI, etc.) | Préfecture |
+| **Lieu** | Centre agréé | Préfecture |
 | **Seuil de réussite** | 32/40 (80 %) | Avis favorable de l'agent |
 | **Ce qui est évalué** | Connaissances factuelles | Intégration globale |
 | **Type de questions** | Fermées (choix multiples) | Ouvertes (conversation) |
 | **Langue** | Compréhension écrite | Expression orale spontanée |
 | **Résultat** | Attestation de réussite | Rapport d'assimilation |
 
+Selon le [communiqué officiel du ministère de l'Intérieur](https://www.interieur.gouv.fr/actualites/communiques-de-presse/a-partir-du-1er-janvier-2026-reussite-a-lexamen-civique-sera-necessaire-pour-obtenir-carte-de-sejour), la réussite à l'examen civique est, depuis le 1er janvier 2026, une condition pour la naturalisation mais aussi pour la carte de séjour pluriannuelle et la carte de résident. L'**attestation de réussite à l'examen civique** est une pièce que vous joignez à votre dossier ; l'entretien, lui, intervient plus tard en préfecture, une fois le dossier jugé recevable.
+
 **Pourquoi les préparer ensemble ?**
-Les deux épreuves couvrent les **mêmes thématiques** : valeurs républicaines, institutions, droits et devoirs, histoire, géographie. Ce que vous révisez pour le test civique vous sert directement à l'entretien, et inversement.
+Les deux épreuves couvrent les **mêmes thématiques** : valeurs républicaines, institutions, droits et devoirs, histoire, géographie. Ce que vous révisez pour l'examen civique vous sert directement à l'entretien, et inversement.
 
 **La différence clé :**
-- Le test civique évalue des **connaissances précises** (dates, chiffres, noms)
+- L'examen civique évalue des **connaissances précises** (dates, chiffres, noms)
 - L'entretien évalue votre **compréhension profonde** et votre **vécu personnel**
 
-→ La meilleure stratégie : passez d'abord le test civique pour solidifier vos connaissances, puis préparez l'entretien en ajoutant la dimension personnelle et l'expression orale.`
+→ La meilleure stratégie : préparez d'abord l'examen civique pour solidifier vos connaissances, puis préparez l'entretien en ajoutant la dimension personnelle et l'expression orale. Pour vous entraîner sur les 5 thèmes de l'examen civique, commencez par un examen blanc gratuit sur [testciviquefrance.fr](/dashboard/entrainement).`
     },
     {
       id: 'apres-entretien',
@@ -249,8 +251,8 @@ L'agent de préfecture rédige un **rapport d'assimilation** qui résume ses obs
 **L'instruction ministérielle**
 Le ministère de l'Intérieur examine l'ensemble du dossier :
 - Rapport d'assimilation
-- Attestation de réussite au test civique
-- Attestation de niveau de français B1
+- Attestation de réussite à l'examen civique
+- Attestation de niveau de français B2 (niveau requis depuis le 1er janvier 2026)
 - Enquête administrative (casier judiciaire, fichiers)
 - Vérification des conditions de résidence et de ressources
 
@@ -274,7 +276,7 @@ Vous recevez une convocation pour la **cérémonie d'accueil dans la citoyennet�
     }
   ],
 
-  conclusion: `L'**entretien de naturalisation** est un moment décisif de votre parcours vers la nationalité française. Contrairement au test civique qui évalue des connaissances objectives, l'entretien mesure votre **intégration réelle** dans la société française. La clé de la réussite : une préparation méthodique combinant révisions des connaissances civiques, préparation de vos réponses personnelles, et entraînement à l'expression orale. Commencez dès maintenant à consolider vos bases sur **LeTestCivique.fr** — chaque connaissance acquise pour le test civique est un atout pour votre entretien.`,
+  conclusion: `L'**entretien de naturalisation** est un moment décisif de votre parcours vers la nationalité française. Contrairement à l'examen civique qui évalue des connaissances objectives par QCM, l'entretien mesure votre **intégration réelle** dans la société française. Ne confondez pas les deux : depuis le 1er janvier 2026, vous devez réussir l'examen civique **et** convaincre à l'entretien d'assimilation, tout en justifiant désormais d'un niveau de français **B2**. La clé de la réussite : une préparation méthodique combinant révisions des connaissances civiques, préparation de vos réponses personnelles, et entraînement à l'expression orale. Commencez dès maintenant à consolider vos bases sur [testciviquefrance.fr](/signup) — chaque connaissance acquise pour l'examen civique est un atout pour votre entretien.`,
 
   faq: [
     {
@@ -290,8 +292,8 @@ Vous recevez une convocation pour la **cérémonie d'accueil dans la citoyennet�
       answer: "Apportez votre convocation, une pièce d'identité en cours de validité (passeport ou titre de séjour), et éventuellement une copie de votre dossier de naturalisation. Certaines préfectures demandent des documents complémentaires précisés dans la convocation."
     },
     {
-      question: "L'entretien de naturalisation est-il le même que le test civique ?",
-      answer: "Non, ce sont deux épreuves différentes. Le test civique est un QCM écrit de 40 questions passé dans un centre agréé. L'entretien est un échange oral en préfecture qui évalue votre intégration globale. Les deux sont obligatoires pour la naturalisation."
+      question: "L'entretien de naturalisation est-il le même que l'examen civique ?",
+      answer: "Non, ce sont deux épreuves différentes et complémentaires. L'examen civique est un QCM écrit de 40 questions (32/40 requis) passé dans un centre agréé ; il est obligatoire pour la naturalisation depuis le 1er janvier 2026. L'entretien d'assimilation, lui, est un échange oral en préfecture qui évalue votre intégration globale. Les deux sont aujourd'hui requis pour la naturalisation."
     },
     {
       question: "Que se passe-t-il si l'entretien se passe mal ?",
@@ -311,7 +313,7 @@ Vous recevez une convocation pour la **cérémonie d'accueil dans la citoyennet�
     },
     {
       question: "Quel niveau de français faut-il pour l'entretien ?",
-      answer: "Le niveau minimum attendu est B1 oral du CECRL : capacité à comprendre les questions, s'exprimer de façon claire sur des sujets familiers, et donner son opinion. Vous devez déjà avoir obtenu votre attestation B1 avant l'entretien."
+      answer: "Depuis le 1er janvier 2026, le niveau exigé pour la naturalisation est le B2 du CECRL (à l'oral comme à l'écrit), contre B1 auparavant — relèvement fixé par le décret n° 2025-648 du 15 juillet 2025. Vous devez avoir justifié ce niveau B2 par un diplôme ou un test de langue avant l'entretien. Le jour J, l'agent vérifie surtout votre capacité à soutenir une conversation spontanée en français."
     },
     {
       question: "Combien de temps après l'entretien reçoit-on la réponse ?",
@@ -329,7 +331,35 @@ Vous recevez une convocation pour la **cérémonie d'accueil dans la citoyennet�
     'durée entretien naturalisation', 'test civique et entretien naturalisation',
     'naturalisation française 2026', 'devenir français entretien',
     'erreurs entretien naturalisation', 'conseils entretien naturalisation',
-    'LeTestCivique.fr', 'examen civique naturalisation'
+    'entretien ou examen civique différence', 'examen civique naturalisation',
+    'niveau b2 naturalisation 2026', 'entretien naturalisation deroulement prefecture'
+  ],
+
+  sources: [
+    {
+      title: "Code civil — article 21-24 (assimilation à la communauté française) — Légifrance",
+      url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419874/",
+      type: 'legal',
+      description: "Fondement juridique de l'entretien d'assimilation : le candidat doit justifier de son assimilation à la communauté française, notamment par une connaissance suffisante de la langue, de l'histoire, de la culture et de la société françaises.",
+    },
+    {
+      title: "Décret n° 2025-648 du 15 juillet 2025 (niveau B2 et examen civique pour la naturalisation) — Légifrance",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519",
+      type: 'legal',
+      description: "Décret qui modifie le décret n° 93-1362 du 30 décembre 1993, relève le niveau de français exigé de B1 à B2 et introduit l'obligation de réussir l'examen civique, à compter du 1er janvier 2026.",
+    },
+    {
+      title: "Ministère de l'Intérieur — L'examen civique obligatoire à compter du 1er janvier 2026",
+      url: "https://www.interieur.gouv.fr/actualites/communiques-de-presse/a-partir-du-1er-janvier-2026-reussite-a-lexamen-civique-sera-necessaire-pour-obtenir-carte-de-sejour",
+      type: 'official',
+      description: "Communiqué officiel confirmant que la réussite à l'examen civique devient nécessaire pour la carte de séjour pluriannuelle, la carte de résident et la naturalisation.",
+    },
+    {
+      title: "Service-Public.fr — Naturalisation française par décret (fiche F34708)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34708",
+      type: 'official',
+      description: "Fiche officielle décrivant la procédure de naturalisation par décret, dont l'entretien individuel en préfecture destiné à évaluer l'assimilation du demandeur.",
+    },
   ],
 };
 

@@ -56,8 +56,23 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 | ~~06~~ | ✅ Examen civique : exemples de questions corrigées — **rédigé le 09/06/2026** (`examen-civique-2026-exemples-questions-corrigees`) | Fait |
 | ~~07~~ | ✅ Frais d'inscription universités hors-UE — **rédigé le 25/05/2026** | Fait |
 | ~~08~~ | ✅ Coût total de la naturalisation 2026 (timbre 255 €) — **rédigé le 04/06/2026** | Fait |
-| [09](09-entretien-naturalisation-2026.md) | Entretien de naturalisation 2026 | 🟠 Moyenne | Forte |
-| [10](10-delai-renouvellement-titre-sejour-nunez.md) | Délai renouvellement titre de séjour (instruction Nuñez) | 🟠 Moyenne | Moyenne |
+| ~~09~~ | ✅ Entretien de naturalisation — **traité le 25/06/2026 en MAJ** de l'article existant `entretien-naturalisation-2026-preparation-assimilation-prefecture` (doublon évité : B1→B2, examen civique obligatoire 2026, marque + sources) | Fait |
+| ~~10~~ | ✅ Délai renouvellement titre de séjour — **traité le 25/06/2026 en MAJ** de `renouvellement-titre-sejour-2026-anef-prefecture-documents-delais` (section instruction Nuñez / objectif 55 jours + récépissé + recours) | Fait |
+
+## Cluster « Venir & s'installer en France » — proposé le 25/06/2026
+
+5 articles NEUFS proposés (angles distincts des articles existants Campus France / premiers-pas pour éviter la cannibalisation). **3 rédigés**, à publier en 2 lots (cadence 2-3/sem.) :
+
+| Brief | Article | Slug | État |
+|---|---|---|---|
+| [V1](V1-entretien-visa-consulat.md) | Entretien & visa au consulat/ambassade (≠ entretien Campus France) | `entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour` | ✅ rédigé 25/06/2026 |
+| [V2](V2-preparer-depart-france.md) | Préparer son départ : checklist documents avant l'avion | `preparer-depart-france-2026-checklist-documents-avant-avion` | ✅ rédigé 25/06/2026 |
+| [V4](V4-papiers-a-obtenir-arrivee.md) | Tous les papiers à obtenir en arrivant (où/comment) | `papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander` | ✅ rédigé 25/06/2026 |
+| [V3](V3-logement-etudiant-arrivee.md) | Trouver un logement étudiant (CROUS, Visale, garant, dossier) | — | ⏳ à rédiger |
+| [V5](V5-10-choses-a-savoir-arrivee.md) | 10 choses à savoir en arrivant (codes, arnaques, quotidien) | — | ⏳ à rédiger |
+
+> ⚠️ **Publier en lots, pas tout le même jour** (flag « contenu de masse »). Suggéré : V1+V2 d'abord, puis V4 quelques jours plus tard, puis V3 et V5 quand ils seront rédigés.
+> 📌 Les 3 articles V1/V2/V4 sont **déjà en code** (1 seul lot de 3 max dans le commit). V3 et V5 restent à l'état de **briefs** dans ce dossier — à rédiger plus tard.
 
 ## File d'attente — MISES À JOUR d'articles existants
 
@@ -79,8 +94,8 @@ Suivre cet ordre, cocher au fur et à mesure. Rythme : **2 à 3 articles / semai
 6. [x] **08** — Coût total de la naturalisation 2026 (timbre 255 €) · ✅ rédigé le 04/06/2026
 7. [x] **06** — Examen civique : exemples de questions corrigées · ✅ rédigé le 09/06/2026
 8. [x] **03** — Niveau B2 naturalisation · ✅ rédigé le 15/06/2026 (MAJ de l'article existant)
-9. [ ] **09** — Entretien de naturalisation 2026
-10. [ ] **10** — Délai renouvellement titre de séjour (instruction Nuñez)
+9. [x] **09** — Entretien de naturalisation · ✅ 25/06/2026 — **MAJ de l'article existant** (doublon évité, conforme à la règle anti-cannibalisation)
+10. [x] **10** — Délai renouvellement titre de séjour · ✅ 25/06/2026 — **MAJ de l'article renouvellement existant** (section instruction Nuñez / 55 jours)
 11. [ ] **04** — RDV préfecture : marché noir des créneaux
 12. [ ] **Reste des MAJ** — sections B à L de [MAJ-articles-existants.md](MAJ-articles-existants.md)
 

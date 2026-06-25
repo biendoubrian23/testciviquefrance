@@ -230,6 +230,11 @@ import { coutNaturalisation2026Content } from './articles-cout-naturalisation-20
 // ===== Article 06 — Exemples de questions corrigées examen civique 2026 =====
 import { exemplesQuestionsExamenCiviqueContent } from './articles-exemples-questions-examen-civique';
 
+// ===== Cluster « Venir & s'installer en France » — Juin 2026 =====
+import { entretienVisaConsulatContent } from './articles-entretien-visa-consulat-2026';
+import { preparerDepartFranceContent } from './articles-preparer-depart-france-2026';
+import { papiersArriveeFranceContent } from './articles-papiers-arrivee-france-2026';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -431,6 +436,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal': coutNaturalisation2026Content,
   // Article 06 — Exemples de questions corrigées examen civique 2026
   'examen-civique-2026-exemples-questions-corrigees': exemplesQuestionsExamenCiviqueContent,
+  // Cluster « Venir & s'installer en France » — Juin 2026
+  'entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour': entretienVisaConsulatContent,
+  'preparer-depart-france-2026-checklist-documents-avant-avion': preparerDepartFranceContent,
+  'papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander': papiersArriveeFranceContent,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

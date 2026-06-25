@@ -172,12 +172,12 @@ export const seoArticles: Article[] = [
     id: 'seo-ai-7',
     slug: 'renouvellement-titre-sejour-2026-anef-prefecture-documents-delais',
     title: 'Renouvellement titre de séjour 2026 : délais réels ANEF, 12 documents à fournir et 7 erreurs à éviter (guide pas-à-pas)',
-    excerpt: 'Tout pour renouveler votre titre de séjour sans erreur en 2026 : quand déposer (4 mois avant !), liste exacte des 12 documents ANEF, délais réels par préfecture, comment débloquer un dossier en attente et obtenir un récépissé en cas de retard.',
+    excerpt: 'Tout pour renouveler votre titre de séjour sans erreur en 2026 : quand déposer (4 mois avant !), l\'objectif des 55 jours du plan Nuñez face aux délais réels, liste des documents ANEF, récépissé et droits pendant l\'instruction, et recours si le délai est dépassé.',
     content: '',
     category: 'Conseils pratiques',
     categorySlug: 'conseils',
     author: 'Équipe Le Test Civique',
-    date: '25/03/2026',
+    date: '25/06/2026',
     readTime: 17,
     views: 0,
     image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070',
@@ -220,12 +220,12 @@ export const seoArticles: Article[] = [
     id: 'seo-ai-5',
     slug: 'entretien-naturalisation-2026-preparation-assimilation-prefecture',
     title: 'Entretien de naturalisation 2026 : comment se préparer et réussir l\'entretien d\'assimilation en préfecture',
-    excerpt: 'Guide complet de l\'entretien d\'assimilation en préfecture : déroulement, 30 questions les plus posées, critères d\'évaluation, erreurs fatales à éviter et plan de préparation en 4 semaines.',
+    excerpt: 'Guide complet de l\'entretien d\'assimilation en préfecture : différence avec l\'examen civique, déroulement, 30 questions les plus posées, critères d\'évaluation, niveau B2 requis et plan de préparation en 4 semaines.',
     content: '',
     category: 'Préparation',
     categorySlug: 'preparation',
     author: 'Équipe Le Test Civique',
-    date: '24/03/2026',
+    date: '25/06/2026',
     readTime: 20,
     views: 0,
     image: 'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?q=80&w=2070',
@@ -2013,10 +2013,18 @@ import { examenCiviqueObligatoireMetadata } from './seo-content/articles-examen-
 import { coutNaturalisation2026Metadata } from './seo-content/articles-cout-naturalisation-2026';
 import { exemplesQuestionsExamenCiviqueMetadata } from './seo-content/articles-exemples-questions-examen-civique';
 
+// ===== Cluster « Venir & s'installer en France » — Juin 2026 =====
+import { entretienVisaConsulatMetadata } from './seo-content/articles-entretien-visa-consulat-2026';
+import { preparerDepartFranceMetadata } from './seo-content/articles-preparer-depart-france-2026';
+import { papiersArriveeFranceMetadata } from './seo-content/articles-papiers-arrivee-france-2026';
+
 export const articlesEditoriaux2026: Article[] = [
   examenCiviqueObligatoireMetadata,
   coutNaturalisation2026Metadata,
   exemplesQuestionsExamenCiviqueMetadata,
+  entretienVisaConsulatMetadata,
+  preparerDepartFranceMetadata,
+  papiersArriveeFranceMetadata,
 ];
 
 /**
