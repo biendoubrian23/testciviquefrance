@@ -82,10 +82,6 @@ export default function OnboardingResultsPage() {
     }
   });
 
-  const handleContinue = () => {
-    router.push('/onboarding/offres');
-  };
-
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -147,7 +143,7 @@ export default function OnboardingResultsPage() {
           </p>
           <div className="flex">
             <button
-              onClick={() => router.push('/dashboard')}
+              onClick={() => router.push('/onboarding/profil')}
               className="inline-flex justify-center items-center gap-2 px-6 py-3 bg-primary-600 text-white font-semibold hover:bg-primary-700 transition-all duration-200 shadow-md hover:shadow-lg"
             >
               Continuer

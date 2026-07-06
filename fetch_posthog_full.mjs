@@ -5,8 +5,15 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 import fs from 'fs';
 
-const PROJECT_ID = '112119';
-const API_KEY = 'phx_kwfHr7ddSO135u1F5YQ61nNABkrAkpAqLbOlDxc1nLNcl7D';
+// Charge les variables depuis .env (Node >= 20.6). Aucune clé en dur dans le code.
+try { process.loadEnvFile('.env'); } catch { /* .env absent : on se rabat sur l'environnement */ }
+
+const PROJECT_ID = process.env.POSTHOG_PROJECT_ID;
+const API_KEY = process.env.POSTHOG_PERSONAL_API_KEY;
+if (!API_KEY || !PROJECT_ID) {
+  console.error('Erreur : définissez POSTHOG_PERSONAL_API_KEY et POSTHOG_PROJECT_ID dans .env');
+  process.exit(1);
+}
 const BASE_URL = `https://eu.posthog.com/api/projects/${PROJECT_ID}`;
 
 async function api(endpoint) {

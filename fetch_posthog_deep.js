@@ -1,10 +1,20 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 const fs = require('fs');
 
+// Charge les variables depuis .env (Node >= 20.6). Aucune clé en dur dans le code.
+try { process.loadEnvFile('.env'); } catch { /* .env absent : on se rabat sur l'environnement */ }
+
+const API_KEY = process.env.POSTHOG_PERSONAL_API_KEY;
+const PROJECT_ID = process.env.POSTHOG_PROJECT_ID;
+if (!API_KEY || !PROJECT_ID) {
+    console.error('Erreur : définissez POSTHOG_PERSONAL_API_KEY et POSTHOG_PROJECT_ID dans .env');
+    process.exit(1);
+}
+
 async function fetchFromPostHog(endpoint) {
-    const res = await fetch(`https://eu.posthog.com/api/projects/112119${endpoint}`, {
+    const res = await fetch(`https://eu.posthog.com/api/projects/${PROJECT_ID}${endpoint}`, {
         headers: {
-            'Authorization': 'Bearer phx_OjDDVnKLsGVfBOfrBpMSrERZlwEccmP5CLEEfKUlLOLWCkR'
+            'Authorization': `Bearer ${API_KEY}`
         }
     });
     if (!res.ok) {

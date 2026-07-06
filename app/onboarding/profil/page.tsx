@@ -104,8 +104,8 @@ export default function OnboardingProfilPage() {
       console.error('Erreur sauvegarde profil:', error);
     }
 
-    // Rediriger vers le quiz
-    router.push('/onboarding/quiz');
+    // Profil désormais posé APRÈS le quiz/score → aller au tableau de bord
+    router.push('/dashboard');
   };
 
   return (
@@ -191,7 +191,7 @@ export default function OnboardingProfilPage() {
               </>
             ) : isLastStep ? (
               <>
-                Commencer le quiz
+                Accéder à mon tableau de bord
                 <ChevronRight className="w-4 h-4" />
               </>
             ) : (

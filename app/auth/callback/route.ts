@@ -63,8 +63,8 @@ export async function GET(request: Request) {
           const nom = nameParts.slice(1).join(' ') || '';
           
           await addToBrevo(user.email || '', prenom, nom, origin);
-          
-          return NextResponse.redirect(`${origin}/onboarding/profil`);
+
+          return NextResponse.redirect(`${origin}/onboarding/quiz?ph=google_signup`);
         }
 
         // Vérifier si le profil vient d'être créé (moins de 10 secondes) = nouveau compte
@@ -81,12 +81,12 @@ export async function GET(request: Request) {
           const nom = nameParts.slice(1).join(' ') || '';
           
           await addToBrevo(user.email || '', prenom, nom, origin);
-          
-          return NextResponse.redirect(`${origin}/onboarding/profil`);
+
+          return NextResponse.redirect(`${origin}/onboarding/quiz?ph=google_signup`);
         }
-        
+
         // Compte existant (créé il y a plus de 10 secondes) -> toujours dashboard
-        return NextResponse.redirect(`${origin}/dashboard`);
+        return NextResponse.redirect(`${origin}/dashboard?ph=google_login`);
       }
       
       return NextResponse.redirect(`${origin}${next}`);

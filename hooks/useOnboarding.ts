@@ -45,9 +45,12 @@ export function useOnboarding(redirectIfNotComplete = true) {
         } else {
           setHasCompletedOnboarding(profile?.has_completed_onboarding ?? false);
           
-          // Redirection si demandée et onboarding non complété
+          // Redirection si demandée et onboarding non complété.
+          // On envoie vers le QUIZ (nouvelle 1re étape) : c'est lui qui mène à l'écran
+          // de score, lequel marque has_completed_onboarding = true. Les 2 questions de
+          // profil sont posées après le score (skippables) et ne bloquent pas l'accès.
           if (redirectIfNotComplete && !profile?.has_completed_onboarding) {
-            router.push('/onboarding/profil');
+            router.push('/onboarding/quiz');
           }
         }
       } catch (err) {

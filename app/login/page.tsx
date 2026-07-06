@@ -96,7 +96,7 @@ export default function LoginPage() {
     const { error } = await signIn(email, password);
 
     if (error) {
-      setError('Email ou mot de passe incorrect');
+      setError('Connexion impossible. Si vous avez créé votre compte avec Google, cliquez sur « Continuer avec Google » ci-dessus. Sinon, vérifiez votre mot de passe ou réinitialisez-le.');
       capture('login_failed', { error: 'invalid_credentials' });
       setIsLoading(false);
     } else {
@@ -145,12 +145,12 @@ export default function LoginPage() {
             </div>
           )}
 
-          {/* Bouton Google */}
+          {/* Bouton Google — méthode principale (60% des membres) */}
           <button
             type="button"
             onClick={handleGoogleSignIn}
             disabled={isGoogleLoading}
-            className="w-full py-3 px-4 border border-gray-300 bg-white text-gray-700 font-medium hover:bg-gray-50 transition-colors flex items-center justify-center gap-3 mb-6 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-3 px-4 border-2 border-primary-300 bg-white text-gray-800 font-semibold hover:bg-primary-50 shadow-sm transition-colors flex items-center justify-center gap-3 mb-2 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isGoogleLoading ? (
               <Loader2 className="w-5 h-5 animate-spin" />
@@ -176,6 +176,9 @@ export default function LoginPage() {
             )}
             Continuer avec Google
           </button>
+          <p className="text-center text-xs text-gray-500 mb-6">
+            La plupart de nos membres se connectent avec Google
+          </p>
 
           <div className="relative mb-6">
             <div className="absolute inset-0 flex items-center">

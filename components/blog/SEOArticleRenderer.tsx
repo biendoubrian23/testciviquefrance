@@ -22,6 +22,7 @@ import {
 } from 'lucide-react';
 import ArticleViews from './ArticleViews';
 import TestCiviqueCTA from './TestCiviqueCTA';
+import ArticleStickyCTA from './ArticleStickyCTA';
 
 interface SEOArticleRendererProps {
   content: ArticleFullContent;
@@ -510,6 +511,9 @@ export default function SEOArticleRenderer({ content, article }: SEOArticleRende
           <TestCiviqueCTA variant="final" />
         </div>
       </div>
+
+      {/* Barre CTA collante (mobile-first) : convertir le trafic SEO en inscriptions */}
+      <ArticleStickyCTA />
     </article>
   );
 }

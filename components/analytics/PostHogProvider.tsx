@@ -38,6 +38,25 @@ function PostHogPageView() {
         }
     }, [pathname, searchParams, posthogInstance]);
 
+    // Tracking des connexions/inscriptions Google : le callback OAuth redirige avec ?ph=...
+    // (l'événement ne peut pas être capturé côté serveur, on le fait ici puis on nettoie l'URL)
+    useEffect(() => {
+        if (!posthogInstance || !searchParams) return;
+        const ph = searchParams.get('ph');
+        if (!ph) return;
+        if (ph === 'google_signup') {
+            posthogInstance.capture('signup_completed', { method: 'google' });
+        } else if (ph === 'google_login') {
+            posthogInstance.capture('login_completed', { method: 'google' });
+        }
+        // Retirer le paramètre pour éviter un double comptage au rechargement
+        if (typeof window !== 'undefined') {
+            const url = new URL(window.location.href);
+            url.searchParams.delete('ph');
+            window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+        }
+    }, [searchParams, posthogInstance]);
+
     return null;
 }
 
