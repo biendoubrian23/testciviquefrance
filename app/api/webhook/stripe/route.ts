@@ -193,6 +193,32 @@ function getProductTypeFromPriceId(priceId?: string | null) {
   return 'unknown';
 }
 
+// 🔧 COMPAT « flexible billing » (API >= 2025-xx, ex: 2025-11-17.clover) :
+// la période de facturation n'est plus sur la subscription mais sur son ITEM.
+// On lit l'item en priorité, avec repli sur le niveau racine (anciennes versions).
+function getSubscriptionPeriod(subscription: Stripe.Subscription) {
+  const item = subscription.items?.data?.[0] as any;
+  const start = item?.current_period_start ?? (subscription as any).current_period_start ?? null;
+  const end = item?.current_period_end ?? (subscription as any).current_period_end ?? null;
+  return {
+    start: start ? new Date(start * 1000).toISOString() : null,
+    end: end ? new Date(end * 1000).toISOString() : null,
+  };
+}
+
+// 🔧 COMPAT : `invoice.subscription` a été déplacé dans les versions récentes de l'API.
+// On cherche l'ID d'abonnement à tous les emplacements connus.
+function getInvoiceSubscriptionId(invoice: Stripe.Invoice): string | null {
+  const inv = invoice as any;
+  return (
+    inv.subscription ??
+    inv.parent?.subscription_details?.subscription ??
+    inv.lines?.data?.find((l: any) => l.subscription)?.subscription ??
+    inv.lines?.data?.[0]?.parent?.subscription_item_details?.subscription ??
+    null
+  );
+}
+
 async function insertRevenueEvent(
   supabase: ReturnType<typeof getSupabaseClient>,
   payload: {
@@ -295,8 +321,8 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
     stripe_subscription_id: subscriptionId,
     stripe_price_id: priceId,
     subscription_status: subscription.status,
-    subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
-    subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
+    subscription_start_date: getSubscriptionPeriod(subscription).start,
+    subscription_end_date: getSubscriptionPeriod(subscription).end,
     is_premium: true,
   };
 
@@ -339,8 +365,8 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
       stripe_subscription_id: subscription.id,
       stripe_price_id: priceId,
       subscription_status: subscription.status,
-      subscription_start_date: new Date(subscription.current_period_start * 1000).toISOString(),
-      subscription_end_date: new Date(subscription.current_period_end * 1000).toISOString(),
+      subscription_start_date: getSubscriptionPeriod(subscription).start,
+      subscription_end_date: getSubscriptionPeriod(subscription).end,
       is_premium: hasActiveAccess,
     })
     .eq('id', profile.id);
@@ -370,7 +396,8 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supa
 
 async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('💳 Invoice paid:', invoice.id);
-  if (!invoice.subscription) return;
+  const invoiceSubscriptionId = getInvoiceSubscriptionId(invoice);
+  if (!invoiceSubscriptionId) return;
 
   const customerId = invoice.customer as string;
   const customerEmail = invoice.customer_email || await getCustomerEmail(customerId);
