@@ -68,7 +68,7 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 | [V1](V1-entretien-visa-consulat.md) | Entretien & visa au consulat/ambassade (≠ entretien Campus France) | `entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour` | ✅ rédigé 25/06/2026 |
 | [V2](V2-preparer-depart-france.md) | Préparer son départ : checklist documents avant l'avion | `preparer-depart-france-2026-checklist-documents-avant-avion` | ✅ rédigé 25/06/2026 |
 | [V4](V4-papiers-a-obtenir-arrivee.md) | Tous les papiers à obtenir en arrivant (où/comment) | `papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander` | ✅ rédigé 25/06/2026 |
-| [V3](V3-logement-etudiant-arrivee.md) | Trouver un logement étudiant (CROUS, Visale, garant, dossier) | — | ⏳ à rédiger |
+| V3 | Trouver un logement étudiant (CROUS, Visale, garant, dossier) | `logement-etudiant-etranger-france-2026-crous-visale-garant-dossier` | ✅ rédigé 09/07/2026 |
 | [V5](V5-10-choses-a-savoir-arrivee.md) | 10 choses à savoir en arrivant (codes, arnaques, quotidien) | — | ⏳ à rédiger |
 
 > ⚠️ **Publier en lots, pas tout le même jour** (flag « contenu de masse »). Suggéré : V1+V2 d'abord, puis V4 quelques jours plus tard, puis V3 et V5 quand ils seront rédigés.

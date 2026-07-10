@@ -2017,6 +2017,7 @@ import { exemplesQuestionsExamenCiviqueMetadata } from './seo-content/articles-e
 import { entretienVisaConsulatMetadata } from './seo-content/articles-entretien-visa-consulat-2026';
 import { preparerDepartFranceMetadata } from './seo-content/articles-preparer-depart-france-2026';
 import { papiersArriveeFranceMetadata } from './seo-content/articles-papiers-arrivee-france-2026';
+import { logementEtudiantMetadata } from './seo-content/articles-logement-etudiant-2026';
 
 export const articlesEditoriaux2026: Article[] = [
   examenCiviqueObligatoireMetadata,
@@ -2025,6 +2026,7 @@ export const articlesEditoriaux2026: Article[] = [
   entretienVisaConsulatMetadata,
   preparerDepartFranceMetadata,
   papiersArriveeFranceMetadata,
+  logementEtudiantMetadata,
 ];
 
 /**

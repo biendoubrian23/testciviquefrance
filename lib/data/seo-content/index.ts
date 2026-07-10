@@ -234,6 +234,7 @@ import { exemplesQuestionsExamenCiviqueContent } from './articles-exemples-quest
 import { entretienVisaConsulatContent } from './articles-entretien-visa-consulat-2026';
 import { preparerDepartFranceContent } from './articles-preparer-depart-france-2026';
 import { papiersArriveeFranceContent } from './articles-papiers-arrivee-france-2026';
+import { logementEtudiantContent } from './articles-logement-etudiant-2026';
 
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
@@ -440,6 +441,7 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour': entretienVisaConsulatContent,
   'preparer-depart-france-2026-checklist-documents-avant-avion': preparerDepartFranceContent,
   'papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander': papiersArriveeFranceContent,
+  'logement-etudiant-etranger-france-2026-crous-visale-garant-dossier': logementEtudiantContent,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,
