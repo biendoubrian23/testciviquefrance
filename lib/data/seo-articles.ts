@@ -2019,6 +2019,9 @@ import { preparerDepartFranceMetadata } from './seo-content/articles-preparer-de
 import { papiersArriveeFranceMetadata } from './seo-content/articles-papiers-arrivee-france-2026';
 import { logementEtudiantMetadata } from './seo-content/articles-logement-etudiant-2026';
 
+// ===== Article 04 — RDV préfecture : marché noir des créneaux — Juillet 2026 =====
+import { rdvPrefectureMarcheNoirMetadata } from './seo-content/articles-rdv-prefecture-marche-noir-2026';
+
 export const articlesEditoriaux2026: Article[] = [
   examenCiviqueObligatoireMetadata,
   coutNaturalisation2026Metadata,
@@ -2027,6 +2030,7 @@ export const articlesEditoriaux2026: Article[] = [
   preparerDepartFranceMetadata,
   papiersArriveeFranceMetadata,
   logementEtudiantMetadata,
+  rdvPrefectureMarcheNoirMetadata,
 ];
 
 /**

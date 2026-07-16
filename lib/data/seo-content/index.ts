@@ -236,6 +236,9 @@ import { preparerDepartFranceContent } from './articles-preparer-depart-france-2
 import { papiersArriveeFranceContent } from './articles-papiers-arrivee-france-2026';
 import { logementEtudiantContent } from './articles-logement-etudiant-2026';
 
+// ===== Article 04 — RDV préfecture introuvable : marché noir des créneaux — Juillet 2026 =====
+import { rdvPrefectureMarcheNoirContent } from './articles-rdv-prefecture-marche-noir-2026';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -442,6 +445,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'preparer-depart-france-2026-checklist-documents-avant-avion': preparerDepartFranceContent,
   'papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander': papiersArriveeFranceContent,
   'logement-etudiant-etranger-france-2026-crous-visale-garant-dossier': logementEtudiantContent,
+  // Article 04 — RDV préfecture introuvable : marché noir des créneaux — Juillet 2026
+  'rdv-prefecture-titre-sejour-introuvable-2026-creneaux-marche-noir': rdvPrefectureMarcheNoirContent,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

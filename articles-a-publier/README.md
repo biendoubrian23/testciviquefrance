@@ -52,7 +52,7 @@ masse »). Type indiqué dans chaque ligne : 🆕 Nouveau · 🔄 Mise à jour.
 |---|---|---|---|
 | [01](01-examen-civique-obligatoire-carte-sejour.md) | Examen civique obligatoire — carte de séjour & résident | 🔴 Haute | Forte |
 | ~~02~~ | ✅ Inscription examen civique — **rédigé le 01/06/2026** (MAJ de `inscription-test-civique-2026-ou-quand-comment-sinscrire`) | Fait |
-| [04](04-rdv-prefecture-marche-noir-creneaux.md) | RDV préfecture introuvable — marché noir des créneaux | 🟠 Moyenne | Faible (trafic) |
+| ~~04~~ | ✅ RDV préfecture introuvable — marché noir des créneaux — **rédigé le 16/07/2026** (`rdv-prefecture-titre-sejour-introuvable-2026-creneaux-marche-noir`) | Fait |
 | ~~06~~ | ✅ Examen civique : exemples de questions corrigées — **rédigé le 09/06/2026** (`examen-civique-2026-exemples-questions-corrigees`) | Fait |
 | ~~07~~ | ✅ Frais d'inscription universités hors-UE — **rédigé le 25/05/2026** | Fait |
 | ~~08~~ | ✅ Coût total de la naturalisation 2026 (timbre 255 €) — **rédigé le 04/06/2026** | Fait |
@@ -96,7 +96,7 @@ Suivre cet ordre, cocher au fur et à mesure. Rythme : **2 à 3 articles / semai
 8. [x] **03** — Niveau B2 naturalisation · ✅ rédigé le 15/06/2026 (MAJ de l'article existant)
 9. [x] **09** — Entretien de naturalisation · ✅ 25/06/2026 — **MAJ de l'article existant** (doublon évité, conforme à la règle anti-cannibalisation)
 10. [x] **10** — Délai renouvellement titre de séjour · ✅ 25/06/2026 — **MAJ de l'article renouvellement existant** (section instruction Nuñez / 55 jours)
-11. [ ] **04** — RDV préfecture : marché noir des créneaux
+11. [x] **04** — RDV préfecture : marché noir des créneaux · ✅ rédigé le 16/07/2026 (sources : CE n° 435594, CJA L. 521-3, service-public, Sénat, Défenseur des droits, presse mai 2026)
 12. [ ] **Reste des MAJ** — sections B à L de [MAJ-articles-existants.md](MAJ-articles-existants.md)
 
 > Logique : 05 et 07 d'abord (actu chaude + quick win), puis le cluster examen
