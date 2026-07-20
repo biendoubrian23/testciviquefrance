@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Eye, EyeOff } from 'lucide-react';
 import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
 
 // Validation email stricte
@@ -43,6 +43,7 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
   const { signIn, signInWithGoogle } = useAuth();
@@ -211,14 +212,25 @@ export default function LoginPage() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Mot de passe
               </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => handlePasswordChange(e.target.value)}
-                className={`w-full px-4 py-3 border ${passwordError ? 'border-red-500' : 'border-gray-300'} focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all`}
-                placeholder="••••••••"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => handlePasswordChange(e.target.value)}
+                  className={`w-full px-4 py-3 pr-12 border ${passwordError ? 'border-red-500' : 'border-gray-300'} focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all`}
+                  placeholder="••••••••"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label={showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'}
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
               {passwordError && (
                 <p className="mt-1 text-xs text-red-500">{passwordError}</p>
               )}

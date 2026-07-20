@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/contexts/AuthContext';
-import { Loader2, Check, X } from 'lucide-react';
+import { Loader2, Check, X, Eye, EyeOff } from 'lucide-react';
 import LegalModal from '@/components/ui/LegalModal';
 import { conditionsUtilisation, politiqueConfidentialite } from '@/lib/data/legal-content';
 import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
@@ -50,6 +50,7 @@ export default function SignupPage() {
   const [emailError, setEmailError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [showCGU, setShowCGU] = useState(false);
   const [showPolitique, setShowPolitique] = useState(false);
   const { signUp, signInWithGoogle } = useAuth();
@@ -260,17 +261,28 @@ export default function SignupPage() {
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Mot de passe
               </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className={`w-full px-4 py-3 border ${
-                  password && !isValidPassword(password) ? 'border-red-500' : password && isValidPassword(password) ? 'border-green-500' : 'border-gray-300'
-                } focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all`}
-                placeholder="••••••••"
-                required
-                minLength={8}
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className={`w-full px-4 py-3 pr-12 border ${
+                    password && !isValidPassword(password) ? 'border-red-500' : password && isValidPassword(password) ? 'border-green-500' : 'border-gray-300'
+                  } focus:border-primary-500 focus:ring-2 focus:ring-primary-200 outline-none transition-all`}
+                  placeholder="••••••••"
+                  required
+                  minLength={8}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((v) => !v)}
+                  className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-400 hover:text-gray-600 transition-colors"
+                  aria-label={showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'}
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
+              </div>
               {/* Indicateurs de critères du mot de passe */}
               {password && (
                 <div className="mt-2 space-y-1">
