@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSubscriptions } from '@/lib/actions/subscriptions';
+import { verifyAdminSession, unauthorizedResponse } from '@/lib/auth/verify-session';
 
 export async function GET(request: NextRequest) {
+  if (!(await verifyAdminSession(request))) return unauthorizedResponse();
+
   const searchParams = request.nextUrl.searchParams;
   
   const filter = {

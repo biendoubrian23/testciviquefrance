@@ -1,9 +1,12 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { getTotalServicesRevenue } from '@/lib/actions/services';
+import { verifyAdminSession, unauthorizedResponse } from '@/lib/auth/verify-session';
 
 export const dynamic = 'force-dynamic';
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  if (!(await verifyAdminSession(request))) return unauthorizedResponse();
+
   try {
     const totalRevenue = await getTotalServicesRevenue();
     return NextResponse.json({ totalRevenue });

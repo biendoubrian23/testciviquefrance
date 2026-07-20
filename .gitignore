@@ -70,3 +70,13 @@ check_*_result.json
 
 # Codex config locale (contient une cle Stripe + un token Supabase)
 .codex/
+
+# Scripts de diagnostic one-off dans docs/ (peuvent contenir des cles / donnees clients)
+# NE JAMAIS committer : ces fichiers embarquent parfois des cles en dur (service_role, anon).
+docs/check-*.mjs
+docs/fix-*.mjs
+docs/execute-query.js
+docs/test-*.js
+docs/test-*.mjs
+docs/verify-*.js
+docs/*-result.json

@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getAchats, getRevenueStats } from '@/lib/actions/revenue';
+import { verifyAdminSession, unauthorizedResponse } from '@/lib/auth/verify-session';
 
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
+  if (!(await verifyAdminSession(request))) return unauthorizedResponse();
+
   try {
     const searchParams = request.nextUrl.searchParams;
     const page = parseInt(searchParams.get('page') || '1');

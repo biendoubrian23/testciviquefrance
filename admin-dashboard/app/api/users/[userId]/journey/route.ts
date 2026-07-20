@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getUserJourney } from '@/lib/actions/getUserJourney';
+import { verifyAdminSession, unauthorizedResponse } from '@/lib/auth/verify-session';
 
 export async function GET(
     request: NextRequest,
     { params }: { params: Promise<{ userId: string }> }
 ) {
+    if (!(await verifyAdminSession(request))) return unauthorizedResponse();
+
     try {
         const { userId } = await params;
 

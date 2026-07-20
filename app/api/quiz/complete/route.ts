@@ -28,7 +28,9 @@ export async function POST(request: NextRequest) {
 
   try {
     const body: CompleteRequest = await request.json()
-    const { sessionId, categorieId, niveau, score, totalQuestions, tempsTotal } = body
+    const { sessionId, categorieId, niveau, tempsTotal } = body
+    const clientScore = Number(body.score) || 0
+    const clientTotal = Number(body.totalQuestions) || 0
 
     const supabase = await createClient()
 
@@ -41,7 +43,27 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // 1. Mettre à jour la session
+    // 🔒 SÉCURITÉ (M2) : ne JAMAIS faire confiance au score envoyé par le client.
+    // On recalcule depuis `resultats` (écrit par /api/quiz/verify, où is_correct est
+    // déterminé côté serveur) pour CETTE session ET cet utilisateur. À défaut de
+    // résultats enregistrés, on retombe sur la valeur client, bornée.
+    let score = Math.max(0, Math.min(clientScore, clientTotal))
+    let totalQuestions = Math.max(0, Math.min(clientTotal, 100))
+
+    if (sessionId) {
+      const { data: sessionResults } = await supabase
+        .from('resultats')
+        .select('is_correct')
+        .eq('user_id', user.id)
+        .eq('session_id', sessionId)
+
+      if (sessionResults && sessionResults.length > 0) {
+        score = sessionResults.filter((r) => r.is_correct).length
+        totalQuestions = sessionResults.length
+      }
+    }
+
+    // 1. Mettre à jour la session (⚠️ filtrer AUSSI par user_id : anti-IDOR)
     if (sessionId) {
       await supabase
         .from('sessions_quiz')
@@ -51,6 +73,7 @@ export async function POST(request: NextRequest) {
           completed: true
         })
         .eq('id', sessionId)
+        .eq('user_id', user.id)
     }
 
     // 2. Calculer les points (10 points par bonne réponse + bonus)

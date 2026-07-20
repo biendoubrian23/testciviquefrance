@@ -1,7 +1,10 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { verifyAdminSession, unauthorizedResponse } from '@/lib/auth/verify-session';
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
+  if (!(await verifyAdminSession(request))) return unauthorizedResponse();
+
   const { searchParams } = new URL(request.url);
   const email = searchParams.get('email') || 'najem.helmi.shop@outlook.com';
   

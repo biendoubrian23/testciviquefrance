@@ -123,7 +123,16 @@ export function rateLimitResponse(resetTime: number): Response {
  * Extraire l'identifiant depuis une Request (IP + userId si disponible)
  */
 export function getIdentifier(request: Request, userId?: string): string {
-  const forwarded = request.headers.get('x-forwarded-for');
-  const ip = forwarded?.split(',')[0]?.trim() || 'unknown';
+  // ⚠️ `x-forwarded-for` (leftmost) est SPOOFABLE par le client : un attaquant
+  // le fait tourner pour contourner le rate-limit. Sur Vercel, on privilégie les
+  // en-têtes positionnés par la plateforme (non spoofables côté client).
+  const vercelIp = request.headers.get('x-vercel-forwarded-for');
+  const realIp = request.headers.get('x-real-ip');
+  const xff = request.headers.get('x-forwarded-for');
+  const ip =
+    vercelIp?.split(',')[0]?.trim() ||
+    realIp?.trim() ||
+    xff?.split(',')[0]?.trim() ||
+    'unknown';
   return userId ? `${ip}:${userId}` : ip;
 }

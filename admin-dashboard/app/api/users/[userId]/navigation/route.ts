@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { verifyAdminSession, unauthorizedResponse } from '@/lib/auth/verify-session';
 
 // PostHog EU API endpoint
 const POSTHOG_HOST = process.env.POSTHOG_HOST || 'https://eu.i.posthog.com';
@@ -42,6 +43,8 @@ export async function GET(
     request: NextRequest,
     { params }: { params: Promise<{ userId: string }> }
 ) {
+    if (!(await verifyAdminSession(request))) return unauthorizedResponse();
+
     try {
         const { userId } = await params;
 
