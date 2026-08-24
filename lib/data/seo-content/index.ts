@@ -239,6 +239,11 @@ import { logementEtudiantContent } from './articles-logement-etudiant-2026';
 // ===== Article 04 — RDV préfecture introuvable : marché noir des créneaux — Juillet 2026 =====
 import { rdvPrefectureMarcheNoirContent } from './articles-rdv-prefecture-marche-noir-2026';
 
+// ===== Articles 05-07 — Série examen civique : dispenses, échec, accord 1968 — Août 2026 =====
+import { dispenseExamenCiviqueContent } from './articles-dispense-examen-civique-2026';
+import { raterExamenCiviqueContent } from './articles-rater-examen-civique-2026';
+import { algeriensExamenCiviqueContent } from './articles-algeriens-examen-civique-2026';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -447,6 +452,10 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'logement-etudiant-etranger-france-2026-crous-visale-garant-dossier': logementEtudiantContent,
   // Article 04 — RDV préfecture introuvable : marché noir des créneaux — Juillet 2026
   'rdv-prefecture-titre-sejour-introuvable-2026-creneaux-marche-noir': rdvPrefectureMarcheNoirContent,
+  // Articles 05-07 — Série examen civique : dispenses, échec, accord 1968 — Août 2026
+  'dispense-examen-civique-2026-qui-est-exempte-age-refugie-accords': dispenseExamenCiviqueContent,
+  'rater-examen-civique-2026-repasser-delai-cout-themes-echec': raterExamenCiviqueContent,
+  'algeriens-examen-civique-2026-accord-1968-dispense-sejour-mais-pas-naturalisation': algeriensExamenCiviqueContent,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

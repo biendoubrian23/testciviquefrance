@@ -2022,6 +2022,11 @@ import { logementEtudiantMetadata } from './seo-content/articles-logement-etudia
 // ===== Article 04 — RDV préfecture : marché noir des créneaux — Juillet 2026 =====
 import { rdvPrefectureMarcheNoirMetadata } from './seo-content/articles-rdv-prefecture-marche-noir-2026';
 
+// ===== Articles 05-07 — Série examen civique : dispenses, échec, accord 1968 — Août 2026 =====
+import { dispenseExamenCiviqueMetadata } from './seo-content/articles-dispense-examen-civique-2026';
+import { raterExamenCiviqueMetadata } from './seo-content/articles-rater-examen-civique-2026';
+import { algeriensExamenCiviqueMetadata } from './seo-content/articles-algeriens-examen-civique-2026';
+
 export const articlesEditoriaux2026: Article[] = [
   examenCiviqueObligatoireMetadata,
   coutNaturalisation2026Metadata,
@@ -2031,6 +2036,9 @@ export const articlesEditoriaux2026: Article[] = [
   papiersArriveeFranceMetadata,
   logementEtudiantMetadata,
   rdvPrefectureMarcheNoirMetadata,
+  dispenseExamenCiviqueMetadata,
+  raterExamenCiviqueMetadata,
+  algeriensExamenCiviqueMetadata,
 ];
 
 /**
