@@ -2027,6 +2027,9 @@ import { dispenseExamenCiviqueMetadata } from './seo-content/articles-dispense-e
 import { raterExamenCiviqueMetadata } from './seo-content/articles-rater-examen-civique-2026';
 import { algeriensExamenCiviqueMetadata } from './seo-content/articles-algeriens-examen-civique-2026';
 
+// ===== Article 08 — Simulateur d'éligibilité — Août 2026 =====
+import { simulateurEligibiliteMetadata } from './seo-content/articles-simulateur-eligibilite-2026';
+
 export const articlesEditoriaux2026: Article[] = [
   examenCiviqueObligatoireMetadata,
   coutNaturalisation2026Metadata,
@@ -2039,6 +2042,7 @@ export const articlesEditoriaux2026: Article[] = [
   dispenseExamenCiviqueMetadata,
   raterExamenCiviqueMetadata,
   algeriensExamenCiviqueMetadata,
+  simulateurEligibiliteMetadata,
 ];
 
 /**

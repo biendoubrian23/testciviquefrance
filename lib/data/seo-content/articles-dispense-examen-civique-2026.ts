@@ -200,7 +200,7 @@ Pièce d'identité, convocation, horaires : voir [Documents à apporter le jour 
 
   conclusion: `Quatre dispenses existent — **65 ans révolus**, **protection internationale**, **accords bilatéraux** (essentiellement l'accord franco-algérien de 1968), **état de santé ou handicap** — auxquelles s'ajoute le cas du **renouvellement**, qui n'est pas concerné par l'examen.
 
-Mais retenez surtout la ligne de partage qui fait le plus de dégâts dans les dossiers : **une dispense accordée pour le titre de séjour ne vaut jamais pour la naturalisation.** La nationalité relève du code civil, et ni le statut de réfugié, ni l'accord franco-algérien n'y font échapper. Seuls l'âge et l'état de santé produisent leurs effets dans les deux procédures.
+Mais retenez surtout la ligne de partage qui fait le plus de dégâts dans les dossiers : **une dispense accordée pour le titre de séjour ne vaut jamais pour la naturalisation.** La nationalité relève du code civil, et ni le statut de réfugié, ni l'accord franco-algérien n'y font échapper. Quant aux dispenses liées à l'âge et à l'état de santé, elles sont documentées par les sources officielles **pour les titres de séjour** : si vous déposez une demande de naturalisation, faites confirmer leur application par votre préfecture plutôt que de la présumer.
 
 Le bon réflexe, en cas de doute : **demandez une confirmation écrite à votre préfecture, et préparez-vous en parallèle**. L'attestation n'a pas de date de péremption — une fois obtenue, elle est acquise et vaut pour vos démarches futures. Réviser inutilement ne coûte rien ; découvrir tardivement que vous n'étiez pas dispensé peut coûter plusieurs mois de procédure.
 

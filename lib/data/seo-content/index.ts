@@ -244,6 +244,9 @@ import { dispenseExamenCiviqueContent } from './articles-dispense-examen-civique
 import { raterExamenCiviqueContent } from './articles-rater-examen-civique-2026';
 import { algeriensExamenCiviqueContent } from './articles-algeriens-examen-civique-2026';
 
+// ===== Article 08 — Simulateur d'éligibilité — Août 2026 =====
+import { simulateurEligibiliteContent } from './articles-simulateur-eligibilite-2026';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -456,6 +459,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'dispense-examen-civique-2026-qui-est-exempte-age-refugie-accords': dispenseExamenCiviqueContent,
   'rater-examen-civique-2026-repasser-delai-cout-themes-echec': raterExamenCiviqueContent,
   'algeriens-examen-civique-2026-accord-1968-dispense-sejour-mais-pas-naturalisation': algeriensExamenCiviqueContent,
+  // Article 08 — Simulateur d'éligibilité — Août 2026
+  'simulateur-eligibilite-examen-civique-2026-suis-je-concerne': simulateurEligibiliteContent,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

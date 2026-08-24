@@ -11,6 +11,7 @@ import { SEO_CONFIG, FAQ_RICH_SNIPPETS } from '@/lib/seo/constants';
 
 // Lazy load des composants below-the-fold pour améliorer LCP/TBT
 const ProgressSection = dynamic(() => import('@/components/landing/ProgressSection'), { ssr: true });
+const EligibiliteSection = dynamic(() => import('@/components/landing/EligibiliteSection'), { ssr: true });
 const Features = dynamic(() => import('@/components/landing/Features'), { ssr: true });
 const Pricing = dynamic(() => import('@/components/landing/Pricing'), { ssr: true });
 const SEOContent = dynamic(() => import('@/components/seo/SEOContent'), { ssr: true });
@@ -141,6 +142,7 @@ export default function HomePage() {
       <main>
         <Hero />
         <ProgressSection />
+        <EligibiliteSection />
         <Features />
         <RecentArticles />
         <Pricing />

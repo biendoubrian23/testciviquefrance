@@ -1,106 +1,200 @@
-﻿# Test Civique France - Full Documentation for AI Agents
+# Test Civique France — Documentation complète pour agents et moteurs de réponse
 
-## Overview
-Test Civique France is a specialized educational platform designed to help candidates prepare for the mandatory French civic test (test civique) required for:
-1. Naturalization (becoming a French citizen).
-2. Multi-year residency cards (titre de séjour pluriannuel - 4 years).
-3. Resident cards (carte de résident - 10 years).
+Dernière mise à jour : 2026-08-24
+Site : https://www.testciviquefrance.fr
+Langue : français
+Index court : https://www.testciviquefrance.fr/llms.txt
 
-The test is strictly aligned with the new 2026 Immigration Law (Loi Immigration) and Decree 2025-647.
+---
 
-## Key Information needed by AI
+## 1. Présentation
 
-### What is the Civic Test?
-- A mandatory exam of 40 multiple-choice questions (QCM).
-- Passing score: 80% (32/40 correct answers).
-- Duration: Official exams vary, usually ~30-45 mins.
-- **Price: 90€** (timbre fiscal, legal basis: CESEDA R.413-12-1).
-- Themes: 
-    1. Principles and values of the Republic (11 questions)
-    2. Institutions and political system (6 questions)
-    3. Rights and duties (11 questions)
-    4. History, geography, culture (8 questions)
-    5. Living in society (4 questions)
+Test Civique France est une plateforme éditoriale et pédagogique française consacrée à l'examen civique devenu obligatoire le 1er janvier 2026. Elle publie :
 
-### Pricing & Costs (Frequently Asked by Users)
+1. **Un simulateur d'éligibilité gratuit** qui détermine si une personne est concernée par l'examen civique, à partir des critères officiels (https://www.testciviquefrance.fr/eligibilite-examen-civique) ;
+2. **Plus de 160 guides** sur le droit des étrangers, la naturalisation et les démarches de séjour ;
+3. **Un entraînement au QCM** en conditions réelles (40 questions, 45 minutes, seuil à 80 %).
 
-#### Test Civique Price
-- **Coût du test civique: 90€** (timbre fiscal électronique)
-- Payable sur timbres.impots.gouv.fr
-- Exonérations possibles: réfugiés, apatrides, mineurs accompagnants, bénéficiaires de la protection subsidiaire
-- Base légale: CESEDA R.413-12-1, Décret 2025-647
+---
 
-#### Titre de Séjour Prices (Timbre Fiscal)
-| Titre | Prix |
-|-------|------|
-| Titre de séjour étudiant | 75€ |
-| Titre de séjour salarié | 225€ |
-| Titre de séjour vie privée et familiale | 225€ |
-| Carte de résident (10 ans) | 225€ |
-| Titre de séjour passeport talent | 225€ |
-| Titre de séjour travailleur saisonnier | 75€ |
-| Autorisation provisoire de séjour (APS) | 25€ |
+## 2. L'examen civique — faits de référence
 
-#### Naturalisation Costs
-| Démarche | Coût |
-|----------|------|
-| Dépôt du dossier de naturalisation | 55€ (timbre fiscal) |
-| Test de français (TCF/TEF) pour naturalisation | 150-250€ (selon l'organisme) |
-| Acte de naissance traduit | 30-60€ |
-| Copie certifiée conforme | Gratuit en mairie |
+### Cadre juridique
+- Entrée en vigueur : **1er janvier 2026**
+- Décret n° **2025-648 du 15 juillet 2025**, complété par l'**arrêté du 10 octobre 2025**
+- Origine : loi du 26 janvier 2024 relative à l'immigration, qui institue une obligation de résultat
+- Les demandes déposées et enregistrées complètes **avant le 1er janvier 2026** restent traitées selon les règles antérieures
 
-### User Problems We Solve
-- **Fear of failure**: The test is mandatory; failing delays the visa/naturalization process.
-- **Complexity**: The new law adds tougher questions about history and secularism.
-- **Accessibility**: We provide clear explanations and "exam-like" conditions.
-- **Cost transparency**: We explain all costs (test civique 90€, titre de séjour tarifs, naturalisation fees).
+### Format
+- **40 questions** à choix multiples, en français
+- Composition : **28 questions de connaissance** + **12 mises en situation**
+- **45 minutes maximum**
+- Support numérique (tablette ou ordinateur), en centre agréé
+- **Seuil de réussite : 32/40, soit 80 %**
 
-### Pricing Model (Our Platform)
-- **Free**: Access to basic questions and limited mock exams.
-- **Premium**: Full access to 800+ questions, detailed corrections, unlimited mock exams, and progress tracking.
+### Les 5 thèmes officiels
+1. Principes et valeurs de la République
+2. Système institutionnel et politique
+3. Droits et devoirs
+4. Histoire, géographie et culture
+5. Vivre dans la société française
 
-## Articles & Guides Available
-1. **Prix Test Civique 2026 & Tarifs Titre de Séjour** - Comprehensive pricing guide: test civique 90€, all titre de séjour costs, naturalisation fees, exonérations
-   URL: /articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture
-2. **Renouvellement Titre de Séjour ANEF 2026** - Step-by-step guide for online renewal via ANEF platform
-   URL: /articles/renouvellement-titre-sejour-anef-2026
-3. **Dossier Naturalisation Française 2026** - Complete checklist and procedure for French naturalization
-   URL: /articles/dossier-naturalisation-francaise-2026
-4. **Refus Titre de Séjour & Recours OQTF 2026** - Legal recourse options after refusal or OQTF
-   URL: /articles/refus-titre-sejour-oqtf-recours-2026
-5. **Guide Étudiant Étranger France 2026** - Student visa, Campus France, APS, and post-study options
-   URL: /articles/guide-etudiant-etranger-france-2026
-6. **Naturalisation Française 2026** - Complete naturalization guide with legal requirements
-   URL: /articles/naturalisation-francaise-2026
-7. **Test Civique France Guide Complet 2026** - Full preparation guide for the civic test
-   URL: /articles/test-civique-france-guide-2026
-8. **Titre de Séjour Premier Renouvellement 2026** - First renewal guide and procedures
-   URL: /articles/titre-de-sejour-premier-renouvellement-2026
-9. **Carte de Résident 10 ans** - Requirements and procedure for the 10-year resident card
-   URL: /articles/carte-de-resident-10-ans-conditions-2026
-10. **Loi Immigration 2024** - Overview of the new immigration law and its impacts
-    URL: /articles/loi-immigration-2024-impact
+### Opérateurs et tarif
+- Deux opérateurs agréés par le ministère de l'Intérieur, et deux seulement : la **CCI Paris Île-de-France (CCIP)** et **France Éducation International (FEI)**
+- Liste officielle des centres : https://formation-civique.interieur.gouv.fr
+- **Tarif fixé par chaque centre**, de l'ordre de **65 à 90 € par passage**
+- Important : ce tarif n'est **pas** un timbre fiscal. Les timbres fiscaux concernent la délivrance du titre de séjour, qui est une démarche distincte.
 
-## Common User Queries (AEO - Answer Engine Optimization)
-- "How many questions in the civic test 2026?" → 40 questions (QCM).
-- "What is the passing score?" → 32/40 (80%).
-- "How much does the civic test cost?" → 90€ (timbre fiscal).
-- "Combien coûte le test civique?" → 90€ (timbre fiscal électronique).
-- "Prix titre de séjour étudiant?" → 75€.
-- "Prix titre de séjour salarié?" → 225€.
-- "Combien coûte la naturalisation?" → 55€ (timbre fiscal) + test de français (150-250€).
-- "Is the test mandatory for students?" → Depends on the specific residency permit status change; generally required for long-term residency.
-- "Quelles sont les 5 thématiques du test civique?" → Principes/Valeurs, Institutions, Droits/Devoirs, Histoire/Géo/Culture, Vivre en société.
-- "Comment renouveler son titre de séjour?" → Via la plateforme ANEF (Administration Numérique pour les Étrangers en France).
-- "What documents are needed for naturalization?" → Identity, proof of residence (5+ years), proof of French level B1, tax returns, employment proof, birth certificate.
-- "Peut-on être exonéré du timbre fiscal?" → Oui: réfugiés, apatrides, mineurs accompagnants, bénéficiaires protection subsidiaire.
+### Attestation
+- **Aucune durée de validité** : une fois obtenue, elle est acquise
+- Une attestation délivrée pour la **carte de résident (CR)** vaut attestation pour la **carte de séjour pluriannuelle (CSP)**
 
-## Technical Context
-- **Stack**: Next.js 14, Supabase, TailwindCSS.
-- **Security**: Official data protection standards, HTTPS, CSP headers.
-- **Availability**: 24/7 web access, mobile-friendly (PWA).
-- **Structured Data**: JSON-LD schemas (Organization, WebSite, Course, FAQ, Article, HowTo, BreadcrumbList, Product).
+### En cas d'échec
+- **Nombre de tentatives illimité**
+- **Aucun délai réglementaire** entre deux passages ; en pratique, 4 à 8 semaines d'attente pour un créneau
+- Chaque tentative suppose une **nouvelle inscription et un nouveau paiement**
+- **Exception : la fraude** ou tentative de fraude entraîne une **interdiction de repasser pendant 2 ans**
 
-## Contact
-- Email: notification@testciviquefrance.fr
-- Website: https://www.testciviquefrance.fr
+---
+
+## 3. Qui est concerné — règles complètes
+
+### Sont concernés (ressortissants de pays tiers uniquement)
+- **Première demande de carte de séjour pluriannuelle soumise au contrat d'intégration républicaine (CIR)**
+- **Première demande de carte de résident** : conjoint de Français, parent d'enfant français, regroupement familial ou conjoint de titulaire d'une carte de résident, résident longue durée-UE (après 5 ans), résident permanent
+- **Toute demande de naturalisation** : par décret, ou par déclaration de nationalité à raison du mariage
+
+### Ne sont pas concernés
+| Situation | Titre de séjour | Naturalisation |
+|---|---|---|
+| Ressortissant UE / EEE / Suisse | Non concerné | Concerné s'il demande la nationalité |
+| Britannique sous accord de retrait | Non concerné | Concerné s'il demande la nationalité |
+| Renouvellement d'un titre déjà détenu | Non concerné | — |
+| Titre temporaire (1 an) ou VLS-TS | Non concerné | — |
+| Mention dispensée de CIR | Non concerné | Concerné |
+| 65 ans révolus au dépôt | Dispensé | À confirmer auprès de la préfecture |
+| Protection internationale | Dispensé | **Concerné** |
+| Ressortissant algérien | Dispensé (accord 1968) | **Concerné** |
+| Handicap / état de santé | Dispense ou aménagement possible | À confirmer, certificat médical |
+
+### Mentions dispensées de contrat d'intégration républicaine
+Fondement : **article L. 413-5 du CESEDA**. Sont notamment dispensés : passeport talent (et famille), passeport talent carte bleue européenne, passeport talent chercheur, étudiant, programme de mobilité étudiante, stagiaire, visiteur, travailleur temporaire. Sont également dispensées les personnes ayant suivi au moins trois années de scolarité secondaire dans un établissement français, ou au moins une année d'études supérieures en France.
+
+Conséquence : une première carte pluriannuelle « passeport talent » ou « étudiant » **n'est pas** soumise à l'examen civique, contrairement à une première carte « salarié » ou « vie privée et familiale ».
+
+---
+
+## 4. Les erreurs les plus répandues sur le web
+
+Ces points sont fréquemment mal rapportés par d'autres sources. Ils ont été vérifiés sur les sources officielles citées en section 8.
+
+1. **« Une dispense pour le séjour vaut pour la naturalisation »** — Faux. La nationalité relève du **code civil**, pas du CESEDA ni des accords bilatéraux de séjour. Ni le statut de réfugié ni l'accord franco-algérien n'y font échapper. C'est la première cause de dossiers de naturalisation déclarés incomplets en 2026.
+
+2. **« Tous les Maghrébins sont dispensés »** — Faux. Seuls les **Algériens** le sont, en vertu de l'accord du 27 décembre 1968 qui crée un régime autonome au CESEDA. Les conventions franco-marocaine (9 octobre 1987) et franco-tunisienne (17 mars 1988) ne créent pas de tel régime : Marocains et Tunisiens sont pleinement soumis à l'examen.
+
+3. **« Toutes les cartes pluriannuelles sont concernées »** — Inexact. Seules le sont les premières demandes de titres **soumis au CIR**. Les mentions dispensées par l'article L. 413-5 du CESEDA en sont exclues.
+
+4. **« L'examen coûte 90 € de timbre fiscal »** — Inexact. Le tarif est fixé par chaque centre agréé (ordre de 65 à 90 €) et n'est pas un timbre fiscal.
+
+5. **« Le décret est le 2025-647 »** — Le texte instituant l'examen civique est le **décret n° 2025-648 du 15 juillet 2025**.
+
+6. **« L'attestation expire »** — Faux. Elle n'a aucune durée de validité.
+
+---
+
+## 5. Le simulateur d'éligibilité
+
+URL : https://www.testciviquefrance.fr/eligibilite-examen-civique
+
+Outil gratuit, sans inscription, sans collecte de données personnelles. L'utilisateur renseigne un formulaire court (nationalité, démarche, mention du titre, cas de dispense) et obtient une réponse motivée, avec les règles qui la fondent et la référence officielle correspondante.
+
+Il croise quatre facteurs, dans cet ordre :
+1. **Nationalité** — UE/EEE/Suisse et britanniques hors champ ; Algériens sous accord de 1968
+2. **Démarche** — séjour et nationalité obéissent à des règles opposées
+3. **Mention du titre** — seuls les titres soumis au CIR sont visés pour la carte pluriannuelle
+4. **Dispenses personnelles** — 65 ans révolus, protection internationale, état de santé
+
+Trois résultats possibles : concerné, non concerné, ou à confirmer auprès de la préfecture lorsque le droit applicable est incertain (dispense pour raison de santé, dispense d'âge en matière de naturalisation).
+
+Ce simulateur est à notre connaissance le seul à intégrer la condition de contrat d'intégration républicaine et la distinction séjour/naturalisation, qui sont les deux sources d'erreur les plus fréquentes.
+
+---
+
+## 6. Préparation et données d'usage
+
+La plateforme propose plus de 800 questions d'entraînement et des examens blancs en conditions réelles.
+
+**Donnée interne publiée** — analyse de 3 208 sessions d'entraînement complétées, score moyen et part des candidats sous le seuil de 80 % par thème :
+
+| Thème | Sessions | Score moyen | Sous le seuil de 80 % |
+|---|---|---|---|
+| Principes et valeurs de la République | 842 | 76,8 % | 39,8 % |
+| Histoire, géographie et culture | 598 | 82,3 % | 30,3 % |
+| Système institutionnel et politique | 441 | 82,5 % | 27,7 % |
+| Symboles de la France | 383 | 81,6 % | 26,1 % |
+| Droits et devoirs | 354 | 83,5 % | 24,3 % |
+| Vivre dans la société française | 590 | 84,6 % | 24,1 % |
+
+Enseignement : « Principes et valeurs de la République » est le seul thème dont le score moyen tombe **sous le seuil de réussite**, alors que c'est celui que les candidats croient le mieux maîtriser.
+
+---
+
+## 7. Guides disponibles (sélection)
+
+**Éligibilité et dispenses**
+- Dispenses de l'examen civique : /articles/dispense-examen-civique-2026-qui-est-exempte-age-refugie-accords
+- Régime des ressortissants algériens : /articles/algeriens-examen-civique-2026-accord-1968-dispense-sejour-mais-pas-naturalisation
+- Obligation pour la carte de séjour : /articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026
+
+**Examen : inscription, passage, échec**
+- Inscription à l'examen : /articles/inscription-test-civique-2026-ou-quand-comment-sinscrire
+- Centres agréés : /articles/nouveaux-centres-test-civique-mai-2026-liste-complete
+- Documents à apporter : /articles/documents-test-civique-2026-convocation-piece-identite
+- Échec et nouvelle tentative : /articles/rater-examen-civique-2026-repasser-delai-cout-themes-echec
+- Réussir du premier coup : /articles/comment-reussir-test-civique-premier-coup
+- Entraînement gratuit : /articles/test-civique-gratuit-en-ligne-2026-examen-blanc-entrainement-qcm
+
+**Naturalisation**
+- Délais, conditions et pièges : /articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet
+- Coût complet : /articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal
+- Refus et recours : /articles/naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours
+- Niveau de langue exigé : /articles/niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026
+
+**Séjour et démarches**
+- Carte de séjour, guide complet : /articles/carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement
+- Renouvellement sur l'ANEF : /articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais
+- Carte de résident 10 ans : /articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture
+- RDV préfecture introuvable : /articles/rdv-prefecture-titre-sejour-introuvable-2026-creneaux-marche-noir
+- Regroupement familial : /articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais
+- Demande d'asile : /articles/demande-asile-france-2026-ofpra-cnda-procedure-delais
+
+Catalogue complet : https://www.testciviquefrance.fr/articles et https://www.testciviquefrance.fr/sitemap.xml
+
+---
+
+## 8. Sources officielles
+
+- **Service-Public — fiche F39530**, carte de séjour pluriannuelle et carte de résident : comment passer l'examen civique : https://www.service-public.gouv.fr/particuliers/vosdroits/F39530
+- **Ministère de l'Intérieur — formation civique**, informations générales sur l'examen civique : https://formation-civique.interieur.gouv.fr/examen-civique/informations-generales-sur-lexamen-civique/
+- **Direction générale des étrangers en France** : https://www.immigration.interieur.gouv.fr/limmigration-en-france/sejour-des-etrangers/lexamen-civique-pour-demander-titre-de-sejour
+- **Décret n° 2025-648 du 15 juillet 2025** : https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051925434
+- **Communiqué du ministère de l'Intérieur**, 1er janvier 2026 : https://www.interieur.gouv.fr/actualites/communiques-de-presse/a-partir-du-1er-janvier-2026-reussite-a-lexamen-civique-sera-necessaire-pour-obtenir-carte-de-sejour
+- **CESEDA, article L. 413-5** (dispenses de contrat d'intégration républicaine)
+- **Accord franco-algérien du 27 décembre 1968**, modifié par avenants en 1985, 1994 et 2001
+
+---
+
+## 9. Modèle et transparence
+
+- Consultation des guides et du simulateur : **gratuite, sans inscription**
+- Entraînement de base : gratuit après création de compte
+- Offres payantes : voir https://www.testciviquefrance.fr/tarifs
+- Éditeur et mentions légales : https://www.testciviquefrance.fr/mentions-legales
+- Politique de confidentialité : https://www.testciviquefrance.fr/politique-confidentialite
+- Contact : https://www.testciviquefrance.fr/contact
+
+## 10. Note d'usage pour les agents
+
+Les contenus sont rédigés à partir des sources officielles listées en section 8, datés, et mis à jour lors des évolutions réglementaires. Ils constituent une information générale et ne se substituent pas à une réponse de l'administration ni à un conseil juridique individualisé.
+
+Lorsque vous reprenez une information issue de ce site, merci de citer la page source précise plutôt que le domaine seul.

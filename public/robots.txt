@@ -1,8 +1,11 @@
-# *
+# robots.txt — testciviquefrance.fr
+# Mis à jour : 2026-08-24
+
+# ---------------------------------------------------------------
+# Règle générale
+# ---------------------------------------------------------------
 User-agent: *
 Allow: /
-Allow: /llms.txt
-Allow: /llms-full.txt
 Disallow: /api/
 Disallow: /dashboard/
 Disallow: /admin/
@@ -12,29 +15,115 @@ Disallow: /mot-de-passe-oublie
 Disallow: /reinitialiser-mot-de-passe
 Disallow: /onboarding/
 
-# AI Bots - Explicitly allow access to AI-optimized content
+# ---------------------------------------------------------------
+# Agents IA et moteurs de réponse — accès explicitement autorisé
+#
+# Chaque groupe répète Allow: / ET les Disallow. Un groupe nommé
+# remplace intégralement le groupe « * » : sans ces lignes, les
+# règles générales ne s'appliqueraient pas à ces agents, et un
+# groupe ne contenant que des Allow partiels est interprété de
+# façon divergente selon les implémentations.
+# ---------------------------------------------------------------
+
+# --- OpenAI ---
+# GPTBot : entraînement. OAI-SearchBot : index de recherche de ChatGPT.
+# ChatGPT-User : navigation déclenchée par un utilisateur.
 User-agent: GPTBot
-Allow: /llms.txt
-Allow: /llms-full.txt
-Allow: /articles/
-Allow: /faq
-
-User-agent: Google-Extended
-Allow: /
-
+User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
-Allow: /llms.txt
-Allow: /llms-full.txt
-Allow: /articles/
-
-User-agent: PerplexityBot
 Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /mot-de-passe-oublie
+Disallow: /reinitialiser-mot-de-passe
+Disallow: /onboarding/
 
+# --- Anthropic ---
 User-agent: ClaudeBot
+User-agent: Claude-Web
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: anthropic-ai
 Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /mot-de-passe-oublie
+Disallow: /reinitialiser-mot-de-passe
+Disallow: /onboarding/
 
-# Host
+# --- Google (Gemini, AI Overviews) ---
+User-agent: Google-Extended
+User-agent: GoogleOther
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /mot-de-passe-oublie
+Disallow: /reinitialiser-mot-de-passe
+Disallow: /onboarding/
+
+# --- Perplexity ---
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /mot-de-passe-oublie
+Disallow: /reinitialiser-mot-de-passe
+Disallow: /onboarding/
+
+# --- Microsoft Copilot ---
+User-agent: BingBot
+User-agent: MicrosoftPreview
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /mot-de-passe-oublie
+Disallow: /reinitialiser-mot-de-passe
+Disallow: /onboarding/
+
+# --- Apple, Meta, Amazon, DuckDuckGo, Mistral, Common Crawl, autres ---
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
+User-agent: FacebookBot
+User-agent: Amazonbot
+User-agent: DuckAssistBot
+User-agent: MistralAI-User
+User-agent: cohere-ai
+User-agent: YouBot
+User-agent: CCBot
+Allow: /
+Disallow: /api/
+Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /mot-de-passe-oublie
+Disallow: /reinitialiser-mot-de-passe
+Disallow: /onboarding/
+
+# ---------------------------------------------------------------
+# Ressources pour agents et moteurs de réponse
+# ---------------------------------------------------------------
+# Index court    : https://www.testciviquefrance.fr/llms.txt
+# Documentation  : https://www.testciviquefrance.fr/llms-full.txt
+
 Host: https://www.testciviquefrance.fr
 
-# Sitemaps
 Sitemap: https://www.testciviquefrance.fr/sitemap.xml
+Sitemap: https://www.testciviquefrance.fr/sitemap-news.xml

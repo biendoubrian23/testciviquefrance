@@ -38,10 +38,10 @@ export default function Header() {
               Tarifs
             </Link>
             <Link
-              href="/cours"
+              href="/eligibilite-examen-civique"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
             >
-              Cours
+              Éligibilité
             </Link>
             <Link
               href="/articles"
@@ -113,11 +113,11 @@ export default function Header() {
                 Tarifs
               </Link>
               <Link
-                href="/cours"
+                href="/eligibilite-examen-civique"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Cours
+                Éligibilité
               </Link>
               <Link
                 href="/articles"

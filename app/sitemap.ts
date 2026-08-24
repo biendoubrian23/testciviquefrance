@@ -73,6 +73,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/eligibilite-examen-civique`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
     // Pages légales — indexées pour transparence et conformité AdSense
     {
       url: `${baseUrl}/mentions-legales`,
