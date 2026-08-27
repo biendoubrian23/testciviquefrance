@@ -251,6 +251,9 @@ import { simulateurEligibiliteContent } from './articles-simulateur-eligibilite-
 import { titresNonSoumisExamenCiviqueContent } from './articles-titres-non-soumis-examen-civique-2026';
 import { rentreeSeptembre2026Content } from './articles-rentree-septembre-2026';
 
+// ===== Article 11 — Demarches Ameli (guide complet) — Aout 2026 =====
+import { ameliDemarchesContent } from './articles-ameli-demarches-2026';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -468,6 +471,8 @@ export const articleContents: Record<string, ArticleFullContent> = {
   // Articles 09-10 — Titres non soumis au CIR + rentree septembre — Aout 2026
   'passeport-talent-etudiant-visiteur-non-soumis-examen-civique-2026-cir': titresNonSoumisExamenCiviqueContent,
   'rentree-septembre-2026-etrangers-france-calendrier-demarches-delais': rentreeSeptembre2026Content,
+  // Article 11 — Demarches Ameli (guide complet) — Aout 2026
+  'ameli-demarches-2026-guide-complet-affiliation-carte-vitale-remboursements': ameliDemarchesContent,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

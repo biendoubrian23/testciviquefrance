@@ -2034,6 +2034,9 @@ import { simulateurEligibiliteMetadata } from './seo-content/articles-simulateur
 import { titresNonSoumisExamenCiviqueMetadata } from './seo-content/articles-titres-non-soumis-examen-civique-2026';
 import { rentreeSeptembre2026Metadata } from './seo-content/articles-rentree-septembre-2026';
 
+// ===== Article 11 — Demarches Ameli (guide complet) — Aout 2026 =====
+import { ameliDemarchesMetadata } from './seo-content/articles-ameli-demarches-2026';
+
 export const articlesEditoriaux2026: Article[] = [
   examenCiviqueObligatoireMetadata,
   coutNaturalisation2026Metadata,
@@ -2049,6 +2052,7 @@ export const articlesEditoriaux2026: Article[] = [
   simulateurEligibiliteMetadata,
   titresNonSoumisExamenCiviqueMetadata,
   rentreeSeptembre2026Metadata,
+  ameliDemarchesMetadata,
 ];
 
 /**
