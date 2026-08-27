@@ -247,6 +247,10 @@ import { algeriensExamenCiviqueContent } from './articles-algeriens-examen-civiq
 // ===== Article 08 — Simulateur d'éligibilité — Août 2026 =====
 import { simulateurEligibiliteContent } from './articles-simulateur-eligibilite-2026';
 
+// ===== Articles 09-10 — Titres non soumis au CIR + rentree septembre — Aout 2026 =====
+import { titresNonSoumisExamenCiviqueContent } from './articles-titres-non-soumis-examen-civique-2026';
+import { rentreeSeptembre2026Content } from './articles-rentree-septembre-2026';
+
 // ===== Articles Buzz Actualité - Avril 2026 =====
 import {
   espagneRegularisation2026Content,
@@ -461,6 +465,9 @@ export const articleContents: Record<string, ArticleFullContent> = {
   'algeriens-examen-civique-2026-accord-1968-dispense-sejour-mais-pas-naturalisation': algeriensExamenCiviqueContent,
   // Article 08 — Simulateur d'éligibilité — Août 2026
   'simulateur-eligibilite-examen-civique-2026-suis-je-concerne': simulateurEligibiliteContent,
+  // Articles 09-10 — Titres non soumis au CIR + rentree septembre — Aout 2026
+  'passeport-talent-etudiant-visiteur-non-soumis-examen-civique-2026-cir': titresNonSoumisExamenCiviqueContent,
+  'rentree-septembre-2026-etrangers-france-calendrier-demarches-delais': rentreeSeptembre2026Content,
   // Articles Buzz Actualité - Avril 2026
   'espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france': espagneRegularisation2026Content,
   'cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion': craRetention7Mois2026Content,

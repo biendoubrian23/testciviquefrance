@@ -2030,6 +2030,10 @@ import { algeriensExamenCiviqueMetadata } from './seo-content/articles-algeriens
 // ===== Article 08 — Simulateur d'éligibilité — Août 2026 =====
 import { simulateurEligibiliteMetadata } from './seo-content/articles-simulateur-eligibilite-2026';
 
+// ===== Articles 09-10 — Titres non soumis au CIR + rentree septembre — Aout 2026 =====
+import { titresNonSoumisExamenCiviqueMetadata } from './seo-content/articles-titres-non-soumis-examen-civique-2026';
+import { rentreeSeptembre2026Metadata } from './seo-content/articles-rentree-septembre-2026';
+
 export const articlesEditoriaux2026: Article[] = [
   examenCiviqueObligatoireMetadata,
   coutNaturalisation2026Metadata,
@@ -2043,6 +2047,8 @@ export const articlesEditoriaux2026: Article[] = [
   raterExamenCiviqueMetadata,
   algeriensExamenCiviqueMetadata,
   simulateurEligibiliteMetadata,
+  titresNonSoumisExamenCiviqueMetadata,
+  rentreeSeptembre2026Metadata,
 ];
 
 /**
