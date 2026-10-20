@@ -208,7 +208,7 @@ const article: Article = {
     { type: "p", texte: "**Et pour la suite** 🔮" },
     {
       type: "p",
-      texte: "Si vous êtes en dernière année, commencez dès maintenant à préparer votre après-diplôme : APS, changement de statut vers salarié, passeport talent. Le changement de statut demande de l'anticipation, et il déclenche l'obligation d'examen civique. Voir [Changement de statut étudiant → salarié](/articles/changement-statut-etudiant-salarie-2026-demarches-anef) et [Étudiant étranger : les 5 voies pour rester après les études](/articles/etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester).",
+      texte: "Si vous êtes en dernière année, commencez dès maintenant à préparer votre après-diplôme : APS, changement de statut vers salarié, passeport talent. Le changement de statut demande de l'anticipation, et il déclenche l'obligation d'examen civique. Voir [Changement de statut étudiant → salarié](/articles/changement-statut-etudiant-salarie-2026-demarches-anef) et [Étudiant étranger : les 5 voies pour rester après les études](/articles/titre-sejour-etudiant-france-guide-2025).",
     },
     {
       type: "h2",

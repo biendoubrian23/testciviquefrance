@@ -369,7 +369,7 @@ const article: Article = {
       ancre: "Niveaux de français requis (A2, B1, B2)",
     },
     {
-      slug: "titres-de-sejour-france-guide-complet-2026",
+      slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement",
       ancre: "Guide complet des titres de séjour en France",
     },
   ],

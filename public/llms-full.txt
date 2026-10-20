@@ -148,7 +148,7 @@ Enseignement : « Principes et valeurs de la République » est le seul thème d
 
 **Examen : inscription, passage, échec**
 - Inscription à l'examen : /articles/inscription-test-civique-2026-ou-quand-comment-sinscrire
-- Centres agréés : /articles/nouveaux-centres-test-civique-mai-2026-liste-complete
+- Centres agréés : /articles/centres-agrees-examen-civique-2026
 - Documents à apporter : /articles/documents-test-civique-2026-convocation-piece-identite
 - Échec et nouvelle tentative : /articles/rater-examen-civique-2026-repasser-delai-cout-themes-echec
 - Réussir du premier coup : /articles/comment-reussir-test-civique-premier-coup
@@ -158,7 +158,7 @@ Enseignement : « Principes et valeurs de la République » est le seul thème d
 - Délais, conditions et pièges : /articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet
 - Coût complet : /articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal
 - Refus et recours : /articles/naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours
-- Niveau de langue exigé : /articles/niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026
+- Niveau de langue exigé : /articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation
 
 **Séjour et démarches**
 - Carte de séjour, guide complet : /articles/carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement

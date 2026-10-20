@@ -236,7 +236,7 @@ const article: Article = {
       ancre: "Tarifs des titres de séjour et test civique",
     },
     {
-      slug: "titres-de-sejour-france-guide-complet-2026",
+      slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement",
       ancre: "Tous les types de titres de séjour expliqués",
     },
   ],

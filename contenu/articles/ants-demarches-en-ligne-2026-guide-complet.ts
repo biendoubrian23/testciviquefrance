@@ -2,34 +2,40 @@ import type { Article } from "@/contenu/articles";
 
 /**
  * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-ants-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/ants-demarches-en-ligne-2026-guide-complet`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * (`/articles/ants-demarches-en-ligne-2026-guide-complet`). L'image de couverture vient d'Unsplash
+ * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont nominales.
+ *
+ * Le 20/10/2026, `ants-gouv-fr-2026-toutes-demarches-guide-complet` (même sujet) y a été fusionné et
+ * redirigé en 301 (docs/seo/JOURNAL.md, geste `fusionne`). Chaque règle et chaque montant ont été relus
+ * sur service-public ce jour-là ; les volumes de démarches, les délais « réels », le numéro de téléphone
+ * et les tarifs non retrouvés sur une source officielle ont été retirés.
  */
 const article: Article = {
   slug: "ants-demarches-en-ligne-2026-guide-complet",
-  titre: "ANTS démarches en ligne 2026 : le guide complet (top 10)",
-  titreSeo: "ANTS démarches en ligne 2026 : le guide complet (top 10)",
-  resume: "Toutes les démarches ANTS en ligne en 2026 : le top 10 par fréquence, la création de compte avec FranceConnect, les démarches véhicule et carte grise, la CNI et le passeport, plus les vrais numéros de support officiels.",
-  chapo: "En 2026, **toutes les démarches ANTS sont 100% en ligne**. Plus de guichet préfecture pour le permis, la carte grise, la CNI ou le passeport sauf cas exceptionnels. Mais entre les 4 portails ANTS distincts, les multiples comptes et les formats de fichiers exigés, il est facile de se perdre.",
+  titre: "ANTS en ligne : carte d'identité, passeport, carte grise et permis, le guide pour ne pas se tromper",
+  titreSeo: "ANTS démarches en ligne : le guide 2026",
+  resume: "Ce que l'ANTS fait en ligne (carte d'identité, passeport, carte grise, permis), les prix officiels, la différence avec l'ANEF et les faux sites à éviter.",
+  chapo: "L'ANTS est le site officiel de l'État pour la carte d'identité, le passeport, la carte grise et le permis de conduire. Beaucoup de démarches se font en ligne, mais pas toutes : pour la carte d'identité et le passeport, vous passez aussi en mairie. Voici quoi faire, où, et à quel prix officiel.",
   publieLe: "2026-04-28",
-  modifieLe: "2026-04-28",
-  minutes: 19,
+  modifieLe: "2026-10-20",
+  minutes: 7,
   theme: "ants demarches en ligne",
   motsCles: [
     "ants demarches en ligne",
     "ants demarches",
     "ants demarche en ligne 2026",
     "ants gouv",
+    "ants.gouv.fr",
+    "ants 2026",
+    "ants permis",
     "demarches administratives en ligne",
-    "ants 100% en ligne",
+    "titre securise france",
   ],
   rubrique: "conseils",
   auteur: "Brian B",
   couverture: {
     src: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
+    alt: "Un ordinateur portable ouvert sur un bureau, pour faire une démarche en ligne",
     largeur: 1200,
     hauteur: 800,
     credit: "Unsplash",
@@ -37,191 +43,162 @@ const article: Article = {
     source: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d",
   },
   blocs: [
+    { type: "h2", texte: "Qu'est-ce que l'ANTS, et que fait-elle ?", id: "qu-est-ce-que-ants" },
     {
       type: "p",
-      texte: "Ce guide hub présente **TOUTES les démarches en ligne ANTS 2026**, dans l'ordre de fréquence, avec pour chacune le bon site, les pièces à préparer et le coût exact. À garder en favori pour toutes vos démarches futures.",
+      texte: "L'ANTS, c'est l'Agence nationale des titres sécurisés. Elle dépend du ministère de l'Intérieur. Elle fabrique les papiers officiels difficiles à falsifier. Son site est [ants.gouv.fr](https://ants.gouv.fr).",
     },
-    { type: "h2", texte: "Top 10 des démarches ANTS en ligne en 2026", id: "classement-demarches" },
-    {
-      type: "p",
-      texte: "Classement par fréquence (d'après les statistiques 2025 du Ministère de l'Intérieur) :",
-    },
-    { type: "p", texte: "**1. Demande de carte grise (immatriculation)** : 8.2 millions/an" },
-    { type: "p", texte: "**2. Renouvellement / première CNI** : 6.5 millions/an" },
-    { type: "p", texte: "**3. Renouvellement / première passeport** : 4.1 millions/an" },
-    { type: "p", texte: "**4. Fabrication permis après réussite** : 850 000/an" },
-    { type: "p", texte: "**5. Duplicata permis (perte/vol)** : 480 000/an" },
-    { type: "p", texte: "**6. Changement adresse carte grise** : 380 000/an" },
-    { type: "p", texte: "**7. Échange permis étranger** : 120 000/an" },
-    { type: "p", texte: "**8. Cession véhicule (déclaration vente)** : 5 millions/an" },
-    { type: "p", texte: "**9. Pré-demande passeport mineur** : 700 000/an" },
-    { type: "p", texte: "**10. Suivi production titre** : toutes démarches" },
-    {
-      type: "p",
-      texte: "Toutes ces démarches sont **disponibles en ligne, 24h/24**, depuis le portail unique ants.gouv.fr.",
-    },
-    { type: "h2", texte: "Créer un compte ANTS : la base pour tout faire en ligne", id: "compte-ants" },
-    { type: "p", texte: "**Méthode recommandée : FranceConnect**" },
+    { type: "p", texte: "Sur ce site, vous trouvez quatre grandes familles de démarches :" },
     {
       type: "liste",
       style: "puces",
       items: [
-        "Si vous avez **impots.gouv.fr**, **ameli.fr**, **identité numérique La Poste** ou **MSA**, c'est en 30 secondes",
-        "Connexion automatique, pas de mot de passe à gérer",
+        "la **carte nationale d'identité** (CNI) : la pré-demande en ligne ;",
+        "le **passeport** : la pré-demande en ligne ;",
+        "la **carte grise** (le certificat d'immatriculation d'un véhicule) : achat, vente, changement ;",
+        "le **permis de conduire** : première demande, perte, vol, échange, suivi de fabrication.",
       ],
     },
-    { type: "p", texte: "**Méthode classique : email + mot de passe**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Sur **ants.gouv.fr** → \"Mon espace\" → \"Créer un compte\"",
-        "Validation par lien mail",
-        "Mot de passe sécurisé (12 caractères min)",
-      ],
-    },
-    { type: "p", texte: "**Un seul compte ANTS pour TOUTES les démarches :**" },
     {
       type: "p",
-      texte: "Une fois connecté, vous accédez à toutes les démarches : permis, carte grise, CNI, passeport, suivi.",
+      texte: "Vous pouvez aussi suivre sur le site la fabrication de votre titre. Pour la carte d'identité, un SMS vous prévient quand elle est prête, si vous avez donné un numéro de portable ([service-public, F1341](https://www.service-public.gouv.fr/particuliers/vosdroits/F1341)).",
     },
-    { type: "p", texte: "**Astuce stockage cloud :**" },
+    { type: "h2", texte: "ANTS ou ANEF : quel site pour les étrangers ?", id: "qui-utilise-ants-2026" },
     {
       type: "p",
-      texte: "Téléversez vos documents fréquents (CNI scannée, justificatif de domicile, photo-signature) dans \"Mes documents\", ils seront pré-remplis pour les démarches futures.",
+      texte: "C'est l'erreur la plus fréquente. L'ANTS ne gère **pas** les titres de séjour. Un titre de séjour, c'est la carte qui vous autorise à vivre en France quand vous êtes étranger.",
     },
-    { type: "h2", texte: "Démarches véhicule en ligne (carte grise)", id: "demarches-vehicule" },
-    { type: "p", texte: "**Achat véhicule neuf chez concessionnaire :**" },
     {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Le concessionnaire fait la démarche pour vous (souvent gratuitement)",
-        "Vous recevez votre carte grise par lettre suivie sous 7-21 jours",
+      type: "p",
+      texte: "Ces démarches passent par l'ANEF, qui est l'administration numérique des étrangers en France. Selon [service-public (R59398)](https://www.service-public.gouv.fr/particuliers/vosdroits/R59398), l'ANEF sert à valider un visa long séjour et à demander certains titres de séjour. Elle sert aussi pour la naturalisation, une autorisation de travail ou un document de voyage.",
+    },
+    {
+      type: "tableau",
+      entetes: ["Votre besoin", "Le bon site"],
+      lignes: [
+        ["Carte d'identité ou passeport (si vous êtes français, naturalisé compris)", "ANTS, puis la mairie"],
+        ["Carte grise : achat, vente, changement", "ANTS"],
+        ["Permis de conduire, échange d'un permis étranger", "ANTS"],
+        ["Titre de séjour : premier titre, renouvellement", "ANEF"],
+        ["Validation du visa long séjour", "ANEF"],
+        ["Naturalisation", "ANEF"],
       ],
     },
-    { type: "p", texte: "**Achat véhicule occasion entre particuliers :**" },
+    {
+      type: "p",
+      texte: "Pour l'ANEF, lisez notre guide [créer son compte ANEF pas à pas](/articles/compte-anef-creer-2026-guide-pas-a-pas). Pour échanger un permis obtenu à l'étranger, lisez [l'échange du permis de conduire étranger](/articles/echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete).",
+    },
+    { type: "h2", texte: "Carte d'identité et passeport : en ligne, puis en mairie", id: "demarches-identite" },
+    {
+      type: "p",
+      texte: "Pour ces deux papiers, tout ne se fait pas en ligne. Votre présence est obligatoire en mairie pour la prise d'empreintes ([F1341](https://www.service-public.gouv.fr/particuliers/vosdroits/F1341), [F14929](https://www.service-public.gouv.fr/particuliers/vosdroits/F14929)).",
+    },
     {
       type: "liste",
       style: "numeros",
       items: [
-        "Connexion ants.gouv.fr (immatriculation)",
-        "Pièces : carte grise barrée par le vendeur, certificat de cession, contrôle technique <6 mois, justificatif domicile, pièce d'identité",
-        "Paiement : taxe régionale (variable selon CV) + redevance acheminement 2.76 €",
-        "Code provisoire valable 1 mois pour rouler",
+        "**Pré-demande sur le site de l'ANTS.** Elle est facultative, mais elle fait gagner du temps. Vous recevez un numéro ou un QR code à montrer en mairie.",
+        "**Rendez-vous dans une mairie équipée.** Vous pouvez choisir n'importe quelle mairie équipée d'une station d'enregistrement, même loin de chez vous. Le moteur de recherche de l'ANTS donne les mairies et souvent les rendez-vous.",
+        "**Dépôt en mairie.** Vous apportez les pièces, on prend vos empreintes.",
+        "**Fabrication.** Elle prend plusieurs semaines, et plus avant l'été.",
+        "**Retrait en personne.** Pour la carte d'identité, vous avez 3 mois. Après, elle est détruite.",
       ],
     },
-    { type: "p", texte: "**Vente véhicule :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Déclaration en ligne dans les **15 jours**",
-        "Code de cession à donner à l'acheteur",
-        "Gratuit",
-      ],
-    },
-    { type: "p", texte: "**Changement adresse :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Gratuit pour les 3 premières fois (au-delà : nouvelle carte payante)",
-        "Étiquette autocollante envoyée gratuitement",
-      ],
-    },
-    { type: "h2", texte: "Démarches CNI / Passeport en ligne (pré-demande)", id: "demarches-identite" },
     {
       type: "p",
-      texte: "Important : pour la CNI et le passeport, **la pré-demande se fait en ligne** mais vous devez aussi **passer en mairie** pour la prise d'empreintes.",
+      texte: "Le paiement se fait par un timbre fiscal : c'est une taxe que vous achetez en ligne ou dans un bureau de tabac agréé. Pour le passeport, vous pouvez l'acheter à la fin de la pré-demande ([F34752](https://www.service-public.gouv.fr/particuliers/vosdroits/F34752)).",
     },
-    { type: "p", texte: "**Procédure :**" },
     {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Pré-demande sur ants.gouv.fr** (30 minutes en ligne)",
-        "**Prise de RDV en mairie** (équipée d'un dispositif de recueil)",
-        "**Passage en mairie** : empreintes, signature, vérification documents (15 minutes)",
-        "**Production** : 4 à 8 semaines en 2026",
-        "**Récupération en mairie** (sur SMS/mail)",
+      type: "tableau",
+      entetes: ["Papier", "Prix en France (timbre fiscal)", "Source"],
+      lignes: [
+        ["Carte d'identité, première demande ou renouvellement", "Gratuit", "service-public F1341, vérifié le 08/04/2026"],
+        ["Carte d'identité perdue ou volée", "25 € (12,50 € en Guyane)", "service-public F1344"],
+        ["Passeport d'un majeur", "86 €", "service-public F34752, vérifié le 05/08/2026"],
+        ["Passeport d'un mineur de 15 à 17 ans", "42 €", "service-public F34752"],
+        ["Passeport d'un mineur de moins de 15 ans", "17 €", "service-public F34752"],
       ],
+      legende: "Prix lus le 20/10/2026. En Guyane et à Mayotte, certains montants diffèrent : vérifiez la fiche service-public.",
     },
-    { type: "p", texte: "**Coûts officiels 2026 :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "CNI première / renouvellement : **gratuit** (25 € si perte)",
-        "Passeport adulte : **86 €**",
-        "Passeport mineur 15+ : **42 €**",
-        "Passeport mineur 0-14 : **17 €**",
-      ],
-    },
-    { type: "p", texte: "**Astuce délai :**" },
+    { type: "h2", texte: "Carte grise : acheter, vendre, déclarer en ligne", id: "demarches-vehicule" },
     {
       type: "p",
-      texte: "Pour passeport en urgence (vacances), demandez un passeport d'urgence en préfecture (30 €) : délivré sous 7 jours mais validité 1 an seulement.",
+      texte: "**Vous achetez un véhicule d'occasion.** Vous avez 1 mois pour demander la nouvelle carte grise. Vous pouvez le faire sur le site de l'ANTS, sur l'application Simplimmat (pour certains véhicules) ou chez un professionnel habilité, qui facture ses frais en plus ([F1050](https://www.service-public.gouv.fr/particuliers/vosdroits/F1050)).",
     },
-    { type: "h2", texte: "Obtenir de l'aide : les bons canaux ANTS 2026", id: "support-aide" },
-    { type: "p", texte: "**Téléphone officiel :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**34 00** : gratuit depuis fixe, 0.06 €/min depuis mobile, lun-ven 7h45-19h, sam 8h-17h",
-      ],
-    },
-    { type: "p", texte: "**Formulaire de contact :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["ants.gouv.fr/Contacter-nous", "Réponse en 5 à 10 jours ouvrés"],
-    },
-    { type: "p", texte: "**Aide en présentiel :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Maisons France Services** (>2 700 en France) : aide gratuite à toutes démarches",
-        "**Médiateur ANTS** en cas de blocage prolongé",
-      ],
-    },
-    { type: "p", texte: "**FAQ officielle :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["ants.gouv.fr/faq → 200+ questions réponses"],
-    },
-    { type: "p", texte: "**À éviter :**" },
     {
       type: "p",
-      texte: "❌ Sites privés payants (\"aide ANTS\" facturée 30-100 €) : toutes les vraies aides sont gratuites",
+      texte: "Le prix de la carte grise varie selon le véhicule et la région. Service-public propose un simulateur. Vous payez par carte bancaire. Un certificat provisoire, à imprimer, vous permet de rouler en France pendant 1 mois.",
+    },
+    {
+      type: "p",
+      texte: "**Vous vendez ou donnez votre véhicule.** Vous déclarez la cession dans les 15 jours après la signature du certificat de cession. Vous recevez un code de cession, valable 15 jours, à donner à l'acheteur ([F1707](https://www.service-public.gouv.fr/particuliers/vosdroits/F1707)).",
+    },
+    { type: "h2", texte: "Permis de conduire : quelles démarches sur l'ANTS ?", id: "permis" },
+    {
+      type: "p",
+      texte: "Le permis a ses propres pages, plus détaillées. Pour une première demande, lisez [les étapes et le prix du permis B sur l'ANTS](/articles/ants-permis-conduire-categorie-b-2026-demande-etapes-tarifs). Pour un permis perdu, volé, abîmé ou expiré, lisez [les démarches sur l'ANTS après une perte ou un vol](/articles/ants-permis-conduire-2026-echange-demande-suivi).",
+    },
+    { type: "h2", texte: "Comment éviter les faux sites de l'ANTS ?", id: "eviter-arnaques" },
+    {
+      type: "p",
+      texte: "Des sites privés imitent l'ANTS et font payer une aide en plus du prix officiel. Ces sites ne sont pas interdits s'ils le disent clairement, mais vous n'en avez pas besoin.",
+    },
+    {
+      type: "liste",
+      style: "alertes",
+      items: [
+        "Le site officiel finit par **ants.gouv.fr** (par exemple passeport.ants.gouv.fr).",
+        "Tapez l'adresse vous-même. Ne cliquez pas sur une publicité en haut des résultats de recherche.",
+        "Ne payez que le prix officiel : timbre fiscal ou taxes de la carte grise.",
+        "Un professionnel de l'automobile habilité peut faire la carte grise pour vous, mais il fixe ses frais lui-même.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Les arnaques visent aussi les étrangers, avec de faux sites de préfecture ou de faux avocats. Notre article [sur les arnaques qui visent les étrangers](/articles/arnaques-etrangers-france-2026-faux-avocats-prefecture-anef) donne les signes d'alerte.",
+    },
+    { type: "h2", texte: "Où trouver de l'aide gratuite ?", id: "support-aide" },
+    {
+      type: "p",
+      texte: "Le site de l'ANTS a une aide en ligne et un formulaire de contact. Vous pouvez aussi aller dans un espace France services. Ce sont des guichets publics où un agent vous aide gratuitement à faire vos démarches en ligne.",
+    },
+    {
+      type: "p",
+      texte: "Si vous cherchez un rendez-vous en préfecture qui n'existe pas en ligne, lisez [que faire quand aucun rendez-vous n'est disponible](/articles/ants-rdv-indisponible-prefecture-2026-alternatives-solutions).",
     },
     {
       type: "encadre",
       titre: "À retenir",
-      texte: "Le 100% en ligne ANTS est une réalité en 2026 et la plupart des démarches se font en moins de 30 minutes depuis votre canapé. La règle simple : **un seul compte ANTS** (avec FranceConnect idéalement), **les bonnes URL en .ants.gouv.fr**, **les vrais tarifs officiels** (jamais plus). Pour les blocages, le 34 00 et les Maisons France Services sont gratuits et efficaces. Les fameux sites \"intermédiaires\" payants n'apportent strictement rien.",
+      texte: "L'ANTS gère la carte d'identité, le passeport, la carte grise et le permis. L'ANEF gère le séjour des étrangers et la naturalisation. Pour la carte d'identité et le passeport, la pré-demande en ligne est facultative, mais le passage en mairie est obligatoire. Payez seulement les prix officiels, sur un site qui finit par ants.gouv.fr.",
       ton: "bleu",
     },
   ],
   faq: [
     {
-      question: "Toutes les démarches ANTS sont-elles vraiment en ligne ?",
-      reponse: "Oui pour 95% des démarches. La CNI et le passeport nécessitent encore un passage en mairie pour les empreintes. Les cas particuliers (suspension permis, annulation) peuvent demander un présentiel.",
+      question: "Quelle est la différence entre ANTS et ANEF ?",
+      reponse: "L'ANTS gère les papiers sécurisés : carte d'identité, passeport, carte grise et permis de conduire. L'ANEF est le site des démarches des étrangers en France : validation du visa long séjour, titre de séjour, autorisation de travail, naturalisation. Ce sont deux sites officiels différents, et un compte sur l'un ne sert pas sur l'autre.",
     },
     {
-      question: "Quel est le délai moyen d'une démarche ANTS en 2026 ?",
-      reponse: "Carte grise : 7 à 21 jours. Permis fabriqué : 2-4 semaines. CNI/Passeport : 4-8 semaines. Échange permis étranger : 3 à 12 mois.",
+      question: "Le service ANTS est-il gratuit ?",
+      reponse: "L'accès au site de l'ANTS est gratuit. Vous payez seulement les frais officiels. Par exemple : 86 € de timbre fiscal pour le passeport d'un majeur, 25 € pour une carte d'identité perdue ou volée, et les taxes de la carte grise. Une première carte d'identité ou son renouvellement est gratuit selon service-public.",
     },
     {
-      question: "Quels sont les coûts cachés ?",
-      reponse: "Aucun coût caché côté ANTS. Les seuls frais : timbre fiscal selon démarche, taxe régionale carte grise, photo-signature en Photomaton (5-7 €). Méfiez-vous des sites tiers payants.",
+      question: "Peut-on faire sa carte d'identité entièrement en ligne ?",
+      reponse: "Non. La pré-demande se fait en ligne sur le site de l'ANTS, et elle est facultative. Ensuite, vous devez aller dans une mairie équipée d'une station d'enregistrement, pour la prise d'empreintes. Vous pouvez choisir n'importe quelle mairie équipée, même si elle n'est pas dans votre commune.",
     },
     {
-      question: "ANTS gère-t-il les démarches pour étrangers ?",
-      reponse: "Pas directement. ANTS gère le permis et la carte grise (que les étrangers résidents peuvent demander). Pour les titres de séjour, c'est ANEF.",
+      question: "Combien de temps pour déclarer la vente d'une voiture ?",
+      reponse: "Vous avez 15 jours après la signature du certificat de cession pour déclarer la vente, sur le site de l'ANTS, sur l'application Simplimmat ou chez un professionnel habilité. Un code de cession, valable 15 jours, vous est donné à la fin : vous le transmettez à l'acheteur pour sa nouvelle carte grise.",
     },
+  ],
+  sources: [
+    { titre: "Carte d'identité d'un majeur : première demande (F1341)", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F1341", type: "officiel", luLe: "2026-10-20" },
+    { titre: "Carte d'identité perdue (F1344)", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F1344", type: "officiel", luLe: "2026-10-20" },
+    { titre: "Passeport d'un majeur : première demande (F14929)", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F14929", type: "officiel", luLe: "2026-10-20" },
+    { titre: "Combien coûte un passeport ? (F34752)", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34752", type: "officiel", luLe: "2026-10-20" },
+    { titre: "Immatriculer un véhicule d'occasion (F1050)", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F1050", type: "officiel", luLe: "2026-10-20" },
+    { titre: "Vendre ou donner son véhicule (F1707)", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F1707", type: "officiel", luLe: "2026-10-20" },
+    { titre: "Administration numérique pour les étrangers en France, ANEF (R59398)", url: "https://www.service-public.gouv.fr/particuliers/vosdroits/R59398", type: "officiel", luLe: "2026-10-20" },
   ],
 };
 

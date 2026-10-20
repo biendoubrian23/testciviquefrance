@@ -1,44 +1,57 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-batch-mai-2026-4.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/ants-permis-conduire-categorie-b-2026-demande-etapes-tarifs`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-batch-mai-2026-4.ts`
+ * et `lib/data/seo-articles.ts`, sans changer d'adresse.
+ *
+ * Réécrit le 20/10/2026 (fusion du groupe 8). La requête qui amène les
+ * lecteurs ici est « prix fabrication permis de conduire ants » (Search
+ * Console, 28 jours au 20/10/2026) : la réponse est donc en tête. L'article
+ * doublon `ants-permis-conduire-en-ligne-2026-etapes` y est fusionné (son
+ * adresse redirige ici en 301). L'article `ants-permis-conduire-2026-echange-demande-suivi`
+ * n'est pas fusionné : il traite d'un permis qu'on a déjà (perte, vol,
+ * renouvellement, suivi) et il est lié plus bas.
+ *
+ * Retiré parce que faux ou sans source officielle : « 18 ans » pour le permis B
+ * (17 ans depuis 2024), « ASSR 2 si vous êtes né après 1988 » (elle est demandée
+ * avant 21 ans), les tarifs d'auto-école « réels » (libres), les délais
+ * d'examen par région, le délai NEPH, les nombres de centres par opérateur,
+ * la « moyenne de 35 heures », l'envoi en recommandé (c'est une Lettre suivie),
+ * les montants d'aide (CPF à 5 000 €, 102,23 €, aides régionales chiffrées),
+ * le code photo « à 12 » ou « à 22 » caractères, le prix des cabines, et
+ * l'échange de permis à 45 € (40 € selon service-public).
  */
 const article: Article = {
   slug: "ants-permis-conduire-categorie-b-2026-demande-etapes-tarifs",
-  titre: "ANTS permis B 2026 : première demande, code, conduite, tarifs (étapes complètes)",
-  titreSeo: "ANTS permis B 2026 : première demande, code, conduite, tarifs (étapes complètes)",
-  resume: "Première demande de permis B en 2026 ? Tout passer par ANTS : code de la route (30 €), examen de conduite, fabrication du permis. Étapes officielles, tarifs détaillés, délais et solutions aux blocages les plus fréquents.",
-  chapo: "Passer le **permis de conduire catégorie B** (voitures jusqu'à 3,5 tonnes) reste en 2026 l'un des examens les plus passés en France : environ **1,5 million de candidats** s'inscrivent chaque année. Depuis 2018, toutes les démarches sont **dématérialisées sur l'ANTS** (Agence nationale des titres sécurisés) : pas de passage en préfecture, tout se fait en ligne sur ants.gouv.fr. Mais le parcours reste long, parfois confus, et coûteux : entre **700 € en candidat libre** et **2 500 € en auto-école traditionnelle**. Ce guide détaille en 6 étapes l'intégralité du processus 2026 : prérequis, demande NEPH sur ANTS, code de la route, conduite, tarifs réels, fabrication du permis. Avec un tableau récapitulatif des coûts et toutes les solutions aux blocages les plus fréquents (numéro NEPH bloqué, place d'examen indisponible, code 96 pour les étrangers).",
+  titre: "Permis B sur l'ANTS : combien coûte la fabrication, et les étapes de la première demande",
+  titreSeo: "Permis de conduire ANTS : prix et étapes",
+  resume: "La fabrication du premier permis B est gratuite sur l'ANTS. Le code coûte 30 €. NEPH, code, conduite, demande du titre : les étapes officielles.",
+  chapo: "La fabrication de votre premier permis de conduire est ==gratuite== : la demande sur le site de l'ANTS ne coûte rien ([service-public, R45443](https://www.service-public.gouv.fr/particuliers/vosdroits/R45443)). Les frais viennent d'ailleurs : ==30 €== pour l'examen du code, la formation, et la photo. Voici chaque étape, dans l'ordre, avec ce qui est payant et ce qui ne l'est pas.",
   publieLe: "2026-05-10",
-  modifieLe: "2026-05-10",
-  minutes: 14,
-  theme: "ANTS permis B 2026",
+  modifieLe: "2026-10-20",
+  minutes: 7,
+  theme: "prix fabrication permis de conduire ANTS",
   motsCles: [
-    "ANTS permis B 2026",
-    "permis conduire première demande 2026",
+    "prix fabrication permis de conduire ants",
+    "combien coute la fabrication du permis de conduire",
+    "ants permis de conduire",
+    "ants permis b",
+    "inscription permis ants",
+    "dossier ants permis de conduire",
+    "comment s'inscrire au permis",
     "NEPH ANTS demande",
-    "inscription code route 30 euros",
-    "permis B candidat libre 2026",
-    "tarif auto-école 2026",
-    "fabrication permis conduire ANTS",
-    "permis conduire étranger France 2026",
-    "code 96 permis conduire",
-    "examen pratique permis B 2026",
-    "ANTS gouv fr permis",
-    "place examen permis conduire",
-    "délai fabrication permis B",
-    "ASSR permis 2026",
-    "auto-école en ligne tarif",
+    "prix examen code de la route",
+    "photo signature ants",
+    "ants permis en ligne",
+    "demande permis ants",
+    "permis B candidat libre",
+    "ASSR permis",
   ],
   rubrique: "conseils",
   auteur: "Brian B",
   couverture: {
     src: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
+    alt: "Volant et tableau de bord d'une voiture, vus depuis la place du conducteur",
     largeur: 1200,
     hauteur: 800,
     credit: "Unsplash",
@@ -48,361 +61,256 @@ const article: Article = {
   blocs: [
     {
       type: "h2",
-      texte: "Prérequis avant inscription : NEPH, ASSR, justificatifs",
-      id: "prerequis-inscription",
+      texte: "Combien coûte la fabrication du permis sur l'ANTS ?",
+      id: "prix-fabrication-permis",
     },
     {
       type: "p",
-      texte: "Avant même d'aller sur ANTS, vérifiez que vous remplissez les **conditions légales** pour passer le permis B en 2026.",
+      texte: "L'ANTS (France Titres) est le service de l'État qui fabrique les permis de conduire. Toutes ses démarches pour le permis se font en ligne, sur [permisdeconduire.ants.gouv.fr](https://permisdeconduire.ants.gouv.fr). Pour un premier permis, l'État ne vous fait payer qu'un seul frais : l'examen du code. Voici les montants publiés par service-public.",
     },
-    { type: "p", texte: "**Condition d'âge**" },
     {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**15 ans** : conduite accompagnée (AAC)",
-        "**17 ans** : conduite supervisée",
-        "**18 ans** : permis B classique",
+      type: "tableau",
+      entetes: ["Démarche", "Prix officiel", "Source"],
+      lignes: [
+        ["Inscription à l'examen (numéro NEPH)", "Gratuit.", "[R49186](https://www.service-public.gouv.fr/particuliers/vosdroits/R49186)"],
+        ["Examen du code de la route", "30 € par passage, à repayer après un échec.", "[F33694](https://www.service-public.gouv.fr/particuliers/vosdroits/F33694)"],
+        ["Fabrication du permis après la réussite", "Gratuit.", "[R45443](https://www.service-public.gouv.fr/particuliers/vosdroits/R45443)"],
+        ["Suivi de la demande", "Gratuit.", "[R36427](https://www.service-public.gouv.fr/particuliers/vosdroits/R36427)"],
+        ["Nouveau permis après une perte ou un vol", "25 € (12,50 € en Guyane).", "[F34118](https://www.service-public.gouv.fr/particuliers/vosdroits/F34118)"],
+        ["Échange d'un permis étranger", "40 € (20 € en Guyane).", "[F34118](https://www.service-public.gouv.fr/particuliers/vosdroits/F34118)"],
+        ["Leçons en auto-école", "Prix libres, fixés par chaque école.", "[F2828](https://www.service-public.gouv.fr/particuliers/vosdroits/F2828)"],
       ],
-    },
-    { type: "p", texte: "**Documents obligatoires à préparer**" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Pièce d'identité valide** : carte nationale d'identité, passeport, ou titre de séjour pour les étrangers (recto/verso scanné).",
-        "**Justificatif de domicile** de moins de 6 mois (facture EDF, quittance de loyer, avis d'imposition).",
-        "**Photo d'identité numérique** au format ANTS (signature électronique incluse, code à 22 caractères obtenu en cabine ou photographe agréé).",
-        "**ASSR 2** (Attestation Scolaire de Sécurité Routière niveau 2) : obligatoire si vous êtes né **après le 1er janvier 1988**. Obtenue au collège en classe de 3e. Si perdue : demandez un duplicata à votre ancien établissement.",
-        "**Journée Défense et Citoyenneté (JDC)** : pour les Français de 16-25 ans, obligatoire avant le permis. Attestation à télécharger sur majdc.fr.",
-        "**Pour les étrangers** : titre de séjour en cours de validité (récépissé accepté) + traduction certifiée si permis étranger à échanger.",
-      ],
-    },
-    { type: "p", texte: "**Le NEPH (Numéro d'Enregistrement Préfectoral Harmonisé)**" },
-    {
-      type: "p",
-      texte: "C'est votre **identifiant unique candidat permis** valable à vie. Il est attribué une seule fois lors de votre première demande sur ANTS. Conservez-le précieusement : sans NEPH, **aucune inscription** au code ou à la conduite n'est possible.",
-    },
-    { type: "h2", texte: "Étape 1 : demander le NEPH sur ANTS (pas-à-pas)", id: "demande-neph-ants" },
-    {
-      type: "p",
-      texte: "La création du dossier ANTS est **gratuite** et obligatoire pour tous, qu'on passe par auto-école ou en candidat libre.",
-    },
-    { type: "p", texte: "**Étapes détaillées**" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Créer un compte ANTS** sur ants.gouv.fr → \"Mon espace\" → \"Créer un compte\". Utilisez de préférence votre **identifiant FranceConnect** (impôts, Ameli, La Poste) : connexion plus rapide et plus sécurisée.",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Accéder au service \"Permis de conduire\"** → \"Je fais une demande en ligne\" → choisir le motif **\"Demande de fabrication d'un titre\"** ou **\"Inscription au permis\"**.",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["**Choisir le motif exact** :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "\"Première demande de permis\" (vous n'avez jamais eu de permis)",
-        "\"Réussite à l'examen\" (vous venez de réussir et demandez la fabrication)",
-        "\"Extension de catégorie\" (ajout d'une catégorie à un permis existant)",
-        "\"Échange de permis étranger\" (permis hors UE/EEE)",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["**Renseigner l'état civil** : nom, prénom, date et lieu de naissance, nationalité."],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Téléverser les pièces justificatives** au format **PDF, JPG ou PNG**, taille maximale **3 Mo par fichier** :",
-      ],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Pièce d'identité (recto/verso)",
-        "Justificatif de domicile",
-        "Code photo numérique (22 caractères)",
-        "ASSR 2 si concerné",
-        "Attestation JDC si concerné",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Valider et envoyer**. Vous recevez immédiatement un **numéro de dossier** (différent du NEPH).",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Délai d'instruction** : entre **5 et 15 jours ouvrés** en 2026. Vous recevez un **email confirmant votre NEPH** (format : 12 chiffres). C'est avec ce NEPH que vous pourrez vous inscrire au code et à la conduite.",
-      ],
+      legende: "Montants lus sur service-public le 20/10/2026.",
     },
     {
       type: "p",
-      texte: "**En cas de refus** : vérifiez votre boîte mail (parfois spam), corrigez les pièces demandées et renvoyez. Pas besoin de recommencer le dossier.",
+      texte: "Les prix des auto-écoles ne sont pas fixés par l'État. Comparez plusieurs devis avant de signer. Il faut aussi payer la photo d'identité numérique, chez un photographe ou dans une cabine agréée. Méfiez-vous des sites qui font payer une démarche gratuite : notre article sur les [arnaques aux démarches en ligne](/articles/arnaques-etrangers-france-2026-faux-avocats-prefecture-anef) montre comment les repérer.",
     },
     {
       type: "h2",
-      texte: "Étape 2 : s'inscrire à l'examen du code (auto-école ou candidat libre)",
+      texte: "Qui peut passer le permis B ?",
+      id: "conditions",
+    },
+    {
+      type: "p",
+      texte: "Depuis 2024, le permis B s'obtient dès ==17 ans==. Vous pouvez vous inscrire à l'examen dès 16 ans, ou dès 15 ans en conduite accompagnée ([service-public, F2828](https://www.service-public.gouv.fr/particuliers/vosdroits/F2828)). Avant de commencer, réunissez ces papiers :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "une pièce d'identité valide.",
+        "un justificatif de domicile de moins de 6 mois.",
+        "une photo-signature numérique : une photo avec votre signature, faite chez un photographe ou dans une cabine agréés par l'ANTS. Elle doit dater de moins de 6 mois.",
+        "l'ASSR 2 ou l'ASR, si vous avez moins de 21 ans. C'est l'attestation de sécurité routière passée au collège ou à l'âge adulte. Si vous l'avez perdue, une déclaration sur l'honneur est possible.",
+        "pour les Français de 17 à 25 ans, la preuve que la JDC (journée défense et citoyenneté) est faite.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Si vous êtes étranger, ajoutez la preuve de votre séjour régulier, par exemple votre titre de séjour (la carte qui vous autorise à vivre en France). Notre guide de la [carte de séjour](/articles/carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement) explique les différents titres.",
+    },
+    {
+      type: "h2",
+      texte: "Étape 1 : obtenir votre numéro NEPH",
+      id: "demande-neph-ants",
+    },
+    {
+      type: "p",
+      texte: "Le NEPH est votre numéro de candidat au permis. Sans lui, impossible de passer le code ou la conduite. Votre auto-école peut le demander pour vous. En candidat libre, vous le demandez vous-même en ligne, gratuitement ([R49186](https://www.service-public.gouv.fr/particuliers/vosdroits/R49186)) :",
+    },
+    {
+      type: "liste",
+      style: "numeros",
+      items: [
+        "connectez-vous à votre espace ANTS avec FranceConnect, France Identité ou un compte ANTS.",
+        "créez une nouvelle demande et choisissez l'inscription aux examens du permis.",
+        "remplissez le formulaire et ajoutez vos papiers, photographiés ou scannés.",
+        "validez, puis suivez la demande dans votre espace.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Quand la demande est acceptée, vous recevez une attestation d'inscription, l'AIPC. Elle porte votre NEPH. Gardez-la bien. Après 5 ans sans passer le code, le numéro doit être réactivé ([F2828](https://www.service-public.gouv.fr/particuliers/vosdroits/F2828)).",
+    },
+    {
+      type: "h2",
+      texte: "Étape 2 : passer l'examen du code",
       id: "inscription-code-route",
     },
     {
       type: "p",
-      texte: "Avec votre NEPH en main, vous pouvez vous inscrire à l'**examen du code de la route (ETG : Épreuve théorique générale)**. Tarif officiel **inchangé en 2026 : 30 € par tentative**.",
-    },
-    { type: "p", texte: "**Deux options possibles**" },
-    { type: "p", texte: "**Option 1 : via votre auto-école**" },
-    {
-      type: "p",
-      texte: "L'auto-école s'occupe de tout : inscription, choix du centre, planification. Coût souvent **inclus dans le forfait global** (mais les présentations supplémentaires sont à votre charge).",
-    },
-    { type: "p", texte: "**Option 2 : en candidat libre**" },
-    {
-      type: "p",
-      texte: "Vous vous inscrivez vous-même via un **opérateur agréé** par le ministère de l'Intérieur :",
+      texte: "Le code se passe dans un centre agréé par l'État. Vous vous inscrivez sur le site du centre, avec votre NEPH, ou votre auto-école le fait pour vous. Le passage coûte ==30 €==, payés avant l'inscription. Après un échec, il faut payer de nouveau ([service-public, F33694](https://www.service-public.gouv.fr/particuliers/vosdroits/F33694)).",
     },
     {
       type: "liste",
       style: "puces",
       items: [
-        "**La Poste** (lapostecode.fr) : centres dans toutes les villes",
-        "**SGS Objectif Code** : 1 800 centres en France",
-        "**Bureau Veritas / Code'n'go** : 700 centres",
-        "**Pearson Vue / Codeclic** : 600 centres",
-        "**Dekra** : 500 centres",
-      ],
-    },
-    { type: "p", texte: "**Étapes inscription candidat libre**" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "Créez un compte sur le site de l'opérateur de votre choix.",
-        "Renseignez votre **NEPH** + état civil.",
-        "Choisissez **date, heure et centre** d'examen.",
-        "Payez **30 €** en ligne (carte bancaire).",
-        "Téléchargez votre **convocation** (à présenter le jour J avec pièce d'identité).",
-      ],
-    },
-    { type: "p", texte: "**Le jour de l'examen**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "40 questions QCM, format vidéo, **35 minutes**.",
-        "Réussite : **35 bonnes réponses sur 40** (87,5%).",
-        "Résultat : **par email sous 24-48h**, valable **5 ans** (ou 5 présentations à la conduite).",
+        "l'examen compte 40 questions à choix multiples.",
+        "il faut au moins 35 bonnes réponses pour réussir.",
+        "le résultat arrive par mail ou par courrier.",
+        "une fois réussi, le code reste valable 5 ans.",
       ],
     },
     {
       type: "p",
-      texte: "**Préparation** : applis officielles (Codes Rousseau, En Voiture Simone, Lepermislibre) entre **20 et 60 €**. Beaucoup d'auto-écoles en ligne incluent le code dans leur forfait global.",
+      texte: "Un examen en 40 questions avec un seuil, c'est aussi le format de l'examen civique, demandé pour certains titres de séjour. Vérifiez en une minute s'il vous concerne avec notre [simulateur d'éligibilité](/eligibilite-examen-civique).",
     },
     {
       type: "h2",
-      texte: "Étape 3 : la conduite (20h minimum, places d'examen)",
+      texte: "Étape 3 : apprendre à conduire et passer l'examen",
       id: "inscription-conduite",
     },
     {
       type: "p",
-      texte: "Une fois le code obtenu, place à la **formation pratique** puis à l'**examen de conduite (épreuve B)**.",
+      texte: "En auto-école, les règles fixent un minimum de leçons ([F2828](https://www.service-public.gouv.fr/particuliers/vosdroits/F2828)) :",
     },
-    { type: "p", texte: "**Heures de conduite minimum légales**" },
     {
       type: "liste",
       style: "puces",
       items: [
-        "**Permis B classique** : **20 heures minimum** (article R.213-4 du Code de la route).",
-        "**Boîte automatique uniquement** : 13 heures minimum, mais permis limité aux véhicules automatiques.",
-        "**Conduite accompagnée (AAC, dès 15 ans)** : 20 heures auto-école + minimum 3 000 km accompagné.",
+        "permis B classique : ==20 heures== au moins, dont 15 heures sur la route.",
+        "permis B en boîte automatique : 13 heures au moins, dont 10 heures sur la route.",
+        "passage de la boîte automatique à la boîte manuelle : une formation de 7 heures.",
       ],
     },
     {
       type: "p",
-      texte: "**Réalité statistique** : la **moyenne nationale 2026** pour réussir l'examen est de **35 heures** (selon la DSCR, Délégation à la sécurité routière). En auto-école traditionnelle, prévoyez **30 à 40 heures**.",
-    },
-    { type: "p", texte: "**Inscription à l'examen pratique**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Via auto-école : elle dispose d'un **quota de places** par mois selon ses inscriptions.",
-        "En candidat libre : vous devez trouver une auto-école qui accepte de **présenter** un candidat libre (rare, comptez **150 à 250 € de frais d'accompagnement**) ou passer par une **auto-école en ligne** type Lepermislibre, Stych, En Voiture Simone qui gèrent la présentation.",
-      ],
-    },
-    { type: "p", texte: "**Délais 2026 pour obtenir une place**" },
-    {
-      type: "tableau",
-      entetes: ["Région", "Délai moyen 1ère présentation", "Délai 2e présentation"],
-      lignes: [
-        ["Île-de-France", "60 à 90 jours", "30 à 60 jours"],
-        ["Région PACA", "50 à 75 jours", "30 à 45 jours"],
-        ["Outre-mer", "90 à 120 jours", "60 à 90 jours"],
-        ["Régions rurales", "30 à 45 jours", "15 à 30 jours"],
-      ],
+      texte: "En candidat libre, aucun nombre d'heures n'est imposé ([F2825](https://www.service-public.gouv.fr/particuliers/vosdroits/F2825)). Mais vous devez avoir un livret d'apprentissage. Un proche vous accompagne : il a le permis B depuis 5 ans au moins et n'est pas payé. La voiture doit avoir une double commande, le jour de l'examen aussi. Vous réservez votre place d'examen sur le site RdvPermis, avec votre NEPH.",
     },
     {
       type: "p",
-      texte: "**L'examen pratique** dure **32 minutes** : conduite urbaine, hors agglomération, manœuvre obligatoire, vérifications techniques. Réussite si vous obtenez **au moins 20 points sur 31** sans **erreur éliminatoire**.",
-    },
-    {
-      type: "p",
-      texte: "**Résultat** : disponible sur ANTS sous **48 heures** dans votre espace personnel. Avec mention \"favorable\" = permis obtenu.",
-    },
-    { type: "h2", texte: "Étape 4 : tarifs réels du permis B en 2026", id: "tarifs-reels-2026" },
-    {
-      type: "p",
-      texte: "Le coût total du permis B varie énormément selon la formule choisie. Voici les **fourchettes réelles 2026** observées sur le marché français.",
-    },
-    { type: "p", texte: "**Tableau comparatif des coûts 2026**" },
-    {
-      type: "tableau",
-      entetes: ["Poste", "Auto-école traditionnelle", "Auto-école en ligne", "Candidat libre"],
-      lignes: [
-        ["Frais de dossier ANTS", "0 € (gratuit)", "0 €", "0 €"],
-        ["Code (inscription + cours)", "200-400 €", "30-100 €", "30 € (examen) + 0-60 € (appli)"],
-        ["Présentation au code", "Inclus", "Inclus", "30 € par tentative"],
-        [
-          "Formation conduite (20h)",
-          "1 100-1 600 €",
-          "700-1 100 €",
-          "0 € (bénévole) ou 35-50 €/h location voiture double commande",
-        ],
-        ["Heures supplémentaires (10h en moyenne)", "500-800 €", "300-500 €", "350-500 €"],
-        [
-          "Présentation pratique",
-          "100-200 €",
-          "80-150 €",
-          "150-250 € (auto-école d'accompagnement)",
-        ],
-        ["**Total moyen**", "**1 900 à 3 000 €**", "**1 100 à 1 850 €**", "**600 à 900 €**"],
-      ],
-    },
-    { type: "p", texte: "**Aides financières disponibles en 2026**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Permis à 1 € par jour** : prêt à taux zéro de 600 à 1 200 €, garanti par l'État, pour les 15-25 ans (banques partenaires : BNP, Crédit Agricole, Société Générale).",
-        "**Aide CPF** : depuis 2024, le **Compte personnel de formation** finance le permis B si **lié au projet professionnel**. Plafond du compte (souvent 5 000 €).",
-        "**Aide France Travail** : jusqu'à **1 200 €** pour demandeurs d'emploi en parcours d'insertion.",
-        "**Aide régionale** : variable selon les régions (Île-de-France : jusqu'à 800 € ; Hauts-de-France : 500 € ; Occitanie : 500 €).",
-        "**Bourse au permis** des communes : 200 à 500 € contre engagement bénévole.",
-      ],
-    },
-    { type: "p", texte: "**Tarif des présentations supplémentaires**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Code : **30 € par session**",
-        "Conduite : variable selon auto-école, mais le passage en lui-même reste gratuit (la place vous est attribuée par la préfecture).",
-      ],
+      texte: "L'examen de conduite dure 32 minutes, dont 25 minutes de conduite au moins. Il comprend deux manœuvres, une vérification sur la voiture et des questions de sécurité. Vous réussissez avec ==20 points== ou plus, sans erreur grave comme griller un stop. Le résultat se lit en ligne dès le lendemain.",
     },
     {
       type: "h2",
-      texte: "Étape 5 : récupérer le permis sur ANTS, code 96 et fabrication",
+      texte: "Étape 4 : demander la fabrication et suivre votre permis",
       id: "recuperer-permis-fabrication",
     },
     {
       type: "p",
-      texte: "Vous venez de recevoir votre **certificat d'examen du permis de conduire (CEPC)** avec mention favorable ? Vous pouvez **conduire immédiatement** avec ce document pendant **4 mois maximum**, en attendant le permis définitif format carte bancaire.",
+      texte: "Après la réussite, vous recevez le CEPC, le certificat d'examen. Il vaut permis pendant ==4 mois==, en France seulement, avec une pièce d'identité ([F2828](https://www.service-public.gouv.fr/particuliers/vosdroits/F2828)). Pendant ce temps, demandez votre permis sur le site de l'ANTS. La démarche est gratuite ([R45443](https://www.service-public.gouv.fr/particuliers/vosdroits/R45443)) :",
     },
-    { type: "p", texte: "**Demander la fabrication du permis sur ANTS**" },
     {
       type: "liste",
       style: "numeros",
       items: [
-        "Connectez-vous sur ants.gouv.fr → espace permis.",
-        "Choisissez le motif **\"Réussite à l'examen\"**.",
-        "Téléversez :",
+        "connectez-vous à votre espace ANTS.",
+        "créez une nouvelle demande et choisissez la fabrication du permis après un examen.",
+        "ajoutez votre pièce d'identité, votre justificatif de domicile et le code de votre photo-signature.",
+        "donnez un mail ou un numéro de mobile pour recevoir les nouvelles.",
+        "validez et suivez l'avancée dans votre espace.",
       ],
+    },
+    {
+      type: "p",
+      texte: "Le permis arrive par Lettre suivie, environ 15 jours après la validation de la demande ([F2828](https://www.service-public.gouv.fr/particuliers/vosdroits/F2828)). Le suivi se fait dans votre espace ANTS, sans frais ([R36427](https://www.service-public.gouv.fr/particuliers/vosdroits/R36427)).",
+    },
+    {
+      type: "liste",
+      style: "alertes",
+      items: [
+        "Ne laissez pas passer les 4 mois du CEPC sans avoir fait la demande.",
+        "Vérifiez que la photo-signature date de moins de 6 mois.",
+        "Pour un permis perdu, volé ou abîmé plus tard, la démarche est différente : lisez notre guide [perte, vol, renouvellement et suivi du permis](/articles/ants-permis-conduire-2026-echange-demande-suivi).",
+      ],
+    },
+    {
+      type: "h2",
+      texte: "Quelles aides pour payer la formation ?",
+      id: "aides-permis",
+    },
+    {
+      type: "p",
+      texte: "Service-public liste plusieurs aides ([F13609](https://www.service-public.gouv.fr/particuliers/vosdroits/F13609)). Chacune a ses conditions :",
     },
     {
       type: "liste",
       style: "puces",
       items: [
-        "CEPC (téléchargé depuis votre espace ANTS)",
-        "Photo numérique (code 22 caractères)",
-        "Pièce d'identité",
-        "Justificatif de domicile récent",
-        "Signature numérique",
+        "le **permis à 1 euro par jour** : un prêt sans intérêt de 600 € à 1 200 €, pour les 15 à 25 ans, dans une école de conduite labellisée.",
+        "le **CPF** (compte personnel de formation), si le permis sert un projet de travail.",
+        "la **bourse au permis** de certaines communes, en échange d'une activité utile à tous.",
+        "les aides des régions, des départements, et de la mission locale pour les 18 à 25 ans.",
       ],
     },
     {
-      type: "liste",
-      style: "numeros",
-      items: ["Validez. **Aucun frais** de fabrication (gratuit pour la première demande)."],
-    },
-    { type: "p", texte: "**Délais de fabrication 2026**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Délai moyen national** : **2 à 4 semaines** depuis la demande validée.",
-        "**Délais constatés en 2026** : entre **15 jours** (régions peu chargées) et **8 semaines** (Île-de-France, période estivale).",
-        "Le permis arrive en **lettre recommandée avec accusé de réception** à votre domicile.",
-      ],
-    },
-    { type: "p", texte: "**Le code 96 : pour étrangers et conducteurs de remorques**" },
-    {
       type: "p",
-      texte: "Le **code 96** est une **mention restrictive** apposée sur le permis B : elle autorise la conduite d'un ensemble véhicule + remorque dont le PTAC total est compris entre 3 500 kg et 4 250 kg, **après une formation complémentaire de 7 heures** dans une auto-école.",
-    },
-    {
-      type: "p",
-      texte: "Pour les **étrangers ressortissants hors UE/EEE** : si vous échangez votre permis étranger contre un permis français via ANTS, des codes restrictifs peuvent apparaître selon votre pays d'origine et votre titre de séjour. Vérifiez la **liste officielle des pays ayant un accord de réciprocité** sur service-public.fr.",
-    },
-    { type: "p", texte: "**Suivi du permis**" },
-    {
-      type: "p",
-      texte: "Sur ants.gouv.fr → \"Suivre ma démarche\" → vous voyez chaque étape : \"En cours d'instruction\", \"Validé\", \"En cours de fabrication\", \"Expédié\". Numéro de suivi La Poste fourni dès l'expédition.",
+      texte: "Vous avez un permis obtenu hors d'Europe ? Vous n'avez peut-être pas à repasser l'examen. Notre article sur [l'échange d'un permis étranger](/articles/echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete) donne les pays et les conditions. Pour les autres démarches du site, voyez notre [guide de l'ANTS](/articles/ants-demarches-en-ligne-2026-guide-complet).",
     },
     {
       type: "encadre",
       titre: "À retenir",
-      texte: "Le permis B 2026 reste un parcours exigeant mais entièrement structuré sur ANTS : NEPH d'abord, code (30 €), conduite (20 h minimum), examens, fabrication. Selon votre formule, comptez entre **700 € en candidat libre** et **2 500 € en auto-école traditionnelle**, avec de nombreuses aides disponibles (Permis à 1 €/jour, CPF, France Travail). La clé du succès : préparer méthodiquement chaque étape et ne pas sauter de prérequis. Cette logique d'examen national avec QCM, score minimal et préparation rigoureuse n'est d'ailleurs pas si éloignée de celle du **test civique de naturalisation** : 40 questions, seuil de 32/40, formation préalable indispensable. Si votre projet est plus large que la mobilité, devenir Français, préparez-vous à cet examen national gratuitement sur [testciviquefrance.fr](/signup) et passez le test blanc avant la convocation officielle.",
+      texte: "La fabrication du premier permis est gratuite. Le NEPH et le suivi aussi.\nLe seul frais officiel est le code : 30 € par passage. Les leçons ont des prix libres. Demandez votre permis sur l'ANTS avant la fin des 4 mois du CEPC.",
       ton: "bleu",
     },
   ],
   faq: [
     {
-      question: "Combien de temps prend la délivrance du NEPH sur ANTS en 2026 ?",
-      reponse: "Entre 5 et 15 jours ouvrés selon la charge des services et la complétude de votre dossier. En cas de pièce manquante, vous recevez un email avec demande de complément, ce qui rallonge de 7 à 10 jours.",
+      question: "Combien coûte la fabrication du permis de conduire ?",
+      reponse: "Rien, pour un premier permis obtenu après un examen. Service-public indique que la demande en ligne sur le site de l'ANTS est gratuite. Vous payez seulement la photo-signature numérique. Un nouveau permis après une perte ou un vol coûte en revanche 25 €, en timbre fiscal (une taxe payée en ligne ou chez un buraliste).",
     },
     {
-      question: "Puis-je passer le permis B en candidat libre si je suis étranger ?",
-      reponse: "Oui, à condition de disposer d'un titre de séjour en cours de validité (récépissé accepté) et d'un justificatif de domicile en France. La procédure ANTS est identique. Attention : certains opérateurs d'auto-école d'accompagnement refusent les candidats libres avec récépissé.",
+      question: "Comment obtenir son numéro NEPH ?",
+      reponse: "Votre auto-école peut le demander pour vous. En candidat libre, connectez-vous à votre espace ANTS et choisissez l'inscription aux examens du permis. Ajoutez une pièce d'identité, un justificatif de domicile et votre photo-signature. La démarche est gratuite. Vous recevez une attestation, l'AIPC, qui porte votre NEPH.",
     },
     {
-      question: "Que faire si je ne reçois pas mon permis fabriqué après 8 semaines ?",
-      reponse: "Connectez-vous sur ANTS et vérifiez le statut. Si \"En cours de fabrication\" depuis plus de 6 semaines, contactez l'ANTS via le formulaire de contact ou le 34 00 (du lundi au vendredi). Vous pouvez aussi conduire avec votre CEPC pendant 4 mois après réussite.",
+      question: "Combien coûte l'examen du code de la route ?",
+      reponse: "Le passage de l'examen du code coûte 30 €, selon service-public. Vous payez avant de vous inscrire, sur le site du centre agréé ou par votre auto-école. Après un échec, vous payez de nouveau 30 €. L'examen compte 40 questions et il faut 35 bonnes réponses. Le code reste ensuite valable 5 ans.",
     },
     {
-      question: "Le code de la route est-il valable combien de temps en 2026 ?",
-      reponse: "5 ans à partir de la date de réussite, ou 5 présentations à l'examen pratique. Au-delà, vous devez repasser le code (30 € + nouvelle inscription).",
+      question: "Peut-on conduire en attendant de recevoir son permis ?",
+      reponse: "Oui. Après la réussite, le certificat d'examen (CEPC) vaut permis pendant 4 mois, en France seulement, avec une pièce d'identité. Faites votre demande de fabrication sur le site de l'ANTS pendant ce temps. Le permis arrive ensuite par Lettre suivie, environ 15 jours après la validation de la demande.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Service-public : permis B, voiture ou camionnette (F2828)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2828",
+      type: "officiel",
+      luLe: "2026-10-20",
     },
     {
-      question: "L'aide CPF couvre-t-elle 100% du permis B en 2026 ?",
-      reponse: "Oui si vous avez assez de droits sur votre CPF (jusqu'à 5 000 €) et si l'auto-école est référencée Qualiopi. Depuis 2024, vous devez justifier que le permis sert un projet professionnel concret (chauffeur, livreur, déplacements pro). Une participation forfaitaire de 102,23 € reste à votre charge depuis avril 2024.",
+      titre: "Service-public : permis de conduire, comment passer le code (F33694)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F33694",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : permis B en candidat libre (F2825)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2825",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : s'inscrire en ligne à l'examen, attribution du numéro NEPH (R49186)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/R49186",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : demander en ligne un permis de conduire après la réussite à un examen (R45443)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/R45443",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : suivre l'avancement d'une demande de permis de conduire (R36427)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/R36427",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : timbre fiscal pour un permis de conduire (perte, vol, échange) (F34118)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34118",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : quelles aides pour financer le permis de conduire ? (F13609)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F13609",
+      type: "officiel",
+      luLe: "2026-10-20",
     },
   ],
 };

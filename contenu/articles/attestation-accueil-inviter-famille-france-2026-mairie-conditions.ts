@@ -242,7 +242,7 @@ const article: Article = {
     },
   ],
   aLireAussi: [
-    { slug: "regroupement-familial-france-procedure-2025", ancre: "Procédure de regroupement familial" },
+    { slug: "regroupement-familial-france-2026-guide-complet-conditions-documents-delais", ancre: "Procédure de regroupement familial" },
     {
       slug: "mariage-etranger-france-2026-papiers-visa-conjoint-titre-sejour",
       ancre: "Mariage avec un étranger en France",

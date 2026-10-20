@@ -2,40 +2,56 @@ import type { Article } from "@/contenu/articles";
 
 /**
  * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-naturalisation-passeport-talent-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * (`/articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet`).
+ *
+ * Réécrit le 20/10/2026 (doctrine `docs/seo/ROBOT.md`) et fusionné avec
+ * `naturalisation-francaise-conditions-demarches-2025`, qui redirige ici en 301.
+ * Chaque règle a été relue sur service-public et Légifrance le 20/10/2026.
+ * Retiré parce que faux ou sans source officielle : le tableau des « délais
+ * réels par préfecture » et la durée de chaque phase, le niveau B1 (B2 pour
+ * les demandes déposées depuis le 1er janvier 2026), la réduction à 2 ans
+ * « pour un Bac+5 », le timbre de 55 € et le « dossier gratuit » (255 € depuis
+ * le 1er mai 2026), la répartition des questions par thème, les centres
+ * « agréés OFII », le recours gracieux « auprès du préfet », le « médiateur de
+ * la naturalisation », les prix des traductions et des tests, la cérémonie
+ * « 1 à 3 mois » après le décret (6 mois en principe), le « certificat de
+ * nationalité » remis après la naturalisation. Les deux vidéos de l'article
+ * fusionné (un reportage sur une polémique, une vidéo tierce qui tutoie) n'ont
+ * pas été reprises.
+ *
+ * L'image de couverture vient d'Unsplash (licence Unsplash : usage libre,
+ * commercial compris) ; ses dimensions sont nominales.
  */
 const article: Article = {
   slug: "naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet",
-  titre: "Naturalisation française 2026 : délais réels par préfecture, conditions, dossier complet et 7 pièges à éviter",
-  titreSeo: "Naturalisation française 2026 : délais réels par préfecture, conditions, dossier complet et 7 pièges à éviter",
-  resume: "Guide complet naturalisation 2026 : délais réels (6 à 28 mois selon préfecture), nouvelles conditions loi 2024 (B1, test civique 80%), checklist des documents, 7 motifs de refus fréquents et comment rédiger un exposé des motifs convaincant.",
-  chapo: "Obtenir la nationalité française est l'aboutissement d'un parcours d'intégration. Mais en 2026, entre la nouvelle loi immigration qui durcit les conditions, les délais qui s'allongent dans certaines préfectures et les dossiers souvent refusés pour des raisons évitables, beaucoup de candidats se retrouvent perdus. Ce guide vous donne toutes les informations concrètes : les 5 conditions à remplir, les délais réels par ville, la liste exacte des documents à fournir, les 7 motifs de refus les plus fréquents et les clés pour maximiser vos chances de succès dès le premier dépôt.",
+  titre: "Naturalisation française en 2026 : conditions, délai de 18 mois, dossier et pièges à éviter",
+  titreSeo: "Naturalisation 2026 : conditions, délai, dossier",
+  resume: "5 ans de résidence, français B2, examen civique, timbre de 255 €, 18 mois d'instruction : les conditions et les étapes de la naturalisation en 2026.",
+  chapo: "Pour être naturalisé français en 2026, il faut en général 5 ans de résidence en France et un titre de séjour valide. Il faut aussi des revenus stables, un niveau de français ==B2== et la réussite à l'examen civique. L'administration a ensuite ==18 mois au plus== pour répondre. Voici chaque condition, le dossier, le délai et les erreurs qui font perdre du temps, d'après service-public et les textes officiels.",
   publieLe: "2026-04-05",
-  modifieLe: "2026-04-05",
-  minutes: 22,
+  modifieLe: "2026-10-20",
+  minutes: 9,
   theme: "naturalisation française 2026",
   motsCles: [
     "naturalisation française 2026",
     "conditions naturalisation France 2026",
+    "délai naturalisation 2026",
     "délai naturalisation préfecture 2026",
     "dossier naturalisation documents",
     "refus naturalisation motifs",
-    "naturalisation nouvelle loi immigration",
-    "exposé des motifs naturalisation",
-    "test civique naturalisation",
-    "niveau B1 naturalisation",
+    "naturalisation niveau B2",
+    "examen civique naturalisation",
+    "timbre fiscal naturalisation 255 euros",
     "cérémonie naturalisation France",
-    "nationalité française demarches 2026",
-    "naturalisation préfecture paris lyon marseille délai",
+    "devenir français",
+    "procédure naturalisation",
+    "recours naturalisation ministre",
   ],
   rubrique: "cadre-legal",
   auteur: "Brian B",
   couverture: {
     src: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
+    alt: "Une main qui remplit et signe un document posé sur un bureau",
     largeur: 1200,
     hauteur: 800,
     credit: "Unsplash",
@@ -45,397 +61,323 @@ const article: Article = {
   blocs: [
     {
       type: "h2",
-      texte: "Les 5 conditions pour être naturalisé en France en 2026",
+      texte: "Quelles sont les conditions pour être naturalisé en 2026 ?",
       id: "conditions-naturalisation",
     },
     {
       type: "p",
-      texte: "Depuis la **loi immigration du 26 janvier 2024** et le **décret 2025-647**, les conditions de naturalisation sont plus strictes. Voici les 5 critères cumulatifs à remplir absolument.",
+      texte: "La naturalisation par décret, c'est la décision de l'État qui vous donne la nationalité française. Elle n'est pas un droit : l'administration peut refuser même si vous remplissez les conditions. Voici celles que fixe [service-public](https://www.service-public.gouv.fr/particuliers/vosdroits/F2213).",
     },
-    { type: "h3", texte: "Vue d'ensemble des conditions" },
     {
       type: "tableau",
-      entetes: ["Condition", "Exigence 2026", "Remarques"],
+      entetes: ["Condition", "Ce qui est demandé"],
       lignes: [
-        [
-          "Résidence en France",
-          "5 ans minimum (résidence stable et régulière)",
-          "Réduit à 2 ans si diplôme français Bac+5, service militaire ou mérite particulier",
-        ],
-        [
-          "Niveau de français",
-          "B1 minimum (CECRL)",
-          "DELF B1, TCF, TEF ou diplôme français. Nouveauté 2024 : niveau B1 obligatoirement certifié",
-        ],
-        [
-          "Test civique",
-          "Réussir à 80% (32/40 questions)",
-          "Conforme au décret 2025-647 : préparez-vous sur TestCiviqueFrance.fr",
-        ],
-        [
-          "Intégration républicaine",
-          "Adhérer aux valeurs de la République",
-          "Évaluée lors de l'entretien préfectoral et via CIR/OFII",
-        ],
-        [
-          "Absence de condamnations",
-          "Casier judiciaire vierge (B2)",
-          "Condamnations supérieures à 6 mois ferme = refus automatique",
-        ],
+        ["Âge", "18 ans au moment de la décision. La demande peut se faire dès 17 ans."],
+        ["Résidence", "Vivre en France, avec vos intérêts et votre famille, au moment du décret."],
+        ["Durée de résidence", "5 ans en règle générale. 2 ans ou aucune durée dans certains cas (voir plus bas)."],
+        ["Séjour régulier", "Un titre de séjour valide au dépôt (sauf Suisses et Européens)."],
+        ["Revenus", "Des revenus stables et suffisants pour vous et votre foyer. Aucun montant n'est fixé."],
+        ["Langue", "Le niveau B2 à l'oral et à l'écrit, pour les demandes déposées depuis le 1er janvier 2026."],
+        ["Examen civique", "Une attestation de réussite, jointe au dossier."],
+        ["Assimilation", "Vérifiée par l'examen civique et par un entretien."],
+        ["Casier", "Aucune condamnation à 6 mois de prison ferme ou plus, ni pour crime ou terrorisme."],
+      ],
+      legende: "Source : service-public, fiche F2213, vérifiée le 16/07/2026, lue le 20/10/2026.",
+    },
+    {
+      type: "p",
+      texte: "Le titre de séjour, c'est la carte qui vous autorise à vivre en France. Il doit être valide le jour du dépôt. Il ne faut pas non plus d'arrêté d'expulsion ni d'interdiction du territoire en cours.",
+    },
+    {
+      type: "h3",
+      texte: "Quand la durée de 5 ans est réduite",
+    },
+    {
+      type: "p",
+      texte: "La durée tombe à **2 ans** si vous avez un diplôme du supérieur français obtenu après 2 ans d'études. Elle tombe aussi à 2 ans pour des services importants rendus à la France, ou un parcours d'intégration exceptionnel (F2213).",
+    },
+    {
+      type: "p",
+      texte: "Aucune durée n'est exigée dans d'autres cas : statut de réfugié, français langue maternelle, 5 ans d'école en français, service dans l'armée française. Notre guide des [raccourcis légaux](/articles/naturalisation-francaise-2-ans-raccourcis-legaux-accelerer-2026) détaille ces situations.",
+    },
+    {
+      type: "h2",
+      texte: "Quel niveau de français faut-il depuis le 1er janvier 2026 ?",
+      id: "niveau-b2",
+    },
+    {
+      type: "p",
+      texte: "Le niveau exigé est le **B2** du cadre européen des langues, à l'oral et à l'écrit. Avant, c'était le B1. Le changement vient du [décret n° 2025-648 du 15 juillet 2025](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519). Un décret, c'est un texte signé par le gouvernement. Il vaut pour les demandes **déposées à partir du 1er janvier 2026**.",
+    },
+    {
+      type: "p",
+      texte: "Pour le prouver, vous joignez un diplôme français ou un test de langue. Selon [service-public (F11926)](https://www.service-public.gouv.fr/particuliers/vosdroits/F11926), le brevet des collèges est accepté. L'attestation du TCF ou du TEF, deux tests de français reconnus, doit dater de **moins de 2 ans**.",
+    },
+    {
+      type: "p",
+      texte: "Deux dispenses existent. La première vise un handicap ou un état de santé qui empêche l'évaluation, avec un certificat médical. La seconde vise les réfugiés et apatrides de plus de 70 ans, en France depuis au moins 15 ans. Pour la liste complète des diplômes et des tests, lisez notre article sur le [niveau B2 pour la naturalisation](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation).",
+    },
+    {
+      type: "h2",
+      texte: "Comment se passe l'examen civique pour la naturalisation ?",
+      id: "examen-civique",
+    },
+    {
+      type: "p",
+      texte: "L'examen civique est un QCM en français : un test où vous choisissez la bonne réponse parmi plusieurs. D'après [service-public (F39426)](https://www.service-public.gouv.fr/particuliers/vosdroits/F39426), il compte **40 questions**, de connaissance et de mise en situation. Il dure 45 minutes au plus, sur ordinateur ou tablette.",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "Pour réussir, il faut au moins **32 bonnes réponses** sur 40.",
+        "Vous vous inscrivez dans un centre agréé par la CCI Paris Île-de-France ou par France Éducation international.",
+        "Il ne concerne que la naturalisation et la réintégration, pas la nationalité par mariage.",
+        "Une dispense est possible si votre santé rend l'évaluation impossible, avec un certificat médical.",
       ],
     },
-    { type: "h3", texte: "Cas particuliers avec délai réduit à 2 ans" },
+    {
+      type: "p",
+      texte: "En cas de fraude, vous ne pouvez pas repasser l'examen pendant 2 ans (F39426). Le ministère publie des fiches gratuites sur [formation-civique.interieur.gouv.fr](https://formation-civique.interieur.gouv.fr/examen-civique/informations-g%C3%A9n%C3%A9rales-sur-lexamen-civique/). Vous pouvez aussi suivre nos [cours par thème](/cours).",
+    },
+    {
+      type: "cta",
+      texte: "Testez-vous sur des questions types avant de vous inscrire à l'examen.",
+      bouton: "Commencer gratuitement",
+    },
+    {
+      type: "h2",
+      texte: "Comment déposer le dossier, et combien ça coûte ?",
+      id: "dossier-documents",
+    },
+    {
+      type: "p",
+      texte: "La demande se fait en ligne, sur le téléservice « Demande en ligne de naturalisation française ». Si c'est impossible, un dépôt par courrier est permis avec une preuve de l'ANTS ou de la préfecture. La préfecture, c'est le service de l'État dans votre département (F2213).",
+    },
     {
       type: "liste",
       style: "puces",
       items: [
-        "Diplôme national de niveau Bac+5 (master, ingénieur, doctorat) délivré par un établissement français",
-        "Service dans les forces armées françaises",
-        "Contribution exceptionnelle dans un domaine scientifique, culturel, sportif ou économique",
-        "Réfugiés reconnus par l'OFPRA (délai non applicable dans certains cas)",
+        "**En Guyane** : la demande se dépose à la préfecture de Guyane.",
+        "**À Saint-Barthélemy, Saint-Martin, Saint-Pierre-et-Miquelon, Wallis-et-Futuna, en Polynésie française et en Nouvelle-Calédonie** : le téléservice n'est pas ouvert.",
+        "**À l'étranger** : la demande se dépose au consulat de France.",
       ],
     },
-    { type: "h3", texte: "Lien avec le test civique" },
     {
       type: "p",
-      texte: "Le test civique est désormais une étape **incontournable** pour la naturalisation. Il évalue vos connaissances sur les valeurs de la République, les institutions françaises et les droits et devoirs du citoyen. En dessous de 80% (32/40), votre dossier sera refusé automatiquement.",
+      texte: "Le dossier coûte un timbre fiscal de **255 €**, ou 127,50 € en Guyane. Le timbre fiscal, c'est une taxe que vous achetez en ligne ou chez un buraliste. Ce montant vaut depuis le 1er mai 2026 : il était de 55 € avant ([service-public, A18881](https://www.service-public.gouv.fr/particuliers/actualites/A18881)). Les autres frais sont dans notre article sur le [coût de la naturalisation](/articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal).",
+    },
+    {
+      type: "tableau",
+      entetes: ["Pièce", "Ce qu'il faut savoir"],
+      lignes: [
+        ["Timbre fiscal", "255 € (127,50 € en Guyane)."],
+        ["Titre de séjour", "Copie recto verso, sauf Suisses et Européens."],
+        ["Pièce d'identité", "Passeport ou titre de séjour."],
+        ["État civil", "Acte de naissance en copie intégrale, dans la langue d'origine."],
+        ["Domicile, revenus, impôts", "Les justificatifs listés par service-public."],
+        ["Langue", "Diplôme ou attestation de niveau B2."],
+        ["Examen civique", "Attestation de réussite."],
+        ["Casier étranger", "Si vous vivez en France depuis moins de 10 ans."],
+        ["Couple, enfants", "Les justificatifs, si c'est votre situation."],
+      ],
+      legende: "Source : service-public, fiche F2213, lue le 20/10/2026.",
+    },
+    {
+      type: "p",
+      texte: "Un document en langue étrangère doit être traduit par un traducteur agréé. Notre guide du [dossier de naturalisation](/articles/dossier-naturalisation-2026-documents-delais-prefecture-anef) reprend chaque pièce.",
     },
     {
       type: "h2",
-      texte: "Délais réels par préfecture en 2026 : le tableau complet",
+      texte: "Quel est le délai d'une naturalisation en 2026 ?",
       id: "delais-prefecture",
     },
     {
       type: "p",
-      texte: "L'un des sujets qui angoisse le plus les candidats à la naturalisation : **combien de temps ça prend vraiment ?** Les délais officiels sont rarement respectés. Voici les données constatées en 2026.",
+      texte: "L'administration a **18 mois au plus** pour répondre. Ce délai court à partir du récépissé : le papier qui prouve que votre dossier complet est enregistré (F2213).",
     },
-    { type: "h3", texte: "Délais moyens constatés en 2026 (de la remise du dossier à la décision)" },
-    {
-      type: "tableau",
-      entetes: ["Préfecture / Zone", "Délai moyen 2026", "Tendance"],
-      lignes: [
-        ["Paris (75)", "18 à 24 mois", "Stable (délai structurellement long)"],
-        ["Seine-Saint-Denis (93)", "20 à 28 mois", "En hausse : fort volume de dossiers"],
-        ["Val-de-Marne (94)", "16 à 22 mois", "Stable"],
-        ["Lyon / Rhône (69)", "12 à 18 mois", "En légère amélioration"],
-        ["Marseille / Bouches-du-Rhône (13)", "15 à 22 mois", "Stable"],
-        ["Toulouse / Haute-Garonne (31)", "10 à 14 mois", "Parmi les plus rapides"],
-        ["Bordeaux / Gironde (33)", "10 à 16 mois", "Stable"],
-        ["Lille / Nord (59)", "14 à 20 mois", "En légère hausse"],
-        ["Nantes / Loire-Atlantique (44)", "8 à 12 mois", "Un des meilleurs délais nationaux"],
-        ["Strasbourg / Bas-Rhin (67)", "10 à 15 mois", "Stable"],
-        ["Nice / Alpes-Maritimes (06)", "12 à 18 mois", "Délais variables selon période"],
-        ["Départements ruraux (hors IDF)", "6 à 10 mois", "Souvent meilleurs délais"],
-      ],
-    },
-    { type: "h3", texte: "Les 3 phases du traitement de votre dossier" },
     {
       type: "liste",
       style: "puces",
       items: [
-        "**Phase 1 : Instruction préfectorale** (3 à 9 mois) : vérification de la complétude du dossier, enquête de moralité, convocation pour entretien",
-        "**Phase 2 : Contrôle central** (3 à 8 mois) : transmission au ministère de l'Intérieur ou à la sous-direction de l'accès à la nationalité française (SDANF) pour décision",
-        "**Phase 3 : Notification et cérémonie** (1 à 3 mois) : vous recevez le décret, puis êtes convoqué à la cérémonie",
+        "Le délai passe à **12 mois** si vous vivez en France depuis au moins 10 ans à la date du récépissé.",
+        "Il peut être prolongé une fois de 3 mois, par une décision motivée.",
       ],
     },
     {
       type: "p",
-      texte: "**Astuce :** Si vous n'avez aucune nouvelle après 18 mois, vous pouvez envoyer un courrier recommandé à la préfecture pour demander un point sur l'avancement de votre dossier. Vous pouvez également saisir le médiateur national de la naturalisation.",
-    },
-    { type: "h2", texte: "La checklist complète des documents à fournir", id: "dossier-documents" },
-    {
-      type: "p",
-      texte: "Un dossier incomplet est la première cause de rejet ou de délai supplémentaire. Voici la liste exhaustive des pièces à préparer.",
-    },
-    { type: "h3", texte: "Documents d'identité et d'état civil" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Formulaire CERFA n°12753*05 (demande de naturalisation), dûment rempli et signé",
-        "Copie intégrale de l'acte de naissance (moins de 3 mois), traduite et apostillée si besoin",
-        "Copie de votre titre de séjour en cours de validité (recto-verso)",
-        "4 photos d'identité récentes (moins de 6 mois, fond blanc, normes ICAO)",
-        "Extrait du casier judiciaire de votre pays d'origine (B2 ou équivalent), traduit",
-        "Si marié : acte de mariage intégral (et livret de famille si enfants)",
-      ],
-    },
-    { type: "h3", texte: "Preuves de résidence (5 ans)" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Tous vos titres de séjour successifs (ou justificatifs d'entrée régulière)",
-        "Justificatifs de domicile sur toute la période (quittances de loyer, factures EDF…)",
-        "Si changements d'adresse : justificatifs pour chaque adresse",
-      ],
-    },
-    { type: "h3", texte: "Preuves de ressources et d'intégration professionnelle" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "3 derniers avis d'imposition (ou déclarations de revenus)",
-        "3 derniers bulletins de salaire ou justificatifs de revenus",
-        "Contrat de travail ou extrait Kbis si indépendant",
-      ],
-    },
-    { type: "h3", texte: "Preuves d'intégration et de connaissances" },
-    {
-      type: "tableau",
-      entetes: ["Preuve", "Document accepté"],
-      lignes: [
-        [
-          "Niveau de français B1",
-          "DELF B1, TCF niveau B1, TEF, ou diplôme français (Brevet, Bac, Titre professionnel...)",
-        ],
-        ["Test civique", "Attestation de réussite au test civique officiel (score ≥ 80%)"],
-        [
-          "Intégration républicaine",
-          "Attestation OFII (CIR), relevés des formations civiques suivies",
-        ],
-      ],
-    },
-    { type: "h3", texte: "L'exposé des motifs (pièce décisive)" },
-    {
-      type: "p",
-      texte: "Lettre manuscrite ou dactylographiée de 1 à 2 pages où vous exprimez **pourquoi vous souhaitez devenir français** : votre parcours, votre attachement aux valeurs de la République, vos projets en France, votre intégration. C'est la pièce que l'agent de préfecture lit en premier et qui conditionne souvent l'issue de l'entretien.",
+      texte: "Aucune source officielle ne publie de délai par préfecture. Nous n'en donnons donc pas : les tableaux qui circulent en ligne ne sont pas vérifiables. Sur les consignes données en 2026 aux préfectures, lisez notre article sur la [circulaire d'avril 2026](/articles/circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie).",
     },
     {
       type: "h2",
-      texte: "Les 7 motifs de refus les plus fréquents (et comment les éviter)",
+      texte: "Que se passe-t-il pendant l'instruction ?",
+      id: "entretien",
+    },
+    {
+      type: "p",
+      texte: "Si le dossier est recevable, vous êtes convoqué à un entretien. Il sert à vérifier votre assimilation à la communauté française. Vous venez avec les originaux demandés. À la fin, vous signez la charte des droits et devoirs du citoyen français (F2213).",
+    },
+    {
+      type: "p",
+      texte: "Une absence sans raison valable peut faire classer le dossier sans suite. L'administration mène aussi une enquête sur votre comportement civique, comme le paiement des impôts. Elle vérifie votre passé judiciaire en France et à l'étranger. Pour vous préparer, lisez notre guide de [l'entretien de naturalisation](/articles/entretien-naturalisation-2026-preparation-assimilation-prefecture).",
+    },
+    {
+      type: "h2",
+      texte: "Quels pièges font perdre du temps ou refuser un dossier ?",
       id: "motifs-refus",
     },
     {
       type: "p",
-      texte: "Connaître les raisons de refus les plus fréquentes vous permet d'anticiper et de consolider votre dossier avant le dépôt.",
+      texte: "Service-public décrit trois types de décisions négatives. Les connaître aide à ne pas les provoquer.",
     },
-    { type: "h3", texte: "Les 7 raisons de refus les plus courantes en 2026" },
     {
       type: "tableau",
-      entetes: ["Motif", "Explication", "Comment l'éviter"],
+      entetes: ["Décision", "Ce que cela veut dire"],
       lignes: [
-        [
-          "1. Dossier incomplet",
-          "Pièce manquante ou périmée à la date du dépôt",
-          "Vérifier chaque pièce 1 semaine avant le dépôt, faire certifier les traductions",
-        ],
-        [
-          "2. Niveau de français insuffisant",
-          "Pas de certification B1 valide ou certification expirée (plus de 2 ans)",
-          "Passer le DELF B1 ou TCF avant de déposer le dossier",
-        ],
-        [
-          "3. Score test civique inférieur à 80%",
-          "Attestation manquante ou score insuffisant",
-          "Se préparer sur TestCiviqueFrance.fr, viser 35+/40 pour avoir de la marge",
-        ],
-        [
-          "4. Continuité de résidence non prouvée",
-          "Trous dans les preuves de domicile ou absences longues",
-          "Conserver tous les justificatifs d'adresse depuis 5 ans, signaler les séjours à l'étranger",
-        ],
-        [
-          "5. Condamnation pénale",
-          "Condamnation signalée par l'enquête de moralité",
-          "Vérifier son casier judiciaire B3 avant le dépôt, consulter un avocat si besoin",
-        ],
-        [
-          "6. Défaut d'assimilation",
-          "Réponses insuffisantes lors de l'entretien sur les valeurs républicaines",
-          "Préparer l'entretien, connaître les institutions, la devise, les droits et devoirs",
-        ],
-        [
-          "7. Revenus insuffisants",
-          "Ressources considérées comme instables ou insuffisantes",
-          "Attendre une période de stabilité professionnelle (CDI, 3 ans de revenus constants)",
-        ],
+        ["Irrecevabilité", "Une condition de la loi manque. Vous pouvez redemander quand elle est remplie."],
+        ["Ajournement", "La décision est reportée. Un délai est fixé avant une nouvelle demande."],
+        ["Rejet", "L'administration juge la demande inopportune. Une nouvelle demande dans les 5 ans peut être classée sans suite."],
+      ],
+      legende: "Source : service-public, fiche F2213, lue le 20/10/2026.",
+    },
+    {
+      type: "liste",
+      style: "alertes",
+      items: [
+        "Un titre de séjour expiré le jour du dépôt.",
+        "Un acte de naissance en simple extrait, et pas en copie intégrale.",
+        "Un document étranger sans traduction par un traducteur agréé.",
+        "Un test TCF ou TEF de plus de 2 ans, ou de niveau B1 au lieu de B2.",
+        "Un dossier sans l'attestation de l'examen civique.",
+        "Des revenus irréguliers, ou des impôts non payés.",
+        "Une absence à l'entretien sans raison valable.",
       ],
     },
     {
       type: "p",
-      texte: "**Bon à savoir :** En cas de rejet, vous pouvez déposer un recours gracieux auprès du préfet dans les 2 mois, puis un recours contentieux devant le tribunal administratif si nécessaire.",
+      texte: "Les raisons d'un refus et la façon de le contester sont détaillées dans notre article sur la [naturalisation refusée](/articles/naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours).",
     },
     {
       type: "h2",
-      texte: "Test civique et niveau B1 : les deux nouveaux prérequis expliqués",
-      id: "test-civique-b1",
+      texte: "Comment contester un refus ?",
+      id: "recours",
     },
     {
       type: "p",
-      texte: "Depuis la réforme de 2024-2025, le test civique et la certification B1 sont devenus des **conditions sine qua non** pour la naturalisation. Voici ce qu'il faut savoir concrètement.",
-    },
-    { type: "h3", texte: "Le test civique : comment ça fonctionne" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Format :** 40 questions QCM, 45 minutes, 5 thématiques officielles",
-        "**Seuil de réussite :** 80% minimum, soit 32 bonnes réponses sur 40",
-        "**Où le passer :** Centres agréés OFII, votre préfecture vous indiquera le centre le plus proche",
-        "**Validité de l'attestation :** Renseignez-vous auprès de votre préfecture pour la durée exacte de validité",
-      ],
-    },
-    { type: "h3", texte: "Les 5 thématiques du test civique" },
-    {
-      type: "tableau",
-      entetes: ["Thématique", "Nombre de questions", "Exemples de sujets"],
-      lignes: [
-        [
-          "Principes et valeurs de la République",
-          "11",
-          "Laïcité, liberté, égalité, fraternité, devise, drapeau",
-        ],
-        [
-          "Système institutionnel et politique",
-          "6",
-          "Président, Assemblée nationale, Sénat, Conseil d'État",
-        ],
-        [
-          "Droits et devoirs",
-          "11",
-          "Déclaration des droits, droits sociaux, impôts, service civique",
-        ],
-        [
-          "Histoire, géographie et culture",
-          "8",
-          "Révolution française, régions, patrimoine UNESCO",
-        ],
-        ["Vivre dans la société française", "4", "École, santé, logement, vie associative"],
-      ],
-    },
-    { type: "h3", texte: "Le niveau B1 de français : ce qui est accepté" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**DELF B1** (Alliance Française, CIEP) : la certification la plus reconnue",
-        "**TCF (Test de Connaissance du Français)** niveau B1",
-        "**TEF (Test d'Évaluation du Français)** équivalent B1",
-        "**Diplôme scolaire français** : Brevet des collèges, Baccalauréat, BTS, Licence dispense du test de langue",
-      ],
+      texte: "Vous avez **2 mois** après la notification pour faire un recours auprès du ministre chargé des naturalisations. C'est un recours administratif préalable obligatoire : il faut le faire avant d'aller au tribunal. Si vous avez déposé en ligne, il passe par le formulaire de votre espace personnel (F2213).",
     },
     {
       type: "p",
-      texte: "*Attention : un simple cours de langue ou une attestation d'employeur ne suffit pas, seule la certification officielle est acceptée.*",
+      texte: "Le ministre a 4 mois pour répondre. S'il refuse, ou ne répond pas, vous avez 2 mois pour saisir le tribunal administratif de Nantes : le juge qui contrôle les décisions de l'État. Pour un cas précis, demandez conseil à un avocat ou à une association comme La Cimade.",
     },
     {
       type: "h2",
-      texte: "Après la décision : cérémonie, CNI et passeport français",
+      texte: "Après le décret : cérémonie et papiers français",
       id: "apres-naturalisation",
     },
     {
       type: "p",
-      texte: "Votre naturalisation est accordée ! Voici ce qui se passe ensuite, étape par étape.",
-    },
-    { type: "h3", texte: "Les étapes après l'accord de naturalisation" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Réception du décret :** La naturalisation est officialisée par décret publié au Journal officiel. Vous en recevez une copie.",
-        "**Cérémonie d'accueil dans la citoyenneté française :** Obligatoire et organisée par la préfecture ou la mairie. Vous prononcez solennellement votre attachement aux valeurs de la République. Délai habituel : 1 à 3 mois après le décret.",
-        "**Demande de Carte Nationale d'Identité (CNI) :** Dès le lendemain de la cérémonie, vous pouvez déposer votre demande de CNI en mairie.",
-        "**Demande de passeport français :** Simultanément à la CNI, vous pouvez demander un passeport biométrique.",
-        "**Inscription sur les listes électorales :** Vous pouvez désormais voter aux élections françaises et européennes.",
-      ],
-    },
-    { type: "h3", texte: "Coûts à prévoir" },
-    {
-      type: "tableau",
-      entetes: ["Démarche", "Coût"],
-      lignes: [
-        ["Dossier de naturalisation", "Gratuit"],
-        ["Traductions/apostilles de documents", "50 à 200 € selon le pays et le nombre de pièces"],
-        ["Certification DELF B1 ou TCF", "100 à 150 €"],
-        ["Test civique officiel", "Environ 50 € dans les centres agréés"],
-        ["Carte Nationale d'Identité", "Gratuite"],
-        ["Passeport français", "86 € (adulte)"],
-      ],
-    },
-    {
-      type: "h2",
-      texte: "FAQ : Vos questions fréquentes sur la naturalisation 2026",
-      id: "faq-naturalisation",
-    },
-    { type: "h3", texte: "Peut-on conserver sa nationalité d'origine en se naturalisant français ?" },
-    {
-      type: "p",
-      texte: "Dans la majority des cas, oui. La France accepte la double nationalité sans restriction. Cependant, votre pays d'origine peut exiger que vous renonciez à sa nationalité si vous devenez citoyen d'un autre pays, vérifiez la législation de votre pays natal.",
-    },
-    { type: "h3", texte: "Peut-on déposer une demande de naturalisation si on est en CDD ?" },
-    {
-      type: "p",
-      texte: "Oui, un CDD est accepté mais la préfecture analysera la stabilité de vos revenus sur les 3 dernières années. Un CDI récent ou 5+ ans d'activité régulière sont des éléments très favorables.",
-    },
-    { type: "h3", texte: "Comment savoir si mon dossier avance ?" },
-    {
-      type: "p",
-      texte: "Vous pouvez appeler la sous-direction de l'accès à la nationalité française (SDANF) au numéro dédié à votre préfecture, ou envoyer un courrier recommandé pour demander un état d'avancement. En l'absence de réponse au-delà de 18 mois, un recours pour excès de pouvoir est possible.",
-    },
-    {
-      type: "h3",
-      texte: "Le test civique est-il valable pour la naturalisation et le titre de séjour ?",
+      texte: "En cas d'accord, un décret est publié au Journal officiel, le journal où l'État publie ses textes. Il prend effet le jour de sa signature (F2213). Vos enfants mineurs qui vivent avec vous peuvent devenir français s'ils sont inscrits dans ce décret.",
     },
     {
       type: "p",
-      texte: "Oui, la même attestation de réussite au test civique peut être utilisée pour plusieurs démarches : naturalisation, carte de séjour pluriannuelle, carte de résident. Conservez-la précieusement.",
-    },
-    {
-      type: "h3",
-      texte: "Peut-on être naturalisé sans avoir passé le Contrat d'Intégration Républicaine (CIR) ?",
+      texte: "Vous êtes ensuite invité à une cérémonie d'accueil dans la citoyenneté française. Le préfet l'organise, en principe dans les 6 mois après la publication du décret ([service-public, F15868](https://www.service-public.gouv.fr/particuliers/vosdroits/F15868)). Vous y recevez une lettre du président de la République, la charte des droits et devoirs et la Déclaration de 1789.",
     },
     {
       type: "p",
-      texte: "Si vous n'êtes pas passé par le CIR (personnes entrées en France avant sa généralisation, ou entrées autrement que par le OFII), d'autres preuves d'intégration sont acceptées : ancienneté en France, emploi stable, participation à la vie associative, bénévolat, etc.",
-    },
-    {
-      type: "h3",
-      texte: "Que se passe-t-il si je suis en cours de renouvellement de titre de séjour lors du dépôt ?",
-    },
-    {
-      type: "p",
-      texte: "Vous pouvez déposer votre dossier avec votre récépissé de renouvellement. Cependant, la préfecture attendra souvent que votre titre soit renouvelé avant d'instruire définitivement. Il vaut mieux attendre la délivrance du nouveau titre pour déposer.",
+      texte: "La loi française n'exige pas de renoncer à votre nationalité d'origine ([service-public, F334](https://www.service-public.gouv.fr/particuliers/vosdroits/F334)). Votre pays, lui, peut avoir d'autres règles : notre article sur la [double nationalité](/articles/double-nationalite-france-2026-pays-interdisent-risques-declaration) fait le point.",
     },
     {
       type: "encadre",
       titre: "À retenir",
-      texte: "La naturalisation française est un parcours long mais accessible à qui s'y prépare sérieusement. Les nouvelles conditions de 2024, test civique à 80%, niveau B1 certifié, entretien d'assimilation, sont contraignantes mais prévisibles. Constituez votre dossier sans lacune, rédigez un exposé des motifs sincère et préparez-vous au test civique dès maintenant sur TestCiviqueFrance.fr. La nationalité française est à portée de main pour qui met toutes les chances de son côté.",
+      texte: "5 ans de résidence en règle générale, un titre de séjour valide, des revenus stables, le niveau B2 et l'examen civique réussi (32 sur 40).\nUn timbre de 255 €, puis 18 mois au plus d'instruction, ou 12 mois après 10 ans en France.\nAvant de lancer le dossier, vérifiez en une minute si l'examen vous concerne avec notre [simulateur d'éligibilité](/eligibilite-examen-civique).",
       ton: "bleu",
     },
   ],
   faq: [
     {
-      question: "Combien de temps faut-il attendre pour être naturalisé en France en 2026 ?",
-      reponse: "Les délais varient de 6 à 28 mois selon la préfecture. Nantes et Toulouse traitent les dossiers en 8-14 mois. Paris et la Seine-Saint-Denis peuvent dépasser 24 mois. Il faut compter en moyenne 12 à 18 mois sur l'ensemble du territoire.",
+      question: "Combien de temps faut-il pour être naturalisé en France en 2026 ?",
+      reponse: "L'administration a 18 mois au plus pour répondre, à partir du récépissé de votre dossier complet. Ce délai passe à 12 mois si vous vivez en France depuis au moins 10 ans. Il peut être prolongé une fois de 3 mois. Aucune source officielle ne donne de délai moyen par préfecture.",
     },
     {
-      question: "Quel score faut-il avoir au test civique pour la naturalisation ?",
-      reponse: "Vous devez obtenir au minimum 80% soit 32 bonnes réponses sur 40. Le test civique couvre 5 thématiques officielles. Préparez-vous sur TestCiviqueFrance.fr pour maximiser vos chances.",
+      question: "Quel niveau de français faut-il pour la naturalisation en 2026 ?",
+      reponse: "Il faut le niveau B2, à l'oral et à l'écrit, pour les demandes déposées depuis le 1er janvier 2026. Vous le prouvez avec un diplôme français, comme le brevet, ou un test TCF ou TEF de moins de 2 ans. Des dispenses existent pour raison de santé ou de handicap.",
     },
     {
-      question: "Quelle certification de français est acceptée pour la naturalisation en 2026 ?",
-      reponse: "Le niveau B1 minimum est requis. Les certifications acceptées sont : DELF B1, TCF niveau B1, TEF équivalent B1. Un diplôme scolaire français (Brevet, Bac et au-delà) dispense de la certification.",
+      question: "Combien coûte une demande de naturalisation ?",
+      reponse: "La demande coûte un timbre fiscal de 255 €, ou 127,50 € en Guyane, depuis le 1er mai 2026. Avant cette date, il coûtait 55 €. Il faut y ajouter les frais de traduction des documents, du test de langue et de l'examen civique, qui varient selon les prestataires.",
     },
     {
-      question: "Peut-on garder sa nationalité d'origine après naturalisation française ?",
-      reponse: "Oui, la France autorise la double nationalité sans restriction. Mais votre pays d'origine peut avoir des règles différentes, vérifiez auprès de votre consulat.",
-    },
-    {
-      question: "Peut-on être recalé à l'entretien de naturalisation ?",
-      reponse: "Oui. L'entretien évalue votre intégration et votre connaissance des valeurs républicaines. Des réponses imprécises sur les institutions, la laïcité ou les droits et devoirs peuvent entraîner un avis défavorable. Préparez-vous avec les thématiques du test civique.",
-    },
-    {
-      question: "Comment accélérer sa demande de naturalisation ?",
-      reponse: "Quatre leviers : 1) Déposer un dossier parfait dès le premier dépôt (zéro pièce manquante). 2) Choisir si possible une préfecture moins engorgée. 3) Réussir le test civique avec un score élevé. 4) Rédiger un exposé des motifs sincère et détaillé.",
+      question: "Peut-on garder sa nationalité d'origine en devenant français ?",
+      reponse: "La loi française n'exige pas de renoncer à votre nationalité d'origine pour être naturalisé. Mais certains pays retirent leur nationalité à ceux qui en prennent une autre. Renseignez-vous auprès du consulat de votre pays avant de déposer votre demande, pour connaître ses règles exactes.",
     },
   ],
   sources: [
     {
-      titre: "Conditions de la naturalisation : Service-Public.fr",
-      url: "https://www.service-public.fr/particuliers/vosdroits/F2213",
+      titre: "Service-public : naturalisation française par décret (F2213)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2213",
       type: "officiel",
-      description: "Conditions officielles pour demander la naturalisation française",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : comment justifier de son niveau en français pour la naturalisation (F11926)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11926",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : naturalisation française, comment passer l'examen civique ? (F39426)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F39426",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : titres de séjour et nationalité, hausse des taxes au 1er mai 2026 (A18881)",
+      url: "https://www.service-public.gouv.fr/particuliers/actualites/A18881",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : la cérémonie d'accueil dans la citoyenneté française (F15868)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F15868",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : avoir plusieurs nationalités en France (F334)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F334",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Décret n° 2025-648 du 15 juillet 2025 (niveau B2 et examen civique) : Légifrance",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000051900519",
+      type: "juridique",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Ministère de l'Intérieur : informations générales sur l'examen civique",
+      url: "https://formation-civique.interieur.gouv.fr/examen-civique/informations-g%C3%A9n%C3%A9rales-sur-lexamen-civique/",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+  ],
+  aLireAussi: [
+    {
+      slug: "dossier-naturalisation-2026-documents-delais-prefecture-anef",
+      ancre: "Dossier de naturalisation 2026",
+    },
+    {
+      slug: "entretien-naturalisation-2026-preparation-assimilation-prefecture",
+      ancre: "Préparer l'entretien de naturalisation",
+    },
+    {
+      slug: "niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation",
+      ancre: "Niveau de français requis (B2)",
+    },
+    {
+      slug: "droit-de-vote-elections-france-2026-guide-citoyen",
+      ancre: "Droits civiques après naturalisation",
     },
   ],
 };

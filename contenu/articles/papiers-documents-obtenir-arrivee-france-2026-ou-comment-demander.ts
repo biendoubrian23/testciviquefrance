@@ -287,7 +287,7 @@ const article: Article = {
       ancre: "Banque, logement, CAF et Ameli en arrivant",
     },
     {
-      slug: "echanger-permis-conduire-etranger-france-2026-ants-demarches",
+      slug: "echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete",
       ancre: "Échanger son permis de conduire étranger",
     },
     {

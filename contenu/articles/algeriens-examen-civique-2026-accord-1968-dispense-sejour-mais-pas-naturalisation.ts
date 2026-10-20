@@ -297,7 +297,7 @@ const article: Article = {
       items: [
         "🎯 **Évaluez votre niveau réel** avec notre [test civique gratuit en conditions réelles](/articles/test-civique-gratuit-en-ligne-2026-examen-blanc-entrainement-qcm) : 40 questions, 45 minutes, seuil à 80 %.",
         "📚 **Ciblez le bon thème.** Sur **3 208 sessions d'entraînement** analysées sur notre plateforme, « Principes et valeurs de la République » est le seul thème dont le score moyen (**76,8 %**) tombe **sous le seuil de réussite** : **39,8 %** des candidats y échouent. Commencez par là.",
-        "📅 **Inscrivez-vous tôt** : voir notre [guide d'inscription](/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire) et la [liste des centres agréés](/articles/nouveaux-centres-test-civique-mai-2026-liste-complete).",
+        "📅 **Inscrivez-vous tôt** : voir notre [guide d'inscription](/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire) et la [liste des centres agréés](/articles/centres-agrees-examen-civique-2026).",
       ],
     },
     {

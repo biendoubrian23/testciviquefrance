@@ -2,20 +2,32 @@ import type { Article } from "@/contenu/articles";
 
 /**
  * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-nouveaux-avril-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * (`/articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais`).
+ *
+ * Réécrit le 20/10/2026 selon la doctrine du robot (`docs/seo/ROBOT.md`), et
+ * fusionné avec le doublon `regroupement-familial-france-procedure-2025`
+ * (même intention de recherche), dont l'adresse redirige ici en 301. Chaque
+ * règle est reprise de service-public (fiche F11166 et suivantes), lue le
+ * 20/10/2026. Corrigé à cette occasion : les ressources se calculent sur le
+ * Smic brut et par tranche (2 ou 3, 4 ou 5, 6 personnes et plus), pas sur le
+ * Smic net multiplié par personne ; les surfaces dépendent de la zone ; la
+ * décision revient au préfet, pas à l'OFII ; la formation civique dure
+ * 24 heures, pas 4 ; les réfugiés relèvent d'une autre procédure (la
+ * réunification familiale). La loi du 26 janvier 2024 n'a rien changé au
+ * regroupement familial : son article 3 (24 mois de séjour, etc.) a été
+ * censuré par le Conseil constitutionnel (décision 2023-863 DC).
+ * L'image de couverture vient d'Unsplash (licence Unsplash : usage libre,
+ * commercial compris) ; ses dimensions sont nominales.
  */
 const article: Article = {
   slug: "regroupement-familial-france-2026-guide-complet-conditions-documents-delais",
-  titre: "Regroupement familial France 2026 : conditions (revenus, logement), documents, délais et recours, guide complet",
-  titreSeo: "Regroupement familial France 2026 : conditions (revenus, logement), documents, délais et recours, guide complet",
-  resume: "Faire venir son conjoint et ses enfants en France en 2026 : revenus minimum (SMIC × 1,2), surface logement, liste documents, procédure OFII étape par étape, délais réels (6 à 12 mois) et recours en cas de refus.",
-  chapo: "Le regroupement familial est la procédure légale qui permet à un étranger résidant régulièrement en France de faire venir son conjoint et ses enfants mineurs sur le territoire français. En 2026, cette démarche reste encadrée par des conditions strictes de revenus, de logement et de durée de séjour. Entre les exigences préfectorales, les délais parfois longs et les dossiers complexes, beaucoup de familles se perdent dans les méandres administratifs. Ce guide complet vous explique tout, étape par étape, avec les chiffres exacts et les pièges à éviter pour maximiser vos chances de succès.",
+  titre: "Regroupement familial en 2026 : faire venir votre conjoint et vos enfants, conditions et étapes",
+  titreSeo: "Regroupement familial 2026 : conditions et étapes",
+  resume: "Conjoint et enfants mineurs : 18 mois de séjour, ressources au niveau du Smic, logement selon la zone, dossier à l'OFII, décision du préfet sous 6 mois.",
+  chapo: "Pour faire venir votre époux ou épouse et vos enfants mineurs, vous devez vivre en France de façon régulière depuis au moins **18 mois**. Il faut aussi des ressources stables et un logement assez grand. Le dossier part à l'OFII, et c'est le préfet qui décide, en 6 mois au plus.",
   publieLe: "2026-04-04",
-  modifieLe: "2026-04-04",
-  minutes: 22,
+  modifieLe: "2026-10-20",
+  minutes: 9,
   theme: "regroupement familial France 2026",
   motsCles: [
     "regroupement familial France 2026",
@@ -24,19 +36,20 @@ const article: Article = {
     "regroupement familial logement",
     "faire venir conjoint France",
     "faire venir enfants France étranger",
+    "faire venir sa famille en france",
     "OFII regroupement familial",
     "dossier regroupement familial préfecture",
     "délai regroupement familial France",
     "regroupement familial refus recours",
-    "visa long séjour conjoint",
+    "visa famille france",
     "titre de séjour regroupement familial",
-    "test civique regroupement familial",
+    "regroupement familial 18 mois",
   ],
   rubrique: "cadre-legal",
   auteur: "Brian B",
   couverture: {
     src: "https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
+    alt: "Une grande famille, adultes et enfants main dans la main, de dos sur une plage au coucher du soleil",
     largeur: 1200,
     hauteur: 800,
     credit: "Unsplash",
@@ -47,380 +60,272 @@ const article: Article = {
     { type: "h2", texte: "Qu'est-ce que le regroupement familial ?", id: "definition" },
     {
       type: "p",
-      texte: "Le **regroupement familial** est le droit reconnu à tout étranger en situation régulière en France de faire venir les membres de sa famille proche pour vivre avec lui sur le territoire français. Il est encadré par le **Code de l'entrée et du séjour des étrangers et du droit d'asile (CESEDA)**, aux articles L421-2 et suivants.",
+      texte: "Le regroupement familial, c'est la démarche qui permet à une personne étrangère installée en France de faire venir sa famille proche. Les règles sont dans le CESEDA (le code qui fixe le droit des étrangers en France), aux articles L434-1 et suivants. Service-public les résume dans sa [fiche F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166), vérifiée le 1er juin 2026.",
     },
-    { type: "h3", texte: "Qui est concerné par cette procédure ?" },
+    {
+      type: "p",
+      texte: "Deux personnes jouent un rôle. **Le demandeur** vit déjà en France avec un titre de séjour (la carte qui autorise à vivre en France). **Les bénéficiaires** sont les membres de la famille qui vivent à l'étranger.",
+    },
+    { type: "h3", texte: "Qui peut venir ?" },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "votre époux ou épouse, majeur (18 ans au moins) et légalement marié avec vous.",
+        "les enfants mineurs du couple, y compris les enfants adoptés.",
+        "dans certains cas, les enfants mineurs nés d'une union précédente.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "L'âge est apprécié le jour du dépôt de la demande. En principe, toute la famille vient en même temps. Un regroupement partiel reste possible à titre exceptionnel, avec une lettre qui explique l'intérêt de l'enfant ([F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166)).",
+    },
+    { type: "h3", texte: "Qui ne peut pas venir par cette voie ?" },
+    {
+      type: "liste",
+      style: "alertes",
+      items: [
+        "vos parents : service-public indique qu'ils peuvent demander un statut de visiteur.",
+        "les enfants majeurs, et les frères et sœurs.",
+        "une deuxième épouse, si une première épouse vit déjà en France.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Pour une visite courte de vos proches, voyez plutôt l'[attestation d'accueil](/articles/attestation-accueil-inviter-famille-france-2026-mairie-conditions). Pour un mariage récent, notre guide du [mariage avec une personne étrangère](/articles/mariage-etranger-france-2026-papiers-visa-conjoint-titre-sejour) détaille les autres démarches.",
+    },
+    { type: "h2", texte: "Depuis combien de temps devez-vous vivre en France ?", id: "conditions-sejour" },
+    {
+      type: "p",
+      texte: "Il faut résider en France depuis **18 mois au moins**, de façon régulière. Plusieurs papiers comptent dans ces 18 mois : un visa long séjour, une carte de séjour ou une carte de résident. Comptent aussi une autorisation provisoire de séjour, un récépissé (le papier qui prouve qu'une demande est en cours) ou une attestation de demande d'asile ([F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166)).",
+    },
+    {
+      type: "p",
+      texte: "Le jour du dépôt, vous devez avoir l'un de ces titres :",
+    },
     {
       type: "liste",
       style: "puces",
       items: [
-        "**Le demandeur** : l'étranger déjà présent en France avec un titre de séjour valable et répondant aux critères d'éligibilité",
-        "**Les bénéficiaires** : le conjoint (marié, pas pacsé ni concubin) et les enfants mineurs du couple",
+        "une carte de séjour temporaire d'au moins 1 an, ou une carte de séjour pluriannuelle (valable plusieurs années).",
+        "une carte de résident de 10 ans, ou une carte de résident de longue durée-UE délivrée par la France.",
+        "le récépissé d'une demande de renouvellement de l'une de ces cartes.",
       ],
     },
     {
-      type: "p",
-      texte: "**Important :** Le regroupement familial ne concerne pas les parents, les frères et sœurs, ni les concubins ou partenaires de PACS. Il existe des procédures distinctes pour ces situations (visa visiteur, titre « vie privée et familiale »).",
-    },
-    { type: "h3", texte: "Lien avec le test civique" },
-    {
-      type: "p",
-      texte: "La thématique **« Vivre dans la société française »** du test civique aborde les droits fondamentaux liés à la vie familiale et à l'intégration. Comprendre le regroupement familial, c'est aussi comprendre comment l'État français concilie le droit à la vie familiale (article 8 de la CEDH) avec les impératifs de maîtrise de l'immigration.",
-    },
-    {
-      type: "h2",
-      texte: "Condition n°1 : la durée de séjour régulier en France",
-      id: "conditions-sejour",
+      type: "encadre",
+      titre: "La loi de 2024 n'a pas changé ces 18 mois",
+      texte: "Le Parlement avait voté en décembre 2023 des règles plus strictes pour le regroupement familial. Le Conseil constitutionnel a censuré cet article le 25 janvier 2024, pour une raison de procédure ([décision 2023-863 DC](https://www.conseil-constitutionnel.fr/decision/2024/2023863DC.htm)). La loi du 26 janvier 2024 ne contient donc pas ces mesures. En octobre 2026, la règle reste de 18 mois. Service-public ne prévoit ni test de langue ni assurance maladie à prouver avant l'arrivée.",
+      ton: "bleu",
     },
     {
       type: "p",
-      texte: "Pour déposer une demande de regroupement familial, le demandeur doit **résider régulièrement en France depuis au moins 18 mois** au moment du dépôt du dossier.",
+      texte: "Des règles propres s'appliquent dans deux cas. À Mayotte, il faut 3 ans de séjour et un titre d'au moins 5 ans. Les Algériens suivent l'accord franco-algérien : un certificat de résidence d'au moins 1 an et 1 an de résidence en France ([F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166)).",
     },
-    { type: "h3", texte: "Ce que cela signifie concrètement :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Vous devez être titulaire d'un titre de séjour en cours de validité depuis 18 mois minimum",
-        "Les périodes couvertes par un simple récépissé comptent, à condition qu'elles soient continues",
-        "Les absences du territoire ne doivent pas dépasser 3 mois consécutifs sur la période des 18 mois",
-      ],
-    },
-    { type: "h3", texte: "Titres de séjour compatibles :" },
-    {
-      type: "tableau",
-      entetes: ["Type de titre", "Regroupement familial possible ?"],
-      lignes: [
-        [
-          "Carte de séjour temporaire (CST)",
-          "Oui, si autorisant le travail et détenu depuis 18 mois",
-        ],
-        ["Carte de séjour pluriannuelle", "Oui"],
-        ["Carte de résident (10 ans)", "Oui"],
-        ["Récépissé de renouvellement", "Non (doit attendre le titre définitif)"],
-        ["Visa long séjour valant titre de séjour (VLS-TS)", "Oui, s'il est validé par l'OFII"],
-        [
-          "Statut de réfugié / protection subsidiaire",
-          "Oui, avec procédure simplifiée (pas de condition de revenus ni de logement)",
-        ],
-      ],
-    },
+    { type: "h2", texte: "Quelles ressources faut-il en 2026 ?", id: "conditions-revenus" },
     {
       type: "p",
-      texte: "**Cas particulier des réfugiés :** les titulaires du statut de réfugié ou de la protection subsidiaire bénéficient d'un régime de faveur, pas de condition de revenus, pas de condition de logement, et le délai de 18 mois ne s'applique pas si la demande est faite dans les 3 mois suivant l'obtention du statut.",
-    },
-    {
-      type: "h2",
-      texte: "Condition n°2 : les revenus, le calcul exact en 2026",
-      id: "conditions-revenus",
-    },
-    {
-      type: "p",
-      texte: "C'est souvent la condition la plus difficile à satisfaire. Vous devez justifier de ressources **stables, régulières et suffisantes** pour subvenir aux besoins de votre famille sans recourir aux aides sociales.",
-    },
-    { type: "h3", texte: "Le seuil de revenus en 2026 :" },
-    {
-      type: "p",
-      texte: "Le montant minimum requis est calculé en fonction de la **taille de la famille** sur la base du SMIC :",
+      texte: "Vos ressources doivent être stables et suffisantes. Service-public prend la moyenne de vos revenus sur les **12 derniers mois** avant la demande. Le seuil se compare au Smic **brut** (le salaire minimum avant cotisations), selon la taille de la famille :",
     },
     {
       type: "tableau",
-      entetes: ["Taille de la famille", "Revenus mensuels minimum (nets)"],
+      entetes: ["Taille de la famille", "Moyenne mensuelle minimum sur 12 mois"],
       lignes: [
-        ["Couple sans enfant (2 personnes)", "1 426,30 € (SMIC × 1,0)"],
-        ["Couple + 1 enfant (3 personnes)", "1 711,56 € (SMIC × 1,2)"],
-        ["Couple + 2 enfants (4 personnes)", "1 996,82 € (SMIC × 1,4)"],
-        ["Couple + 3 enfants (5 personnes)", "2 282,08 € (SMIC × 1,6)"],
-        ["Par enfant supplémentaire", "+ 285,26 € (SMIC × 0,2)"],
+        ["2 ou 3 personnes", "1 867,02 € brut (le Smic)"],
+        ["4 ou 5 personnes", "2 053,72 € brut (le Smic plus un dixième)"],
+        ["6 personnes ou plus", "2 240,42 € brut (le Smic plus un cinquième)"],
       ],
+      legende: "Source : service-public, fiche F11166 vérifiée le 1er juin 2026, lue le 20/10/2026. Les montants suivent le Smic et peuvent changer.",
     },
-    { type: "p", texte: "*Base SMIC 2026 : 1 426,30 € net mensuel (valeur indicative).*" },
-    { type: "h3", texte: "Quelles ressources sont prises en compte ?" },
     {
       type: "liste",
-      style: "puces",
+      style: "coches",
       items: [
-        "**Salaires et revenus d'activité** (CDI, CDD, intérim, indépendant)",
-        "**Revenus locatifs** stables",
-        "**Pensions alimentaires reçues**",
-        "**Certaines prestations sociales** : allocations familiales, aide au logement (APL)",
+        "comptent : les revenus du travail (salarié ou non), le patrimoine, les pensions de retraite.",
+        "comptent aussi : les revenus de votre conjoint, s'ils continueront à lui être versés.",
       ],
     },
-    { type: "h3", texte: "Ce qui N'est PAS pris en compte :" },
     {
       type: "liste",
-      style: "puces",
+      style: "alertes",
       items: [
-        "RSA, prime d'activité, ASS (allocations de chômage spécifique)",
-        "Revenus des membres de la famille à faire venir",
-        "Aides ponctuelles ou dons familiaux",
+        "ne comptent pas : les prestations familiales, le RSA, l'Aspa, l'Ata, l'ASS et l'AER.",
       ],
     },
     {
       type: "p",
-      texte: "**Conseil :** Les ressources sont calculées sur les **12 derniers mois** précédant la demande. Conservez tous vos bulletins de salaire et avis d'imposition.",
+      texte: "Deux cas sont dispensés de cette condition. Le premier : vous touchez l'AAH (l'allocation aux adultes handicapés) ou l'Asi. Le second : vous avez plus de 65 ans, vous vivez en France depuis 25 ans, et la demande concerne votre conjoint, marié depuis 10 ans. Pour les Algériens, le seuil est le Smic, sans les prestations familiales ([F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166)).",
     },
-    {
-      type: "h2",
-      texte: "Condition n°3 : le logement, surface minimale obligatoire",
-      id: "conditions-logement",
-    },
+    { type: "h2", texte: "Quel logement faut-il prévoir ?", id: "conditions-logement" },
     {
       type: "p",
-      texte: "Vous devez justifier d'un logement **décent, aux normes et suffisamment grand** pour accueillir toute votre famille au moment de l'arrivée des bénéficiaires.",
-    },
-    { type: "h3", texte: "La surface minimale requise en 2026 :" },
-    {
-      type: "tableau",
-      entetes: ["Nombre de personnes dans le foyer", "Surface habitable minimale"],
-      lignes: [
-        ["2 personnes", "22 m²"],
-        ["3 personnes", "33 m²"],
-        ["4 personnes", "44 m²"],
-        ["5 personnes", "55 m²"],
-        ["Par personne supplémentaire", "+ 11 m²"],
-      ],
-    },
-    { type: "h3", texte: "Critères de décence du logement :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Alimentation en eau potable",
-        "Installation sanitaire intérieure (WC, douche ou baignoire)",
-        "Chauffage suffisant",
-        "Éclairage naturel dans les pièces principales",
-        "Aucune infiltration d'eau, aucune infestation nuisible",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Visite de l'OFII :** Dans certains cas, un agent de l'Office Français de l'Immigration et de l'Intégration (OFII) peut visiter votre logement pour vérifier sa conformité. Anticipez cette visite en vous assurant que le logement est propre, meublé et conforme.",
-    },
-    {
-      type: "p",
-      texte: "**Cas du logement en cours de location :** si vous êtes en attente d'un logement social plus grand, mentionnez-le dans votre dossier. Certaines préfectures acceptent une promesse de location ou un contrat de location futur si la date de prise d'effet est proche.",
-    },
-    { type: "h2", texte: "Qui peut venir en France par regroupement familial ?", id: "membres-famille" },
-    {
-      type: "p",
-      texte: "La loi française limite strictement les bénéficiaires du regroupement familial :",
-    },
-    { type: "h3", texte: "Peuvent venir :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Le conjoint marié** (époux/épouse), âgé d'au moins 18 ans",
-        "**Les enfants mineurs du couple** (nés du demandeur et du conjoint, ou d'une précédente union si l'autre parent est décédé ou déchu de l'autorité parentale)",
-        "**Les enfants mineurs du seul demandeur** (si l'autre parent est décédé, ou si le demandeur exerce seul l'autorité parentale)",
-      ],
-    },
-    { type: "h3", texte: "Ne peuvent PAS venir par cette procédure :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Les concubins ou partenaires de PACS (ils doivent demander un visa « vie privée et familiale »)",
-        "Les parents du demandeur (parents âgés, etc.)",
-        "Les frères, sœurs, oncles, tantes",
-        "Les enfants majeurs (18 ans et plus)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Polygamie :** si vous êtes en situation de polygamie (plusieurs épouses légalement reconnues à l'étranger), vous ne pouvez faire venir qu'**une seule épouse**. La polygamie est interdite en France et constitue un motif de refus automatique si elle est détectée.",
-    },
-    { type: "h2", texte: "La procédure étape par étape", id: "procedure" },
-    {
-      type: "p",
-      texte: "La demande de regroupement familial suit un circuit précis en plusieurs étapes :",
-    },
-    { type: "h3", texte: "Étape 1 : Dépôt du dossier à l'OFII (1 à 2 mois)" },
-    {
-      type: "p",
-      texte: "La demande se dépose auprès de la **direction territoriale de l'OFII** compétente pour votre lieu de résidence. Depuis 2021, le dépôt peut se faire en ligne sur le portail **administration-etrangers.interieur.gouv.fr** ou en se rendant directement à l'OFII.",
-    },
-    { type: "h3", texte: "Étape 2 : Instruction par l'OFII (3 à 6 mois)" },
-    { type: "p", texte: "L'OFII vérifie :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "La régularité de votre séjour (durée des 18 mois)",
-        "Vos ressources financières",
-        "Votre logement (éventuellement avec visite)",
-        "L'absence de polygamie",
-      ],
-    },
-    { type: "h3", texte: "Étape 3 : Autorisation de regroupement familial" },
-    {
-      type: "p",
-      texte: "Si le dossier est accepté, l'OFII émet une **autorisation de regroupement familial** transmise au consulat français du pays de résidence des bénéficiaires.",
-    },
-    { type: "h3", texte: "Étape 4 : Demande de visa au consulat" },
-    {
-      type: "p",
-      texte: "Votre conjoint et/ou vos enfants doivent se présenter au consulat français de leur pays de résidence pour demander un **visa long séjour « regroupement familial »**. Le consulat peut demander un **entretien** et des examens médicaux.",
-    },
-    { type: "h3", texte: "Étape 5 : Arrivée en France et démarches OFII" },
-    {
-      type: "p",
-      texte: "À leur arrivée, les bénéficiaires doivent se signaler auprès de l'OFII dans les **3 mois** pour validation du visa et démarrage du **Contrat d'Intégration Républicaine (CIR)**.",
-    },
-    { type: "h3", texte: "Étape 6 : Titre de séjour pour les bénéficiaires" },
-    {
-      type: "p",
-      texte: "Le conjoint reçoit une **carte de séjour temporaire « vie privée et familiale »** d'1 an, renouvelable, puis une carte pluriannuelle après 3 ans.",
-    },
-    { type: "h2", texte: "Liste complète des documents à fournir", id: "documents" },
-    {
-      type: "p",
-      texte: "Un dossier incomplet est la première cause de rejet ou de retard. Voici la liste exhaustive :",
-    },
-    { type: "h3", texte: "Documents concernant le demandeur (en France) :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Formulaire de demande de regroupement familial (Cerfa n°11436*06)",
-        "Copie du titre de séjour en cours de validité (recto-verso)",
-        "Justificatifs de ressources des 12 derniers mois (bulletins de salaire, avis d'imposition)",
-        "Justificatif de domicile récent (bail de location, facture EDF, quittance de loyer)",
-        "Plan du logement avec superficie de chaque pièce",
-        "Attestation d'assurance habitation",
-        "Livret de famille ou acte de mariage (traduit et apostillé si nécessaire)",
-        "Actes de naissance des enfants concernés (traduits et apostillés)",
-      ],
-    },
-    { type: "h3", texte: "Documents concernant les bénéficiaires (à l'étranger) :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Passeports en cours de validité",
-        "Acte de naissance de chaque personne (traduit et apostillé)",
-        "Acte de mariage (traduit et apostillé)",
-        "Justificatif de résidence actuelle à l'étranger",
-        "Casier judiciaire (selon les pays)",
-        "Certificats médicaux (selon exigences consulaires)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Attention aux traductions :** tous les documents étrangers doivent être traduits par un **traducteur assermenté agréé par la Cour d'appel**. Les traductions Google ou amateurs ne sont pas acceptées.",
-    },
-    { type: "h2", texte: "Les délais : combien de temps cela prend-il ?", id: "delais" },
-    {
-      type: "p",
-      texte: "La procédure de regroupement familial est l'une des plus longues en matière d'immigration. Voici les délais réalistes en 2026 :",
+      texte: "Le logement doit être décent et normal pour une famille comparable de la région. Vous devez l'avoir au plus tard à l'arrivée de la famille. La surface minimale dépend de la zone de votre commune. Le simulateur de zonage de service-public vous la donne.",
     },
     {
       type: "tableau",
-      entetes: ["Étape", "Délai moyen"],
+      entetes: ["Zone de la commune", "Surface pour 2 personnes", "Par personne en plus"],
       lignes: [
-        ["Instruction par l'OFII", "3 à 6 mois"],
-        ["Traitement consulaire + visa", "2 à 4 mois"],
-        ["Total moyen de bout en bout", "6 à 12 mois"],
-        ["Délai légal maximum de l'OFII", "6 mois (silence = refus)"],
+        ["Zones A bis et A (grandes villes chères)", "22 m²", "+ 10 m² jusqu'à 8 personnes, puis + 5 m²"],
+        ["Zones B1 et B2", "24 m²", "+ 10 m² jusqu'à 8 personnes, puis + 5 m²"],
+        ["Zone C", "28 m²", "+ 10 m² jusqu'à 8 personnes, puis + 5 m²"],
       ],
+      legende: "Source : service-public, fiche F11166, lue le 20/10/2026.",
     },
     {
       type: "p",
-      texte: "**Le silence vaut refus :** si l'OFII ne répond pas dans les **6 mois** suivant la réception du dossier complet, cela vaut décision de rejet implicite. Vous pouvez alors exercer un recours.",
+      texte: "Exemple : un couple avec deux enfants vit en zone B1. Il faut 24 m² pour deux, plus 10 m² par enfant, soit 44 m² au moins. Des agents habilités peuvent venir voir le logement pour vérifier le confort et l'hygiène ([F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166)).",
     },
-    { type: "p", texte: "**Q : Peut-on accélérer la procédure ?**" },
-    {
-      type: "p",
-      texte: "R : Non officiellement. En pratique, un dossier très complet et bien présenté réduit les échanges de pièces complémentaires et donc les délais. Évitez les dossiers incomplets qui repartent en navette.",
-    },
-    { type: "h2", texte: "En cas de refus : vos recours", id: "refus-recours" },
-    {
-      type: "p",
-      texte: "Un refus de regroupement familial n'est pas une fin en soi. Vous disposez de plusieurs voies de recours :",
-    },
-    { type: "h3", texte: "1. Recours gracieux auprès de l'OFII (délai : 2 mois)" },
-    {
-      type: "p",
-      texte: "Adressez un courrier recommandé à l'OFII en expliquant pourquoi vous contestez la décision et en fournissant des pièces complémentaires.",
-    },
-    { type: "h3", texte: "2. Recours hiérarchique auprès du Ministre de l'Intérieur (délai : 2 mois)" },
-    {
-      type: "p",
-      texte: "Si le recours gracieux est rejeté, vous pouvez saisir le Ministre de l'Intérieur.",
-    },
-    { type: "h3", texte: "3. Recours contentieux devant le tribunal administratif (délai : 2 mois)" },
-    {
-      type: "p",
-      texte: "C'est le recours le plus efficace. Vous déposez un recours devant le tribunal administratif compétent. Vous pouvez bénéficier de l'**aide juridictionnelle** si vos revenus sont modestes (gratuit si revenu mensuel inférieur à environ 1 100 €).",
-    },
-    { type: "h3", texte: "Motifs de refus les plus fréquents :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Ressources insuffisantes (revenu trop bas ou instable)",
-        "Logement trop petit ou non conforme aux normes",
-        "Séjour de moins de 18 mois",
-        "Suspicion de mariage de complaisance",
-        "Polygamie avérée",
-      ],
-    },
-    { type: "h2", texte: "L'arrivée en France : les démarches OFII obligatoires", id: "arrivee-ofii" },
-    {
-      type: "p",
-      texte: "Une fois le visa obtenu et l'arrivée en France effectuée, les bénéficiaires du regroupement familial ont des **obligations légales** à respecter sous peine de remise en cause de leur titre de séjour.",
-    },
-    { type: "h3", texte: "Dans les 3 mois suivant l'arrivée :" },
+    { type: "h2", texte: "Comment se passe la demande, étape par étape ?", id: "procedure" },
     {
       type: "liste",
       style: "numeros",
       items: [
-        "**Se signaler à l'OFII** via le portail en ligne ou en se rendant à la direction territoriale compétente",
-        "**Passer la visite médicale OFII** (examen médical, radiographie pulmonaire pour les adultes)",
-        "**Signer le Contrat d'Intégration Républicaine (CIR)** : engagement à suivre une formation civique et, si nécessaire, des cours de français",
+        "**Vérifier les conditions** avec le simulateur de service-public.",
+        "**Préparer le dossier** : le formulaire cerfa, votre titre de séjour, les actes d'état civil traduits, les preuves de ressources et de logement sur 12 mois.",
+        "**Déposer le dossier à l'OFII** (l'Office français de l'immigration et de l'intégration) : en ligne, ou par courrier recommandé avec accusé de réception. Choisissez un seul des deux.",
+        "**L'examen par le maire** : il vérifie les ressources et le logement, et donne son avis en 2 mois. Sans réponse, son avis compte comme favorable.",
+        "**La décision du préfet** : c'est le représentant de l'État dans votre département (le préfet de police à Paris). Il accepte ou refuse.",
+        "**Le visa** : si c'est oui, la famille demande un visa de long séjour au consulat, puis entre en France dans les 3 mois.",
       ],
     },
-    { type: "h3", texte: "La formation civique OFII :" },
     {
       type: "p",
-      texte: "Tous les bénéficiaires adultes doivent suivre une **formation civique de 4 heures** sur les valeurs de la République française (liberté, égalité, fraternité, laïcité). Cette formation est **gratuite et obligatoire**.",
+      texte: "Toutes ces étapes sont décrites dans la [fiche F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166). Service-public propose aussi un simulateur qui donne la liste exacte des pièces selon votre cas : utilisez-le avant d'envoyer quoi que ce soit.",
+    },
+    { type: "h2", texte: "Combien de temps faut-il attendre ?", id: "delais" },
+    {
+      type: "p",
+      texte: "Le préfet doit vous notifier sa décision **dans les 6 mois** qui suivent le dépôt du dossier complet à l'OFII. S'il ne répond pas dans ce délai, la demande est refusée. On parle de refus implicite ([F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166)).",
     },
     {
       type: "p",
-      texte: "**Lien avec le test civique :** si le conjoint souhaite à terme demander la nationalité française, il devra passer le test civique, 40 questions sur les institutions, les valeurs et la vie en France. La formation OFII est une excellente première étape de préparation.",
+      texte: "Le temps du visa au consulat s'ajoute ensuite. Aucune source officielle ne donne de durée moyenne de bout en bout : méfiez-vous des chiffres « réels » qui circulent. Un dossier complet dès le départ évite les demandes de pièces en plus.",
+    },
+    { type: "h2", texte: "Que faire en cas de refus ?", id: "refus-recours" },
+    {
+      type: "p",
+      texte: "Un refus doit être motivé, c'est-à-dire expliqué par écrit. Vous pouvez le contester de deux façons ([F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166)) :",
     },
     {
-      type: "encadre",
-      titre: "À retenir",
-      texte: "Le regroupement familial est une procédure longue (6 à 12 mois en moyenne) mais parfaitement réalisable à condition de bien préparer son dossier. Les deux conditions les plus souvent bloquantes sont les revenus (attention au seuil SMIC × 1,2) et le logement (surface minimale selon la taille de la famille). En cas de refus, n'hésitez pas à exercer un recours, beaucoup de décisions initiales sont réformées devant le tribunal administratif. Une fois la famille réunie en France, n'oubliez pas les démarches OFII obligatoires dans les 3 mois suivant l'arrivée.",
-      ton: "bleu",
+      type: "liste",
+      style: "puces",
+      items: [
+        "**le recours administratif** : une lettre au préfet (recours gracieux, qui demande à l'auteur de revoir sa décision) ou au ministre de l'Intérieur (recours hiérarchique). Le délai est de 2 mois ([F2474](https://www.service-public.gouv.fr/particuliers/vosdroits/F2474)).",
+        "**le recours contentieux** : c'est la demande faite au juge. Elle va au tribunal administratif, qui juge les litiges avec l'administration. Le délai est de 2 mois après la décision, 3 mois outre-mer et 4 mois depuis l'étranger ([F2478](https://www.service-public.gouv.fr/particuliers/vosdroits/F2478)).",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Un recours administratif envoyé à temps interrompt le délai pour saisir le juge ([F2474](https://www.service-public.gouv.fr/particuliers/vosdroits/F2474)). Selon vos revenus, l'aide juridictionnelle peut payer tout ou partie des frais d'avocat. Pour votre cas précis, adressez-vous à un avocat ou à une association comme La Cimade. Vous pouvez aussi saisir le Défenseur des droits (l'autorité qui vous défend face à l'administration).",
+    },
+    { type: "h2", texte: "Que fait la famille en arrivant en France ?", id: "arrivee-ofii" },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "valider en ligne le VLS-TS (le visa de long séjour qui vaut titre de séjour) dans les 3 mois qui suivent l'arrivée.",
+        "passer la visite médicale prévue par l'OFII.",
+        "signer le CIR (contrat d'intégration républicaine) : c'est le cas du conjoint et des enfants de plus de 16 ans.",
+        "payer 150 € pour la demande de titre de séjour à la préfecture (le service de l'État dans le département), selon service-public.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Ces obligations viennent de la [fiche F11166](https://www.service-public.gouv.fr/particuliers/vosdroits/F11166). Avec le CIR, la formation civique est obligatoire : 4 sessions, 24 heures au total. Une formation de français est proposée si le niveau est sous A2 ([F17048](https://www.service-public.gouv.fr/particuliers/vosdroits/F17048)). Notre page sur le [contrat d'intégration républicaine](/articles/contrat-integration-republicaine-cir-2026-formation-civique) détaille son contenu.",
+    },
+    {
+      type: "p",
+      texte: "La suite compte aussi. Depuis le 1er janvier 2026, une carte de séjour pluriannuelle demande la réussite à l'examen civique et le niveau A2 en français ([F17048](https://www.service-public.gouv.fr/particuliers/vosdroits/F17048)). Notre article sur l'[examen civique pour la carte pluriannuelle](/articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026) explique qui est concerné. Les types de cartes sont présentés dans le [guide de la carte de séjour](/articles/carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement).",
+    },
+    { type: "h2", texte: "Réfugiés : une autre procédure, la réunification familiale", id: "refugies" },
+    {
+      type: "p",
+      texte: "Si vous avez le statut de réfugié ou la protection subsidiaire, une autre démarche existe : la réunification familiale. La famille demande directement un visa de long séjour au consulat du pays où elle vit. Les liens familiaux doivent dater d'avant votre demande d'asile ([F35158](https://www.service-public.gouv.fr/particuliers/vosdroits/F35158)). Un mariage plus récent relève du regroupement familial décrit plus haut.",
+    },
+    {
+      type: "cta",
+      texte: "Votre conjoint devra un jour passer l'examen civique ? Vérifiez en une minute si l'examen le concerne.",
+      bouton: "Tester l'éligibilité",
     },
   ],
   faq: [
     {
-      question: "Quel revenu minimum faut-il pour le regroupement familial en 2026 ?",
-      reponse: "Le revenu minimum dépend du nombre de personnes dans le foyer. Pour un couple sans enfant, il faut environ 1 426 € net mensuel (1 SMIC). Pour un couple avec 1 enfant, environ 1 711 € (1,2 SMIC). Ce calcul se fait sur les 12 derniers mois de revenus stables.",
+      question: "Quel salaire pour le regroupement familial en 2026 ?",
+      reponse: "Pour 2 ou 3 personnes, la moyenne de vos revenus sur 12 mois doit atteindre le Smic brut, soit 1 867,02 € par mois selon service-public. Il faut 2 053,72 € pour 4 ou 5 personnes, et 2 240,42 € à partir de 6. Les prestations familiales et le RSA ne comptent pas.",
     },
     {
       question: "Combien de temps dure la procédure de regroupement familial ?",
-      reponse: "En moyenne entre 6 et 12 mois de bout en bout. L'OFII dispose de 6 mois pour instruire le dossier, puis le consulat prend 2 à 4 mois pour traiter le visa. Un dossier complet et bien préparé réduit les allers-retours.",
+      reponse: "Le préfet a 6 mois pour décider, à partir du dépôt du dossier complet à l'OFII. Sans réponse dans ce délai, la demande est refusée. Il faut ensuite ajouter le temps du visa au consulat, puis 3 mois au plus pour que la famille entre en France.",
     },
     {
       question: "Peut-on faire venir ses parents par regroupement familial ?",
-      reponse: "Non. Le regroupement familial ne concerne que le conjoint marié et les enfants mineurs. Pour faire venir ses parents, il faut d'autres procédures (visa visiteur, titre \"vie privée et familiale\" pour parents d'enfant français, etc.).",
+      reponse: "Non. Le regroupement familial vise seulement l'époux ou l'épouse et les enfants mineurs. Service-public indique que les parents peuvent demander un statut de visiteur. Pour une visite courte, ils peuvent venir avec une attestation d'accueil signée par la personne qui les reçoit en France.",
     },
     {
-      question: "Le conjoint peut-il travailler dès son arrivée en France ?",
-      reponse: "Oui. La carte de séjour \"vie privée et familiale\" obtenue dans le cadre du regroupement familial autorise le travail en France. Le conjoint peut donc travailler dès la réception de son titre de séjour, sans avoir à demander d'autorisation supplémentaire.",
+      question: "La loi immigration de 2024 a-t-elle allongé le délai à 24 mois ?",
+      reponse: "Non. Le Parlement avait voté 24 mois, mais le Conseil constitutionnel a censuré cet article le 25 janvier 2024, pour une raison de procédure. En octobre 2026, service-public indique toujours 18 mois de séjour régulier en France avant de pouvoir déposer la demande.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Service-public : regroupement familial (F11166)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11166",
+      type: "officiel",
+      description: "Conditions de séjour, ressources, logement, procédure, délai et recours. Vérifiée le 1er juin 2026.",
+      luLe: "2026-10-20",
     },
     {
-      question: "Que se passe-t-il si l'OFII ne répond pas dans les 6 mois ?",
-      reponse: "Le silence de l'OFII pendant 6 mois vaut décision de refus implicite. Vous pouvez alors exercer un recours devant le tribunal administratif dans les 2 mois suivant l'expiration du délai de 6 mois.",
+      titre: "Conseil constitutionnel : décision n° 2023-863 DC du 25 janvier 2024",
+      url: "https://www.conseil-constitutionnel.fr/decision/2024/2023863DC.htm",
+      type: "juridique",
+      description: "Censure de l'article 3 de la loi immigration, qui modifiait les conditions du regroupement familial.",
+      luLe: "2026-10-20",
     },
     {
-      question: "Les réfugiés ont-ils les mêmes conditions pour le regroupement familial ?",
-      reponse: "Non, les réfugiés et bénéficiaires de la protection subsidiaire bénéficient d'un régime de faveur : pas de condition de revenus, pas de condition de logement, et pas de délai de 18 mois si la demande est faite dans les 3 mois après l'obtention du statut.",
+      titre: "Service-public : contrat d'intégration républicaine (F17048)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17048",
+      type: "officiel",
+      description: "Formation civique de 24 heures, formation linguistique, examen civique pour la carte pluriannuelle. Vérifiée le 26 juin 2026.",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : recours administratif (F2474)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2474",
+      type: "officiel",
+      description: "Recours gracieux et hiérarchique : délai de 2 mois. Vérifiée le 11 mai 2026.",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : recours contentieux devant le juge administratif (F2478)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2478",
+      type: "officiel",
+      description: "Délai de 2 mois (3 mois outre-mer, 4 mois à l'étranger). Vérifiée le 19 juin 2026.",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : réunification familiale d'un réfugié (F35158)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F35158",
+      type: "officiel",
+      description: "La procédure propre aux réfugiés et bénéficiaires de la protection subsidiaire. Vérifiée le 22 avril 2026.",
+      luLe: "2026-10-20",
+    },
+  ],
+  aLireAussi: [
+    {
+      slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement",
+      ancre: "Guide de la carte de séjour",
+    },
+    {
+      slug: "attestation-accueil-inviter-famille-france-2026-mairie-conditions",
+      ancre: "L'attestation d'accueil pour la famille",
+    },
+    {
+      slug: "mariage-etranger-france-2026-papiers-visa-conjoint-titre-sejour",
+      ancre: "Mariage avec une personne étrangère en France",
+    },
+    {
+      slug: "guide-anef-complet-2026-creer-compte-deposer-demande",
+      ancre: "Déposer une demande sur l'ANEF",
     },
   ],
 };

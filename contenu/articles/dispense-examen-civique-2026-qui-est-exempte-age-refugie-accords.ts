@@ -154,7 +154,7 @@ const article: Article = {
       style: "puces",
       items: [
         "✅ **Passer et réussir l'examen civique** (32/40) ;",
-        "✅ **Justifier du niveau B2** en français (relevé le 1er janvier 2026, contre B1 auparavant) : voir notre guide [Niveau de langue français pour la nationalité](/articles/niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026).",
+        "✅ **Justifier du niveau B2** en français (relevé le 1er janvier 2026, contre B1 auparavant) : voir notre guide [Niveau de langue français pour la nationalité](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation).",
       ],
     },
     {
@@ -352,7 +352,7 @@ const article: Article = {
     { type: "p", texte: "**3. Inscrivez-vous tôt** 📅" },
     {
       type: "p",
-      texte: "Deux opérateurs seulement (CCIP et FEI) pour toute la France : les créneaux partent vite. Notre guide [Inscription au test civique 2026](/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire) détaille les six étapes, du contrôle d'éligibilité à la convocation, et la [liste des centres agréés](/articles/nouveaux-centres-test-civique-mai-2026-liste-complete) vous aide à trouver le plus proche.",
+      texte: "Deux opérateurs seulement (CCIP et FEI) pour toute la France : les créneaux partent vite. Notre guide [Inscription au test civique 2026](/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire) détaille les six étapes, du contrôle d'éligibilité à la convocation, et la [liste des centres agréés](/articles/centres-agrees-examen-civique-2026) vous aide à trouver le plus proche.",
     },
     { type: "p", texte: "**4. Préparez le jour J** 📋" },
     {

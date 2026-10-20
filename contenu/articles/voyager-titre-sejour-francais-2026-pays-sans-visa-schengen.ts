@@ -221,7 +221,7 @@ const article: Article = {
   ],
   aLireAussi: [
     { slug: "recepisse-titre-de-sejour-droits-duree-voyage", ancre: "Voyager avec un récépissé" },
-    { slug: "titres-de-sejour-france-guide-complet-2026", ancre: "Types de titres de séjour" },
+    { slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement", ancre: "Types de titres de séjour" },
     {
       slug: "union-europeenne-france-institutions-citoyennete",
       ancre: "L'espace Schengen et la libre circulation",

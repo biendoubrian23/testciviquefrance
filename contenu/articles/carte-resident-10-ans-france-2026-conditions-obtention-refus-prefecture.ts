@@ -1,44 +1,56 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-buzz-generaux-5.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026 sans changer d'adresse, puis réécrit le même jour au
+ * niveau de la doctrine (`docs/seo/ROBOT.md`). L'article doublon
+ * `carte-resident-10-ans-obtention-2025` y a été fusionné : son adresse
+ * redirige ici en 301 (`next.config.js`). On en a repris les mots-clés, la
+ * vidéo et l'idée des cas particuliers ; ses montants (225 €), son délai
+ * (4 à 8 mois) et son niveau « B1 oral » n'avaient pas de source et sont
+ * remplacés par ceux de service-public, lus le 20/10/2026.
+ *
+ * Retirés faute de source officielle, ou parce que la source dit autre chose :
+ * le taux d'acceptation de 45 %, les 130 000 cartes par an, les taux de succès
+ * des recours, les « quotas officieux », le seuil de ressources en SMIC net et
+ * par enfant, le timbre de 269 €, la carte permanente « valable à vie »
+ * (service-public : valable 10 ans, renouvelable), et le renouvellement
+ * « automatique ».
+ *
+ * La couverture vient d'Unsplash (licence Unsplash : usage libre, commercial
+ * compris) ; ses dimensions sont nominales.
  */
 const article: Article = {
   slug: "carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture",
-  titre: "Carte de résident 10 ans en France 2026 : qui peut l'obtenir, comment, et pourquoi la préfecture refuse",
-  titreSeo: "Carte de résident 10 ans en France 2026 : qui peut l'obtenir, comment, et pourquoi la préfecture refuse",
-  resume: "Guide ultra-complet de la carte de résident 10 ans : 5 voies d'obtention (conjoint, parent, 5 ans de résidence), conditions, motifs de refus des préfectures, recours et parcours vers la naturalisation.",
-  chapo: "La carte de résident de 10 ans, c'est le graal de l'immigration en France. Elle vous donne un droit de séjour quasi permanent, une autorisation de travail sans restriction, et elle se renouvelle automatiquement si vous remplissez les conditions. Mais les préfectures en délivrent de moins en moins : en 2025, seulement 45 % des demandes ont été acceptées. Les refus augmentent, les conditions se durcissent, et les critères réels appliqués par les préfectures vont bien au-delà de ce que dit la loi. Ce guide vous explique tout : les conditions exactes, les 5 voies pour l'obtenir, les raisons pour lesquelles la préfecture refuse (même quand vous remplissez les critères), et les recours pour faire annuler un refus injuste.",
+  titre: "Carte de résident 10 ans en 2026 : qui peut l'obtenir, combien elle coûte, et pourquoi elle est refusée",
+  titreSeo: "Carte de résident 10 ans : conditions en 2026",
+  resume: "Carte de résident 10 ans : les conditions en 2026 (B1, examen civique, 5 ans de séjour), les cas particuliers, le prix de 350 €, les refus et les recours.",
+  chapo: "La carte de résident est un titre de séjour valable ==10 ans== et renouvelable. Depuis le 1er janvier 2026, une première carte demande un niveau de français **B1** et la réussite à l'**examen civique**. On l'obtient après 5 ans de séjour régulier, ou plus tôt dans certains cas : conjoint de Français, parent d'enfant français, réfugié.",
   publieLe: "2026-04-28",
-  modifieLe: "2026-04-28",
-  minutes: 24,
+  modifieLe: "2026-10-20",
+  minutes: 10,
   theme: "carte de résident 10 ans France 2026",
   motsCles: [
+    "carte de résident 10 ans",
     "carte de résident 10 ans France 2026",
     "carte de résident conditions 2026",
+    "conditions carte résident",
     "carte de résident refusée préfecture",
-    "carte de résident renouvellement",
+    "refus carte de résident recours",
     "carte de résident conjoint français",
     "carte de résident parent enfant français",
     "obtenir carte de résident 10 ans",
-    "carte résident vs carte pluriannuelle",
-    "article L414-1 CESEDA carte résident",
-    "refus carte de résident recours",
-    "carte de résident républicaine",
-    "conditions intégration carte résident",
-    "carte de résident et naturalisation",
-    "carte de résident travail France",
+    "carte de résident longue durée UE",
     "carte de résident permanent France",
+    "carte de résident prix 2026",
+    "renouvellement carte résident",
+    "titre séjour 10 ans",
+    "carte de résident et naturalisation",
   ],
   rubrique: "cadre-legal",
   auteur: "Brian B",
   couverture: {
     src: "https://images.unsplash.com/photo-1568992687947-868a62a9f521?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
+    alt: "Un groupe de personnes discute autour d'une grande table en bois, dans une pièce lumineuse",
     largeur: 1200,
     hauteur: 800,
     credit: "Unsplash",
@@ -48,371 +60,284 @@ const article: Article = {
   blocs: [
     {
       type: "h2",
-      texte: "La carte de résident 10 ans : pourquoi c'est le titre le plus puissant",
+      texte: "Qu'est-ce que la carte de résident de 10 ans ?",
       id: "quest-ce-que-carte-resident",
     },
     {
       type: "p",
-      texte: "La carte de résident (articles L414-1 à L414-14 du CESEDA) est un titre de séjour de **10 ans**, renouvelable de plein droit. C'est le titre le plus sécurisant en France, juste avant la nationalité.",
+      texte: "Un titre de séjour, c'est la carte qui vous autorise à vivre en France. La carte de résident est celui qui dure le plus longtemps : 10 ans, et elle se renouvelle ([service-public, fiche F2208](https://www.service-public.gouv.fr/particuliers/vosdroits/F2208)). Les autres cartes durent en général 1 an, ou 2 à 4 ans pour la carte de séjour pluriannuelle (le titre que l'on a souvent avant).",
     },
-    { type: "h3", texte: "Ce que la carte de résident vous donne" },
+    {
+      type: "p",
+      texte: "Les règles viennent du CESEDA : c'est le code qui regroupe les lois sur l'entrée et le séjour des étrangers. Pour la demande, vous passez le plus souvent par l'ANEF, le site du ministère de l'Intérieur où se font les démarches de titre de séjour en ligne. La préfecture, c'est le service de l'État qui décide dans votre département.",
+    },
+    {
+      type: "p",
+      texte: "Il existe en fait plusieurs cartes. La carte de résident « classique » vise surtout les liens familiaux avec la France. La carte de **résident de longue durée-UE** vise les personnes qui vivent en France depuis 5 ans. La carte de **résident permanent** se demande plus tard, au renouvellement. Les Algériens relèvent d'un autre texte : ils reçoivent un certificat de résidence, et notre article sur [l'accord de 1968](/articles/algeriens-examen-civique-2026-accord-1968-dispense-sejour-mais-pas-naturalisation) explique leur cas.",
+    },
+    {
+      type: "h2",
+      texte: "Quelles conditions pour une première carte de résident en 2026 ?",
+      id: "conditions-communes",
+    },
+    {
+      type: "p",
+      texte: "Quel que soit votre cas, la préfecture vérifie votre intégration. Pour une **première** carte de résident, service-public liste ces conditions (F2208) :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "un niveau de français **B1**, exigé depuis le 1er janvier 2026 ([fiche F34501](https://www.service-public.gouv.fr/particuliers/vosdroits/F34501)).",
+        "la réussite à l'**examen civique**, avec la mention « carte de résident », exigée depuis le 1er janvier 2026 ([fiche F39530](https://www.service-public.gouv.fr/particuliers/vosdroits/F39530)).",
+        "l'engagement signé à respecter les principes de la République.",
+        "ne pas être une menace pour l'ordre public.",
+        "ne pas vivre en France en état de polygamie.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Les personnes de **plus de 65 ans** n'ont à prouver ni le niveau B1 ni la réussite à l'examen (F2208). B1 veut dire que vous pouvez vous débrouiller seul dans la plupart des situations de la vie courante.",
+    },
+    {
+      type: "p",
+      texte: "Pour prouver le B1, service-public accepte un diplôme (DELF, DALF, DCL, par exemple), un diplôme français d'au moins niveau 3 comme un CAP, ou un test. Les seuls tests reconnus sont le TCF et le TEF, des examens de français passés en centre. Leur attestation vaut 2 ans. Un diplôme obtenu à l'étranger n'est pas accepté, même dans un pays francophone (F34501). Notre guide des [niveaux A2, B1 et B2](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation) compare ces preuves.",
+    },
+    {
+      type: "p",
+      texte: "L'examen civique est un QCM de 40 questions en français : il faut 32 bonnes réponses, en 45 minutes au plus (F39530). La liste « carte de résident » est un peu plus longue que celle de la carte pluriannuelle. Notre article sur [l'examen civique pour la carte de résident](/articles/examen-civique-carte-de-resident) détaille ces différences.",
+    },
+    {
+      type: "h2",
+      texte: "Après 5 ans en France : la carte de résident longue durée-UE",
+      id: "cinq-ans-residence",
+    },
+    {
+      type: "p",
+      texte: "C'est la voie la plus connue. Elle est ouverte si vous vivez en France de façon régulière depuis 5 ans. Voici les conditions publiées par [service-public (fiche F17359)](https://www.service-public.gouv.fr/particuliers/vosdroits/F17359) :",
+    },
     {
       type: "tableau",
-      entetes: ["Avantage", "Détail"],
+      entetes: ["Condition", "Ce que dit service-public"],
       lignes: [
-        ["**Durée**", "10 ans, renouvelable automatiquement"],
-        ["**Travail**", "Autorisation de travailler dans tous les secteurs, sans restriction"],
-        [
-          "**Espace Schengen**",
-          "Libre circulation dans les 27 pays Schengen (séjours < 90 jours)",
-        ],
-        ["**Regroupement familial**", "Droit de faire venir votre conjoint et vos enfants"],
-        ["**Stabilité administrative**", "Pas de renouvellement tous les 1 ou 4 ans"],
-        [
-          "**Accès à la naturalisation**",
-          "Condition de résidence facilitée pour devenir français",
-        ],
-        [
-          "**Protection renforcée**",
-          "Quasi impossibilité d'être expulsé (sauf menace grave à l'ordre public)",
-        ],
+        ["Durée", "5 ans de séjour régulier et sans interruption en France."],
+        ["Titres qui comptent", "Le VLS-TS, les cartes visiteur, vie privée et familiale (avec des exceptions), salarié, entrepreneur, talent, et la carte de résident."],
+        ["Absences", "6 mois de suite au plus, et 10 mois au total sur les 5 ans."],
+        ["Ressources", "Stables et régulières, au moins égales au Smic : 1 867,02 € bruts par mois. Les aides comme les APL ou le RSA ne comptent pas."],
+        ["Assurance maladie", "Obligatoire."],
+        ["Intégration", "B1, examen civique, engagement à respecter les principes de la République, avis du maire de votre commune."],
       ],
+      legende: "Source : service-public, fiche F17359, vérifiée le 1er juin 2026, lue le 20/10/2026.",
     },
-    { type: "h3", texte: "Carte de résident vs carte pluriannuelle (4 ans)" },
+    {
+      type: "p",
+      texte: "Le VLS-TS est le visa de long séjour qui vaut titre de séjour la première année. Pour un réfugié, les 5 ans commencent à la date de la demande d'asile (F17359). Cette carte permet aussi de travailler, et de s'installer plus de 3 mois dans un autre pays de l'Union européenne. Il faut alors y demander un titre de séjour.",
+    },
+    {
+      type: "h2",
+      texte: "Dans quels cas la carte se demande-t-elle plus tôt ?",
+      id: "cas-particuliers",
+    },
+    {
+      type: "p",
+      texte: "Certaines situations ouvrent la carte sans attendre 5 ans. Voici les principales, d'après la [fiche F2208](https://www.service-public.gouv.fr/particuliers/vosdroits/F2208) :",
+    },
     {
       type: "tableau",
-      entetes: ["Critère", "Carte pluriannuelle", "Carte de résident"],
+      entetes: ["Situation", "Condition principale"],
       lignes: [
-        ["Durée", "4 ans", "**10 ans**"],
-        ["Renouvellement", "Conditionné, examen du dossier", "De plein droit (quasi automatique)"],
-        ["Protection contre éloignement", "Moyenne", "**Très forte**"],
-        [
-          "Accès au regroupement familial",
-          "Sous conditions de revenus",
-          "Oui, conditions assouplies",
-        ],
-        ["Transition vers naturalisation", "Possible", "**Facilitée**"],
+        ["Conjoint de Français", "Mariage depuis au moins 3 ans (1 an pour les Tunisiens), vie commune réelle, conjoint toujours français. Un mariage à l'étranger doit être transcrit en France."],
+        ["Venu par regroupement familial", "Conjoint ou enfant de moins de 19 ans d'un titulaire de la carte de résident, 3 ans de séjour régulier sans interruption."],
+        ["Parent d'enfant français", "Carte « vie privée et familiale » depuis au moins 3 ans, et participation réelle à l'entretien de l'enfant."],
+        ["Enfant ou parent à charge d'un Français", "Enfant de 18 à 21 ans ou à charge ; parent à charge entré avec un visa de long séjour."],
+        ["Réfugié", "Carte délivrée dès que le statut de réfugié est reconnu."],
+        ["Apatride, protection subsidiaire", "Carte pluriannuelle détenue depuis 4 ans."],
+        ["Rente d'accident du travail", "Taux d'incapacité d'au moins 20 %."],
+        ["Victime de violences conjugales, de mariage forcé ou de traite", "Plainte, et condamnation définitive de l'auteur."],
       ],
+      legende: "Source : service-public, fiche F2208, vérifiée le 1er juillet 2026, lue le 20/10/2026.",
+    },
+    {
+      type: "p",
+      texte: "Pour un réfugié, le texte est net. L'article L424-1 du CESEDA dit qu'il « se voit délivrer une carte de résident d'une durée de dix ans » ([Légifrance](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042776581), le site officiel des lois). Dans les autres cas, la préfecture vérifie chaque condition, dont le B1 et l'examen civique. Pour la famille, voyez notre guide du [regroupement familial](/articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais).",
     },
     {
       type: "h2",
-      texte: "Les 5 voies pour obtenir la carte de résident 10 ans",
-      id: "cinq-voies-obtention",
-    },
-    { type: "h3", texte: "Voie n°1 : Conjoint de Français (de plein droit après 3 ans de mariage)" },
-    { type: "p", texte: "**Conditions :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Être marié(e) avec un(e) Français(e) depuis au moins **3 ans**",
-        "Maintenir une **communauté de vie effective et continue** (ne pas être séparés)",
-        "Résider en France depuis au moins **4 ans** (ou 5 ans en cas de mariage célébré à l'étranger)",
-        "Justifier d'un niveau de français **A2 minimum** (ou B1 selon les préfectures)",
-      ],
+      texte: "Combien coûte la carte de résident en 2026 ?",
+      id: "prix-carte-resident",
     },
     {
       type: "p",
-      texte: "**Important :** c'est un droit, pas un pouvoir discrétionnaire du préfet. Si les conditions sont remplies, la carte **doit** être délivrée (article L414-9 du CESEDA).",
+      texte: "Vous payez avec un timbre fiscal : une somme due à l'État, achetée en ligne ou chez un buraliste. Les montants ont augmenté le 1er mai 2026, avec la loi de finances pour 2026 ([service-public, A18881](https://www.service-public.gouv.fr/particuliers/actualites/A18881)).",
     },
-    { type: "h3", texte: "Voie n°2 : Parent d'enfant français (de plein droit)" },
-    { type: "p", texte: "**Conditions :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Être parent d'un enfant de nationalité française résidant en France",
-        "Contribuer effectivement à l'entretien et à l'éducation de l'enfant depuis **au moins 3 ans**",
-        "Résider régulièrement en France depuis **3 ans**",
-        "Ne pas constituer une menace à l'ordre public",
-      ],
-    },
-    {
-      type: "h3",
-      texte: "Voie n°3 : Après 5 ans de séjour régulier (critère d'intégration républicaine)",
-    },
-    {
-      type: "p",
-      texte: "C'est la voie la plus courante. Après 5 ans de résidence continue en France avec un titre de séjour, vous pouvez demander la carte de résident.",
-    },
-    { type: "p", texte: "**Conditions cumulatives :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**5 ans de résidence régulière** ininterrompue (avec des titres de séjour en cours de validité)",
-        "Justifier de **moyens d'existence suffisants** (au moins le SMIC net pour une personne seule)",
-        "Prouver votre **intégration républicaine** : respect des principes de la République, connaissance de la langue française (A2 minimum), engagement au respect des valeurs essentielles",
-        "Avoir souscrit et respecté le **Contrat d'Intégration Républicaine** (CIR) si vous en avez signé un",
-      ],
-    },
-    {
-      type: "h3",
-      texte: "Voie n°4 : Réfugié ou bénéficiaire de la protection subsidiaire (de plein droit)",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Les **réfugiés statutaires** obtiennent une carte de résident de 10 ans de plein droit dès la reconnaissance du statut par l'OFPRA ou la CNDA",
-        "Les bénéficiaires de la **protection subsidiaire** peuvent l'obtenir après 5 ans de séjour régulier, sous conditions d'intégration",
-      ],
-    },
-    { type: "h3", texte: "Voie n°5 : La carte de résident « longue durée - UE » (après 5 ans)" },
-    {
-      type: "p",
-      texte: "C'est une carte européenne de résident de longue durée, délivrée après 5 ans de séjour légal et ininterrompu. Elle donne des droits supplémentaires :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Possibilité de **s'installer dans un autre pays de l'UE**",
-        "Protection renforcée contre l'éloignement",
-        "Validité de 10 ans, renouvelable",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Conditions :** revenus stables et suffisants, assurance maladie, intégration dans la société française.",
-    },
-    {
-      type: "h2",
-      texte: "Pourquoi la préfecture refuse (même quand vous remplissez les conditions)",
-      id: "pourquoi-prefecture-refuse",
-    },
-    {
-      type: "p",
-      texte: "En théorie, la carte de résident est un **droit** dans certains cas (conjoint de Français, parent d'enfant français, réfugié). En pratique, les préfectures trouvent des motifs pour refuser. Voici les raisons les plus fréquentes.",
-    },
-    { type: "h3", texte: "Raison n°1 : « Menace à l'ordre public »" },
-    {
-      type: "p",
-      texte: "C'est la raison la plus invoquée. Le problème : la notion d'ordre public est **très large**. Les préfectures incluent :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Toute condamnation pénale, même ancienne, même avec sursis",
-        "Des faits de police (main courante, garde à vue) sans condamnation",
-        "Des « notes blanches » des services de renseignement (non vérifiables par le demandeur)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Ce que disent les tribunaux :** la Cour administrative d'appel exige que la menace soit **actuelle et grave**. Une condamnation ancienne, exécutée et non récidivée ne suffit pas.",
-    },
-    { type: "h3", texte: "Raison n°2 : « Intégration républicaine insuffisante »" },
-    {
-      type: "p",
-      texte: "Depuis la loi immigration de 2024, l'intégration républicaine est vérifiée. Les préfectures refusent si :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Vous ne parlez pas suffisamment français (test A2 non réussi ou perception de l'agent)",
-        "Vous n'avez pas suivi les formations du CIR (ou les avez suivies sans assiduité)",
-        "Vous êtes perçu comme « non intégré » (critère subjectif et contestable)",
-      ],
-    },
-    { type: "h3", texte: "Raison n°3 : « Ressources insuffisantes »" },
-    {
-      type: "p",
-      texte: "Pour la voie des 5 ans, la préfecture exige des **ressources stables et suffisantes**. Le seuil officieux :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Personne seule** : au moins le SMIC net (1 398 €/mois en 2026)",
-        "**Couple** : 1,5 SMIC",
-        "**Famille avec enfants** : 1,5 SMIC + 200 € par enfant",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Les préfectures refusent parfois à des personnes qui travaillent en CDI mais à temps partiel.",
-    },
-    { type: "h3", texte: "Raison n°4 : « Communauté de vie rompue » (conjoints de Français)" },
-    {
-      type: "p",
-      texte: "Si vous avez divorcé ou si vous êtes en instance de séparation, la préfecture refuse la carte de résident même si le mariage a duré 3 ans. **Piège classique :** certaines préfectures enquêtent sur la « réalité » de la vie commune (visites inopinées, vérification des adresses).",
-    },
-    { type: "h3", texte: "Raison n°5 : Absences prolongées de France" },
-    {
-      type: "p",
-      texte: "La condition de résidence « continue » est stricte. Si vous vous êtes absenté de France plus de **6 mois consécutifs** (ou plus de 10 mois cumulés sur 5 ans), la préfecture peut considérer que la condition de résidence n'est pas remplie.",
-    },
-    { type: "h3", texte: "La raison inavouée : le quota implicite" },
-    {
-      type: "p",
-      texte: "Certaines préfectures ont des « quotas officieux » de cartes de résident à délivrer. Ce n'est jamais écrit, mais les associations le constatent : quand le « quota » est atteint, les refus se multiplient avec des motifs artificiels.",
-    },
-    {
-      type: "h2",
-      texte: "Les recours contre un refus de carte de résident",
-      id: "recours-refus-carte-resident",
-    },
-    { type: "h3", texte: "Le recours gracieux (dans les 2 mois)" },
-    {
-      type: "p",
-      texte: "Adressez un courrier recommandé au préfet en répondant point par point aux motifs de refus. Joignez toute preuve nouvelle.",
-    },
-    {
-      type: "p",
-      texte: "**Quand ça marche :** quand le refus est basé sur un dossier incomplet ou une erreur de calcul (ressources, durée de séjour).",
-    },
-    { type: "h3", texte: "Le recours contentieux devant le tribunal administratif" },
-    {
-      type: "p",
-      texte: "Le tribunal administratif compétent est celui du département de votre préfecture. Délai : **2 mois** après le refus (ou après le rejet du recours gracieux).",
-    },
-    { type: "p", texte: "**Ce que le juge vérifie :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Le préfet a-t-il respecté la loi ? (Si c'est un droit, la carte doit être délivrée quand les conditions sont remplies)",
-        "Les motifs sont-ils réels et proportionnés ?",
-        "Le préfet a-t-il commis une erreur manifeste d'appréciation ?",
-      ],
-    },
-    { type: "h3", texte: "Le référé-suspension (urgence)" },
-    {
-      type: "p",
-      texte: "Si le refus est doublé d'une OQTF ou d'un non-renouvellement de titre, vous pouvez demander au juge de **suspendre la décision** en urgence (article L521-1 du Code de justice administrative). Condition : un **doute sérieux** sur la légalité de la décision.",
-    },
-    { type: "h3", texte: "Aide juridictionnelle" },
-    {
-      type: "p",
-      texte: "L'aide juridictionnelle est accessible pour contester un refus de carte de résident. Conditions : revenus inférieurs à 1 235 €/mois (aide totale). Le dépôt de la demande d'AJ **suspend le délai de recours**.",
-    },
-    { type: "h3", texte: "Taux de succès des recours en 2026" },
     {
       type: "tableau",
-      entetes: ["Type de recours", "Taux de succès"],
+      entetes: ["Situation", "Montant"],
       lignes: [
-        ["Recours gracieux", "15 à 20 %"],
-        ["Recours contentieux", "35 à 45 %"],
-        ["Référé-suspension", "25 à 35 %"],
+        ["Première carte de résident (cas général)", "**350 €** (300 € de taxe et 50 € de droit de timbre)."],
+        ["Carte longue durée-UE avec un titre encore valable", "**250 €** (200 € et 50 €)."],
+        ["Renouvellement, tarif normal", "**250 €**."],
+        ["Réfugié", "Gratuit."],
+        ["Famille d'un réfugié, première carte", "**50 €**."],
+        ["Rente d'accident du travail", "**150 €**."],
+        ["Victime de violences ou de traite", "Gratuit."],
+        ["Entrée sans visa de long séjour", "**300 €** de plus (droit de visa de régularisation), dont 100 € au dépôt, non remboursables."],
+        ["Demande déposée en retard", "**180 €** de plus, sauf force majeure."],
       ],
+      legende: "Sources : service-public, fiches F2208 et F17359 et actualité A18881, lues le 20/10/2026.",
     },
     {
       type: "p",
-      texte: "**Astuce :** si votre carte est refusée mais que votre carte pluriannuelle est toujours valide, **ne la laissez pas expirer** pendant la procédure contentieuse. Renouvelez-la en parallèle.",
+      texte: "Vous ne payez qu'à la fin, quand la carte est prête. Notre article sur le [timbre fiscal du titre de séjour](/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances) détaille le barème. L'examen civique se paie à part, au centre où vous le passez.",
     },
     {
       type: "h2",
-      texte: "Le renouvellement de la carte de résident 10 ans",
-      id: "renouvellement-carte-resident",
+      texte: "Comment faire la demande ?",
+      id: "demande",
     },
-    { type: "h3", texte: "Le renouvellement est-il automatique ?" },
-    { type: "p", texte: "**Oui**, sous deux conditions :" },
     {
       type: "liste",
       style: "numeros",
       items: [
-        "Vous résidez toujours en France (vous ne vous êtes pas installé à l'étranger)",
-        "Vous ne constituez pas une menace grave à l'ordre public",
+        "Vérifiez votre cas et vos conditions sur la fiche service-public qui vous concerne.",
+        "Passez le test de français et l'examen civique, si vous y êtes soumis. Le [simulateur d'éligibilité](/eligibilite-examen-civique) vous dit en une minute si l'examen vous concerne.",
+        "Déposez la demande sur l'ANEF, au plus tôt 4 mois et au plus tard 2 mois avant la fin de votre titre actuel (F2208).",
+        "Gardez l'attestation de dépôt que le site vous remet tout de suite.",
+        "Retirez la carte à la préfecture quand elle vous prévient qu'elle est prête.",
       ],
     },
     {
       type: "p",
-      texte: "Le renouvellement est dit **« de plein droit »** : la préfecture ne peut pas vous le refuser si vous remplissez ces conditions minimales.",
-    },
-    { type: "h3", texte: "Quand renouveler ?" },
-    {
-      type: "p",
-      texte: "Déposez votre demande de renouvellement entre **4 et 2 mois avant l'expiration** de votre carte. Si vous dépassez la date d'expiration, vous êtes en situation irrégulière, et vous pouvez perdre le bénéfice de la carte de résident.",
-    },
-    { type: "h3", texte: "Documents à fournir pour le renouvellement" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Formulaire de demande (Cerfa ou formulaire ANEF en ligne)",
-        "Carte de résident expirée ou expirant",
-        "Pièce d'identité (passeport en cours de validité)",
-        "3 photos d'identité conformes",
-        "Justificatif de domicile de moins de 6 mois",
-        "Timbre fiscal de **269 €** (en 2026)",
-        "Déclaration sur l'honneur de respect des valeurs de la République (nouveau depuis 2024)",
-      ],
-    },
-    { type: "h3", texte: "Les pièges au renouvellement" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Absence prolongée de France** : si vous avez passé plus de **3 ans consécutifs** hors de France, votre carte de résident est considérée comme périmée. Vous devez recommencer la procédure depuis le début",
-        "**Non-respect du CIR** : si vous n'avez pas suivi les formations obligatoires du Contrat d'Intégration Républicaine, le renouvellement peut être refusé",
-        "**Changement de situation familiale** : un divorce ne remet pas en cause le renouvellement si la carte a été délivrée depuis plus de 4 ans",
-      ],
-    },
-    { type: "h3", texte: "La carte de résident permanent" },
-    {
-      type: "p",
-      texte: "Après **votre premier renouvellement** (soit après 20 ans de résidence continue ou 2ème carte de 10 ans), vous pouvez demander une **carte de résident permanent** (article L414-10 du CESEDA). Cette carte est valable à vie et ne nécessite plus de renouvellement, seulement une mise à jour de la photo tous les 10 ans.",
+      texte: "Quelques cas passent encore par un rendez-vous en préfecture, comme les apatrides ou la rente d'accident du travail. Pour la carte longue durée-UE, vous pouvez aussi déposer en préfecture dès que vous remplissez les conditions (F17359).",
     },
     {
       type: "h2",
-      texte: "De la carte de résident à la nationalité française : le parcours complet",
-      id: "carte-resident-naturalisation",
+      texte: "Pourquoi la préfecture peut refuser, et que faire ?",
+      id: "pourquoi-prefecture-refuse",
     },
-    { type: "h3", texte: "La carte de résident facilite-t-elle la naturalisation ?" },
     {
       type: "p",
-      texte: "**Oui, considérablement.** La carte de résident prouve votre stabilité administrative et votre ancrage en France. Elle est un **signal très positif** dans un dossier de naturalisation.",
-    },
-    { type: "h3", texte: "Le parcours type en 2026" },
-    {
-      type: "tableau",
-      entetes: ["Étape", "Durée", "Titre obtenu"],
-      lignes: [
-        ["Arrivée en France (visa long séjour)", "Année 0", "VLS-TS / Carte temporaire 1 an"],
-        ["Premier renouvellement", "Année 1", "Carte pluriannuelle 4 ans"],
-        ["Demande de carte de résident", "Année 5", "Carte de résident 10 ans"],
-        ["Demande de naturalisation", "Année 5+", "Nationalité française"],
-      ],
-    },
-    { type: "h3", texte: "Peut-on demander la nationalité sans carte de résident ?" },
-    {
-      type: "p",
-      texte: "**Oui.** La carte de résident n'est pas une condition préalable à la naturalisation. Vous pouvez demander la nationalité dès que vous remplissez les conditions (5 ans de résidence, niveau B1, intégration, ressources). Mais avoir la carte de résident **renforce** votre dossier.",
-    },
-    { type: "h3", texte: "Le conseil stratégique" },
-    {
-      type: "p",
-      texte: "Si vous êtes éligible à la carte de résident ET à la naturalisation en même temps, **demandez les deux en parallèle**. Pourquoi ?",
+      texte: "Un refus vient le plus souvent d'une condition non remplie : niveau B1 non prouvé, examen non réussi, ressources trop faibles, absences trop longues, vie commune rompue. Il peut aussi venir d'une menace pour l'ordre public (F2208).",
     },
     {
       type: "liste",
-      style: "puces",
+      style: "alertes",
       items: [
-        "Si la naturalisation est refusée, vous avez la carte de résident comme « filet de sécurité »",
-        "La carte de résident vous donne 10 ans de tranquillité pour re-tenter la naturalisation",
-        "Certaines préfectures acceptent plus facilement la naturalisation si vous avez déjà la carte de résident",
+        "Si le préfet envisage un refus, il peut consulter la commission du titre de séjour. Vous êtes convoqué au moins 15 jours avant, et vous pouvez venir avec un avocat et un interprète.",
+        "Un refus écrit est en général suivi d'une OQTF : c'est l'ordre de quitter la France. Le délai pour aller au tribunal administratif (le juge des décisions de l'État) est alors de 48 heures, 15 jours ou 30 jours, selon le type d'OQTF.",
+        "Sans réponse au bout de 4 mois, la demande est refusée sans le dire. Vous avez alors 2 mois pour agir.",
       ],
     },
-    { type: "h3", texte: "Chiffres clés 2026" },
     {
-      type: "tableau",
-      entetes: ["Indicateur", "Valeur"],
-      lignes: [
-        ["Cartes de résident délivrées/an", "~130 000"],
-        ["Taux d'acceptation moyen", "~45 %"],
-        ["Délai moyen d'instruction", "3 à 6 mois"],
-        ["Renouvellements automatiques", "~95 % d'acceptation"],
-        ["Coût du renouvellement (timbre fiscal)", "269 €"],
-      ],
+      type: "p",
+      texte: "Dans ce dernier cas, deux voies existent (F2208). Le recours gracieux est une lettre au préfet qui lui demande de changer d'avis. Le recours contentieux est une demande au tribunal administratif. Une aide de l'État peut payer l'avocat : c'est l'aide juridictionnelle.",
+    },
+    {
+      type: "p",
+      texte: "Chaque dossier est différent. Pour votre cas, adressez-vous à un avocat, à une association comme La Cimade, ou au Défenseur des droits, une autorité qui aide gratuitement face à l'administration. Notre guide [refus de titre de séjour et OQTF](/articles/refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france) explique les recours pas à pas.",
+    },
+    {
+      type: "h2",
+      texte: "Renouvellement et carte de résident permanent",
+      id: "renouvellement-carte-resident",
+    },
+    {
+      type: "p",
+      texte: "Le renouvellement ne demande pas de repasser l'examen civique (F39530). Il peut être refusé dans deux cas : une menace grave pour l'ordre public, ou si vous ne prouvez pas que vous vivez vraiment en France. Cela veut dire y avoir le centre de votre vie et y rester au moins 6 mois par année civile (F2208).",
+    },
+    {
+      type: "p",
+      texte: "Attention aux longs départs : la carte n'est plus valable si vous quittez la France plus de **3 ans de suite** (F2208). Pour la carte longue durée-UE, la limite est de 3 ans hors de l'Union, ou 6 ans hors de France (F17359). Les étapes sont dans notre guide du [renouvellement de la carte de résident](/articles/renouvellement-carte-resident-10-ans-2026-conditions-documents-anef).",
+    },
+    {
+      type: "p",
+      texte: "La carte de **résident permanent** vous est proposée après 2 cartes de résident de suite. Elle l'est aussi si vous avez plus de 60 ans au renouvellement. Contrairement à une idée répandue, elle n'est pas « à vie » : service-public indique qu'elle vaut 10 ans et se renouvelle. Elle coûte 350 € ([fiche F11201](https://www.service-public.gouv.fr/particuliers/vosdroits/F11201)).",
+    },
+    {
+      type: "h2",
+      texte: "Faut-il la carte de résident pour demander la nationalité ?",
+      id: "carte-resident-naturalisation",
+    },
+    {
+      type: "p",
+      texte: "Non. La naturalisation a ses propres conditions, et la carte de résident n'en fait pas partie. Les deux démarches sont séparées. Notre guide de la [naturalisation française](/articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet) les présente.",
     },
     {
       type: "encadre",
       titre: "À retenir",
-      texte: "La carte de résident 10 ans reste le titre de séjour le plus puissant en France : stabilité, liberté de travail, protection contre l'éloignement et tremplin vers la nationalité. Malgré le durcissement des pratiques préfectorales, les voies d'obtention sont clairement définies par la loi, et les recours fonctionnent. Préparez un dossier solide, anticipez les motifs de refus, et n'hésitez pas à contester une décision injuste devant le tribunal administratif. Votre avenir en France en dépend.",
+      texte: "Depuis le 1er janvier 2026, une première carte de résident demande le niveau B1 et l'examen civique, sauf après 65 ans. Elle coûte 350 € dans le cas général.\nLe geste le plus utile : préparez le test de français et l'examen civique avant de déposer, car la préfecture demande ces deux preuves dans le dossier.",
       ton: "bleu",
+    },
+  ],
+  faq: [
+    {
+      question: "Qui peut avoir la carte de résident de 10 ans ?",
+      reponse: "Les personnes qui vivent en France de façon régulière depuis 5 ans, avec des ressources au moins égales au Smic. Certaines situations l'ouvrent plus tôt : conjoint de Français marié depuis 3 ans, parent d'enfant français, famille venue par regroupement familial, réfugié. Dans tous les cas, la préfecture vérifie l'intégration, dont le B1 et l'examen civique.",
+    },
+    {
+      question: "Quel niveau de français pour la carte de résident en 2026 ?",
+      reponse: "Le niveau B1, exigé pour une première carte de résident depuis le 1er janvier 2026. Vous le prouvez avec un diplôme comme le DELF, un diplôme français d'au moins niveau 3, ou un test TCF ou TEF de moins de 2 ans. Les personnes de plus de 65 ans ne sont pas concernées.",
+    },
+    {
+      question: "Quel est le prix de la carte de résident ?",
+      reponse: "Depuis le 1er mai 2026, une première carte de résident coûte 350 € dans le cas général : 300 € de taxe et 50 € de droit de timbre, en timbre fiscal. Un renouvellement coûte 250 €. La carte est gratuite pour un réfugié, et 300 € s'ajoutent si vous êtes entré sans visa de long séjour.",
+    },
+    {
+      question: "Peut-on perdre sa carte de résident ?",
+      reponse: "Oui. Elle n'est plus valable si vous quittez la France plus de 3 ans de suite. Au renouvellement, la préfecture peut aussi refuser en cas de menace grave pour l'ordre public. Elle peut enfin refuser si vous ne prouvez pas que vous vivez en France au moins 6 mois par année civile.",
+    },
+  ],
+  videos: [
+    { id: "nXimESI0mQo", titre: "Nouvelle loi immigration : le niveau exigé aux tests de français (France 24)" },
+  ],
+  sources: [
+    {
+      titre: "Service-public : carte de résident de 10 ans d'un étranger en France (F2208)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2208",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : carte de résident de longue durée-UE, étranger en France depuis 5 ans (F17359)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17359",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : carte de résident permanent d'un étranger en France (F11201)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11201",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : justifier de sa connaissance du français pour une carte de résident ou une carte pluriannuelle (F34501)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34501",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : carte pluriannuelle et carte de résident, comment passer l'examen civique ? (F39530)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F39530",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Service-public : titres de séjour, hausse du montant des taxes à partir du 1er mai 2026 (A18881)",
+      url: "https://www.service-public.gouv.fr/particuliers/actualites/A18881",
+      type: "officiel",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "Légifrance : article L424-1 du CESEDA (carte de résident du réfugié)",
+      url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042776581",
+      type: "juridique",
+      luLe: "2026-10-20",
+    },
+    {
+      titre: "France 24 : nouvelle loi immigration, le niveau exigé aux tests de français (vidéo)",
+      url: "https://www.youtube.com/watch?v=nXimESI0mQo",
+      type: "video",
+      luLe: "2026-10-20",
     },
   ],
 };

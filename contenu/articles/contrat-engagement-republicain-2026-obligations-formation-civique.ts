@@ -630,7 +630,7 @@ const article: Article = {
       ancre: "S'inscrire au test civique après la formation civique",
     },
     {
-      slug: "premiers-resultats-test-civique-2026-taux-reussite-retours-experience",
+      slug: "statistiques-test-civique-2026-taux-reussite-72-pourcent",
       ancre: "Résultats du test civique 2026",
     },
     { slug: "visa-long-sejour-vls-ts-validation-ofii-2026", ancre: "VLS-TS et signature du CIR" },

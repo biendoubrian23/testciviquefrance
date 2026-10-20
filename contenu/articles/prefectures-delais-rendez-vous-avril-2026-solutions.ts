@@ -122,8 +122,8 @@ const article: Article = {
     },
     { slug: "recepisse-titre-de-sejour-droits-duree-voyage", ancre: "Le récépissé pendant l'attente" },
     {
-      slug: "circulaire-avril-2026-delais-naturalisation-reduits-12-mois-maghreb",
-      ancre: "Délais naturalisation réduits (circulaire)",
+      slug: "circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie",
+      ancre: "Naturalisation et Maghreb : ce que disent les textes",
     },
   ],
 };

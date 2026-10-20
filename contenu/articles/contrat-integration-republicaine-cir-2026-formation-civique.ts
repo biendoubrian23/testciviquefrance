@@ -472,7 +472,7 @@ const article: Article = {
       ancre: "Éviter les erreurs au test civique",
     },
     {
-      slug: "titres-de-sejour-france-guide-complet-2026",
+      slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement",
       ancre: "Guide des titres de séjour en France",
     },
     {

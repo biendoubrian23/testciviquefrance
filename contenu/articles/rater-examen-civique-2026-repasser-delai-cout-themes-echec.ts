@@ -131,7 +131,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Pour trouver le centre le plus proche et comparer les délais, consultez notre [liste des centres agréés](/articles/nouveaux-centres-test-civique-mai-2026-liste-complete) et notre guide d'[inscription pas à pas](/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire).",
+      texte: "Pour trouver le centre le plus proche et comparer les délais, consultez notre [liste des centres agréés](/articles/centres-agrees-examen-civique-2026) et notre guide d'[inscription pas à pas](/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire).",
     },
     {
       type: "h2",

@@ -311,7 +311,7 @@ const article: Article = {
       type: "liste",
       style: "numeros",
       items: [
-        "**Inscrivez-vous tôt.** Deux opérateurs agréés seulement pour toute la France (CCIP et FEI) : comptez souvent **4 à 8 semaines** pour un créneau. Voir notre [guide d'inscription](/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire) et la [liste des centres agréés](/articles/nouveaux-centres-test-civique-mai-2026-liste-complete).",
+        "**Inscrivez-vous tôt.** Deux opérateurs agréés seulement pour toute la France (CCIP et FEI) : comptez souvent **4 à 8 semaines** pour un créneau. Voir notre [guide d'inscription](/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire) et la [liste des centres agréés](/articles/centres-agrees-examen-civique-2026).",
       ],
     },
     { type: "p", texte: "**Si le résultat est « à confirmer »** 📩" },

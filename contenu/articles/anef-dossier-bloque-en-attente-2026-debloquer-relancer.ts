@@ -424,7 +424,7 @@ const article: Article = {
     { type: "p", texte: "**Profitez du temps d'attente pour préparer la suite**" },
     {
       type: "p",
-      texte: "Si votre objectif final est la **naturalisation française**, profitez de ces mois d'attente pour préparer le **test civique de naturalisation** (obligatoire depuis le décret du 1er janvier 2026). Le test comprend **40 questions** sur les valeurs, l'histoire, la géographie et les institutions françaises, avec un seuil de **80 % de réussite** (32/40). Une préparation sérieuse de 4 à 8 semaines avec [notre guide officiel](/articles/comment-reussir-test-civique-premier-coup) vous permettra d'arriver serein le jour J. De plus, [le niveau B1 obligatoire](/articles/niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026) doit être validé en parallèle.",
+      texte: "Si votre objectif final est la **naturalisation française**, profitez de ces mois d'attente pour préparer le **test civique de naturalisation** (obligatoire depuis le décret du 1er janvier 2026). Le test comprend **40 questions** sur les valeurs, l'histoire, la géographie et les institutions françaises, avec un seuil de **80 % de réussite** (32/40). Une préparation sérieuse de 4 à 8 semaines avec [notre guide officiel](/articles/comment-reussir-test-civique-premier-coup) vous permettra d'arriver serein le jour J. De plus, [le niveau B1 obligatoire](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation) doit être validé en parallèle.",
     },
     { type: "p", texte: "**Connaître vos recours d'avance**" },
     {

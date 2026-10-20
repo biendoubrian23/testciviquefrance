@@ -276,7 +276,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Voir notre guide : [Titre de séjour étudiant : inscription, renouvellement, droits](/articles/etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester)",
+      texte: "Voir notre guide : [Titre de séjour étudiant : inscription, renouvellement, droits](/articles/titre-sejour-etudiant-france-guide-2025)",
     },
     { type: "h2", texte: "Questions fréquentes", id: "faq" },
     { type: "h2", texte: "Sources officielles", id: "sources" },

@@ -218,7 +218,7 @@ const article: Article = {
     },
   ],
   aLireAussi: [
-    { slug: "titres-de-sejour-france-guide-complet-2026", ancre: "Guide complet des titres de séjour" },
+    { slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement", ancre: "Guide complet des titres de séjour" },
     {
       slug: "renouvellement-titre-sejour-2026-anef-prefecture-documents-delais",
       ancre: "Renouveler son titre de séjour",

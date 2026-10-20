@@ -83,12 +83,15 @@ const nextConfig = {
         destination: 'https://www.testciviquefrance.fr/:path*',
         permanent: true,
       },
-      // Doublon fusionné le 20/10/2026 (docs/seo/JOURNAL.md, geste `fusionne`) : 301, comme le demande la doctrine.
-      {
-        source: '/articles/hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux',
-        destination: '/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances',
+      // Les doublons fusionnés (docs/seo/JOURNAL.md, gestes `fusionne`) : 301, comme le demande la doctrine.
+      // Une seule liste, `scripts/seo/anciennes-adresses.json > redirigees`, que le banc relit aussi
+      // (scripts/verifier.mjs) : une fusion s'y ajoute, jamais ici, et toujours vers l'article gardé final
+      // (pas de chaîne de redirections).
+      ...Object.entries(require('./scripts/seo/anciennes-adresses.json').redirigees).map(([source, destination]) => ({
+        source,
+        destination,
         statusCode: 301,
-      },
+      })),
       {
         source: '/prix',
         destination: '/articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture',
@@ -104,10 +107,10 @@ const nextConfig = {
         destination: '/articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture',
         permanent: true,
       },
-      // Redirects 2026 → 2025 pour articles déjà indexés par Google
+      // Anciennes adresses en 2026 vers l'article en ligne ; trois d'entre elles visent directement l'article gardé des fusions du 20/10/2026, sans chaîne
       {
         source: '/articles/naturalisation-francaise-conditions-demarches-2026',
-        destination: '/articles/naturalisation-francaise-conditions-demarches-2025',
+        destination: '/articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet',
         permanent: true,
       },
       {
@@ -117,7 +120,7 @@ const nextConfig = {
       },
       {
         source: '/articles/carte-resident-10-ans-obtention-2026',
-        destination: '/articles/carte-resident-10-ans-obtention-2025',
+        destination: '/articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture',
         permanent: true,
       },
       {
@@ -127,7 +130,7 @@ const nextConfig = {
       },
       {
         source: '/articles/regroupement-familial-france-procedure-2026',
-        destination: '/articles/regroupement-familial-france-procedure-2025',
+        destination: '/articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais',
         permanent: true,
       },
       {

@@ -246,13 +246,13 @@ const article: Article = {
     },
   ],
   aLireAussi: [
-    { slug: "regroupement-familial-france-procedure-2025", ancre: "Regroupement familial en France" },
+    { slug: "regroupement-familial-france-2026-guide-complet-conditions-documents-delais", ancre: "Regroupement familial en France" },
     {
       slug: "attestation-accueil-inviter-famille-france-2026-mairie-conditions",
       ancre: "Attestation d'accueil pour la famille",
     },
     {
-      slug: "titres-de-sejour-france-guide-complet-2026",
+      slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement",
       ancre: "Titre de séjour vie privée et familiale",
     },
     {

@@ -245,7 +245,7 @@ const article: Article = {
     },
     {
       type: "encadre",
-      texte: "Pour tout comprendre sur les niveaux et les certifications reconnues, consultez notre guide : [Niveau de langue pour la nationalité et le titre de séjour](/articles/niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026).",
+      texte: "Pour tout comprendre sur les niveaux et les certifications reconnues, consultez notre guide : [Niveau de langue pour la nationalité et le titre de séjour](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation).",
       ton: "bleu",
     },
     { type: "p", texte: "**Volet 2 : l'examen civique**" },

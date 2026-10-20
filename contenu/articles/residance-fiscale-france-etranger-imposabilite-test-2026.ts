@@ -844,10 +844,10 @@ const article: Article = {
       slug: "titre-sejour-declaration-impots-etranger-droits-obligations-2026",
       ancre: "Résidance fiscale et titre de séjour",
     },
-    { slug: "titres-de-sejour-france-guide-complet-2026", ancre: "Les types de titres de séjour" },
+    { slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement", ancre: "Les types de titres de séjour" },
     {
-      slug: "guide-etudiants-etrangers-france-titres-demarches-2026",
-      ancre: "Résidance fiscale des étudiants",
+      slug: "titre-sejour-etudiant-france-guide-2025",
+      ancre: "Titre de séjour étudiant en France",
     },
   ],
 };

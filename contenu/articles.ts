@@ -120,10 +120,8 @@ import anefEtudiantEtranger2026 from "./articles/anef-etudiant-etranger-2026";
 import anefFranceconnectBloque2026ErreurConnexionSolutions from "./articles/anef-franceconnect-bloque-2026-erreur-connexion-solutions";
 import anefMonCompteConnexionProblemeSolution2026 from "./articles/anef-mon-compte-connexion-probleme-solution-2026";
 import antsDemarchesEnLigne2026GuideComplet from "./articles/ants-demarches-en-ligne-2026-guide-complet";
-import antsGouvFr2026ToutesDemarchesGuideComplet from "./articles/ants-gouv-fr-2026-toutes-demarches-guide-complet";
 import antsPermisConduire2026EchangeDemandeSuivi from "./articles/ants-permis-conduire-2026-echange-demande-suivi";
 import antsPermisConduireCategorieB2026DemandeEtapesTarifs from "./articles/ants-permis-conduire-categorie-b-2026-demande-etapes-tarifs";
-import antsPermisConduireEnLigne2026Etapes from "./articles/ants-permis-conduire-en-ligne-2026-etapes";
 import antsRdvIndisponiblePrefecture2026AlternativesSolutions from "./articles/ants-rdv-indisponible-prefecture-2026-alternatives-solutions";
 import arnaquesEtrangersFrance2026FauxAvocatsPrefectureAnef from "./articles/arnaques-etrangers-france-2026-faux-avocats-prefecture-anef";
 import attentatDejoueParis2026SecuriteNationaleVigipirateTestCiviqu from "./articles/attentat-dejoue-paris-2026-securite-nationale-vigipirate-test-civique";
@@ -135,12 +133,10 @@ import cadreGeneralExamenCivique from "./articles/cadre-general-examen-civique";
 import campusFranceEtudeFrance2026VisaInscriptionProcedure from "./articles/campus-france-etude-france-2026-visa-inscription-procedure";
 import carteDeSejourFrance2026GuideCompletTypesDemarchesRenouvellem from "./articles/carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement";
 import carteResident10AnsFrance2026ConditionsObtentionRefusPrefectu from "./articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture";
-import carteResident10AnsObtention2025 from "./articles/carte-resident-10-ans-obtention-2025";
 import carteSejourPluriannuelleGuideComplet2025 from "./articles/carte-sejour-pluriannuelle-guide-complet-2025";
 import centresAgreesExamenCivique2026 from "./articles/centres-agrees-examen-civique-2026";
 import changementStatutEtudiantSalarie2026DemarchesAnef from "./articles/changement-statut-etudiant-salarie-2026-demarches-anef";
 import chomagePerteEmploiEtrangerFrance2026AreFranceTravailDroits from "./articles/chomage-perte-emploi-etranger-france-2026-are-france-travail-droits";
-import circulaireAvril2026DelaisNaturalisationReduits12MoisMaghreb from "./articles/circulaire-avril-2026-delais-naturalisation-reduits-12-mois-maghreb";
 import circulaireAvril2026NaturalisationMaghrebMarocAlgerieTunisie from "./articles/circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie";
 import commentReussirTestCiviquePremierCoup from "./articles/comment-reussir-test-civique-premier-coup";
 import compteAnefCreer2026GuidePasAPas from "./articles/compte-anef-creer-2026-guide-pas-a-pas";
@@ -153,7 +149,6 @@ import coutRegularisationSituationFrance2026BudgetComplet from "./articles/cout-
 import craRetentionEtrangers7Jours7Mois2026DroitsRecoursExpulsion from "./articles/cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion";
 import cultureFrancaisePatrimoineMonumentsArtistes from "./articles/culture-francaise-patrimoine-monuments-artistes";
 import declarationImpotsEtrangerFrance2026ObligationsSeuilsRisques from "./articles/declaration-impots-etranger-france-2026-obligations-seuils-risques";
-import declarationImpotsEtrangersFrance2026GuidePratiqueFormulaires from "./articles/declaration-impots-etrangers-france-2026-guide-pratique-formulaires-dates-remboursement";
 import declarationImpotsNonResidentFrance2026Formulaire2042NrRevenu from "./articles/declaration-impots-non-resident-france-2026-formulaire-2042-nr-revenus-source-francaise";
 import declarationImpotsPremiereAnneeFranceEtranger2026GuideDebutan from "./articles/declaration-impots-premiere-annee-france-etranger-2026-guide-debutant";
 import delfTcfDilfCertificationFrancais2026TitreSejourNaturalisatio from "./articles/delf-tcf-dilf-certification-francais-2026-titre-sejour-naturalisation-laquelle-choisir";
@@ -169,14 +164,12 @@ import droitDeVoteElectionsFrance2026GuideCitoyen from "./articles/droit-de-vote
 import droitsDevoirsCitoyensFranceGuide from "./articles/droits-devoirs-citoyens-france-guide";
 import droitsEtrangersFrance2026CeQueVousNeSaviezPas from "./articles/droits-etrangers-france-2026-ce-que-vous-ne-saviez-pas";
 import echangePermisConduireEtrangerFrance2026PaysAccordsListeCompl from "./articles/echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete";
-import echangerPermisConduireEtrangerFrance2026AntsDemarches from "./articles/echanger-permis-conduire-etranger-france-2026-ants-demarches";
 import electionsMunicipales2026BallyBagayokoValeursRepublicainesTes from "./articles/elections-municipales-2026-bally-bagayoko-valeurs-republicaines-test-civique";
 import entretienNaturalisation2026PreparationAssimilationPrefecture from "./articles/entretien-naturalisation-2026-preparation-assimilation-prefecture";
 import entretienVisaConsulatAmbassadeFrance2026ReussirVisaLongSejou from "./articles/entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour";
 import envoyerArgentPaysEtrangerFranceFiscSeuilDeclaration2026 from "./articles/envoyer-argent-pays-etranger-france-fisc-seuil-declaration-2026";
 import erreursFrequentesTestCivique2026PiegesQcm from "./articles/erreurs-frequentes-test-civique-2026-pieges-qcm";
 import espagneRegularisation500000SansPapiers2026PourquoiPasFrance from "./articles/espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france";
-import etudiantEtrangerFrance2026VisaCampusFranceTravailFamilleDroi from "./articles/etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester";
 import examenCiviqueCarteDeResident from "./articles/examen-civique-carte-de-resident";
 import examenCivique2026ExemplesQuestionsCorrigees from "./articles/examen-civique-2026-exemples-questions-corrigees";
 import examenCiviqueObligatoireCarteSejourPluriannuelle2026 from "./articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026";
@@ -184,7 +177,6 @@ import famillePasseportTalentFrance2026ConjointEnfantsDroitsTitre from "./articl
 import fraisInscriptionUniversitesFranceEtudiantsHorsUe2026 from "./articles/frais-inscription-universites-france-etudiants-hors-ue-2026";
 import geographieFranceRegionsDepartementsVilles from "./articles/geographie-france-regions-departements-villes";
 import guideAnefComplet2026CreerCompteDeposerDemande from "./articles/guide-anef-complet-2026-creer-compte-deposer-demande";
-import guideEtudiantsEtrangersFranceTitresDemarches2026 from "./articles/guide-etudiants-etrangers-france-titres-demarches-2026";
 import hausseTaxesTitresSejourMai2026NouveauxTarifsPrefectureLoiFin from "./articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances";
 import inscriptionTestCivique2026OuQuandCommentSinscrire from "./articles/inscription-test-civique-2026-ou-quand-comment-sinscrire";
 import institutionsFrancaisesPresidentAssembleeSenat from "./articles/institutions-francaises-president-assemblee-senat";
@@ -199,27 +191,21 @@ import naturalisationDecretMariage2026ComparatifConditionsDelais from "./article
 import naturalisationEnfantMineurFrance2026EffetCollectifDeclaratio from "./articles/naturalisation-enfant-mineur-france-2026-effet-collectif-declaration";
 import naturalisationFrancaise2AnsRaccourcisLegauxAccelerer2026 from "./articles/naturalisation-francaise-2-ans-raccourcis-legaux-accelerer-2026";
 import naturalisationFrancaise2026DelaisConditionsPiegesDossierComp from "./articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet";
-import naturalisationFrancaiseConditionsDemarches2025 from "./articles/naturalisation-francaise-conditions-demarches-2025";
 import naturalisationFrancaiseRefusee2026RaisonsCacheesContesterRec from "./articles/naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours";
-import niveauDeLangueFrancaisNationaliteTitreSejourA2B12026 from "./articles/niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026";
 import niveauFrancaisA2B1B22026TitreSejourNaturalisation from "./articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation";
-import nouveauxCentresTestCiviqueMai2026ListeComplete from "./articles/nouveaux-centres-test-civique-mai-2026-liste-complete";
 import oqtf2026DroitsRecoursExpulsionAideJuridictionnelleTestCiviqu from "./articles/oqtf-2026-droits-recours-expulsion-aide-juridictionnelle-test-civique";
 import oqtfEnfantsFrance2026ExpulsionEnfantsFrancaisScolarises from "./articles/oqtf-enfants-france-2026-expulsion-enfants-francais-scolarises";
 import oqtfEtudiantEtrangerFrance2026RecoursDroitsDefense from "./articles/oqtf-etudiant-etranger-france-2026-recours-droits-defense";
-import ouvrirCompteAnef2026EtapesDocumentsProblemes from "./articles/ouvrir-compte-anef-2026-etapes-documents-problemes";
 import ouvrirCompteBancaireFranceEtranger2026BanquesNeoBanquesDroit from "./articles/ouvrir-compte-bancaire-france-etranger-2026-banques-neo-banques-droit-compte";
 import papiersDocumentsObtenirArriveeFrance2026OuCommentDemander from "./articles/papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander";
 import passeportTalent2026ConditionsMetiersDemarches from "./articles/passeport-talent-2026-conditions-metiers-demarches";
 import passeportTalentChercheurFrance2026ConditionsDemarchesSalaire from "./articles/passeport-talent-chercheur-france-2026-conditions-demarches-salaire";
 import passeportTalentCreationEntrepriseFrance2026ConditionsInvesti from "./articles/passeport-talent-creation-entreprise-france-2026-conditions-investissement";
 import passeportTalentEtudiantVisiteurNonSoumisExamenCivique2026Cir from "./articles/passeport-talent-etudiant-visiteur-non-soumis-examen-civique-2026-cir";
-import passeportTalentFrance2026GuideComplet10CategoriesFamilleNatu from "./articles/passeport-talent-france-2026-guide-complet-10-categories-famille-naturalisation";
 import passeportTalentSalarieQualifie2026SalaireConditionsProcedure from "./articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure";
 import penurieCarburantPrixEssence2026EconomieFrancaiseTestCivique from "./articles/penurie-carburant-prix-essence-2026-economie-francaise-test-civique";
 import prefecturesDelaisRendezVousAvril2026Solutions from "./articles/prefectures-delais-rendez-vous-avril-2026-solutions";
 import premiersPasFranceEtrangerBanqueLogementCafAmeli from "./articles/premiers-pas-france-etranger-banque-logement-caf-ameli";
-import premiersResultatsTestCivique2026TauxReussiteRetoursExperienc from "./articles/premiers-resultats-test-civique-2026-taux-reussite-retours-experience";
 import preparerDepartFrance2026ChecklistDocumentsAvantAvion from "./articles/preparer-depart-france-2026-checklist-documents-avant-avion";
 import primeRetourVolontaireFrance2026ConditionsDemarches from "./articles/prime-retour-volontaire-france-2026-conditions-demarches";
 import prixTestCivique2026CoutTarifTitreSejourPrefecture from "./articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture";
@@ -232,7 +218,6 @@ import reformeTestCivique50QuestionsJuin2026 from "./articles/reforme-test-civiq
 import refusNaturalisation7Erreurs90PourcentCandidats from "./articles/refus-naturalisation-7-erreurs-90-pourcent-candidats";
 import refusTitreSejourOqtfRecours2026GuideEtrangersFrance from "./articles/refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france";
 import regroupementFamilialFrance2026GuideCompletConditionsDocument from "./articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais";
-import regroupementFamilialFranceProcedure2025 from "./articles/regroupement-familial-france-procedure-2025";
 import regularisationSansPapiersFrance2026MethodeDemarchesCirculair from "./articles/regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls";
 import renouvellementCarteResident10Ans2026ConditionsDocumentsAnef from "./articles/renouvellement-carte-resident-10-ans-2026-conditions-documents-anef";
 import renouvellementTitreSejour2026AnefPrefectureDocumentsDelais from "./articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais";
@@ -252,9 +237,7 @@ import titreSejourEtrangerMaladeRaisonsSante2026 from "./articles/titre-sejour-e
 import titreSejourEtudiantFranceGuide2025 from "./articles/titre-sejour-etudiant-france-guide-2025";
 import titreSejourExpireVacancesEtrangerFranceQueFaireVisaRetour from "./articles/titre-sejour-expire-vacances-etranger-france-que-faire-visa-retour";
 import titreSejourPerduVoleExpire2026DemarchesUrgence from "./articles/titre-sejour-perdu-vole-expire-2026-demarches-urgence";
-import titresDeSejourFranceGuideComplet2026 from "./articles/titres-de-sejour-france-guide-complet-2026";
 import toutSavoirExamenCivique2026 from "./articles/tout-savoir-examen-civique-2026";
-import travaillerEnFranceGuidePermisContratsEtrangers2026 from "./articles/travailler-en-france-guide-permis-contrats-etrangers-2026";
 import travaillerFranceEtrangerAutorisationDroits from "./articles/travailler-france-etranger-autorisation-droits";
 import travaillerSansPapiersFrance2026RisquesRegularisation from "./articles/travailler-sans-papiers-france-2026-risques-regularisation";
 import unionEuropeenneFranceInstitutionsCitoyennete from "./articles/union-europeenne-france-institutions-citoyennete";
@@ -419,10 +402,8 @@ export const ARTICLES: readonly Article[] = [
   anefFranceconnectBloque2026ErreurConnexionSolutions,
   anefMonCompteConnexionProblemeSolution2026,
   antsDemarchesEnLigne2026GuideComplet,
-  antsGouvFr2026ToutesDemarchesGuideComplet,
   antsPermisConduire2026EchangeDemandeSuivi,
   antsPermisConduireCategorieB2026DemandeEtapesTarifs,
-  antsPermisConduireEnLigne2026Etapes,
   antsRdvIndisponiblePrefecture2026AlternativesSolutions,
   arnaquesEtrangersFrance2026FauxAvocatsPrefectureAnef,
   attentatDejoueParis2026SecuriteNationaleVigipirateTestCiviqu,
@@ -434,12 +415,10 @@ export const ARTICLES: readonly Article[] = [
   campusFranceEtudeFrance2026VisaInscriptionProcedure,
   carteDeSejourFrance2026GuideCompletTypesDemarchesRenouvellem,
   carteResident10AnsFrance2026ConditionsObtentionRefusPrefectu,
-  carteResident10AnsObtention2025,
   carteSejourPluriannuelleGuideComplet2025,
   centresAgreesExamenCivique2026,
   changementStatutEtudiantSalarie2026DemarchesAnef,
   chomagePerteEmploiEtrangerFrance2026AreFranceTravailDroits,
-  circulaireAvril2026DelaisNaturalisationReduits12MoisMaghreb,
   circulaireAvril2026NaturalisationMaghrebMarocAlgerieTunisie,
   commentReussirTestCiviquePremierCoup,
   compteAnefCreer2026GuidePasAPas,
@@ -452,7 +431,6 @@ export const ARTICLES: readonly Article[] = [
   craRetentionEtrangers7Jours7Mois2026DroitsRecoursExpulsion,
   cultureFrancaisePatrimoineMonumentsArtistes,
   declarationImpotsEtrangerFrance2026ObligationsSeuilsRisques,
-  declarationImpotsEtrangersFrance2026GuidePratiqueFormulaires,
   declarationImpotsNonResidentFrance2026Formulaire2042NrRevenu,
   declarationImpotsPremiereAnneeFranceEtranger2026GuideDebutan,
   delfTcfDilfCertificationFrancais2026TitreSejourNaturalisatio,
@@ -468,14 +446,12 @@ export const ARTICLES: readonly Article[] = [
   droitsDevoirsCitoyensFranceGuide,
   droitsEtrangersFrance2026CeQueVousNeSaviezPas,
   echangePermisConduireEtrangerFrance2026PaysAccordsListeCompl,
-  echangerPermisConduireEtrangerFrance2026AntsDemarches,
   electionsMunicipales2026BallyBagayokoValeursRepublicainesTes,
   entretienNaturalisation2026PreparationAssimilationPrefecture,
   entretienVisaConsulatAmbassadeFrance2026ReussirVisaLongSejou,
   envoyerArgentPaysEtrangerFranceFiscSeuilDeclaration2026,
   erreursFrequentesTestCivique2026PiegesQcm,
   espagneRegularisation500000SansPapiers2026PourquoiPasFrance,
-  etudiantEtrangerFrance2026VisaCampusFranceTravailFamilleDroi,
   examenCiviqueCarteDeResident,
   examenCivique2026ExemplesQuestionsCorrigees,
   examenCiviqueObligatoireCarteSejourPluriannuelle2026,
@@ -483,7 +459,6 @@ export const ARTICLES: readonly Article[] = [
   fraisInscriptionUniversitesFranceEtudiantsHorsUe2026,
   geographieFranceRegionsDepartementsVilles,
   guideAnefComplet2026CreerCompteDeposerDemande,
-  guideEtudiantsEtrangersFranceTitresDemarches2026,
   hausseTaxesTitresSejourMai2026NouveauxTarifsPrefectureLoiFin,
   inscriptionTestCivique2026OuQuandCommentSinscrire,
   institutionsFrancaisesPresidentAssembleeSenat,
@@ -498,27 +473,21 @@ export const ARTICLES: readonly Article[] = [
   naturalisationEnfantMineurFrance2026EffetCollectifDeclaratio,
   naturalisationFrancaise2AnsRaccourcisLegauxAccelerer2026,
   naturalisationFrancaise2026DelaisConditionsPiegesDossierComp,
-  naturalisationFrancaiseConditionsDemarches2025,
   naturalisationFrancaiseRefusee2026RaisonsCacheesContesterRec,
-  niveauDeLangueFrancaisNationaliteTitreSejourA2B12026,
   niveauFrancaisA2B1B22026TitreSejourNaturalisation,
-  nouveauxCentresTestCiviqueMai2026ListeComplete,
   oqtf2026DroitsRecoursExpulsionAideJuridictionnelleTestCiviqu,
   oqtfEnfantsFrance2026ExpulsionEnfantsFrancaisScolarises,
   oqtfEtudiantEtrangerFrance2026RecoursDroitsDefense,
-  ouvrirCompteAnef2026EtapesDocumentsProblemes,
   ouvrirCompteBancaireFranceEtranger2026BanquesNeoBanquesDroit,
   papiersDocumentsObtenirArriveeFrance2026OuCommentDemander,
   passeportTalent2026ConditionsMetiersDemarches,
   passeportTalentChercheurFrance2026ConditionsDemarchesSalaire,
   passeportTalentCreationEntrepriseFrance2026ConditionsInvesti,
   passeportTalentEtudiantVisiteurNonSoumisExamenCivique2026Cir,
-  passeportTalentFrance2026GuideComplet10CategoriesFamilleNatu,
   passeportTalentSalarieQualifie2026SalaireConditionsProcedure,
   penurieCarburantPrixEssence2026EconomieFrancaiseTestCivique,
   prefecturesDelaisRendezVousAvril2026Solutions,
   premiersPasFranceEtrangerBanqueLogementCafAmeli,
-  premiersResultatsTestCivique2026TauxReussiteRetoursExperienc,
   preparerDepartFrance2026ChecklistDocumentsAvantAvion,
   primeRetourVolontaireFrance2026ConditionsDemarches,
   prixTestCivique2026CoutTarifTitreSejourPrefecture,
@@ -531,7 +500,6 @@ export const ARTICLES: readonly Article[] = [
   refusNaturalisation7Erreurs90PourcentCandidats,
   refusTitreSejourOqtfRecours2026GuideEtrangersFrance,
   regroupementFamilialFrance2026GuideCompletConditionsDocument,
-  regroupementFamilialFranceProcedure2025,
   regularisationSansPapiersFrance2026MethodeDemarchesCirculair,
   renouvellementCarteResident10Ans2026ConditionsDocumentsAnef,
   renouvellementTitreSejour2026AnefPrefectureDocumentsDelais,
@@ -551,9 +519,7 @@ export const ARTICLES: readonly Article[] = [
   titreSejourEtudiantFranceGuide2025,
   titreSejourExpireVacancesEtrangerFranceQueFaireVisaRetour,
   titreSejourPerduVoleExpire2026DemarchesUrgence,
-  titresDeSejourFranceGuideComplet2026,
   toutSavoirExamenCivique2026,
-  travaillerEnFranceGuidePermisContratsEtrangers2026,
   travaillerFranceEtrangerAutorisationDroits,
   travaillerSansPapiersFrance2026RisquesRegularisation,
   unionEuropeenneFranceInstitutionsCitoyennete,

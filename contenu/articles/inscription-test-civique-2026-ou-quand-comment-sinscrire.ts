@@ -497,7 +497,7 @@ const article: Article = {
   ],
   aLireAussi: [
     {
-      slug: "premiers-resultats-test-civique-2026-taux-reussite-retours-experience",
+      slug: "statistiques-test-civique-2026-taux-reussite-72-pourcent",
       ancre: "Résultats et taux de réussite du test civique 2026",
     },
     {

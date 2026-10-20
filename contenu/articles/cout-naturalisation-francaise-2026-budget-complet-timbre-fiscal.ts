@@ -143,7 +143,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Ce poste peut tomber à **0 €** si vous êtes **dispensé** : titulaire d'un diplôme délivré en France attestant du niveau requis, ou personne dispensée pour raison d'âge/santé selon les cas. Pour tout comprendre, consultez notre comparatif [DELF, TCF, DILF : quelle certification choisir](/articles/delf-tcf-dilf-certification-francais-2026-titre-sejour-naturalisation-laquelle-choisir) et notre guide des [niveaux de français exigés](/articles/niveau-de-langue-francais-nationalite-titre-sejour-a2-b1-2026).",
+      texte: "Ce poste peut tomber à **0 €** si vous êtes **dispensé** : titulaire d'un diplôme délivré en France attestant du niveau requis, ou personne dispensée pour raison d'âge/santé selon les cas. Pour tout comprendre, consultez notre comparatif [DELF, TCF, DILF : quelle certification choisir](/articles/delf-tcf-dilf-certification-francais-2026-titre-sejour-naturalisation-laquelle-choisir) et notre guide des [niveaux de français exigés](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation).",
     },
     { type: "p", texte: "**3. Les traductions assermentées de l'état civil (variable)**" },
     {
