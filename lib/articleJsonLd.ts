@@ -1,6 +1,7 @@
 import type { Article } from "@/contenu/articles";
 import { NOM_RUBRIQUE, PAGE_AUTEUR } from "@/contenu/rubriques";
 import { nombreDeMots, sourcesCitees, texteBrut } from "@/lib/article";
+import { cheminRubrique } from "@/lib/maillage";
 import { SEO_CONFIG } from "@/lib/seo/constants";
 
 const SITE = SEO_CONFIG.siteUrl;
@@ -17,9 +18,10 @@ export function imageAbsolue(src: string): string {
  * (`#organization`).
  *
  * `NewsArticle` et le fil d'Ariane à quatre niveaux (Accueil, Articles,
- * rubrique, article) sont ceux de l'ancien site (`lib/seo/schemas.ts`), gardés
- * à l'identique : c'est ce que Google Actualités et les résultats enrichis
- * lisent depuis des mois. S'y ajoutent ce que les moteurs génératifs
+ * rubrique, article) sont ceux de l'ancien site (`lib/seo/schemas.ts`) :
+ * c'est ce que Google Actualités et les résultats enrichis lisent depuis des
+ * mois. Seul changement, le 20/10/2026 : la rubrique pointe vers sa page
+ * (`/articles/rubrique/<rubrique>`), et non plus vers un filtre `?category=`. S'y ajoutent ce que les moteurs génératifs
  * découpent en réponses : `wordCount`, `keywords`, et les sources citées en
  * `citation`. Les vidéos gardent leur `VideoObject`, posé par
  * `components/seo/YouTubeEmbed.tsx`.
@@ -66,7 +68,7 @@ export function jsonLdArticle(a: Article) {
           "@type": "ListItem",
           position: 3,
           name: NOM_RUBRIQUE[a.rubrique],
-          item: `${SITE}/articles?category=${encodeURIComponent(NOM_RUBRIQUE[a.rubrique])}`,
+          item: `${SITE}${cheminRubrique(a.rubrique)}`,
         },
         { "@type": "ListItem", position: 4, name: texteBrut(a.titre), item: url },
       ],

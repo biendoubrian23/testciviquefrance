@@ -17,7 +17,12 @@
  * | referencement | titre, description, canonique absolue, un seul h1, pas de tiret cadratin visible |
  * | donnees structurees | JSON-LD valide ; `NewsArticle` et `BreadcrumbList` ; `FAQPage` avec autant de questions que l'article |
  * | appels | les cinq emplacements, chacun vers `/signup?c=<slug>&m=blog&e=<emplacement>` |
- * | plan du site, flux | chaque article dans `/sitemap.xml` (avec sa date) et dans `/feed.xml` ; `/sitemap-news.xml` porte les articles de moins de deux jours et demi |
+ * | rubriques | chaque page `/articles/rubrique/<rubrique>` en 200, `CollectionPage` et `BreadcrumbList`, tous ses articles lies ; chaque article lie sa rubrique et porte « Dans la meme rubrique » |
+ * | redirections | les adresses fusionnees (`anciennes-adresses.json > redirigees`) repondent 301 vers leur cible |
+ * | plan du site, flux | chaque article dans `/sitemap.xml` (avec sa date), les rubriques aussi, et dans `/feed.xml` ; `/sitemap-news.xml` porte les articles de moins de 48 heures, et eux seuls |
+ *
+ * Le maillage (au moins cinq pages qui lient chaque article) est mesure a part,
+ * par `scripts/seo/maillage.mjs`, que `seo:banc` lance juste apres.
  * | mesure | PostHog sans cookie sans consentement, `cta_clic`, `section_atteinte`, campagne jointe a l'inscription |
  */
 
@@ -52,9 +57,13 @@ process.emitWarning = (alerte, ...reste) => {
 };
 const site = (chemin) => import(new URL(chemin, RACINE).href);
 const { ARTICLES } = await site('contenu/articles.ts');
-const { placesDesAppels, ancres, sommaire } = await site('lib/article.ts');
+const { placesDesAppels, ancres, sommaire, recentPourActualites } = await site('lib/article.ts');
+const { cheminRubrique, articlesDeRubrique } = await site('lib/maillage.ts');
+const { RUBRIQUES } = await site('contenu/rubriques.ts');
 
-const ANCIENNES = JSON.parse(readFileSync(new URL('scripts/seo/anciennes-adresses.json', RACINE), 'utf8')).adresses;
+const FICHIER_ANCIENNES = JSON.parse(readFileSync(new URL('scripts/seo/anciennes-adresses.json', RACINE), 'utf8'));
+const ANCIENNES = FICHIER_ANCIENNES.adresses;
+const REDIRIGEES = FICHIER_ANCIENNES.redirigees ?? {};
 
 let echecs = 0;
 let verifs = 0;
@@ -75,7 +84,8 @@ const decoder = (t) => t.replace(/&amp;/g, '&').replace(/&#x27;|&#39;/g, "'").re
 
 /* ------------------------------------------------------------------ pages */
 console.log('pages');
-const CHEMINS = [...new Set(['/', '/articles', ...ARTICLES.map((a) => `/articles/${a.slug}`), ...ANCIENNES])];
+const RUBRIQUES_CHEMINS = RUBRIQUES.map((r) => cheminRubrique(r));
+const CHEMINS = [...new Set(['/', '/articles', ...RUBRIQUES_CHEMINS, ...ARTICLES.map((a) => `/articles/${a.slug}`), ...ANCIENNES])];
 const pages = new Map();
 for (const chemin of CHEMINS) {
   const r = await lire(chemin, { redirect: 'manual' });
@@ -84,6 +94,37 @@ for (const chemin of CHEMINS) {
 }
 for (const chemin of ANCIENNES) verifier(`l'ancienne adresse ${chemin} est toujours un article`, ARTICLES.some((a) => `/articles/${a.slug}` === chemin));
 console.log(`  ${pages.size} pages lues sur ${CHEMINS.length}, dont ${ANCIENNES.length} adresses d'avant la migration`);
+
+/* ---------------------------------------------------------- redirections */
+console.log('\nredirections');
+for (const [ancienne, cible] of Object.entries(REDIRIGEES)) {
+  const r = await lire(ancienne, { redirect: 'manual' });
+  const vers = (r.headers.get('location') ?? '').replace(/^https?:\/\/[^/]+/, '');
+  verifier(`${ancienne} repond 301 vers ${cible}`, r.status === 301 && vers === cible, `HTTP ${r.status} vers ${vers || 'rien'}`);
+  verifier(`${ancienne} n'est plus un article du registre`, !ARTICLES.some((a) => `/articles/${a.slug}` === ancienne));
+  verifier(`la cible ${cible} est un article`, ARTICLES.some((a) => `/articles/${a.slug}` === cible));
+}
+
+/* ------------------------------------------------------------- rubriques */
+console.log('\nrubriques');
+const RECENTS = [...ARTICLES].sort((x, y) => y.publieLe.localeCompare(x.publieLe) || y.modifieLe.localeCompare(x.modifieLe) || x.slug.localeCompare(y.slug));
+for (const r of RUBRIQUES) {
+  const chemin = cheminRubrique(r);
+  const html = pages.get(chemin) ?? '';
+  const noeuds = [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(([, b]) => {
+    try {
+      const d = JSON.parse(b);
+      return d['@graph'] ?? [d];
+    } catch {
+      return [];
+    }
+  });
+  const membres = articlesDeRubrique(r, RECENTS);
+  const collection = noeuds.find((n) => n['@type'] === 'CollectionPage');
+  verifier(`${chemin} declare une CollectionPage avec ses ${membres.length} articles`, collection?.mainEntity?.itemListElement?.length === membres.length);
+  verifier(`${chemin} declare son fil d'Ariane`, noeuds.some((n) => n['@type'] === 'BreadcrumbList' && n.itemListElement?.at(-1)?.item === `${SITE}${chemin}`));
+  for (const a of membres) verifier(`${chemin} lie ${a.slug}`, html.includes(`href="/articles/${a.slug}"`));
+}
 
 /* -------------------------------------------------------- referencement */
 console.log('\nreferencement');
@@ -131,6 +172,9 @@ for (const a of ARTICLES) {
   // Le gabarit du site pose aussi son propre fil d'Ariane : on cherche celui de l'article.
   const fil = noeuds.find((n) => n['@type'] === 'BreadcrumbList' && n.itemListElement?.at(-1)?.item === `${SITE}${chemin}`);
   verifier(`${chemin} declare son fil d'Ariane a quatre niveaux`, fil?.itemListElement?.length === 4);
+  verifier(`${chemin} fil d'Ariane vers sa rubrique`, fil?.itemListElement?.[2]?.item === `${SITE}${cheminRubrique(a.rubrique)}`);
+  verifier(`${chemin} lie la page de sa rubrique`, html.includes(`href="${cheminRubrique(a.rubrique)}"`));
+  verifier(`${chemin} porte « Dans la meme rubrique »`, html.includes('id="meme-rubrique"') && html.includes('Dans la même rubrique'));
   const faq = noeuds.find((n) => n['@type'] === 'FAQPage');
   if (a.faq?.length) {
     verifier(`${chemin} declare sa FAQ`, faq?.mainEntity?.length === a.faq.length, `${faq?.mainEntity?.length ?? 0} question(s)`);
@@ -177,7 +221,11 @@ console.log('\nliste, accueil, plan du site, flux');
       new RegExp(`<loc>${SITE}/articles/${a.slug}</loc>\\s*<lastmod>${a.modifieLe}`).test(plan),
     );
   }
-  for (const p of ['/eligibilite-examen-civique', '/tarifs', '/cours']) verifier(`/sitemap.xml porte ${p}`, plan.includes(`<loc>${SITE}${p}</loc>`));
+  for (const p of ['/eligibilite-examen-civique', '/tarifs', '/cours', ...RUBRIQUES_CHEMINS]) verifier(`/sitemap.xml porte ${p}`, plan.includes(`<loc>${SITE}${p}</loc>`));
+  for (const ancienne of Object.keys(REDIRIGEES)) verifier(`/sitemap.xml ne porte plus ${ancienne}`, !plan.includes(`<loc>${SITE}${ancienne}</loc>`));
+  const dates = new Set([...plan.matchAll(/<lastmod>([^<]{10})/g)].map((m) => m[1]));
+  verifier('/sitemap.xml porte des lastmod varies (jamais la date du jour pour tout le monde)', dates.size >= 5, `${dates.size} date(s) distincte(s)`);
+  verifier("/sitemap.xml ne porte que des adresses canoniques (www, sans parametre ni barre finale)", [...plan.matchAll(/<loc>([^<]+)<\/loc>/g)].every((m) => m[1] === SITE || (m[1].startsWith(`${SITE}/`) && !/[?#]|\/$/.test(m[1]))));
 
   const r = await lire('/feed.xml');
   const flux = await r.text();
@@ -189,8 +237,10 @@ console.log('\nliste, accueil, plan du site, flux');
   const news = await rn.text();
   verifier('/sitemap-news.xml repond en XML', rn.ok && /xml/.test(rn.headers.get('content-type') ?? '') && news.includes('xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"'));
   const maintenant = Date.now();
-  for (const a of ARTICLES.filter((x) => (maintenant - Date.parse(x.publieLe)) / 86400000 < 2.5)) {
-    verifier(`/sitemap-news.xml porte l'article recent ${a.slug}`, news.includes(`<loc>${SITE}/articles/${a.slug}</loc>`));
+  for (const a of ARTICLES) {
+    const present = news.includes(`<loc>${SITE}/articles/${a.slug}</loc>`);
+    if (recentPourActualites(a, maintenant)) verifier(`/sitemap-news.xml porte l'article recent ${a.slug}`, present);
+    else verifier(`/sitemap-news.xml ne porte pas ${a.slug}, publie il y a plus de 48 heures`, !present);
   }
   verifier('/sitemap-news.xml ne porte que des articles', [...news.matchAll(/<loc>([^<]+)<\/loc>/g)].every((m) => m[1].startsWith(`${SITE}/articles/`)));
 }

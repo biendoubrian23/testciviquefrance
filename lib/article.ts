@@ -79,7 +79,7 @@ export function sourcesCitees(a: Article): string[] {
  * Les identifiants déjà pris sur la page, qu'un titre ne doit pas reprendre :
  * deux éléments de même `id`, et l'ancre mène au premier.
  */
-const RESERVES = ["contenu", "cta-fin", "article", "sommaire", "sources", "videos", "a-lire-aussi"];
+const RESERVES = ["contenu", "cta-fin", "article", "sommaire", "sources", "videos", "a-lire-aussi", "meme-rubrique", "titre-meme-rubrique"];
 
 /** L'ancre de la section « Questions fréquentes », quand l'article en a une. */
 export const ANCRE_FAQ = "questions-frequentes";
@@ -171,6 +171,29 @@ export function suggestions(article: Article, liste: readonly Article[], combien
     choix.push(a);
   }
   return [...choix, recent];
+}
+
+/**
+ * L'instant de publication d'un article, tel que le déclarent la page, le
+ * JSON-LD et `sitemap-news.xml` : le jour de `publieLe`, 8 h, heure d'été de
+ * Paris (la forme reprise de l'ancien site).
+ */
+export function instantDePublication(a: Article): string {
+  return `${a.publieLe}T08:00:00+02:00`;
+}
+
+/** Les heures pendant lesquelles un article reste dans `sitemap-news.xml`. */
+export const HEURES_ACTUALITES = 48;
+
+/**
+ * Un article entre dans `sitemap-news.xml` tant qu'il a été publié depuis
+ * moins de 48 heures. Règle de Google, relue le 20/10/2026 : « Only include
+ * recent URLs for articles that were created in the last two days »
+ * (developers.google.com, Create a news sitemap), 1 000 balises au plus.
+ */
+export function recentPourActualites(a: Article, maintenant = Date.now()): boolean {
+  const age = maintenant - Date.parse(instantDePublication(a));
+  return age < HEURES_ACTUALITES * 3600000;
 }
 
 /**

@@ -1,22 +1,24 @@
 import { ARTICLES_RECENTS } from '@/contenu/articles';
+import { instantDePublication, recentPourActualites } from '@/lib/article';
 
 /**
  * Le plan du site Google Actualités : les articles publiés depuis moins de
- * deux jours et demi (Google Actualités ne retient que les articles récents).
+ * 48 heures, comme le demande Google (« Only include recent URLs for articles
+ * that were created in the last two days », relu le 20/10/2026), 1 000 au plus.
+ * La règle vit dans `lib/article.ts` (`recentPourActualites`), lue aussi par
+ * le banc.
  *
- * Rendu au build : comme le robot éditorial publie par un push, chaque
- * publication reconstruit ce fichier, et l'article du matin y entre aussitôt.
- * Depuis le 20/10/2026, il lit le registre `contenu/articles.ts` (titre,
- * date, mots-clés de l'article) ; la forme du fichier n'a pas changé.
+ * Régénéré toutes les heures (`revalidate`) : rendu une seule fois au build,
+ * il garderait un article plus de 48 heures les jours sans publication. Un
+ * article publié par le robot y entre au build de son push.
  */
+export const revalidate = 3600;
+
 export async function GET() {
   const baseUrl = 'https://www.testciviquefrance.fr';
   const now = Date.now();
 
-  const recentArticles = ARTICLES_RECENTS.filter((article) => {
-    const diffDays = (now - new Date(article.publieLe).getTime()) / (1000 * 60 * 60 * 24);
-    return diffDays < 2.5;
-  });
+  const recentArticles = ARTICLES_RECENTS.filter((article) => recentPourActualites(article, now)).slice(0, 1000);
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -31,7 +33,7 @@ ${recentArticles
         <news:name>Le Test Civique</news:name>
         <news:language>fr</news:language>
       </news:publication>
-      <news:publication_date>${article.publieLe}</news:publication_date>
+      <news:publication_date>${instantDePublication(article)}</news:publication_date>
       <news:title>${escapeXml(article.titre)}</news:title>
       <news:keywords>${escapeXml(keywords)}</news:keywords>
     </news:news>

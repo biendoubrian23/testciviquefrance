@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Articles Test Civique 2026 - Guide Immigration, Naturalisation, Titre de Séjour & Prix',
-  description: 'Tous nos articles sur le test civique français 2026 : prix du test civique (90€), tarifs titre de séjour, naturalisation, renouvellement ANEF, recours OQTF, guide étudiant étranger. Décret 2025-647, CESEDA R.413-12-1, 40 questions QCM.',
+  description: "Tous nos articles sur l'examen civique et les démarches des étrangers en France : titre de séjour, naturalisation, ANEF, recours, actualité réglementaire, sources officielles à l'appui.",
   keywords: [
     // Articles et ressources
     'articles test civique', 'guide test civique', 'ressources naturalisation',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     // Nouvelle loi immigration
     'loi immigration 2026 articles', 'nouvelle loi immigration 2026', 'réforme immigration france',
     'changements loi immigration', 'actualités immigration france', 'évolution droit étrangers',
-    'prix test civique', 'cout test civique 90 euros', 'tarif titre de sejour 2026',
+    'prix test civique', 'tarif titre de sejour 2026',
     'prix titre de sejour etudiant', 'prix titre de sejour salarie', 'combien coute le test civique',
     // Étudiants
     'guide étudiant étranger france', 'visa étudiant france', 'titre séjour étudiant',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Articles & Ressources - Test Civique France 2026',
-    description: 'Guide complet sur le test civique 2026 : prix 90€, tarifs titres de séjour, naturalisation, renouvellement ANEF, recours OQTF, conseils étudiants étrangers.',
+    description: "L'examen civique et les démarches des étrangers en France : titre de séjour, naturalisation, ANEF, recours OQTF, conseils pratiques et actualité.",
     url: 'https://www.testciviquefrance.fr/articles',
     type: 'website',
     siteName: 'Test Civique France',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Articles Test Civique - Guide Immigration France 2026',
-    description: 'Tous les articles sur le test civique 2026, prix 90€, tarifs titres de séjour, naturalisation et recours OQTF.',
+    description: "Tous les articles sur l'examen civique, les titres de séjour, la naturalisation et les recours.",
   },
 };
 

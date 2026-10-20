@@ -35,8 +35,15 @@ if (!pret) {
   process.exit(1);
 }
 
-const banc = spawn(process.execPath, ['scripts/verifier.mjs'], { stdio: 'inherit', env: { ...process.env, BASE_VERIF: BASE } });
-banc.on('exit', (code) => {
-  arreter();
-  process.exitCode = code ?? 1;
-});
+// Deux passes, contre le meme serveur : le banc des pages, puis le maillage
+// (`scripts/seo/maillage.mjs` : au moins cinq pages qui lient chaque article).
+// Les deux tournent meme si le premier echoue, pour tout voir en une fois.
+const jouer = (script) =>
+  new Promise((fini) => {
+    const p = spawn(process.execPath, [script], { stdio: 'inherit', env: { ...process.env, BASE_VERIF: BASE } });
+    p.on('exit', (code) => fini(code ?? 1));
+  });
+const codeBanc = await jouer('scripts/verifier.mjs');
+const codeMaillage = await jouer('scripts/seo/maillage.mjs');
+arreter();
+process.exitCode = codeBanc || codeMaillage;

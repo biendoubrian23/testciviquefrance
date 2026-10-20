@@ -8,6 +8,7 @@ import type { Article, Source } from "@/contenu/articles";
 import { COULEUR_RUBRIQUE, NOM_RUBRIQUE, PAGE_AUTEUR } from "@/contenu/rubriques";
 import { ANCRE_FAQ, dateLongue, insecables, petiteImage, sommaire, suggestions } from "@/lib/article";
 import { jsonLdArticle } from "@/lib/articleJsonLd";
+import { cheminRubrique, memeRubrique, voisinsDeRubrique } from "@/lib/maillage";
 import { AppelInscription } from "./AppelInscription";
 import { BarreAppel, SommaireActif, SuiviLecture } from "./ArticleInteractif";
 import { CorpsArticle, Credit } from "./CorpsArticle";
@@ -88,6 +89,8 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
     texte: insecables(e.texte),
   }));
   const aLire = suggestions(article, liste, 3);
+  const rubrique = memeRubrique(article, liste, 7, aLire);
+  const { plusRecent, plusAncien } = voisinsDeRubrique(article, liste);
   const modifie = article.modifieLe !== article.publieLe;
   const pageAuteur = PAGE_AUTEUR[article.auteur];
   const sources = article.sources ?? [];
@@ -128,7 +131,9 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
                 Articles
               </Link>
               <span aria-hidden className="mx-2 text-white/50">›</span>
-              <span className="text-white/90">{NOM_RUBRIQUE[article.rubrique]}</span>
+              <Link href={cheminRubrique(article.rubrique)} className="text-white/90 hover:text-white">
+                {NOM_RUBRIQUE[article.rubrique]}
+              </Link>
             </nav>
 
             <h1 className="mt-3 max-w-4xl text-balance text-[28px] font-bold leading-tight tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)] sm:text-[40px] sm:leading-[1.1]">
@@ -156,9 +161,12 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
               </span>
               <span>{article.minutes} min de lecture</span>
               <ArticleViews slug={article.slug} iconClassName="h-4 w-4" label="long" incrementOnMount />
-              <span className={`inline-flex items-center rounded-md px-2 py-1 text-[11px] font-semibold uppercase tracking-wider ring-1 ${COULEUR_RUBRIQUE[article.rubrique]}`}>
+              <Link
+                href={cheminRubrique(article.rubrique)}
+                className={`inline-flex items-center rounded-md px-2 py-1 text-[11px] font-semibold uppercase tracking-wider ring-1 ${COULEUR_RUBRIQUE[article.rubrique]}`}
+              >
                 {NOM_RUBRIQUE[article.rubrique]}
-              </span>
+              </Link>
             </div>
           </div>
         </section>
@@ -381,6 +389,60 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
             </div>
           </aside>
         </div>
+
+        {/* « Dans la même rubrique » et les voisins chronologiques : le maillage
+            de `lib/maillage.ts`, en liens HTML classiques, juste avant le pied
+            de page. C'est ce qui garantit à chaque article au moins cinq pages
+            qui pointent vers lui (`npm run seo:banc` le vérifie). */}
+        <section
+          id="meme-rubrique"
+          aria-labelledby="titre-meme-rubrique"
+          className="mx-auto mt-16 w-full max-w-3xl px-5 sm:px-8 xl:max-w-[88rem] xl:px-10"
+        >
+          <div className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-200 sm:p-7">
+            <div className="flex flex-wrap items-baseline justify-between gap-3">
+              <h2 id="titre-meme-rubrique" className="text-[20px] font-bold tracking-tight text-gray-900">
+                Dans la même rubrique : {NOM_RUBRIQUE[article.rubrique]}
+              </h2>
+              <Link href={cheminRubrique(article.rubrique)} className="text-[13.5px] font-semibold text-primary-700 hover:underline">
+                Tous les articles de la rubrique →
+              </Link>
+            </div>
+            {rubrique.length > 0 && (
+              <ul className="mt-5 grid gap-x-8 gap-y-1 sm:grid-cols-2">
+                {rubrique.map((a) => (
+                  <li key={a.slug}>
+                    <Link
+                      href={`/articles/${a.slug}`}
+                      className="flex items-start gap-2 rounded-lg px-2 py-2 text-[14.5px] font-medium leading-snug text-gray-800 transition hover:bg-primary-50 hover:text-primary-700"
+                    >
+                      <span aria-hidden className="mt-0.5 text-primary-400">›</span>
+                      <span>{insecables(a.titre)}</span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+            {(plusRecent || plusAncien) && (
+              <nav aria-label="Articles voisins dans la rubrique" className="mt-6 grid gap-3 border-t border-gray-100 pt-5 sm:grid-cols-2">
+                {plusAncien ? (
+                  <Link href={`/articles/${plusAncien.slug}`} className="group rounded-xl px-3 py-2 ring-1 ring-gray-200 transition hover:ring-primary-300">
+                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-gray-500">← Article plus ancien</span>
+                    <span className="mt-1 block text-[14px] font-semibold leading-snug text-gray-900 group-hover:text-primary-700">{insecables(plusAncien.titre)}</span>
+                  </Link>
+                ) : (
+                  <span />
+                )}
+                {plusRecent && (
+                  <Link href={`/articles/${plusRecent.slug}`} className="group rounded-xl px-3 py-2 text-right ring-1 ring-gray-200 transition hover:ring-primary-300">
+                    <span className="block text-[11px] font-semibold uppercase tracking-wider text-gray-500">Article plus récent →</span>
+                    <span className="mt-1 block text-[14px] font-semibold leading-snug text-gray-900 group-hover:text-primary-700">{insecables(plusRecent.titre)}</span>
+                  </Link>
+                )}
+              </nav>
+            )}
+          </div>
+        </section>
       </main>
 
       <BarreAppel>

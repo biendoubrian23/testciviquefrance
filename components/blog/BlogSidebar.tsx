@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { Search } from 'lucide-react';
 import type { Category } from '@/lib/data/articles';
 
@@ -58,6 +59,29 @@ export default function BlogSidebar({ categories, selectedCategory, onCategoryCh
           ))}
         </ul>
       </div>
+
+      {/* Les pages des rubriques, en liens classiques : le filtre ci-dessus ne
+          change que l'affichage, ces pages-là s'indexent (`lib/maillage.ts`). */}
+      <nav aria-label="Pages des rubriques" className="mb-6">
+        <h3 className="flex items-center gap-2 text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+          <span className="w-5 h-0.5 bg-primary-500" />
+          Pages des rubriques
+        </h3>
+        <ul className="space-y-1">
+          {categories
+            .filter((category) => category.slug !== 'tous')
+            .map((category) => (
+              <li key={category.id}>
+                <Link
+                  href={`/articles/rubrique/${category.slug}`}
+                  className="block px-4 py-2 text-sm text-primary-700 hover:bg-gray-50 hover:underline"
+                >
+                  {category.name} →
+                </Link>
+              </li>
+            ))}
+        </ul>
+      </nav>
 
       {/* Réseaux sociaux */}
       <div>
