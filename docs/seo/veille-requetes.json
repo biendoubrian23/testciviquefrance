@@ -1,0 +1,159 @@
+{
+  "note": "Lu par scripts/seo/veille.mjs. jorf : sommaire du Journal officiel (open data DILA, sans cle), filtre par inclure/exclure. flux : flux officiels sans cle, filtre = regex (drapeaux iu) sur titre et resume. tendances_geos : Google Trends (l'outre-mer rend 400, il est compris dans FR). requetes_fr : Google Actualites (72 h), une expression par requete (les OR avec guillemets rendent souvent zero, 20/10/2026). graines_fr : suggestions de Google. reddit : top de la semaine (r/expats est anglo-americain : ne retenir que ce qui parle de la France). Zone : la France et l'outre-mer seulement. A enrichir librement.",
+  "jorf": {
+    "nom": "Journal officiel (sommaire du jour, open data DILA)",
+    "index": "https://echanges.dila.gouv.fr/OPENDATA/JORF/",
+    "methode": "Lire l'index Apache, garder les archives JORF_AAAAMMJJ-HHMMSS.tar.gz des 36 dernières heures dont la taille affichée est inférieure à 1 Mo (le JO du jour sort vers 00 h 25, 60 à 225 Ko ; ignorer les archives de 21 h, 2 à 6 Mo). Télécharger, gunzip en mémoire, parcourir le tar par blocs de 512 octets et ne lire que */conteneur/JORF/CONT/**/JORFCONT*.xml. Chaque texte est un <LIEN_TXT idtxt titretxt/> ; le ministère est le <TITRE_TM> parent, la date est <DATE_PUBLI>.",
+    "motif_archive": "JORF_(\\d{8})-(\\d{6})\\.tar\\.gz</a>\\s+\\S+ \\S+\\s+([\\d.]+[KM])",
+    "taille_max_octets": 1000000,
+    "entree_sommaire": "/conteneur/JORF/CONT/.*\\.xml$",
+    "lien_texte": "https://www.legifrance.gouv.fr/jorf/id/{idtxt}",
+    "inclure": "(?<![a-zà-ÿ])(étrangers|entrée et (du )?séjour|titres? de séjour|cartes? de (séjour|résident)|nationalité française|ceseda|droit d.asile|demandeurs? d.asile|immigration|intégration républicaine|examen civique|naturalisation|visas?(?![a-zà-ÿ])|réfugiés?|apatrides?|ofii|ofpra|éloignement|rétention administrative|regroupement familial|mineurs non accompagnés)",
+    "exclure": "portant naturalisation, réintégration|accès protégé|délégation de signature|portant nomination",
+    "pourquoi_pas_legifrance": "legifrance.gouv.fr répond 403 (défi Cloudflare) à toutes les adresses, flux RSS compris, avec un UA robot comme avec un UA navigateur ; l'API PISTE exige une clé."
+  },
+  "flux": [
+    {
+      "nom": "service-public particuliers",
+      "url": "https://www.service-public.gouv.fr/abonnements/rss/actu-actualites-particuliers.rss",
+      "format": "rss",
+      "filtre": "(?<![a-zà-ÿ])(étrangers?(?! \\(affaires)|séjour|résident|naturalis|nationalité|asile|immigration|intégration républicaine|examen civique|visas?(?![a-zà-ÿ])|réfugiés?|ofii|anef|préfecture)"
+    },
+    {
+      "nom": "service-public professionnels",
+      "url": "https://www.service-public.gouv.fr/abonnements/rss/actu-actu-pro.rss",
+      "format": "rss",
+      "filtre": "(?<![a-zà-ÿ])(salariés? étrangers?|travailleurs? étrangers?|autorisation de travail|titre de séjour|métiers en tension|ressortissants? étrangers?)"
+    },
+    {
+      "nom": "Conseil d'État actualités",
+      "url": "https://www.conseil-etat.fr/rss/actualites-rss",
+      "format": "rss",
+      "filtre": "(?<![a-zà-ÿ])(étrangers|séjour|nationalité|naturalis|asile|immigration|intégration|ceseda|éloignement|oqtf|rétention|visas?(?![a-zà-ÿ])|réfugiés?)"
+    },
+    {
+      "nom": "Conseil d'État avis",
+      "url": "https://www.conseil-etat.fr/rss/avis-rss",
+      "format": "rss",
+      "filtre": "(?<![a-zà-ÿ])(étrangers|séjour|nationalité|naturalis|asile|immigration|intégration|ceseda|éloignement)"
+    },
+    {
+      "nom": "Conseil d'État jurisprudence",
+      "url": "https://www.conseil-etat.fr/rss/analyses-de-jurisprudence-rss",
+      "format": "rss",
+      "filtre": "(?<![a-zà-ÿ])(étrangers?(?![a-zà-ÿ])|titre de séjour|nationalité|naturalis|asile|ceseda|éloignement|oqtf|rétention administrative)"
+    },
+    {
+      "nom": "Sénat derniers textes",
+      "url": "https://www.senat.fr/rss/textes.xml",
+      "format": "atom-iso-8859-15",
+      "filtre": "(?<![a-zà-ÿ])(étrangers|immigration|asile|nationalité|naturalis|séjour|intégration|droit du sol|ceseda|mayotte)"
+    },
+    {
+      "nom": "Sénat rapports",
+      "url": "https://www.senat.fr/rss/rapports.xml",
+      "format": "atom-iso-8859-15",
+      "filtre": "(?<![a-zà-ÿ])(étrangers|immigration|asile|nationalité|naturalis|séjour|intégration)"
+    },
+    {
+      "nom": "Sénat communiqués",
+      "url": "https://www.senat.fr/rss/presse.xml",
+      "format": "atom-iso-8859-15",
+      "filtre": "(?<![a-zà-ÿ])(étrangers|immigration|asile|nationalité|naturalis|séjour|intégration)"
+    },
+    {
+      "nom": "Assemblée nationale documents",
+      "url": "https://www2.assemblee-nationale.fr/feeds/detail/documents-parlementaires",
+      "format": "rss",
+      "filtre": "(?<![a-zà-ÿ])(étrangers|immigration|asile|nationalité|naturalis|séjour|intégration|droit du sol|ceseda)"
+    },
+    {
+      "nom": "Défenseur des droits",
+      "url": "https://www.defenseurdesdroits.fr/rss.xml",
+      "format": "rss",
+      "filtre": "(?<![a-zà-ÿ])(étrangers|immigration|asile|séjour|préfecture|anef|naturalis|nationalité)"
+    }
+  ],
+  "tendances_geos": [
+    "FR"
+  ],
+  "requetes_fr": [
+    "\"examen civique\"",
+    "\"titre de séjour\"",
+    "\"carte de séjour\"",
+    "\"carte de résident\"",
+    "\"préfecture\" \"rendez-vous\" étrangers",
+    "préfecture étrangers",
+    "ANEF",
+    "OFII",
+    "CESEDA",
+    "naturalisation",
+    "\"nationalité française\"",
+    "naturalisations chiffres",
+    "\"contrat d intégration républicaine\"",
+    "\"niveau de français\" étrangers",
+    "\"loi immigration\"",
+    "\"ministre de l Intérieur\" immigration",
+    "décret étrangers",
+    "régularisation sans-papiers",
+    "OQTF",
+    "\"demandeurs d asile\"",
+    "\"travailleurs étrangers\"",
+    "\"étudiants étrangers\"",
+    "\"droit du sol\"",
+    "Mayotte immigration",
+    "\"titre de séjour\" Guyane",
+    "\"titre de séjour\" Guadeloupe",
+    "\"titre de séjour\" Réunion",
+    "\"examen civique\" résultats",
+    "\"formation civique\" OFII",
+    "\"Défenseur des droits\" étrangers",
+    "Guyane immigration",
+    "\"Nouvelle-Calédonie\" nationalité"
+  ],
+  "requetes_en": [],
+  "graines_fr": [
+    "examen civique",
+    "examen civique naturalisation",
+    "examen civique carte de résident",
+    "examen civique questions",
+    "examen civique gratuit",
+    "examen civique date",
+    "examen civique inscription",
+    "examen civique résultat",
+    "test civique",
+    "test civique naturalisation",
+    "test civique gratuit",
+    "test civique résultat",
+    "titre de séjour",
+    "titre de séjour renouvellement",
+    "titre de séjour pluriannuel",
+    "titre de séjour étudiant",
+    "titre de séjour salarié",
+    "carte de séjour",
+    "carte de résident 10 ans",
+    "naturalisation",
+    "naturalisation par décret",
+    "naturalisation mariage",
+    "naturalisation délai",
+    "nationalité française",
+    "anef",
+    "anef titre de séjour",
+    "rendez-vous préfecture",
+    "ofii",
+    "contrat d'intégration républicaine",
+    "niveau de français naturalisation",
+    "tcf naturalisation",
+    "valeurs de la république",
+    "récépissé titre de séjour",
+    "timbre fiscal titre de séjour",
+    "naturalisation outre-mer",
+    "droit du sol mayotte"
+  ],
+  "graines_en": [],
+  "reddit": [
+    "france",
+    "AskFrance",
+    "expats"
+  ]
+}

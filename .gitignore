@@ -80,3 +80,6 @@ docs/test-*.js
 docs/test-*.mjs
 docs/verify-*.js
 docs/*-result.json
+
+# Robot editorial SEO : donnees brutes regenerables chaque matin (docs/seo/ROBOT.md)
+docs/seo/veille/*.json

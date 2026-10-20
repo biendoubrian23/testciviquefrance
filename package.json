@@ -6,7 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "verifier": "node scripts/verifier.mjs",
+    "indexnow": "node scripts/indexnow.mjs",
+    "seo:verifier": "node scripts/seo/verifier.mjs",
+    "seo:donnees": "node scripts/seo/donnees.mjs",
+    "seo:veille": "node scripts/seo/veille.mjs",
+    "seo:photo": "node scripts/seo/photo.mjs",
+    "seo:publie": "node scripts/seo/apres-publication.mjs",
+    "seo:liberer": "node scripts/seo/liberer.mjs",
+    "seo:banc": "node scripts/seo/banc.mjs"
   },
   "browserslist": [
     "last 2 Chrome versions",
