@@ -177,6 +177,7 @@ import envoyerArgentPaysEtrangerFranceFiscSeuilDeclaration2026 from "./articles/
 import erreursFrequentesTestCivique2026PiegesQcm from "./articles/erreurs-frequentes-test-civique-2026-pieges-qcm";
 import espagneRegularisation500000SansPapiers2026PourquoiPasFrance from "./articles/espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france";
 import etudiantEtrangerFrance2026VisaCampusFranceTravailFamilleDroi from "./articles/etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester";
+import examenCiviqueCarteDeResident from "./articles/examen-civique-carte-de-resident";
 import examenCivique2026ExemplesQuestionsCorrigees from "./articles/examen-civique-2026-exemples-questions-corrigees";
 import examenCiviqueObligatoireCarteSejourPluriannuelle2026 from "./articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026";
 import famillePasseportTalentFrance2026ConjointEnfantsDroitsTitre from "./articles/famille-passeport-talent-france-2026-conjoint-enfants-droits-titre";
@@ -476,6 +477,7 @@ export const ARTICLES: readonly Article[] = [
   erreursFrequentesTestCivique2026PiegesQcm,
   espagneRegularisation500000SansPapiers2026PourquoiPasFrance,
   etudiantEtrangerFrance2026VisaCampusFranceTravailFamilleDroi,
+  examenCiviqueCarteDeResident,
   examenCivique2026ExemplesQuestionsCorrigees,
   examenCiviqueObligatoireCarteSejourPluriannuelle2026,
   famillePasseportTalentFrance2026ConjointEnfantsDroitsTitre,

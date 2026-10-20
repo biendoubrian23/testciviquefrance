@@ -42,12 +42,12 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | /articles/reforme-test-civique-50-questions-juin-2026 | Aucun texte trouvé prévoyant 50 questions ; l'arrêté du 10/10/2025 fixe 40 questions |
 | /articles/circulaire-avril-2026-delais-naturalisation-reduits-12-mois-maghreb et /articles/circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie | Aucune circulaire d'avril 2026 de ce type trouvée |
 | /articles/nouveaux-centres-test-civique-mai-2026-liste-complete | Aucune source officielle d'une ouverture de 15 centres en mai 2026 ; le chiffre officiel est 444 centres au 26/05/2026 |
-| /articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances | Le titre annonce 650 € pour un premier titre ; service-public indique 350 € (taxe + droit de timbre) pour une première délivrance au tarif normal |
 | /articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture | Le titre annonce 90 € ; le ministère indique une fourchette de 60 à 80 € fixée par les centres |
 | /articles/regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls | La circulaire Valls de 2012 est abrogée par la circulaire du 23/01/2025 |
 | /articles/cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion | Vérifier sur Légifrance la durée maximale de rétention et les publics concernés |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 | /articles/renouvellement-carte-resident-10-ans-2026-conditions-documents-anef | Un tarif de 75 € y est cité ; vérifier contre le barème au 1er mai 2026 |
+| /articles/hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux | Doublon de l'article des taxes corrigé le 20/10/2026 ; cite « un coût supplémentaire de 90 € » pour l'examen (le ministère donne 60 à 80 €) : à fusionner ou à recaler |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
 
@@ -79,7 +79,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 |---|---|---|---|
 | Examen civique : le bilan officiel au 26 mai 2026 (444 centres, 71 125 candidats) | examen civique taux de réussite ; combien de personnes ont passé l'examen civique ; examen civique chiffres officiels | à mesurer | Source : réponse du ministère à la QE n° 11488 (AN, 11/08/2026). En vigueur. Mise à jour de /articles/statistiques-test-civique-2026-taux-reussite-72-pourcent (le 81 % officiel remplace le 72 %) |
 | Combien coûte l'examen civique selon le ministère : la fourchette de 60 à 80 € | prix examen civique ; examen civique combien ça coûte ; tarif test civique CCI | à mesurer | Source : QE n° 11488. Prix de l'examen, pas de la formation. Mise à jour de /articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture |
-| Taxes des titres de séjour depuis le 1er mai 2026 : le barème officiel | prix titre de séjour 2026 ; timbre fiscal titre de séjour 2026 ; taxe renouvellement titre de séjour | à mesurer | Sources : loi de finances pour 2026 (loi n° 2026-103 du 19/02/2026, numéro à confirmer sur Légifrance), service-public A18881. En vigueur. Mise à jour de /articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances (350 € et non 650 €) |
+| ~~Taxes des titres de séjour depuis le 1er mai 2026 : le barème officiel~~ → corrigé dans l'article existant, 2026-10-20 | prix titre de séjour 2026 ; timbre fiscal titre de séjour 2026 ; taxe renouvellement titre de séjour | 10 k à 100 k (« timbre fiscal titre de séjour ») | Sources : loi de finances pour 2026 (loi n° 2026-103 du 19/02/2026, numéro à confirmer sur Légifrance), service-public A18881. En vigueur. Mise à jour de /articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances (350 € et non 650 €) |
 | Duplicata de titre de séjour perdu ou volé : le nouveau tarif | duplicata titre de séjour prix ; titre de séjour perdu timbre fiscal ; refaire carte de séjour volée | à mesurer | Service-public A18881 : 350 € ou 150 € (tarif minoré). En vigueur. Mise à jour de /articles/titre-sejour-perdu-vole-expire-2026-demarches-urgence |
 | Tarif minoré des titres de séjour : qui y a droit en 2026 | tarif réduit titre de séjour étudiant ; timbre fiscal 150 euros titre de séjour ; titre de séjour exonéré de taxe | à mesurer | Service-public A18881 et CESEDA, partie taxes (art. L. 436-1 et suivants, à vérifier). En vigueur |
 | Validation du VLS-TS : la taxe à payer en 2026 | taxe OFII visa long séjour 2026 ; validation visa long séjour prix ; timbre validation VLS-TS | à mesurer | Vérifier le montant au 1er mai 2026 sur service-public. Mise à jour de /articles/visa-long-sejour-vls-ts-validation-ofii-2026 (brief MAJ section G) |
@@ -140,7 +140,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 |---|---|---|---|
 | 28 questions de connaissance et 12 mises en situation : comment se compose l'examen | combien de questions examen civique ; examen civique mises en situation ; format examen civique 40 questions | à mesurer | Répartition citée par plusieurs sources concordantes, à confirmer dans l'arrêté du 10/10/2025 |
 | Mises en situation de l'examen civique : comprendre ce que l'on attend de vous | mise en situation examen civique exemple ; questions situation examen civique ; examen civique cas pratiques | à mesurer | Les mises en situation ne sont pas publiées : écrire des exemples originaux, signalés comme tels |
-| Examen civique CSP ou CR : quelles différences de difficulté | examen civique carte de résident plus difficile ; différence examen civique CSP CR ; examen civique naturalisation niveau | à mesurer | QE n° 11488 : difficulté adaptée au titre. Deux listes officielles distinctes |
+| ~~Examen civique CSP ou CR : quelles différences de difficulté~~ → examen-civique-carte-de-resident, 2026-10-20 | examen civique carte de résident plus difficile ; différence examen civique CSP CR ; examen civique naturalisation niveau | 1 k à 10 k (« examen civique carte de résident », 20/10/2026) | QE n° 11488 : difficulté adaptée au titre. Deux listes officielles distinctes |
 | Examen civique pour la naturalisation : quel niveau d'examen passer | examen civique naturalisation ; quel examen civique pour la nationalité ; test civique naturalisation 2026 | à mesurer | Décret n° 2025-648, arrêté du 10/10/2025. Vérifier quel niveau est exigé |
 | 32 sur 40 : comment se calcule le seuil de 80 % | examen civique 32 bonnes réponses ; note minimum examen civique ; seuil réussite examen civique | à mesurer | Décret n° 2025-647. Mise à jour possible de /articles/cadre-general-examen-civique |
 | 45 minutes sur ordinateur : gérer son temps le jour de l'examen | durée examen civique ; examen civique sur ordinateur ; examen civique temps par question | à mesurer | Manuel du candidat FEI |
@@ -373,9 +373,9 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Rang | Sujet | Pourquoi |
 |---|---|---|
 | 1 | Examen civique : le bilan officiel au 26 mai 2026 (mise à jour de /articles/statistiques-test-civique-2026-taux-reussite-72-pourcent) | Le seul chiffre officiel publié (81 %, réponse QE 11488) contredit l'article en ligne : corriger d'abord, c'est de la crédibilité gagnée et une source citable |
-| 2 | Taxes des titres de séjour depuis le 1er mai 2026 (mise à jour de /articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances) | Barème officiel limpide sur service-public ; le titre actuel (650 €) ne correspond pas au barème ; question posée par tous les demandeurs |
+| 2 | (corrigé le 20/10/2026) Taxes des titres de séjour depuis le 1er mai 2026 (mise à jour de /articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances) | Barème officiel limpide sur service-public ; le titre actuel (650 €) ne correspond pas au barème ; question posée par tous les demandeurs |
 | 3 | 28 questions de connaissance et 12 mises en situation : comment se compose l'examen | Cœur du produit, forte intention de préparation, pas d'article dédié aux mises en situation |
-| 4 | Examen civique CSP ou CR : quelles différences de difficulté | Deux listes officielles distinctes, confusion fréquente, aucun article existant sur cette comparaison |
+| 4 | (publié le 20/10/2026) Examen civique CSP ou CR : quelles différences de difficulté | Deux listes officielles distinctes, confusion fréquente, aucun article existant sur cette comparaison |
 | 5 | Régularisation par le travail : le dispositif court jusqu'au 31 décembre 2026 | Échéance proche et datée (à confirmer sur Légifrance) ; remplace un article fondé sur une circulaire abrogée |
 | 6 | Droit du sol à Mayotte : ce qui s'applique depuis mai 2026 | Texte en vigueur, outre-mer non couvert par le site, forte demande d'explication factuelle |
 | 7 | ETIAS : ce qui change pour vos proches qui viennent vous rendre visite | Lancement annoncé au dernier trimestre 2026, donc pile dans le calendrier ; rassurant pour les titulaires (non concernés) |
@@ -409,3 +409,14 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Naturalisation depuis l'outre-mer : quelle préfecture instruit le dossier | naturalisation Réunion ; naturalisation Guadeloupe préfecture ; naturalisation Guyane délai | à mesurer | ANEF, préfectures. Mêmes conditions nationales, instruction locale |
 | Les créoles et les langues d'outre-mer : place et reconnaissance | créole langue officielle ; shimaoré ; langues de Guyane | à mesurer | culture.gouv.fr (DGLFLF). Famille 4 |
 | L'outre-mer dans l'histoire de France : repères pour l'examen | histoire outre-mer ; départementalisation 1946 ; Mayotte département 2011 | à mesurer | Fiches officielles, vie-publique.fr. Famille 2 |
+
+## Vu dans la Search Console le 20/10/2026 (premier accès, 28 jours)
+
+| Requête | Impressions | Position | Remarque |
+|---|---|---|---|
+| impots formulaire 2042 2026 | 469, 0 clic | 39,5 | Page declaration-impots-non-resident-france-2026-formulaire-2042-nr-revenus-source-francaise (869 impressions, position 26) : candidat d'optimisation (titre et angle) |
+| examen civique | 162, 2 clics | 39 | La requête reine (10 k à 100 k) : aucune page dans les 30 premiers. Candidat : renforcer une page pilier (tout-savoir-examen-civique-2026 ou cadre-general-examen-civique) |
+| prix fabrication permis de conduire ants | 123 | 7,3 | Page ants-permis-conduire-categorie-b-2026-demande-etapes-tarifs : 1 029 impressions, CTR 0,7 % : titre à revoir |
+| préparation aux entretiens à l'ambassade | 85, 0 clic | 13,4 | Page entretien-visa-consulat (694 impressions, CTR 0,9 %) |
+| examen blanc examen civique | 38 | 30,2 | Famille 5 |
+| carte de résident 10 ans | 47 | 26,8 | Deux articles en concurrence (carte-resident-10-ans-obtention-2025 et carte-resident-10-ans-france-2026-…) : cannibalisation probable |
