@@ -292,7 +292,7 @@ Le commit se termine par la ligne `Co-Authored-By: Claude Opus 5.5 <noreply@anth
 Avec Chrome (outils `claude-in-chrome`), pour chaque **nouvelle** page :
 
 1. Ouvrez `https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fwww.testciviquefrance.fr%2F`. La propriété est un **préfixe d'URL** (`https://www.testciviquefrance.fr/`) et elle appartient au **deuxième** compte Google de Chrome, d'où le `/u/1/` (vérifié le 20/10/2026). Si la page dit « Désolé, vous n'avez pas accès à cette propriété », essayez `/u/0/` puis `/u/2/`. Ne vous connectez jamais à un compte vous-même.
-2. Collez l'adresse complète (`https://www.testciviquefrance.fr/articles/<slug>`) dans la barre « Inspecter n'importe quelle URL » en haut, puis Entrée.
+2. Collez l'adresse complète (`https://www.testciviquefrance.fr/articles/<slug>`) dans la barre « Inspecter n'importe quelle URL » en haut, puis Entrée. **Méthode éprouvée le 20/10/2026** (après l'échec du premier passage) : attendez 8 secondes que la vue d'ensemble se charge, trouvez la barre avec l'outil `find` (« Inspecter n'importe quelle URL search input at top »), cliquez **par sa référence**, tapez l'adresse, puis la touche Entrée. N'ouvrez jamais l'adresse `/search-console/inspect?…&id=…` directement : elle rend une 404. Après le clic sur « Demander une indexation », la fenêtre « Envoi d'une demande » met environ une minute avant d'afficher « Indexation demandée » : attendez-la.
 3. Attendez le résultat, puis cliquez sur « Demander une indexation ». Attendez la confirmation (une à deux minutes).
 4. Notez dans le journal : indexation demandée, ou la raison de l'échec.
 

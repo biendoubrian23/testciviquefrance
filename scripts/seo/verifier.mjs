@@ -254,10 +254,11 @@ function syllabes(mot) {
  * Une mesure grossiere, d'ou un avertissement (bloquant pour un article strict).
  */
 function lisibilite(textes) {
+  // Chaque texte (paragraphe, cellule de tableau, element de liste) est decoupe a part :
+  // une cellule sans point final reste une phrase, au lieu d'etre collee a la suivante
+  // (proposition du robot, rapport du 20/10/2026).
   const phrases = textes
-    .map(brut)
-    .join(' ')
-    .split(/(?<=[.!?…])\s+|\s*\n+\s*/)
+    .flatMap((t) => brut(t).split(/(?<=[.!?…])\s+|\s*\n+\s*/))
     .map((p) => p.trim())
     .filter((p) => p.split(/\s+/).length >= 3);
   const motsDe = (p) => p.split(/\s+/).filter((x) => /[a-zà-ÿ0-9]/i.test(x));
@@ -347,7 +348,9 @@ for (const { qui, nom, fichier, source, a } of articles) {
 
   /* ---- enregistrement ---- */
   if (!SLUG.test(a.slug ?? '') || a.slug.length > 120) signaler(qui, `slug invalide : « ${a.slug} » ([a-z0-9-])`);
-  else if (strict && a.slug.length > 60) signaler(qui, `slug de ${a.slug.length} caracteres (60 au plus pour un nouvel article)`);
+  // Un slug ne change jamais : la limite ne vaut que pour un article publie depuis la doctrine,
+  // jamais pour un ancien article retouche (proposition du robot, rapport du 20/10/2026).
+  else if ((a.publieLe ?? '') >= DOCTRINE_DEPUIS && a.slug.length > 60) signaler(qui, `slug de ${a.slug.length} caracteres (60 au plus pour un nouvel article)`);
   if (`${a.slug}.ts` !== nom) signaler(qui, `le fichier doit s'appeler ${a.slug}.ts, comme son slug`);
   if (!RUBRIQUES.includes(a.rubrique)) signaler(qui, `rubrique inconnue : « ${a.rubrique} » (${RUBRIQUES.join(', ')})`);
   if (!AUTEURS.includes(a.auteur)) signaler(qui, `signature inconnue : « ${a.auteur} » (${AUTEURS.join(', ')})`);
