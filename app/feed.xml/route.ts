@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { allArticles } from '@/lib/data/articles';
+import { imageAbsolue } from '@/lib/articleJsonLd';
 import { SEO_CONFIG } from '@/lib/seo/constants';
 
 /**
@@ -10,7 +11,7 @@ export async function GET() {
   const baseUrl = SEO_CONFIG.siteUrl;
   const currentDate = new Date().toUTCString();
 
-  // Trier les articles par date (plus récents en premier) — utilise allArticles (SEO inclus)
+  // Trier les articles par date (plus récents en premier), depuis le registre contenu/articles.ts
   const sortedArticles = [...allArticles].sort((a, b) => {
     const dateA = a.date.split('/').reverse().join('-');
     const dateB = b.date.split('/').reverse().join('-');
@@ -39,7 +40,7 @@ export async function GET() {
       <pubDate>${pubDate}</pubDate>
       <author>notification@testciviquefrance.fr (${article.author})</author>
       <category><![CDATA[${article.category}]]></category>
-      ${article.image ? `<enclosure url="${article.image}" type="image/jpeg" />` : ''}
+      ${article.image ? `<enclosure url="${imageAbsolue(article.image)}" type="${article.image.endsWith('.webp') ? 'image/webp' : 'image/jpeg'}" length="0" />` : ''}
       <news:news>
         <news:publication>
           <news:name>Test Civique France</news:name>

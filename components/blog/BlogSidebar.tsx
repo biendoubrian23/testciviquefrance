@@ -2,14 +2,16 @@
 
 import { useState } from 'react';
 import { Search } from 'lucide-react';
-import { categories, Category } from '@/lib/data/articles';
+import type { Category } from '@/lib/data/articles';
 
 interface BlogSidebarProps {
+  /** Les rubriques et leur nombre réel d'articles, calculés par la page serveur (`lib/data/articles.ts`). */
+  categories: Category[];
   selectedCategory: string;
   onCategoryChange: (slug: string) => void;
 }
 
-export default function BlogSidebar({ selectedCategory, onCategoryChange }: BlogSidebarProps) {
+export default function BlogSidebar({ categories, selectedCategory, onCategoryChange }: BlogSidebarProps) {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (

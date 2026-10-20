@@ -15,7 +15,8 @@ const EligibiliteSection = dynamic(() => import('@/components/landing/Eligibilit
 const Features = dynamic(() => import('@/components/landing/Features'), { ssr: true });
 const Pricing = dynamic(() => import('@/components/landing/Pricing'), { ssr: true });
 const SEOContent = dynamic(() => import('@/components/seo/SEOContent'), { ssr: true });
-const RecentArticles = dynamic(() => import('@/components/landing/RecentArticles'), { ssr: true });
+// Composant serveur (texte des articles lu au build, rien dans le navigateur) : import direct.
+import RecentArticles from '@/components/landing/RecentArticles';
 
 export const metadata: Metadata = {
   title: 'Test Civique 2026 - Entraînement Gratuit Examen Civique Naturalisation | Test Civique France',

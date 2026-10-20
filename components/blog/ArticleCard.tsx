@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Calendar, Clock, ArrowRight } from 'lucide-react';
-import { Article } from '@/lib/data/articles';
+import type { Article } from '@/lib/data/articles';
 import ArticleViews from './ArticleViews';
 
 interface ArticleCardProps {

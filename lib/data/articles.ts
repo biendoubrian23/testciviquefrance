@@ -1,18 +1,22 @@
-export interface Article {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  category: string;
-  categorySlug: string;
-  author: string;
-  date: string;
-  readTime: number;
-  views: number;
-  image: string;
-  featured: boolean;
-}
+/**
+ * Les cartes d'articles, pour les pages qui les listent.
+ *
+ * ⚠️ **Ce n'est plus la source des articles.** Depuis le 20/10/2026, chaque
+ * article vit dans `contenu/articles/<slug>.ts`, inscrit au registre
+ * `contenu/articles.ts`. Ce module en dérive les cartes (titre, résumé,
+ * rubrique, date, image), sous les noms de l'ancien site, pour que les cartes,
+ * l'accueil, la page auteur, le plan du site et les flux n'aient pas eu à
+ * changer de forme. Il n'y a qu'un seul système : rien ne s'écrit ici.
+ *
+ * Il charge le texte de tous les articles : **ne l'importez jamais depuis un
+ * composant client** (seulement ses types). Une page serveur calcule les
+ * cartes et les passe en props.
+ */
+import { ARTICLES_RECENTS } from '@/contenu/articles';
+import { NOM_RUBRIQUE, RUBRIQUES } from '@/contenu/rubriques';
+import { cartesDe, type CarteArticle } from '@/lib/article';
+
+export type Article = CarteArticle;
 
 export interface Category {
   id: string;
@@ -23,173 +27,20 @@ export interface Category {
   color: string;
 }
 
+/** Tous les articles publiés, du plus récent au plus ancien. */
+export const allArticles: Article[] = cartesDe(ARTICLES_RECENTS);
+
+/** Les rubriques de la page `/articles`, avec leur nombre réel d'articles. */
 export const categories: Category[] = [
-  {
-    id: '1',
-    name: 'Tous les articles',
-    slug: 'tous',
+  { id: 'tous', name: 'Tous les articles', slug: 'tous', icon: '', count: allArticles.length, color: 'primary' },
+  ...RUBRIQUES.map((r) => ({
+    id: r,
+    name: NOM_RUBRIQUE[r],
+    slug: r,
     icon: '',
-    count: 25,
+    count: allArticles.filter((a) => a.categorySlug === r).length,
     color: 'primary',
-  },
-  {
-    id: '2',
-    name: 'Cadre légal',
-    slug: 'cadre-legal',
-    icon: '',
-    count: 8,
-    color: 'blue',
-  },
-  {
-    id: '3',
-    name: 'Thématiques officielles',
-    slug: 'thematiques',
-    icon: '',
-    count: 10,
-    color: 'green',
-  },
-  {
-    id: '4',
-    name: 'Préparation',
-    slug: 'preparation',
-    icon: '',
-    count: 4,
-    color: 'purple',
-  },
-  {
-    id: '5',
-    name: 'Conseils pratiques',
-    slug: 'conseils',
-    icon: '',
-    count: 4,
-    color: 'orange',
-  },
-  {
-    id: '6',
-    name: 'Actualités',
-    slug: 'actualites',
-    icon: '',
-    count: 5,
-    color: 'red',
-  },
+  })),
 ];
 
-export const articles: Article[] = [
-  {
-    id: '2',
-    slug: 'centres-agrees-examen-civique-2026',
-    title: 'Liste officielle des centres agréés pour l\'examen civique 2026 : où passer votre test de naturalisation',
-    excerpt: 'Découvrez la liste complète des centres d\'examen agréés pour le test civique 2026 en France. Inscription, horaires, localisation : tout ce qu\'il faut savoir pour réserver votre session d\'examen.',
-    content: '',
-    category: 'Conseils pratiques',
-    categorySlug: 'conseils',
-    author: 'Équipe Le Test Civique',
-    date: '09/12/2025',
-    readTime: 10,
-    views: 0,
-    image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070',
-    featured: true,
-  },
-  {
-    id: '1',
-    slug: 'cadre-general-examen-civique',
-    title: 'Cadre général de l\'examen civique : programme et thématiques officielles',
-    excerpt: 'Découvrez le cadre légal, la structure de l\'examen et les 5 thématiques officielles pour bien vous préparer au test civique.',
-    content: '',
-    category: 'Cadre légal',
-    categorySlug: 'cadre-legal',
-    author: 'Équipe Le Test Civique',
-    date: '01/11/2025',
-    readTime: 8,
-    views: 1250,
-    image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=2070',
-    featured: true,
-  },
-  {
-    id: '3',
-    slug: 'tout-savoir-examen-civique-2026',
-    title: 'Tout savoir sur l’examen civique 2026 : Guide complet et nouveautés',
-    excerpt: 'Le guide ultime pour comprendre la réforme 2026 : nouveau décret, niveau B2, format QCM, et conseils de préparation pour réussir du premier coup.',
-    content: '',
-    category: 'Cadre légal',
-    categorySlug: 'cadre-legal',
-    author: 'Équipe Le Test Civique',
-    date: '17/12/2025',
-    readTime: 12,
-    views: 0,
-    image: 'https://images.unsplash.com/photo-1471623320832-752e8bbf8413?q=80&w=2055',
-    featured: true,
-  },
-];
-
-// Import des articles SEO
-import { seoArticles, quotidienImmigrationArticles, viePratiqueArticles, bingSeoArticles2026, articlesMai2026Programmes, articlesEditoriaux2026 } from './seo-articles';
-
-// Import des articles SEO avec contenu complet
-import { articleContents, getAllSEOArticleSlugs } from './seo-content';
-
-// Import du système de publication différée
-import { isArticlePublished } from './publishing';
-
-// Liste complète (publiés + programmés) — utilisée pour `generateStaticParams`
-// afin que les pages des articles futurs soient bien pré-rendues. Le route
-// handler renvoie 404 tant que `publishedAt` n'est pas atteint.
-export const allArticlesIncludingScheduled: Article[] = [
-  ...articles,
-  ...seoArticles,
-  ...quotidienImmigrationArticles,
-  ...viePratiqueArticles,
-  ...bingSeoArticles2026,
-  ...articlesMai2026Programmes,
-  ...articlesEditoriaux2026,
-].sort((a, b) => {
-  const dateA = new Date(a.date.split('/').reverse().join('-'));
-  const dateB = new Date(b.date.split('/').reverse().join('-'));
-  return dateB.getTime() - dateA.getTime();
-});
-
-// Liste publique — exclut les articles dont `publishedAt` est encore dans le futur.
-// Utilisée par les listings, le sitemap, getArticleBySlug, getRelatedArticles, etc.
-export const allArticles: Article[] = allArticlesIncludingScheduled.filter((a) =>
-  isArticlePublished(a.slug)
-);
-
-// Récupérer tous les slugs d'articles SEO
-export const seoArticleSlugs = getAllSEOArticleSlugs();
-
-export const getArticleBySlug = (slug: string): Article | undefined => {
-  return allArticles.find((article) => article.slug === slug);
-};
-
-export const getArticlesByCategory = (categorySlug: string): Article[] => {
-  if (categorySlug === 'tous') return allArticles;
-  return allArticles.filter((article) => article.categorySlug === categorySlug);
-};
-
-export const getFeaturedArticles = (): Article[] => {
-  return allArticles.filter((article) => article.featured);
-};
-
-export const getPopularArticles = (limit: number = 3): Article[] => {
-  return [...allArticles].sort((a, b) => b.views - a.views).slice(0, limit);
-};
-
-/**
- * Récupère les articles liés (même catégorie ou featured)
- */
-export const getRelatedArticles = (currentSlug: string, limit: number = 3): Article[] => {
-  const current = getArticleBySlug(currentSlug);
-  if (!current) return getPopularArticles(limit);
-
-  // Articles de la même catégorie d'abord
-  const sameCategory = allArticles.filter(
-    (a) => a.categorySlug === current.categorySlug && a.slug !== currentSlug
-  );
-
-  // Compléter avec d'autres articles si nécessaire
-  const others = allArticles.filter(
-    (a) => a.categorySlug !== current.categorySlug && a.slug !== currentSlug
-  );
-
-  return [...sameCategory, ...others].slice(0, limit);
-};
+export const getArticleBySlug = (slug: string): Article | undefined => allArticles.find((a) => a.slug === slug);

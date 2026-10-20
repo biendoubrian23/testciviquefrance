@@ -1,9 +1,12 @@
-'use client';
-
 import Link from 'next/link';
 import { allArticles } from '@/lib/data/articles';
 import ArticleViews from '@/components/blog/ArticleViews';
 
+/**
+ * Les six derniers articles, sur l'accueil. Composant serveur depuis le
+ * 20/10/2026 : il lisait la liste complète des articles dans le navigateur,
+ * ce qui envoyait le texte de tout le site avec la page d'accueil.
+ */
 export default function RecentArticles() {
   // 6 articles récents + variés (catégories différentes)
   const recentArticles = [...allArticles]
