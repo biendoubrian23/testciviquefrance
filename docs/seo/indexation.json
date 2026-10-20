@@ -1,46 +1,14 @@
 {
   "note": "Tenu par `npm run seo:indexation` (scripts/seo/indexation.mjs) : l'etat de chaque adresse du plan du site selon l'API URL Inspection de Search Console, et les adresses a faire demander aujourd'hui. `demandeLe` est ecrit par `--demandee` quand le robot a demande l'indexation dans Search Console.",
   "propriete": "https://www.testciviquefrance.fr/",
-  "mis_a_jour": "2026-10-20 15:30",
+  "mis_a_jour": "2026-10-20 15:59",
   "derniere_execution": {
-    "le": "2026-10-20 15:30",
-    "inspectees": 60,
-    "plan": "sitemap.xml en ligne"
+    "le": "2026-10-20 15:44",
+    "inspectees": 0,
+    "plan": "sitemap.xml en ligne",
+    "erreur": "Google injoignable : fetch failed (UND_ERR_CONNECT_TIMEOUT)"
   },
-  "a_demander": [
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
-      "raison": "retouche le 2026-10-20 (journal), pas encore relue par Google"
-    },
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/frais-inscription-universites-france-etudiants-hors-ue-2026",
-      "raison": "Explorée, actuellement non indexée, 5 impressions"
-    },
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester",
-      "raison": "Explorée, actuellement non indexée, 1 impressions"
-    },
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/rater-examen-civique-2026-repasser-delai-cout-themes-echec",
-      "raison": "Page en double sans URL canonique sélectionnée par l'utilisateur, canonique choisie par Google : https://www.marcustheatres.com/, explore le 2026-08-28"
-    },
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/entretien-naturalisation-2026-preparation-assimilation-prefecture",
-      "raison": "Google ne reconnaît pas cette URL"
-    },
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais",
-      "raison": "Explorée, actuellement non indexée"
-    },
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation",
-      "raison": "Google ne reconnaît pas cette URL"
-    },
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal",
-      "raison": "Google ne reconnaît pas cette URL"
-    }
-  ],
+  "a_demander": [],
   "a_signaler": [],
   "adresses": {
     "https://www.testciviquefrance.fr": {},
@@ -446,7 +414,8 @@
       "derniereExploration": null,
       "canoniqueGoogle": null,
       "canoniqueDeclaree": null,
-      "inspecteLe": "2026-10-20 15:20"
+      "inspecteLe": "2026-10-20 15:20",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/cout-regularisation-situation-france-2026-budget-complet": {
       "verdict": "NEUTRAL",
@@ -649,7 +618,8 @@
       "derniereExploration": null,
       "canoniqueGoogle": null,
       "canoniqueDeclaree": null,
-      "inspecteLe": "2026-10-20 15:20"
+      "inspecteLe": "2026-10-20 15:20",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour": {
       "verdict": "PASS",
@@ -694,7 +664,8 @@
       "derniereExploration": "2026-10-20T03:51:06Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/etudiant-etranger-france-2026-visa-campus-france-travail-famille-droit-rester",
-      "inspecteLe": "2026-10-20 15:30"
+      "inspecteLe": "2026-10-20 15:30",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/examen-civique-2026-exemples-questions-corrigees": {
       "verdict": "PASS",
@@ -716,7 +687,8 @@
       "derniereExploration": "2026-10-20T13:01:46Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/examen-civique-carte-de-resident",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/examen-civique-carte-de-resident",
-      "inspecteLe": "2026-10-20 15:20"
+      "inspecteLe": "2026-10-20 15:20",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026": {
       "verdict": "NEUTRAL",
@@ -749,7 +721,8 @@
       "derniereExploration": "2026-09-23T11:49:49Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/frais-inscription-universites-france-etudiants-hors-ue-2026",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/frais-inscription-universites-france-etudiants-hors-ue-2026",
-      "inspecteLe": "2026-10-20 15:20"
+      "inspecteLe": "2026-10-20 15:20",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/geographie-france-regions-departements-villes": {},
     "https://www.testciviquefrance.fr/articles/guide-anef-complet-2026-creer-compte-deposer-demande": {
@@ -773,7 +746,8 @@
       "derniereExploration": "2026-10-05T03:50:20Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
-      "inspecteLe": "2026-10-20 15:20"
+      "inspecteLe": "2026-10-20 15:20",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire": {
       "verdict": "PASS",
@@ -920,7 +894,8 @@
       "derniereExploration": null,
       "canoniqueGoogle": null,
       "canoniqueDeclaree": null,
-      "inspecteLe": "2026-10-20 15:20"
+      "inspecteLe": "2026-10-20 15:20",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/nouveaux-centres-test-civique-mai-2026-liste-complete": {
       "verdict": "NEUTRAL",
@@ -1132,7 +1107,8 @@
       "derniereExploration": "2026-08-28T06:17:11Z",
       "canoniqueGoogle": "https://www.marcustheatres.com/",
       "canoniqueDeclaree": null,
-      "inspecteLe": "2026-10-20 15:20"
+      "inspecteLe": "2026-10-20 15:20",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/rdv-prefecture-titre-sejour-introuvable-2026-creneaux-marche-noir": {
       "verdict": "PASS",
@@ -1233,7 +1209,8 @@
       "derniereExploration": "2026-08-07T20:49:18Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais",
-      "inspecteLe": "2026-10-20 15:20"
+      "inspecteLe": "2026-10-20 15:20",
+      "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/rentree-septembre-2026-etrangers-france-calendrier-demarches-delais": {
       "verdict": "PASS",
