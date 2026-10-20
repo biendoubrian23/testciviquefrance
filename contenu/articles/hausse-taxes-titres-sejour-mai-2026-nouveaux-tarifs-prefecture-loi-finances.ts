@@ -7,6 +7,13 @@ import type { Article } from "@/contenu/articles";
  * « 650 € pour un premier titre », alors que service-public indique 350 € au
  * tarif normal ; 650 € n'est que le total d'une régularisation (350 € + 300 €).
  * Chaque montant est repris de service-public, lu le 20/10/2026.
+ *
+ * Le 20/10/2026, l'article doublon `hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux`
+ * (31/03/2026) y a été fusionné : son adresse redirige ici en 301
+ * (`next.config.js`). Il n'en a été repris que ses requêtes (`motsCles`) : ses
+ * montants (225 € + 25 €, un examen civique à 90 €, des exonérations et des
+ * tarifs par pays) n'avaient aucune source officielle, et le barème du 1er mai
+ * 2026 ci-dessous les remplace.
  */
 const article: Article = {
   slug: "hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
@@ -29,6 +36,10 @@ const article: Article = {
     "droit de visa de régularisation",
     "timbre fiscal naturalisation",
     "autorisation provisoire de séjour 100 euros",
+    "frais titre de séjour 2026",
+    "hausse frais titre de séjour",
+    "tarif renouvellement titre de séjour",
+    "prix carte de résident 2026",
   ],
   rubrique: "actualites",
   auteur: "Équipe Le Test Civique",

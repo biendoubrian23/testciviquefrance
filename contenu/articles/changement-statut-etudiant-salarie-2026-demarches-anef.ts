@@ -577,8 +577,8 @@ const article: Article = {
       ancre: "Passeport talent : alternative au changement de statut",
     },
     {
-      slug: "hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux",
-      ancre: "Tarifs et frais du changement de statut",
+      slug: "hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
+      ancre: "Timbre fiscal du titre de séjour : les tarifs 2026",
     },
     { slug: "visa-long-sejour-vls-ts-validation-ofii-2026", ancre: "Validation du VLS-TS étudiant" },
   ],

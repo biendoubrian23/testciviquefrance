@@ -545,8 +545,8 @@ const article: Article = {
       ancre: "Que faire en cas de refus de titre de séjour ?",
     },
     {
-      slug: "hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux",
-      ancre: "Frais de titre de séjour 2026",
+      slug: "hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
+      ancre: "Timbre fiscal du titre de séjour : les tarifs 2026",
     },
   ],
 };

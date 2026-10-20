@@ -635,8 +635,8 @@ const article: Article = {
     },
     { slug: "visa-long-sejour-vls-ts-validation-ofii-2026", ancre: "VLS-TS et validation OFII" },
     {
-      slug: "hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux",
-      ancre: "Tarifs du passeport talent 2026",
+      slug: "hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
+      ancre: "Timbre fiscal du titre de séjour : les tarifs 2026",
     },
     {
       slug: "guide-anef-complet-2026-creer-compte-deposer-demande",

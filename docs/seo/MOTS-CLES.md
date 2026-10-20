@@ -47,7 +47,6 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | /articles/cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion | Vérifier sur Légifrance la durée maximale de rétention et les publics concernés |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 | /articles/renouvellement-carte-resident-10-ans-2026-conditions-documents-anef | Un tarif de 75 € y est cité ; vérifier contre le barème au 1er mai 2026 |
-| /articles/hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux | Doublon de l'article des taxes corrigé le 20/10/2026 ; cite « un coût supplémentaire de 90 € » pour l'examen (le ministère donne 60 à 80 €) : à fusionner ou à recaler |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
 

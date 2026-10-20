@@ -224,8 +224,8 @@ const article: Article = {
       ancre: "Renouveler son titre de séjour",
     },
     {
-      slug: "hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux",
-      ancre: "Tarifs des titres de séjour 2026",
+      slug: "hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
+      ancre: "Timbre fiscal du titre de séjour : les tarifs 2026",
     },
     {
       slug: "guide-anef-complet-2026-creer-compte-deposer-demande",

@@ -72,6 +72,23 @@ const nextConfig = {
   // Redirections SEO
   async redirects() {
     return [
+      // Le domaine nu vers www, en permanent. ⚠️ Au 20/10/2026, cette règle ne
+      // joue pas : la réponse 307 sur testciviquefrance.fr vient du réglage de
+      // domaine de Vercel (Settings > Domains > testciviquefrance.fr > « Redirect
+      // to www »), qui répond avant l'application. Elle prend le relais si ce
+      // réglage est retiré ; le bon geste reste de le passer en 308 permanent.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'testciviquefrance.fr' }],
+        destination: 'https://www.testciviquefrance.fr/:path*',
+        permanent: true,
+      },
+      // Doublon fusionné le 20/10/2026 (docs/seo/JOURNAL.md, geste `fusionne`) : 301, comme le demande la doctrine.
+      {
+        source: '/articles/hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux',
+        destination: '/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances',
+        statusCode: 301,
+      },
       {
         source: '/prix',
         destination: '/articles/prix-test-civique-2026-cout-tarif-titre-sejour-prefecture',
@@ -259,7 +276,7 @@ const nextConfig = {
         ]
       },
       {
-        // ads.txt — doit être accessible sans cache agressif pour Google AdSense
+        // ads.txt : doit être accessible sans cache agressif pour Google AdSense
         source: '/ads.txt',
         headers: [
           {

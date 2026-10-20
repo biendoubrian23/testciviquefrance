@@ -185,7 +185,6 @@ import fraisInscriptionUniversitesFranceEtudiantsHorsUe2026 from "./articles/fra
 import geographieFranceRegionsDepartementsVilles from "./articles/geographie-france-regions-departements-villes";
 import guideAnefComplet2026CreerCompteDeposerDemande from "./articles/guide-anef-complet-2026-creer-compte-deposer-demande";
 import guideEtudiantsEtrangersFranceTitresDemarches2026 from "./articles/guide-etudiants-etrangers-france-titres-demarches-2026";
-import hausseFraisTitreSejour2026NouveauxTarifsTimbresFiscaux from "./articles/hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux";
 import hausseTaxesTitresSejourMai2026NouveauxTarifsPrefectureLoiFin from "./articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances";
 import inscriptionTestCivique2026OuQuandCommentSinscrire from "./articles/inscription-test-civique-2026-ou-quand-comment-sinscrire";
 import institutionsFrancaisesPresidentAssembleeSenat from "./articles/institutions-francaises-president-assemblee-senat";
@@ -485,7 +484,6 @@ export const ARTICLES: readonly Article[] = [
   geographieFranceRegionsDepartementsVilles,
   guideAnefComplet2026CreerCompteDeposerDemande,
   guideEtudiantsEtrangersFranceTitresDemarches2026,
-  hausseFraisTitreSejour2026NouveauxTarifsTimbresFiscaux,
   hausseTaxesTitresSejourMai2026NouveauxTarifsPrefectureLoiFin,
   inscriptionTestCivique2026OuQuandCommentSinscrire,
   institutionsFrancaisesPresidentAssembleeSenat,

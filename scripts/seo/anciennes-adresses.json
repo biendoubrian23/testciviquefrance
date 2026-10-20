@@ -78,7 +78,6 @@
   "/articles/geographie-france-regions-departements-villes",
   "/articles/guide-anef-complet-2026-creer-compte-deposer-demande",
   "/articles/guide-etudiants-etrangers-france-titres-demarches-2026",
-  "/articles/hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux",
   "/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
   "/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire",
   "/articles/institutions-francaises-president-assemblee-senat",
@@ -155,5 +154,9 @@
   "/articles/valeurs-republique-francaise-liberte-egalite-fraternite",
   "/articles/visa-long-sejour-vls-ts-validation-ofii-2026",
   "/articles/voyager-titre-sejour-francais-2026-pays-sans-visa-schengen"
- ]
+ ],
+ "note_redirigees": "Adresses d'avant la migration fusionnees depuis dans un autre article : elles doivent repondre 301 vers leur cible (scripts/verifier.mjs). Retirer une adresse de la liste ci-dessus impose de l'ajouter ici.",
+ "redirigees": {
+  "/articles/hausse-frais-titre-sejour-2026-nouveaux-tarifs-timbres-fiscaux": "/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances"
+ }
 }
