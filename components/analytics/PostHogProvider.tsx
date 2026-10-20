@@ -81,26 +81,48 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
             const initPostHog = () => {
                 // Re-vérifier le consentement au moment de l'init (l'utilisateur peut avoir répondu entre-temps)
                 const analyticsConsent = hasAnalyticsConsent();
-                posthog.init(process.env.NEXT_PUBLIC_POSTHOG_KEY!, {
+                const commun = {
                     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com',
-                    person_profiles: 'identified_only',
+                    person_profiles: 'identified_only' as const,
                     capture_pageview: false,
+                    // La sortie de page porte la profondeur de défilement : c'est elle
+                    // qui dit au robot éditorial où les lecteurs d'un article s'arrêtent.
                     capture_pageleave: true,
-                    disable_session_recording: false,
-                    session_recording: {
-                        maskAllInputs: false,
-                        maskInputOptions: {
-                            password: true,
-                        },
-                    },
                     autocapture: true,
-                    enable_heatmaps: true,
-                    // Désactiver la capture par défaut si pas de consentement analytique
-                    opt_out_capturing_by_default: !analyticsConsent,
                     loaded: () => {
                         setReady(true);
                     },
-                });
+                };
+                posthog.init(
+                    process.env.NEXT_PUBLIC_POSTHOG_KEY!,
+                    analyticsConsent
+                        ? {
+                              // Consentement aux cookies analytiques : la mesure complète d'avant.
+                              ...commun,
+                              disable_session_recording: false,
+                              session_recording: {
+                                  maskAllInputs: false,
+                                  maskInputOptions: {
+                                      password: true,
+                                  },
+                              },
+                              enable_heatmaps: true,
+                          }
+                        : {
+                              // Sans consentement (refus, ou pas encore de réponse) : mesure
+                              // d'audience SANS COOKIE (20/10/2026). Rien n'est écrit dans le
+                              // navigateur, pas de replay, pas de carte de chaleur, pas
+                              // d'identité. Le visiteur est compté par une empreinte calculée
+                              // par PostHog, dont le sel change chaque jour (lib/mesure.ts).
+                              // Le projet PostHog doit garder le « Cookieless server hash
+                              // mode » actif, sans quoi ces événements sont jetés.
+                              ...commun,
+                              cookieless_mode: 'always' as const,
+                              persistence: 'memory' as const,
+                              disable_session_recording: true,
+                              enable_heatmaps: false,
+                          },
+                );
                 posthogInitialized = true;
             };
             // Différer l'init pour ne pas bloquer le thread principal (LCP/TBT)
@@ -111,16 +133,14 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
             }
         }
 
-        // Mettre à jour PostHog quand le consentement change (depuis CookieBanner)
-        // Si PostHog n'est pas encore initialisé, inutile d'agir : l'init lira le consentement depuis localStorage
+        // Quand le consentement change (CookieBanner) : PostHog ne change pas de mode
+        // en cours de route. Un « oui » passe à la mesure complète au chargement
+        // suivant ; un « non » garde la mesure sans cookie, qui n'écrit rien chez le
+        // visiteur. Si PostHog n'est pas encore initialisé, l'init lira le choix.
         const handleConsentUpdate = (e: Event) => {
             if (!posthogInitialized) return;
             const { analytics } = (e as CustomEvent<{ analytics: boolean; ads: boolean }>).detail;
-            if (analytics) {
-                posthog.opt_in_capturing();
-            } else {
-                posthog.opt_out_capturing();
-            }
+            if (!analytics) posthog.stopSessionRecording();
         };
 
         window.addEventListener('tcf:consent-updated', handleConsentUpdate);

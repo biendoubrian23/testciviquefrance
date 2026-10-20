@@ -277,7 +277,7 @@ export default function PolitiqueConfidentialitePage() {
                   </li>
 
                   <li>
-                    <strong>PostHog (analyse comportementale) :</strong> outil d'analyse de l'expérience utilisateur permettant de comprendre comment les visiteurs naviguent sur le site. Les données sont anonymisées. Ce traitement est soumis à votre consentement.
+                    <strong>PostHog (analyse comportementale) :</strong> outil d'analyse de l'expérience utilisateur permettant de comprendre comment les visiteurs naviguent sur le site. Avec votre consentement aux cookies analytiques, PostHog dépose un cookie et peut enregistrer votre navigation (saisies masquées). Sans ce consentement, ou si vous le refusez, PostHog ne fait qu'une mesure d'audience sans cookie : rien n'est enregistré sur votre appareil, ni enregistrement de session, ni profil ; les visites sont comptées par un identifiant technique calculé par PostHog et renouvelé chaque jour, qui ne permet pas de vous suivre d'un jour à l'autre (pages vues, articles lus, clics sur les boutons d'inscription).
                     <br />
                     <span className="text-sm text-gray-600">
                       Politique de confidentialité : <a href="https://posthog.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">posthog.com/privacy</a>
@@ -564,7 +564,7 @@ export default function PolitiqueConfidentialitePage() {
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-8 mt-2">
                   <li><strong>Google Analytics</strong> (via Google Tag Manager) : mesure d'audience, pages vues, parcours de navigation</li>
-                  <li><strong>PostHog</strong> : analyse comportementale et expérience utilisateur</li>
+                  <li><strong>PostHog</strong> : analyse comportementale et expérience utilisateur (sans votre consentement, PostHog ne dépose aucun cookie et ne fait qu&apos;une mesure d&apos;audience anonyme, voir la section des sous-traitants)</li>
                   <li><strong>Ahrefs Analytics</strong> : analyse du référencement naturel et du trafic organique</li>
                 </ul>
                 <p className="ml-4 mt-2 text-xs text-gray-500">

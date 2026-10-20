@@ -9,6 +9,7 @@ import { Loader2, Check, X, Eye, EyeOff } from 'lucide-react';
 import LegalModal from '@/components/ui/LegalModal';
 import { conditionsUtilisation, politiqueConfidentialite } from '@/lib/data/legal-content';
 import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
+import { campagneDeLAdresse } from '@/lib/mesure';
 
 // Validation email stricte
 const isValidEmail = (email: string): boolean => {
@@ -69,7 +70,7 @@ export default function SignupPage() {
   const handleFormFocus = () => {
     if (!formStarted) {
       setFormStarted(true);
-      capture('signup_form_started');
+      capture('signup_form_started', campagneDeLAdresse());
     }
   };
 
@@ -105,7 +106,7 @@ export default function SignupPage() {
     }
 
     setIsLoading(true);
-    capture('signup_submitted', { method: 'email' });
+    capture('signup_submitted', { method: 'email', ...campagneDeLAdresse() });
 
     const { error } = await signUp(email, password, prenom, nom, acceptMarketing);
 
@@ -119,7 +120,7 @@ export default function SignupPage() {
       }
       setIsLoading(false);
     } else {
-      capture('signup_completed', { method: 'email' });
+      capture('signup_completed', { method: 'email', ...campagneDeLAdresse() });
       // Rediriger directement vers le quiz d'onboarding (les 2 questions de profil
       // sont posées APRÈS le score, pour ne pas freiner l'accès au quiz engageant).
       router.push('/onboarding/quiz');
@@ -128,7 +129,7 @@ export default function SignupPage() {
 
   const handleGoogleSignIn = async () => {
     setIsGoogleLoading(true);
-    capture('signup_submitted', { method: 'google' });
+    capture('signup_submitted', { method: 'google', ...campagneDeLAdresse() });
     const { error } = await signInWithGoogle();
     if (error) {
       setError('Erreur lors de la connexion avec Google');
@@ -162,7 +163,7 @@ export default function SignupPage() {
             </div>
           )}
 
-          {/* Bouton Google — méthode principale (60% des membres) */}
+          {/* Bouton Google : méthode principale (60% des membres) */}
           <button
             type="button"
             onClick={handleGoogleSignIn}
@@ -194,7 +195,7 @@ export default function SignupPage() {
             Continuer avec Google
           </button>
           <p className="text-center text-xs text-gray-500 mb-6">
-            Inscription en 1 clic, sans mot de passe à retenir — recommandé
+            Inscription en 1 clic, sans mot de passe à retenir, recommandé
           </p>
 
           <div className="relative mb-6">
