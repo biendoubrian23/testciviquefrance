@@ -125,6 +125,7 @@ function ecrire() {
     mis_a_jour: MAINTENANT,
     derniere_execution: etat.derniere_execution ?? null,
     a_demander: etat.a_demander ?? [],
+    a_signaler: etat.a_signaler ?? [],
     adresses: trie,
   });
 }
@@ -299,6 +300,25 @@ function retouches() {
   return sortie;
 }
 
+/**
+ * Une adresse que redemander ne reglerait pas : une redirection, un `noindex`,
+ * ou une canonique declaree vers une autre adresse. C'est un probleme de
+ * code, que le robot signale dans son rapport au lieu de la demander. Une
+ * page « en double » sans canonique declaree, elle, reste proposee : Google
+ * l'a souvent exploree avant que la page porte sa canonique (avant la
+ * migration du 20/10/2026), et une nouvelle exploration la corrige.
+ */
+function aSignaler(adresse, l) {
+  if (/redirection|noindex/i.test(l.coverageState ?? '')) return true;
+  return !!l.canoniqueDeclaree && l.canoniqueDeclaree !== adresse;
+}
+
+function signalees() {
+  return Object.entries(etat.adresses)
+    .filter(([a, l]) => l.inspecteLe && l.verdict !== 'PASS' && aSignaler(a, l))
+    .map(([adresse, l]) => ({ adresse, raison: `${l.coverageState ?? l.verdict}, canonique declaree ${l.canoniqueDeclaree ?? 'aucune'}` }));
+}
+
 function propositions() {
   const impr = impressions();
   const retouchees = retouches();
@@ -328,11 +348,12 @@ function propositions() {
     return { nouveau, impressions: impr.get(chemin(adresse)) ?? 0, date: art?.publieLe ?? '0000-00-00', art };
   };
   const nonIndexees = Object.entries(etat.adresses)
-    .filter(([, l]) => l.inspecteLe && l.verdict !== 'PASS' && !demandeeRecemment(l))
+    .filter(([a, l]) => l.inspecteLe && l.verdict !== 'PASS' && !demandeeRecemment(l) && !aSignaler(a, l))
     .map(([a, l]) => ({ a, l, ...cle(a) }))
     .sort((x, y) => Number(y.nouveau) - Number(x.nouveau) || y.impressions - x.impressions || y.date.localeCompare(x.date) || x.a.localeCompare(y.a));
   for (const x of nonIndexees) {
-    const pourquoi = [x.l.coverageState ?? x.l.verdict, x.nouveau ? `publie le ${x.date}` : null, x.impressions ? `${x.impressions} impressions` : null].filter(Boolean).join(', ');
+    const autreCanonique = x.l.canoniqueGoogle && x.l.canoniqueGoogle !== x.a ? `canonique choisie par Google : ${x.l.canoniqueGoogle}, explore le ${x.l.derniereExploration?.slice(0, 10) ?? '?'}` : null;
+    const pourquoi = [x.l.coverageState ?? x.l.verdict, autreCanonique, x.nouveau ? `publie le ${x.date}` : null, x.impressions ? `${x.impressions} impressions` : null].filter(Boolean).join(', ');
     ajouter(x.a, pourquoi);
   }
 
@@ -358,9 +379,13 @@ try {
 } catch (e) {
   resultat = { inspectees: 0, erreur: messageErreur(e) };
 }
-etat.derniere_execution = { le: MAINTENANT, inspectees: resultat.inspectees, plan: plan.source, ...(resultat.erreur ? { erreur: resultat.erreur } : {}) };
+// Sans reseau, rien n'a ete inspecte : la trace de la derniere vraie execution reste.
+if (!args.includes('--sans-reseau') || !etat.derniere_execution) {
+  etat.derniere_execution = { le: MAINTENANT, inspectees: resultat.inspectees, plan: plan.source, ...(resultat.erreur ? { erreur: resultat.erreur } : {}) };
+}
 try {
   etat.a_demander = propositions();
+  etat.a_signaler = signalees();
 } catch (e) {
   etat.a_demander = [];
   etat.derniere_execution.erreur = `${etat.derniere_execution.erreur ? `${etat.derniere_execution.erreur} ; ` : ''}propositions : ${messageErreur(e)}`;

@@ -309,7 +309,7 @@ Le script interroge l'API URL Inspection de Search Console (compte de service, l
 
 Si Google ne répond pas, le script le dit (`ECHEC : Google injoignable`), garde l'état connu, propose quand même une liste et sort 0 : continuez avec elle.
 
-Si `canoniqueGoogle` diffère de `canoniqueDeclaree` pour une adresse, ou si le motif est « Page avec redirection » ou « Exclue par la balise noindex », ne la demandez pas : notez-la dans les « Propositions » du rapport, c'est un problème de code.
+Le script écarte de lui-même ce qu'une demande ne réglerait pas (une redirection, un `noindex`, une canonique déclarée vers une autre adresse) et le liste sous « À ne pas demander » : reportez ces adresses dans les « Propositions » du rapport, c'est un problème de code. Une page « en double » **sans** canonique déclarée reste proposée : Google l'a explorée avant que la page porte sa canonique (le 20/10/2026, l'une d'elles avait pour canonique Google un site étranger au nôtre, d'après une exploration d'août), et une nouvelle exploration la corrige.
 
 **b. Demander.** Avec Chrome (outils `claude-in-chrome`), **la nouvelle page du jour d'abord, puis les adresses proposées dans l'ordre**, jusqu'à `REGLAGES.json > indexation_demandes_max_par_jour` (10 en tout, nouvelle page comprise : c'est la limite pratique de l'interface). Pour chaque adresse :
 

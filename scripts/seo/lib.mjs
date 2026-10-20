@@ -456,5 +456,9 @@ export function resumeIndexation(etat = lireJson(FICHIER_INDEXATION, null)) {
     sortie.push('A demander dans Search Console (dans cet ordre) :');
     for (const p of etat.a_demander) sortie.push(`- ${p.adresse} (${p.raison})`);
   }
+  if (etat.a_signaler?.length) {
+    sortie.push('A ne pas demander, a signaler dans le rapport (probleme de code) :');
+    for (const p of etat.a_signaler) sortie.push(`- ${p.adresse} (${p.raison})`);
+  }
   return sortie;
 }
