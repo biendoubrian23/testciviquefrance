@@ -96,6 +96,7 @@ Vous obtenez :
 - **côté base** (Supabase, lecture seule) : comptes créés, abonnés actifs, ventes et montant encaissé (`revenue_events`), entraînements et examens blancs ;
 - **côté Stripe** (lecture seule) : paiements, net, remboursements, abonnements actifs ;
 - **côté Google** : impressions, clics et position, par page et par requête (Search Console, propriété `https://www.testciviquefrance.fr/`, accès ouvert le 20/10/2026) ;
+- **l'indexation** : combien d'adresses Google a indexées, les autres par motif, et les adresses à faire demander (relu depuis `docs/seo/indexation.json`, que tient `npm run seo:indexation`, étape 7) ;
 - **les corrélations** entre vues des articles, clics sur les appels, inscriptions et ventes.
 
 ⚠️ Jusqu'au 20/10/2026, PostHog ne mesurait que les visiteurs qui acceptaient les cookies : les séries d'avant sont sous-estimées. Depuis, la mesure tourne sans cookie pour les autres. Ne concluez pas à une hausse sur la seule bascule.
@@ -170,11 +171,12 @@ Chaque jour : **un nouvel article** et **une optimisation** d'un article existan
 **Choisir l'optimisation**, dans cet ordre de priorité :
 
 1. **Un article en ligne qui dit quelque chose de faux ou de périmé.** `MOTS-CLES.md` tient la liste des articles à revérifier (un taux de réussite, une taxe, un nombre de questions, une circulaire que les sources officielles ne confirment pas). Vérifiez sur la source officielle, corrigez le texte et le titre, ajoutez les sources datées, ou, si l'article repose entièrement sur une information fausse, réécrivez-le sur l'information vraie (même adresse). **C'est la priorité absolue** tant que la liste n'est pas vide : une erreur sur ces sujets coûte à un lecteur bien plus qu'un clic.
-2. Une page qui a des impressions mais un taux de clic faible : réécrivez le titre de résultat (`titreSeo`, 50 caractères au plus) et le résumé.
-3. Une page où plus de la moitié des lecteurs décrochent avant la section 2 : réécrivez le chapeau et la première section, et coupez ce qui traîne.
-4. Une page qui monte : renforcez-la (la question que les gens se posent ensuite, des liens depuis les autres articles, une donnée officielle récente).
-5. Un article migré le 20/10/2026 encore sans source officielle datée, sans liens internes ou avec un terme non expliqué (les avertissements de `seo:verifier` le disent) : mettez-le au niveau.
-6. Une page sans trafic depuis 30 jours : changez l'angle et le titre, ou fusionnez-la avec une page proche (deux articles sur le même sujet se cannibalisent).
+2. **Un article non indexé de qualité faible.** `docs/seo/indexation.json` dit quelles adresses Google n'a pas indexées (« Explorée, actuellement non indexée », « Détectée, actuellement non indexée »…). Parmi elles, prenez celle dont `seo:verifier` relève le plus d'avertissements (pas de source officielle datée, terme non expliqué, phrases trop longues, pas de FAQ) et mettez-la au niveau, jusqu'au bout. Google garde peu une page qu'il juge faible : la mettre au niveau est ce qui l'aide le plus à l'indexer. Une fois retouchée, elle repasse en tête des demandes d'indexation (étape 7).
+3. Une page qui a des impressions mais un taux de clic faible : réécrivez le titre de résultat (`titreSeo`, 50 caractères au plus) et le résumé.
+4. Une page où plus de la moitié des lecteurs décrochent avant la section 2 : réécrivez le chapeau et la première section, et coupez ce qui traîne.
+5. Une page qui monte : renforcez-la (la question que les gens se posent ensuite, des liens depuis les autres articles, une donnée officielle récente).
+6. Un article migré le 20/10/2026 encore sans source officielle datée, sans liens internes ou avec un terme non expliqué (les avertissements de `seo:verifier` le disent) : mettez-le au niveau.
+7. Une page sans trafic depuis 30 jours : changez l'angle et le titre. Si elle doublonne une page proche (deux articles sur le même sujet se cannibalisent), **proposez la fusion** dans le rapport : une fusion passe par une redirection 301 dans `next.config.js`, que vous ne touchez pas. C'est un geste humain, noté `fusionne` dans le journal (« vers `<slug gardé>` »).
 
 ⚠️ **Retoucher un article le rend « strict ».** Dès que vous changez `modifieLe`, toutes les règles de la doctrine s'appliquent à lui (`REGLAGES.json > doctrine_depuis`) : sources officielles datées, montants sourcés, titre non alarmiste, et chaque avertissement de forme devient bloquant. Une optimisation complète un article ancien jusqu'au bout, ou ne se fait pas : choisissez-la en conséquence.
 
@@ -252,7 +254,9 @@ npm run build
 npm run seo:banc
 ```
 
-Les quatre doivent réussir. `seo:banc` lance le site construit sur le port 3210, y passe le banc (`scripts/verifier.mjs` : les 154 adresses d'avant la migration en 200, canoniques, JSON-LD `NewsArticle`, `BreadcrumbList` et `FAQPage`, les cinq appels, plan du site, `sitemap-news.xml`, `feed.xml`, mesure), puis l'arrête. Tant qu'ils échouent, corrigez et recommencez. Après trois échecs sur le même article, abandonnez-le pour aujourd'hui : retirez vos fichiers de ce jour (et seulement les vôtres), notez la raison dans le rapport et passez à la publication du reste.
+Les quatre doivent réussir. `seo:banc` lance le site construit sur le port 3210, y passe le banc (`scripts/verifier.mjs` : les adresses d'avant la migration en 200, les adresses fusionnées en 301, canoniques, JSON-LD `NewsArticle`, `BreadcrumbList` et `FAQPage`, les pages de rubrique, « Dans la même rubrique », les cinq appels, plan du site, `sitemap-news.xml`, `feed.xml`, mesure), puis le maillage (`scripts/seo/maillage.mjs` : **chaque article lié depuis au moins 5 autres pages du site**, `REGLAGES.json > liens_entrants_minimum`), puis l'arrête.
+
+Le maillage se fait seul : la page de rubrique (`/articles/rubrique/<rubrique>`), le bloc « Dans la même rubrique » et les liens « plus récent / plus ancien » se déduisent du registre (`lib/maillage.ts`). Un nouvel article y entre sans rien écrire. Vos 3 liens internes dans le texte restent obligatoires : ce sont les seuls qui disent à Google **pourquoi** deux pages vont ensemble. Tant qu'ils échouent, corrigez et recommencez. Après trois échecs sur le même article, abandonnez-le pour aujourd'hui : retirez vos fichiers de ce jour (et seulement les vôtres), notez la raison dans le rapport et passez à la publication du reste.
 
 Le vérificateur bloque, et vous ne cherchez jamais à le contourner :
 
@@ -289,14 +293,38 @@ Le commit se termine par la ligne `Co-Authored-By: Claude Opus 5.5 <noreply@anth
 
 ### 7. Demander l'indexation à Google
 
-Avec Chrome (outils `claude-in-chrome`), pour chaque **nouvelle** page :
+Le 20/10/2026, Search Console comptait **51 pages indexées sur environ 170**. Chaque matin, vous aidez Google à rattraper son retard, dans cet ordre.
+
+**a. Mesurer.** Après la publication :
+
+```
+npm run seo:indexation
+```
+
+Le script interroge l'API URL Inspection de Search Console (compte de service, lecture seule) sur 60 adresses du plan du site au plus (`REGLAGES.json > indexation_inspections_par_jour`, très loin du quota de 2 000 par jour) : les jamais inspectées d'abord, puis les articles retouchés depuis, puis les inspections les plus anciennes. Il écrit l'état de chaque adresse dans `docs/seo/indexation.json` (verdict, `coverageState`, dernière exploration, canonique choisie par Google) et imprime le nombre d'adresses indexées, les autres par motif, et **la liste priorisée des 8 adresses à faire demander aujourd'hui** :
+
+1. les articles **corrigés, optimisés ou fusionnés** depuis moins de 14 jours (lignes `corrige`, `optimise`, `fusionne` du journal) que Google n'a pas relus depuis : **un article corrigé ou fusionné repasse toujours en tête** ;
+2. les adresses **non indexées**, les plus utiles d'abord : publiées depuis moins de 30 jours, puis celles qui ont des impressions, puis les plus récentes ; une adresse demandée il y a moins de 7 jours n'est pas reproposée ;
+3. faute de mieux (l'API injoignable, par exemple), des adresses jamais inspectées, marquées comme telles.
+
+Si Google ne répond pas, le script le dit (`ECHEC : Google injoignable`), garde l'état connu, propose quand même une liste et sort 0 : continuez avec elle.
+
+Si `canoniqueGoogle` diffère de `canoniqueDeclaree` pour une adresse, ou si le motif est « Page avec redirection » ou « Exclue par la balise noindex », ne la demandez pas : notez-la dans les « Propositions » du rapport, c'est un problème de code.
+
+**b. Demander.** Avec Chrome (outils `claude-in-chrome`), **la nouvelle page du jour d'abord, puis les adresses proposées dans l'ordre**, jusqu'à `REGLAGES.json > indexation_demandes_max_par_jour` (10 en tout, nouvelle page comprise : c'est la limite pratique de l'interface). Pour chaque adresse :
 
 1. Ouvrez `https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fwww.testciviquefrance.fr%2F`. La propriété est un **préfixe d'URL** (`https://www.testciviquefrance.fr/`) et elle appartient au **deuxième** compte Google de Chrome, d'où le `/u/1/` (vérifié le 20/10/2026). Si la page dit « Désolé, vous n'avez pas accès à cette propriété », essayez `/u/0/` puis `/u/2/`. Ne vous connectez jamais à un compte vous-même.
-2. Collez l'adresse complète (`https://www.testciviquefrance.fr/articles/<slug>`) dans la barre « Inspecter n'importe quelle URL » en haut, puis Entrée. **Méthode éprouvée le 20/10/2026** (après l'échec du premier passage) : attendez 8 secondes que la vue d'ensemble se charge, trouvez la barre avec l'outil `find` (« Inspecter n'importe quelle URL search input at top »), cliquez **par sa référence**, tapez l'adresse, puis la touche Entrée. N'ouvrez jamais l'adresse `/search-console/inspect?…&id=…` directement : elle rend une 404. Après le clic sur « Demander une indexation », la fenêtre « Envoi d'une demande » met environ une minute avant d'afficher « Indexation demandée » : attendez-la.
-3. Attendez le résultat, puis cliquez sur « Demander une indexation ». Attendez la confirmation (une à deux minutes).
-4. Notez dans le journal : indexation demandée, ou la raison de l'échec.
+2. Collez l'adresse complète (`https://www.testciviquefrance.fr/articles/<slug>`) dans la barre « Inspecter n'importe quelle URL » en haut, puis Entrée. **Méthode éprouvée le 20/10/2026** (après l'échec du premier passage) : attendez 8 secondes que la vue d'ensemble se charge, trouvez la barre avec l'outil `find` (« Inspecter n'importe quelle URL search input at top »), cliquez **par sa référence**, tapez l'adresse, puis la touche Entrée. N'ouvrez jamais l'adresse `/search-console/inspect?…&id=…` directement : elle rend une 404.
+3. Attendez le résultat, puis cliquez sur « Demander une indexation ». La fenêtre « Envoi d'une demande » met environ une minute avant d'afficher « Indexation demandée » : attendez-la.
+4. Notez chaque demande dans le journal, une ligne par adresse : `AAAA-MM-JJ | indexation | <slug> | <raison donnée par seo:indexation> | demandée` (ou la raison de l'échec).
 
-Si le quota du jour est atteint, ou si Chrome ne répond pas, notez-le et continuez. Ne retentez pas en boucle. Vous ne cliquez sur rien d'autre dans Search Console, et vous ne modifiez aucun réglage.
+Puis enregistrez les demandes faites, pour qu'elles ne soient pas reproposées demain :
+
+```
+npm run seo:indexation -- --demandee <adresse 1> <adresse 2> ...
+```
+
+Si le quota du jour est atteint (Search Console le dit), ou si Chrome ne répond pas, notez-le et continuez. Ne retentez pas en boucle. Vous ne cliquez sur rien d'autre dans Search Console, et vous ne modifiez aucun réglage.
 
 **Puis libérez Chrome** pour les autres robots (Cosme Check à 6 h, RevealChat à 7 h, Test Civique à 7 h 30, MemoryPilot à 8 h, qui partagent le même navigateur) :
 

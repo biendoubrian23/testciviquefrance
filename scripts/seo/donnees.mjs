@@ -81,6 +81,7 @@ import {
   option,
   relatif,
   requete,
+  resumeIndexation,
 } from './lib.mjs';
 
 const DOSSIER = path.join(RACINE, 'docs', 'seo', 'donnees');
@@ -1259,6 +1260,10 @@ function resume(donnees, fichier) {
       }
     }
   }
+
+  // L'etat tenu par `npm run seo:indexation` (API URL Inspection), relu tel quel.
+  l.push('', '## Indexation Google (docs/seo/indexation.json)');
+  l.push(...resumeIndexation());
 
   l.push('', '## Correlations (nombres seulement)');
   l.push(

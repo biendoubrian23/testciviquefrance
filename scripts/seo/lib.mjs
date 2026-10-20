@@ -346,3 +346,115 @@ export function arrondi(x, n = 2) {
   const f = 10 ** n;
   return Math.round(x * f) / f;
 }
+
+/**
+ * `requete`, avec des reprises sur ce qui passe tout seul : une coupure reseau
+ * (DNS, connexion refusee, delai depasse), un 429 ou un 5xx. Trois essais par
+ * defaut, espaces de 2, 4 puis 8 secondes. Une reponse 4xx (hors 429) est
+ * rendue telle quelle : reessayer ne la changerait pas. La derniere erreur
+ * reseau est relancee, a l'appelant de la ranger dans `erreurs`.
+ */
+export async function requeteAvecReprises(url, init = {}, { delaiMs = 30000, essais = 3 } = {}) {
+  let derniere;
+  for (let essai = 1; essai <= essais; essai += 1) {
+    try {
+      const r = await requete(url, init, delaiMs);
+      if (r.status !== 429 && r.status < 500) return r;
+      derniere = new Error(`HTTP ${r.status}`);
+      if (essai === essais) return r;
+    } catch (e) {
+      derniere = e;
+    }
+    await pause(2000 * 2 ** (essai - 1));
+  }
+  throw derniere;
+}
+
+/* --------------------------------------------------------------- Google */
+
+/**
+ * Un jeton d'acces Google pour le compte de service de Search Console
+ * (`GSC_SERVICE_ACCOUNT_FILE`), par l'echange JWT signe en RS256.
+ *
+ * Rend `{ jeton, compte }`, ou `{ indisponible }` quand la configuration
+ * manque (variable absente, fichier introuvable) : ce n'est pas une panne, et
+ * l'appelant le dit sans echouer. Une panne reseau, elle, est relancee apres
+ * les reprises de `requeteAvecReprises`.
+ *
+ * La cle privee et le jeton sont declares a `masquer` : ils ne sortent dans
+ * aucun fichier ni aucun message.
+ */
+export async function jetonGoogle(scope = 'https://www.googleapis.com/auth/webmasters.readonly') {
+  const e = lireEnv();
+  if (!e.GSC_SERVICE_ACCOUNT_FILE) return { indisponible: 'GSC_SERVICE_ACCOUNT_FILE absente du .env' };
+  const fichier = cheminCentral(e.GSC_SERVICE_ACCOUNT_FILE);
+  if (!fs.existsSync(fichier)) return { indisponible: `fichier du compte de service introuvable : ${path.basename(fichier)}` };
+  const compte = JSON.parse(fs.readFileSync(fichier, 'utf8'));
+  if (!compte.client_email || !compte.private_key) {
+    return { indisponible: 'le fichier du compte de service ne contient pas client_email et private_key' };
+  }
+  declarerSecret(compte.private_key);
+  declarerSecret(compte.private_key_id);
+
+  const { sign } = await import('node:crypto');
+  const b64 = (o) => Buffer.from(JSON.stringify(o)).toString('base64url');
+  const maintenant = Math.floor(Date.now() / 1000);
+  const aud = compte.token_uri ?? 'https://oauth2.googleapis.com/token';
+  const tete = b64({ alg: 'RS256', typ: 'JWT', kid: compte.private_key_id });
+  const corps = b64({ iss: compte.client_email, scope, aud, iat: maintenant, exp: maintenant + 3600 });
+  const signature = sign('sha256', Buffer.from(`${tete}.${corps}`), compte.private_key).toString('base64url');
+
+  const r = await requeteAvecReprises(
+    aud,
+    {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams({ grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer', assertion: `${tete}.${corps}.${signature}` }),
+    },
+    { delaiMs: 20000 },
+  );
+  const jeton = await r.json().catch(() => ({}));
+  if (!r.ok || !jeton.access_token) throw new Error(`echange de jeton Google ${r.status} : ${String(jeton.error ?? '').slice(0, 100)}`);
+  declarerSecret(jeton.access_token);
+  return { jeton: jeton.access_token, compte: compte.client_email };
+}
+
+/* ------------------------------------------------------------ indexation */
+
+/** L'etat d'indexation tenu par `npm run seo:indexation`. */
+export const FICHIER_INDEXATION = path.join(RACINE, 'docs', 'seo', 'indexation.json');
+
+/**
+ * Le resume d'indexation, en lignes markdown : ce que `seo:indexation`
+ * imprime, et ce que `seo:donnees` reprend dans son resume du matin.
+ */
+export function resumeIndexation(etat = lireJson(FICHIER_INDEXATION, null)) {
+  if (!etat?.adresses) return ['Aucun etat d\'indexation : lancer `npm run seo:indexation`.'];
+  const lignes = Object.values(etat.adresses);
+  const inspectees = lignes.filter((l) => l.inspecteLe);
+  const indexees = inspectees.filter((l) => l.verdict === 'PASS');
+  const non = inspectees.filter((l) => l.verdict !== 'PASS');
+  const motifs = {};
+  for (const l of non) {
+    const m = l.coverageState || l.verdict || 'inconnu';
+    motifs[m] = (motifs[m] ?? 0) + 1;
+  }
+  const sortie = [
+    `Adresses suivies ${lignes.length}, inspectees ${inspectees.length} (jamais : ${lignes.length - inspectees.length}). Indexees ${indexees.length}, non indexees ${non.length}.`,
+  ];
+  if (non.length) {
+    sortie.push(
+      `Non indexees par motif : ${Object.entries(motifs)
+        .sort((a, b) => b[1] - a[1])
+        .map(([m, n]) => `${m} ${n}`)
+        .join(', ')}.`,
+    );
+  }
+  const d = etat.derniere_execution;
+  if (d) sortie.push(`Derniere execution ${d.le} : ${d.inspectees} inspectee(s)${d.erreur ? `, ECHEC : ${d.erreur}` : ''}.`);
+  if (etat.a_demander?.length) {
+    sortie.push('A demander dans Search Console (dans cet ordre) :');
+    for (const p of etat.a_demander) sortie.push(`- ${p.adresse} (${p.raison})`);
+  }
+  return sortie;
+}
