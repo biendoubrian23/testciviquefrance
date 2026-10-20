@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { Eye } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 
-const VIEW_DISPLAY_MULTIPLIER = 1000;
 const incrementedSlugs = new Set<string>();
 
 function formatViews(views: number) {
