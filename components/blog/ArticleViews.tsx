@@ -8,7 +8,7 @@ const VIEW_DISPLAY_MULTIPLIER = 1000;
 const incrementedSlugs = new Set<string>();
 
 function formatViews(views: number) {
-  return new Intl.NumberFormat('fr-FR').format(Math.max(views, 0) * VIEW_DISPLAY_MULTIPLIER);
+  return new Intl.NumberFormat('fr-FR').format(Math.max(views, 0));
 }
 
 function toNumber(value: unknown) {
