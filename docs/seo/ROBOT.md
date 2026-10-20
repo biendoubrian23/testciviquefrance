@@ -95,7 +95,7 @@ Vous obtenez :
 - **l'entonnoir du site** (PostHog) : inscriptions commencées et terminées, inscriptions venues d'un article (campagne et emplacement), page tarifs, paiements commencés ;
 - **côté base** (Supabase, lecture seule) : comptes créés, abonnés actifs, ventes et montant encaissé (`revenue_events`), entraînements et examens blancs ;
 - **côté Stripe** (lecture seule) : paiements, net, remboursements, abonnements actifs ;
-- **côté Google** : impressions, clics et position, par page et par requête (Search Console, propriété `sc-domain:testciviquefrance.fr`, quand l'accès est ouvert ; sinon le script dit quoi faire) ;
+- **côté Google** : impressions, clics et position, par page et par requête (Search Console, propriété `https://www.testciviquefrance.fr/`, accès ouvert le 20/10/2026) ;
 - **les corrélations** entre vues des articles, clics sur les appels, inscriptions et ventes.
 
 ⚠️ Jusqu'au 20/10/2026, PostHog ne mesurait que les visiteurs qui acceptaient les cookies : les séries d'avant sont sous-estimées. Depuis, la mesure tourne sans cookie pour les autres. Ne concluez pas à une hausse sur la seule bascule.
@@ -291,7 +291,7 @@ Le commit se termine par la ligne `Co-Authored-By: Claude Opus 5.5 <noreply@anth
 
 Avec Chrome (outils `claude-in-chrome`), pour chaque **nouvelle** page :
 
-1. Ouvrez `https://search.google.com/search-console?resource_id=sc-domain%3Atestciviquefrance.fr`. La propriété est un **domaine** (`sc-domain:testciviquefrance.fr`). Si la page dit « Désolé, vous n'avez pas accès à cette propriété », essayez `/u/1/` puis `/u/2/` après `search-console`, et la propriété préfixe `https://www.testciviquefrance.fr/`. Ne vous connectez jamais à un compte vous-même.
+1. Ouvrez `https://search.google.com/u/1/search-console?resource_id=https%3A%2F%2Fwww.testciviquefrance.fr%2F`. La propriété est un **préfixe d'URL** (`https://www.testciviquefrance.fr/`) et elle appartient au **deuxième** compte Google de Chrome, d'où le `/u/1/` (vérifié le 20/10/2026). Si la page dit « Désolé, vous n'avez pas accès à cette propriété », essayez `/u/0/` puis `/u/2/`. Ne vous connectez jamais à un compte vous-même.
 2. Collez l'adresse complète (`https://www.testciviquefrance.fr/articles/<slug>`) dans la barre « Inspecter n'importe quelle URL » en haut, puis Entrée.
 3. Attendez le résultat, puis cliquez sur « Demander une indexation ». Attendez la confirmation (une à deux minutes).
 4. Notez dans le journal : indexation demandée, ou la raison de l'échec.
