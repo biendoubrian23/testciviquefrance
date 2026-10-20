@@ -336,7 +336,12 @@ function propositions() {
   for (const [c, le] of [...retouchees].sort((a, b) => b[1].localeCompare(a[1]))) {
     const adresse = `${SITE}${c}`;
     const l = etat.adresses[adresse] ?? {};
-    const relu = l.derniereExploration && l.derniereExploration.slice(0, 10) >= le;
+    // Le journal ne donne que le jour de la retouche : une exploration le jour même a pu la précéder
+    // (le 20/10/2026, deux articles gardés avaient été explorés le matin de leur fusion du soir).
+    // Seule une exploration d'un jour suivant compte comme une relecture.
+    const relu = l.derniereExploration && l.derniereExploration.slice(0, 10) > le;
+    // Une demande notée le jour de la retouche la suit (le robot retouche puis demande) ; une demande
+    // faite avant une fusion du même jour est rangée sous `demandeAvantRetouche` et ne compte pas.
     const demande = l.demandeLe && l.demandeLe >= le;
     if (!relu && !demande) ajouter(adresse, `retouche le ${le} (journal), pas encore relue par Google`);
   }
