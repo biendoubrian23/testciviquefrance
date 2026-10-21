@@ -30,8 +30,8 @@ BEGIN
     -- Gamification (points, badges, niveau)
     'gamification', (
       SELECT json_build_object(
-        'points_totaux', COALESCE(g.points_totaux, 0),
-        'niveau', COALESCE(g.niveau, 1),
+        'points_totaux', COALESCE(g.points_total, 0),
+        'niveau', 1, -- la table gamification n'a pas de colonne niveau
         'badges', COALESCE(g.badges, '[]'::jsonb)
       )
       FROM gamification g 
