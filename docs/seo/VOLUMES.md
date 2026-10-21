@@ -48,3 +48,22 @@ Période oct. 2025 à sept. 2026, réseau Google.
 | timbre fiscal titre de séjour 2026 | 10 à 100 | faible | |
 | examen civique mises en situation | pas de donnée | | |
 | combien de questions examen civique | pas de donnée | | |
+
+### 2026-10-21 : France seule (les 6 COM ne se sont pas reportées sur ce plan), toutes les langues (bouton de langue encore sans effet)
+
+Période oct. 2025 à sept. 2026, réseau Google.
+
+| Requête | Volume mensuel | Concurrence pub | Remarque |
+|---|---|---|---|
+| métiers en tension | 1 k à 10 k | faible | Porte l'article du 21/10 |
+| admission exceptionnelle au séjour | 1 k à 10 k | faible | Idem |
+| examen civique prix | 1 k à 10 k | faible | YoY + ∞ ; porte l'optimisation du 21/10 (prix-test-civique) |
+| etias | 1 k à 10 k | faible | Remesuré ; date de lancement toujours non publiée (T4 2026 selon l'UE) |
+| prix examen civique | 100 à 1 k | faible | |
+| liste des métiers en tension 2026 | 100 à 1 k | faible | |
+| liste métiers en tension | 100 à 1 k | faible | |
+| régularisation par le travail | 100 à 1 k | faible | |
+| régularisation sans papiers | 100 à 1 k | faible | Candidat pour corriger regularisation-sans-papiers-…-circulaire-valls |
+| prix test civique | 10 à 100 | faible | Les gens disent « examen », pas « test » |
+| régularisation métier en tension | 10 à 100 | faible | |
+| titre de séjour métier en tension | 10 à 100 | faible | |

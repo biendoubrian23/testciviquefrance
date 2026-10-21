@@ -215,6 +215,7 @@ import rdvPrefectureTitreSejourIntrouvable2026CreneauxMarcheNoir from "./article
 import recepisseTitreDeSejourDroitsDureeVoyage from "./articles/recepisse-titre-de-sejour-droits-duree-voyage";
 import reconnaissanceDiplomesEtrangersFrance2026EnicNaricEquivalenc from "./articles/reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences";
 import reformeTestCivique50QuestionsJuin2026 from "./articles/reforme-test-civique-50-questions-juin-2026";
+import regularisationMetiersEnTension from "./articles/regularisation-metiers-en-tension";
 import refusNaturalisation7Erreurs90PourcentCandidats from "./articles/refus-naturalisation-7-erreurs-90-pourcent-candidats";
 import refusTitreSejourOqtfRecours2026GuideEtrangersFrance from "./articles/refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france";
 import regroupementFamilialFrance2026GuideCompletConditionsDocument from "./articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais";
@@ -497,6 +498,7 @@ export const ARTICLES: readonly Article[] = [
   recepisseTitreDeSejourDroitsDureeVoyage,
   reconnaissanceDiplomesEtrangersFrance2026EnicNaricEquivalenc,
   reformeTestCivique50QuestionsJuin2026,
+  regularisationMetiersEnTension,
   refusNaturalisation7Erreurs90PourcentCandidats,
   refusTitreSejourOqtfRecours2026GuideEtrangersFrance,
   regroupementFamilialFrance2026GuideCompletConditionsDocument,
