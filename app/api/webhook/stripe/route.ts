@@ -155,16 +155,30 @@ async function findProfile(
       .single();
 
     if (data && !error) {
-      // Auto-heal
-      await supabase
-        .from('profiles')
-        .update({ stripe_customer_id: stripeCustomerId })
-        .eq('id', data.id);
+      // Auto-heal, seulement si le profil n'a pas encore de client Stripe :
+      // sinon un second client (un second abonnement pris par erreur) volerait
+      // la place du client courant, et le portail ouvrirait le mauvais compte.
+      if (!data.stripe_customer_id) {
+        await supabase
+          .from('profiles')
+          .update({ stripe_customer_id: stripeCustomerId })
+          .eq('id', data.id);
+      }
       return data;
     }
   }
 
   return null;
+}
+
+/**
+ * Un même utilisateur peut avoir deux abonnements Stripe (deux Payment Links
+ * payés, donc deux clients). Le profil ne suit que l'abonnement courant :
+ * les événements de l'autre ne doivent ni l'écraser (prix, statut) ni
+ * révoquer l'accès quand il est résilié.
+ */
+function concerneUnAutreAbonnement(profile: { stripe_subscription_id?: string | null } | null, subscriptionId: string | null) {
+  return Boolean(profile?.stripe_subscription_id && subscriptionId && profile.stripe_subscription_id !== subscriptionId);
 }
 
 // Gérer la création d'abonnement après paiement
@@ -353,6 +367,10 @@ async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supa
 
   const profile = await findProfile(supabase, customerId, customerEmail);
   if (!profile) return;
+  if (concerneUnAutreAbonnement(profile, subscription.id)) {
+    console.warn(`⚠️ ${subscription.id} n'est pas l'abonnement courant du profil ${profile.id} (${profile.stripe_subscription_id}) : ignoré.`);
+    return;
+  }
 
   const priceId = subscription.items.data[0]?.price?.id;
   const activeStatuses = ['active', 'trialing'];
@@ -380,6 +398,10 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supa
   const profile = await findProfile(supabase, customerId);
 
   if (!profile) return;
+  if (concerneUnAutreAbonnement(profile, subscription.id)) {
+    console.warn(`⚠️ ${subscription.id} résilié, mais le profil ${profile.id} suit ${profile.stripe_subscription_id} : accès conservé.`);
+    return;
+  }
 
   await supabase
     .from('profiles')
@@ -407,7 +429,9 @@ async function handleInvoicePaid(invoice: Stripe.Invoice, supabase: ReturnType<t
     console.warn(`Profil introuvable pour invoice ${invoice.id}, revenu enregistre sans user_id.`);
   }
 
-  if (profile) {
+  if (profile && concerneUnAutreAbonnement(profile, invoiceSubscriptionId)) {
+    console.warn(`⚠️ Facture ${invoice.id} d'un abonnement secondaire (${invoiceSubscriptionId}) : profil inchangé, revenu enregistré.`);
+  } else if (profile) {
   // ✅ CORRECTION 2 : On reset les compteurs et on active l'accès
   await supabase
     .from('profiles')
