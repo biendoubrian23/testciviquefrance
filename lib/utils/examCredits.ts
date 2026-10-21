@@ -91,67 +91,22 @@ export async function getExamCreditsInfo(userId: string): Promise<ExamCreditsInf
  * Priorité : utilise d'abord les crédits Pack Examen, puis les examens de l'abonnement
  * Retourne true si le crédit a été consommé, false sinon
  */
-export async function consumeExamCredit(userId: string): Promise<boolean> {
-  const supabase = createClient();
-
-  // Récupérer le profil actuel
-  const { data: profile, error: fetchError } = await supabase
-    .from('profiles')
-    .select('exam_credits, subscription_exams_used, stripe_price_id, subscription_status')
-    .eq('id', userId)
-    .single();
-
-  if (fetchError || !profile) {
-    console.error('Erreur récupération profil:', fetchError);
-    return false;
-  }
-
-  // Priorité 1 : Utiliser les crédits Pack Examen
-  if (profile.exam_credits && profile.exam_credits > 0) {
-    const { error: updateError } = await supabase
-      .from('profiles')
-      .update({ exam_credits: profile.exam_credits - 1 })
-      .eq('id', userId);
-
-    if (updateError) {
-      console.error('Erreur décrémentation crédit Pack Examen:', updateError);
+export async function consumeExamCredit(_userId: string): Promise<boolean> {
+  // Le débit se fait côté serveur : le trigger protect_profile_entitlements
+  // refuse toute modification de exam_credits / subscription_exams_used
+  // venant du navigateur.
+  try {
+    const res = await fetch('/api/examens/consommer-credit', { method: 'POST' });
+    const data = await res.json().catch(() => null);
+    if (!res.ok || !data?.success) {
+      console.error("Débit du crédit d'examen refusé:", data?.error || res.status);
       return false;
     }
-
-    console.log(`✅ Crédit Pack Examen consommé pour user ${userId}. Reste: ${profile.exam_credits - 1}`);
     return true;
+  } catch (error) {
+    console.error("Erreur débit crédit d'examen:", error);
+    return false;
   }
-
-  // Priorité 2 : Utiliser les examens de l'abonnement (inclut la période d'essai 'trialing')
-  if (isSubscriptionActive(profile.subscription_status)) {
-    const subscriptionExamsUsed = profile.subscription_exams_used || 0;
-    let subscriptionExamsLimit = 0;
-
-    // Utiliser les listes complètes de priceIds pour compatibilité dev/prod
-    if (ALL_STANDARD_PRICE_IDS.includes(profile.stripe_price_id)) {
-      subscriptionExamsLimit = 1;
-    } else if (ALL_PREMIUM_PRICE_IDS.includes(profile.stripe_price_id)) {
-      subscriptionExamsLimit = 3;
-    }
-
-    if (subscriptionExamsUsed < subscriptionExamsLimit) {
-      const { error: updateError } = await supabase
-        .from('profiles')
-        .update({ subscription_exams_used: subscriptionExamsUsed + 1 })
-        .eq('id', userId);
-
-      if (updateError) {
-        console.error('Erreur incrémentation examens abonnement:', updateError);
-        return false;
-      }
-
-      console.log(`✅ Examen abonnement consommé pour user ${userId}. Utilisés: ${subscriptionExamsUsed + 1}/${subscriptionExamsLimit}`);
-      return true;
-    }
-  }
-
-  console.error('Aucun crédit d\'examen disponible');
-  return false;
 }
 
 /**
