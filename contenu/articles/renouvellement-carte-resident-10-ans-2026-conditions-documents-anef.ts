@@ -1,471 +1,252 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-batch-mai-2026-4.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/renouvellement-carte-resident-10-ans-2026-conditions-documents-anef`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-batch-mai-2026-4.ts`
+ * et `lib/data/seo-articles.ts`, sans changer d'adresse.
+ *
+ * Corrigé et réécrit en entier par le robot éditorial le 22/10/2026
+ * (`docs/seo/ROBOT.md`) : l'ancien texte annonçait un renouvellement à 75 €
+ * (250 € depuis le 1er mai 2026 selon service-public A18881), un taux de refus
+ * « de moins de 2 % » et des délais par région sans source, des articles du
+ * CESEDA mal attribués, un récépissé « de 6 mois » et le niveau B1 pour la
+ * naturalisation (B2 depuis le 1er janvier 2026). Tout est repris sur les
+ * fiches service-public F2208, F11201, F36206, F39530 et A18881, lues le
+ * 22/10/2026.
  */
 const article: Article = {
   slug: "renouvellement-carte-resident-10-ans-2026-conditions-documents-anef",
-  titre: "Renouvellement carte de résident 10 ans 2026 : démarches ANEF, conditions et timeline complète",
-  titreSeo: "Renouvellement carte de résident 10 ans 2026 : démarches ANEF, conditions et timeline complète",
-  resume: "Votre carte de résident 10 ans expire ? Renouvellement automatique sous conditions en 2026 : 2 mois avant échéance via ANEF, dossier réduit (par rapport à la 1re demande), récépissé immédiat. Documents, motifs de refus rares et procédure pas-à-pas.",
-  chapo: "Votre **carte de résident de 10 ans** approche de sa date d'expiration ? Bonne nouvelle : contrairement à la **première délivrance** (qui est le parcours le plus difficile du droit des étrangers), le **renouvellement** est en 2026 une procédure **largement simplifiée et de plein droit**, c'est-à-dire **automatique sauf motif grave**. Près de **350 000 étrangers** renouvellent chaque année leur carte de résident en France selon les chiffres du ministère de l'Intérieur. Depuis 2022, toute la démarche se fait en ligne sur **ANEF** (Administration Numérique des Étrangers en France) : pas de rendez-vous préfecture, pas de dossier papier, **récépissé délivré immédiatement**, et un coût stable de **75 €**. Ce guide 2026 détaille en 6 étapes : le principe du renouvellement de plein droit, le bon timing (2 à 6 mois avant expiration), la procédure ANEF pas-à-pas, les documents nécessaires (drastiquement réduits), les rares motifs de refus, et vos droits pendant l'attente du nouveau titre.",
+  titre: "Renouvellement de la carte de résident : quand déposer, combien payer et ce qui peut bloquer",
+  titreSeo: "Renouvellement carte de résident : délai et prix",
+  resume: "Renouveler une carte de résident de 10 ans : dépôt sur l'ANEF 4 à 2 mois avant la fin, 250 € de taxes, pas d'examen civique, motifs de refus.",
+  chapo: "Déposez votre demande sur l'ANEF (le site des démarches des étrangers) ==entre 4 mois et 2 mois avant la fin de votre carte==. Le renouvellement coûte ==250 €== au tarif normal depuis le 1er mai 2026, et l'examen civique n'est pas demandé. La préfecture (le service de l'État qui gère les titres de séjour) peut refuser dans deux cas précis.",
   publieLe: "2026-05-10",
-  modifieLe: "2026-05-10",
-  minutes: 15,
-  theme: "renouvellement carte résident 10 ans 2026",
+  modifieLe: "2026-10-22",
+  minutes: 7,
+  theme: "renouvellement carte de résident",
   motsCles: [
-    "renouvellement carte résident 10 ans 2026",
-    "carte résident expirée que faire",
-    "ANEF renouvellement carte résident",
-    "carte résident plein droit",
-    "récépissé carte résident",
-    "documents renouvellement carte résident",
-    "tarif renouvellement carte résident 75 euros",
-    "refus renouvellement carte résident",
-    "CESEDA L426 carte résident",
-    "voyage carte résident expirée",
-    "récépissé travail droits",
-    "délai renouvellement carte résident",
-    "carte résident menace ordre public",
-    "longue absence carte résident",
-    "naturalisation après carte résident",
+    "renouvellement carte de résident",
+    "renouvellement carte de résident 10 ans",
+    "renouvellement carte de résident prix",
+    "renouvellement carte de résident ANEF",
+    "carte de résident expirée",
+    "carte de résident permanent",
+    "attestation de prolongation d'instruction",
   ],
-  rubrique: "conseils",
-  auteur: "Brian B",
+  rubrique: "cadre-legal",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
-    largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1556157382-97eda2d62296",
+    src: "/images/articles/renouvellement-carte-resident.webp",
+    alt: "Façade en pierre de la préfecture du Rhône à Lyon, avec son horloge et son escalier",
+    largeur: 1024,
+    hauteur: 768,
+    credit: "marsupilami92, via Flickr",
+    licence: "CC BY 2.0",
+    source: "https://www.flickr.com/photos/41538865@N06/9511898610",
   },
   blocs: [
     {
+      type: "encadre",
+      titre: "Correction du 22 octobre 2026",
+      texte: "Une version précédente de cette page annonçait un renouvellement à 75 €, des délais et des taux de refus sans source officielle. Le montant en vigueur est de 250 € depuis le 1er mai 2026. La page a été réécrite sur les fiches de service-public.",
+      ton: "ambre",
+    },
+    {
       type: "h2",
-      texte: "Le principe : renouvellement de plein droit, sauf motif grave",
-      id: "principe-plein-droit",
+      texte: "Renouveler la carte de résident : de quoi s'agit-il ?",
     },
     {
       type: "p",
-      texte: "Contrairement à la **première carte de résident** dont l'attribution dépend du pouvoir d'appréciation du préfet (article L.426-1 et suivants du CESEDA), le **renouvellement** est juridiquement **un droit acquis**, sauf cas exceptionnels.",
+      texte: "La carte de résident est un titre de séjour de 10 ans. Un titre de séjour, c'est la carte qui vous autorise à vivre en France. À la fin des 10 ans, vous demandez une nouvelle carte : c'est le renouvellement ([service-public, F2208](https://www.service-public.gouv.fr/particuliers/vosdroits/F2208)).",
     },
-    { type: "p", texte: "**Base légale 2026**" },
     {
       type: "p",
-      texte: "L'article **L.433-4 du CESEDA** (Code de l'entrée et du séjour des étrangers et du droit d'asile) prévoit explicitement : *\"La carte de résident est renouvelée de plein droit, sauf en cas de menace pour l'ordre public ou de fraude établie.\"*",
+      texte: "Le renouvellement est plus simple que la première demande. Vous n'avez pas à repasser l'examen civique ni à prouver à nouveau votre niveau de français. Service-public le dit clairement : « Seule la 1re demande de carte de résident est concernée par l'examen civique » ([F39530](https://www.service-public.gouv.fr/particuliers/vosdroits/F39530)).",
     },
-    { type: "p", texte: "**Concrètement**, cela signifie :" },
+    {
+      type: "p",
+      texte: "Si vous préparez une première carte de résident, lisez plutôt notre guide sur les [conditions de la carte de résident de 10 ans](/articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture).",
+    },
+    {
+      type: "h2",
+      texte: "Quand faut-il déposer la demande ?",
+    },
+    {
+      type: "p",
+      texte: "Service-public indique une fenêtre précise : ==au plus tôt 4 mois et au plus tard 2 mois== avant la fin de validité de votre carte ([F11201](https://www.service-public.gouv.fr/particuliers/vosdroits/F11201)). Notez la date de fin de votre carte, puis mettez un rappel 4 mois avant.",
+    },
     {
       type: "liste",
-      style: "puces",
+      style: "alertes",
       items: [
-        "**Vous n'avez pas à reprouver** que vous avez des ressources suffisantes (sauf cas particulier).",
-        "**Vous n'avez pas à reprouver** votre niveau de français.",
-        "**Vous n'avez pas à passer** le **test civique** (qui n'est pas exigé pour la carte de résident, contrairement à la naturalisation).",
-        "**Vous n'avez pas à justifier** d'une intégration républicaine renouvelée.",
-      ],
-    },
-    { type: "p", texte: "**Le préfet ne peut refuser que dans 3 cas** :" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Menace caractérisée pour l'ordre public** (terrorisme, criminalité grave, fichage S documenté).",
-        "**Fraude** dans l'obtention de la précédente carte (mariage blanc, faux documents).",
-        "**Rupture du lien avec la France** : absence prolongée de plus de 3 ans consécutifs hors de France (article L.426-22 CESEDA), sauf justification.",
+        "Un dépôt en retard coûte plus cher. Sauf cas de force majeure, service-public indique un droit de visa de régularisation de **180 €** en plus du prix de la carte (F2208, F11201).",
+        "Un dossier complet déposé dans les délais vous donne droit à une attestation de prolongation d'instruction. Elle prouve que votre séjour reste régulier ([F36206](https://www.service-public.gouv.fr/particuliers/vosdroits/F36206)).",
       ],
     },
     {
-      type: "p",
-      texte: "Statistiquement, **moins de 2% des renouvellements** sont refusés en 2026 selon les données de la Direction générale des étrangers en France (DGEF). C'est l'une des procédures les plus sûres du droit des étrangers.",
-    },
-    { type: "p", texte: "**Différence majeure avec la première délivrance**" },
-    {
-      type: "tableau",
-      entetes: ["Critère", "1re délivrance", "Renouvellement"],
-      lignes: [
-        ["Examen au fond", "Approfondi", "Limité"],
-        ["Niveau A2 français", "Exigé", "Non re-exigé"],
-        ["Ressources", "Vérifiées", "Non re-vérifiées (sauf famille)"],
-        ["Engagement républicain", "Vérifié", "Présumé"],
-        ["Taux d'acceptation", "~70%", "~98%"],
-      ],
+      type: "h2",
+      texte: "Comment faire la demande sur l'ANEF ?",
     },
     {
       type: "p",
-      texte: "Pour bien comprendre les conditions de la première délivrance, consultez notre guide : [carte de résident 10 ans en France](/articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture).",
+      texte: "Dans la plupart des cas, la demande se fait en ligne sur l'ANEF (F2208). L'ANEF, c'est le site du ministère de l'Intérieur pour les démarches des étrangers. Deux cas passent encore par la préfecture, sur rendez-vous : les personnes apatrides et les personnes qui touchent une rente d'accident du travail.",
     },
-    { type: "h2", texte: "Quand déposer : timing optimal et limites", id: "quand-deposer-timing" },
     {
       type: "p",
-      texte: "Le timing est crucial : déposer trop tard expose à une **rupture de droits** (récépissé refusé, séjour irrégulier théorique). Déposer trop tôt entraîne un **rejet pour irrecevabilité**.",
+      texte: "La liste exacte des pièces s'affiche sur l'ANEF selon votre situation. Préparez au moins votre passeport, votre carte actuelle et un justificatif de domicile de moins de 6 mois. Ajoutez une e-photo : une photo d'identité avec un code numérique (F2208). Notre [guide de l'ANEF](/articles/guide-anef-complet-2026-creer-compte-deposer-demande) explique le dépôt pas à pas.",
     },
-    { type: "p", texte: "**Le calendrier idéal 2026**" },
     {
-      type: "p",
-      texte: "La législation autorise le dépôt **dans les 6 mois précédant l'expiration** de la carte. Le ministère de l'Intérieur recommande **2 mois avant** au minimum.",
+      type: "h3",
+      texte: "Les deux attestations à ne pas confondre",
     },
     {
       type: "tableau",
-      entetes: ["Délai avant expiration", "Statut juridique"],
+      entetes: ["Document", "Quand vous le recevez", "Ce qu'il prouve"],
       lignes: [
-        ["Plus de 6 mois", "Trop tôt → rejet probable"],
-        ["4 à 6 mois", "Possible mais pas idéal"],
-        ["**2 à 4 mois**", "**Période optimale**"],
-        ["1 mois", "Risque de rupture de droits"],
-        ["Moins de 15 jours", "Procédure d'urgence"],
-        ["Après expiration", "Séjour irrégulier théorique, mais régularisable sous conditions"],
+        ["Attestation de dépôt", "Tout de suite après le dépôt en ligne", "La date de votre demande. Ce n'est pas un document de séjour."],
+        ["Attestation de prolongation d'instruction", "Si le dossier complet est déposé dans le délai", "Un séjour régulier. Valable 3 mois au plus, renouvelée tant qu'il n'y a pas de décision."],
       ],
+      legende: "Source : service-public, fiche F36206, lue le 22/10/2026.",
     },
-    { type: "p", texte: "**Pourquoi 2 à 4 mois est optimal ?**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Le délai d'instruction préfectoral 2026 est de **6 à 14 semaines** selon le département.",
-        "Vous obtenez votre **récépissé immédiatement** lors du dépôt sur ANEF (preuve numérique).",
-        "Vous avez le temps de réagir si un complément est demandé.",
-        "Vous évitez les périodes saturées (rentrée scolaire, été).",
-      ],
-    },
-    { type: "p", texte: "**Délais constatés par département en 2026**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Île-de-France** : 10 à 14 semaines",
-        "**PACA, Auvergne-Rhône-Alpes** : 8 à 12 semaines",
-        "**Régions rurales** : 6 à 10 semaines",
-        "**Outre-mer** : 12 à 18 semaines",
-      ],
-    },
-    { type: "p", texte: "**Que faire si la carte expire avant la nouvelle ?**" },
     {
       type: "p",
-      texte: "Le **récépissé** numérique sur ANEF prolonge automatiquement vos droits **jusqu'à 6 mois renouvelables**. Vous restez en séjour régulier, vous pouvez **travailler** et **voyager** dans Schengen avec ce récépissé + passeport (mais retour pays d'origine plus délicat, voir section dédiée).",
+      texte: "L'attestation de prolongation vous permet de travailler si la carte que vous renouvelez vous le permettait (F36206). Pour un voyage hors de France pendant l'attente, lisez d'abord notre article sur le [récépissé et vos droits pendant l'attente](/articles/recepisse-titre-de-sejour-droits-duree-voyage).",
+    },
+    {
+      type: "p",
+      texte: "Quand la nouvelle carte est prête, la préfecture ou la sous-préfecture de votre domicile vous prévient. Vous allez la chercher **en personne** (F2208).",
     },
     {
       type: "h2",
-      texte: "Procédure ANEF étape par étape (compte, formulaire, paiement 75 €)",
-      id: "procedure-anef-etapes",
+      texte: "Combien coûte le renouvellement ?",
     },
     {
       type: "p",
-      texte: "Depuis 2022, **toutes les démarches** de renouvellement passent par ANEF (administration-etrangers-en-france.interieur.gouv.fr). Plus aucun rendez-vous préfecture pour cette procédure.",
+      texte: "Depuis le 1er mai 2026, le renouvellement d'un titre de séjour coûte ==250 €== au tarif normal, et ==100 €== au tarif minoré ([service-public, A18881](https://www.service-public.gouv.fr/particuliers/actualites/A18881)). Vous payez en timbres fiscaux, une somme due à l'État. Avant mai 2026, c'était 225 €.",
     },
-    { type: "p", texte: "**Étape 1 : créer ou retrouver son compte ANEF**" },
     {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "Allez sur administration-etrangers-en-france.interieur.gouv.fr.",
-        "Cliquez sur **\"Créer un compte\"** ou **\"Me connecter\"** si vous en avez déjà un.",
-        "Renseignez : email valide, mot de passe sécurisé, nom, prénom, date de naissance, **numéro de votre carte de séjour actuelle**.",
-        "Vérifiez votre email (lien d'activation valable 48 heures).",
+      type: "tableau",
+      entetes: ["Situation", "Prix du renouvellement"],
+      lignes: [
+        ["Cas général", "250 €"],
+        ["Tarif minoré", "100 €"],
+        ["Réfugié, apatride, bénéficiaire de la protection subsidiaire", "Gratuit"],
+        ["Membre de la famille d'un réfugié ou d'un apatride", "250 €"],
+        ["Victime de violences conjugales ou de traite", "Gratuit"],
       ],
-    },
-    { type: "p", texte: "**Étape 2 : choisir la démarche**" },
-    {
-      type: "p",
-      texte: "Sur le tableau de bord → **\"Renouveler mon titre de séjour\"** → sélectionnez le motif **\"Carte de résident, article L.426-X\"** (X selon votre cas : conjoint de Français L.426-5, parent d'enfant français L.426-6, etc.).",
-    },
-    { type: "p", texte: "**Étape 3 : remplir le formulaire en ligne**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Confirmation des informations personnelles (état civil, adresse).",
-        "Mise à jour des informations familiales (mariage, divorce, enfants nés depuis).",
-        "Mise à jour des informations professionnelles (employeur actuel, situation).",
-        "Évolution de votre situation depuis la dernière carte.",
-      ],
-    },
-    { type: "p", texte: "**Étape 4 : téléverser les pièces justificatives**" },
-    {
-      type: "p",
-      texte: "Format : PDF, JPG, PNG. Taille max : **3 Mo par fichier**, **20 Mo au total**.",
-    },
-    { type: "p", texte: "**Étape 5 : payer la taxe de renouvellement**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Tarif 2026 : 75 €** (timbre fiscal numérique acheté directement sur ANEF ou sur timbres.impots.gouv.fr).",
-        "Paiement par carte bancaire en ligne.",
-        "Justificatif téléchargeable immédiatement.",
-      ],
-    },
-    { type: "p", texte: "**À noter** : si vous demandez en parallèle un duplicata, ajout 25 €." },
-    { type: "p", texte: "**Étape 6 : recevoir le récépissé**" },
-    {
-      type: "p",
-      texte: "Dès la validation du dossier (généralement **immédiate** ou sous 48 heures), un **récépissé numérique** est généré dans votre espace ANEF. Téléchargez-le, imprimez-le si besoin. **Validité 6 mois renouvelables**.",
-    },
-    { type: "p", texte: "**Étape 7 : suivi et notification**" },
-    { type: "p", texte: "Vous recevez par email :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Confirmation du dépôt",
-        "Demandes éventuelles de pièces complémentaires",
-        "Notification de la décision",
-        "Convocation pour la **remise physique** de la nouvelle carte (en préfecture ou sous-préfecture, **30 minutes maximum**).",
-      ],
-    },
-    { type: "h2", texte: "Documents nécessaires : un dossier réduit", id: "documents-necessaires" },
-    {
-      type: "p",
-      texte: "Le grand avantage du renouvellement par rapport à la première demande : **moins de pièces** sont exigées car votre situation est déjà connue de l'administration.",
-    },
-    { type: "p", texte: "**Pièces obligatoires (toutes situations)**" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Passeport** en cours de validité (toutes pages utiles + page d'identité).",
-        "**Carte de résident actuelle** (recto/verso scannée).",
-        "**Justificatif de domicile** récent (moins de 6 mois) : facture EDF, quittance de loyer, attestation d'hébergement + pièce d'identité de l'hébergeant.",
-        "**3 photos d'identité numériques** au format ANEF (code 22 caractères depuis cabine ou photographe agréé).",
-        "**Timbre fiscal numérique** de **75 €**.",
-        "**Acte de naissance** de moins de 3 mois (avec traduction certifiée si étranger).",
-      ],
-    },
-    { type: "p", texte: "**Pièces selon situation**" },
-    { type: "p", texte: "**Si vous avez la carte au titre du conjoint de Français (L.426-5)** :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Acte de mariage français de moins de 3 mois",
-        "Justificatif de **communauté de vie effective** (factures communes, déclaration d'impôts commune, quittances).",
-      ],
-    },
-    { type: "p", texte: "**Si vous avez la carte au titre de parent d'enfant français (L.426-6)** :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Acte de naissance de l'enfant",
-        "Justificatif de **contribution effective** à l'entretien et à l'éducation : versements bancaires, factures, attestation école.",
-      ],
-    },
-    { type: "p", texte: "**Si vous avez la carte au titre du regroupement familial (L.434-X)** :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Justificatifs de communauté de vie avec le regroupant.",
-        "Si décès ou divorce : pièces relatives à votre situation actuelle.",
-      ],
+      legende: "Sources : service-public A18881 et F2208, lues le 22/10/2026.",
     },
     {
       type: "p",
-      texte: "**Si vous avez la carte au titre de la résidence de longue durée UE (L.426-17)** :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Justificatifs de **non-rupture du lien avec la France** : impôts, sécurité sociale, présence physique.",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Pièces NON exigées en renouvellement (différence clé avec la 1re demande)** :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Test du **niveau A2 français** (non re-vérifié)",
-        "Test civique (non requis pour la carte de résident)",
-        "Justificatifs de **5 ans de séjour régulier** (déjà acquis)",
-        "Casier judiciaire récent (sauf demande spécifique)",
-        "Bulletins de salaire et avis d'imposition détaillés (sauf cas particulier)",
-      ],
+      texte: "Le timbre fiscal (le moyen de payer ces taxes à l'État) a sa page complète. Notre page sur le [timbre fiscal du titre de séjour](/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances) donne tout le barème.",
     },
     {
       type: "h2",
-      texte: "Les rares motifs de refus (menace, fraude, longue absence)",
-      id: "motifs-refus-rares",
+      texte: "Pour quelles raisons la préfecture peut-elle refuser ?",
     },
     {
       type: "p",
-      texte: "Moins de 2% des renouvellements sont refusés. Voici les **3 motifs légaux exclusifs** qui permettent au préfet de refuser et leur encadrement strict.",
-    },
-    { type: "p", texte: "**Motif n°1 : menace pour l'ordre public**" },
-    {
-      type: "p",
-      texte: "Article **L.432-1 CESEDA**. Le préfet doit prouver une menace **caractérisée et actuelle**, pas une simple suspicion.",
-    },
-    { type: "p", texte: "Cas typiques :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Condamnation pénale grave (terrorisme, trafic, violences aggravées)",
-        "Fichage S avec éléments tangibles",
-        "Activités prosélytes incompatibles avec les valeurs républicaines",
-        "Récidive d'infractions graves",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Une **infraction mineure** (excès de vitesse, contravention) **ne peut pas** justifier un refus. Le Conseil d'État sanctionne régulièrement les préfets qui invoquent l'ordre public sans preuves solides.",
-    },
-    { type: "p", texte: "**Motif n°2 : fraude établie**" },
-    { type: "p", texte: "Article **L.412-7 CESEDA**. La fraude doit être :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Documentée (preuves matérielles)",
-        "Significative (pas une simple omission)",
-        "Imputable au requérant (pas à un tiers)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Cas typiques : mariage blanc révélé, faux acte de naissance, fausse identité, faux contrat de travail. La **prescription** est de **3 ans** pour les fraudes constatables (article 7-1 du Code civil par analogie), mais la fraude à la nationalité est imprescriptible.",
-    },
-    { type: "p", texte: "**Motif n°3 : rupture du lien avec la France (absence prolongée)**" },
-    {
-      type: "p",
-      texte: "Article **L.426-22 CESEDA**. Si vous avez résidé **plus de 3 ans consécutifs hors de France** (sans présence d'au moins quelques jours par an), le préfet peut considérer que vous avez **perdu la résidence habituelle** en France.",
-    },
-    { type: "p", texte: "**Exceptions importantes** :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Mission professionnelle pour entreprise française : durée non décompté",
-        "Études de longue durée à l'étranger reconnues",
-        "Soins médicaux nécessaires hors France",
-        "Force majeure documentée (conflits, pandémie, etc.)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Comment éviter ce risque ?** Conservez **toutes les preuves** de présence en France : factures, billets d'avion aller-retour, déclarations d'impôts, bulletins de salaire, scolarité des enfants.",
-    },
-    { type: "p", texte: "**Recours en cas de refus**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Recours gracieux** auprès du préfet : 2 mois.",
-        "**Recours hiérarchique** auprès du ministre de l'Intérieur : 2 mois.",
-        "**Recours contentieux** au tribunal administratif territorialement compétent : 2 mois.",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Une **OQTF** (Obligation de quitter le territoire) accompagne parfois le refus → délais de recours raccourcis à **48 heures, 7 ou 15 jours** selon le cas. Avocat indispensable.",
-    },
-    {
-      type: "h2",
-      texte: "Récépissé : vos droits pendant l'attente du nouveau titre",
-      id: "recepisse-droits-attente",
-    },
-    {
-      type: "p",
-      texte: "Le récépissé numérique délivré sur ANEF dès le dépôt est un **véritable titre de séjour temporaire** qui maintient l'intégralité de vos droits.",
-    },
-    { type: "p", texte: "**Validité 2026**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**6 mois renouvelables** automatiquement.",
-        "En 2026, le ministère a réduit les délais : la plupart des renouvellements aboutissent en moins de **4 mois**, donc un seul récépissé suffit généralement.",
-      ],
-    },
-    { type: "p", texte: "**Droit au travail**" },
-    {
-      type: "p",
-      texte: "Le récépissé de renouvellement de carte de résident **autorise pleinement le travail** salarié et indépendant, sans aucune restriction. Article **R.431-15 CESEDA**. Votre employeur peut continuer à vous employer normalement. Si recrutement pendant cette période, présenter le récépissé suffit.",
-    },
-    { type: "p", texte: "**Voyage dans l'espace Schengen**" },
-    {
-      type: "p",
-      texte: "Avec le récépissé de carte de résident, vous pouvez **circuler librement** dans les 27 pays de l'espace Schengen pour des séjours de **moins de 90 jours** sur 180 jours, à condition de présenter :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Le récépissé numérique (impression conseillée)",
-        "Votre passeport en cours de validité",
-        "Votre ancienne carte de résident (même expirée, à titre justificatif)",
-      ],
-    },
-    { type: "p", texte: "**Voyage hors Schengen et retour en France : ATTENTION**" },
-    {
-      type: "p",
-      texte: "Le récépissé **ne garantit PAS** systématiquement le **retour en France** depuis un pays tiers. Les compagnies aériennes peuvent **refuser l'embarquement** par méconnaissance du récépissé numérique. Pour sécuriser un voyage hors Schengen :",
+      texte: "Service-public cite deux motifs de refus au renouvellement (F2208) :",
     },
     {
       type: "liste",
       style: "numeros",
       items: [
-        "**Demandez un visa de retour (DCEM)** auprès de votre préfecture **avant le départ** (gratuit, valable 3 mois).",
-        "**Imprimez** le récépissé en plusieurs exemplaires.",
-        "**Vérifiez** auprès du consulat de France de votre pays de destination si nécessaire.",
-        "**Évitez** les voyages longs (plus de 30 jours) pendant la procédure.",
+        "**Une menace grave pour l'ordre public**, c'est-à-dire pour la sécurité et la paix publiques.",
+        "**L'absence de résidence habituelle en France**. Il faut avoir en France le centre de votre vie privée et familiale. Il faut **aussi** y vivre au moins **6 mois par année civile** (de janvier à décembre).",
       ],
     },
-    { type: "p", texte: "**Retour pays d'origine**" },
     {
       type: "p",
-      texte: "Mêmes règles. **Particulièrement risqué** si votre pays a des relations administratives complexes avec la France. En cas de doute, **reportez le voyage** après réception de la nouvelle carte.",
+      texte: "Attention aussi aux longs séjours à l'étranger. Service-public précise que la carte n'est plus valable si vous quittez la France pendant ==plus de 3 ans de suite== (F2208). Notre article sur l'[absence de France et la perte du titre de séjour](/articles/absence-france-voyage-perte-titre-sejour-duree-maximale-2026) détaille ces durées.",
     },
-    { type: "p", texte: "**Droits sociaux et bancaires**" },
-    { type: "p", texte: "Le récépissé maintient :" },
     {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Couverture sécurité sociale (Ameli)",
-        "CAF, allocations familiales",
-        "Compte bancaire (à présenter lors du contrôle annuel KYC)",
-        "Permis de conduire français",
-        "Mutuelle, assurance santé",
-      ],
+      type: "h3",
+      texte: "Que faire en cas de refus ?",
+    },
+    {
+      type: "p",
+      texte: "Un refus écrit est en général accompagné d'une OQTF, une obligation de quitter le territoire français. Selon le type d'OQTF, vous avez 48 heures, 15 jours ou 30 jours pour saisir le tribunal administratif (F2208).",
+    },
+    {
+      type: "p",
+      texte: "Sans réponse au bout de 4 mois, c'est un refus implicite. Vous avez alors 2 mois pour un recours gracieux auprès du préfet, un recours hiérarchique auprès du ministre de l'Intérieur, ou un recours au tribunal (F2208). Notre guide des [recours contre un refus de titre et une OQTF](/articles/refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france) explique ces étapes. Pour votre cas précis, faites-vous aider par un avocat ou une association comme La Cimade.",
+    },
+    {
+      type: "h2",
+      texte: "Pouvez-vous demander une carte de résident permanent à la place ?",
+    },
+    {
+      type: "p",
+      texte: "Oui. La carte de résident permanent est délivrée en renouvellement d'une carte de résident de 10 ans. Elle vous est proposée systématiquement si vous avez déjà eu 2 cartes de résident de suite ([F11201](https://www.service-public.gouv.fr/particuliers/vosdroits/F11201)).",
+    },
+    {
+      type: "p",
+      texte: "Mais ses conditions sont celles d'une première demande. Il faut un niveau de français au moins B1 et la réussite à l'examen civique, sauf après 65 ans. Elle coûte 350 € (F11201). Si vous êtes de nationalité algérienne, vous n'êtes pas concerné : vous avez un certificat de résidence, avec ses propres règles. Notre article sur les [Algériens et l'examen civique](/articles/algeriens-examen-civique-2026-accord-1968-dispense-sejour-mais-pas-naturalisation) en parle.",
+    },
+    {
+      type: "p",
+      texte: "Vous visez la carte permanente ou la naturalisation ? Vérifiez en une minute si l'examen vous concerne avec le [simulateur d'éligibilité](/eligibilite-examen-civique).",
+    },
+    {
+      type: "cta",
+      texte: "Pour la carte de résident permanent, l'examen civique est demandé : testez-vous sur 40 questions types, avec la correction.",
+      bouton: "Faire un examen blanc gratuit",
     },
     {
       type: "encadre",
-      titre: "À retenir",
-      texte: "Le renouvellement de la carte de résident 10 ans est en 2026 l'une des démarches **les plus accessibles** du droit des étrangers en France : entièrement dématérialisé sur ANEF, **récépissé immédiat**, dossier réduit, **75 € seulement**, et un taux d'acceptation supérieur à **98%**. Il vous suffit de respecter le timing (2 à 4 mois avant expiration), de fournir les documents demandés, et d'éviter les rares motifs de refus (menace ordre public, fraude, longue absence). Une fois votre nouvelle carte en main pour 10 ans, **l'étape logique suivante** est souvent la **naturalisation française** : avec une carte de résident solide, vous pouvez désormais postuler à la nationalité française si vous remplissez les conditions (5 ans de résidence, B1 français, intégration). Et le passage obligé de cette dernière étape, c'est le **test civique de naturalisation** : 40 questions sur les valeurs, les institutions, l'histoire de France. Préparez-le sereinement, gratuitement, avec des QCM officiels et l'attestation finale directement sur [testciviquefrance.fr](/signup) : la passerelle naturelle entre votre carte de résident et votre nationalité française.",
-      ton: "bleu",
+      titre: "Le geste utile",
+      texte: "Regardez aujourd'hui la date de fin de votre carte. Mettez un rappel 4 mois avant. Ce jour-là, déposez sur l'ANEF un dossier complet : c'est ce qui vous donne l'attestation de prolongation, et vous évite les 180 € de retard.",
+      ton: "vert",
     },
   ],
   faq: [
     {
-      question: "Combien coûte le renouvellement de la carte de résident en 2026 ?",
-      reponse: "75 € de timbre fiscal numérique payé directement sur ANEF ou sur timbres.impots.gouv.fr. Aucun autre frais sauf duplicata éventuel (25 €). Pas de frais de dossier supplémentaires.",
+      question: "Quel est le prix du renouvellement d'une carte de résident ?",
+      reponse: "Depuis le 1er mai 2026, le renouvellement coûte 250 € au tarif normal et 100 € au tarif minoré, selon service-public. Il est gratuit pour les réfugiés, les apatrides et les bénéficiaires de la protection subsidiaire. Si vous déposez en retard, 180 € de droit de visa de régularisation peuvent s'ajouter.",
     },
     {
-      question: "Puis-je renouveler ma carte de résident si elle est déjà expirée depuis 1 mois ?",
-      reponse: "Oui, mais c'est plus risqué : votre séjour est théoriquement irrégulier. Déposez immédiatement votre demande sur ANEF en expliquant le retard. Dans la majorité des cas, le récépissé sera délivré et la situation régularisée. Au-delà de 6 mois post-expiration, contactez un avocat spécialisé.",
+      question: "Quand faire la demande de renouvellement de la carte de résident ?",
+      reponse: "Service-public indique de déposer la demande sur l'ANEF au plus tôt 4 mois et au plus tard 2 mois avant la fin de votre carte. Un dossier complet déposé dans ce délai vous donne une attestation de prolongation d'instruction, qui prouve que votre séjour reste régulier pendant l'attente.",
     },
     {
-      question: "Mon récépissé expire avant que je reçoive ma nouvelle carte. Que faire ?",
-      reponse: "Le récépissé est renouvelable automatiquement sur ANEF. Connectez-vous, demandez le renouvellement (généralement validé en 48 heures). Si la procédure prend plus de 8 mois, contactez votre préfecture par mail ou via le formulaire ANEF \"Signaler un retard\".",
+      question: "Faut-il passer l'examen civique pour renouveler sa carte de résident ?",
+      reponse: "Non. Selon service-public, seule la première demande de carte de résident est concernée par l'examen civique. Les renouvellements ne le sont pas. L'examen est en revanche demandé pour une première carte de résident permanent, sauf si vous avez plus de 65 ans.",
     },
     {
-      question: "Mon mari/épouse français(e) est décédé(e) ou nous avons divorcé. Cela impacte-t-il le renouvellement ?",
-      reponse: "Pas en principe, car la carte de résident est un titre de longue durée détaché de la situation matrimoniale. Toutefois, si vous l'avez obtenue récemment au titre du mariage (moins de 5 ans), informez l'administration et joignez les justificatifs (acte de décès, jugement de divorce). Le renouvellement reste de plein droit.",
+      question: "Que se passe-t-il si ma carte de résident est expirée ?",
+      reponse: "Déposez votre demande au plus vite sur l'ANEF. Hors force majeure, service-public indique un droit de visa de régularisation de 180 € en plus du prix de la carte. Une carte expirée ne prouve plus votre séjour régulier : pour votre situation précise, renseignez-vous auprès de la préfecture ou d'une association.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Service-public : carte de résident de 10 ans (F2208, vérifiée le 01/07/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2208",
+      type: "officiel",
+      luLe: "2026-10-22",
     },
     {
-      question: "Après le renouvellement de ma carte de résident, puis-je demander la naturalisation immédiatement ?",
-      reponse: "Oui si vous remplissez les conditions générales : 5 ans de résidence régulière (la carte de résident en compte), niveau B1 de français certifié, intégration républicaine, ressources stables, casier vierge. Le test civique (40 questions, 32/40 minimum) est obligatoire et constitue souvent la dernière étape avant le dépôt.",
+      titre: "Service-public : carte de résident permanent (F11201, vérifiée le 01/05/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11201",
+      type: "officiel",
+      luLe: "2026-10-22",
+    },
+    {
+      titre: "Service-public : attestations délivrées lors d'une demande de titre de séjour en ligne (F36206)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F36206",
+      type: "officiel",
+      luLe: "2026-10-22",
+    },
+    {
+      titre: "Service-public : carte de séjour pluriannuelle et carte de résident, l'examen civique (F39530)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F39530",
+      type: "officiel",
+      luLe: "2026-10-22",
+    },
+    {
+      titre: "Service-public : titres de séjour, augmentation des taxes à compter du 1er mai 2026 (A18881)",
+      url: "https://www.service-public.gouv.fr/particuliers/actualites/A18881",
+      type: "officiel",
+      luLe: "2026-10-22",
     },
   ],
 };

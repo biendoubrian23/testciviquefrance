@@ -193,6 +193,7 @@ import naturalisationFrancaise2AnsRaccourcisLegauxAccelerer2026 from "./articles
 import naturalisationFrancaise2026DelaisConditionsPiegesDossierComp from "./articles/naturalisation-francaise-2026-delais-conditions-pieges-dossier-complet";
 import naturalisationFrancaiseRefusee2026RaisonsCacheesContesterRec from "./articles/naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours";
 import niveauFrancaisA2B1B22026TitreSejourNaturalisation from "./articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation";
+import numerosUrgenceFrance from "./articles/numeros-urgence-france";
 import oqtf2026DroitsRecoursExpulsionAideJuridictionnelleTestCiviqu from "./articles/oqtf-2026-droits-recours-expulsion-aide-juridictionnelle-test-civique";
 import oqtfEnfantsFrance2026ExpulsionEnfantsFrancaisScolarises from "./articles/oqtf-enfants-france-2026-expulsion-enfants-francais-scolarises";
 import oqtfEtudiantEtrangerFrance2026RecoursDroitsDefense from "./articles/oqtf-etudiant-etranger-france-2026-recours-droits-defense";
@@ -476,6 +477,7 @@ export const ARTICLES: readonly Article[] = [
   naturalisationFrancaise2026DelaisConditionsPiegesDossierComp,
   naturalisationFrancaiseRefusee2026RaisonsCacheesContesterRec,
   niveauFrancaisA2B1B22026TitreSejourNaturalisation,
+  numerosUrgenceFrance,
   oqtf2026DroitsRecoursExpulsionAideJuridictionnelleTestCiviqu,
   oqtfEnfantsFrance2026ExpulsionEnfantsFrancaisScolarises,
   oqtfEtudiantEtrangerFrance2026RecoursDroitsDefense,

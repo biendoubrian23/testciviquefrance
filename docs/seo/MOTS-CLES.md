@@ -41,8 +41,8 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | /articles/reforme-test-civique-50-questions-juin-2026 | Aucun texte trouvé prévoyant 50 questions ; l'arrêté du 10/10/2025 fixe 40 questions |
 | /articles/regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls | La circulaire Valls de 2012 est abrogée par la circulaire du 23/01/2025 |
 | /articles/cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion | Vérifier sur Légifrance la durée maximale de rétention et les publics concernés |
+| /articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal | Relevé le 22/10/2026 en relisant le barème : vérifier le timbre de naturalisation (255 € depuis le 1er mai 2026 selon le journal du 20/10) et tout montant non sourcé |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
-| /articles/renouvellement-carte-resident-10-ans-2026-conditions-documents-anef | Un tarif de 75 € y est cité ; vérifier contre le barème au 1er mai 2026 |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
 
@@ -63,7 +63,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | V1-entretien-visa-consulat.md | Entretien et visa au consulat | Déjà traité : publié le 25/06/2026 (/articles/entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour). Le brief n'a pas été supprimé du dossier |
 | V2-preparer-depart-france.md | Checklist avant l'avion | Déjà traité : publié le 25/06/2026 (/articles/preparer-depart-france-2026-checklist-documents-avant-avion). Brief resté dans le dossier |
 | V4-papiers-a-obtenir-arrivee.md | Papiers à obtenir en arrivant | Déjà traité : publié le 25/06/2026 (/articles/papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander). Brief resté dans le dossier |
-| V5-10-choses-a-savoir-arrivee.md | 10 choses à savoir en arrivant (codes, réflexes, numéros d'urgence) | **Non traité**, aucun article existant. Bon candidat famille 4. Les données marquées à vérifier dans le brief doivent l'être |
+| V5-10-choses-a-savoir-arrivee.md | 10 choses à savoir en arrivant (codes, réflexes, numéros d'urgence) | **Non traité** ; les numéros d'urgence ont leur article depuis le 22/10/2026 (numeros-urgence-france), à lier depuis l'article tiré de ce brief. Bon candidat famille 4. Les données marquées à vérifier dans le brief doivent l'être |
 | 06-examen-civique-exemples-questions.md | Exemples de questions corrigées | Déjà traité : publié le 09/06/2026 (/articles/examen-civique-2026-exemples-questions-corrigees). Brief resté dans le dossier |
 
 ---
@@ -253,7 +253,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | Sujet | Requêtes | Volume | Remarque |
 |---|---|---|---|
 | 10 choses à savoir quand on arrive en France : codes et réflexes du quotidien | conseils nouvel arrivant France ; choses à savoir en arrivant en France ; vivre en France étranger | à mesurer | Brief V5, non traité. Numéros d'urgence à vérifier sur service-public |
-| Les numéros d'urgence en France : 15, 17, 18, 112, 114, 3919 | numéro urgence France ; 112 ou 15 ; numéro violences femmes | à mesurer | service-public, gouvernement.fr |
+| ~~Les numéros d'urgence en France : 15, 17, 18, 112, 114, 3919~~ → numeros-urgence-france, 2026-10-22 (service-public F33954 ; numéros des COM du Pacifique non trouvés sur une source officielle, à compléter) | numéro urgence France ; 112 ou 15 ; numéro violences femmes | 1 k à 10 k (« numéro urgence france », 20/10) | service-public, gouvernement.fr |
 | Le 14 juillet : pourquoi cette date | 14 juillet origine ; fête nationale pourquoi ; 1790 fête de la fédération | à mesurer | elysee.fr, vie-publique.fr |
 | 8 mai et 11 novembre : comprendre les commémorations | 11 novembre pourquoi ; 8 mai férié ; commémoration armistice | à mesurer | cheminsdememoire.gouv.fr |
 | La Marseillaise : histoire et paroles | Marseillaise paroles ; histoire Marseillaise ; Rouget de Lisle | à mesurer | elysee.fr. Recoupe l'article symboles (angle approfondi) |
