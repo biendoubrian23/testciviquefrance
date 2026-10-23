@@ -3,7 +3,7 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo } from 'react';
 import { User, Session } from '@supabase/supabase-js';
 import { createClient } from '@/lib/supabase/client';
-import { posthog } from '@/components/analytics/PostHogProvider';
+import { posthog, hasAnalyticsConsent } from '@/components/analytics/PostHogProvider';
 
 // ⏱️ TIMEOUT pour ne jamais bloquer indéfiniment
 const AUTH_TIMEOUT_MS = 5000; // 5 secondes max
@@ -175,8 +175,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (newSession?.user) {
           setSession(newSession);
           setUser(newSession.user);
-          // Identifier l'utilisateur dans PostHog
-          if (typeof window !== 'undefined' && posthog) {
+          // Identifier l'utilisateur dans PostHog (seulement avec consentement analytique)
+          if (typeof window !== 'undefined' && posthog && hasAnalyticsConsent()) {
             posthog.identify(newSession.user.id, {
               email: newSession.user.email,
             });
@@ -185,7 +185,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           fetchProfile(newSession.user.id).then(profileData => {
             if (mounted) setProfile(profileData);
             // Enrichir le profil PostHog
-            if (typeof window !== 'undefined' && posthog && profileData) {
+            if (typeof window !== 'undefined' && posthog && profileData && hasAnalyticsConsent()) {
               posthog.people.set({
                 prenom: profileData.prenom,
                 nom: profileData.nom,

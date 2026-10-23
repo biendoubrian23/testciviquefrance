@@ -10,13 +10,23 @@ const CONSENT_KEY = 'tcf_cookie_consent_v1';
 // Flag pour éviter double init
 let posthogInitialized = false;
 
-function hasAnalyticsConsent(): boolean {
+export function hasAnalyticsConsent(): boolean {
     try {
         const raw = localStorage.getItem(CONSENT_KEY);
         if (!raw) return false;
         return JSON.parse(raw).analytics === true;
     } catch {
         return false;
+    }
+}
+
+// posthog-js recharge la barre d'outils PostHog à chaque visite si cette clé
+// reste dans le navigateur : on la retire avant l'init, le site ne l'utilise pas.
+function retirerBarreOutilsPostHog() {
+    try {
+        localStorage.removeItem('_postHogToolbarParams');
+    } catch {
+        // Stockage indisponible : rien à retirer
     }
 }
 
@@ -81,6 +91,7 @@ export function PostHogProvider({ children }: PostHogProviderProps) {
             const initPostHog = () => {
                 // Re-vérifier le consentement au moment de l'init (l'utilisateur peut avoir répondu entre-temps)
                 const analyticsConsent = hasAnalyticsConsent();
+                retirerBarreOutilsPostHog();
                 const commun = {
                     api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://eu.i.posthog.com',
                     person_profiles: 'identified_only' as const,
@@ -160,7 +171,8 @@ export function usePostHogIdentify(userId: string | null, userEmail?: string | n
     const posthogInstance = usePostHog();
 
     useEffect(() => {
-        if (posthogInstance && userId) {
+        // Sans consentement analytique, PostHog est en mémoire : pas d'identité ni d'e-mail envoyés
+        if (posthogInstance && userId && hasAnalyticsConsent()) {
             posthogInstance.identify(userId, {
                 email: userEmail,
                 name: userName,
