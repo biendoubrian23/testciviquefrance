@@ -53,3 +53,11 @@ Gestes possibles : `publie`, `optimise`, `corrige`, `fusionne` (l'ancien slug en
 2026-10-23 | indexation | passeport-talent-2026-conditions-metiers-demarches | retouché le 2026-10-20, pas encore relu par Google | demandée
 2026-10-24 | publie | decret-de-naturalisation-trouver-et-apres | pas de règle des 24 heures (JO du 24/10 : rien de neuf sur nos sujets) ; « décret de naturalisation » 1 k à 10 k (24/10) ; famille guides permanents (0 sur 5 jusqu'ici) ; service-public F2213, F33626 (vérifiée le 23/10), F15868, F1427, F1341, F1367, F39426 et Code civil art. 21-28 lus le 24/10 | à demander (nouvelle page)
 2026-10-24 | corrige | regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls | liste « à revérifier » : présentait la circulaire Valls de 2012 comme applicable (Légifrance : « plus applicable » depuis la circulaire du 23/01/2025, NOR INTK2435521J, lue en entier) ; « 8 mois de travail » (12 selon L. 435-4), durées de 5 ans, délais, « 90 % », « 35 % des recours », préfectures « ouvertes » retirés ; réécrit en entier sur la circulaire, le CESEDA L. 435-1 à L. 435-4, F16053 et A18881 ; titreSeo sur « circulaire retailleau » (1 k à 10 k) ; couverture locale libre ; signé de l'équipe | à demander (article corrigé)
+2026-10-24 | indexation | decret-de-naturalisation-trouver-et-apres | nouvelle page du jour | demandée
+2026-10-24 | indexation | regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls | retouché le 2026-10-24, pas encore relu par Google | demandée
+2026-10-24 | indexation | declaration-impots-etranger-france-2026-obligations-seuils-risques | retouché le 2026-10-20, pas encore relu par Google | demandée
+2026-10-24 | indexation | centres-agrees-examen-civique-2026 | retouché le 2026-10-20, pas encore relu par Google | demandée
+2026-10-24 | indexation | compte-anef-creer-2026-guide-pas-a-pas | retouché le 2026-10-20, pas encore relu par Google | demandée
+2026-10-24 | indexation | travailler-france-etranger-autorisation-droits | retouché le 2026-10-20, pas encore relu par Google | demandée
+2026-10-24 | indexation | guide-anef-complet-2026-creer-compte-deposer-demande | retouché le 2026-10-20, pas encore relu par Google | demandée
+2026-10-24 | indexation | ants-permis-conduire-2026-echange-demande-suivi | retouché le 2026-10-20, pas encore relu par Google | demandée
