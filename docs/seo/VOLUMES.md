@@ -67,3 +67,22 @@ Période oct. 2025 à sept. 2026, réseau Google.
 | prix test civique | 10 à 100 | faible | Les gens disent « examen », pas « test » |
 | régularisation métier en tension | 10 à 100 | faible | |
 | titre de séjour métier en tension | 10 à 100 | faible | |
+
+### 2026-10-24 : France seule (les 6 COM non ajoutées ce jour), toutes les langues (bouton de langue non retenté)
+
+Période oct. 2025 à sept. 2026, réseau Google. Plan créé le 24/10/2026 à 7 h.
+
+| Requête | Volume mensuel | Concurrence pub | Remarque |
+|---|---|---|---|
+| regroupement familial | 10 k à 100 k | faible | Guide existant (regroupement-familial-france-2026-guide-complet…) : candidat d'optimisation |
+| décret de naturalisation | 1 k à 10 k | faible | Porte l'article du 24/10 |
+| examen civique naturalisation | 1 k à 10 k | faible | YoY + 9 900 %, sur 3 mois + 900 % ; candidat famille examen |
+| attestation de prolongation d'instruction | 1 k à 10 k | faible | Candidat guide (ANEF) |
+| récépissé titre de séjour | 1 k à 10 k | faible | Article existant recepisse-titre-de-sejour-droits-duree-voyage (1 vue sur 28 j) : candidat d'optimisation |
+| circulaire retailleau | 1 k à 10 k | faible | YoY - 90 % ; porte l'optimisation du 24/10 (regularisation-sans-papiers…) |
+| décret naturalisation journal officiel | 100 à 1 k | faible | |
+| cérémonie de naturalisation | 100 à 1 k | faible | |
+| acte de naissance naturalisation | 100 à 1 k | faible | |
+| après décret de naturalisation | pas de donnée | | |
+| vérifier décret naturalisation | pas de donnée | | |
+| carte identité après naturalisation | pas de donnée | | |

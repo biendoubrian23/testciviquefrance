@@ -1,349 +1,236 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-buzz-generaux-5.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-buzz-generaux-5.ts`
+ * et `lib/data/seo-articles.ts`, sans changer d'adresse.
+ *
+ * Corrigé et réécrit en entier par le robot éditorial le 24/10/2026
+ * (`docs/seo/ROBOT.md`, liste « à revérifier » de `docs/seo/MOTS-CLES.md`) :
+ * l'article présentait comme applicable la circulaire du 28/11/2012, dite
+ * « circulaire Valls », que Légifrance classe parmi les circulaires qui ne
+ * sont plus applicables depuis la circulaire du 23/01/2025 (NOR
+ * INTK2435521J). Retirés : les durées de présence « 5 ans » tirées de la
+ * circulaire de 2012, « 8 mois de travail » (12 mois selon L. 435-4), les
+ * délais moyens, « 90 % du résultat », « 35 % des recours », les
+ * préfectures « plus ouvertes », les chiffres sans source. Requêtes :
+ * « circulaire retailleau » (1 k à 10 k) et « régularisation sans papiers »
+ * (100 à 1 k), Planificateur de mots clés, France, 24/10 et 21/10/2026.
  */
 const article: Article = {
   slug: "regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls",
-  titre: "Régularisation sans papiers en France 2026 : la méthode que personne ne vous explique (circulaire Valls, métiers en tension)",
-  titreSeo: "Régularisation sans papiers en France 2026 : la méthode que personne ne vous explique (circulaire Valls, métiers en tension)",
-  resume: "Les 5 voies légales pour se régulariser en France en 2026 : circulaire Valls, métiers en tension, parent d'enfant français, étranger malade. Dossier type, preuves acceptées, délais préfecture et recours en cas de refus.",
-  chapo: "En France, des centaines de milliers de personnes vivent sans titre de séjour, et beaucoup ignorent qu'il existe des voies légales pour sortir de l'ombre. La régularisation n'est pas un mythe. Elle repose sur des textes précis, des critères vérifiables et une procédure encadrée. Pourtant, aucune administration ne vous expliquera jamais clairement comment faire. Ce guide est le plus complet que vous trouverez en 2026 : il détaille les 5 voies de régularisation qui fonctionnent réellement, les dossiers types acceptés par les préfectures, les délais réalistes, et les erreurs qui mènent droit au refus. Si vous êtes en situation irrégulière ou si vous connaissez quelqu'un dans ce cas, cet article peut changer une vie.",
+  titre: "Régularisation des sans-papiers : ce que dit la circulaire du 23 janvier 2025, qui a remplacé la circulaire Valls",
+  titreSeo: "Circulaire Retailleau : la régularisation en 2026",
+  resume: "La circulaire Valls ne s'applique plus : depuis le 23 janvier 2025, une autre circulaire guide les préfets. Conditions, dossier, frais et recours.",
+  chapo: "La circulaire Valls de 2012 ==ne s'applique plus== : la circulaire du 23 janvier 2025 l'a remplacée. La régularisation reste possible, au cas par cas, sur le fondement de la loi. Mais la préfecture peut demander ==au moins 7 ans== de présence en France, un bon niveau de français et l'engagement de respecter les principes de la République.",
   publieLe: "2026-04-28",
-  modifieLe: "2026-04-28",
-  minutes: 25,
-  theme: "régularisation sans papiers France 2026",
+  modifieLe: "2026-10-24",
+  minutes: 7,
+  theme: "régularisation sans papiers",
   motsCles: [
-    "régularisation sans papiers France 2026",
-    "comment se régulariser en France",
-    "circulaire Valls régularisation",
-    "régularisation exceptionnelle France 2026",
+    "régularisation sans papiers",
+    "circulaire retailleau",
+    "circulaire 23 janvier 2025",
+    "circulaire Valls abrogée",
     "admission exceptionnelle au séjour",
-    "régularisation par le travail France",
-    "régularisation 10 ans de présence France",
-    "régularisation vie privée et familiale",
-    "sans papiers demander titre de séjour",
-    "régularisation parent enfant français",
-    "régularisation parent enfant scolarisé",
-    "article L435-1 CESEDA régularisation",
-    "préfecture régularisation dossier",
-    "preuve de résidence sans papiers France",
-    "régularisation métiers en tension 2026",
+    "L435-1 CESEDA",
+    "régularisation 7 ans de présence",
+    "régularisation par le travail",
   ],
   rubrique: "cadre-legal",
-  auteur: "Brian B",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
-    largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f",
+    src: "/images/articles/regularisation-drapeau-arles.webp",
+    alt: "Drapeau français flottant devant la façade sculptée de l'hôtel de ville d'Arles",
+    largeur: 1024,
+    hauteur: 768,
+    credit: "ell brown, via Flickr",
+    licence: "CC BY 2.0",
+    source: "https://www.flickr.com/photos/39415781@N06/5800674214",
   },
   blocs: [
     {
-      type: "h2",
-      texte: "Qui peut se régulariser en 2026 ? Les 5 voies légales qui fonctionnent",
-      id: "qui-peut-se-regulariser",
-    },
-    {
-      type: "p",
-      texte: "Contrairement à ce que beaucoup pensent, la régularisation n'est pas une loterie. Elle repose sur des bases juridiques solides. Voici les **5 voies principales** reconnues par le droit français.",
-    },
-    { type: "h3", texte: "Voie n°1 : L'admission exceptionnelle au séjour (article L435-1 du CESEDA)" },
-    {
-      type: "p",
-      texte: "C'est la voie la plus utilisée. L'article L435-1 du Code de l'entrée et du séjour des étrangers permet au préfet d'accorder un titre de séjour à un étranger en situation irrégulière lorsque des **considérations humanitaires** ou des **motifs exceptionnels** le justifient.",
-    },
-    {
-      type: "p",
-      texte: "**En pratique, la circulaire Valls du 28 novembre 2012** détaille les cas dans lesquels cette régularisation est accordée :",
-    },
-    {
-      type: "tableau",
-      entetes: ["Situation", "Durée de présence exigée", "Condition principale"],
-      lignes: [
-        [
-          "Parent d'enfant scolarisé",
-          "**5 ans de résidence** en France",
-          "Enfant scolarisé depuis au moins 3 ans",
-        ],
-        [
-          "Vie privée et familiale",
-          "**5 ans minimum**",
-          "Liens personnels et familiaux forts en France",
-        ],
-        [
-          "Conjoint de Français ou de titulaire d'un titre",
-          "**5 ans**",
-          "Vie commune effective depuis au moins 18 mois",
-        ],
-        [
-          "Ancienneté seule (sans attache familiale)",
-          "**7 à 10 ans**",
-          "Intégration prouvée (travail, impôts, logement)",
-        ],
-      ],
-    },
-    { type: "h3", texte: "Voie n°2 : La régularisation par le travail (métiers en tension)" },
-    {
-      type: "p",
-      texte: "Depuis la loi immigration de 2024, un étranger sans papiers peut demander un titre de séjour « salarié » s'il remplit **toutes** ces conditions :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**3 ans de résidence** en France minimum",
-        "**8 mois de travail** (continu ou non) dans les 24 derniers mois",
-        "Emploi dans un **secteur en tension** (BTP, restauration, agriculture, aide à la personne, transport…)",
-        "Un **employeur qui soutient la demande** par une lettre et un contrat",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Cette voie est en 2026 la plus rapide : délai moyen de traitement **4 à 6 mois**.",
-    },
-    {
-      type: "h3",
-      texte: "Voie n°3 : Le titre « vie privée et familiale » pour parent d'enfant français",
-    },
-    {
-      type: "p",
-      texte: "Si vous êtes parent d'un enfant de nationalité française et que vous contribuez à son entretien et son éducation, vous avez un **droit au séjour** (article L423-7 du CESEDA). Ce n'est pas une admission exceptionnelle : c'est un droit. La préfecture ne peut pas refuser si les conditions sont remplies.",
-    },
-    { type: "h3", texte: "Voie n°4 : L'étranger malade (titre de séjour pour raisons de santé)" },
-    {
-      type: "p",
-      texte: "Si vous souffrez d'une pathologie grave qui ne peut pas être traitée dans votre pays d'origine, vous pouvez obtenir un titre de séjour « étranger malade » (article L425-9 du CESEDA). Un médecin de l'OFII évalue votre dossier médical de façon confidentielle.",
-    },
-    { type: "h3", texte: "Voie n°5 : Les victimes de violences conjugales ou de traite" },
-    {
-      type: "p",
-      texte: "Les étrangers victimes de violences conjugales (même sans dépôt de plainte initial) ou de traite des êtres humains ont droit à un titre de séjour (articles L425-1 et L425-6 du CESEDA). Ces titres sont délivrés indépendamment de la situation administrative antérieure.",
+      type: "encadre",
+      titre: "Correction du 24 octobre 2026",
+      texte: "La première version de cet article présentait la circulaire Valls de 2012 comme la règle en vigueur. C'était faux : elle ne s'applique plus depuis le 23 janvier 2025. Nous avons réécrit l'article en entier sur les textes officiels, et retiré les chiffres que nous n'avons pas retrouvés dans une source officielle.",
+      ton: "ambre",
     },
     {
       type: "h2",
-      texte: "Comment monter un dossier de régularisation en béton",
-      id: "dossier-en-beton",
+      texte: "La circulaire Valls est-elle encore appliquée ?",
     },
     {
       type: "p",
-      texte: "La qualité de votre dossier fait **90 % du résultat**. Voici les pièces indispensables et les bonnes pratiques.",
-    },
-    { type: "h3", texte: "Les preuves de résidence (les plus importantes)" },
-    {
-      type: "p",
-      texte: "Vous devez prouver votre présence en France sur la durée exigée (5, 7 ou 10 ans selon la voie). La préfecture accepte :",
-    },
-    { type: "p", texte: "**Preuves fortes (1 par trimestre minimum) :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Quittances de loyer ou attestations d'hébergement",
-        "Factures EDF, téléphone, internet à votre nom",
-        "Courriers de la CAF, de l'Assurance Maladie (CMU/AME)",
-        "Bulletins de paie (même sous alias : sauf si cela vous incrimine)",
-        "Avis d'imposition ou déclarations de revenus",
-        "Relevés bancaires",
-      ],
-    },
-    { type: "p", texte: "**Preuves complémentaires :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Ordonnances médicales datées",
-        "Billets de transport nominatifs",
-        "Photos géolocalisées avec métadonnées",
-        "Attestations de suivi scolaire des enfants",
-        "Certificats d'associations d'aide aux migrants",
-      ],
-    },
-    { type: "h3", texte: "La lettre de motivation : l'élément décisif" },
-    { type: "p", texte: "Rédigez une lettre **personnelle, sincère et structurée** qui explique :" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "Votre parcours migratoire (pourquoi êtes-vous venu en France)",
-        "Votre ancrage en France (famille, travail, logement, amis, engagement associatif)",
-        "Les raisons pour lesquelles un retour au pays est impossible ou inhumain",
-        "Votre volonté d'intégration (apprentissage du français, respect des valeurs de la République)",
-      ],
-    },
-    { type: "h3", texte: "Les erreurs qui tuent un dossier" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Mentir sur les dates** : les préfectures croisent les fichiers. Un mensonge = refus définitif",
-        "**Présenter des faux documents** : constitutif d'un délit pénal (article 441-1 du Code pénal)",
-        "**Déposer un dossier incomplet** : la préfecture classe sans suite, et vous perdez des mois",
-        "**Ne pas joindre de preuves récentes** : un dossier qui s'arrête il y a 2 ans montre un \"trou\" suspect",
-        "**Ignorer l'employeur** : pour la voie travail, sans lettre de l'employeur, le dossier est irrecevable",
-      ],
-    },
-    { type: "h2", texte: "La procédure en préfecture étape par étape", id: "procedure-prefecture" },
-    { type: "h3", texte: "Étape 1 : Prendre rendez-vous (le plus dur)" },
-    { type: "p", texte: "Selon les préfectures, le dépôt se fait :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**En ligne** sur le portail ANEF (Administration Numérique pour les Étrangers en France) : de plus en plus généralisé en 2026",
-        "**Sur place** avec rendez-vous pris en ligne (prefectures avec créneaux rares)",
-        "**Par courrier recommandé** avec accusé de réception (certaines préfectures l'acceptent pour les admissions exceptionnelles)",
-      ],
+      texte: "Non. Une circulaire, c'est une instruction du ministre aux préfets, qui leur dit comment appliquer la loi. La circulaire du 28 novembre 2012, dite « circulaire Valls », est classée par Légifrance parmi les circulaires qui ==ne sont plus applicables== ([Légifrance](https://www.legifrance.gouv.fr/circulaire/id/45584)). Légifrance, c'est le site officiel qui publie le droit français.",
     },
     {
       type: "p",
-      texte: "**Astuce cruciale :** si la préfecture refuse de vous donner un rendez-vous, envoyez un **courrier recommandé** avec votre dossier complet. Le silence de l'administration pendant 4 mois vaut refus implicite, ce qui ouvre un droit de **recours devant le tribunal administratif**.",
-    },
-    { type: "h3", texte: "Étape 2 : Le dépôt du dossier et le récépissé" },
-    {
-      type: "p",
-      texte: "Si votre dossier est jugé recevable, vous recevez un **récépissé de demande de titre de séjour**. Ce document vous protège : il prouve que vous avez une démarche en cours et il est **souvent assorti d'une autorisation de travail** provisoire.",
-    },
-    { type: "h3", texte: "Étape 3 : L'instruction (4 à 12 mois)" },
-    {
-      type: "p",
-      texte: "La préfecture vérifie vos documents, interroge parfois les services de police, et peut vous convoquer pour un entretien. **Durée moyenne en 2026 :**",
-    },
-    {
-      type: "tableau",
-      entetes: ["Voie de régularisation", "Délai moyen"],
-      lignes: [
-        ["Métiers en tension", "4 à 6 mois"],
-        ["Parent d'enfant français", "2 à 4 mois"],
-        ["Vie privée et familiale (5 ans)", "6 à 9 mois"],
-        ["Ancienneté (10 ans)", "8 à 12 mois"],
-        ["Étranger malade", "6 à 10 mois"],
-      ],
-    },
-    { type: "h3", texte: "Étape 4 : La décision" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Acceptation** : vous recevez un SMS ou un courrier vous invitant à retirer votre titre (carte de séjour temporaire 1 an, renouvelable)",
-        "**Refus** : vous recevez un courrier motivé. Vous disposez alors de **2 mois** pour former un recours (gracieux, hiérarchique ou contentieux devant le tribunal administratif)",
-      ],
-    },
-    { type: "h3", texte: "Étape 5 : Et après ?" },
-    {
-      type: "p",
-      texte: "Le premier titre délivré est en général une **carte de séjour temporaire « vie privée et familiale »** ou **« salarié »** valable 1 an. Après 1 à 4 renouvellements, vous pouvez demander une **carte pluriannuelle** (4 ans). Après 5 ans de séjour régulier, vous pouvez demander une **carte de résident** (10 ans) ou la **nationalité française**.",
-    },
-    { type: "h2", texte: "Que faire en cas de refus ? Les recours qui marchent", id: "recours-refus" },
-    {
-      type: "p",
-      texte: "Un refus n'est pas la fin du chemin. En 2026, environ **35 % des recours** devant le tribunal administratif aboutissent à l'annulation de la décision préfectorale.",
-    },
-    { type: "h3", texte: "Le recours gracieux (gratuit, rapide)" },
-    {
-      type: "p",
-      texte: "Dans les **2 mois** suivant la notification de refus, vous pouvez adresser un **recours gracieux** au préfet. Joignez de nouvelles pièces ou des éléments non pris en compte. Le préfet a 2 mois pour répondre. L'absence de réponse vaut rejet.",
-    },
-    {
-      type: "p",
-      texte: "**Quand le recours gracieux marche :** quand le refus est motivé par un dossier incomplet ou un malentendu. Il ne marche presque jamais quand le refus est « politique ».",
-    },
-    { type: "h3", texte: "Le recours contentieux (tribunal administratif)" },
-    {
-      type: "p",
-      texte: "Si le recours gracieux échoue (ou directement, sans passer par le gracieux), vous pouvez saisir le **tribunal administratif** dans un délai de **2 mois à compter de la décision de refus** (ou de la décision implicite de rejet du recours gracieux).",
-    },
-    { type: "p", texte: "**Ce qu'il faut savoir :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "L'aide juridictionnelle (AJ) est **accessible** même en situation irrégulière, elle couvre 100 % des frais d'avocat si vos revenus sont inférieurs à 1 235 €/mois",
-        "Le recours est **suspensif** dans certains cas (OQTF avec délai de départ volontaire)",
-        "Le juge évalue si la préfecture a correctement apprécié votre situation personnelle et familiale",
-        "**Délai moyen du jugement** : 6 à 12 mois",
-      ],
-    },
-    { type: "h3", texte: "Le référé-liberté (urgence absolue)" },
-    {
-      type: "p",
-      texte: "Si une OQTF sans délai de départ menace de vous placer en centre de rétention, vous pouvez saisir le juge en **référé-liberté** (article L521-2 du Code de justice administrative). Le juge statue en **48 heures**.",
-    },
-    { type: "h3", texte: "Conseils pour maximiser vos chances" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Faites-vous accompagner** par une association spécialisée (GISTI, Cimade, ADDE, ligue des droits de l'homme)",
-        "**Fournissez des preuves nouvelles** que la préfecture n'avait pas",
-        "**Insistez sur vos attaches familiales** et l'intérêt supérieur de l'enfant (si applicable)",
-        "**Demandez l'aide juridictionnelle** immédiatement après le refus pour ne pas dépasser les délais",
-      ],
-    },
-    {
-      type: "h2",
-      texte: "Chiffres clés et réalités de la régularisation en 2026",
-      id: "temoignages-chiffres",
-    },
-    { type: "h3", texte: "Les chiffres que les médias ne donnent pas" },
-    {
-      type: "tableau",
-      entetes: ["Indicateur", "Valeur 2025-2026"],
-      lignes: [
-        ["Demandes d'admission exceptionnelle déposées", "~95 000/an"],
-        ["Taux d'acceptation moyen national", "~30 %"],
-        ["Taux d'acceptation via métiers en tension", "~55 %"],
-        ["Durée moyenne d'instruction", "6 à 9 mois"],
-        ["Recours devant le tribunal administratif", "~35 % de succès"],
-        ["Titres délivrés pour raisons médicales", "~6 500/an"],
-      ],
-    },
-    { type: "h3", texte: "Les préfectures les plus « ouvertes »" },
-    {
-      type: "p",
-      texte: "Toutes les préfectures n'appliquent pas la même politique. Historiquement, certaines sont plus favorables aux admissions exceptionnelles :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Paris** : volume élevé, traitement standardisé",
-        "**Seine-Saint-Denis** (Bobigny) : forte demande, critères stricts mais nombreuses régularisations",
-        "**Rhône** (Lyon) : politique relativement souple pour les familles",
-        "**Bouches-du-Rhône** (Marseille) : délais longs mais taux d'acceptation correct",
-      ],
-    },
-    { type: "h3", texte: "Ce qui change en 2026" },
-    {
-      type: "p",
-      texte: "La loi immigration de 2024, pleinement en vigueur en 2026, a apporté des changements importants :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "La régularisation par les métiers en tension est devenue un **droit** (et non plus un pouvoir discrétionnaire du préfet) sous certaines conditions",
-        "Le **titre \"travailleur temporaire\"** obtenu par cette voie est renouvelable et ouvre droit à la carte pluriannuelle",
-        "Les critères de la circulaire Valls **restent en vigueur** pour les autres voies (même si la circulaire n'a pas de valeur légale contraignante, les tribunaux s'y réfèrent)",
-      ],
-    },
-    { type: "h3", texte: "Le conseil le plus important" },
-    {
-      type: "p",
-      texte: "Ne restez pas isolé. Contactez une **association d'aide aux étrangers** dans votre département. elles accompagnent gratuitement des milliers de dossiers chaque année. Le GISTI (Groupe d'information et de soutien des immigrés) publie des notes pratiques gratuites sur chaque voie de régularisation : gisti.org",
+      texte: "Elle a été remplacée par la **circulaire du 23 janvier 2025** sur « l'admission exceptionnelle au séjour ». On l'appelle souvent « circulaire Retailleau », du nom du ministre de l'Intérieur qui l'a signée. Elle s'applique depuis le jour de sa signature.",
     },
     {
       type: "encadre",
       titre: "À retenir",
-      texte: "La régularisation en France n'est pas un hasard : c'est un parcours juridique balisé, exigeant mais réel. En 2026, les voies légales existent, circulaire Valls, métiers en tension, parent d'enfant français, étranger malade, victime de violences. La clé, c'est un dossier irréprochable, des preuves solides et un accompagnement associatif ou juridique. Ne restez jamais seul face à l'administration. Chaque année, des dizaines de milliers de personnes obtiennent un titre de séjour par admission exceptionnelle. Vous pouvez être la prochaine.",
+      texte: "Une circulaire ne crée pas de droit. La règle vient de la loi : l'article L. 435-1 du CESEDA. Le préfet garde un pouvoir d'appréciation : il décide au cas par cas, même si toutes les conditions semblent réunies.",
       ton: "bleu",
+    },
+    {
+      type: "h2",
+      texte: "Qu'est-ce que l'admission exceptionnelle au séjour ?",
+    },
+    {
+      type: "p",
+      texte: "C'est le nom officiel de la régularisation. Elle est prévue par l'article L. 435-1 du **CESEDA**, le code qui regroupe les règles sur l'entrée et le séjour des étrangers ([Légifrance](https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070158/LEGISCTA000042772028)). Une personne sans papiers peut recevoir un titre de séjour pour des « considérations humanitaires » ou des « motifs exceptionnels ».",
+    },
+    {
+      type: "p",
+      texte: "Le titre de séjour, c'est la carte qui vous autorise à vivre en France. Ici, c'est une carte de séjour temporaire « salarié », « travailleur temporaire » ou « vie privée et familiale ». Le visa de long séjour n'est pas exigé.",
+    },
+    {
+      type: "p",
+      texte: "Un point protège les personnes présentes depuis longtemps. Vous prouvez ==plus de dix ans== de résidence en France ? Si le préfet envisage un refus, il doit d'abord demander l'avis de la commission du titre de séjour. C'est une commission départementale qui donne son avis au préfet (article L. 435-1).",
+    },
+    {
+      type: "h2",
+      texte: "Que demande la circulaire du 23 janvier 2025 ?",
+    },
+    {
+      type: "p",
+      texte: "Le texte, lu sur Légifrance, fixe trois orientations aux préfets ([circulaire du 23 janvier 2025](https://www.legifrance.gouv.fr/circulaire/id/45584)) :",
+    },
+    {
+      type: "liste",
+      style: "numeros",
+      items: [
+        "**Garder un caractère exceptionnel.** Quand la loi prévoit une voie précise pour votre situation, le préfet doit la privilégier. Pour le travail, il doit utiliser d'abord la voie des métiers en tension (article L. 435-4).",
+        "**Regarder l'intégration.** Une présence en France d'==au moins 7 ans== est « l'un des indices d'intégration pertinent ». Un diplôme français ou une certification de langue délivrée par un organisme agréé doit être apprécié favorablement. Une demande sans le contrat d'engagement à respecter les principes de la République est incomplète.",
+        "**Protéger l'ordre public.** Une personne qui menace l'ordre public, ou qui vit en situation de polygamie en France, est exclue. Une OQTF (obligation de quitter le territoire français) non exécutée peut justifier un refus, surtout si elle date de moins de 3 ans.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "La circulaire demande aussi d'assortir ==systématiquement== un refus d'une OQTF. Service-public le confirme : le refus est en principe accompagné d'une OQTF ([F16053](https://www.service-public.gouv.fr/particuliers/vosdroits/F16053)). Ne déposez donc pas un dossier sans l'avoir préparé avec soin.",
+    },
+    {
+      type: "h2",
+      texte: "Quelles autres voies la loi prévoit-elle ?",
+    },
+    {
+      type: "p",
+      texte: "La circulaire rappelle que certaines situations ont leur propre article dans le CESEDA. Pour elles, le préfet doit d'abord appliquer ces articles :",
+    },
+    {
+      type: "tableau",
+      entetes: ["Situation", "Article du CESEDA"],
+      lignes: [
+        ["Victime de traite des êtres humains", "L. 425-1 et L. 425-4"],
+        ["Victime de violences conjugales", "L. 425-6 et L. 425-7"],
+        ["Travail dans un métier en tension", "L. 435-4 (jusqu'au 31 décembre 2026)"],
+        ["Liens personnels et familiaux en France", "L. 423-23"],
+        ["Accueil par un organisme d'accueil communautaire et d'activités solidaires", "L. 435-2"],
+        ["Jeune confié à l'aide sociale à l'enfance entre 16 et 18 ans", "L. 435-3"],
+      ],
+      legende: "Liste reprise de la circulaire du 23 janvier 2025 (note 1), lue sur Légifrance le 24 octobre 2026.",
+    },
+    {
+      type: "p",
+      texte: "Pour le travail, lisez notre article sur [la régularisation par les métiers en tension](/articles/regularisation-metiers-en-tension). Il faut 12 mois de travail sur les 24 derniers mois et 3 ans de présence. Cette règle est limitée au 31 décembre 2026. Pour une maladie grave, lisez notre page sur [le titre de séjour pour soins](/articles/titre-sejour-etranger-malade-raisons-sante-2026).",
+    },
+    {
+      type: "h2",
+      texte: "Comment déposer une demande, et combien coûte-t-elle ?",
+    },
+    {
+      type: "p",
+      texte: "Vous déposez un dossier à la **préfecture** de votre lieu de résidence. La préfecture, c'est l'administration de l'État dans le département, qui délivre les titres de séjour. Certaines sous-préfectures ne traitent pas ces demandes ([service-public, F16053](https://www.service-public.gouv.fr/particuliers/vosdroits/F16053)). Les pièces les plus importantes sont :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "un passeport, ou à défaut une attestation consulaire ou une carte consulaire avec photo ;",
+        "un acte de naissance complet, un justificatif de domicile de moins de 6 mois et 3 photos ;",
+        "des preuves de votre présence en France, année par année : avis d'impôt, attestation d'aide médicale de l'État, courriers officiels ;",
+        "des preuves d'intégration : niveau de français, activité, bénévolat, liens familiaux ;",
+        "le contrat d'engagement à respecter les principes de la République, signé.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Depuis le 1er mai 2026, une régularisation coûte ==650 €== au total. Vous payez un timbre fiscal de 350 € pour le premier titre. Vous payez aussi un droit de visa de régularisation de 300 €. Sur ces 300 €, 100 € se paient au dépôt et ne sont pas remboursés, même en cas de refus ([service-public, A18881](https://www.service-public.gouv.fr/particuliers/actualites/A18881)). Notre article sur [les taxes des titres de séjour](/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances) détaille le barème.",
+    },
+    {
+      type: "h2",
+      texte: "Que faire en cas de refus ?",
+    },
+    {
+      type: "p",
+      texte: "Si la préfecture ne répond pas pendant ==4 mois==, c'est un refus implicite. Vous avez alors 2 mois pour agir ([F16053](https://www.service-public.gouv.fr/particuliers/vosdroits/F16053)). Vous pouvez faire un recours gracieux, c'est-à-dire écrire au préfet pour lui demander de revoir sa décision. Vous pouvez aussi saisir le tribunal administratif, le juge des litiges avec l'administration.",
+    },
+    {
+      type: "p",
+      texte: "Si le refus est accompagné d'une OQTF, les délais pour la contester sont souvent plus courts. Lisez vite notre guide sur [le refus de titre de séjour et l'OQTF](/articles/refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france), et faites-vous aider sans attendre.",
+    },
+    {
+      type: "liste",
+      style: "alertes",
+      items: [
+        "Chaque situation est différente. Pour votre cas, demandez conseil à un avocat, à une association comme La Cimade ou le Gisti, ou à une permanence d'accès au droit.",
+        "Le Défenseur des droits (une autorité indépendante de l'État) peut être saisi gratuitement si vous pensez qu'une administration ne respecte pas vos droits.",
+        "Méfiez-vous des personnes qui promettent une régularisation contre de l'argent : personne ne peut la garantir.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Après un premier titre d'un an, une carte pluriannuelle demande, depuis le 1er janvier 2026, la réussite à l'examen civique ([service-public, F39530](https://www.service-public.gouv.fr/particuliers/vosdroits/F39530)). Vérifiez en une minute si l'examen vous concernera avec le [simulateur d'éligibilité](/eligibilite-examen-civique).",
+    },
+  ],
+  faq: [
+    {
+      question: "La circulaire Valls est-elle toujours valable ?",
+      reponse: "Non. La circulaire Valls du 28 novembre 2012 est classée par Légifrance parmi les circulaires qui ne sont plus applicables. Elle a été remplacée par la circulaire du 23 janvier 2025 sur l'admission exceptionnelle au séjour. La règle de fond reste l'article L. 435-1 du CESEDA, appliquée au cas par cas par le préfet.",
+    },
+    {
+      question: "Quelle est la nouvelle circulaire pour la régularisation ?",
+      reponse: "C'est la circulaire du 23 janvier 2025 (NOR INTK2435521J), souvent appelée circulaire Retailleau. Elle demande aux préfets de garder un caractère exceptionnel à la régularisation. Ils regardent l'intégration, dont au moins 7 ans de présence et le niveau de français. Toute menace à l'ordre public est exclue.",
+    },
+    {
+      question: "Combien d'années pour être régularisé en France ?",
+      reponse: "Aucun texte ne fixe une durée qui donne droit à un titre. La circulaire du 23 janvier 2025 fait d'une présence d'au moins 7 ans un indice d'intégration. Pour un métier en tension, la loi demande 3 ans de présence. Au-delà de 10 ans, un refus envisagé passe d'abord par la commission du titre de séjour.",
+    },
+    {
+      question: "Comment se faire régulariser en France ?",
+      reponse: "Il faut déposer un dossier à la préfecture de votre lieu de résidence, avec des preuves de présence année par année, des preuves d'intégration et le contrat d'engagement républicain signé. Depuis le 1er mai 2026, la régularisation coûte 650 € au total, dont 100 € payés au dépôt et non remboursés.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Légifrance : circulaire du 23 janvier 2025, orientations générales relatives à l'admission exceptionnelle au séjour (NOR INTK2435521J)",
+      url: "https://www.legifrance.gouv.fr/circulaire/id/45584",
+      type: "officiel",
+      luLe: "2026-10-24",
+    },
+    {
+      titre: "Légifrance : CESEDA, articles L. 435-1 à L. 435-4 (admission exceptionnelle au séjour), version en vigueur au 24 octobre 2026",
+      url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070158/LEGISCTA000042772028",
+      type: "officiel",
+      luLe: "2026-10-24",
+    },
+    {
+      titre: "Service-public : qu'est-ce que la régularisation d'un étranger par le travail ? (F16053)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16053",
+      type: "officiel",
+      luLe: "2026-10-24",
+    },
+    {
+      titre: "Service-public : titres de séjour, augmentation des taxes à compter du 1er mai 2026 (A18881)",
+      url: "https://www.service-public.gouv.fr/particuliers/actualites/A18881",
+      type: "officiel",
+      luLe: "2026-10-24",
+    },
+    {
+      titre: "Service-public : carte de séjour pluriannuelle et carte de résident, l'examen civique (F39530)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F39530",
+      type: "officiel",
+      luLe: "2026-10-21",
     },
   ],
 };

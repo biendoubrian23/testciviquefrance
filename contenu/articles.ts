@@ -148,6 +148,7 @@ import coutNaturalisationFrancaise2026BudgetCompletTimbreFiscal from "./articles
 import coutRegularisationSituationFrance2026BudgetComplet from "./articles/cout-regularisation-situation-france-2026-budget-complet";
 import craRetentionEtrangers7Jours7Mois2026DroitsRecoursExpulsion from "./articles/cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion";
 import cultureFrancaisePatrimoineMonumentsArtistes from "./articles/culture-francaise-patrimoine-monuments-artistes";
+import decretDeNaturalisationTrouverEtApres from "./articles/decret-de-naturalisation-trouver-et-apres";
 import decretRetentionAdministrative22Octobre2026 from "./articles/decret-retention-administrative-22-octobre-2026";
 import declarationImpotsEtrangerFrance2026ObligationsSeuilsRisques from "./articles/declaration-impots-etranger-france-2026-obligations-seuils-risques";
 import declarationImpotsNonResidentFrance2026Formulaire2042NrRevenu from "./articles/declaration-impots-non-resident-france-2026-formulaire-2042-nr-revenus-source-francaise";
@@ -433,6 +434,7 @@ export const ARTICLES: readonly Article[] = [
   coutRegularisationSituationFrance2026BudgetComplet,
   craRetentionEtrangers7Jours7Mois2026DroitsRecoursExpulsion,
   decretRetentionAdministrative22Octobre2026,
+  decretDeNaturalisationTrouverEtApres,
   cultureFrancaisePatrimoineMonumentsArtistes,
   declarationImpotsEtrangerFrance2026ObligationsSeuilsRisques,
   declarationImpotsNonResidentFrance2026Formulaire2042NrRevenu,

@@ -14,3 +14,7 @@ Ces règles viennent de Vaultaire (Starter Story, octobre 2026 : un article par 
 - **Mesurer le volume avant d'écrire.** Une suggestion Google prouve une demande, pas sa taille.
 - **Un titre sage ne se clique pas, un titre faux se paie.** Écrire cinq titres et garder le plus fort, mais chez nous jamais au prix de la justesse : un lecteur trompé sur un délai ou un droit ne revient pas.
 - **ChatGPT marque ses liens.** Les visites venues de ChatGPT arrivent avec `utm_source=chatgpt.com` plutôt qu'avec un référent (66 sur 28 jours au 20/10/2026, 0 par le référent) : les compter par les deux voies.
+
+## Vérifié chez nous
+
+- **Une page neuve du robot, sourcée et liée, prend des impressions Google en un à trois jours, en première page.** Vérifié trois fois (relevé du 24/10/2026) : `regularisation-metiers-en-tension` 263 impressions, position 4,5 (3 jours) ; `numeros-urgence-france` 95, position 7,1 (2 jours) ; `decret-retention-administrative-22-octobre-2026` 74, position 5,2 (1 jour). On ne sait pas encore séparer l'effet des demandes d'indexation faites le jour même : les garder. Ce qui reste à prouver, c'est le clic (taux de clic encore trop faible pour conclure).

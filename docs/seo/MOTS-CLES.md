@@ -39,7 +39,6 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | Article | Point à vérifier |
 |---|---|
 | /articles/reforme-test-civique-50-questions-juin-2026 | Aucun texte trouvé prévoyant 50 questions ; l'arrêté du 10/10/2025 fixe 40 questions |
-| /articles/regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls | La circulaire Valls de 2012 est abrogée par la circulaire du 23/01/2025 |
 | /articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal | Relevé le 22/10/2026 en relisant le barème : vérifier le timbre de naturalisation (255 € depuis le 1er mai 2026 selon le journal du 20/10) et tout montant non sourcé |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
@@ -414,3 +413,14 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | préparation aux entretiens à l'ambassade | 85, 0 clic | 13,4 | Page entretien-visa-consulat (694 impressions, CTR 0,9 %) |
 | examen blanc examen civique | 38 | 30,2 | Famille 5 |
 | carte de résident 10 ans | 47 | 26,8 | Les deux articles en concurrence sont fusionnés depuis le 20/10/2026 (carte-resident-10-ans-obtention-2025 redirige en 301) |
+
+## Vu le 24/10/2026 (Planificateur et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~Décret de naturalisation : le trouver, et la suite~~ → decret-de-naturalisation-trouver-et-apres, 24/10/2026 | décret de naturalisation ; décret naturalisation journal officiel ; cérémonie de naturalisation | 1 k à 10 k | Famille 3 |
+| Examen civique pour la naturalisation : inscription, niveau, calendrier | examen civique naturalisation ; examen civique naturalisation inscription (suggestion du 24/10) | 1 k à 10 k, en forte hausse | Famille 2. Vérifier d'abord que tout-savoir-examen-civique-2026 ou inscription-test-civique-2026… ne couvrent pas déjà l'intention : sinon, renforcer plutôt que créer |
+| Attestation de prolongation d'instruction (ANEF) : ce qu'elle vaut, combien de temps | attestation de prolongation d'instruction | 1 k à 10 k | Famille 3. guide-anef-complet-2026… en parle : voir s'il faut une page dédiée ou une section renforcée |
+| Récépissé de titre de séjour (mise à jour de /articles/recepisse-titre-de-sejour-droits-duree-voyage) | récépissé titre de séjour | 1 k à 10 k | Optimisation : 1 vue sur 28 jours malgré la demande |
+| Regroupement familial (mise à jour de /articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais) | regroupement familial | 10 k à 100 k | Optimisation : 8 impressions, position 11,5 |
+
