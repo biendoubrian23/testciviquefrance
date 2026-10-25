@@ -86,3 +86,34 @@ Période oct. 2025 à sept. 2026, réseau Google. Plan créé le 24/10/2026 à 7
 | après décret de naturalisation | pas de donnée | | |
 | vérifier décret naturalisation | pas de donnée | | |
 | carte identité après naturalisation | pas de donnée | | |
+
+### 2026-10-25 : France seule (plan créé le 25/10/2026 à 6 h), toutes les langues pour « Obtenir le volume » ; **French** pour « Trouver de nouveaux mots clés »
+
+Période oct. 2025 à sept. 2026, réseau Google. **La langue French s'applique d'elle-même dans « Trouver de nouveaux mots clés »** (libellé « French (par défaut) » sous le champ des mots de départ, vérifié sur la page des résultats) : c'est la voie à prendre pour mesurer en français. « Obtenir le volume » reste sur « Toutes les langues ». Les 6 COM non ajoutées ce jour. ⚠️ Une virgule finale fait d'un mot de départ une puce « Caractères non valides » qui bloque « Obtenir des résultats » : la supprimer.
+
+| Requête | Volume mensuel | Concurrence pub | Remarque |
+|---|---|---|---|
+| examen civique naturalisation | 1 k à 10 k | faible | Remesurée : sur 3 mois + 900 %, YoY + 9 900 % ; porte l'article du 25/10 |
+| examen civique naturalisation inscription | 100 à 1 k | faible | |
+| examen civique naturalisation questions | 100 à 1 k | faible | |
+| liste questions examen civique naturalisation | 10 à 100 | faible | |
+| examen civique nationalité française | 10 à 100 | faible | |
+| niveau b2 naturalisation | 10 à 100 | faible | |
+| examen civique naturalisation date | pas de donnée | | |
+| carte de séjour pluriannuelle autorisation de travail | 100 à 1 k | faible | YoY - 90 % |
+| aide au retour volontaire | 100 à 1 k | faible | |
+| carte de résident parent d'enfant français | pas de donnée | | |
+
+**Trouver de nouveaux mots clés (dimanche), France, French**, 10 mots de départ sur les familles examen et Test Civique pratique. Une seule idée nouvelle rendue (« elisa service civique extranet », hors sujet) : les mots de départ eux-mêmes sont l'information utile.
+
+| Requête | Volume mensuel | Concurrence pub | Remarque |
+|---|---|---|---|
+| qcm examen civique | 1 k à 10 k | faible | YoY + 9 900 % |
+| questions examen civique | 1 k à 10 k | faible | |
+| entraînement examen civique | 100 à 1 k | faible | |
+| révision examen civique | 100 à 1 k | faible | |
+| réussir examen civique | 100 à 1 k | faible | |
+| simulation examen civique | 100 à 1 k | faible | |
+| test civique en ligne | 100 à 1 k | faible | |
+| examen civique gratuit | 100 à 1 k | faible | |
+| examen blanc examen civique | 10 à 100 | faible | Même fourchette qu'en « toutes les langues » le 20/10 |

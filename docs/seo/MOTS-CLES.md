@@ -38,8 +38,9 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Article | Point à vérifier |
 |---|---|
+| /articles/reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences | Ajouté le 25/10/2026 : **la page la plus citée par Copilot** (10 000 citations sur 3 mois, Bing Webmaster Tools, requête « enic naric reconnaissance des diplômes » 6 400) et jamais revérifiée (section F de MAJ-articles-existants.md, non traitée). Vérifier chaque délai, prix et démarche sur france-education-international.fr (ENIC-NARIC) |
+| /articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure | Ajouté le 25/10/2026 : 4 100 citations Copilot sur 3 mois (« passeport talent salaire minimum 2026 » 1 900). Vérifier les seuils de salaire 2026 et le nom du titre (carte « talent » depuis la loi du 26/01/2024) sur service-public et Légifrance |
 | /articles/reforme-test-civique-50-questions-juin-2026 | Aucun texte trouvé prévoyant 50 questions ; l'arrêté du 10/10/2025 fixe 40 questions |
-| /articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal | Relevé le 22/10/2026 en relisant le barème : vérifier le timbre de naturalisation (255 € depuis le 1er mai 2026 selon le journal du 20/10) et tout montant non sourcé |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
@@ -419,8 +420,18 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Sujet | Requêtes | Volume | Remarque |
 |---|---|---|---|
 | ~~Décret de naturalisation : le trouver, et la suite~~ → decret-de-naturalisation-trouver-et-apres, 24/10/2026 | décret de naturalisation ; décret naturalisation journal officiel ; cérémonie de naturalisation | 1 k à 10 k | Famille 3 |
-| Examen civique pour la naturalisation : inscription, niveau, calendrier | examen civique naturalisation ; examen civique naturalisation inscription (suggestion du 24/10) | 1 k à 10 k, en forte hausse | Famille 2. Vérifier d'abord que tout-savoir-examen-civique-2026 ou inscription-test-civique-2026… ne couvrent pas déjà l'intention : sinon, renforcer plutôt que créer |
+| ~~Examen civique pour la naturalisation : inscription, niveau, calendrier~~ → examen-civique-naturalisation, 25/10/2026 | examen civique naturalisation ; examen civique naturalisation inscription (suggestion du 24/10) | 1 k à 10 k, en forte hausse | Famille 2. Vérifier d'abord que tout-savoir-examen-civique-2026 ou inscription-test-civique-2026… ne couvrent pas déjà l'intention : sinon, renforcer plutôt que créer |
 | Attestation de prolongation d'instruction (ANEF) : ce qu'elle vaut, combien de temps | attestation de prolongation d'instruction | 1 k à 10 k | Famille 3. guide-anef-complet-2026… en parle : voir s'il faut une page dédiée ou une section renforcée |
 | Récépissé de titre de séjour (mise à jour de /articles/recepisse-titre-de-sejour-droits-duree-voyage) | récépissé titre de séjour | 1 k à 10 k | Optimisation : 1 vue sur 28 jours malgré la demande |
 | Regroupement familial (mise à jour de /articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais) | regroupement familial | 10 k à 100 k | Optimisation : 8 impressions, position 11,5 |
 
+
+## Vu le 25/10/2026 (Planificateur, langue French, et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| QCM et questions d'examen civique : s'entraîner sur la liste officielle | qcm examen civique ; questions examen civique | 1 k à 10 k chacune | Famille 2 ou 5. Vérifier d'abord `examen-civique-2026-exemples-questions-corrigees` (306 impressions, position 13) : la renforcer plutôt que créer |
+| Préparer l'examen civique : réviser, simuler, s'entraîner gratuitement | entraînement examen civique ; révision examen civique ; réussir examen civique ; simulation examen civique ; test civique en ligne ; examen civique gratuit | 100 à 1 k chacune | Famille 5 (Test Civique pratique, 0 article du robot). Candidat : « Préparer l'examen civique en 4 semaines » avec les examens blancs |
+| Carte de séjour pluriannuelle et autorisation de travail | carte de séjour pluriannuelle autorisation de travail (suggestion du 25/10) | 100 à 1 k | Famille 3. Section d'un guide existant plutôt qu'un article |
+| Aide au retour volontaire (mise à jour de /articles/prime-retour-volontaire-france-2026-conditions-demarches) | aide au retour volontaire ; aide au retour 2500 euros | 100 à 1 k | Optimisation : 441 impressions, position 6, 0 clic sur 28 jours ; vérifier le montant sur l'OFII avant tout |
+| Carte de résident pour parent d'enfant français | carte de résident 10 ans parent d enfant français (suggestion du 25/10) | pas de donnée | Section de `carte-resident-10-ans-france-2026-…` |
