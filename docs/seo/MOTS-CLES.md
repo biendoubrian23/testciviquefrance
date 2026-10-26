@@ -38,7 +38,6 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Article | Point à vérifier |
 |---|---|
-| /articles/reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences | Ajouté le 25/10/2026 : **la page la plus citée par Copilot** (10 000 citations sur 3 mois, Bing Webmaster Tools, requête « enic naric reconnaissance des diplômes » 6 400) et jamais revérifiée (section F de MAJ-articles-existants.md, non traitée). Vérifier chaque délai, prix et démarche sur france-education-international.fr (ENIC-NARIC) |
 | /articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure | Ajouté le 25/10/2026 : 4 100 citations Copilot sur 3 mois (« passeport talent salaire minimum 2026 » 1 900). Vérifier les seuils de salaire 2026 et le nom du titre (carte « talent » depuis la loi du 26/01/2024) sur service-public et Légifrance |
 | /articles/reforme-test-civique-50-questions-juin-2026 | Aucun texte trouvé prévoyant 50 questions ; l'arrêté du 10/10/2025 fixe 40 questions |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
@@ -52,7 +51,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | MAJ-articles-existants.md, section C | Campus France 2026-2027, refresh saisonnier | Non traité. Cible : /articles/campus-france-etude-france-2026-visa-inscription-procedure (titre contenant un volume non sourcé à retirer) |
 | MAJ-articles-existants.md, section D | Carte de résident 10 ans, nouveau tarif + B1 + examen civique | Traité le 20/10/2026 à la fusion (350 €, B1, examen civique, sources service-public) : /articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture |
 | MAJ-articles-existants.md, section E | CIR 2026 | Non traité. Cible : /articles/contrat-integration-republicaine-cir-2026-formation-civique |
-| MAJ-articles-existants.md, section F | ENIC-NARIC 2026 | Non traité. Cible : /articles/reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences |
+| MAJ-articles-existants.md, section F | ENIC-NARIC 2026 | Traité le 26/10/2026 : article réécrit sur service-public (120 €, 4 mois au plus) |
 | MAJ-articles-existants.md, section G | Validation VLS-TS, tarifs 2026 | Non traité. Cible : /articles/visa-long-sejour-vls-ts-validation-ofii-2026 |
 | MAJ-articles-existants.md, section H | Passeport talent : salaires 2026, consolidation des 7 articles | Non traité. À croiser avec le renommage en carte « talent » (loi du 26/01/2024) |
 | MAJ-articles-existants.md, section I | Regroupement familial 2026 | Non traité. Cible : /articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais |
@@ -193,7 +192,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Sujet | Requêtes | Volume | Remarque |
 |---|---|---|---|
-| Attestation de prolongation d'instruction (APIT) : à quoi elle sert | attestation prolongation instruction ANEF ; APIT titre de séjour ; attestation ANEF travailler | à mesurer | service-public, ANEF. Distinct du récépissé (/articles/recepisse-titre-de-sejour-droits-duree-voyage) |
+| ~~Attestation de prolongation d'instruction (APIT) : à quoi elle sert~~ → attestation-prolongation-instruction, 26/10/2026 | attestation prolongation instruction ANEF ; APIT titre de séjour ; attestation ANEF travailler | à mesurer | service-public, ANEF. Distinct du récépissé (/articles/recepisse-titre-de-sejour-droits-duree-voyage) |
 | Attestation de décision favorable : que faire en attendant la carte | attestation décision favorable ANEF ; carte de séjour en fabrication ; retrait titre de séjour SMS | à mesurer | ANEF, service-public |
 | Titre « vie privée et familiale » conjoint de Français : le guide permanent | carte de séjour conjoint de français ; titre de séjour mariage français ; vie privée familiale conjoint | à mesurer | CESEDA L. 423-1. Recoupe /articles/mariage-etranger-france-2026-papiers-visa-conjoint-titre-sejour (angle titre, pas mariage) |
 | Parent d'enfant français : conditions du titre de séjour | titre de séjour parent enfant français ; carte de séjour parent ; contribution entretien enfant | à mesurer | CESEDA L. 423-7 |
@@ -421,7 +420,7 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 |---|---|---|---|
 | ~~Décret de naturalisation : le trouver, et la suite~~ → decret-de-naturalisation-trouver-et-apres, 24/10/2026 | décret de naturalisation ; décret naturalisation journal officiel ; cérémonie de naturalisation | 1 k à 10 k | Famille 3 |
 | ~~Examen civique pour la naturalisation : inscription, niveau, calendrier~~ → examen-civique-naturalisation, 25/10/2026 | examen civique naturalisation ; examen civique naturalisation inscription (suggestion du 24/10) | 1 k à 10 k, en forte hausse | Famille 2. Vérifier d'abord que tout-savoir-examen-civique-2026 ou inscription-test-civique-2026… ne couvrent pas déjà l'intention : sinon, renforcer plutôt que créer |
-| Attestation de prolongation d'instruction (ANEF) : ce qu'elle vaut, combien de temps | attestation de prolongation d'instruction | 1 k à 10 k | Famille 3. guide-anef-complet-2026… en parle : voir s'il faut une page dédiée ou une section renforcée |
+| ~~Attestation de prolongation d'instruction (ANEF) : ce qu'elle vaut, combien de temps~~ → attestation-prolongation-instruction, 26/10/2026 | attestation de prolongation d'instruction | 1 k à 10 k | Famille 3. guide-anef-complet-2026… en parle : voir s'il faut une page dédiée ou une section renforcée |
 | Récépissé de titre de séjour (mise à jour de /articles/recepisse-titre-de-sejour-droits-duree-voyage) | récépissé titre de séjour | 1 k à 10 k | Optimisation : 1 vue sur 28 jours malgré la demande |
 | Regroupement familial (mise à jour de /articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais) | regroupement familial | 10 k à 100 k | Optimisation : 8 impressions, position 11,5 |
 
@@ -435,3 +434,12 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Carte de séjour pluriannuelle et autorisation de travail | carte de séjour pluriannuelle autorisation de travail (suggestion du 25/10) | 100 à 1 k | Famille 3. Section d'un guide existant plutôt qu'un article |
 | Aide au retour volontaire (mise à jour de /articles/prime-retour-volontaire-france-2026-conditions-demarches) | aide au retour volontaire ; aide au retour 2500 euros | 100 à 1 k | Optimisation : 441 impressions, position 6, 0 clic sur 28 jours ; vérifier le montant sur l'OFII avant tout |
 | Carte de résident pour parent d'enfant français | carte de résident 10 ans parent d enfant français (suggestion du 25/10) | pas de donnée | Section de `carte-resident-10-ans-france-2026-…` |
+
+## Vu le 26/10/2026 (veille et données)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| Décision du Conseil d'État du 5 mai 2026 sur l'ANEF : ce que l'État doit corriger | conseil d'état anef ; décision anef 2026 | à mesurer | Échéance des injonctions à six mois de la notification (vers novembre 2026) : surveiller le JO (arrêté du 10/05/2017, art. D. 512-1 CSS, R. 431-15-1 CESEDA) et mettre à jour `attestation-prolongation-instruction` le jour du texte. Famille 1 |
+| Attestation de décision favorable (ANEF) : ce qu'elle permet | attestation de décision favorable ; attestation décision favorable travailler | à mesurer | Section possible de `attestation-prolongation-instruction`, ou page dédiée si le volume le justifie |
+| « anef - titre de séjour » (suggestion du 26/10) | anef titre de séjour | à mesurer | Navigationnelle ; nourrit le chantier ANEF (section K des MAJ) |
+
