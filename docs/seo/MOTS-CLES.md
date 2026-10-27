@@ -38,7 +38,6 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Article | Point à vérifier |
 |---|---|
-| /articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure | Ajouté le 25/10/2026 : 4 100 citations Copilot sur 3 mois (« passeport talent salaire minimum 2026 » 1 900). Vérifier les seuils de salaire 2026 et le nom du titre (carte « talent » depuis la loi du 26/01/2024) sur service-public et Légifrance |
 | /articles/reforme-test-civique-50-questions-juin-2026 | Aucun texte trouvé prévoyant 50 questions ; l'arrêté du 10/10/2025 fixe 40 questions |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
@@ -370,7 +369,7 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | 3 | 28 questions de connaissance et 12 mises en situation : comment se compose l'examen | Cœur du produit, forte intention de préparation, pas d'article dédié aux mises en situation |
 | 4 | (publié le 20/10/2026) Examen civique CSP ou CR : quelles différences de difficulté | Deux listes officielles distinctes, confusion fréquente, aucun article existant sur cette comparaison |
 | 5 | (publié le 21/10/2026) Régularisation par le travail : le dispositif court jusqu'au 31 décembre 2026 | Échéance proche et datée (à confirmer sur Légifrance) ; remplace un article fondé sur une circulaire abrogée |
-| 6 | Droit du sol à Mayotte : ce qui s'applique depuis mai 2026 | Texte en vigueur, outre-mer non couvert par le site, forte demande d'explication factuelle |
+| 6 | ~~Droit du sol à Mayotte : ce qui s'applique depuis mai 2026~~ → droit-du-sol-mayotte, 27/10/2026 | Texte en vigueur, outre-mer non couvert par le site, forte demande d'explication factuelle |
 | 7 | ETIAS : ce qui change pour vos proches qui viennent vous rendre visite | Lancement annoncé au dernier trimestre 2026, donc pile dans le calendrier ; rassurant pour les titulaires (non concernés) |
 | 8 | Utiliser les 222 fiches officielles : par où commencer | Ressource gratuite officielle, angle méthode qui mène naturellement aux examens blancs |
 | 9 | 10 choses à savoir quand on arrive en France (brief V5) | Seul brief du dossier non rédigé, angle non administratif sans cannibalisation |
@@ -443,3 +442,11 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Attestation de décision favorable (ANEF) : ce qu'elle permet | attestation de décision favorable ; attestation décision favorable travailler | à mesurer | Section possible de `attestation-prolongation-instruction`, ou page dédiée si le volume le justifie |
 | « anef - titre de séjour » (suggestion du 26/10) | anef titre de séjour | à mesurer | Navigationnelle ; nourrit le chantier ANEF (section K des MAJ) |
 
+
+## Vu le 27/10/2026 (veille et données)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| Les autres articles « passeport talent » à revérifier | passeport talent 2026 ; passeport talent chercheur ; passeport talent création d'entreprise | à mesurer | La version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix : `passeport-talent-2026-conditions-metiers-demarches`, `passeport-talent-chercheur-…`, `passeport-talent-creation-entreprise-…` et `famille-passeport-talent-…` reprennent sans doute les mêmes erreurs. À vérifier sur F16922 (seuils au 01/06/2026 : 39 582 €, carte bleue 59 373 €, chercheur 2 200 € par mois sous convention, création d'entreprise 22 404,20 € et 30 000 €) |
+| Délais de recours contre une OQTF (48 h, 7 jours, 1 mois) | oqtf délai recours ; recours oqtf | à mesurer | Vu dans la presse (Algerie360, 26/10). Trois articles OQTF existent déjà (`refus-titre-sejour-oqtf-recours-2026-…`, `oqtf-2026-droits-recours-…`, `oqtf-etudiant-…`) : optimiser l'un, ne pas créer |
+| Renouvellement bloqué sur l'ANEF et CAF suspendue | anef renouvellement bloqué caf | à mesurer | Vu dans la presse (Algerie360, 27/10) : couvert par `attestation-prolongation-instruction` ; renforcer sa section CAF si la demande se confirme |

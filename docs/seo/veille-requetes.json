@@ -8,7 +8,7 @@
     "taille_max_octets": 1000000,
     "entree_sommaire": "/conteneur/JORF/CONT/.*\\.xml$",
     "lien_texte": "https://www.legifrance.gouv.fr/jorf/id/{idtxt}",
-    "inclure": "(?<![a-zà-ÿ])(étrangers|entrée et (du )?séjour|titres? de séjour|cartes? de (séjour|résident)|nationalité française|ceseda|droit d.asile|demandeurs? d.asile|immigration|intégration républicaine|examen civique|naturalisation|visas?(?![a-zà-ÿ])|réfugiés?|apatrides?|ofii|ofpra|éloignement|rétention administrative|regroupement familial|mineurs non accompagnés)",
+    "inclure": "(?<![a-zà-ÿ])(étrangers|entrée et (du )?séjour|titres? de séjour|cartes? de (séjour|résident)|nationalité française|ceseda|droit d.asile|demandeurs? d.asile|immigration|intégration républicaine|examen civique|naturalisation|visas?(?![a-zà-ÿ])|réfugiés?|apatrides?|ofii|ofpra|éloignement|rétention administrative|regroupement familial|mineurs non accompagnés|attestation de prolongation|D. 512-1|R. 431-15-1)",
     "exclure": "portant naturalisation, réintégration|accès protégé|délégation de signature|portant nomination",
     "pourquoi_pas_legifrance": "legifrance.gouv.fr répond 403 (défi Cloudflare) à toutes les adresses, flux RSS compris, avec un UA robot comme avec un UA navigateur ; l'API PISTE exige une clé."
   },

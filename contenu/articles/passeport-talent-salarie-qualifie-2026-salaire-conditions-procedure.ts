@@ -2,229 +2,209 @@ import type { Article } from "@/contenu/articles";
 
 /**
  * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-passeport-impots-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * (`/articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure`).
+ *
+ * Corrigé et réécrit par le robot éditorial le 27/10/2026 (liste « à
+ * revérifier » de `docs/seo/MOTS-CLES.md` : 4 100 citations Copilot sur trois
+ * mois). La version migrée donnait un seuil faux (« 1,5 SMIC, 2 707 € brut
+ * par mois ») là où service-public indique 39 582 € brut par an, acceptait un
+ * master obtenu hors de France ou 5 ans d'expérience, chiffrait le timbre à
+ * 200 € au lieu de 350 €, et affirmait sans source une autorisation de travail
+ * demandée par l'employeur, des salaires par métier, une visite OFII, une
+ * naturalisation « à 2 ans » et une carte de résident « après 3 ou 4 ans ».
+ * Sources lues le 27/10/2026 : service-public F16922 (vérifiée le 01/06/2026)
+ * et F39530.
  */
 const article: Article = {
   slug: "passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure",
-  titre: "Passeport Talent Salarié qualifié 2026 : salaire 2 707 € minimum, conditions et procédure complète",
-  titreSeo: "Passeport Talent Salarié qualifié 2026 : salaire 2 707 € minimum, conditions et procédure complète",
-  resume: "Les 3 conditions strictes du Passeport Talent salarié 2026 (Master, salaire ≥1.5 SMIC, contrat ≥3 mois), salaires réels par métier (3 200-12 000 €), procédure recrutement-arrivée, 6 pièges qui font refuser et 7 avantages massifs.",
-  chapo: "Le **Passeport Talent : Salarié qualifié** est le titre de séjour de référence pour les cadres et ingénieurs étrangers recrutés par une entreprise française. Avec un **salaire minimum de 2 707 € brut/mois en 2026** et un titre **valable 4 ans renouvelables**, c'est la voie privilégiée pour les talents internationaux.",
+  titre: "Passeport talent salarié qualifié : 39 582 € brut par an, un master obtenu en France, et les étapes de la demande",
+  titreSeo: "Passeport talent salaire minimum : 39 582 € par an",
+  resume: "Carte talent salarié qualifié : le salaire minimum officiel (39 582 € brut par an), le diplôme exigé, la durée, le prix de 350 € et la démarche.",
+  chapo: "La carte talent « salarié qualifié » (l'ancien passeport talent) demande deux choses. D'abord, un contrat de plus de 3 mois payé ==au moins 39 582 € brut par an==. Ensuite, un diplôme de niveau master ==obtenu en France==. La carte dure le temps du contrat, 4 ans au plus, et coûte 350 €. Voici les conditions exactes, la démarche, et les erreurs que corrige cette page.",
   publieLe: "2026-04-28",
-  modifieLe: "2026-04-28",
-  minutes: 22,
+  modifieLe: "2026-10-27",
+  minutes: 6,
   theme: "passeport talent salarié",
   motsCles: [
-    "passeport talent salarié",
+    "passeport talent salarié qualifié",
+    "passeport talent salaire minimum 2026",
+    "carte talent salarié qualifié",
     "passeport talent salaire",
-    "passeport talent qualifié",
-    "visa salarié qualifié france",
-    "salaire passeport talent 2026",
-    "passeport talent 1.5 smic",
+    "carte talent 39 582 euros",
+    "passeport talent master obtenu en France",
   ],
   rubrique: "cadre-legal",
-  auteur: "Brian B",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
-    largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1521737711867-e3b97375f902",
+    src: "/images/articles/passeport-talent-salarie-qualifie.webp",
+    alt: "Des tours de bureaux en verre bleu du quartier d'affaires de La Défense, près de Paris, sous un ciel nuageux",
+    largeur: 1024,
+    hauteur: 768,
+    credit: "Ruben Holthuijsen, via Flickr",
+    licence: "CC BY 2.0",
+    source: "https://www.flickr.com/photos/60057960@N06/10530772825",
   },
   blocs: [
     {
-      type: "p",
-      texte: "Voici toutes les **conditions, salaires exacts, démarches et pièges** du Passeport Talent salarié qualifié 2026, dans la version la plus pratique du web.",
+      type: "encadre",
+      titre: "Cet article a été corrigé le 27 octobre 2026",
+      texte: "La version précédente indiquait un salaire minimum de « 2 707 € brut par mois (1,5 SMIC) », un master « obtenu n'importe où ou 5 ans d'expérience » et un timbre de 200 €. Ces chiffres sont faux. Selon [service-public](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922), le seuil est de ==39 582 € brut par an==, le master doit être obtenu en France, et la carte coûte ==350 €==.",
+      ton: "ambre",
     },
     {
       type: "h2",
-      texte: "Les 3 conditions strictes du Passeport Talent Salarié 2026",
-      id: "conditions-2026",
+      texte: "Qu'est-ce que la carte talent « salarié qualifié » ?",
     },
-    { type: "p", texte: "**Condition 1 : Diplôme**" },
+    {
+      type: "p",
+      texte: "C'est une **carte de séjour pluriannuelle**, c'est-à-dire un titre de séjour valable plusieurs années. Le titre de séjour, c'est le document qui autorise un étranger à vivre en France. Beaucoup l'appellent encore « passeport talent ». Service-public l'appelle aujourd'hui « carte talent » ([F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922)).",
+    },
+    {
+      type: "p",
+      texte: "La carte talent a plusieurs motifs : chercheur, création d'entreprise, profession artistique, carte bleue européenne… Le motif « salarié qualifié » vise les salariés diplômés d'un master en France. Notre [guide général du passeport talent](/articles/passeport-talent-2026-conditions-metiers-demarches) présente les autres motifs.",
+    },
+    {
+      type: "h2",
+      texte: "Quelles sont les conditions exactes ?",
+    },
+    {
+      type: "p",
+      texte: "Service-public, dans sa fiche vérifiée le 1er juin 2026, fixe trois conditions pour le salarié qualifié :",
+    },
     {
       type: "liste",
-      style: "puces",
+      style: "coches",
       items: [
-        "**Master (Bac+5) minimum**",
-        "ou diplôme équivalent",
-        "ou **5 ans d'expérience professionnelle** au niveau comparable (sans Master)",
-      ],
-    },
-    { type: "p", texte: "**Condition 2 : Salaire**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**1.5 SMIC brut mensuel** = **2 707 € brut / mois en 2026**",
-        "Soit **32 484 € brut/an minimum**",
-        "Le salaire doit être stipulé dans le **contrat de travail** signé avant la demande",
-      ],
-    },
-    { type: "p", texte: "**Condition 3 : Contrat**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**CDI** ou **CDD ≥ 3 mois**",
-        "Avec une **entreprise établie en France** (peu importe la taille)",
-        "L'employeur dépose une **demande d'autorisation de travail** sur ANEF (côté employeur)",
+        "**Un diplôme au moins équivalent au master, obtenu en France.** Un diplôme de niveau 1 labellisé par la Conférence des grandes écoles, délivré par un établissement habilité, est aussi accepté.",
+        "**Un contrat de travail de plus de 3 mois.**",
+        "**Un salaire brut annuel d'au moins 39 582 €**, soit environ 3 298 € brut par mois sur 12 mois.",
       ],
     },
     {
       type: "p",
-      texte: "**Pas de quota, pas de profession spécifique :** tous les métiers qualifiés sont éligibles si les 3 conditions sont remplies.",
+      texte: "Le même seuil de 39 582 € vaut pour deux situations proches. La première : le salarié recruté par une **entreprise innovante** pour un projet de recherche. La seconde : le salarié **en mission** envoyé par son groupe, s'il y travaille depuis au moins 3 mois.",
     },
-    { type: "h2", texte: "Salaires Passeport Talent Salarié par métier en 2026", id: "salaire-detail" },
     {
-      type: "p",
-      texte: "Le seuil de **2 707 € brut/mois** est un minimum. Voici les fourchettes réelles 2026 :",
+      type: "liste",
+      style: "alertes",
+      items: [
+        "**Un master obtenu hors de France ne suffit pas** pour ce motif. Regardez alors la carte bleue européenne : selon service-public, elle demande un contrat d'au moins 6 mois et ==59 373 € brut par an==.",
+        "**Le salaire se lit sur l'année.** Un temps partiel ou un contrat court peut faire passer le salaire sous le seuil : faites le calcul avec votre employeur avant de signer.",
+        "**Pour une profession réglementée** (santé, droit…), il faut aussi prouver que vous avez le droit de l'exercer. Notre article sur [la reconnaissance des diplômes étrangers](/articles/reconnaissance-diplomes-etrangers-france-2026-enic-naric-equivalences) explique les démarches.",
+      ],
     },
     {
       type: "tableau",
-      entetes: ["Métier", "Salaire moyen Passeport Talent"],
+      entetes: ["Motif de la carte talent", "Salaire brut annuel minimum", "Autre condition clé"],
       lignes: [
-        ["Développeur logiciel", "**3 200 à 5 500 €**"],
-        ["Data Scientist / IA", "**4 000 à 7 000 €**"],
-        ["Ingénieur cybersécurité", "**3 800 à 6 500 €**"],
-        ["Chef de projet IT", "**3 500 à 6 000 €**"],
-        ["Consultant senior", "**4 500 à 8 000 €**"],
-        ["Médecin spécialiste", "**5 500 à 12 000 €**"],
-        ["Architecte", "**3 200 à 5 500 €**"],
-        ["Cadre commercial international", "**3 500 à 7 000 €**"],
-        ["Designer UX/UI senior", "**3 200 à 5 500 €**"],
-        ["Pilote de ligne", "**6 000 à 12 000 €**"],
+        ["Salarié qualifié", "39 582 €", "Master obtenu en France, contrat de plus de 3 mois"],
+        ["Salarié d'une entreprise innovante", "39 582 €", "Poste lié au projet de recherche"],
+        ["Salarié en mission (groupe)", "39 582 €", "3 mois d'ancienneté dans le groupe"],
+        ["Carte bleue européenne", "59 373 €", "Contrat d'au moins 6 mois"],
       ],
+      legende: "Seuils de la fiche service-public F16922, vérifiée le 1er juin 2026. Ils peuvent changer : vérifiez la fiche le jour de votre demande.",
     },
-    {
-      type: "p",
-      texte: "**Régions à plus haut salaire :** Paris/Île-de-France (+15-25%), Lyon, Toulouse, Sophia-Antipolis.",
-    },
-    { type: "h2", texte: "Procédure complète : 5 étapes du recrutement à l'arrivée", id: "procedure" },
-    { type: "p", texte: "**Étape 1 : Décrocher l'offre**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Sites recommandés : **Welcome to the Jungle**, **LinkedIn**, **Indeed**, **APEC**, **Choose Paris Region**",
-        "Spécialisez votre CV pour le marché français (1-2 pages, pas de photo obligatoire)",
-      ],
-    },
-    { type: "p", texte: "**Étape 2 : Signature du contrat**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Le contrat doit mentionner **explicitement Passeport Talent Salarié qualifié**",
-        "Salaire ≥ **2 707 €/mois brut**",
-        "L'employeur dépose la demande sur ANEF (côté employeur) : délai 2 mois",
-      ],
-    },
-    { type: "p", texte: "**Étape 3 : Demande de visa au consulat**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**VLS-TS Passeport Talent salarié** (long séjour valant titre)",
-        "Documents : contrat, autorisation de travail, diplôme, passeport, CV",
-        "Coût : **99 €** (frais consulaires)",
-        "Délai : 15 à 60 jours",
-      ],
-    },
-    { type: "p", texte: "**Étape 4 : Arrivée en France et validation**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Validation VLS-TS sur **ANEF** dans **3 mois** après arrivée",
-        "Timbre fiscal **200 €**",
-        "Visite médicale OFII (obligatoire)",
-        "Pas d'entretien CIR (dispense automatique pour Passeport Talent)",
-      ],
-    },
-    { type: "p", texte: "**Étape 5 : Carte 4 ans**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Vous obtenez ensuite une carte **Passeport Talent Salarié valable 4 ans**",
-        "Renouvelable indéfiniment si conditions maintenues",
-      ],
-    },
-    { type: "h2", texte: "Les 7 avantages massifs du Passeport Talent Salarié", id: "avantages" },
-    {
-      type: "p",
-      texte: "**1. Titre de 4 ans dès le départ** (vs 1 an renouvelable pour un salarié classique)",
-    },
-    {
-      type: "p",
-      texte: "**2. Famille incluse, Passeport Talent Famille** (conjoint + enfants), travail autorisé pour le conjoint",
-    },
-    {
-      type: "p",
-      texte: "**3. Pas de regroupement familial classique** (procédure 12-18 mois supprimée)",
-    },
-    { type: "p", texte: "**4. Mobilité européenne facilitée** (carte bleue européenne possible)" },
-    { type: "p", texte: "**5. Naturalisation accélérée à 2 ans** si Master français + résidence" },
-    { type: "p", texte: "**6. Dispense entretien CIR** (vous gagnez 4 mois)" },
-    { type: "p", texte: "**7. Possibilité de carte de résident 10 ans après 3-4 ans**" },
     {
       type: "h2",
-      texte: "Les 6 pièges qui font refuser un Passeport Talent en 2026",
-      id: "pieges-eviter",
+      texte: "Combien de temps dure la carte, et combien coûte-t-elle ?",
     },
-    { type: "p", texte: "**1. Salaire annoncé hors prime / variable**" },
     {
       type: "p",
-      texte: "→ Le salaire **fixe brut** doit atteindre 2 707 €/mois sans compter les primes variables.",
+      texte: "La carte dure ==le temps du contrat de travail, 4 ans au plus==. Elle coûte **350 €** : 50 € de droit de timbre et 300 € de taxe, payés en timbres fiscaux. Le timbre fiscal, c'est un paiement en ligne que l'on achète pour régler une taxe à l'État. Notre article sur [les taxes des titres de séjour](/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances) détaille les autres montants.",
     },
-    { type: "p", texte: "**2. Contrat CDD <3 mois**" },
-    { type: "p", texte: "→ Refus systématique. Exigez un CDD ≥3 mois ou un CDI." },
-    { type: "p", texte: "**3. Diplôme étranger non reconnu**" },
     {
       type: "p",
-      texte: "→ Faites valider votre diplôme par **ENIC-NARIC** (gratuit, 4 mois) avant la demande.",
+      texte: "Bonne nouvelle pour l'employeur : il ==n'a pas à demander d'autorisation de travail==, et il ne paie pas la taxe due pour l'emploi d'un étranger (F16922). Un contrat signé et une attestation de l'employeur suffisent.",
     },
-    { type: "p", texte: "**4. Entreprise en redressement judiciaire**" },
-    { type: "p", texte: "→ Refus. Vérifiez la santé financière de l'employeur sur **societe.com**." },
-    { type: "p", texte: "**5. Profession non qualifiée**" },
+    {
+      type: "h2",
+      texte: "Comment faire la demande ?",
+    },
+    {
+      type: "h3",
+      texte: "Vous êtes à l'étranger",
+    },
+    {
+      type: "liste",
+      style: "numeros",
+      items: [
+        "**Demandez un visa au consulat de France** de votre pays de résidence.",
+        "**Pour un séjour de moins de 12 mois**, vous recevez un **VLS-TS** « talent ». C'est un visa de long séjour qui vaut titre de séjour. Faites-le valider en ligne ==dans les 3 mois== après votre arrivée. Notre article sur [la validation du VLS-TS](/articles/visa-long-sejour-vls-ts-validation-ofii-2026) explique cette étape.",
+        "**Pour un séjour d'un an ou plus**, vous recevez un visa de 3 mois « talent ». Une fois en France, demandez la carte en ligne, sur l'**ANEF** : c'est le site du ministère de l'Intérieur pour les titres de séjour.",
+      ],
+    },
+    {
+      type: "h3",
+      texte: "Vous êtes déjà en France",
+    },
     {
       type: "p",
-      texte: "→ Le poste doit être de niveau **cadre / technicien supérieur**. Un poste d'opérateur ne passe pas.",
+      texte: "Si vous avez un visa de long séjour, déposez la demande en ligne ==dans les 2 mois== après votre entrée. Si vous avez déjà un titre de séjour, par exemple une carte étudiant après votre master, déposez-la entre 4 mois et 2 mois avant sa fin. Pendant l'étude, l'[attestation de prolongation d'instruction](/articles/attestation-prolongation-instruction) peut prouver que votre séjour reste régulier.",
     },
-    { type: "p", texte: "**6. Mauvaise rédaction de la demande employeur**" },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "votre visa ou votre titre de séjour en cours de validité ;",
+        "votre passeport ;",
+        "un justificatif de domicile de moins de 6 mois ;",
+        "une photo d'identité avec un code e-photo (un code donné par les photographes et cabines agréés) ;",
+        "votre diplôme ;",
+        "l'attestation de votre employeur (service-public en propose un modèle) ;",
+        "l'engagement signé à respecter les principes de la République.",
+      ],
+    },
+    {
+      type: "h2",
+      texte: "Et votre famille ?",
+    },
     {
       type: "p",
-      texte: "→ Le formulaire ANEF côté employeur doit être complet : description du poste, salaire détaillé, organigramme. Préparez-le ensemble.",
+      texte: "Votre conjoint et vos enfants mineurs peuvent obtenir une carte « talent-famille ». Ils passent par une procédure simple, dite « famille accompagnante », ==sans regroupement familial== (F16922). Notre article sur [la famille d'un titulaire du passeport talent](/articles/famille-passeport-talent-france-2026-conjoint-enfants-droits-titre) détaille leurs droits.",
     },
     {
-      type: "encadre",
-      titre: "À retenir",
-      texte: "Le Passeport Talent Salarié qualifié reste en 2026 la meilleure voie pour s'établir durablement en France quand on est cadre étranger : 4 ans, famille incluse, naturalisation accélérée. La clé : un salaire ≥ 2 707 €/mois brut, un contrat solide et un employeur sérieux. Préparez votre dossier rigoureusement (diplôme reconnu ENIC-NARIC, CV au format français), soignez la demande employeur et anticipez 4-6 mois entre la signature du contrat et votre arrivée effective en France.",
-      ton: "bleu",
+      type: "h2",
+      texte: "Et plus tard : carte de résident et examen civique",
+    },
+    {
+      type: "p",
+      texte: "Plus tard, vous voudrez peut-être une **carte de résident de longue durée-UE**. Service-public cite parmi les personnes concernées par l'**examen civique** les titulaires d'une carte talent depuis plus de 5 ans qui demandent cette carte pour la première fois ([F39530](https://www.service-public.gouv.fr/particuliers/vosdroits/F39530)). C'est un test de 40 questions sur la France et ses valeurs. Vérifiez en une minute [si l'examen vous concerne](/eligibilite-examen-civique).",
+    },
+    {
+      type: "p",
+      texte: "Pour un cas personnel (refus, contrat atypique, changement d'employeur), adressez-vous à la préfecture par l'ANEF, à un avocat ou à une association d'aide aux étrangers.",
     },
   ],
   faq: [
     {
-      question: "Quel est le salaire minimum exact en 2026 pour un Passeport Talent salarié ?",
-      reponse: "2 707 € brut/mois (1.5 SMIC sur la base de 35h hebdomadaires). Ce seuil est mis à jour chaque année avec le SMIC.",
+      question: "Quel est le salaire minimum pour un passeport talent salarié qualifié en 2026 ?",
+      reponse: "Selon service-public, dans sa fiche vérifiée le 1er juin 2026, le salaire brut annuel doit être d'au moins 39 582 €, soit environ 3 298 € brut par mois sur 12 mois. Le même seuil vaut pour le salarié d'une entreprise innovante et le salarié en mission. La carte bleue européenne demande 59 373 € brut par an.",
     },
     {
-      question: "Le Passeport Talent salarié peut-il être obtenu sans Master ?",
-      reponse: "Oui, avec 5 ans d'expérience professionnelle dans un poste qualifié comparable. Mais c'est plus rare et le dossier doit être très solide.",
+      question: "Peut-on avoir le passeport talent salarié qualifié avec un master obtenu à l'étranger ?",
+      reponse: "Non, pas pour ce motif. Service-public exige un diplôme au moins équivalent au master obtenu en France, ou un diplôme de niveau 1 labellisé par la Conférence des grandes écoles. Avec un diplôme étranger, d'autres motifs existent, comme la carte bleue européenne, avec un seuil de salaire plus élevé.",
     },
     {
-      question: "Combien de temps prend la procédure complète ?",
-      reponse: "4 à 6 mois entre la signature du contrat et l'arrivée en France (2 mois employeur ANEF + 1-2 mois visa + voyage).",
+      question: "Combien coûte la carte talent salarié qualifié ?",
+      reponse: "Elle coûte 350 € : 50 € de droit de timbre et 300 € de taxe, payés en timbres fiscaux, selon la fiche service-public F16922. La carte est valable pour la durée du contrat de travail, dans la limite de 4 ans. L'employeur n'a pas d'autorisation de travail à demander.",
     },
     {
-      question: "Mon employeur peut-il refuser de faire la démarche Passeport Talent ?",
-      reponse: "Oui, c'est l'employeur qui initie la procédure. Si refus, vous pouvez tenter le statut \"salarié classique\" (autorisation de travail + 1 an renouvelable).",
+      question: "Quelle est la durée de validité du passeport talent salarié ?",
+      reponse: "La carte est valable pour la durée du contrat de travail, dans la limite de 4 ans. Pour la renouveler, déposez la demande entre 4 mois et 2 mois avant la fin de la carte. Pour une première carte de résident de longue durée-UE après plus de 5 ans, l'examen civique est demandé.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Service-public : carte talent, carte de séjour pluriannuelle d'un étranger en France (F16922), vérifiée le 1er juin 2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922",
+      type: "officiel",
+      luLe: "2026-10-27",
+    },
+    {
+      titre: "Service-public : examen civique pour une carte de séjour ou de résident (F39530)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F39530",
+      type: "officiel",
+      luLe: "2026-10-27",
     },
   ],
 };
