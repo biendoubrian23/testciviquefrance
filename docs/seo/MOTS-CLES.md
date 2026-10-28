@@ -38,7 +38,8 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Article | Point à vérifier |
 |---|---|
-| /articles/reforme-test-civique-50-questions-juin-2026 | Aucun texte trouvé prévoyant 50 questions ; l'arrêté du 10/10/2025 fixe 40 questions |
+| /articles/rater-examen-civique-2026-repasser-delai-cout-themes-echec | Ajouté le 28/10/2026 : « 4 à 8 semaines » de réinscription, « 3 208 sessions » et « visez 35/40 » sans source ; FEI et la CCIP n'indiquent que 24 heures entre deux passages (manuel FEI de septembre 2026, FAQ CCIP lus le 28/10) |
+| /articles/passeport-talent-2026-conditions-metiers-demarches, -chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` d'abord (20 vues sur 7 jours, 115 impressions) |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
@@ -450,3 +451,15 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Les autres articles « passeport talent » à revérifier | passeport talent 2026 ; passeport talent chercheur ; passeport talent création d'entreprise | à mesurer | La version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix : `passeport-talent-2026-conditions-metiers-demarches`, `passeport-talent-chercheur-…`, `passeport-talent-creation-entreprise-…` et `famille-passeport-talent-…` reprennent sans doute les mêmes erreurs. À vérifier sur F16922 (seuils au 01/06/2026 : 39 582 €, carte bleue 59 373 €, chercheur 2 200 € par mois sous convention, création d'entreprise 22 404,20 € et 30 000 €) |
 | Délais de recours contre une OQTF (48 h, 7 jours, 1 mois) | oqtf délai recours ; recours oqtf | à mesurer | Vu dans la presse (Algerie360, 26/10). Trois articles OQTF existent déjà (`refus-titre-sejour-oqtf-recours-2026-…`, `oqtf-2026-droits-recours-…`, `oqtf-etudiant-…`) : optimiser l'un, ne pas créer |
 | Renouvellement bloqué sur l'ANEF et CAF suspendue | anef renouvellement bloqué caf | à mesurer | Vu dans la presse (Algerie360, 27/10) : couvert par `attestation-prolongation-instruction` ; renforcer sa section CAF si la demande se confirme |
+
+
+## Vu le 28/10/2026 (Planificateur, France, French, et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~Résultat de l'examen civique : délai, attestation, échec~~ → resultat-examen-civique, 28/10/2026 | résultat examen civique ; quand résultat examen civique (suggestion du 28/10) ; attestation de réussite examen civique | 100 à 1 k ; 0 à 10 ; 10 à 100 | Famille 2 |
+| ~~Examen civique à 50 questions~~ → corrigé dans reforme-test-civique-50-questions-juin-2026, 28/10/2026 | examen civique 50 questions ; réforme examen civique | 0 à 10 chacune | Aucune demande : la correction vaut pour la justesse, pas pour le trafic |
+| Préparer l'examen civique (Test Civique pratique) | préparer examen civique | 100 à 1 k, + 900 % sur trois mois | Famille 5. Ne pas créer de page : `comment-reussir-test-civique-premier-coup` (100 impressions, position 30) traite déjà le planning de 4 à 8 semaines. L'optimiser sur « préparer examen civique » à sa prochaine retouche (titre de 2025, à remettre au niveau de la doctrine) |
+| Titre de séjour délivré à Mayotte (territorialisé) | titre de séjour mayotte ; titre de séjour mayotte en france | 10 à 100 chacune | Proposition de loi « Suppression des titres de séjour territorialisés à Mayotte », Sénat, texte n° 104 (déposée, flux du 28/10). Pas un texte en vigueur : rien à annoncer. Section possible de `droit-du-sol-mayotte`, ou article guide si le texte avance |
+| Documents de naturalisation par mariage ; délai de naturalisation à Paris | documents naturalisation mariage ; délai naturalisation paris (suggestions du 28/10) | à mesurer | Recoupent `nationalite-francaise-par-mariage-…` et `naturalisation-francaise-2026-delais-…` : optimiser, ne pas créer |
+| Examen civique questions gratuit | examen civique questions gratuit (suggestion du 28/10) | à mesurer | Recoupe `examen-civique-2026-exemples-questions-corrigees` (10 clics d'appel sur 28 jours, la page qui convertit le mieux) |

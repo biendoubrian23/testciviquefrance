@@ -117,3 +117,19 @@ Période oct. 2025 à sept. 2026, réseau Google. **La langue French s'applique 
 | test civique en ligne | 100 à 1 k | faible | |
 | examen civique gratuit | 100 à 1 k | faible | |
 | examen blanc examen civique | 10 à 100 | faible | Même fourchette qu'en « toutes les langues » le 20/10 |
+
+### 2026-10-28 : « Trouver de nouveaux mots clés », France, **French (par défaut)**
+
+Période oct. 2025 à sept. 2026, réseau Google. Libellés lus sous le champ des mots de départ : « French (par défaut) », « France ». Huit mots de départ ; le tableau n'a rendu que les mots de départ.
+
+| Requête | Volume mensuel | Concurrence pub | Remarque |
+|---|---|---|---|
+| résultat examen civique | 100 à 1 k | faible | Porte l'article du 28/10 |
+| préparer examen civique | 100 à 1 k | faible | + 900 % sur trois mois |
+| titre de séjour mayotte | 10 à 100 | faible | |
+| titre de séjour mayotte en france | 10 à 100 | faible | |
+| attestation de réussite examen civique | 10 à 100 | faible | |
+| examen blanc examen civique | 10 à 100 | faible | Inchangé depuis le 25/10 |
+| quand résultat examen civique | 0 à 10 | | Suggestion Google du 28/10 |
+| examen civique 50 questions | 0 à 10 | | |
+| réforme examen civique | 0 à 10 | | |
