@@ -128,6 +128,7 @@ import attentatDejoueParis2026SecuriteNationaleVigipirateTestCiviqu from "./arti
 import attestationProlongationInstruction from "./articles/attestation-prolongation-instruction";
 import droitDuSolMayotte from "./articles/droit-du-sol-mayotte";
 import resultatExamenCivique from "./articles/resultat-examen-civique";
+import delaiReponsePrefectureTitreDeSejour90Jours from "./articles/delai-reponse-prefecture-titre-de-sejour-90-jours";
 import attestationAccueilInviterFamilleFrance2026MairieConditions from "./articles/attestation-accueil-inviter-famille-france-2026-mairie-conditions";
 import autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour from "./articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour";
 import avoirEnfantFranceEtranger2026DroitSolNationaliteAllocations from "./articles/avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations";
@@ -419,6 +420,7 @@ export const ARTICLES: readonly Article[] = [
   attestationProlongationInstruction,
   droitDuSolMayotte,
   resultatExamenCivique,
+  delaiReponsePrefectureTitreDeSejour90Jours,
   autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour,
   avoirEnfantFranceEtranger2026DroitSolNationaliteAllocations,
   binationauxFrancoMaghrebinsObligationsServiceNationalVoteCon,

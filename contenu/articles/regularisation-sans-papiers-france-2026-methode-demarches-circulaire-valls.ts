@@ -23,7 +23,7 @@ const article: Article = {
   resume: "La circulaire Valls ne s'applique plus : depuis le 23 janvier 2025, une autre circulaire guide les préfets. Conditions, dossier, frais et recours.",
   chapo: "La circulaire Valls de 2012 ==ne s'applique plus== : la circulaire du 23 janvier 2025 l'a remplacée. La régularisation reste possible, au cas par cas, sur le fondement de la loi. Mais la préfecture peut demander ==au moins 7 ans== de présence en France, un bon niveau de français et l'engagement de respecter les principes de la République.",
   publieLe: "2026-04-28",
-  modifieLe: "2026-10-24",
+  modifieLe: "2026-10-30",
   minutes: 7,
   theme: "régularisation sans papiers",
   motsCles: [
@@ -163,7 +163,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Si la préfecture ne répond pas pendant ==4 mois==, c'est un refus implicite. Vous avez alors 2 mois pour agir ([F16053](https://www.service-public.gouv.fr/particuliers/vosdroits/F16053)). Vous pouvez faire un recours gracieux, c'est-à-dire écrire au préfet pour lui demander de revoir sa décision. Vous pouvez aussi saisir le tribunal administratif, le juge des litiges avec l'administration.",
+      texte: "Si la préfecture ne répond pas pendant ==90 jours== après le dépôt d'une demande complète, c'est un refus implicite. Ce délai était de 4 mois jusqu'au 29 octobre 2026 ; le [décret n° 2026-1001](/articles/delai-reponse-prefecture-titre-de-sejour-90-jours) l'a raccourci. Vous avez alors 2 mois pour agir ([F16053](https://www.service-public.gouv.fr/particuliers/vosdroits/F16053)). Vous pouvez faire un recours gracieux, c'est-à-dire écrire au préfet pour lui demander de revoir sa décision. Vous pouvez aussi saisir le tribunal administratif, le juge des litiges avec l'administration.",
     },
     {
       type: "p",

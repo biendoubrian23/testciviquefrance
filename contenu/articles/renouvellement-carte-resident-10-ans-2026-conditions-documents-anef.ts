@@ -20,7 +20,7 @@ const article: Article = {
   resume: "Renouveler une carte de résident de 10 ans : dépôt sur l'ANEF 4 à 2 mois avant la fin, 250 € de taxes, pas d'examen civique, motifs de refus.",
   chapo: "Déposez votre demande sur l'ANEF (le site des démarches des étrangers) ==entre 4 mois et 2 mois avant la fin de votre carte==. Le renouvellement coûte ==250 €== au tarif normal depuis le 1er mai 2026, et l'examen civique n'est pas demandé. La préfecture (le service de l'État qui gère les titres de séjour) peut refuser dans deux cas précis.",
   publieLe: "2026-05-10",
-  modifieLe: "2026-10-22",
+  modifieLe: "2026-10-30",
   minutes: 7,
   theme: "renouvellement carte de résident",
   motsCles: [
@@ -169,7 +169,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Sans réponse au bout de 4 mois, c'est un refus implicite. Vous avez alors 2 mois pour un recours gracieux auprès du préfet, un recours hiérarchique auprès du ministre de l'Intérieur, ou un recours au tribunal (F2208). Notre guide des [recours contre un refus de titre et une OQTF](/articles/refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france) explique ces étapes. Pour votre cas précis, faites-vous aider par un avocat ou une association comme La Cimade.",
+      texte: "Sans réponse ==90 jours== après le dépôt d'une demande complète, c'est un refus implicite. Ce délai était de 4 mois jusqu'au 29 octobre 2026 ; le [décret n° 2026-1001](/articles/delai-reponse-prefecture-titre-de-sejour-90-jours) l'a raccourci. Vous avez alors 2 mois pour un recours gracieux auprès du préfet, un recours hiérarchique auprès du ministre de l'Intérieur, ou un recours au tribunal (F2208). Notre guide des [recours contre un refus de titre et une OQTF](/articles/refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france) explique ces étapes. Pour votre cas précis, faites-vous aider par un avocat ou une association comme La Cimade.",
     },
     {
       type: "h2",
@@ -218,6 +218,12 @@ const article: Article = {
     },
   ],
   sources: [
+    {
+      titre: "Légifrance : décret n° 2026-1001 du 26 octobre 2026 (délai de réponse de la préfecture ramené à 90 jours, JORF n° 0253 du 29 octobre 2026)",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055023061",
+      type: "officiel",
+      luLe: "2026-10-30",
+    },
     {
       titre: "Service-public : carte de résident de 10 ans (F2208, vérifiée le 01/07/2026)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2208",

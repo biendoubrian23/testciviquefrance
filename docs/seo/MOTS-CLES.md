@@ -40,6 +40,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 |---|---|
 | /articles/rater-examen-civique-2026-repasser-delai-cout-themes-echec | Ajouté le 28/10/2026 : « 4 à 8 semaines » de réinscription, « 3 208 sessions » et « visez 35/40 » sans source ; FEI et la CCIP n'indiquent que 24 heures entre deux passages (manuel FEI de septembre 2026, FAQ CCIP lus le 28/10) |
 | /articles/passeport-talent-2026-conditions-metiers-demarches, -chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` d'abord (20 vues sur 7 jours, 115 impressions) |
+| /articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais, anef-dossier-bloque-en-attente-2026-debloquer-relancer, carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement, titre-sejour-etranger-malade-raisons-sante-2026, regroupement-familial-france-2026-guide-complet-conditions-documents-delais | Ajoutés le 30/10/2026 : « silence de 4 mois = refus implicite » est faux depuis le 30/10/2026 (décret n° 2026-1001, art. R. 432-2 : 90 jours après le dépôt d'une demande complète, + 30 jours pour un dossier complexe). `anef-dossier-bloque-…` cite en plus un « article R. 431-12 » et un « rapport 2026 » (62 %) sans source. Corriger le délai et lier `delai-reponse-prefecture-titre-de-sejour-90-jours` à la prochaine retouche ; `renouvellement-titre-sejour-…` d'abord (requête « renouvellement titre de séjour délai ») |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
@@ -463,3 +464,16 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Titre de séjour délivré à Mayotte (territorialisé) | titre de séjour mayotte ; titre de séjour mayotte en france | 10 à 100 chacune | Proposition de loi « Suppression des titres de séjour territorialisés à Mayotte », Sénat, texte n° 104 (déposée, flux du 28/10). Pas un texte en vigueur : rien à annoncer. Section possible de `droit-du-sol-mayotte`, ou article guide si le texte avance |
 | Documents de naturalisation par mariage ; délai de naturalisation à Paris | documents naturalisation mariage ; délai naturalisation paris (suggestions du 28/10) | à mesurer | Recoupent `nationalite-francaise-par-mariage-…` et `naturalisation-francaise-2026-delais-…` : optimiser, ne pas créer |
 | Examen civique questions gratuit | examen civique questions gratuit (suggestion du 28/10) | à mesurer | Recoupe `examen-civique-2026-exemples-questions-corrigees` (10 clics d'appel sur 28 jours, la page qui convertit le mieux) |
+
+
+## Vu le 30/10/2026 (Journal officiel et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~Délai de réponse de la préfecture ramené à 90 jours (décret n° 2026-1001)~~ → delai-reponse-prefecture-titre-de-sejour-90-jours, 30/10/2026 | délai réponse préfecture titre de séjour ; silence préfecture titre de séjour ; décret 2026-1001 | pas mesuré (règle de moins de 72 h) | Famille 1. À mesurer au prochain passage dans le Planificateur |
+| Changer d'employeur avec un titre de séjour salarié : 6 mois au lieu de 12 | changer employeur titre de séjour salarié ; nouvel employeur autorisation travail | à mesurer | Même décret (art. R. 5221-36 du code du travail). Section de l'article du 30/10 ; page dédiée si le volume le justifie (recoupe le sujet de la famille 3 « Changer d'employeur avec un titre salarié ») |
+| Carte bleue européenne : ce qui change avec le décret du 26 octobre 2026 | carte bleue européenne France ; talent carte bleue européenne conditions | à mesurer | Même décret (art. R. 421-12, R. 421-21, R. 421-22, R. 421-24 A). Recoupe les articles passeport talent (à revérifier) |
+| Proposition de loi « Faciliter l'emploi des étrangers dans les secteurs en tension » | métiers en tension proposition de loi 2026 | à mesurer | Sénat, texte n° 118 (déposé le 29/10). Pas en vigueur : rien à annoncer ; à suivre avec la fin de L. 435-4 au 31/12/2026 |
+| Titres de séjour territorialisés à Mayotte : rapport du Sénat | titre de séjour mayotte | 10 à 100 | Sénat, rapport n° 103 sur le texte n° 104 (flux du 30/10). Toujours pas adopté |
+| Suggestions du 30/10 | test civique carte pluriannuelle ; naturalisation par décret documents à fournir ; nationalité française nouveau decret | à mesurer | Recoupent `examen-civique-obligatoire-carte-sejour-pluriannuelle-2026`, `dossier-naturalisation-2026-…` et `decret-de-naturalisation-trouver-et-apres` : optimiser, ne pas créer |
+

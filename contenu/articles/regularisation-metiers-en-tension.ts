@@ -15,7 +15,7 @@ const article: Article = {
   resume: "La régularisation par un métier en tension (CESEDA L. 435-4) s'applique jusqu'au 31 décembre 2026 : conditions, pièces, taxes et recours, sources officielles.",
   chapo: "Oui, jusqu'au ==31 décembre 2026==. La régularisation par le travail dans un métier en tension est une règle provisoire : la loi la limite à cette date. Au 21 octobre 2026, aucun texte voté et publié ne la prolonge. Voici les conditions, le dossier et les frais, d'après les textes officiels.",
   publieLe: "2026-10-21",
-  modifieLe: "2026-10-21",
+  modifieLe: "2026-10-30",
   minutes: 8,
   theme: "régularisation métiers en tension",
   motsCles: [
@@ -176,7 +176,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Si la préfecture ne répond pas pendant 4 mois, c'est un refus, dit implicite. Vous avez alors 2 mois pour agir (F16053). Vous pouvez faire un recours gracieux : une demande au préfet de revoir sa décision. Vous pouvez aussi saisir le tribunal administratif, le juge qui contrôle les décisions de l'État.",
+      texte: "Si la préfecture ne répond pas pendant ==90 jours== après le dépôt d'une demande complète, c'est un refus, dit implicite. Ce délai était de 4 mois jusqu'au 29 octobre 2026 ; le [décret n° 2026-1001](/articles/delai-reponse-prefecture-titre-de-sejour-90-jours) l'a raccourci. Vous avez alors 2 mois pour agir (F16053). Vous pouvez faire un recours gracieux : une demande au préfet de revoir sa décision. Vous pouvez aussi saisir le tribunal administratif, le juge qui contrôle les décisions de l'État.",
     },
     {
       type: "p",
@@ -217,6 +217,12 @@ const article: Article = {
     },
   ],
   sources: [
+    {
+      titre: "Légifrance : décret n° 2026-1001 du 26 octobre 2026 (délai de réponse de la préfecture ramené à 90 jours, JORF n° 0253 du 29 octobre 2026)",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055023061",
+      type: "officiel",
+      luLe: "2026-10-30",
+    },
     {
       titre: "Assemblée nationale : proposition de loi n° 3266 visant à régulariser les étrangers travaillant dans un métier essentiel ou en tension (déposée le 06/10/2026)",
       url: "https://www.assemblee-nationale.fr/dyn/17/textes/l17b3266_proposition-loi",
