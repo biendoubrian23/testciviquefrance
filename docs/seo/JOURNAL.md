@@ -109,3 +109,11 @@ Gestes possibles : `publie`, `optimise`, `corrige`, `fusionne` (l'ancien slug en
 2026-10-30 | corrige | regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls | même correction (90 jours au lieu de 4 mois), lien et source | à demander (article corrigé)
 2026-10-30 | corrige | renouvellement-carte-resident-10-ans-2026-conditions-documents-anef | même correction (90 jours au lieu de 4 mois), lien et source | à demander (article corrigé)
 2026-10-30 | experience | numeros-urgence-france, renouvellement-carte-resident-10-ans-…, decret-retention-administrative-…, cra-retention-… | verdicts : en partie (impressions sans clic d'appel) ; confirmée ; confirmée ; confirmée. Leçon « texte officiel expliqué le jour même » vérifiée deux fois, entrée dans LECONS.md | fait
+2026-10-30 | indexation | delai-reponse-prefecture-titre-de-sejour-90-jours | nouvelle page du jour (Google ne reconnaît pas cette URL) | demandée
+2026-10-30 | indexation | renouvellement-carte-resident-10-ans-2026-conditions-documents-anef | retouché le 2026-10-30, pas encore relu par Google | demandée
+2026-10-30 | indexation | regularisation-sans-papiers-france-2026-methode-demarches-circulaire-valls | retouché le 2026-10-30, pas encore relu par Google | demandée
+2026-10-30 | indexation | regularisation-metiers-en-tension | retouché le 2026-10-30, pas encore relu par Google | demandée
+2026-10-30 | indexation | anef-mon-compte-connexion-probleme-solution-2026 | Google ne reconnaît pas cette URL | demandée
+2026-10-30 | indexation | ressources-utiles-etrangers-france-2026-outils-associations-aides | Explorée, actuellement non indexée | demandée
+2026-10-30 | indexation | 1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Google ne reconnaît pas cette URL | demandée
+2026-10-30 | indexation | double-nationalite-france-2026-pays-interdisent-risques-declaration | Explorée, actuellement non indexée | demandée
