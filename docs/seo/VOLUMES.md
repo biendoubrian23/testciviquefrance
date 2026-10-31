@@ -133,3 +133,21 @@ Période oct. 2025 à sept. 2026, réseau Google. Libellés lus sous le champ de
 | quand résultat examen civique | 0 à 10 | | Suggestion Google du 28/10 |
 | examen civique 50 questions | 0 à 10 | | |
 | réforme examen civique | 0 à 10 | | |
+
+### 2026-10-31 : « Trouver de nouveaux mots clés », France, **French (par défaut)**
+
+Période oct. 2025 à sept. 2026, réseau Google. Libellés lus sous le champ des mots de départ : « French (par défaut) », « France ». Dix mots de départ. ⚠️ Le premier essai a tapé la liste hors du champ (raccourcis clavier de Google Ads, retour à la vue d'ensemble, sans effet) : trouver le champ avec `find` et cliquer par sa référence avant de taper.
+
+| Requête | Volume mensuel | Concurrence pub | Remarque |
+|---|---|---|---|
+| etias | 1 k à 10 k | faible | Remesuré ; porte l'article du 31/10 (ETIAS pas en service, aucune date) |
+| formation civique gouv | 100 à 1 k | faible | YoY + ∞ ; candidat « le site formation-civique.interieur.gouv.fr, mode d'emploi » (site officiel en panne 503 le 31/10) |
+| liste questions examen civique | 100 à 1 k | faible | YoY + ∞ ; même candidat |
+| renouvellement titre de séjour délai | 100 à 1 k | faible | YoY - 90 % ; porte l'optimisation du 31/10 |
+| fiches examen civique | 10 à 100 | faible | |
+| cours examen civique | 10 à 100 | faible | |
+| examen civique questions officielles | 10 à 100 | faible | |
+| regroupement familial délai | 10 à 100 | faible | |
+| ees etias | 10 à 100 | faible | |
+| délai réponse préfecture titre de séjour | pas de donnée | | Article du 30/10 |
+| changement employeur titre de séjour | pas de donnée | | |
