@@ -133,3 +133,11 @@ Gestes possibles : `publie`, `optimise`, `corrige`, `fusionne` (l'ancien slug en
 2026-11-01 | experience | examen-civique-naturalisation, cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal | verdicts à 7 jours : confirmée (334 impressions, position 7,7, 7 clics Google, 6 clics d'appel, 1 inscription) ; en partie (de 61 à 222 impressions, de 0 à 2 clics, position de 9,1 à 10,1) | fait
 2026-11-01 | lecon | LECONS.md | « les pages de la famille examen amènent des clics d'appel, les guides de démarche et les décrets presque jamais » vérifiée plus de deux fois, entrée dans LECONS.md | fait
 2026-11-01 | strategie | STRATEGIE.md | premier dimanche du mois : prévisions recalées sur les chiffres du 01/11 | fait
+2026-11-01 | indexation | formation-civique-site-officiel | nouvelle page du jour (Google ne reconnaît pas cette URL) | demandée
+2026-11-01 | indexation | carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement | retouché le 2026-11-01, pas encore relu par Google | demandée
+2026-11-01 | indexation | titre-sejour-etranger-malade-raisons-sante-2026 | Explorée, actuellement non indexée, 35 impressions | demandée
+2026-11-01 | indexation | mutuelle-sante-etranger-france-2026-css-comparer-choisir-obligation | Détectée, actuellement non indexée | demandée
+2026-11-01 | indexation | arnaques-etrangers-france-2026-faux-avocats-prefecture-anef | Détectée, actuellement non indexée | demandée (le lot a expiré côté outil pendant l'attente ; le test d'URL active était lancé, confirmation non vue)
+2026-11-01 | indexation | louer-appartement-etranger-france-discrimination-refus-illegaux-2026 | Détectée, actuellement non indexée | demandée
+2026-11-01 | indexation | 5-erreurs-refus-dossier-prefecture-etranger-france-2026 | Google ne reconnaît pas cette URL | demandée
+2026-11-01 | indexation | cout-regularisation-situation-france-2026-budget-complet | Détectée, actuellement non indexée | non demandée : « Quota dépassé » dans Search Console
