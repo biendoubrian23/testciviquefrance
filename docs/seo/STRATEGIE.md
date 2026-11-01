@@ -57,9 +57,11 @@ Trois fourchettes (basse, médiane, haute). Hypothèses : un article par jour sa
 | Horizon | Basse | Médiane | Haute |
 |---|---|---|---|
 | 1 mois | 1 200 | 2 000 | 3 500 |
-| 3 mois | 2 500 | 5 000 | 10 000 |
-| 6 mois | 5 000 | 12 000 | 30 000 |
-| 12 mois | 10 000 | 30 000 | 80 000 |
+| 3 mois | 3 500 | 6 000 | 10 000 |
+| 6 mois | 6 000 | 12 000 | 25 000 |
+| 12 mois | 10 000 | 25 000 | 60 000 |
+
+**Recalé le 01/11/2026 (premier dimanche du mois).** Mesuré : 1 791 vues d'articles sur 28 jours (du 04/10 au 31/10), dont environ 120 par jour sur les 7 derniers jours (en rythme, 3 400 à 3 600 par mois, au niveau de la fourchette haute d'un mois). La bascule sans cookie du 20/10 explique une grande part du saut : le rythme des 7 derniers jours devient la base. La fourchette de 3 mois monte en bas (le rythme actuel tient déjà 3 500), celles de 6 et 12 mois baissent en haut : Search Console montre 102 pages indexées sur 165 et des positions de 5 à 10, sans encore de page en tête sur une requête à 10 k et plus.
 
 Point de départ : 657 vues d'articles sur 28 jours, consentements seuls. La bascule sans cookie à elle seule devrait multiplier ce chiffre (une majorité de visiteurs refusent ou ignorent le bandeau) : la fourchette d'un mois en tient compte, et le premier recalage (02/11) dira de combien.
 
@@ -68,15 +70,17 @@ Point de départ : 657 vues d'articles sur 28 jours, consentements seuls. La bas
 | Horizon | Venues d'un article (médiane) | Toutes sources (basse · médiane · haute) |
 |---|---|---|
 | 1 mois | 10 | 100 · 120 · 160 |
-| 3 mois | 40 | 120 · 170 · 260 |
+| 3 mois | 50 | 140 · 190 · 260 |
 | 6 mois | 100 | 160 · 260 · 450 |
 | 12 mois | 250 | 250 · 450 · 900 |
 
 Point de départ : 110 comptes sur 30 jours, aucune inscription attribuée à un article (la mesure commence ce jour).
 
+**Recalé le 01/11/2026.** Mesuré : 126 comptes sur 30 jours (40 sur les 7 derniers jours, soit un rythme de 170 par mois), et 19 inscriptions attribuées à un article dans PostHog sur la période (14 couples article et emplacement ; l'emplacement « haut » en porte 11). Le premier mois dépasse la médiane des inscriptions venues d'un article (10) et la fourchette haute toutes sources (160) en rythme. Les fourchettes restent, la médiane d'un mois à 3 mois (venues d'un article) passe de 40 à 50.
+
 ### Ventes
 
-18 ventes encaissées sur 28 jours aujourd'hui (les montants vivent dans Stripe et l'admin, et changent avec les offres : ils ne s'écrivent pas ici). En hypothèse de travail, 10 à 20 % des inscrits achètent dans le mois : **25 à 60 ventes par mois à douze mois** en médiane. Le robot relève chaque matin les ventes et le montant encaissé (Supabase et Stripe), et la part qui suit un clic d'article.
+18 ventes encaissées sur 28 jours au 20/10 (21 pour 117,81 € TTC au 01/11, Stripe : 21 paiements, net 109,64 €, 6 abonnements actifs) (les montants vivent dans Stripe et l'admin, et changent avec les offres : ils ne s'écrivent pas ici). En hypothèse de travail, 10 à 20 % des inscrits achètent dans le mois : **25 à 60 ventes par mois à douze mois** en médiane. Le robot relève chaque matin les ventes et le montant encaissé (Supabase et Stripe), et la part qui suit un clic d'article.
 
 ## 5. Les risques, et comment on les tient
 

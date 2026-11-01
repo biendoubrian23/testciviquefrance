@@ -13,6 +13,12 @@ import type { Article } from "@/contenu/articles";
  * 244 €), les « délais moyens » par démarche, le « numéro vert », la taxe de
  * retard de 180 €, la « CR retraité », le seuil étudiant de 615 €, les deux
  * vidéos (identifiants introuvables sur YouTube).
+ *
+ * Corrigé par le robot éditorial le 01/11/2026 : le refus implicite au bout de
+ * « 4 mois » est faux depuis le 30/10/2026 (décret n° 2026-1001, art. R. 432-2
+ * du CESEDA : 90 jours, + 30 jours pour un dossier complexe). Décret relu le
+ * 30/10 ; F35799 et F2208 relues le 01/11 (fenêtres de dépôt inchangées,
+ * « 4 mois » encore écrit côté service-public).
  */
 const article: Article = {
   slug: "carte-de-sejour-france-2026-guide-complet-types-demarches-renouvellement",
@@ -21,7 +27,7 @@ const article: Article = {
   resume: "Les titres de séjour en France : VLS-TS, carte temporaire, pluriannuelle, résident. Durées, examen civique, tarifs 2026, renouvellement sur l'ANEF et recours.",
   chapo: "Un titre de séjour, c'est le document qui vous autorise à vivre en France. Il en existe quatre grandes familles. Il y a le visa long séjour qui vaut titre la première année, puis la carte temporaire d'un an. Viennent ensuite la carte pluriannuelle et la carte de résident de dix ans. Depuis le 1er janvier 2026, une **première** carte pluriannuelle ou de résident demande aussi un niveau de français et la réussite à un examen civique.",
   publieLe: "2026-03-29",
-  modifieLe: "2026-10-20",
+  modifieLe: "2026-11-01",
   minutes: 9,
   theme: "carte de séjour France",
   motsCles: [
@@ -140,7 +146,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Le simulateur d'[éligibilité à l'examen civique](/eligibilite-examen-civique) vous dit en une minute s'il vous concerne. Pour le français, notre guide des [niveaux A2, B1 et B2](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation) détaille les diplômes acceptés.",
+      texte: "Le simulateur d'[éligibilité à l'examen civique](/eligibilite-examen-civique) vous dit en une minute s'il vous concerne. Le ministère publie gratuitement les fiches et les listes de questions : notre [mode d'emploi du site officiel](/articles/formation-civique-site-officiel) vous aide à vous en servir. Pour le français, notre guide des [niveaux A2, B1 et B2](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation) détaille les diplômes acceptés.",
     },
     {
       type: "cta",
@@ -211,7 +217,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Un refus peut être écrit ou venir d'un silence. Pour la carte de résident, l'absence de réponse au bout de 4 mois vaut refus ([F2208](https://www.service-public.gouv.fr/particuliers/vosdroits/F2208)). Ce délai change selon les titres : la fiche de votre carte le donne.",
+      texte: "Un refus peut être écrit ou venir d'un silence. Depuis le 30 octobre 2026, la préfecture doit répondre ==au plus tard 90 jours== après le dépôt d'une demande complète. Pour un dossier complexe, elle peut ajouter 30 jours si elle vous prévient ([décret n° 2026-1001](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055023061), article R. 432-2 du CESEDA). Sans réponse à la fin de ce délai, la demande est refusée : on parle de refus implicite. Les fiches service-public disaient encore « 4 mois » le 1er novembre 2026 : c'est l'ancienne règle. Notre article sur [le délai de 90 jours](/articles/delai-reponse-prefecture-titre-de-sejour-90-jours) détaille ce qui change.",
     },
     {
       type: "liste",
@@ -275,6 +281,12 @@ const article: Article = {
   ],
   sources: [
     {
+      titre: "Légifrance : décret n° 2026-1001 du 26 octobre 2026 (JORF du 29/10/2026), délai de réponse de la préfecture ramené à 90 jours (art. R. 432-2 du CESEDA)",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055023061",
+      type: "officiel",
+      luLe: "2026-10-30",
+    },
+    {
       titre: "Service-public : titres, cartes de séjour et documents de circulation pour étranger en France (N110)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/N110",
       type: "officiel",
@@ -296,13 +308,13 @@ const article: Article = {
       titre: "Service-public : carte de séjour pluriannuelle générale (F35799)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F35799",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-01",
     },
     {
       titre: "Service-public : carte de résident de 10 ans (F2208)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2208",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-01",
     },
     {
       titre: "Service-public : carte de résident de longue durée-UE (F17359)",
