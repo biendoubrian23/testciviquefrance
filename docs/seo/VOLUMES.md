@@ -151,3 +151,20 @@ Période oct. 2025 à sept. 2026, réseau Google. Libellés lus sous le champ de
 | ees etias | 10 à 100 | faible | |
 | délai réponse préfecture titre de séjour | pas de donnée | | Article du 30/10 |
 | changement employeur titre de séjour | pas de donnée | | |
+
+### 2026-11-02 : « Obtenir le volume de recherche et les prévisions », France, **toutes les langues**
+
+Zone : France seule (libellé « France » lu sur la page des résultats). Période oct. 2025 à sept. 2026, réseau Google. ⚠️ **Langue non réglée** : le sélecteur « Toutes les langues » ne s'est pas ouvert (clic par référence, clic par coordonnées, clic en JavaScript, touche Entrée : aucune liste). Mesure faite sur toutes les langues, comme le prévoit la doctrine ; la seule requête déjà mesurée des deux façons (« examen blanc examen civique », 20 et 25/10) a donné la même fourchette.
+
+| Requête | Volume mensuel | Concurrence pub | Remarque |
+|---|---|---|---|
+| pacte asile migration | 100 à 1 k | faible | YoY + 900 % ; porte l'article du 02/11 |
+| regroupement familial conditions | 100 à 1 k | faible | Porte `regroupement-familial-france-2026-…` |
+| titre de séjour étranger malade | 100 à 1 k | faible | Porte `titre-sejour-etranger-malade-raisons-sante-2026` |
+| mise en situation examen civique | 10 à 100 | faible | YoY + ∞ |
+| examen civique mise en situation exemple | 10 à 100 | faible | YoY + ∞ |
+| questions mise en situation examen civique | pas de donnée | | |
+| pacte européen migration asile | pas de donnée | | |
+| changer d'employeur titre de séjour | pas de donnée | | |
+| laïcité examen civique | pas de donnée | | |
+| combien de questions examen civique | pas de donnée | | |
