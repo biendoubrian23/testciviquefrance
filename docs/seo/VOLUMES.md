@@ -168,3 +168,24 @@ Zone : France seule (libellé « France » lu sur la page des résultats). Péri
 | changer d'employeur titre de séjour | pas de donnée | | |
 | laïcité examen civique | pas de donnée | | |
 | combien de questions examen civique | pas de donnée | | |
+
+## 03/11/2026 : Obtenir le volume de recherche, France, toutes les langues
+
+Zone : France (libellé « France » lu sur la page des résultats ; les territoires d'outre-mer n'ont pas été ajoutés comme zones séparées). Langue : ⚠️ « Toutes les langues » : le sélecteur ne s'ouvre toujours pas (clic par référence, troisième jour de suite). Fenêtre « Turn off ad blockers » fermée à l'arrivée.
+
+| Requête | Volume mensuel | Concurrence | Remarque |
+|---|---|---|---|
+| aide médicale d état | 1 k à 10 k | faible | YoY - 90 % (la fourchette tient). Porte l'article du 03/11 |
+| ame conditions | 100 à 1 k | faible | |
+| titre de séjour étranger malade | 100 à 1 k | faible | Porte l'optimisation du 03/11 |
+| titre de séjour pour soins | 100 à 1 k | faible | |
+| examen civique en ligne | 100 à 1 k | faible | YoY + ∞ |
+| examen civique quiz | 100 à 1 k | faible | YoY + ∞ |
+| examen civique pdf | 100 à 1 k | faible | YoY + ∞ |
+| examen civique histoire | 10 à 100 | faible | |
+| application examen civique | 10 à 100 | faible | |
+| examen civique application | 10 à 100 | faible | |
+| examen civique carte de séjour | 10 à 100 | faible | |
+| examen civique combien de points | 10 à 100 | faible | |
+| examen civique date | 10 à 100 | faible | |
+| examen civique difficile ; droits et devoirs ; handicap ; institutions ; niveau de français ; réunion ; symboles ; valeurs de la république ; laïcité questions ; 32 sur 40 ; questions réponses | pas de donnée | | |
