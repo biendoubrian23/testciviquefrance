@@ -189,3 +189,18 @@ Zone : France (libellé « France » lu sur la page des résultats ; les territo
 | examen civique combien de points | 10 à 100 | faible | |
 | examen civique date | 10 à 100 | faible | |
 | examen civique difficile ; droits et devoirs ; handicap ; institutions ; niveau de français ; réunion ; symboles ; valeurs de la république ; laïcité questions ; 32 sur 40 ; questions réponses | pas de donnée | | |
+
+## 05/11/2026 : Obtenir le volume de recherche, France, toutes les langues
+
+Zone : France (libellé « France » lu sur la page des résultats ; territoires d'outre-mer non ajoutés). Langue : ⚠️ « Toutes les langues » : le sélecteur ne s'ouvre toujours pas (clic par référence, quatrième jour de suite). Période oct. 2025 à sept. 2026, réseau Google.
+
+| Requête | Volume mensuel | Concurrence | Remarque |
+|---|---|---|---|
+| certificat de nationalité française | 1 k à 10 k | faible | Porte l'article du 05/11 |
+| cnf | 1 k à 10 k | faible | Sigle ambigu (d'autres sens que le certificat) |
+| carte de séjour pluriannuelle | 1 k à 10 k | faible | Candidat d'optimisation |
+| contrat d intégration républicaine | 1 k à 10 k | faible | Candidat d'optimisation |
+| demande certificat de nationalité française | 100 à 1 k | faible | Variation sur trois mois + 900 % |
+| examen civique carte de résident questions | 10 à 100 | faible | YoY + ∞ |
+| titre de séjour salarié pluriannuel | 10 à 100 | faible | |
+| déclaration de nationalité 13 ans ; nationalité française enfant né en france ; naturalisation enfant mineur | pas de donnée | | |
