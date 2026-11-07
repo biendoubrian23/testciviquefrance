@@ -367,6 +367,7 @@ Le premier dimanche de chaque mois, recalez les prévisions de `STRATEGIE.md` su
 | Situation | Ce que vous faites |
 |---|---|
 | `git pull` en conflit | Vous n'écrasez rien. Vous notez le conflit dans le journal, vous lancez `npm run seo:liberer` et vous vous arrêtez. |
+| `git push` refusé (403, « Permission denied », identifiants) | L'article n'est pas en ligne : ne le comptez pas comme publié, ne faites ni `seo:publie` ni demande d'indexation pour lui. Écrivez le message exact de Git dans `docs/seo/PUSH-BLOQUE.txt` et dans le journal, commencez votre bilan par « PUSH BLOQUÉ : Brian doit vérifier le compte GitHub du dépôt », libérez Chrome et arrêtez-vous. Ne touchez jamais aux identifiants ni à `gh auth`. (Du 05 au 07/11/2026, trois articles sont restés sur le PC parce que ce refus n'était noté que dans un message de commit.) |
 | Une source de données échoue | Vous continuez avec les autres, et vous le notez. |
 | Le build échoue sur du code qui n'est pas le vôtre | Vous n'y touchez pas. Vous notez, vous libérez Chrome, vous vous arrêtez sans pousser. |
 | Le quota de modèle est épuisé en cours de route | Ce qui n'est pas vérifié et construit ne part pas. Le lendemain, vous reprenez depuis le journal. |

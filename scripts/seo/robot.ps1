@@ -35,6 +35,27 @@ while (-not (Test-NetConnection 'api.anthropic.com' -Port 443 -InformationLevel 
   Start-Sleep -Seconds 10
 }
 
+# GitHub accepte-t-il nos envois ? Du 05 au 07/11/2026, le compte actif de `gh`
+# etait passe a lespassiones (proprietaire de CosmetWiki), qui n'a pas le droit
+# d'ecrire sur ce depot : chaque push etait refuse (403), les articles restaient
+# sur le PC et le site ne bougeait plus. Le depot a depuis son propre aide
+# d'identifiants (git config --local credential.https://github.com.helper, compte
+# brianbiendou). Ici on envoie d'abord ce qui serait reste en retard ; si GitHub
+# refuse, on previent Brian par une fenetre et on ne lance pas la journee.
+$bloque = Join-Path $depot 'docs\seo\PUSH-BLOQUE.txt'
+$ErrorActionPreference = 'Continue'
+$envoi = (git push 2>&1 | Out-String)
+$codeEnvoi = $LASTEXITCODE
+$ErrorActionPreference = 'Stop'
+if ($codeEnvoi -ne 0) {
+  $msg = "Robot SEO Test Civique, $(Get-Date -Format 'dd/MM HH:mm') : GitHub refuse l'envoi des articles, rien ne part en ligne.`r`n`r`n$envoi`r`nCompte utilise par le depot : git config --local --get-all credential.https://github.com.helper"
+  Set-Content -Path $bloque -Value $msg -Encoding utf8
+  Write-Host $msg -ForegroundColor Red
+  Start-Process powershell -WindowStyle Hidden -ArgumentList '-NoProfile', '-Command', "Add-Type -AssemblyName PresentationFramework; [void][System.Windows.MessageBox]::Show([IO.File]::ReadAllText('$bloque'), 'Test Civique : push bloque', 'OK', 'Error')"
+  exit 1
+}
+if (Test-Path $bloque) { Remove-Item $bloque }
+
 # Chrome se partage avec les robots de Cosme Check (6 h), RevealChat (7 h) et
 # MemoryPilot (8 h) ; celui-ci passe a 7 h 30. Un seul pilote a la fois : le
 # verrou nomme celui qui le tient et depuis quand. Le robot le libere a la fin
