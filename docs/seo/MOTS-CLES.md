@@ -40,7 +40,6 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 |---|---|
 | /articles/passeport-talent-2026-conditions-metiers-demarches, -chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` d'abord (20 vues sur 7 jours, 115 impressions) |
 | /articles/valeurs-republique-francaise-liberte-egalite-fraternite | Ajouté le 01/11/2026 : cité par Copilot sur « liberté égalité fraternité » (260 citations). 619 mots, deux questions de FAQ, sources sans date : remettre au niveau sur la Constitution et formation-civique.interieur.gouv.fr |
-| /articles/comment-reussir-test-civique-premier-coup | Ajouté le 03/11/2026 : « 20 % des candidats échouent à la première tentative » sans source (le ministère publie un taux de réussite, QE n° 11488) ; titre « Guide complet 2025 » périmé ; position 30,1 sur 111 impressions |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
@@ -205,8 +204,8 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | Carte de séjour « retraité » : pour qui | carte retraité France ; titre de séjour retraité ; ancien travailleur retraité carte | à mesurer | CESEDA. Recoupe /articles/retraite-etranger-france-2026-droits-aspa-pension-retour-pays |
 | Après le diplôme : la carte « recherche d'emploi ou création d'entreprise » | APS étudiant ; carte recherche d'emploi création entreprise ; titre de séjour après master | à mesurer | CESEDA L. 422-10. Recoupe /articles/changement-statut-etudiant-salarie-2026-demarches-anef |
 | Jeune entré mineur en France : quel titre à 18 ans | titre de séjour 18 ans ; mineur arrivé en France titre à la majorité ; DCEM 18 ans | à mesurer | CESEDA, service-public |
-| Document de circulation pour étranger mineur (DCEM) | DCEM ; document circulation mineur ; voyager enfant étranger | à mesurer | service-public, ANEF |
-| Titre d'identité républicain (TIR) pour un enfant né en France | titre d'identité républicain ; TIR enfant ; TIR ou DCEM | à mesurer | service-public |
+| ~~Document de circulation pour étranger mineur (DCEM)~~ → dcem-document-circulation-mineur, 2026-11-07 | DCEM ; document circulation mineur ; voyager enfant étranger | « dcem » 1 k à 10 k (07/11) | service-public F2718, CESEDA L. 414-4 à L. 414-9 |
+| ~~Titre d'identité républicain (TIR) pour un enfant né en France~~ → traité dans dcem-document-circulation-mineur, 2026-11-07 (le TIR n'est plus délivré depuis le 01/03/2019, F297) | titre d'identité républicain ; TIR enfant ; TIR ou DCEM | 100 à 1 k, + 900 % sur trois mois (07/11) | service-public F297 |
 | Carte de résident de plein droit : les situations prévues par la loi | carte de résident de plein droit ; carte 10 ans automatique ; qui a droit carte de résident | à mesurer | CESEDA. Mise à jour de /articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture (brief MAJ section D) |
 | Carte de résident longue durée UE : avantages et conditions | résident longue durée UE ; carte résident UE ; travailler autre pays UE titre français | à mesurer | CESEDA L. 426-17, directive 2003/109 |
 | Membre de famille d'un citoyen de l'UE : quel titre | titre de séjour conjoint européen ; famille citoyen UE France ; carte membre famille UE | à mesurer | CESEDA livre II |
@@ -527,3 +526,17 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Contrat d'intégration républicaine : mise à jour de /articles/contrat-integration-republicaine-cir-2026-formation-civique | contrat d'intégration républicaine ; contrat d'intégration républicaine télécharger (suggestion du 05/11) | 1 k à 10 k | 2 vues sur 28 jours, aucune impression ; brief MAJ section E. À vérifier sur l'OFII et le CESEDA (L. 413-2) avant toute retouche |
 | Examen civique carte de résident : questions types | examen civique carte de résident questions ; examen civique carte de résident 10 ans question (suggestion du 05/11) | 10 à 100 (YoY + ∞) | Une section de `examen-civique-carte-de-resident`, pas un article |
 | Nationalité d'un enfant né en France, déclaration à 13 ans | naturalisation enfant mineur ; nationalité française enfant né en france ; déclaration de nationalité 13 ans | pas de donnée | Porté par l'article corrigé du 05/11 |
+
+## Ajouts du 07/11/2026 (mesurés le jour même, France, toutes les langues)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| Titre de voyage pour réfugié ou apatride (famille 3, candidat de tête) | titre de voyage réfugié ; passeport réfugié France | 1 k à 10 k | Premiers résultats à vérifier ; recoupe /articles/demande-asile-france-2026-ofpra-cnda-procedure-delais |
+| Carte de séjour « visiteur » | carte de séjour visiteur | 100 à 1 k, + 900 % sur trois mois | CESEDA L. 426-20 |
+| Attestation de décision favorable (ANEF) | attestation de décision favorable | 100 à 1 k | |
+| Carte de séjour « vie privée et familiale » conjoint de Français | carte de séjour vie privée et familiale ; titre de séjour conjoint de français | 100 à 1 k chacune | CESEDA L. 423-1 |
+| Apostille d'un acte de naissance | apostille acte de naissance | 100 à 1 k | |
+| Carte de résident longue durée UE | carte de résident longue durée ue | 100 à 1 k | |
+| Réintégration dans la nationalité française | réintégration nationalité française | 100 à 1 k (YoY - 90 %) | |
+| PACS et titre de séjour | pacs étranger titre de séjour | 10 à 100 | Section d'un article plus large, pas un article |
+| Titre de séjour à 18 ans ; parent d'enfant français | titre de séjour 18 ans ; titre de séjour parent d'enfant français ; document de circulation pour étranger mineur ; tir enfant | pas de donnée | Le délai à 18 ans (R. 431-5) est dans l'article DCEM du 07/11 |

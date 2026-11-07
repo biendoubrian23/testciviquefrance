@@ -204,3 +204,22 @@ Zone : France (libellé « France » lu sur la page des résultats ; territoires
 | examen civique carte de résident questions | 10 à 100 | faible | YoY + ∞ |
 | titre de séjour salarié pluriannuel | 10 à 100 | faible | |
 | déclaration de nationalité 13 ans ; nationalité française enfant né en france ; naturalisation enfant mineur | pas de donnée | | |
+
+## 07/11/2026 : Obtenir le volume de recherche, France, toutes les langues
+
+Zone : France (libellé « France » lu sur la page des résultats ; territoires d'outre-mer non ajoutés). Langue : ⚠️ « Toutes les langues » : le bouton est trouvé et cliqué par sa référence, mais la liste ne s'ouvre pas (cinquième jour de suite). Période oct. 2025 à sept. 2026, réseau Google. Famille mesurée : guides permanents (en retard sur le mélange).
+
+| Requête | Volume mensuel | Concurrence | Remarque |
+|---|---|---|---|
+| dcem | 1 k à 10 k | faible | Porte l'article du 07/11 |
+| titre de voyage réfugié | 1 k à 10 k | | Candidat de tête pour un prochain guide |
+| titre d identité républicain | 100 à 1 k | | + 900 % sur trois mois ; le TIR n'est plus délivré (F297) : traité dans l'article DCEM |
+| carte de séjour visiteur | 100 à 1 k | faible | + 900 % sur trois mois |
+| carte de séjour vie privée et familiale | 100 à 1 k | faible | |
+| titre de séjour conjoint de français | 100 à 1 k | | |
+| attestation de décision favorable | 100 à 1 k | faible | |
+| apostille acte de naissance | 100 à 1 k | faible | |
+| carte de résident longue durée ue | 100 à 1 k | faible | |
+| réintégration nationalité française | 100 à 1 k | | YoY - 90 % |
+| pacs étranger titre de séjour | 10 à 100 | | |
+| document de circulation pour étranger mineur ; tir enfant ; titre de séjour 18 ans ; titre de séjour parent d enfant français | pas de donnée | | |

@@ -1,13 +1,17 @@
 {
   "note": "Tenu par `npm run seo:indexation` (scripts/seo/indexation.mjs) : l'etat de chaque adresse du plan du site selon l'API URL Inspection de Search Console, et les adresses a faire demander aujourd'hui. `demandeLe` est ecrit par `--demandee` quand le robot a demande l'indexation dans Search Console.",
   "propriete": "https://www.testciviquefrance.fr/",
-  "mis_a_jour": "2026-11-06 07:02",
+  "mis_a_jour": "2026-11-07 07:03",
   "derniere_execution": {
-    "le": "2026-11-06 06:46",
+    "le": "2026-11-07 06:50",
     "inspectees": 60,
     "plan": "sitemap.xml en ligne"
   },
   "a_demander": [
+    {
+      "adresse": "https://www.testciviquefrance.fr/articles/comment-reussir-test-civique-premier-coup",
+      "raison": "retouche le 2026-11-07 (journal), pas encore relue par Google"
+    },
     {
       "adresse": "https://www.testciviquefrance.fr/articles/rater-examen-civique-2026-repasser-delai-cout-themes-echec",
       "raison": "retouche le 2026-11-06 (journal), pas encore relue par Google"
@@ -15,10 +19,6 @@
     {
       "adresse": "https://www.testciviquefrance.fr/articles/naturalisation-enfant-mineur-france-2026-effet-collectif-declaration",
       "raison": "retouche le 2026-11-05 (journal), pas encore relue par Google"
-    },
-    {
-      "adresse": "https://www.testciviquefrance.fr/articles/titre-sejour-declaration-impots-etranger-droits-obligations-2026",
-      "raison": "Détectée, actuellement non indexée"
     }
   ],
   "a_signaler": [],
@@ -29,10 +29,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-11-03T06:48:27Z",
+      "derniereExploration": "2026-11-06T08:30:48Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/",
-      "inspecteLe": "2026-11-05 06:45"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/a-propos": {
       "verdict": "PASS",
@@ -43,18 +43,18 @@
       "derniereExploration": "2026-10-28T02:50:09Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/a-propos",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/a-propos",
-      "inspecteLe": "2026-11-05 06:45"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles": {
       "verdict": "NEUTRAL",
-      "coverageState": "Détectée, actuellement non indexée",
+      "coverageState": "Google ne reconnaît pas cette URL",
       "indexingState": "INDEXING_STATE_UNSPECIFIED",
       "pageFetchState": "PAGE_FETCH_STATE_UNSPECIFIED",
       "robotsTxtState": "ROBOTS_TXT_STATE_UNSPECIFIED",
       "derniereExploration": null,
       "canoniqueGoogle": null,
       "canoniqueDeclaree": null,
-      "inspecteLe": "2026-11-05 06:45"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026": {
       "verdict": "PASS",
@@ -65,7 +65,7 @@
       "derniereExploration": "2026-10-30T06:04:44Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026",
-      "inspecteLe": "2026-11-05 06:45",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-30"
     },
     "https://www.testciviquefrance.fr/articles/5-erreurs-refus-dossier-prefecture-etranger-france-2026": {
@@ -89,7 +89,7 @@
       "derniereExploration": "2026-11-03T01:24:44Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/930000-dossiers-bloques-prefecture-2026-droits-recours-etrangers-france",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/930000-dossiers-bloques-prefecture-2026-droits-recours-etrangers-france",
-      "inspecteLe": "2026-11-05 06:45",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-31"
     },
     "https://www.testciviquefrance.fr/articles/absence-france-voyage-perte-titre-sejour-duree-maximale-2026": {
@@ -136,7 +136,7 @@
       "derniereExploration": "2026-10-24T13:54:31Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/algeriens-examen-civique-2026-accord-1968-dispense-sejour-mais-pas-naturalisation",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/algeriens-examen-civique-2026-accord-1968-dispense-sejour-mais-pas-naturalisation",
-      "inspecteLe": "2026-11-05 06:45"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/ameli-demarches-2026-guide-complet-affiliation-carte-vitale-remboursements": {
       "verdict": "PASS",
@@ -147,7 +147,7 @@
       "derniereExploration": "2026-10-23T01:18:14Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/ameli-demarches-2026-guide-complet-affiliation-carte-vitale-remboursements",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/ameli-demarches-2026-guide-complet-affiliation-carte-vitale-remboursements",
-      "inspecteLe": "2026-11-05 06:45"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/anef-dossier-bloque-en-attente-2026-debloquer-relancer": {
       "verdict": "PASS",
@@ -158,7 +158,7 @@
       "derniereExploration": "2026-11-02T06:10:37Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/anef-dossier-bloque-en-attente-2026-debloquer-relancer",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/anef-dossier-bloque-en-attente-2026-debloquer-relancer",
-      "inspecteLe": "2026-11-05 06:45",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-11-02"
     },
     "https://www.testciviquefrance.fr/articles/anef-erreurs-courantes-2026-page-blanche-session-expiree-500": {
@@ -170,7 +170,7 @@
       "derniereExploration": "2026-10-26T06:06:55Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/anef-erreurs-courantes-2026-page-blanche-session-expiree-500",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/anef-erreurs-courantes-2026-page-blanche-session-expiree-500",
-      "inspecteLe": "2026-11-05 06:45",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-26"
     },
     "https://www.testciviquefrance.fr/articles/anef-etudiant-etranger-2026": {
@@ -182,7 +182,7 @@
       "derniereExploration": "2026-11-01T07:15:08Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/anef-etudiant-etranger-2026",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/anef-etudiant-etranger-2026",
-      "inspecteLe": "2026-11-05 06:45",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-28"
     },
     "https://www.testciviquefrance.fr/articles/anef-franceconnect-bloque-2026-erreur-connexion-solutions": {
@@ -194,7 +194,7 @@
       "derniereExploration": "2026-10-26T06:07:58Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/anef-franceconnect-bloque-2026-erreur-connexion-solutions",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/anef-franceconnect-bloque-2026-erreur-connexion-solutions",
-      "inspecteLe": "2026-11-05 06:45",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-26"
     },
     "https://www.testciviquefrance.fr/articles/anef-mon-compte-connexion-probleme-solution-2026": {
@@ -298,22 +298,22 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-10-26T06:04:16Z",
+      "derniereExploration": "2026-11-06T06:50:58Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/attestation-prolongation-instruction",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/attestation-prolongation-instruction",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-26"
     },
     "https://www.testciviquefrance.fr/articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour": {
-      "verdict": "NEUTRAL",
-      "coverageState": "Explorée, actuellement non indexée",
+      "verdict": "PASS",
+      "coverageState": "Envoyée et indexée",
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-10-21T00:21:50Z",
+      "derniereExploration": "2026-11-03T06:02:58Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-11-03"
     },
     "https://www.testciviquefrance.fr/articles/avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations": {
@@ -322,10 +322,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-11-02T14:49:44Z",
+      "derniereExploration": "2026-11-05T03:24:24Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-25"
     },
     "https://www.testciviquefrance.fr/articles/binationaux-franco-maghrebins-obligations-service-national-vote-consulaire": {
@@ -337,7 +337,7 @@
       "derniereExploration": "2026-10-20T17:25:52Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/binationaux-franco-maghrebins-obligations-service-national-vote-consulaire",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/binationaux-franco-maghrebins-obligations-service-national-vote-consulaire",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-11-05"
     },
     "https://www.testciviquefrance.fr/articles/cadre-general-examen-civique": {
@@ -349,7 +349,7 @@
       "derniereExploration": "2026-07-26T05:28:11Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/cadre-general-examen-civique",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/cadre-general-examen-civique",
-      "inspecteLe": "2026-11-05 06:45"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/campus-france-etude-france-2026-visa-inscription-procedure": {
       "verdict": "PASS",
@@ -434,15 +434,15 @@
       "demandeLe": "2026-11-03"
     },
     "https://www.testciviquefrance.fr/articles/circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie": {
-      "verdict": "NEUTRAL",
-      "coverageState": "Page en double sans URL canonique sélectionnée par l'utilisateur",
+      "verdict": "PASS",
+      "coverageState": "Envoyée et indexée",
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-10-21T13:56:28Z",
-      "canoniqueGoogle": "https://smart-eat.ru/calculator",
-      "canoniqueDeclaree": null,
-      "inspecteLe": "2026-11-03 06:49",
+      "derniereExploration": "2026-11-05T06:12:55Z",
+      "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie",
+      "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/circulaire-avril-2026-naturalisation-maghreb-maroc-algerie-tunisie",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-11-05"
     },
     "https://www.testciviquefrance.fr/articles/comment-reussir-test-civique-premier-coup": {
@@ -454,7 +454,7 @@
       "derniereExploration": "2026-10-24T00:47:40Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/comment-reussir-test-civique-premier-coup",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/comment-reussir-test-civique-premier-coup",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/compte-anef-creer-2026-guide-pas-a-pas": {
       "verdict": "PASS",
@@ -465,7 +465,7 @@
       "derniereExploration": "2026-10-24T06:14:01Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/compte-anef-creer-2026-guide-pas-a-pas",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/compte-anef-creer-2026-guide-pas-a-pas",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-24"
     },
     "https://www.testciviquefrance.fr/articles/contrat-engagement-republicain-2026-obligations-formation-civique": {
@@ -522,7 +522,7 @@
       "derniereExploration": "2026-10-25T06:06:17Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-25"
     },
     "https://www.testciviquefrance.fr/articles/cout-regularisation-situation-france-2026-budget-complet": {
@@ -534,7 +534,7 @@
       "derniereExploration": "2026-11-02T06:12:22Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/cout-regularisation-situation-france-2026-budget-complet",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/cout-regularisation-situation-france-2026-budget-complet",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-11-02"
     },
     "https://www.testciviquefrance.fr/articles/cra-retention-etrangers-7-jours-7-mois-2026-droits-recours-expulsion": {
@@ -581,7 +581,7 @@
       "derniereExploration": "2026-10-29T05:15:35Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/declaration-impots-non-resident-france-2026-formulaire-2042-nr-revenus-source-francaise",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/declaration-impots-non-resident-france-2026-formulaire-2042-nr-revenus-source-francaise",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/declaration-impots-premiere-annee-france-etranger-2026-guide-debutant": {
       "verdict": "PASS",
@@ -589,10 +589,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-10-23T05:21:24Z",
+      "derniereExploration": "2026-11-04T11:21:01Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/declaration-impots-premiere-annee-france-etranger-2026-guide-debutant",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/declaration-impots-premiere-annee-france-etranger-2026-guide-debutant",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/decret-de-naturalisation-trouver-et-apres": {
       "verdict": "PASS",
@@ -660,10 +660,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-11-01T05:41:46Z",
+      "derniereExploration": "2026-11-05T00:40:48Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/dispense-examen-civique-2026-qui-est-exempte-age-refugie-accords",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/dispense-examen-civique-2026-qui-est-exempte-age-refugie-accords",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/divorce-separation-titre-sejour-2026-droits-renouvellement-etranger": {
       "verdict": "PASS",
@@ -697,7 +697,8 @@
       "derniereExploration": "2026-10-21T17:51:40Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/dossier-naturalisation-2026-documents-delais-prefecture-anef",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/dossier-naturalisation-2026-documents-delais-prefecture-anef",
-      "inspecteLe": "2026-11-06 06:46"
+      "inspecteLe": "2026-11-06 06:46",
+      "demandeLe": "2026-11-07"
     },
     "https://www.testciviquefrance.fr/articles/dossier-naturalisation-refuse-sans-motif-2026-recours-cada-tribunal": {
       "verdict": "PASS",
@@ -708,7 +709,7 @@
       "derniereExploration": "2026-10-24T02:11:38Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/dossier-naturalisation-refuse-sans-motif-2026-recours-cada-tribunal",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/dossier-naturalisation-refuse-sans-motif-2026-recours-cada-tribunal",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/double-nationalite-france-2026-pays-interdisent-risques-declaration": {
       "verdict": "PASS",
@@ -719,7 +720,7 @@
       "derniereExploration": "2026-11-03T00:59:30Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/double-nationalite-france-2026-pays-interdisent-risques-declaration",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/double-nationalite-france-2026-pays-interdisent-risques-declaration",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-30"
     },
     "https://www.testciviquefrance.fr/articles/double-nationalite-franco-marocaine-2026-test-civique-demarches": {
@@ -754,7 +755,7 @@
       "derniereExploration": "2026-10-28T06:15:13Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/droit-du-sol-mayotte",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/droit-du-sol-mayotte",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-28"
     },
     "https://www.testciviquefrance.fr/articles/droits-devoirs-citoyens-france-guide": {
@@ -789,7 +790,7 @@
       "derniereExploration": "2026-10-26T06:10:29Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/echange-permis-conduire-etranger-france-2026-pays-accords-liste-complete",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-26"
     },
     "https://www.testciviquefrance.fr/articles/elections-municipales-2026-bally-bagayoko-valeurs-republicaines-test-civique": {
@@ -813,7 +814,7 @@
       "derniereExploration": "2026-10-31T21:38:21Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/entretien-naturalisation-2026-preparation-assimilation-prefecture",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/entretien-naturalisation-2026-preparation-assimilation-prefecture",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour": {
@@ -825,7 +826,7 @@
       "derniereExploration": "2026-11-01T02:25:37Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/entretien-visa-consulat-ambassade-france-2026-reussir-visa-long-sejour",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/envoyer-argent-pays-etranger-france-fisc-seuil-declaration-2026": {
       "verdict": "PASS",
@@ -858,7 +859,7 @@
       "derniereExploration": "2026-10-31T06:09:54Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/espagne-regularisation-500000-sans-papiers-2026-pourquoi-pas-france",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-31"
     },
     "https://www.testciviquefrance.fr/articles/etias-autorisation-voyage-france": {
@@ -870,7 +871,7 @@
       "derniereExploration": "2026-10-31T06:04:05Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/etias-autorisation-voyage-france",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/etias-autorisation-voyage-france",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-31"
     },
     "https://www.testciviquefrance.fr/articles/examen-civique-2026-exemples-questions-corrigees": {
@@ -882,7 +883,7 @@
       "derniereExploration": "2026-08-21T01:31:15Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/examen-civique-2026-exemples-questions-corrigees",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/examen-civique-2026-exemples-questions-corrigees",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/examen-civique-carte-de-resident": {
       "verdict": "PASS",
@@ -890,10 +891,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-11-02T11:24:34Z",
+      "derniereExploration": "2026-11-05T21:11:36Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/examen-civique-carte-de-resident",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/examen-civique-carte-de-resident",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/examen-civique-naturalisation": {
@@ -905,7 +906,7 @@
       "derniereExploration": "2026-10-25T06:05:01Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/examen-civique-naturalisation",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/examen-civique-naturalisation",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-25"
     },
     "https://www.testciviquefrance.fr/articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026": {
@@ -917,7 +918,7 @@
       "derniereExploration": "2026-11-02T10:56:17Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/examen-civique-obligatoire-carte-sejour-pluriannuelle-2026",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-25"
     },
     "https://www.testciviquefrance.fr/articles/famille-passeport-talent-france-2026-conjoint-enfants-droits-titre": {
@@ -929,7 +930,7 @@
       "derniereExploration": "2026-10-25T06:10:03Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/famille-passeport-talent-france-2026-conjoint-enfants-droits-titre",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/famille-passeport-talent-france-2026-conjoint-enfants-droits-titre",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-25"
     },
     "https://www.testciviquefrance.fr/articles/formation-civique-site-officiel": {
@@ -953,7 +954,7 @@
       "derniereExploration": "2026-11-02T09:00:38Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/frais-inscription-universites-france-etudiants-hors-ue-2026",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/frais-inscription-universites-france-etudiants-hors-ue-2026",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/geographie-france-regions-departements-villes": {
@@ -988,7 +989,7 @@
       "derniereExploration": "2026-11-01T11:11:08Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-20"
     },
     "https://www.testciviquefrance.fr/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire": {
@@ -1000,7 +1001,7 @@
       "derniereExploration": "2026-11-01T09:09:15Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/institutions-francaises-president-assemblee-senat": {
       "verdict": "NEUTRAL",
@@ -1022,7 +1023,8 @@
       "derniereExploration": null,
       "canoniqueGoogle": null,
       "canoniqueDeclaree": null,
-      "inspecteLe": "2026-11-06 06:46"
+      "inspecteLe": "2026-11-06 06:46",
+      "demandeLe": "2026-11-07"
     },
     "https://www.testciviquefrance.fr/articles/logement-etudiant-etranger-france-2026-crous-visale-garant-dossier": {
       "verdict": "PASS",
@@ -1033,7 +1035,7 @@
       "derniereExploration": "2026-10-23T02:14:11Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/logement-etudiant-etranger-france-2026-crous-visale-garant-dossier",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/logement-etudiant-etranger-france-2026-crous-visale-garant-dossier",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/louer-appartement-etranger-france-discrimination-refus-illegaux-2026": {
       "verdict": "PASS",
@@ -1104,7 +1106,7 @@
       "derniereExploration": "2026-11-02T08:51:20Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/naturalisation-decret-mariage-2026-comparatif-conditions-delais",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/naturalisation-decret-mariage-2026-comparatif-conditions-delais",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-26"
     },
     "https://www.testciviquefrance.fr/articles/naturalisation-enfant-mineur-france-2026-effet-collectif-declaration": {
@@ -1148,10 +1150,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-11-01T17:38:07Z",
+      "derniereExploration": "2026-11-05T00:56:13Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/naturalisation-francaise-refusee-2026-raisons-cachees-contester-recours",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation": {
       "verdict": "PASS",
@@ -1162,7 +1164,7 @@
       "derniereExploration": "2026-10-23T06:10:28Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeAvantRetouche": "2026-10-20",
       "demandeLe": "2026-10-23"
     },
@@ -1172,10 +1174,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-11-01T08:51:21Z",
+      "derniereExploration": "2026-11-04T13:06:43Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/numeros-urgence-france",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/numeros-urgence-france",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-22"
     },
     "https://www.testciviquefrance.fr/articles/oqtf-2026-droits-recours-expulsion-aide-juridictionnelle-test-civique": {
@@ -1211,7 +1213,7 @@
       "derniereExploration": "2026-10-28T06:26:48Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/oqtf-etudiant-etranger-france-2026-recours-droits-defense",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/oqtf-etudiant-etranger-france-2026-recours-droits-defense",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/ouvrir-compte-bancaire-france-etranger-2026-banques-neo-banques-droit-compte": {
       "verdict": "PASS",
@@ -1245,7 +1247,7 @@
       "derniereExploration": "2026-07-07T03:41:15Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/papiers-documents-obtenir-arrivee-france-2026-ou-comment-demander",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/passeport-talent-2026-conditions-metiers-demarches": {
       "verdict": "PASS",
@@ -1268,7 +1270,7 @@
       "derniereExploration": "2026-10-25T20:58:16Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/passeport-talent-chercheur-france-2026-conditions-demarches-salaire",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/passeport-talent-chercheur-france-2026-conditions-demarches-salaire",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/passeport-talent-creation-entreprise-france-2026-conditions-investissement": {
       "verdict": "PASS",
@@ -1276,10 +1278,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-11-03T01:15:04Z",
+      "derniereExploration": "2026-11-05T20:35:29Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/passeport-talent-creation-entreprise-france-2026-conditions-investissement",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/passeport-talent-creation-entreprise-france-2026-conditions-investissement",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/passeport-talent-etudiant-visiteur-non-soumis-examen-civique-2026-cir": {
       "verdict": "PASS",
@@ -1290,7 +1292,7 @@
       "derniereExploration": "2026-10-20T09:45:43Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/passeport-talent-etudiant-visiteur-non-soumis-examen-civique-2026-cir",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/passeport-talent-etudiant-visiteur-non-soumis-examen-civique-2026-cir",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure": {
       "verdict": "PASS",
@@ -1298,10 +1300,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-10-28T06:13:23Z",
+      "derniereExploration": "2026-11-06T15:00:51Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-28"
     },
     "https://www.testciviquefrance.fr/articles/penurie-carburant-prix-essence-2026-economie-francaise-test-civique": {
@@ -1313,7 +1315,8 @@
       "derniereExploration": null,
       "canoniqueGoogle": null,
       "canoniqueDeclaree": null,
-      "inspecteLe": "2026-11-06 06:46"
+      "inspecteLe": "2026-11-06 06:46",
+      "demandeLe": "2026-11-07"
     },
     "https://www.testciviquefrance.fr/articles/prefectures-delais-rendez-vous-avril-2026-solutions": {
       "verdict": "NEUTRAL",
@@ -1348,7 +1351,7 @@
       "derniereExploration": "2026-10-18T15:16:26Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/preparer-depart-france-2026-checklist-documents-avant-avion",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/preparer-depart-france-2026-checklist-documents-avant-avion",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/prime-retour-volontaire-france-2026-conditions-demarches": {
       "verdict": "PASS",
@@ -1405,7 +1408,7 @@
       "derniereExploration": "2026-10-25T06:06:17Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/rdv-prefecture-titre-sejour-introuvable-2026-creneaux-marche-noir",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/rdv-prefecture-titre-sejour-introuvable-2026-creneaux-marche-noir",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-25"
     },
     "https://www.testciviquefrance.fr/articles/recepisse-titre-de-sejour-droits-duree-voyage": {
@@ -1453,7 +1456,7 @@
       "derniereExploration": "2026-10-26T06:12:03Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/refus-naturalisation-7-erreurs-90-pourcent-candidats",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/refus-naturalisation-7-erreurs-90-pourcent-candidats",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-26"
     },
     "https://www.testciviquefrance.fr/articles/refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france": {
@@ -1524,7 +1527,7 @@
       "derniereExploration": "2026-11-02T11:34:13Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/renouvellement-titre-sejour-2026-anef-prefecture-documents-delais",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-31"
     },
     "https://www.testciviquefrance.fr/articles/rentree-septembre-2026-etrangers-france-calendrier-demarches-delais": {
@@ -1536,7 +1539,7 @@
       "derniereExploration": "2026-10-17T15:10:08Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/rentree-septembre-2026-etrangers-france-calendrier-demarches-delais",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/rentree-septembre-2026-etrangers-france-calendrier-demarches-delais",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/residance-fiscale-france-etranger-imposabilite-test-2026": {
       "verdict": "NEUTRAL",
@@ -1559,7 +1562,7 @@
       "derniereExploration": "2026-10-30T06:04:44Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/ressources-utiles-etrangers-france-2026-outils-associations-aides",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/ressources-utiles-etrangers-france-2026-outils-associations-aides",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-10-30"
     },
     "https://www.testciviquefrance.fr/articles/resultat-examen-civique": {
@@ -1662,7 +1665,7 @@
       "derniereExploration": "2026-10-20T17:22:30Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/simulateur-eligibilite-examen-civique-2026-suis-je-concerne",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/simulateur-eligibilite-examen-civique-2026-suis-je-concerne",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/statistiques-test-civique-2026-taux-reussite-72-pourcent": {
       "verdict": "PASS",
@@ -1707,7 +1710,8 @@
       "derniereExploration": "2026-08-27T08:32:50Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/tensions-iran-usa-petrole-2026-geopolitique-france-test-civique",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/tensions-iran-usa-petrole-2026-geopolitique-france-test-civique",
-      "inspecteLe": "2026-11-06 06:46"
+      "inspecteLe": "2026-11-06 06:46",
+      "demandeLe": "2026-11-07"
     },
     "https://www.testciviquefrance.fr/articles/test-civique-gratuit-en-ligne-2026-examen-blanc-entrainement-qcm": {
       "verdict": "PASS",
@@ -1729,7 +1733,8 @@
       "derniereExploration": null,
       "canoniqueGoogle": null,
       "canoniqueDeclaree": null,
-      "inspecteLe": "2026-11-05 06:45"
+      "inspecteLe": "2026-11-05 06:45",
+      "demandeLe": "2026-11-07"
     },
     "https://www.testciviquefrance.fr/articles/titre-sejour-etranger-malade-raisons-sante-2026": {
       "verdict": "PASS",
@@ -1737,10 +1742,10 @@
       "indexingState": "INDEXING_ALLOWED",
       "pageFetchState": "SUCCESSFUL",
       "robotsTxtState": "ALLOWED",
-      "derniereExploration": "2026-11-03T01:15:52Z",
+      "derniereExploration": "2026-11-06T06:06:07Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/titre-sejour-etranger-malade-raisons-sante-2026",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/titre-sejour-etranger-malade-raisons-sante-2026",
-      "inspecteLe": "2026-11-03 06:49",
+      "inspecteLe": "2026-11-07 06:50",
       "demandeLe": "2026-11-03"
     },
     "https://www.testciviquefrance.fr/articles/titre-sejour-etudiant-france-guide-2025": {
@@ -1764,7 +1769,7 @@
       "derniereExploration": "2026-10-24T22:21:34Z",
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/titre-sejour-expire-vacances-etranger-france-que-faire-visa-retour",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/titre-sejour-expire-vacances-etranger-france-que-faire-visa-retour",
-      "inspecteLe": "2026-11-03 06:49"
+      "inspecteLe": "2026-11-07 06:50"
     },
     "https://www.testciviquefrance.fr/articles/titre-sejour-perdu-vole-expire-2026-demarches-urgence": {
       "verdict": "NEUTRAL",

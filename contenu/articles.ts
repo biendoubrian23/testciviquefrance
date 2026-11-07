@@ -135,6 +135,7 @@ import pacteEuropeenMigrationAsile from "./articles/pacte-europeen-migration-asi
 import aideMedicaleEtatAme from "./articles/aide-medicale-etat-ame";
 import certificatNationaliteFrancaise from "./articles/certificat-nationalite-francaise";
 import preparerExamenCivique from "./articles/preparer-examen-civique";
+import dcemDocumentCirculationMineur from "./articles/dcem-document-circulation-mineur";
 import attestationAccueilInviterFamilleFrance2026MairieConditions from "./articles/attestation-accueil-inviter-famille-france-2026-mairie-conditions";
 import autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour from "./articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour";
 import avoirEnfantFranceEtranger2026DroitSolNationaliteAllocations from "./articles/avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations";
@@ -433,6 +434,7 @@ export const ARTICLES: readonly Article[] = [
   aideMedicaleEtatAme,
   certificatNationaliteFrancaise,
   preparerExamenCivique,
+  dcemDocumentCirculationMineur,
   autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour,
   avoirEnfantFranceEtranger2026DroitSolNationaliteAllocations,
   binationauxFrancoMaghrebinsObligationsServiceNationalVoteCon,
