@@ -18,6 +18,13 @@ import type { Article } from "@/contenu/articles";
  * la protection de 6 mois après une perte d'emploi ; les métiers et salaires
  * moyens par secteur (aucune source officielle). Chaque montant vient de
  * service-public ou de Légifrance, lus le 20/10/2026.
+ *
+ * Corrigé le 08/11/2026 par le robot éditorial (liste « à revérifier ») :
+ * chaque seuil relu sur F16922 (vérifiée le 01/06/2026) et F35792 (vérifiée
+ * le 01/05/2026), inchangés. Faux depuis le 30/10/2026 et corrigé : le refus
+ * implicite « au bout de 4 mois » (90 jours après le dépôt d'une demande
+ * complète, décret n° 2026-1001 du 26/10/2026, CESEDA R. 432-2). Couverture
+ * Unsplash (un portrait) remplacée par une photo libre locale.
  */
 const article: Article = {
   slug: "passeport-talent-2026-conditions-metiers-demarches",
@@ -26,8 +33,8 @@ const article: Article = {
   resume: "Carte talent (ex-passeport talent) : les 8 cartes, le salaire minimum de chacune, la durée de 4 ans, la famille, la carte de résident et la naturalisation.",
   chapo: "Le passeport talent s'appelle désormais **carte talent** : c'est un titre de séjour (la carte qui vous autorise à vivre en France) pour les profils qualifiés, valable jusqu'à ==4 ans==. Il existe 8 cartes « talent », chacune avec son seuil de salaire. Pour le salarié qualifié, c'est ==39 582 € brut par an== en 2026, selon service-public.",
   publieLe: "2026-03-31",
-  modifieLe: "2026-10-20",
-  minutes: 8,
+  modifieLe: "2026-11-08",
+  minutes: 10,
   theme: "passeport talent 2026",
   motsCles: [
     "passeport talent 2026",
@@ -54,14 +61,13 @@ const article: Article = {
   rubrique: "cadre-legal",
   auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1200&auto=format&fit=crop",
-    alt: "Portrait d'un homme souriant en tee-shirt blanc, devant un mur gris",
-    largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
-    position: "50% 25%",
+    src: "/images/articles/passeport-talent-carte-talent.webp",
+    alt: "Les tours de verre bleu du quartier d'affaires de La Défense, près de Paris, sous un ciel nuageux",
+    largeur: 1024,
+    hauteur: 768,
+    credit: "Ruben Holthuijsen, via Flickr",
+    licence: "CC BY 2.0",
+    source: "https://www.flickr.com/photos/60057960@N06/10530772825",
   },
   blocs: [
     {
@@ -88,7 +94,7 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Voici les cartes et les seuils publiés par [service-public](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922) (fiche vérifiée le 1er juin 2026, lue le 20/10/2026). Les montants sont bruts, avant les cotisations.",
+      texte: "Voici les cartes et les seuils publiés par [service-public](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922) (fiche vérifiée le 1er juin 2026, relue le 08/11/2026). Les montants sont bruts, avant les cotisations.",
     },
     {
       type: "tableau",
@@ -103,7 +109,7 @@ const article: Article = {
         ["Talent-profession artistique et culturelle", "Artiste-interprète ou auteur d'œuvres", "70 % du SMIC par mois : 1 306,91 €, dont 51 % au moins venus de l'activité artistique."],
         ["Talent-renommée nationale ou internationale", "Renommée établie dans son domaine", "SMIC brut annuel : 22 404,20 €."],
       ],
-      legende: "Source : service-public, fiche F16922, lue le 20/10/2026. Base légale : CESEDA, articles L. 421-9 à L. 421-21.",
+      legende: "Source : service-public, fiche F16922, relue le 08/11/2026. Base légale : CESEDA, articles L. 421-9 à L. 421-21.",
     },
     {
       type: "p",
@@ -152,7 +158,11 @@ const article: Article = {
     },
     {
       type: "p",
-      texte: "Si la préfecture (le service de l'État qui gère les titres de séjour dans votre département) ne répond pas au bout de 4 mois, c'est un refus implicite. Vous avez alors 2 mois pour faire un recours (F16922). Pour un cas précis, renseignez-vous auprès d'un avocat ou d'une association comme La Cimade.",
+      texte: "La préfecture, c'est le service de l'État qui gère les titres de séjour dans votre département. Depuis le 30 octobre 2026, elle doit répondre ==au plus tard 90 jours== après le dépôt d'une demande complète, et non plus 4 mois. Sans réponse, c'est un refus implicite, c'est-à-dire un refus sans lettre. Vous avez alors 2 mois pour faire un recours (décret n° 2026-1001, article R. 432-2 du CESEDA). Notre article sur [le délai de 90 jours](/articles/delai-reponse-prefecture-titre-de-sejour-90-jours) explique ce changement.",
+    },
+    {
+      type: "p",
+      texte: "Attention : la fiche F16922 de service-public est « en cours de mise à jour » et affiche encore 4 mois pour plusieurs cartes. Le décret est en vigueur depuis le 30 octobre 2026. Pour un cas précis, renseignez-vous auprès d'un avocat ou d'une association comme La Cimade.",
     },
     {
       type: "p",
@@ -238,7 +248,7 @@ const article: Article = {
         "**Se fier à un ancien seuil** : vérifiez le montant du jour sur service-public, en brut annuel.",
         "**Choisir la mauvaise carte** : un créateur d'entreprise ne relève pas du salarié qualifié, mais du porteur de projet.",
         "**Compter sur le PACS** : la fiche talent-famille vise l'époux ou l'épouse, pas le partenaire pacsé.",
-        "**Laisser filer le silence** : 4 mois sans réponse valent refus, et le délai de recours est court.",
+        "**Laisser filer le silence** : 90 jours sans réponse après un dossier complet valent refus, et le délai de recours est de 2 mois.",
         "**Croire aux raccourcis** : aucune carte de résident n'est prévue après 3 ans de carte talent.",
       ],
     },
@@ -273,16 +283,22 @@ const article: Article = {
   ],
   sources: [
     {
-      titre: "Service-public : carte talent, carte de séjour pluriannuelle d'un étranger en France (F16922)",
+      titre: "Service-public : carte talent, carte de séjour pluriannuelle d'un étranger en France (F16922), vérifiée le 01/06/2026",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-08",
     },
     {
-      titre: "Service-public : carte de séjour pluriannuelle « talent-famille » (F35792)",
+      titre: "Service-public : carte de séjour pluriannuelle « talent-famille » (F35792), vérifiée le 01/05/2026",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F35792",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-08",
+    },
+    {
+      titre: "Légifrance : décret n° 2026-1001 du 26 octobre 2026 (délai de 90 jours, CESEDA R. 432-2)",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055023061",
+      type: "officiel",
+      luLe: "2026-11-08",
     },
     {
       titre: "Légifrance : CESEDA, articles L. 421-7 à L. 421-25 (étranger bénéficiaire d'un titre « talent »)",

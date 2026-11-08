@@ -38,7 +38,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Article | Point à vérifier |
 |---|---|
-| /articles/passeport-talent-2026-conditions-metiers-demarches, -chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` d'abord (20 vues sur 7 jours, 115 impressions) |
+| /articles/passeport-talent-chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
 | /articles/valeurs-republique-francaise-liberte-egalite-fraternite | Ajouté le 01/11/2026 : cité par Copilot sur « liberté égalité fraternité » (260 citations). 619 mots, deux questions de FAQ, sources sans date : remettre au niveau sur la Constitution et formation-civique.interieur.gouv.fr |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
@@ -181,7 +181,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | Passer l'examen civique à l'étranger | examen civique à l'étranger ; centre examen civique hors France ; passer examen civique avant arrivée | à mesurer | Manuel du candidat FEI : centres à l'étranger. Vérifier la liste |
 | Examen civique outre-mer : où le passer en Guadeloupe, Martinique, Guyane, Réunion, Mayotte | examen civique Réunion ; examen civique Guadeloupe ; centre examen civique Guyane | à mesurer | Aucune liste ultramarine officielle trouvée : consulter les opérateurs. Outre-mer |
 | CCIP ou France Éducation International : deux opérateurs, une même épreuve | examen civique CCI ou FEI ; Le français des affaires examen civique ; France Éducation International examen civique | à mesurer | QE n° 11488. Mise à jour de /articles/inscription-test-civique-2026-ou-quand-comment-sinscrire |
-| Conjoint de Français : examen civique et carte de résident | examen civique conjoint de français ; carte de résident mariage examen civique ; conjoint français test civique | à mesurer | CESEDA, décret n° 2025-647. Information générale |
+| ~~Conjoint de Français : examen civique et carte de résident~~ → `examen-civique-conjoint-de-francais`, 08/11/2026 | examen civique conjoint de français ; carte de résident mariage examen civique ; conjoint français test civique | à mesurer | CESEDA, décret n° 2025-647. Information générale |
 | Parent d'enfant français : quel examen civique passer | parent enfant français examen civique ; carte de résident parent enfant français ; examen civique parent | à mesurer | CESEDA. Information générale |
 | Réfugiés et protection subsidiaire : l'examen civique s'applique-t-il ? | réfugié examen civique ; protection subsidiaire examen civique ; carte de résident réfugié examen | à mesurer | Recoupe /articles/dispense-examen-civique-2026-qui-est-exempte-age-refugie-accords (mise à jour) |
 | Questions sur la protection sociale : Sécurité sociale, CAF, retraite | Sécurité sociale question examen civique ; protection sociale France questions ; CAF examen civique | à mesurer | Fiches officielles |
@@ -540,3 +540,10 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Réintégration dans la nationalité française | réintégration nationalité française | 100 à 1 k (YoY - 90 %) | |
 | PACS et titre de séjour | pacs étranger titre de séjour | 10 à 100 | Section d'un article plus large, pas un article |
 | Titre de séjour à 18 ans ; parent d'enfant français | titre de séjour 18 ans ; titre de séjour parent d'enfant français ; document de circulation pour étranger mineur ; tir enfant | pas de donnée | Le délai à 18 ans (R. 431-5) est dans l'article DCEM du 07/11 |
+
+## Vu le 08/11/2026 (veille, sans Planificateur : Chrome non connecté)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| APL des étudiants non européens non boursiers | apl étudiant étranger ; apl étudiant non européen ; étudiant étranger aide au logement | à mesurer | Repris par la presse le 07/11 (Frontières). Selon la presse, décret du 28/06/2026, en vigueur le 01/07/2026, sur la loi de finances pour 2026 : lire le texte au Journal officiel et la fiche CAF ou service-public avant d'écrire. Vérifier ce que dit `logement-etudiant-etranger-france-2026-crous-visale-garant-dossier` (mise à jour plutôt que doublon) |
+| Nationalité française par mariage | nationalité française mariage | à mesurer | Nouvelle suggestion Google du 08/11. Article existant `nationalite-francaise-par-mariage-2026-conditions-delai-4-ans-dossier` (81 impressions, position 10,6, migré) : candidat d'optimisation (B2 depuis le 01/01/2026, 255 €, F2726) |
