@@ -223,3 +223,21 @@ Zone : France (libellé « France » lu sur la page des résultats ; territoires
 | réintégration nationalité française | 100 à 1 k | | YoY - 90 % |
 | pacs étranger titre de séjour | 10 à 100 | | |
 | document de circulation pour étranger mineur ; tir enfant ; titre de séjour 18 ans ; titre de séjour parent d enfant français | pas de donnée | | |
+
+## 09/11/2026 : Trouver de nouveaux mots clés, France, French (par défaut)
+
+Libellés lus sous le champ : « French (par défaut) », « France ». Période oct. 2025 à sept. 2026, réseau Google. 10 mots de départ, 100 lignes lues. **Voie à garder : la langue s'y règle seule, contrairement à « Obtenir le volume ».** ⚠️ Une seconde recherche (6 mots sur la régularisation) n'a pas démarré après le clic sur « Obtenir des résultats » : aucune mesure neuve sur ces mots, celle du 21/10 reste valable.
+
+| Requête | Volume mensuel | Concurrence | Remarque |
+|---|---|---|---|
+| apl étudiant étranger | 1 k à 10 k | faible | YoY + 900 % ; porte l'article du 09/11 |
+| apl étudiants étrangers ; apl pour étudiant étranger | 1 k à 10 k | faible | YoY + 900 % |
+| caf etudiant etranger | 1 k à 10 k | faible | |
+| nationalité française mariage ; nationalité française par mariage | 1 k à 10 k | faible | Porte `nationalite-francaise-par-mariage-2026-…` : candidat d'optimisation |
+| demande de nationalité française par mariage | 1 k à 10 k | faible | + 900 % sur trois mois |
+| naturalisation par décret ; naturalisation par mariage | 1 k à 10 k | faible | |
+| titre de séjour salarié | 1 k à 10 k | faible | |
+| renouvellement titre de séjour salarié | 1 k à 10 k | faible | YoY - 90 % |
+| passeport talent chercheur | 100 à 1 k | faible | |
+| carte de séjour salarié | 100 à 1 k | faible | |
+| apl etudiants etrangers ; apl pour les étudiants étrangers | 100 à 1 k | faible | YoY + 900 % |

@@ -40,6 +40,8 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 |---|---|
 | /articles/passeport-talent-chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
 | /articles/valeurs-republique-francaise-liberte-egalite-fraternite | Ajouté le 01/11/2026 : cité par Copilot sur « liberté égalité fraternité » (260 citations). 619 mots, deux questions de FAQ, sources sans date : remettre au niveau sur la Constitution et formation-civique.interieur.gouv.fr |
+| /articles/aides-sociales-etrangers-france-2026-caf-rsa-apl-prime-activite | Ajouté le 09/11/2026 : dit que les étudiants au VLS-TS ont droit à l'APL « aux mêmes conditions que les étudiants français », faux depuis le 01/07/2026 (loi n° 2026-103 art. 179, décret n° 2026-552, F1563). Lier `apl-etudiant-etranger`. Tout l'article à vérifier (RSA, montants) |
+| /articles/campus-france-etude-france-2026-visa-inscription-procedure ; /articles/avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations | Ajoutés le 09/11/2026 : APL citée sans la règle du 01/07/2026 (« 100 à 250 €/mois », « quel que soit votre titre ») |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
@@ -547,3 +549,11 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 |---|---|---|---|
 | APL des étudiants non européens non boursiers | apl étudiant étranger ; apl étudiant non européen ; étudiant étranger aide au logement | à mesurer | Repris par la presse le 07/11 (Frontières). Selon la presse, décret du 28/06/2026, en vigueur le 01/07/2026, sur la loi de finances pour 2026 : lire le texte au Journal officiel et la fiche CAF ou service-public avant d'écrire. Vérifier ce que dit `logement-etudiant-etranger-france-2026-crous-visale-garant-dossier` (mise à jour plutôt que doublon) |
 | Nationalité française par mariage | nationalité française mariage | à mesurer | Nouvelle suggestion Google du 08/11. Article existant `nationalite-francaise-par-mariage-2026-conditions-delai-4-ans-dossier` (81 impressions, position 10,6, migré) : candidat d'optimisation (B2 depuis le 01/01/2026, 255 €, F2726) |
+
+## Vu le 09/11/2026 (Planificateur, France, French, et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~APL des étudiants non européens non boursiers~~ → apl-etudiant-etranger, 09/11/2026 | apl étudiant étranger ; caf etudiant etranger | 1 k à 10 k, + 900 % sur un an | Décret n° 2026-552. Corrigé aussi : logement-etudiant-etranger-… |
+| Proposition de loi n° 3253 « visant à régulariser les travailleurs sans-papiers » | régularisation sans papiers (100 à 1 k, 21/10) | à mesurer sur les mots du débat | Commission des lois le 09/11 à 16 h, séance publique le 19/11 (journée réservée au groupe SOC), rapporteur Paul Christophle. Article unique : carte « salarié » de plein droit après 6 mois d'activité sur 24, sans durée de présence, autorisation de travail liée, décret en Conseil d'État. **Pas en vigueur.** Distincte de la n° 3266 (Hervieu, carte pluriannuelle métiers essentiels ou en tension). Le 19/11 : mettre à jour `regularisation-metiers-en-tension` (qui ne cite que la n° 3266) et, si le texte est adopté, écrire « ce que le vote change, et ce qui ne change pas » |
+| Nationalité française par mariage | nationalité française mariage ; demande de nationalité française par mariage | 1 k à 10 k (+ 900 % sur trois mois) | Optimiser `nationalite-francaise-par-mariage-2026-…` (93 impressions, position 10,2, migré) : B2, 255 €, F2726 |
