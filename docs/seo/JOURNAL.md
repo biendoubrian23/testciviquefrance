@@ -212,3 +212,13 @@ Gestes possibles : `publie`, `optimise`, `corrige`, `fusionne` (l'ancien slug en
 2026-11-09 | corrige | logement-etudiant-etranger-france-2026-crous-visale-garant-dossier | fait faux découvert le 09/11 : APL présentée comme ouverte aux étudiants étrangers en séjour régulier, faux depuis le 01/07/2026. Réécrit sur F1563, A18981, F33453, F31269, Cnous, décret n° 2026-552 ; retirés faute de source lue : dates du DSE, assurance, boursier sans garant ; encadré de correction ; couverture locale (Maison du Mexique, CC BY 2.0) ; titreSeo 47 caractères | fait
 2026-11-09 | experience | pacte-europeen-migration-asile ; anef-dossier-bloque-en-attente-2026-debloquer-relancer | verdicts à 7 jours : confirmée (65 impressions, position 7,5, 3 clics) ; en partie (183 impressions contre 119, position 8,8 contre 8,3, défilement médian 8 % contre 4 %) | fait
 2026-11-09 | volumes | - | Planificateur, « Trouver de nouveaux mots clés », France, French : mesure faite ; la mesure ciblée régularisation n'a pas démarré | fait
+2026-11-09 | indexation | apl-etudiant-etranger | nouvelle page du jour (Google ne connaît pas cette URL) | demandée
+2026-11-09 | indexation | logement-etudiant-etranger-france-2026-crous-visale-garant-dossier | retouché le 2026-11-09, pas encore relu par Google | demandée
+2026-11-09 | indexation | passeport-talent-2026-conditions-metiers-demarches | retouché le 2026-11-08, pas encore relu par Google | demandée
+2026-11-09 | indexation | examen-civique-conjoint-de-francais | Google ne reconnaît pas cette URL, publié le 2026-11-08 | demandée
+2026-11-09 | indexation | comment-reussir-test-civique-premier-coup | retouché le 2026-11-07, pas encore relu par Google | demandée
+2026-11-09 | indexation | rater-examen-civique-2026-repasser-delai-cout-themes-echec | retouché le 2026-11-06, pas encore relu par Google | demandée
+2026-11-09 | indexation | naturalisation-enfant-mineur-france-2026-effet-collectif-declaration | retouché le 2026-11-05, pas encore relu par Google | demandée
+2026-11-09 | indexation | dcem-document-circulation-mineur | Google ne reconnaît pas cette URL, publié le 2026-11-07 | demandée
+2026-11-09 | indexation | certificat-nationalite-francaise | Google ne reconnaît pas cette URL, publié le 2026-11-05 | demandée
+2026-11-09 | indexation | preparer-examen-civique | Google ne reconnaît pas cette URL, publié le 2026-11-06 | non demandée : « Quota dépassé » affiché par Search Console à la dixième demande, non retentée
