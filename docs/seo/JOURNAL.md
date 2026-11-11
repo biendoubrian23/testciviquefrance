@@ -227,4 +227,12 @@ Gestes possibles : `publie`, `optimise`, `corrige`, `fusionne` (l'ancien slug en
 2026-11-11 | experience | aide-medicale-etat-ame ; titre-sejour-etranger-malade-raisons-sante-2026 ; prix-test-civique-2026-… | verdicts : confirmée (656 impressions, position 9,3) ; confirmée (209 impressions contre 60, position 8,1, défilement 43 % contre 37 %) ; en partie (110 impressions, position 13,1, 7 clics d'appel) | fait
 2026-11-11 | volumes | - | Planificateur, « Trouver de nouveaux mots clés », France, French : mesure faite (10 mots de départ) | fait
 2026-11-11 | lecon | - | nouvelle leçon : un guide migré ramené à moitié, juste et sourcé, gagne des impressions sans perdre sa lecture (vérifié deux fois) | fait
+2026-11-11 | publication | 11-novembre-examen-civique, aides-sociales-etrangers-france-2026-caf-rsa-apl-prime-activite | push accepté (e2d38c1) ; seo:publie : les deux pages en ligne, IndexNow accepté (200), la page du jour au second passage (la phrase de contrôle du premier n'était que dans la page corrigée) | fait
+2026-11-11 | indexation | 11-novembre-examen-civique | nouvelle page du jour (Google ne reconnaît pas cette URL) | demandée
+2026-11-11 | indexation | aides-sociales-etrangers-france-2026-caf-rsa-apl-prime-activite | retouché le 2026-11-11, pas encore relu par Google | demandée
+2026-11-11 | indexation | preparer-examen-civique | Google ne reconnaît pas cette URL, publié le 2026-11-06 (quota dépassé le 09/11) | demandée
+2026-11-11 | indexation | oqtf-enfants-france-2026-expulsion-enfants-francais-scolarises | Explorée, actuellement non indexée, 277 impressions | demandée
+2026-11-11 | indexation | declaration-impots-etranger-france-2026-obligations-seuils-risques | Explorée, actuellement non indexée (API) | non demandée : l'inspection en direct dit « Cette URL est sur Google »
+2026-11-11 | indexation | ouvrir-compte-bancaire-france-etranger-2026-banques-neo-banques-droit-compte | Explorée, actuellement non indexée | non demandée : « Quota dépassé » affiché par Search Console à la cinquième demande, non retentée
+2026-11-11 | indexation | attestation-accueil-inviter-famille-france-2026-mairie-conditions ; refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france | Explorée / Détectée, actuellement non indexée | non demandées : quota atteint
 
