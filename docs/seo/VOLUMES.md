@@ -241,3 +241,19 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | passeport talent chercheur | 100 à 1 k | faible | |
 | carte de séjour salarié | 100 à 1 k | faible | |
 | apl etudiants etrangers ; apl pour les étudiants étrangers | 100 à 1 k | faible | YoY + 900 % |
+
+## Mesure du 11/11/2026
+
+« Trouver de nouveaux mots clés », zone **France** seule (comme les mesures précédentes), langue **French (par défaut)**, lue sous le champ. 10 mots de départ : titre de séjour parent d'enfant français, carte de séjour parent d'enfant français, examen civique parent d'enfant français, réfugié examen civique, 11 novembre, armistice 1918, histoire examen civique, titre de voyage réfugié, carte de séjour visiteur, première guerre mondiale.
+
+| Requête | Volume mensuel | Remarque |
+|---|---|---|
+| 11 novembre ; 11 novembre 1918 ; 11 novembre armistice ; armistice 11 novembre | 10 k à 100 k | Porte `11-novembre-examen-civique` |
+| première guerre mondiale | 10 k à 100 k | + 900 % sur trois mois |
+| armistice 1918 ; armistice 11 novembre 1918 ; l armistice ; wagon de l armistice | 1 k à 10 k | |
+| titre de voyage réfugié ; titre de voyage pour réfugié | 1 k à 10 k | |
+| carte de séjour visiteur | 100 à 1 k | + 900 % sur trois mois |
+| passeport réfugié ; passeport apatride ; titre de séjour réfugié ; renouvellement titre de voyage pour réfugié ; titre de voyage pour réfugié délai ; titre de voyage pour réfugié pays sans visa | 100 à 1 k | |
+| armistice de 1918 ; armistice première guerre mondiale | 100 à 1 k | |
+| première demande titre de séjour réfugié ; titre de voyage pour réfugié rendez vous | 10 à 100 | |
+| titre de séjour parent d'enfant français ; carte de séjour parent d'enfant français ; examen civique parent d'enfant français ; réfugié examen civique ; histoire examen civique | pas de donnée | |

@@ -2,454 +2,294 @@ import type { Article } from "@/contenu/articles";
 
 /**
  * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-vie-pratique-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/aides-sociales-etrangers-france-2026-caf-rsa-apl-prime-activite`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * (`/articles/aides-sociales-etrangers-france-2026-caf-rsa-apl-prime-activite`).
+ * Corrigé et réécrit par le robot éditorial le 11/11/2026 (liste « à revérifier » de `docs/seo/MOTS-CLES.md`).
+ * Faux et corrigés : la prime d'activité présentée « sans délai de 5 ans » (CSS L. 842-2 : 5 ans de titre
+ * autorisant à travailler, avec exceptions) ; l'APL des étudiants « aux mêmes conditions que les étudiants
+ * français » (faux depuis le 01/07/2026, F1563) ; RSA 635,71 € (651,69 €, F19778) ; AAH 1 016,05 €
+ * (1 041,59 €, F12242). Retirés faute de source officielle lue : montants « moyens » des aides au logement,
+ * PAJE, ARS, délais de traitement de la CAF, plafond de la prime d'activité, ADA.
+ * Sources lues le 11/11/2026 : service-public F19778 (vérifiée le 01/04/2026), F2882 (01/06/2026), F13213
+ * (01/06/2026), F2787 (16/10/2026), F12242 (14/09/2026), F1563 et F12006 (01/07/2026) ; Légifrance, code de
+ * la sécurité sociale L. 842-2. Couverture Unsplash remplacée par une photo libre.
  */
 const article: Article = {
   slug: "aides-sociales-etrangers-france-2026-caf-rsa-apl-prime-activite",
-  titre: "Aides sociales pour les étrangers en France 2026 : CAF, RSA, APL, prime d'activité, guide complet",
-  titreSeo: "Aides sociales pour les étrangers en France 2026 : CAF, RSA, APL, prime d'activité, guide complet",
-  resume: "Quelles aides un étranger peut-il toucher en France ? RSA (5 ans de carence), APL (dès l'arrivée), allocations familiales, prime d'activité : conditions par titre de séjour, montants 2026 et démarches CAF.",
-  chapo: "Quelles aides sociales un étranger peut-il percevoir en France en 2026 ? RSA, APL, allocations familiales, prime d'activité, AAH… Les conditions varient selon votre titre de séjour, votre ancienneté en France et votre situation familiale. Entre idées reçues et réalité juridique, ce guide fait le point complet sur les droits réels des étrangers en situation régulière, les délais de carence, les démarches CAF et les pièges à éviter.",
+  titre: "Aides sociales des étrangers en France : RSA, prime d'activité, APL, qui y a droit et à partir de quand",
+  titreSeo: "Aides sociales étrangers : RSA, CAF, APL en 2026",
+  resume: "RSA et prime d'activité après 5 ans de titre, APL et allocations familiales sans délai : les conditions réelles pour les étrangers, aide par aide.",
+  chapo: "Un étranger en situation régulière peut recevoir des aides sociales en France, mais pas toutes tout de suite. Le RSA et la prime d'activité demandent en général ==5 ans de titre de séjour autorisant à travailler==, sauf exceptions. Le titre de séjour, c'est la carte qui vous autorise à vivre en France. Les aides au logement et les allocations familiales n'ont pas ce délai, avec une règle à part pour les étudiants depuis le 1er juillet 2026.",
   publieLe: "2026-04-03",
-  modifieLe: "2026-04-03",
-  minutes: 22,
+  modifieLe: "2026-11-11",
+  minutes: 8,
   theme: "aides sociales étrangers France 2026",
   motsCles: [
     "aides sociales étrangers France 2026",
     "CAF étranger titre de séjour",
     "RSA étranger conditions",
-    "APL étranger France",
+    "RSA étranger 5 ans",
     "prime activité étranger",
+    "APL étranger France",
     "allocations familiales étranger",
     "AAH étranger",
-    "droits sociaux étrangers France",
-    "CAF carte de séjour",
-    "aides CAF titre de séjour",
-    "délai carence RSA étranger",
-    "étranger droit RSA France",
   ],
   rubrique: "conseils",
-  auteur: "Brian B",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
+    src: "/images/articles/aides-sociales-etrangers-caf.webp",
+    alt: "La façade vitrée d'un bâtiment de la Caisse d'allocations familiales à Paris, avec le sigle CAF en lettres bleues",
     largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
+    hauteur: 900,
+    credit: "Fabio Gargano, via Wikimedia Commons",
+    licence: "CC BY-SA 4.0",
+    source: "https://commons.wikimedia.org/wiki/File:CAF_(Caisse_d%27Allocations_Familiales),_Paris_15.JPG",
+    position: "50% 30%",
   },
   blocs: [
     {
-      type: "h2",
-      texte: "Le principe : des droits conditionnés au titre de séjour",
-      id: "principe-general",
-    },
-    {
-      type: "p",
-      texte: "En France, les aides sociales ne sont **pas réservées aux seuls Français**. Les étrangers en situation régulière y ont accès, mais sous conditions strictes liées à leur **titre de séjour** et à leur **ancienneté de résidence**.",
-    },
-    { type: "h3", texte: "La règle de base :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Séjour régulier obligatoire** : vous devez détenir un titre de séjour en cours de validité (carte de séjour temporaire, pluriannuelle, de résident, récépissé avec droit au travail, ou VLS-TS validé).",
-        "**Résidence stable et effective** : vous devez résider en France de manière habituelle (au moins 6 mois par an sur le territoire).",
-        "**Certaines aides imposent un délai de carence** : notamment le RSA (5 ans de séjour régulier pour les non-européens).",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Important** : les demandeurs d'asile en cours de procédure ne relèvent pas du droit commun, ils bénéficient de l'ADA (Allocation pour Demandeur d'Asile) versée par l'OFII, pas de la CAF.",
-    },
-    {
-      type: "p",
-      texte: "**Lien avec le test civique** : la thématique « Vivre dans la société française » du test civique couvre les droits sociaux, la solidarité nationale et le fonctionnement de la Sécurité sociale. Connaître ces dispositifs est utile pour l'examen.",
-    },
-    {
-      type: "h2",
-      texte: "APL et aides au logement : conditions pour les étrangers",
-      id: "apl-aide-logement",
-    },
-    {
-      type: "p",
-      texte: "Les **aides au logement** (APL, ALS, ALF) sont les plus accessibles pour les étrangers en situation régulière.",
-    },
-    { type: "h3", texte: "Conditions d'éligibilité :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Titre de séjour en cours de validité** (tous types acceptés, y compris récépissé)",
-        "**Pas de condition d'ancienneté** : vous pouvez demander l'APL dès votre arrivée en France",
-        "**Logement décent** conforme aux normes de surface et d'habitabilité",
-        "**Ressources** : sous conditions de revenus (plafonds variables selon la zone géographique)",
-      ],
-    },
-    { type: "h3", texte: "Les 3 types d'aides au logement :" },
-    {
-      type: "tableau",
-      entetes: ["Aide", "Pour qui", "Montant moyen"],
-      lignes: [
-        [
-          "**APL** (Aide Personnalisée au Logement)",
-          "Locataires d'un logement conventionné",
-          "150 à 350 €/mois",
-        ],
-        [
-          "**ALS** (Allocation de Logement Sociale)",
-          "Locataires d'un logement non conventionné",
-          "100 à 280 €/mois",
-        ],
-        [
-          "**ALF** (Allocation de Logement Familiale)",
-          "Familles avec enfants à charge",
-          "150 à 400 €/mois",
-        ],
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Démarche** : créez votre compte sur **caf.fr** avec votre numéro de titre de séjour, puis faites la demande en ligne. Délai de traitement : 1 à 2 mois. Les droits sont ouverts rétroactivement au mois suivant la demande.",
-    },
-    {
-      type: "p",
-      texte: "**Cas particulier des étudiants étrangers** : les étudiants titulaires d'un VLS-TS « étudiant » ont droit à l'APL aux mêmes conditions que les étudiants français.",
-    },
-    { type: "h2", texte: "Allocations familiales et prestations enfants", id: "allocations-familiales" },
-    {
-      type: "p",
-      texte: "Les **allocations familiales** sont versées automatiquement dès le 2e enfant à charge, sans condition de revenus (mais le montant varie selon les ressources depuis 2015).",
-    },
-    { type: "h3", texte: "Conditions pour les étrangers :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Titre de séjour en cours de validité**",
-        "**Enfants résidant en France** (les enfants restés au pays ne sont pas éligibles)",
-        "**Pas de délai de carence** pour les allocations familiales",
-      ],
-    },
-    { type: "h3", texte: "Montants 2026 (par mois) :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**2 enfants** : 141,99 € (revenus modestes) à 35,50 € (revenus élevés)",
-        "**3 enfants** : 323,91 € à 80,98 €",
-        "**Par enfant supplémentaire** : +181,92 € à +45,48 €",
-      ],
-    },
-    { type: "h3", texte: "Autres prestations enfants accessibles :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**PAJE** (Prestation d'Accueil du Jeune Enfant) : prime à la naissance (1 019 €) + allocation de base mensuelle",
-        "**Complément mode de garde** : aide pour la crèche ou assistante maternelle",
-        "**ARS** (Allocation de Rentrée Scolaire) : 416 à 454 € par enfant selon l'âge, versée en août",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Attention** : pour les enfants arrivés par **regroupement familial**, les droits s'ouvrent à la date d'arrivée effective en France, pas à la date de la demande.",
-    },
-    {
-      type: "h2",
-      texte: "RSA : le délai de carence de 5 ans pour les étrangers non européens",
-      id: "rsa-conditions",
-    },
-    {
-      type: "p",
-      texte: "Le **Revenu de Solidarité Active (RSA)** est l'aide la plus encadrée pour les étrangers. Depuis la réforme de 2011, un **délai de carence de 5 ans** s'applique aux ressortissants non européens.",
-    },
-    { type: "h3", texte: "Conditions cumulatives :" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Avoir 25 ans ou plus** (ou être parent isolé, ou avoir travaillé 2 ans sur les 3 dernières années si moins de 25 ans)",
-        "**Résider en France de manière stable et effective**",
-        "**Détenir un titre de séjour autorisant le travail** depuis au moins **5 ans**",
-        "**Ressources inférieures au montant du RSA** : 635,71 € pour une personne seule en 2026",
-      ],
-    },
-    { type: "h3", texte: "Exceptions au délai de 5 ans :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Réfugiés statutaires et bénéficiaires de la protection subsidiaire** : pas de délai de carence",
-        "**Apatrides** : pas de délai",
-        "**Citoyens européens (UE/EEE/Suisse)** : 3 mois de résidence suffisent (mais doivent prouver un droit au séjour)",
-        "**Titulaires de la carte de résident de 10 ans** : le délai de 5 ans est généralement déjà atteint",
-      ],
-    },
-    { type: "p", texte: "**Montant du RSA 2026** :" },
-    {
-      type: "tableau",
-      entetes: ["Situation", "Montant mensuel"],
-      lignes: [
-        ["Personne seule", "635,71 €"],
-        ["Couple sans enfant", "953,56 €"],
-        ["Personne seule + 1 enfant", "953,56 €"],
-        ["Couple + 2 enfants", "1 335,00 €"],
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Démarche** : demande en ligne sur caf.fr ou en mairie/CCAS. Depuis 2025, le RSA est conditionné à **15 heures d'activité hebdomadaire** (inscription France Travail obligatoire).",
-    },
-    {
-      type: "h2",
-      texte: "Prime d'activité : l'aide la plus demandée par les étrangers qui travaillent",
-      id: "prime-activite",
-    },
-    {
-      type: "p",
-      texte: "La **prime d'activité** est le complément de revenus le plus sollicité par les étrangers en emploi. Elle concerne les travailleurs modestes (salariés, indépendants, étudiants salariés).",
-    },
-    { type: "h3", texte: "Conditions :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Avoir 18 ans ou plus**",
-        "**Exercer une activité professionnelle** (salariée ou indépendante)",
-        "**Résider en France de manière stable**",
-        "**Titre de séjour autorisant le travail en cours de validité**",
-        "**Pas de délai de carence de 5 ans** (contrairement au RSA)",
-        "**Revenus mensuels nets** inférieurs à environ 1 900 € net (personne seule)",
-      ],
-    },
-    { type: "h3", texte: "Montant :" },
-    {
-      type: "p",
-      texte: "Le montant est calculé automatiquement par la CAF en fonction de vos revenus, de la composition du foyer et du loyer. En moyenne, la prime d'activité représente **150 à 280 €/mois** pour un salarié au SMIC.",
-    },
-    {
-      type: "p",
-      texte: "**Astuce** : faites une simulation sur **caf.fr/aides-et-services/s-informer-sur-les-aides/prime-d-activite** pour connaître votre montant exact. La déclaration trimestrielle de revenus est obligatoire pour maintenir le versement.",
-    },
-    {
-      type: "p",
-      texte: "**Étudiants étrangers** : si vous travaillez au moins 78 heures par mois (environ 18h/semaine), vous pouvez être éligible à la prime d'activité même avec un titre de séjour étudiant.",
-    },
-    { type: "h2", texte: "AAH et prestations handicap pour les étrangers", id: "aah-handicap" },
-    {
-      type: "p",
-      texte: "L'**Allocation aux Adultes Handicapés (AAH)** est accessible aux étrangers en situation régulière, sous conditions spécifiques.",
-    },
-    { type: "h3", texte: "Conditions :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Taux d'incapacité** reconnu par la MDPH d'au moins 80 % (ou entre 50 % et 79 % avec restriction substantielle d'accès à l'emploi)",
-        "**Titre de séjour en cours de validité**",
-        "**Résider en France de manière permanente**",
-        "**Pas de condition de durée de séjour préalable**",
-        "**Ressources** inférieures au plafond (1 016 € pour une personne seule en 2026)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Montant maximal** : 1 016,05 €/mois (2026). L'AAH est non imposable et cumulable sous conditions avec un salaire.",
-    },
-    {
-      type: "p",
-      texte: "**Démarche** : constituer un dossier MDPH (Maison Départementale des Personnes Handicapées) auprès de votre département. Délai moyen de traitement : 4 à 6 mois.",
-    },
-    { type: "h2", texte: "Comment ouvrir un compte CAF et faire ses demandes", id: "demarches-caf" },
-    {
-      type: "p",
-      texte: "La **Caisse d'Allocations Familiales (CAF)** gère la majorité des aides sociales. Voici comment procéder étape par étape :",
-    },
-    { type: "h3", texte: "Étape 1 : Créer votre compte en ligne" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "Rendez-vous sur **caf.fr** > « Mon compte » > « Créer mon espace »",
-        "Renseignez votre **numéro de Sécurité sociale** (si vous en avez un) ou demandez la création d'un dossier allocataire",
-        "Fournissez votre **titre de séjour** (recto-verso), passeport, justificatif de domicile",
-      ],
-    },
-    { type: "h3", texte: "Étape 2 : Faire votre demande de prestation" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Connectez-vous > « Faire une demande de prestation » > Sélectionnez l'aide souhaitée",
-        "Remplissez le formulaire en ligne avec vos revenus et votre situation familiale",
-        "Uploadez les justificatifs demandés (titre de séjour, avis d'imposition, RIB, bail)",
-      ],
-    },
-    { type: "h3", texte: "Documents indispensables :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Titre de séjour** recto-verso (ou récépissé)",
-        "**Avis d'imposition** ou de non-imposition (ou déclaration de revenus à l'étranger pour la 1re année)",
-        "**RIB** à votre nom",
-        "**Bail** ou attestation d'hébergement",
-        "**Actes de naissance des enfants** (traduits et apostillés si nés à l'étranger)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Délai de traitement** : comptez 1 à 3 mois. Vous pouvez suivre l'avancement de votre dossier en ligne. Si vous n'avez pas de réponse après 2 mois, contactez votre CAF locale par téléphone au **3230**.",
-    },
-    {
-      type: "h2",
-      texte: "Tableau récapitulatif : quelle aide pour quel titre de séjour",
-      id: "tableau-recapitulatif",
-    },
-    { type: "p", texte: "Ce tableau résume les droits aux principales aides selon votre situation :" },
-    {
-      type: "tableau",
-      entetes: [
-        "Aide",
-        "Carte temporaire (1 an)",
-        "Carte pluriannuelle",
-        "Carte résident 10 ans",
-        "Réfugié / Protection sub.",
-        "Délai de carence",
-      ],
-      lignes: [
-        ["**APL / ALS / ALF**", "✅ Oui", "✅ Oui", "✅ Oui", "✅ Oui", "Aucun"],
-        ["**Allocations familiales**", "✅ Oui", "✅ Oui", "✅ Oui", "✅ Oui", "Aucun"],
-        [
-          "**Prime d'activité**",
-          "✅ Si travail",
-          "✅ Si travail",
-          "✅ Si travail",
-          "✅ Si travail",
-          "Aucun",
-        ],
-        ["**RSA**", "❌ Avant 5 ans", "❌ Avant 5 ans", "✅ Oui", "✅ Oui", "**5 ans**"],
-        ["**AAH**", "✅ Oui (MDPH)", "✅ Oui", "✅ Oui", "✅ Oui", "Aucun"],
-        ["**ARS (rentrée)**", "✅ Oui", "✅ Oui", "✅ Oui", "✅ Oui", "Aucun"],
-        ["**PAJE (naissance)**", "✅ Oui", "✅ Oui", "✅ Oui", "✅ Oui", "Aucun"],
-      ],
-    },
-    {
-      type: "p",
-      texte: "**À retenir** : la plupart des aides CAF sont accessibles **sans délai de carence** dès lors que vous avez un titre de séjour valide. Le RSA est l'exception notable avec ses 5 ans d'ancienneté pour les non-européens.",
-    },
-    {
-      type: "h2",
-      texte: "Vrai ou faux : les 5 idées reçues sur les aides aux étrangers",
-      id: "idees-recues",
-    },
-    { type: "p", texte: "Démêlons le vrai du faux sur un sujet souvent instrumentalisé :" },
-    { type: "h3", texte: "❌ FAUX : « Les étrangers touchent le RSA dès leur arrivée »" },
-    {
-      type: "p",
-      texte: "Les étrangers non européens doivent attendre **5 ans de séjour régulier** avant de pouvoir demander le RSA. Seuls les réfugiés en sont exemptés.",
-    },
-    { type: "h3", texte: "✅ VRAI : « Les étrangers ont droit à l'APL »" },
-    {
-      type: "p",
-      texte: "Oui, dès lors qu'ils ont un titre de séjour valide et un logement éligible. **Aucun délai de carence**.",
-    },
-    {
-      type: "h3",
-      texte: "❌ FAUX : « Les étrangers en situation irrégulière touchent des allocations CAF »",
-    },
-    {
-      type: "p",
-      texte: "Non. La CAF exige un titre de séjour valide. Les personnes sans papiers n'ont accès qu'à l'**AME** (Aide Médicale d'État) pour les soins et à l'hébergement d'urgence (115).",
-    },
-    { type: "h3", texte: "✅ VRAI : « Un étudiant étranger peut toucher l'APL »" },
-    {
-      type: "p",
-      texte: "Oui. Le VLS-TS étudiant donne accès aux aides au logement dans les mêmes conditions qu'un étudiant français.",
-    },
-    { type: "h3", texte: "❌ FAUX : « Les aides sont plus élevées pour les étrangers »" },
-    {
-      type: "p",
-      texte: "Faux. Les montants sont identiques pour tous, calculés selon les mêmes barèmes de revenus et de composition familiale. Il n'existe aucune majoration liée à la nationalité.",
-    },
-    { type: "h2", texte: "Ce qu'il faut savoir pour le test civique", id: "lien-test-civique" },
-    {
-      type: "p",
-      texte: "Le test civique aborde la **solidarité nationale** et le **système de protection sociale** dans la thématique « Vivre dans la société française ». Voici les points clés :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "La **Sécurité sociale** a été créée en **1945** : elle couvre maladie, retraite, famille et accidents du travail.",
-        "Le principe de **solidarité nationale** est inscrit dans la Constitution : chacun contribue selon ses moyens et reçoit selon ses besoins.",
-        "Les **cotisations sociales** prélevées sur les salaires financent le système (pas uniquement les impôts).",
-        "La **CAF** est l'organisme qui gère les prestations familiales et les aides au logement.",
-        "Le **RSA** est le filet de sécurité minimal pour les personnes sans ressources.",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Entraînez-vous sur les questions liées à la protection sociale dans nos [QCM gratuits](/dashboard/entrainement).",
-    },
-    {
       type: "encadre",
-      titre: "À retenir",
-      texte: "Les étrangers en situation régulière ont accès à la grande majorité des aides sociales en France, souvent sans délai de carence (APL, allocations familiales, prime d'activité, AAH). Le RSA fait exception avec un délai de 5 ans pour les non-européens. Créez votre compte CAF dès l'obtention de votre titre de séjour pour faire valoir vos droits sans attendre. Et pour préparer votre naturalisation, la connaissance du système de protection sociale fait partie des thématiques du test civique, entraînez-vous gratuitement sur [notre plateforme](/dashboard/entrainement).",
-      ton: "bleu",
+      titre: "Article corrigé le 11 novembre 2026",
+      texte: "La version précédente contenait des erreurs. Elle disait que la prime d'activité n'avait ==pas de délai de 5 ans== : c'est faux, elle suit presque la même règle que le RSA. Elle disait aussi que les étudiants étrangers avaient droit à l'APL comme les étudiants français : ce n'est plus vrai ==depuis le 1er juillet 2026==. Les montants ont été mis à jour, et ceux que nous n'avons pas pu vérifier ont été retirés.",
+      ton: "ambre",
+    },
+    {
+      type: "h2",
+      texte: "Quelle est la règle de base pour un étranger ?",
+    },
+    {
+      type: "p",
+      texte: "Les aides sociales ne sont pas réservées aux Français. Mais pour un étranger, deux conditions reviennent partout : ==un séjour régulier et une résidence en France==. Le séjour régulier se prouve par un titre de séjour, la carte qui vous autorise à vivre en France. La plupart de ces aides sont versées par la CAF, la caisse d'allocations familiales.",
+    },
+    {
+      type: "p",
+      texte: "Ensuite, chaque aide a sa propre règle. Certaines demandent plusieurs années de titre de séjour, d'autres non. Les citoyens de l'Union européenne, de l'Espace économique européen et de la Suisse suivent d'autres règles, que cet article ne détaille pas.",
+    },
+    {
+      type: "h2",
+      texte: "RSA : faut-il 5 ans de titre de séjour ?",
+    },
+    {
+      type: "p",
+      texte: "Le RSA, ou revenu de solidarité active, est un revenu minimum pour les personnes aux ressources faibles. Il faut avoir au moins 25 ans et résider en France de façon stable. Un étranger hors Union européenne doit en plus remplir ==une de ces conditions== ([service-public, F19778](https://www.service-public.gouv.fr/particuliers/vosdroits/F19778)) :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "avoir depuis au moins **5 ans** un titre de séjour qui permet de travailler en France ;",
+        "avoir la **carte de résident** (un titre de séjour de 10 ans), ou un titre équivalent ;",
+        "avoir le statut de **réfugié**, ou la **protection subsidiaire** (une protection accordée à une personne menacée dans son pays) ;",
+        "être reconnu **apatride**, c'est-à-dire sans nationalité.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Selon la même fiche, la condition des 5 ans ne s'applique pas aux personnes de nationalité algérienne. Le montant du RSA pour une personne seule est de ==651,69 €== par mois. Il baisse si vous avez d'autres ressources.",
+    },
+    {
+      type: "liste",
+      style: "alertes",
+      items: [
+        "Un **étudiant** ou un stagiaire non rémunéré ne peut pas recevoir le RSA.",
+        "Le RSA s'accompagne d'un programme d'insertion : la fiche F19778 prévoit **15 à 20 heures d'activité par semaine** pour les allocataires.",
+      ],
+    },
+    {
+      type: "h2",
+      texte: "Prime d'activité : la même règle des 5 ans",
+    },
+    {
+      type: "p",
+      texte: "La prime d'activité complète les revenus des personnes qui travaillent et gagnent peu. Elle demande d'avoir 18 ans ou plus et une activité professionnelle. Pour un étranger hors Union européenne, la loi fixe ==5 ans de titre de séjour autorisant à travailler== ([code de la sécurité sociale, article L. 842-2](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031087615)).",
+    },
+    {
+      type: "p",
+      texte: "Les exceptions sont proches de celles du RSA : carte de résident, réfugié, protection subsidiaire, apatride. La fiche [F2882](https://www.service-public.gouv.fr/particuliers/vosdroits/F2882) en ajoute une : le parent isolé qui a un enfant de moins de 3 ans à charge et un titre de séjour.",
+    },
+    {
+      type: "p",
+      texte: "Un étudiant ou un apprenti n'y a droit que si ses revenus d'activité dépassent un plafond fixé par la loi (article L. 842-2, 3°).",
+    },
+    {
+      type: "h2",
+      texte: "APL : quand un étranger peut-il toucher une aide au logement ?",
+    },
+    {
+      type: "p",
+      texte: "L'APL, l'aide personnalisée au logement, aide à payer le loyer. Vous pouvez la recevoir ==même si vous êtes étranger==, à condition d'avoir un titre de séjour en cours de validité ([service-public, F12006](https://www.service-public.gouv.fr/particuliers/vosdroits/F12006)). Il n'y a pas de délai de 5 ans. Le montant dépend de vos revenus, de votre loyer et de votre ville.",
+    },
+    {
+      type: "p",
+      texte: "**Les étudiants sont l'exception.** Prenons un étudiant d'un pays hors Union européenne, avec un titre de séjour pour les études. Depuis le 1er juillet 2026, il n'a droit à une aide au logement que dans 3 cas ([service-public, F1563](https://www.service-public.gouv.fr/particuliers/vosdroits/F1563)) :",
+    },
+    {
+      type: "liste",
+      style: "puces",
+      items: [
+        "il reçoit une **bourse sur critères sociaux** ;",
+        "il exerce une **activité professionnelle** ;",
+        "il a un **contrat d'apprentissage** ou de professionnalisation.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Le détail, et les bourses qui comptent, sont dans notre article sur [l'APL des étudiants étrangers](/articles/apl-etudiant-etranger). Pour trouver un logement sans APL, lisez notre guide du [logement étudiant étranger](/articles/logement-etudiant-etranger-france-2026-crous-visale-garant-dossier).",
+    },
+    {
+      type: "h2",
+      texte: "Allocations familiales : quelles conditions pour un parent étranger ?",
+    },
+    {
+      type: "p",
+      texte: "Les allocations familiales sont versées à partir de 2 enfants à charge. Pour un parent étranger hors Union européenne (hors réfugiés et Algériens, qui ont leurs règles), ==4 conditions== s'appliquent ([service-public, F2787](https://www.service-public.gouv.fr/particuliers/vosdroits/F2787)) :",
+    },
+    {
+      type: "liste",
+      style: "numeros",
+      items: [
+        "être en séjour régulier ;",
+        "résider en France ;",
+        "avoir au moins un enfant à charge qui réside en France ;",
+        "prouver que vos enfants sont entrés en France de façon régulière, sauf si votre titre de séjour vous permet de travailler.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "À Mayotte, la preuve de l'entrée régulière des enfants est toujours demandée. Si vos enfants sont arrivés par le regroupement familial, la procédure qui permet à votre famille de vous rejoindre, lisez notre [guide du regroupement familial](/articles/regroupement-familial-france-2026-guide-complet-conditions-documents-delais).",
+    },
+    {
+      type: "p",
+      texte: "Le montant dépend de vos revenus. Pour 2 enfants, la fiche [F13213](https://www.service-public.gouv.fr/particuliers/vosdroits/F13213) indique :",
+    },
+    {
+      type: "tableau",
+      entetes: ["Revenus du foyer (revenu net catégoriel 2024)", "Montant pour 2 enfants, par mois"],
+      lignes: [
+        ["Jusqu'à 79 980 €", "152,25 €"],
+        ["De 79 980 € à 106 604 €", "76,13 €"],
+        ["Plus de 106 604 €", "38,07 €"],
+      ],
+    },
+    {
+      type: "h2",
+      texte: "AAH : l'allocation aux adultes handicapés",
+    },
+    {
+      type: "p",
+      texte: "L'AAH aide les adultes en situation de handicap qui ont peu de ressources. Pour un étranger hors Union européenne, en métropole ou dans un département d'outre-mer, il faut ([service-public, F12242](https://www.service-public.gouv.fr/particuliers/vosdroits/F12242)) :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "un titre de séjour en cours de validité, ou le récépissé d'une demande de renouvellement (le papier qui prouve que votre demande est en cours) ;",
+        "résider en France depuis plus de 3 mois, sauf si vous travaillez.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Le montant maximal est de ==1 041,59 €== par mois, sans autres ressources. À Mayotte, la règle est différente : il faut y résider depuis au moins 15 ans, et le montant maximal est de 518,73 €.",
+    },
+    {
+      type: "h2",
+      texte: "Le tableau pour tout retenir",
+    },
+    {
+      type: "tableau",
+      entetes: ["Aide", "Condition de durée pour un étranger hors UE", "Source"],
+      lignes: [
+        ["RSA", "5 ans de titre autorisant à travailler, sauf exceptions", "F19778"],
+        ["Prime d'activité", "5 ans de titre autorisant à travailler, sauf exceptions", "L. 842-2, F2882"],
+        ["APL", "Aucune, avec un titre en cours de validité ; étudiants : 3 cas seulement", "F12006, F1563"],
+        ["Allocations familiales", "Aucune ; preuve de l'entrée régulière des enfants dans certains cas", "F2787"],
+        ["AAH", "Plus de 3 mois de résidence, sauf si vous travaillez (15 ans à Mayotte)", "F12242"],
+      ],
+    },
+    {
+      type: "p",
+      texte: "Sans titre de séjour, ces aides ne sont pas ouvertes. Pour les soins, il existe l'aide médicale d'État : voyez notre article sur [l'AME](/articles/aide-medicale-etat-ame). Pour votre propre cas, le simulateur de la CAF sur caf.fr, un point d'accès au droit ou une association comme La Cimade peuvent vous aider.",
+    },
+    {
+      type: "h2",
+      texte: "Et l'examen civique ?",
+    },
+    {
+      type: "p",
+      texte: "La protection sociale fait partie de la thématique « Vivre dans la société française » de l'examen civique. La carte de résident, qui ouvre le RSA sans attendre 5 ans, demande depuis le 1er janvier 2026 la réussite à cet examen ([service-public, F39530](https://www.service-public.gouv.fr/particuliers/vosdroits/F39530)). Pour savoir s'il vous concerne, [vérifiez-le en une minute](/eligibilite-examen-civique), puis lisez notre guide de la [carte de résident](/articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture).",
     },
   ],
   faq: [
     {
-      question: "Un étranger avec un récépissé peut-il toucher des aides CAF ?",
-      reponse: "Oui, à condition que le récépissé porte la mention « autorise son titulaire à travailler » ou qu'il s'agisse d'un récépissé de renouvellement. Le récépissé de première demande peut être insuffisant pour certaines aides.",
+      question: "Un étranger peut-il toucher le RSA ?",
+      reponse: "Oui, s'il a au moins 25 ans et réside en France de façon stable. Il doit aussi remplir une condition de séjour. Ce peut être 5 ans de titre de séjour autorisant à travailler, ou une carte de résident. Les réfugiés, les protégés subsidiaires et les apatrides n'ont pas ce délai. La condition des 5 ans ne vise pas les Algériens, selon service-public.",
     },
     {
-      question: "Faut-il un numéro de Sécurité sociale pour s'inscrire à la CAF ?",
-      reponse: "Non obligatoirement. La CAF peut créer votre dossier avec votre titre de séjour et votre passeport. Votre numéro de Sécurité sociale sera attribué par la CPAM et transmis ensuite à la CAF.",
+      question: "Un étranger a-t-il droit à la prime d'activité ?",
+      reponse: "Oui, s'il a 18 ans ou plus, travaille et gagne peu. Hors Union européenne, il faut en général 5 ans de titre de séjour autorisant à travailler (code de la sécurité sociale, L. 842-2). Les réfugiés, les apatrides, les titulaires d'une carte de résident et certains parents isolés n'ont pas ce délai.",
     },
     {
-      question: "Les aides CAF comptent-elles dans les ressources pour le renouvellement du titre de séjour ?",
-      reponse: "En principe non. Les aides sociales (APL, allocations familiales) ne sont pas considérées comme des \"ressources suffisantes\" pour le renouvellement d'un titre de séjour salarié. La préfecture examine vos revenus d'activité.",
+      question: "Un étranger peut-il avoir l'APL ?",
+      reponse: "Oui, avec un titre de séjour en cours de validité, sans délai d'attente. Le montant dépend des revenus et du loyer. Depuis le 1er juillet 2026, un étudiant hors Union européenne n'y a droit que s'il est boursier sur critères sociaux, s'il travaille ou s'il est en apprentissage.",
     },
     {
-      question: "Peut-on cumuler prime d'activité et APL ?",
-      reponse: "Oui. La prime d'activité et l'APL sont deux aides distinctes et cumulables. En revanche, vos aides au logement sont prises en compte dans le calcul du RSA (forfait logement déduit).",
-    },
-    {
-      question: "Un étranger en France depuis moins de 5 ans n'a vraiment aucune aide si pas de travail ?",
-      reponse: "Il n'a pas droit au RSA, mais il peut percevoir l'APL (aide au logement), l'ARS pour les enfants, et en cas de difficulté, solliciter les aides d'urgence du CCAS de sa commune ou des associations (Secours populaire, Restos du Cœur).",
+      question: "Les allocations familiales sont-elles versées aux étrangers ?",
+      reponse: "Oui, à partir de 2 enfants, si le parent est en séjour régulier, réside en France et a ses enfants à charge en France. Si son titre ne l'autorise pas à travailler, il doit aussi prouver l'entrée régulière des enfants en France. À Mayotte, cette preuve est toujours demandée.",
     },
   ],
   sources: [
     {
-      titre: "Service-Public.fr, RSA conditions pour les étrangers",
-      url: "https://www.service-public.fr/particuliers/vosdroits/F24585",
+      titre: "Service-public : RSA, demandeur de 25 ans et plus (F19778), vérifiée le 01/04/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F19778",
       type: "officiel",
-      description: "Conditions d'accès au RSA pour les personnes étrangères",
+      luLe: "2026-11-11",
     },
     {
-      titre: "CAF.fr, Simulateur de droits",
-      url: "https://www.caf.fr/aides-et-services/les-services-en-ligne/estimateur",
+      titre: "Service-public : prime d'activité (F2882), vérifiée le 01/06/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2882",
       type: "officiel",
-      description: "Simulateur officiel pour estimer vos droits aux aides CAF",
+      luLe: "2026-11-11",
     },
     {
-      titre: "Code de l'action sociale et des familles : Article L262-4",
-      url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031686793/",
+      titre: "Légifrance : code de la sécurité sociale, article L. 842-2 (conditions de la prime d'activité)",
+      url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000031087615",
       type: "juridique",
-      description: "Conditions de résidence pour le RSA",
+      luLe: "2026-11-11",
     },
     {
-      titre: "Service-Public.fr, Aides au logement",
-      url: "https://www.service-public.fr/particuliers/vosdroits/F12006",
+      titre: "Service-public : APL (F12006), vérifiée le 01/07/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F12006",
       type: "officiel",
-      description: "Conditions et démarches pour les aides au logement (APL, ALS, ALF)",
+      luLe: "2026-11-11",
+    },
+    {
+      titre: "Service-public : aide au logement de l'étudiant (F1563), vérifiée le 01/07/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F1563",
+      type: "officiel",
+      luLe: "2026-11-11",
+    },
+    {
+      titre: "Service-public : un étranger peut-il percevoir des prestations familiales en France ? (F2787), vérifiée le 16/10/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2787",
+      type: "officiel",
+      luLe: "2026-11-11",
+    },
+    {
+      titre: "Service-public : allocations familiales (F13213), vérifiée le 01/06/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+      type: "officiel",
+      luLe: "2026-11-11",
+    },
+    {
+      titre: "Service-public : allocation aux adultes handicapés (F12242), vérifiée le 14/09/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F12242",
+      type: "officiel",
+      luLe: "2026-11-11",
+    },
+    {
+      titre: "Service-public : examen civique pour une carte de séjour pluriannuelle ou une carte de résident (F39530), vérifiée le 10/02/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F39530",
+      type: "officiel",
+      luLe: "2026-11-08",
     },
   ],
 };
