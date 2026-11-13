@@ -257,3 +257,14 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | armistice de 1918 ; armistice première guerre mondiale | 100 à 1 k | |
 | première demande titre de séjour réfugié ; titre de voyage pour réfugié rendez vous | 10 à 100 | |
 | titre de séjour parent d'enfant français ; carte de séjour parent d'enfant français ; examen civique parent d'enfant français ; réfugié examen civique ; histoire examen civique | pas de donnée | |
+
+## Mesure du 13/11/2026
+
+« Obtenir le volume de recherche et les prévisions », zone **France** seule (libellé « France » vérifié), langue **toutes les langues** : le bouton de langue était désactivé dans la vue des résultats (même constat que les 02, 03, 05 et 07/11).
+
+| Requête | Volume mensuel | Remarque |
+|---|---|---|
+| commission du titre de séjour | 100 à 1 k | YoY - 90 % |
+| commission titre de séjour ; refus renouvellement titre de séjour ; titre de séjour mayotte ; titre de séjour territorialisé mayotte | 10 à 100 | |
+| saisine commission du titre de séjour ; commission du titre de séjour 10 ans ; carte de séjour pluriannuelle refus renouvellement | pas de donnée | |
+

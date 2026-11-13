@@ -138,6 +138,7 @@ import preparerExamenCivique from "./articles/preparer-examen-civique";
 import dcemDocumentCirculationMineur from "./articles/dcem-document-circulation-mineur";
 import aplEtudiantEtranger from "./articles/apl-etudiant-etranger";
 import onzeNovembreExamenCivique from "./articles/11-novembre-examen-civique";
+import titreVoyageRefugie from "./articles/titre-voyage-refugie";
 import examenCiviqueConjointDeFrancais from "./articles/examen-civique-conjoint-de-francais";
 import attestationAccueilInviterFamilleFrance2026MairieConditions from "./articles/attestation-accueil-inviter-famille-france-2026-mairie-conditions";
 import autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour from "./articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour";
@@ -441,6 +442,7 @@ export const ARTICLES: readonly Article[] = [
   examenCiviqueConjointDeFrancais,
   aplEtudiantEtranger,
   onzeNovembreExamenCivique,
+  titreVoyageRefugie,
   autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour,
   avoirEnfantFranceEtranger2026DroitSolNationaliteAllocations,
   binationauxFrancoMaghrebinsObligationsServiceNationalVoteCon,
