@@ -40,7 +40,6 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 |---|---|
 | /articles/passeport-talent-chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
 | /articles/valeurs-republique-francaise-liberte-egalite-fraternite | Ajouté le 01/11/2026 : cité par Copilot sur « liberté égalité fraternité » (260 citations). 619 mots, deux questions de FAQ, sources sans date : remettre au niveau sur la Constitution et formation-civique.interieur.gouv.fr |
-| /articles/avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations | Ajouté le 09/11/2026 : APL citée sans la règle du 01/07/2026 (« 100 à 250 €/mois », « quel que soit votre titre »). `campus-france-…` corrigé le 13/11/2026 |
 | /articles/anef-etudiant-etranger-2026 ; /articles/frais-inscription-universites-france-etudiants-hors-ue-2026 | Ajoutés le 13/11/2026 : montants à revérifier avant tout lien. Ressources d'un étudiant : 877,5 € par mois et taxe de validation du VLS-TS « étudiant » : 100 € (F2231, vérifiée le 01/08/2026) ; l'ancien seuil de 615 € circule encore |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
@@ -575,3 +574,14 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Commission du titre de séjour (et la décision n° 2026-1228 QPC du 22/10/2026) | commission du titre de séjour | 100 à 1 k (YoY - 90 %) | Le Conseil constitutionnel juge conforme le 5° de L. 432-13 : la commission n'est saisie, pour une carte pluriannuelle, qu'en cas de manquement au contrat d'engagement républicain (JORF n° 0248 du 23/10/2026, texte n° 87). Bon sujet de guide (cadre légal : quand la préfecture doit la saisir, l'audition, l'avis consultatif) ; « commission titre de séjour », « refus renouvellement titre de séjour » 10 à 100 |
 | Titres de séjour territorialisés à Mayotte | titre de séjour mayotte ; titre de séjour territorialisé mayotte | 10 à 100 | CESEDA L. 441-8 ; proposition de loi du sénateur Saïd Omar Oili (ppl26-104, Sénat), fin prévue au 01/01/2030 par la loi de refondation de Mayotte selon le rapport du Sénat (l26-103) : rien de nouveau en vigueur ; une section d'un article outre-mer, pas un article |
 | Ressources des étudiants étrangers : 877,5 € par mois | ressources minimum étudiant étranger 2026 | à mesurer | F2231 (vérifiée le 01/08/2026) : remplace le 615 € de la banque (famille 1, « à vérifier ») ; taxe de validation du VLS-TS « étudiant » 100 € |
+
+## Vu le 14/11/2026 (Planificateur, France, toutes les langues, et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~Présidentielle 2027 : inscription sur les listes après une naturalisation~~ → `inscription-listes-electorales-naturalise`, 14/11/2026 | inscription liste électorale 2027 | 100 à 1 k (+ 900 % sur trois mois) | info.gouv.fr (09/11/2026), F34778, F34240. À remettre à jour quand le décret de convocation paraîtra (au plus tard début février 2027) |
+| Naturalisation des retraités vivant d'une pension étrangère | naturalisation retraité ; naturalisation britannique | 10 à 100 | Lettre du ministre de l'Intérieur à une sénatrice, reproduite par Connexion (11 et 12/11/2026) : aucun texte publié. Section d'un guide naturalisation, seulement quand une source officielle existera |
+| Duplicata de titre de séjour : la taxe | duplicata titre de séjour ; titre de séjour perdu | 100 à 1 k chacune | Optimiser `titre-sejour-perdu-vole-expire-2026-demarches-urgence` (migré) sur A18881 plutôt qu'un nouvel article |
+| Carte de séjour permanent (membre de famille d'un citoyen européen) | carte de séjour permanent | 100 à 1 k | Nouvelle suggestion ; guide permanent, CESEDA partie européens |
+| Allocation pour demandeur d'asile | allocation demandeur d asile | 100 à 1 k (« ada montant » 10 à 100) | Montants à lire sur ofii.fr et service-public |
+| `droit-de-vote-elections-france-2026-guide-citoyen` | - | - | Migré, 0 vue : à revérifier ou à fusionner vers l'article du 14/11 (proposition du rapport) |

@@ -1,373 +1,268 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-buzz-generaux-4.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-buzz-generaux-4.ts`, sans changer d'adresse.
+ * Réécrit par le robot éditorial le 14/11/2026 (`docs/seo/ROBOT.md`, liste « à revérifier »).
+ * Faux dans la version migrée : l'APL « quel que soit votre titre » (faux depuis le 01/07/2026 pour
+ * les étudiants non européens, F1563), l'AME de l'enfant « après 3 mois de présence » (les mineurs y
+ * ont droit sans délai, F3079), la prime à la naissance à 1 049 € versée « au 7e mois » (1 093,11 €,
+ * versée après le 6e mois, F2550), l'allocation de base « jusqu'à 185 € » (198,16 €, F2552), la
+ * déclaration de grossesse « avant 14 semaines » (avant la fin du 3e mois), la carte « parent d'enfant
+ * français » sans la condition des 2 ans d'entretien (F2209). Retirés faute de source : « des centaines
+ * de milliers de naissances », les préfectures « réticentes à expulser », le CNF « gratuit, 1 à 6 mois ».
+ * Sources lues le 14/11/2026 : service-public F3068, F295, F961, F2550, F2552, F2787, F13213, F3079,
+ * F2209 (vérifiée le 06/11/2026), F1563, F1051.
  */
 const article: Article = {
   slug: "avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations",
-  titre: "Avoir un enfant en France quand on est étranger : droit du sol, nationalité, allocations et impact sur votre titre de séjour 2026",
-  titreSeo: "Avoir un enfant en France quand on est étranger : droit du sol, nationalité, allocations et impact sur votre titre de séjour 2026",
-  resume: "Votre enfant né en France est-il automatiquement français ? Non, mais il peut l'être à 13 ou 18 ans. Prime de naissance (1 049 €), allocations CAF sans condition de nationalité, et comment la naissance peut transformer votre titre de séjour : tout ce que vous devez savoir.",
-  chapo: "Vous êtes étranger en France et vous attendez un enfant, ou vous venez d'en avoir un. Félicitations d'abord. Maintenant les questions pratiques : votre enfant est-il français ? Quelles allocations pouvez-vous toucher ? Est-ce que la naissance améliore votre propre situation administrative ? Ce sont des questions que des milliers de parents étrangers se posent chaque année, souvent dans la confusion et l'inquiétude. Ce guide y répond clairement, avec les règles exactes du **droit du sol en 2026**, les allocations auxquelles vous avez droit quel que soit votre titre de séjour, et les impacts concrets sur votre titre de séjour.",
+  titre: "Enfant né en France de parents étrangers : est-il français, quelles aides de la CAF, et quel effet sur votre titre de séjour ?",
+  titreSeo: "Enfant né en France de parents étrangers : droits",
+  resume: "Né en France de parents étrangers, votre enfant n'est pas français à la naissance, sauf exception. Nationalité, aides de la CAF, AME et titre de séjour.",
+  chapo: "Un enfant né en France de deux parents étrangers ==n'est pas français à la naissance==, sauf si l'un des parents est lui-même né en France. Il peut le devenir dès 13 ans par une déclaration, ou automatiquement à 18 ans. Les aides de la CAF (caisse d'allocations familiales) ne dépendent pas de la nationalité, mais de la ==régularité de votre séjour==.",
   publieLe: "2026-04-12",
-  modifieLe: "2026-04-12",
-  minutes: 20,
-  theme: "avoir enfant en France étranger 2026",
+  modifieLe: "2026-11-14",
+  minutes: 7,
+  theme: "Enfant né en France de parents étrangers : nationalité, aides et titre de séjour",
   motsCles: [
-    "avoir enfant en France étranger 2026",
+    "enfant né en France de parents étrangers",
     "droit du sol France nationalité enfant",
     "enfant né en France nationalité française",
     "allocations familiales étranger France",
-    "CAF étranger bébé France",
-    "titre de séjour parent enfant français",
-    "naissance enfant étranger France titre séjour",
-    "allocation naissance étrangère France",
-    "PAJE prime naissance étranger France",
-    "enfant français parent étranger sans papiers",
-    "nationalité française enfant né en France",
-    "droits naissance étranger France 2026",
-    "impact naissance titre de séjour",
-    "droit du sol conditions France 2026",
-    "parent enfant français titre de séjour",
+    "prime de naissance étranger",
+    "titre de séjour parent d'enfant français",
+    "naissance enfant étranger France titre de séjour",
+    "AME enfant",
   ],
   rubrique: "conseils",
-  auteur: "Brian B",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1492725764893-90b379c2b6e7?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
-    largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1492725764893-90b379c2b6e7",
+    src: "/images/articles/enfant-ne-en-france-parents-etrangers.webp",
+    alt: "Un lit de bébé neuf en bois clair et blanc, posé dans une pièce vide",
+    largeur: 1024,
+    hauteur: 683,
+    credit: "Associated Fabrication, via Flickr",
+    licence: "CC BY 2.0",
+    source: "https://www.flickr.com/photos/31167421@N07/5097130297",
   },
   blocs: [
     {
+      type: "encadre",
+      titre: "Article corrigé le 14 novembre 2026",
+      texte: "La version précédente contenait des erreurs. L'aide au logement n'est plus ouverte à tous les titres de séjour : depuis le 1er juillet 2026, les étudiants non européens n'y ont droit que dans trois cas. Un enfant mineur a droit à l'AME sans attendre 3 mois. La prime à la naissance vaut 1 093,11 €, et l'allocation de base 198,16 € par mois au plus. Les chiffres sans source ont été retirés.",
+      ton: "ambre",
+    },
+    {
       type: "h2",
-      texte: "Votre enfant est-il automatiquement français à la naissance ?",
-      id: "enfant-automatiquement-francais",
+      texte: "Votre enfant né en France est-il français ?",
     },
     {
       type: "p",
-      texte: "La réponse courte : **pas automatiquement**. La France applique le droit du sol, mais avec des conditions. Voici la règle exacte.",
+      texte: "En France, la nationalité passe d'abord par les parents. Un enfant est français de naissance si ==au moins un de ses parents est français==, qu'il soit né en France ou ailleurs ([service-public, F3068](https://www.service-public.gouv.fr/particuliers/vosdroits/F3068)). Si ses deux parents sont étrangers, la naissance en France ne suffit pas.",
     },
-    { type: "h3", texte: "Le principe : droit du sang d'abord" },
-    {
-      type: "p",
-      texte: "En France, la nationalité se transmet d'abord **par filiation** (droit du sang) : si l'un des deux parents est français, l'enfant est français à la naissance, où qu'il soit né. C'est automatique.",
-    },
-    { type: "h3", texte: "Le droit du sol : pour les enfants nés en France de parents étrangers" },
-    {
-      type: "p",
-      texte: "Si **les deux parents sont étrangers**, l'enfant né en France n'est pas automatiquement français à la naissance. Mais il peut le devenir selon deux cas :",
-    },
-    { type: "p", texte: "**Cas 1 : L'acquisition automatique à 18 ans**" },
-    {
-      type: "p",
-      texte: "L'enfant né en France de parents étrangers acquiert automatiquement la nationalité française à 18 ans s'il réside en France et y a résidé pendant **au moins 5 ans depuis l'âge de 11 ans** (article 21-7 du Code civil). Aucune démarche n'est nécessaire, c'est automatique.",
-    },
-    { type: "p", texte: "**Cas 2 : La déclaration anticipée entre 13 et 17 ans**" },
-    {
-      type: "p",
-      texte: "Entre 13 et 17 ans, l'enfant (avec l'accord des parents) peut demander la nationalité française par déclaration s'il réside en France depuis ses 8 ans (article 21-11 du Code civil). Démarche simple, devant le tribunal judiciaire ou la préfecture.",
-    },
-    { type: "p", texte: "**Cas 3 : La déclaration dès la naissance (cas particulier)**" },
-    {
-      type: "p",
-      texte: "Si l'enfant est né en France et que **l'un des parents est lui-même né en France** (même de parents étrangers), alors l'enfant est **français à la naissance** : c'est le double droit du sol (article 19-3 du Code civil). Ce cas concerne notamment les enfants de la 3e génération.",
-    },
-    { type: "h3", texte: "En résumé" },
     {
       type: "tableau",
-      entetes: ["Situation", "Nationalité à la naissance"],
+      entetes: ["Situation de l'enfant né en France", "Nationalité française"],
       lignes: [
-        ["Au moins un parent français", "Français automatiquement"],
-        [
-          "Les deux parents étrangers, enfant né en France",
-          "**Étranger** (peut devenir français à 13-18 ans)",
-        ],
-        [
-          "Les deux parents étrangers, mais l'un né en France",
-          "**Français automatiquement** (double droit du sol)",
-        ],
+        ["Au moins un parent français", "Français dès la naissance"],
+        ["Deux parents étrangers, dont un né en France", "Français dès la naissance (on parle de « double droit du sol »)"],
+        ["Deux parents étrangers nés à l'étranger, enfant de 13 à 17 ans", "Possible par une déclaration, sous condition de résidence"],
+        ["Deux parents étrangers nés à l'étranger, jeune de 18 ans", "Automatique, sous condition de résidence"],
       ],
+    },
+    {
+      type: "p",
+      texte: "Le droit du sol, c'est la règle qui donne des droits à la nationalité parce qu'on est né sur le sol français. Les conditions de résidence sont précises ([service-public, F295](https://www.service-public.gouv.fr/particuliers/vosdroits/F295)) :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "**De 13 à 15 ans** : les parents font la déclaration, avec l'accord de l'enfant. Il doit avoir vécu en France au moins 5 ans depuis ses 8 ans.",
+        "**À 16 ou 17 ans** : le jeune fait la déclaration lui-même. Il doit avoir vécu en France au moins 5 ans depuis ses 11 ans.",
+        "**À 18 ans** : le jeune devient français sans démarche, s'il vit en France et y a vécu au moins 5 ans depuis ses 11 ans.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "La déclaration se dépose au tribunal judiciaire, le tribunal qui traite les questions de nationalité. Les étapes sont détaillées dans notre article sur [la nationalité des enfants mineurs](/articles/naturalisation-enfant-mineur-france-2026-effet-collectif-declaration). À Mayotte, une condition de plus s'ajoute : le séjour régulier d'un parent à la naissance (voir [le droit du sol à Mayotte](/articles/droit-du-sol-mayotte)).",
     },
     {
       type: "h2",
-      texte: "Impact de la naissance sur votre titre de séjour",
-      id: "impact-titre-sejour-parents",
+      texte: "Que faire dans les jours qui suivent la naissance ?",
     },
-    {
-      type: "p",
-      texte: "La naissance d'un enfant en France peut avoir un impact **significatif** sur votre situation administrative, dans certains cas, elle ouvre droit à un nouveau titre de séjour.",
-    },
-    { type: "h3", texte: "Si vous êtes déjà en situation régulière" },
-    {
-      type: "p",
-      texte: "La naissance d'un enfant ne change pas directement votre titre de séjour actuel. En revanche, elle peut :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Vous permettre d'obtenir un titre de **catégorie \"vie privée et familiale\"** lors du prochain renouvellement (plus stable)",
-        "Renforcer votre dossier de naturalisation (liens en France)",
-        "Permettre un regroupement familial si votre conjoint est à l'étranger",
-      ],
-    },
-    { type: "h3", texte: "Si votre enfant devient français (double droit du sol ou déclaration)" },
-    {
-      type: "p",
-      texte: "Dès que votre enfant est reconnu comme français, vous pouvez demander un **titre de séjour \"parent d'enfant français\"** (article L. 423-7 du CESEDA). Conditions :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Avoir la garde effective de l'enfant",
-        "Contribuer à son entretien et son éducation",
-        "Ne pas être en situation de polygamie",
-        "Ne pas représenter une menace à l'ordre public",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Ce titre est **valable 1 an**, renouvelable, et ouvre droit à une carte de résident après 3 ans.",
-    },
-    { type: "h3", texte: "Si vous êtes en situation irrégulière" },
-    {
-      type: "p",
-      texte: "La naissance d'un enfant en France **ne régularise pas automatiquement** votre situation. Mais elle constitue un **argument puissant** dans le cadre d'une demande de régularisation humanitaire. Le préfet doit tenir compte :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Du droit de l'enfant à être élevé par ses deux parents",
-        "De l'intérêt supérieur de l'enfant (article 3 de la Convention internationale des droits de l'enfant)",
-        "Des liens développés en France",
-      ],
-    },
-    {
-      type: "encadre",
-      texte: "Si votre enfant est français et que vous n'avez pas de titre de séjour, contactez immédiatement une association (La Cimade, France Terre d'Asile) pour examiner votre situation.",
-      ton: "bleu",
-    },
-    {
-      type: "h2",
-      texte: "Les allocations et aides auxquelles vous avez droit",
-      id: "allocations-auxquelles-vous-avez-droit",
-    },
-    {
-      type: "p",
-      texte: "Bonne nouvelle : **la plupart des aides à la naissance ne sont pas conditionnées à la nationalité française**. Elles dépendent de votre titre de séjour et de votre résidence en France.",
-    },
-    { type: "h3", texte: "La PAJE (Prestation d'Accueil du Jeune Enfant) : CAF" },
-    {
-      type: "tableau",
-      entetes: ["Aide", "Conditions", "Montant 2026"],
-      lignes: [
-        [
-          "**Prime à la naissance**",
-          "Résider en France, titre de séjour valide, grossesse déclarée avant 14 semaines",
-          "**1 049 €** (versée au 7e mois de grossesse)",
-        ],
-        [
-          "**Allocation de base**",
-          "Enfant de moins de 3 ans, conditions de ressources",
-          "**Jusqu'à 185 €/mois**",
-        ],
-        [
-          "**Complément de libre choix d'activité (PreParE)**",
-          "Cesser ou réduire son activité professionnelle",
-          "Variable selon le cas",
-        ],
-      ],
-    },
-    { type: "p", texte: "**Titres de séjour acceptés par la CAF :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Carte de séjour temporaire (salarié, étudiant, vie privée et familiale, etc.)",
-        "Carte de séjour pluriannuelle",
-        "Carte de résident",
-        "Récépissé de demande de renouvellement (sous conditions)",
-      ],
-    },
-    {
-      type: "encadre",
-      texte: "Les titres de séjour \"visiteur\" et \"étudiant\" en première année peuvent avoir des restrictions. Vérifiez avec votre CAF.",
-      ton: "bleu",
-    },
-    { type: "h3", texte: "Les allocations familiales" },
-    {
-      type: "p",
-      texte: "Les allocations familiales classiques s'appliquent dès le **2e enfant à charge**. Elles sont versées sans condition de nationalité si vous résidez en France et disposez d'un titre de séjour régulier.",
-    },
-    { type: "h3", texte: "Le Complément Familial et l'APL" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Complément familial** : pour les familles avec 3 enfants ou plus de 3 à 21 ans, sous conditions de ressources",
-        "**APL (aide au logement)** : accessible dès votre arrivée régulière en France, quel que soit votre titre",
-      ],
-    },
-    { type: "h3", texte: "L'aide médicale d'État (AME) pour les sans-papiers" },
-    {
-      type: "p",
-      texte: "Si vous n'avez pas de titre de séjour, vous n'accédez pas à la Sécurité sociale classique, mais votre enfant bénéficie de l'**AME** (soins pris en charge à 100 %) après 3 mois de présence sur le territoire. Les naissances en urgence sont prises en charge **sans délai**.",
-    },
-    { type: "h3", texte: "Les démarches à faire dans les jours suivant la naissance" },
     {
       type: "liste",
       style: "numeros",
       items: [
-        "**Déclarer la naissance** à la mairie dans les **5 jours** (obligatoire)",
-        "**Déclarer la naissance à la CAF** pour démarrer vos droits",
-        "**Affilier l'enfant à votre CPAM** pour la carte Vitale",
-        "Si l'enfant peut être français : **demander un certificat de nationalité française** au greffe du tribunal judiciaire",
+        "**Déclarer la naissance à la mairie** du lieu de naissance, dans les ==5 jours== qui suivent l'accouchement. Le jour de l'accouchement ne compte pas. Si le dernier jour tombe un samedi, un dimanche ou un jour férié, le délai va jusqu'au jour ouvrable suivant. Cette déclaration crée l'acte de naissance ([service-public, F961](https://www.service-public.gouv.fr/particuliers/vosdroits/F961)). En Guyane, le délai peut être différent selon la commune.",
+        "**Prévenir la CAF**, qui verse les aides aux familles.",
+        "**Ajouter l'enfant à votre assurance maladie**, ou à votre AME si vous en bénéficiez.",
+        "**Si l'enfant est français** (un parent français ou né en France), demander sa carte d'identité ou son passeport. Un certificat de nationalité française, le document qui prouve la nationalité, peut être demandé au tribunal ([service-public, F1051](https://www.service-public.gouv.fr/particuliers/vosdroits/F1051) ; notre article sur [le certificat de nationalité](/articles/certificat-nationalite-francaise)).",
       ],
     },
     {
       type: "h2",
-      texte: "Les démarches pratiques pas à pas après la naissance",
-      id: "demarches-pratiques-naissance",
+      texte: "Quelles aides de la CAF pouvez-vous recevoir ?",
     },
-    { type: "h3", texte: "Jour 1-5 : La déclaration de naissance" },
     {
       type: "p",
-      texte: "**Obligatoire et urgent** : vous devez déclarer la naissance à la **mairie du lieu de naissance** dans les **5 jours** suivant la naissance (article 55 du Code civil). La maternité vous remet généralement un certificat médical d'accouchement. Apportez :",
+      texte: "Les prestations familiales, ce sont les aides versées par la CAF pour les enfants. Elles ne demandent pas la nationalité française. Mais si vous êtes étranger, il faut ==résider en France== et être ==en séjour régulier==, avec un titre de séjour ou un récépissé de renouvellement, par exemple ([service-public, F2787](https://www.service-public.gouv.fr/particuliers/vosdroits/F2787)). Le récépissé, c'est le papier provisoire qui prouve que votre demande de titre est en cours.",
     },
     {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Le certificat médical d'accouchement",
-        "Vos pièces d'identité (ou titre de séjour)",
-        "Votre livret de famille (si vous en avez un)",
+      type: "tableau",
+      entetes: ["Aide", "Condition principale", "Montant en 2026"],
+      lignes: [
+        ["Prime à la naissance", "Grossesse déclarée avant la fin du 3e mois, ressources sous un plafond", "1 093,11 €, versée avant la fin du mois qui suit le 6e mois de grossesse"],
+        ["Allocation de base", "Enfant de moins de 3 ans, ressources sous un plafond", "198,16 € par mois (ou 99,08 € selon les revenus)"],
+        ["Allocations familiales", "Au moins 2 enfants à charge", "Selon le nombre d'enfants et les revenus"],
       ],
     },
     {
       type: "p",
-      texte: "**Sanction** : Au-delà de 5 jours, il faut passer par le tribunal judiciaire, une procédure plus longue.",
+      texte: "Les montants viennent des fiches officielles de la [prime à la naissance](https://www.service-public.gouv.fr/particuliers/vosdroits/F2550) et de l'[allocation de base](https://www.service-public.gouv.fr/particuliers/vosdroits/F2552), à jour au 1er avril 2026, et de celle des [allocations familiales](https://www.service-public.gouv.fr/particuliers/vosdroits/F13213). Pour toutes ces aides, il faut vivre en France plus de 9 mois par an.",
     },
-    {
-      type: "h3",
-      texte: "Dans le mois : La demande de Certificat de Nationalité Française (si applicable)",
-    },
-    {
-      type: "p",
-      texte: "Si votre enfant est potentiellement français (double droit du sol), demandez immédiatement un **Certificat de Nationalité Française (CNF)** au **greffe du tribunal judiciaire** de votre domicile. Ce certificat est la preuve officielle de la nationalité.",
-    },
-    { type: "p", texte: "Délai : 1 à 6 mois selon les juridictions. C'est gratuit." },
-    { type: "h3", texte: "Dans les 2 semaines : La déclaration CAF" },
-    {
-      type: "p",
-      texte: "Déclarez la naissance sur **caf.fr** dans votre espace personnel. La CAF calculera automatiquement vos droits à la prime de naissance et à l'allocation de base PAJE. Si vous n'êtes pas encore inscrit à la CAF, créez votre compte immédiatement.",
-    },
-    { type: "h3", texte: "Dans le mois : L'affiliation à la CPAM" },
-    {
-      type: "p",
-      texte: "Affiliez votre enfant à votre caisse d'assurance maladie (CPAM) via **ameli.fr**. L'enfant sera couvert dès la naissance sur votre carte Vitale jusqu'à sa propre affiliation.",
-    },
-    { type: "h3", texte: "Si vous souhaitez demander un titre de séjour \"parent d'enfant français\"" },
-    { type: "p", texte: "Une fois que vous avez le CNF de l'enfant, rassemblez :" },
     {
       type: "liste",
-      style: "puces",
+      style: "alertes",
       items: [
-        "L'acte de naissance de l'enfant + CNF",
-        "La preuve de garde effective (vie commune, ou jugement si séparation)",
-        "Les preuves de contribution à l'entretien (dépenses pour l'enfant)",
-        "Vos propres documents d'identité et preuves de résidence",
+        "**L'entrée régulière des enfants** peut être demandée pour un enfant né à l'étranger, sauf si votre titre vous permet de travailler. À Mayotte, cette preuve est demandée dans tous les cas (F2787).",
+        "**L'aide au logement** demande un titre de séjour valide. Depuis le 1er juillet 2026, un étudiant non européen n'y a droit que dans trois cas, par exemple s'il est boursier ([service-public, F1563](https://www.service-public.gouv.fr/particuliers/vosdroits/F1563)). Voir notre article sur [l'APL des étudiants étrangers](/articles/apl-etudiant-etranger).",
       ],
     },
-    { type: "p", texte: "Déposez la demande à la préfecture ou sur l'ANEF." },
     {
       type: "h2",
-      texte: "Et si vous n'avez pas de titre de séjour ?",
-      id: "sans-papiers-enfant-en-france",
+      texte: "Sans titre de séjour : quels soins pour votre enfant ?",
     },
     {
       type: "p",
-      texte: "C'est la situation la plus anxiogène. Voici ce qui est vrai et ce qui est faux.",
+      texte: "L'aide médicale de l'État (AME) prend en charge les soins des étrangers sans titre de séjour, sous conditions de ressources. Un adulte doit vivre en France depuis plus de 3 mois. Un enfant mineur, lui, y a droit ==sans délai==, et ses soins sont pris en charge à 100 % ([service-public, F3079](https://www.service-public.gouv.fr/particuliers/vosdroits/F3079)).",
     },
-    { type: "h3", texte: "Faux : \"L'hôpital va signaler mon accouchement à la police\"" },
     {
       type: "p",
-      texte: "**C'est faux.** Les hôpitaux et maternités sont soumis au **secret médical**. Aucun personnel de santé ne peut signaler votre présence à la police lors d'un accouchement. Cette règle est absolue. Des centaines de milliers de naissances d'enfants de parents sans papiers ont lieu chaque année en France en toute sécurité.",
+      texte: "Les soins d'une femme enceinte et d'un nouveau-né, dont l'accouchement, font partie des soins urgents pris en charge même sans AME (F3079). Attention : l'AME ne s'applique pas à Mayotte. Notre article sur [l'aide médicale de l'État](/articles/aide-medicale-etat-ame) détaille la demande.",
     },
-    { type: "h3", texte: "Vrai : \"Je peux accoucher en France sans titre de séjour\"" },
+    {
+      type: "h2",
+      texte: "La naissance change-t-elle votre titre de séjour ?",
+    },
     {
       type: "p",
-      texte: "**C'est vrai.** Les soins urgents, dont les accouchements, sont pris en charge par l'**AME** (Aide Médicale d'État) ou à défaut par le système hospitalier en urgence. Aucun hôpital ne peut refuser une femme en travail.",
+      texte: "Pas automatiquement. Une naissance ne donne pas, à elle seule, un titre de séjour à ses parents. Tout dépend de la nationalité de l'enfant.",
     },
-    { type: "h3", texte: "Ce que la naissance peut changer pour votre situation" },
-    { type: "p", texte: "Si vous êtes sans papiers et que votre enfant naît en France :" },
+    {
+      type: "p",
+      texte: "**Si votre enfant est français**, vous pouvez demander la carte de séjour « vie privée et familiale » de parent d'enfant français, même en situation irrégulière. Il faut remplir trois conditions ([service-public, F2209](https://www.service-public.gouv.fr/particuliers/vosdroits/F2209)) :",
+    },
     {
       type: "liste",
-      style: "numeros",
+      style: "coches",
       items: [
-        "**Votre enfant n'est pas automatiquement français** (voir section sur le droit du sol)",
-        "Mais votre enfant a le droit d'être **scolarisé** (l'école est obligatoire pour tous, sans condition de titre de séjour)",
-        "La présence d'un enfant en France constitue un **motif humanitaire** pour demander une régularisation",
-        "Si votre enfant devient français (double droit du sol), vous pouvez demander un titre de séjour \"parent d'enfant français\"",
+        "être le père ou la mère d'un enfant français mineur qui vit en France ;",
+        "contribuer vraiment à son entretien et à son éducation depuis sa naissance, ou depuis au moins 2 ans ;",
+        "ne pas vivre en état de polygamie.",
       ],
     },
-    { type: "h3", texte: "La menace d'expulsion avec un enfant en bas âge" },
     {
       type: "p",
-      texte: "En pratique, les préfectures sont très réticentes à expulser une mère (ou un père) avec un enfant en bas âge. Ce n'est pas une garantie légale absolue, mais c'est une réalité opérationnelle. Le juge administratif tient compte de l'intérêt de l'enfant dans tout recours contre une OQTF.",
+      texte: "La préfecture, le service de l'État qui délivre les titres, peut refuser en cas d'obligation de quitter la France non respectée, de faux documents ou de faits graves. Cette carte permet de travailler sans autorisation de travail.",
     },
     {
-      type: "encadre",
-      titre: "À retenir",
-      texte: "La naissance d'un enfant en France est un événement qui peut transformer votre situation administrative, mais il faut connaître les règles exactes pour en bénéficier. Le droit du sol ne rend pas votre enfant automatiquement français, mais ouvre des voies vers la nationalité française entre 13 et 18 ans. En termes d'allocations, la France est généreux avec les parents résidant régulièrement sur son territoire : la prime de naissance, les allocations familiales, la PAJE sont accessibles sans condition de nationalité. Si vous êtes dans une situation irrégulière, la naissance de votre enfant doit vous pousser à consulter rapidement une association spécialisée, votre dossier mérite d'être sérieusement étudié.",
-      ton: "bleu",
+      type: "p",
+      texte: "**Si votre enfant n'est pas français**, sa naissance ne crée pas de titre pour vous. Elle peut compter parmi vos liens personnels et familiaux en France, mais la préfecture étudie chaque dossier. Pour une situation personnelle, adressez-vous à une association comme La Cimade, ou à un avocat.",
+    },
+    {
+      type: "h2",
+      texte: "Et plus tard : votre propre naturalisation",
+    },
+    {
+      type: "p",
+      texte: "Un parent qui devient français par décret peut transmettre la nationalité à ses enfants mineurs, si leur nom figure dans le décret et qu'ils vivent avec lui. Pour un adulte, la naturalisation a ses propres conditions, dont l'examen civique. Notre article sur [l'examen civique pour la naturalisation](/articles/examen-civique-naturalisation) dit quand le passer, et le [simulateur d'éligibilité](/eligibilite-examen-civique) vous répond en une minute.",
     },
   ],
   faq: [
     {
-      question: "Mon enfant né en France peut-il avoir un passeport français avant 18 ans ?",
-      reponse: "Oui, si votre enfant est reconnu comme français (double droit du sol ou déclaration anticipée à 13-17 ans), il peut obtenir un passeport français. La demande se fait en mairie avec le Certificat de Nationalité Française.",
+      question: "Un enfant né en France de parents étrangers est-il français ?",
+      reponse: "Pas à la naissance, sauf si l'un des parents est lui-même né en France. L'enfant peut devenir français par une déclaration dès 13 ans, s'il a vécu au moins 5 ans en France depuis ses 8 ans. Sinon, il devient français automatiquement à 18 ans, s'il vit en France et y a vécu 5 ans depuis ses 11 ans.",
     },
     {
-      question: "Mon enfant est né en France, puis-je voyager avec lui à l'étranger ?",
-      reponse: "Votre enfant voyagera avec son propre titre de voyage. S'il a la nationalité de l'un des deux parents, il peut obtenir le passeport du pays en question. Si votre enfant est français, un passeport français lui sera délivré. S'il n'est ni français ni du pays d'origine, un \"document de voyage\" peut être demandé à l'ambassade de votre pays.",
+      question: "Un étranger peut-il toucher la prime de naissance ?",
+      reponse: "Oui, si vous résidez en France et êtes en séjour régulier, avec un titre de séjour ou un récépissé de renouvellement. Il faut aussi déclarer la grossesse avant la fin du 3e mois et ne pas dépasser un plafond de ressources. En 2026, la prime vaut 1 093,11 €, versée pendant la grossesse.",
     },
     {
-      question: "La CAF peut-elle me demander de prouver ma nationalité pour recevoir les allocations ?",
-      reponse: "La CAF ne demande pas votre nationalité. Elle demande votre titre de séjour (ou tout document prouvant votre résidence régulière en France) et vos justificatifs de ressources. Un titre de séjour régulier suffit pour ouvrir vos droits.",
+      question: "Mon bébé a-t-il droit à l'AME si je suis sans papiers ?",
+      reponse: "Oui, sous conditions de ressources. Un enfant mineur a droit à l'aide médicale de l'État sans attendre 3 mois de présence en France, et ses soins sont pris en charge à 100 %. L'accouchement et les soins du nouveau-né sont aussi couverts comme soins urgents. L'AME ne s'applique pas à Mayotte.",
     },
     {
-      question: "Mon conjoint est à l'étranger : peut-il venir en France grâce à la naissance de notre enfant ?",
-      reponse: "La naissance d'un enfant en France n'ouvre pas automatiquement un droit au regroupement familial. Le regroupement familial suit sa propre procédure (revenus, logement, durée de résidence). Cependant, si l'enfant est français, il a le droit d'être élevé par ses deux parents, ce qui est un argument fort dans une demande de visa \"parent d'enfant français\".",
+      question: "Avoir un enfant en France donne-t-il un titre de séjour ?",
+      reponse: "Pas automatiquement. Si l'enfant est français, son parent étranger peut demander une carte de séjour « vie privée et familiale ». Il doit contribuer à son entretien et à son éducation depuis sa naissance, ou depuis 2 ans. Si l'enfant n'est pas français, la naissance ne crée pas de droit au séjour.",
     },
   ],
   sources: [
     {
-      titre: "Code civil : Articles sur la nationalité française (art. 19-3, 21-7, 21-11)",
-      url: "https://www.legifrance.gouv.fr/codes/id/LEGISCTA000006150501",
-      type: "juridique",
-      description: "Base légale du droit du sol et de l'acquisition de la nationalité française",
-    },
-    {
-      titre: "CESEDA article L. 423-7, Titre de séjour parent d'enfant français",
-      url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000042776913",
-      type: "juridique",
-      description: "Conditions d'obtention du titre de séjour pour parent d'enfant français",
-    },
-    {
-      titre: "CAF : Prestations familiales pour les étrangers",
-      url: "https://www.caf.fr/allocataires/vies-de-famille/articles/les-conditions-pour-beneficier-des-prestations-familiales",
+      titre: "Service-public : dans quels cas un enfant est-il français ? (F3068, vérifiée le 29/04/2025)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F3068",
       type: "officiel",
-      description: "Conditions d'accès aux aides CAF pour les ressortissants étrangers",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : nationalité française d'un enfant né en France de parents étrangers (F295, vérifiée le 19/08/2025)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F295",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : déclaration de naissance (F961, vérifiée le 18/06/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F961",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : prime à la naissance de la Paje (F2550, vérifiée le 01/04/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2550",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : allocation de base de la Paje (F2552, vérifiée le 01/04/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2552",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : allocations familiales (F13213, vérifiée le 01/06/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F13213",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : prestations familiales d'un étranger en France (F2787, vérifiée le 16/10/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2787",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : aide médicale de l'État (F3079, vérifiée le 01/04/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F3079",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : carte de séjour « vie privée et familiale » (F2209, vérifiée le 06/11/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2209",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : aide au logement d'un étudiant (F1563, vérifiée le 01/07/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F1563",
+      type: "officiel",
+      luLe: "2026-11-14",
+    },
+    {
+      titre: "Service-public : certificat de nationalité française (F1051, vérifiée le 20/06/2025)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F1051",
+      type: "officiel",
+      luLe: "2026-11-14",
     },
   ],
 };

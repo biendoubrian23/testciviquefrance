@@ -268,3 +268,18 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | commission titre de séjour ; refus renouvellement titre de séjour ; titre de séjour mayotte ; titre de séjour territorialisé mayotte | 10 à 100 | |
 | saisine commission du titre de séjour ; commission du titre de séjour 10 ans ; carte de séjour pluriannuelle refus renouvellement | pas de donnée | |
 
+## Mesure du 14/11/2026
+
+« Obtenir le volume de recherche et les prévisions », zone **France** seule (libellé « France » lu sur la page des résultats), langue **toutes les langues** : le bouton de langue était de nouveau désactivé dans la vue des résultats.
+
+| Requête | Volume mensuel | Remarque |
+|---|---|---|
+| inscription liste électorale 2027 | 100 à 1 k | + 900 % sur trois mois, YoY + ∞ ; porte l'article du 14/11 |
+| allocation demandeur d asile | 100 à 1 k | |
+| carte de séjour permanent | 100 à 1 k | Nouvelle suggestion du 14/11 (famille d'un citoyen européen) |
+| duplicata titre de séjour | 100 à 1 k | |
+| titre de séjour perdu | 100 à 1 k | Page migrée `titre-sejour-perdu-vole-expire-…` |
+| examen civique pdf | 100 à 1 k | |
+| examen civique quiz | 100 à 1 k | YoY + ∞ |
+| ada montant ; naturalisation retraité ; naturalisation britannique | 10 à 100 | |
+| examen civique laïcité ; examen civique questions réponses ; liste électorale naturalisé ; naturalisation retraite étrangère | pas de donnée | |
