@@ -251,3 +251,12 @@ Gestes possibles : `publie`, `optimise`, `corrige`, `fusionne` (l'ancien slug en
 2026-11-14 | corrige | avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations | liste « à revérifier » : APL « quel que soit votre titre » (faux depuis le 01/07/2026, F1563) ; AME de l'enfant « après 3 mois » (sans délai pour un mineur, F3079) ; prime à la naissance 1 049 € → 1 093,11 € (F2550) ; allocation de base 185 € → 198,16 € (F2552) ; grossesse « avant 14 semaines » → avant la fin du 3e mois ; carte parent d'enfant français sans la condition des 2 ans (F2209) ; chiffres sans source retirés ; environ 1 150 mots ; titreSeo 49 caractères ; signature équipe ; couverture locale
 2026-11-14 | experience | dcem-document-circulation-mineur ; comment-reussir-test-civique-premier-coup | verdicts : confirmée (185 impressions, position 6,8) ; non confirmée (99 impressions, position 25,7 contre 30) | fait
 2026-11-14 | volumes | - | Planificateur, « Obtenir le volume », France, toutes les langues (bouton de langue désactivé) : 14 requêtes (élections 2027, naturalisation des retraités, ADA, duplicata, examen civique) | fait
+2026-11-14 | publication | inscription-listes-electorales-naturalise, avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations | push accepté (9d05e3d) ; seo:publie, une commande par page : les deux en ligne, IndexNow accepté (200) | fait
+2026-11-14 | indexation | inscription-listes-electorales-naturalise | nouvelle page du jour (Google ne reconnaît pas cette URL) | demandée
+2026-11-14 | indexation | avoir-enfant-france-etranger-2026-droit-sol-nationalite-allocations | retouché le 2026-11-14, pas encore relu par Google | demandée
+2026-11-14 | indexation | ouvrir-compte-bancaire-france-etranger-2026-banques-neo-banques-droit-compte | Explorée, actuellement non indexée, 12 impressions | demandée
+2026-11-14 | indexation | culture-francaise-patrimoine-monuments-artistes | Explorée, actuellement non indexée, 7 impressions | demandée
+2026-11-14 | indexation | attestation-accueil-inviter-famille-france-2026-mairie-conditions | Explorée, actuellement non indexée | demandée
+2026-11-14 | indexation | binationaux-franco-maghrebins-obligations-service-national-vote-consulaire | Explorée, actuellement non indexée | demandée
+2026-11-14 | indexation | recepisse-titre-de-sejour-droits-duree-voyage | Explorée, actuellement non indexée | demandée
+2026-11-14 | indexation | refus-titre-sejour-oqtf-recours-2026-guide-etrangers-france | Détectée, actuellement non indexée | demandée
