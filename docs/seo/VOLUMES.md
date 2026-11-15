@@ -283,3 +283,28 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | examen civique quiz | 100 à 1 k | YoY + ∞ |
 | ada montant ; naturalisation retraité ; naturalisation britannique | 10 à 100 | |
 | examen civique laïcité ; examen civique questions réponses ; liste électorale naturalisé ; naturalisation retraite étrangère | pas de donnée | |
+
+## Mesure du 15/11/2026 (dimanche)
+
+**« Trouver de nouveaux mots clés »**, zone **France**, langue **French (par défaut)** (libellés lus sous le champ ; libellés « French » et « France » relus sur la page des résultats). 9 mots de départ sur la famille Test Civique pratique (« examen civique 32/40 » refusé par l'outil : caractère non valide). Idées rendues hors sujet (« examen blanc », « tests standardisés », « enseignement de la conduite »).
+
+| Requête | Volume mensuel | Concurrence pub | Remarque |
+|---|---|---|---|
+| test civique gratuit | 1 k à 10 k | faible | YoY + ∞ ; porte la page réécrite le 15/11 |
+| simulation examen civique | 100 à 1 k | faible | YoY + ∞ |
+| examen civique en ligne | 100 à 1 k | faible | YoY + ∞ |
+| examen blanc examen civique | 10 à 100 | faible | + 900 % sur trois mois |
+| note examen civique ; score examen civique ; combien de bonnes réponses examen civique ; résultat examen blanc ; note minimum examen civique | 0 à 10 | | |
+
+**« Obtenir le volume de recherche et les prévisions »**, zone **France** seule (libellé lu sur la page des résultats), langue **toutes les langues** (bouton désactivé dans la vue des résultats, comme depuis le 02/11).
+
+| Requête | Volume mensuel | Remarque |
+|---|---|---|
+| examen civique questions | 1 k à 10 k | |
+| carte de séjour visiteur | 100 à 1 k | YoY - 90 % (+ 900 % sur trois mois le 11/11) |
+| commission du titre de séjour | 100 à 1 k | YoY - 90 % ; porte l'article du 15/11 |
+| examen civique gratuit | 100 à 1 k | YoY + ∞ |
+| liste questions examen civique | 100 à 1 k | - 90 % sur trois mois |
+| allocation demandeur d asile montant ; durée examen civique ; examen civique mise en situation exemple ; mise en situation examen civique | 10 à 100 | |
+| examen civique sur ordinateur | pas de donnée | |
+

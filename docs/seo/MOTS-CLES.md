@@ -41,6 +41,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | /articles/passeport-talent-chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
 | /articles/valeurs-republique-francaise-liberte-egalite-fraternite | Ajouté le 01/11/2026 : cité par Copilot sur « liberté égalité fraternité » (260 citations). 619 mots, deux questions de FAQ, sources sans date : remettre au niveau sur la Constitution et formation-civique.interieur.gouv.fr |
 | /articles/anef-etudiant-etranger-2026 ; /articles/frais-inscription-universites-france-etudiants-hors-ue-2026 | Ajoutés le 13/11/2026 : montants à revérifier avant tout lien. Ressources d'un étudiant : 877,5 € par mois et taxe de validation du VLS-TS « étudiant » : 100 € (F2231, vérifiée le 01/08/2026) ; l'ancien seuil de 615 € circule encore |
+| /articles/preparer-examen-civique ; /articles/formation-civique-site-officiel (à vérifier) | Ajouté le 15/11/2026 : « les examens blancs de 40 questions vous donnent un résultat par thématique » est faux sur la plateforme (le résultat d'un examen blanc donne le score, le pourcentage, le temps et la correction question par question ; la progression par thème vient des quiz d'entraînement, `app/dashboard/page.tsx`). Corriger la phrase ; vérifier la même affirmation dans les autres pages de la famille examen avant tout lien |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
@@ -571,7 +572,7 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 
 | Sujet | Requêtes | Volume | Remarque |
 |---|---|---|---|
-| Commission du titre de séjour (et la décision n° 2026-1228 QPC du 22/10/2026) | commission du titre de séjour | 100 à 1 k (YoY - 90 %) | Le Conseil constitutionnel juge conforme le 5° de L. 432-13 : la commission n'est saisie, pour une carte pluriannuelle, qu'en cas de manquement au contrat d'engagement républicain (JORF n° 0248 du 23/10/2026, texte n° 87). Bon sujet de guide (cadre légal : quand la préfecture doit la saisir, l'audition, l'avis consultatif) ; « commission titre de séjour », « refus renouvellement titre de séjour » 10 à 100 |
+| ~~Commission du titre de séjour (et la décision n° 2026-1228 QPC du 22/10/2026)~~ → `commission-titre-de-sejour`, 15/11/2026 | commission du titre de séjour | 100 à 1 k (YoY - 90 %) | Le Conseil constitutionnel juge conforme le 5° de L. 432-13 : la commission n'est saisie, pour une carte pluriannuelle, qu'en cas de manquement au contrat d'engagement républicain (JORF n° 0248 du 23/10/2026, texte n° 87). Bon sujet de guide (cadre légal : quand la préfecture doit la saisir, l'audition, l'avis consultatif) ; « commission titre de séjour », « refus renouvellement titre de séjour » 10 à 100 |
 | Titres de séjour territorialisés à Mayotte | titre de séjour mayotte ; titre de séjour territorialisé mayotte | 10 à 100 | CESEDA L. 441-8 ; proposition de loi du sénateur Saïd Omar Oili (ppl26-104, Sénat), fin prévue au 01/01/2030 par la loi de refondation de Mayotte selon le rapport du Sénat (l26-103) : rien de nouveau en vigueur ; une section d'un article outre-mer, pas un article |
 | Ressources des étudiants étrangers : 877,5 € par mois | ressources minimum étudiant étranger 2026 | à mesurer | F2231 (vérifiée le 01/08/2026) : remplace le 615 € de la banque (famille 1, « à vérifier ») ; taxe de validation du VLS-TS « étudiant » 100 € |
 
@@ -585,3 +586,18 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Carte de séjour permanent (membre de famille d'un citoyen européen) | carte de séjour permanent | 100 à 1 k | Nouvelle suggestion ; guide permanent, CESEDA partie européens |
 | Allocation pour demandeur d'asile | allocation demandeur d asile | 100 à 1 k (« ada montant » 10 à 100) | Montants à lire sur ofii.fr et service-public |
 | `droit-de-vote-elections-france-2026-guide-citoyen` | - | - | Migré, 0 vue : à revérifier ou à fusionner vers l'article du 14/11 (proposition du rapport) |
+
+## Vu le 15/11/2026 (Planificateur, France, French puis toutes les langues, et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~Test civique gratuit : où s'entraîner~~ → réécriture de `test-civique-gratuit-en-ligne-…`, 15/11/2026 | test civique gratuit ; examen civique gratuit ; examen civique en ligne ; simulation examen civique | 1 k à 10 k ; 100 à 1 k chacune | La page était fausse sur dix points ; une seule page doit porter ces requêtes (pas de doublon « simulation ») |
+| Lire son score d'examen blanc | note examen civique ; score examen civique ; note minimum examen civique ; combien de bonnes réponses examen civique ; résultat examen blanc | 0 à 10 chacune | Pas d'article : une section d'une page existante au plus |
+| Mises en situation de l'examen civique | mise en situation examen civique ; examen civique mise en situation exemple | 10 à 100 | Section d'une page de la famille examen, pas un article |
+| Questions de l'examen civique | examen civique questions | 1 k à 10 k | Porte `examen-civique-2026-exemples-questions-corrigees` (88 vues sur 28 jours, mais 2 impressions Google seulement) : candidat d'optimisation (titre et indexation à comprendre) |
+| Liste des questions | liste questions examen civique | 100 à 1 k | Porte `formation-civique-site-officiel` |
+| Carte de séjour visiteur | carte de séjour visiteur | 100 à 1 k (YoY - 90 %) | Guide permanent en attente |
+| ADA | allocation demandeur d asile montant | 10 à 100 | Section d'un guide asile |
+| Durée de l'examen | durée examen civique | 10 à 100 | Déjà dans les pages examen |
+| « Projet de loi immigration » | - | - | Vu dans la presse le 14/11 (Franceinfo) ; aucun texte trouvé au Journal officiel ni de communiqué du Conseil des ministres : rien à écrire tant qu'aucun texte n'est déposé |
+
