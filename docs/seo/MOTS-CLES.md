@@ -41,7 +41,6 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | /articles/passeport-talent-chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
 | /articles/valeurs-republique-francaise-liberte-egalite-fraternite | Ajouté le 01/11/2026 : cité par Copilot sur « liberté égalité fraternité » (260 citations). 619 mots, deux questions de FAQ, sources sans date : remettre au niveau sur la Constitution et formation-civique.interieur.gouv.fr |
 | /articles/anef-etudiant-etranger-2026 ; /articles/frais-inscription-universites-france-etudiants-hors-ue-2026 | Ajoutés le 13/11/2026 : montants à revérifier avant tout lien. Ressources d'un étudiant : 877,5 € par mois et taxe de validation du VLS-TS « étudiant » : 100 € (F2231, vérifiée le 01/08/2026) ; l'ancien seuil de 615 € circule encore |
-| /articles/preparer-examen-civique ; /articles/formation-civique-site-officiel (à vérifier) | Ajouté le 15/11/2026 : « les examens blancs de 40 questions vous donnent un résultat par thématique » est faux sur la plateforme (le résultat d'un examen blanc donne le score, le pourcentage, le temps et la correction question par question ; la progression par thème vient des quiz d'entraînement, `app/dashboard/page.tsx`). Corriger la phrase ; vérifier la même affirmation dans les autres pages de la famille examen avant tout lien |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
 
 ## Brouillons d'articles-a-publier (à ne pas publier tels quels, sujets candidats)
@@ -600,4 +599,13 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | ADA | allocation demandeur d asile montant | 10 à 100 | Section d'un guide asile |
 | Durée de l'examen | durée examen civique | 10 à 100 | Déjà dans les pages examen |
 | « Projet de loi immigration » | - | - | Vu dans la presse le 14/11 (Franceinfo) ; aucun texte trouvé au Journal officiel ni de communiqué du Conseil des ministres : rien à écrire tant qu'aucun texte n'est déposé |
+
+## Vu le 16/11/2026 (veille, sans Planificateur : volumes du 09/11 encore valables)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~Titre de séjour salarié : obtenir, renouveler, changer d'employeur~~ → `titre-de-sejour-salarie`, 16/11/2026 | titre de séjour salarié ; renouvellement titre de séjour salarié ; carte de séjour salarié | 1 k à 10 k ; 1 k à 10 k ; 100 à 1 k (09/11) | F15898 (la fiche de la carte, « en cours de mise à jour »), A19128. Écart à surveiller : droit de visa de régularisation 180 € (F15898) contre 300 € (A18881) |
+| ~~Promesse « résultat par thématique » des examens blancs~~ → corrigée dans six pages, 16/11/2026 | - | - | Faux sur la plateforme (`app/dashboard/examens/[id]/page.tsx`) : score, pourcentage, temps, correction question par question avec la thématique. Ne plus l'écrire tant que le produit ne le fait pas |
+| Proposition de loi n° 3253 : le vote du 19/11 | régularisation sans papiers ; proposition de loi régularisation travailleurs sans papiers | 100 à 1 k ; à mesurer | Le sujet actualité du 19/11 : « ce que le vote change, et ce qui ne change pas », et mise à jour de `regularisation-metiers-en-tension` |
+| Délais d'instruction en préfecture (Aisne) | délai titre de séjour préfecture aisne | à mesurer | L'Union, 15/11 : treize organisations sur les délais de la préfecture de l'Aisne. Presse seulement ; à relier au délai légal de 90 jours si une préfecture publie ses délais |
 

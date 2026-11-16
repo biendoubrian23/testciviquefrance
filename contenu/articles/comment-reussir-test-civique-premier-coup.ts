@@ -24,7 +24,7 @@ const article: Article = {
   resume: "Le jour de l'examen civique : l'identité à l'entrée, aucun retard toléré, 45 minutes, la réponse vide qui vaut 0, et ce qui est interdit dans la salle.",
   chapo: "Pour réussir l'examen civique du premier coup, il faut ==32 bonnes réponses sur 40== en 45 minutes. Le règlement officiel ajoute des règles que beaucoup découvrent trop tard. ==Aucun retard n'est toléré==, il faut un titre de séjour valable pour entrer (la carte qui vous autorise à vivre en France), et une réponse vide vaut 0. Voici le jour J, point par point.",
   publieLe: "2025-12-20",
-  modifieLe: "2026-11-07",
+  modifieLe: "2026-11-16",
   minutes: 7,
   theme: "réussir l'examen civique",
   motsCles: [
@@ -179,7 +179,7 @@ const article: Article = {
     },
     {
       type: "cta",
-      texte: "Le meilleur entraînement au jour J, c'est le jour J en conditions réelles. Sur Test Civique France, les examens blancs de 40 questions se passent en temps limité et vous donnent un résultat par thématique. L'inscription est gratuite.",
+      texte: "Le meilleur entraînement au jour J, c'est le jour J en conditions réelles. Sur Test Civique France, les examens blancs de 40 questions se passent en temps limité, puis vous donnent votre score et la correction de chaque question. L'inscription est gratuite.",
       bouton: "Passer un examen blanc",
     },
     {

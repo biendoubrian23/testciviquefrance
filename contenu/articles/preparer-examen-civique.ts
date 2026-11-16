@@ -20,7 +20,7 @@ const article: Article = {
   resume: "Un plan de révision de 4 semaines pour l'examen civique, calé sur le poids de chaque thème : quoi réviser chaque semaine, avec quelles ressources.",
   chapo: "Pour préparer l'examen civique, commencez par les deux thématiques qui comptent le plus : les principes et valeurs de la République, et les droits et devoirs. Elles font ==22 questions sur 40==. Voici un plan simple en 4 semaines, à raison d'environ 30 minutes par jour, qui suit le poids officiel de chaque thème.",
   publieLe: "2026-11-06",
-  modifieLe: "2026-11-06",
+  modifieLe: "2026-11-16",
   minutes: 8,
   theme: "préparer l'examen civique",
   motsCles: [
@@ -170,7 +170,7 @@ const article: Article = {
     },
     {
       type: "cta",
-      texte: "Les listes officielles n'ont ni réponses ni mises en situation. Sur Test Civique France, les cours des 5 thématiques sont gratuits, et les examens blancs de 40 questions vous donnent un résultat par thématique. L'inscription est gratuite.",
+      texte: "Les listes officielles n'ont ni réponses ni mises en situation. Sur Test Civique France, les cours des 5 thématiques sont gratuits. Les examens blancs de 40 questions vous donnent votre score et la correction de chaque question, avec sa thématique. L'inscription est gratuite.",
       bouton: "Commencer ma préparation",
     },
     {

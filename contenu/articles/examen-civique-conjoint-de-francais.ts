@@ -20,8 +20,8 @@ const article: Article = {
   resume: "Conjoint de Français : l'examen civique est exigé pour la carte pluriannuelle et la carte de résident, pas pour le 1er titre. Le calendrier, carte par carte.",
   chapo: "Si vous êtes en couple marié avec une personne française, votre premier titre de séjour (la carte qui vous autorise à vivre en France) ne demande ==pas d'examen civique==. L'examen arrive avec la ==première carte pluriannuelle==, en général la 2e année, puis avec la carte de résident, un titre de 10 ans. En passant tout de suite le niveau « carte de résident », vous couvrez les deux.",
   publieLe: "2026-11-08",
-  modifieLe: "2026-11-08",
-  minutes: 7,
+  modifieLe: "2026-11-16",
+  minutes: 9,
   theme: "examen civique conjoint de Français",
   motsCles: [
     "examen civique conjoint de français",
@@ -170,7 +170,7 @@ const article: Article = {
     },
     {
       type: "cta",
-      texte: "Le niveau « carte de résident » couvre aussi la carte pluriannuelle. Sur Test Civique France, les cours des 5 thématiques sont gratuits, et les examens blancs de 40 questions vous montrent votre résultat par thématique. L'inscription est gratuite.",
+      texte: "Le niveau « carte de résident » couvre aussi la carte pluriannuelle. Sur Test Civique France, les cours des 5 thématiques sont gratuits. Les examens blancs de 40 questions vous donnent votre score et la correction de chaque question, avec sa thématique. L'inscription est gratuite.",
       bouton: "Tester mon niveau",
     },
     {

@@ -20,7 +20,7 @@ const article: Article = {
   resume: "Un échec à l'examen civique n'est pas définitif : on repasse autant de fois qu'il faut, 24 heures après. Le prix, le dossier, et où chercher les points perdus.",
   chapo: "Rater l'examen civique n'est pas éliminatoire : vous pouvez le repasser ==autant de fois que nécessaire==, avec ==24 heures== d'attente entre deux passages. Chaque passage se paie, de 60 à 80 € selon le centre. Voici ce que devient votre demande, et comment cibler les points qui vous ont manqué.",
   publieLe: "2026-08-24",
-  modifieLe: "2026-11-06",
+  modifieLe: "2026-11-16",
   minutes: 7,
   theme: "rater l'examen civique",
   motsCles: [
@@ -171,7 +171,7 @@ const article: Article = {
     },
     {
       type: "cta",
-      texte: "Avant de payer un nouveau passage, faites un examen blanc de 40 questions types et regardez votre résultat thématique par thématique. L'inscription est gratuite.",
+      texte: "Avant de payer un nouveau passage, faites un examen blanc de 40 questions types et relisez la correction de chaque question : sa thématique vous montre où retravailler. L'inscription est gratuite.",
       bouton: "Voir où je perds des points",
     },
     {

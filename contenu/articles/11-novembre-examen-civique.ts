@@ -24,7 +24,7 @@ const article: Article = {
   resume: "Que commémore-t-on le 11 novembre ? L'armistice de 1918, la Grande Guerre en 6 dates et son bilan, avec deux questions types de l'examen civique.",
   chapo: "Le 11 novembre, la France se souvient de ==l'armistice du 11 novembre 1918==, l'accord qui a arrêté les combats de la Première Guerre mondiale (1914-1918). C'est un jour férié, et depuis 2012, le jour où l'on rend hommage à ==tous les morts pour la France==. Cette guerre fait partie du programme officiel de l'examen civique : voici l'essentiel, en mots simples.",
   publieLe: "2026-11-11",
-  modifieLe: "2026-11-11",
+  modifieLe: "2026-11-16",
   minutes: 7,
   theme: "11 novembre et Première Guerre mondiale à l'examen civique",
   motsCles: [
@@ -184,7 +184,7 @@ const article: Article = {
     },
     {
       type: "cta",
-      texte: "L'histoire compte pour 8 questions sur 40. Sur Test Civique France, les cours des 5 thématiques sont gratuits, et les examens blancs de 40 questions vous montrent votre résultat par thématique. L'inscription est gratuite.",
+      texte: "L'histoire compte pour 8 questions sur 40. Sur Test Civique France, les cours des 5 thématiques sont gratuits. Les examens blancs de 40 questions vous donnent votre score et la correction de chaque question, avec sa thématique. L'inscription est gratuite.",
     },
     {
       type: "p",

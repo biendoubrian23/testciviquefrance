@@ -22,7 +22,7 @@ const article: Article = {
   resume: "Le site formation-civique.interieur.gouv.fr publie gratuitement les fiches et les questions de l'examen civique. Ce qu'il contient, et comment l'utiliser.",
   chapo: "Le ministère de l'Intérieur a un site officiel et gratuit pour préparer l'examen civique : ==formation-civique.interieur.gouv.fr==. Il publie la liste des questions de connaissance, ==191 pour la carte de séjour pluriannuelle et 209 pour la carte de résident==, et des fiches de cours par thématique. Voici ce que vous y trouvez, ce qui n'y est pas, et une méthode simple pour réviser avec.",
   publieLe: "2026-11-01",
-  modifieLe: "2026-11-01",
+  modifieLe: "2026-11-16",
   minutes: 7,
   theme: "le site officiel de la formation civique",
   motsCles: [
@@ -149,7 +149,7 @@ const article: Article = {
     },
     {
       type: "cta",
-      texte: "Les listes officielles n'ont ni réponses ni mises en situation. Pour vous tester sur 40 questions types, mises en situation comprises, et voir vos résultats par thématique, l'inscription est gratuite.",
+      texte: "Les listes officielles n'ont ni réponses ni mises en situation. Pour vous tester sur 40 questions types, mises en situation comprises, puis lire la correction de chaque question avec sa thématique, l'inscription est gratuite.",
       bouton: "Faire un examen blanc gratuit",
     },
     {

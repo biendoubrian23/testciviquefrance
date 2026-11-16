@@ -236,7 +236,7 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | nationalité française mariage ; nationalité française par mariage | 1 k à 10 k | faible | Porte `nationalite-francaise-par-mariage-2026-…` : candidat d'optimisation |
 | demande de nationalité française par mariage | 1 k à 10 k | faible | + 900 % sur trois mois |
 | naturalisation par décret ; naturalisation par mariage | 1 k à 10 k | faible | |
-| titre de séjour salarié | 1 k à 10 k | faible | |
+| titre de séjour salarié | 1 k à 10 k | faible | Porte `titre-de-sejour-salarie` (16/11) |
 | renouvellement titre de séjour salarié | 1 k à 10 k | faible | YoY - 90 % |
 | passeport talent chercheur | 100 à 1 k | faible | |
 | carte de séjour salarié | 100 à 1 k | faible | |
