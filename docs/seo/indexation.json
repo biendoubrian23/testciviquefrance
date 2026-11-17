@@ -1,7 +1,7 @@
 {
   "note": "Tenu par `npm run seo:indexation` (scripts/seo/indexation.mjs) : l'etat de chaque adresse du plan du site selon l'API URL Inspection de Search Console, et les adresses a faire demander aujourd'hui. `demandeLe` est ecrit par `--demandee` quand le robot a demande l'indexation dans Search Console.",
   "propriete": "https://www.testciviquefrance.fr/",
-  "mis_a_jour": "2026-11-17 07:05",
+  "mis_a_jour": "2026-11-17 17:06",
   "derniere_execution": {
     "le": "2026-11-17 06:48",
     "inspectees": 60,
@@ -1057,6 +1057,9 @@
       "canoniqueGoogle": "https://www.testciviquefrance.fr/articles/geographie-france-regions-departements-villes",
       "canoniqueDeclaree": "https://www.testciviquefrance.fr/articles/geographie-france-regions-departements-villes",
       "inspecteLe": "2026-11-17 06:48"
+    },
+    "https://www.testciviquefrance.fr/articles/gta-6-casier-judiciaire-titre-de-sejour": {
+      "demandeLe": "2026-11-17"
     },
     "https://www.testciviquefrance.fr/articles/guide-anef-complet-2026-creer-compte-deposer-demande": {
       "verdict": "PASS",
