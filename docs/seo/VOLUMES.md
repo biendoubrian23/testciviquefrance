@@ -308,3 +308,20 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | allocation demandeur d asile montant ; durée examen civique ; examen civique mise en situation exemple ; mise en situation examen civique | 10 à 100 | |
 | examen civique sur ordinateur | pas de donnée | |
 
+
+## 17/11/2026
+
+**« Obtenir le volume de recherche et les prévisions »**, zone **France** seule (libellé lu sur la page des résultats), langue **toutes les langues** (bouton désactivé dans la vue des résultats, comme depuis le 02/11). Douze derniers mois.
+
+| Requête | Volume mensuel | Remarque |
+|---|---|---|
+| défenseur des droits | 10 k à 100 k | stable ; porte l'article du 17/11 |
+| france services | 10 k à 100 k | stable |
+| la marseillaise paroles | 10 k à 100 k | + 900 % sur trois mois |
+| recensement citoyen | 1 k à 10 k | |
+| naturalisation par déclaration | 1 k à 10 k | YoY - 90 % |
+| saisir le défenseur des droits | 100 à 1 k | porte l'article du 17/11 |
+| recensement militaire | 100 à 1 k | |
+| laïcité au travail ; signes religieux au travail | 10 à 100 | une section, pas un article |
+| nationalité française par ascendant | 10 à 100 | + 900 % sur trois mois et sur un an |
+| carte de résident 10 ans timbre fiscal ; titre de séjour 10 ans ; recensement naturalisé ; jdc naturalisé | pas de donnée | |

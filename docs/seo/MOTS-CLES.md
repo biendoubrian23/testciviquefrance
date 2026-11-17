@@ -38,7 +38,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Article | Point à vérifier |
 |---|---|
-| /articles/passeport-talent-chercheur-, -creation-entreprise-, famille-passeport-talent- | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
+| /articles/passeport-talent-chercheur-, famille-passeport-talent- (`-creation-entreprise-` corrigé le 17/11 sur F16922 : 30 000 €, Smic à 22 404,20 € brut par an, avis du ministère chargé de l'économie, 350 €) | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
 | /articles/valeurs-republique-francaise-liberte-egalite-fraternite | Ajouté le 01/11/2026 : cité par Copilot sur « liberté égalité fraternité » (260 citations). 619 mots, deux questions de FAQ, sources sans date : remettre au niveau sur la Constitution et formation-civique.interieur.gouv.fr |
 | /articles/anef-etudiant-etranger-2026 ; /articles/frais-inscription-universites-france-etudiants-hors-ue-2026 | Ajoutés le 13/11/2026 : montants à revérifier avant tout lien. Ressources d'un étudiant : 877,5 € par mois et taxe de validation du VLS-TS « étudiant » : 100 € (F2231, vérifiée le 01/08/2026) ; l'ancien seuil de 615 € circule encore |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
@@ -267,7 +267,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 | Le conseil départemental et ses missions sociales | conseil départemental rôle ; RSA département ; PMI | à mesurer | collectivites-locales.gouv.fr |
 | La région : transports, lycées, formation | rôle de la région ; compétences région ; conseil régional | à mesurer | collectivites-locales.gouv.fr |
 | L'intercommunalité expliquée simplement | intercommunalité ; communauté de communes rôle ; métropole compétences | à mesurer | collectivites-locales.gouv.fr |
-| Le Défenseur des droits : quand et comment le saisir | Défenseur des droits saisir ; discrimination recours ; délégué Défenseur des droits | à mesurer | defenseurdesdroits.fr |
+| ~~Le Défenseur des droits : quand et comment le saisir~~ → `defenseur-des-droits`, 17/11/2026 | Défenseur des droits saisir ; discrimination recours ; délégué Défenseur des droits | à mesurer | defenseurdesdroits.fr |
 | France Services : l'aide gratuite aux démarches | France services ; maison France services ; aide démarche en ligne gratuite | à mesurer | france-services.gouv.fr. Recoupe /articles/ressources-utiles-etrangers-france-2026-outils-associations-aides |
 | Le parcours de soins : médecin traitant, spécialiste, remboursement | parcours de soins ; médecin traitant obligatoire ; remboursement spécialiste | à mesurer | ameli.fr. Recoupe /articles/medecin-traitant-secu-sociale-etranger-france-2026-ameli-carte-vitale |
 | Pharmacie de garde et médecin de garde : comment les trouver | pharmacie de garde ; médecin de garde nuit ; 3237 | à mesurer | ameli.fr, service-public |
@@ -609,3 +609,15 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Proposition de loi n° 3253 : le vote du 19/11 | régularisation sans papiers ; proposition de loi régularisation travailleurs sans papiers | 100 à 1 k ; à mesurer | Le sujet actualité du 19/11 : « ce que le vote change, et ce qui ne change pas », et mise à jour de `regularisation-metiers-en-tension` |
 | Délais d'instruction en préfecture (Aisne) | délai titre de séjour préfecture aisne | à mesurer | L'Union, 15/11 : treize organisations sur les délais de la préfecture de l'Aisne. Presse seulement ; à relier au délai légal de 90 jours si une préfecture publie ses délais |
 
+## Vu le 17/11/2026 (Planificateur, France, toutes les langues, et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~Le Défenseur des droits : rôle et saisine~~ → `defenseur-des-droits`, 17/11/2026 | défenseur des droits ; saisir le défenseur des droits | 10 k à 100 k ; 100 à 1 k | Constitution 71-1, loi organique n° 2011-333. Titulaire : François-Noël Buffet depuis le 23/07/2026 (site du Défenseur, 16/11/2026) |
+| La Marseillaise : histoire et paroles | la marseillaise paroles | 10 k à 100 k (+ 900 % sur trois mois) | Famille vie en France ou examen (symboles). Recoupe `symboles-france-…` (non indexé) : soit un article à part sur l'histoire, soit renforcer la page symboles |
+| Recensement citoyen et JDC après une naturalisation | recensement citoyen ; recensement militaire | 1 k à 10 k ; 100 à 1 k | « recensement naturalisé » et « jdc naturalisé » sans donnée : l'angle naturalisé est une section, la requête générique est dominée par service-public et majdc.fr |
+| France Services | france services | 10 k à 100 k | Recoupe `ressources-utiles-etrangers-…` ; candidat vie en France |
+| Naturalisation par déclaration | naturalisation par déclaration | 1 k à 10 k (YoY - 90 %) | Guide permanent ; recoupe `nationalite-francaise-par-mariage-…` et `naturalisation-enfant-mineur-…` |
+| Nationalité française par ascendant | nationalité française par ascendant | 10 à 100 (+ 900 %) | Section d'un article (certificat de nationalité) |
+| Laïcité au travail | laïcité au travail ; signes religieux au travail | 10 à 100 | Section, pas un article |
+| `hausse-taxes-titres-sejour-…` | timbre fiscal titre de séjour | - | Expérience du titre infirmée le 17/11 (taux de clic 2,9 %) : titre de résultat à retravailler à partir du 24/11 |

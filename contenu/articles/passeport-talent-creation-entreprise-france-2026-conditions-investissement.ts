@@ -1,290 +1,260 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-passeport-impots-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/passeport-talent-creation-entreprise-france-2026-conditions-investissement`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026, puis réécrit par le robot éditorial le 17/11/2026
+ * (`docs/seo/ROBOT.md`), sans changer d'adresse. Sur la liste « à revérifier »
+ * depuis le 28/10/2026, et en hausse (48 vues sur 28 jours, 14 vues le 15/11).
+ * Erreurs corrigées : « 2 000 entrepreneurs par an » (aucune source) ; une
+ * « validation par la préfecture » du projet (c'est un avis du ministère
+ * chargé de l'économie) ; un « investisseur » à 3 emplois (F16922 dit
+ * « créer ou sauvegarder de l'emploi », sans nombre) ; timbre de 200 € (350 €
+ * pour la carte, F16922 et A18881) ; naturalisation au niveau B1 et « test
+ * civique (80 %) » ; business plan « en 7 sections obligatoires », relecture
+ * « gratuite » par Bpifrance, capital social de 30 000 € et « 6 mois pour
+ * démarrer » (rien de tout cela dans les sources officielles).
+ * Sources lues le 17/11/2026 : service-public F16922 (onglet « Porteur de
+ * projet », lu dans Chrome ; vérifiée le 01/06/2026, « en cours de mise à
+ * jour »), A18881 (mise à jour le 12/05/2026), F2213 (vérifiée le
+ * 16/07/2026) ; décret n° 2026-1001 (lu le 30/10/2026).
+ * Non écrit : le prix du visa (france-visas illisible), le niveau de langue de
+ * la naturalisation (renvoyé à l'article dédié).
  */
 const article: Article = {
   slug: "passeport-talent-creation-entreprise-france-2026-conditions-investissement",
-  titre: "Passeport Talent Création d'entreprise 2026 : 30 000 € d'investissement, business plan, procédure",
-  titreSeo: "Passeport Talent Création d'entreprise 2026 : 30 000 € d'investissement, business plan, procédure",
-  resume: "Lancer son entreprise en France comme étranger : conditions Passeport Talent Création d'entreprise (Master ou 5 ans d'XP, 30 000 €), business plan détaillé, procédure du dossier au visa, renouvellement à 4 ans et naturalisation.",
-  chapo: "Le **Passeport Talent : Création d'entreprise** permet aux entrepreneurs étrangers de s'installer en France pour lancer leur projet, avec un titre **valable 4 ans renouvelables**. Conditions : un **diplôme Master OU un investissement de 30 000 €**, un projet économique sérieux et une présence effective en France.",
+  titre: "Carte talent création d'entreprise : les 4 conditions, dont 30 000 € de financement, et l'avis à obtenir avant le visa",
+  titreSeo: "Carte talent création d'entreprise : 30 000 €",
+  resume: "Carte talent création d'entreprise : diplôme ou 5 ans d'expérience, 30 000 € de financement, ressources au Smic, avis du ministère, prix et démarches.",
+  chapo: "Pour créer une entreprise en France avec une carte « talent », il faut remplir ==4 conditions==. Les deux plus concrètes : un diplôme de niveau master ou 5 ans d'expérience, et un financement d'au moins ==30 000 €==. Depuis l'étranger, vous devez d'abord obtenir l'avis du ministère chargé de l'économie sur votre projet. La carte coûte ==350 €==.",
   publieLe: "2026-04-28",
-  modifieLe: "2026-04-28",
-  minutes: 21,
-  theme: "passeport talent création entreprise",
+  modifieLe: "2026-11-17",
+  minutes: 7,
+  theme: "La carte de séjour talent, parcours création d'entreprise : conditions, avis du ministère, pièces, prix et suite du parcours",
   motsCles: [
     "passeport talent création entreprise",
+    "carte talent création d'entreprise",
+    "talent porteur de projet",
     "visa entrepreneur france",
     "créer entreprise étranger france",
-    "business plan visa france",
     "investissement 30000 euros france",
   ],
   rubrique: "cadre-legal",
-  auteur: "Brian B",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1664575602554-2087b04935a5?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
-    largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1664575602554-2087b04935a5",
+    src: "/images/articles/carte-talent-creation-entreprise.webp",
+    alt: "Un bureau vide au soleil, avec un ordinateur portable ouvert et une chaise bleue",
+    largeur: 1024,
+    hauteur: 683,
+    credit: "www.cofab.de, via Flickr",
+    licence: "CC BY 2.0",
+    source: "https://www.flickr.com/photos/63260285@N07/5754067245",
   },
   blocs: [
     {
-      type: "p",
-      texte: "En 2026, plus de **2 000 entrepreneurs étrangers** par an obtiennent ce titre, dans la tech, le commerce, la restauration et les services. Voici les **conditions exactes, le montant à investir, le business plan attendu et les démarches** étape par étape.",
+      type: "encadre",
+      titre: "Article corrigé le 17 novembre 2026",
+      texte: "La version précédente contenait des erreurs. Elle citait « 2 000 entrepreneurs par an » sans source, et oubliait l'avis du ministère chargé de l'économie sur le projet. Elle donnait aussi un prix de 200 € au lieu de 350 €, et un niveau de français B1 pour la naturalisation. Le texte ci-dessous suit la fiche officielle de service-public.",
+      ton: "ambre",
     },
     {
       type: "h2",
-      texte: "Conditions d'éligibilité Passeport Talent Création d'entreprise",
-      id: "conditions",
-    },
-    { type: "p", texte: "**Voie 1 : Le profil \"diplômé\"**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Master ou Bac+5 minimum",
-        "Projet économique sérieux et viable",
-        "Investissement personnel : **au moins 30 000 €** dans le projet",
-        "Justifier de **ressources** ≥ 1 SMIC (1 805 € brut/mois en 2026)",
-      ],
-    },
-    { type: "p", texte: "**Voie 2 : Le profil \"expérimenté\"**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "5 ans d'expérience professionnelle dans le secteur du projet",
-        "Projet économique sérieux et viable",
-        "Investissement personnel : **au moins 30 000 €**",
-        "Ressources ≥ 1 SMIC",
-      ],
-    },
-    { type: "p", texte: "**Voie 3 : Le profil \"investisseur\" (autre Passeport Talent)**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Investissement direct ≥ **300 000 € en France**",
-        "Création/préservation d'au moins **3 emplois**",
-        "Différent du Passeport Talent Création (titre Investisseur)",
-      ],
-    },
-    { type: "p", texte: "**Le projet doit présenter :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Une **viabilité économique** documentée",
-        "Un **business plan** sur 3 ans",
-        "Un **siège en France** (possible avec domiciliation au démarrage)",
-      ],
-    },
-    { type: "h2", texte: "Le business plan exigé : 7 sections obligatoires", id: "business-plan" },
-    {
-      type: "p",
-      texte: "Le business plan est **la pièce maîtresse du dossier**. Il doit prouver le sérieux et la viabilité du projet.",
-    },
-    { type: "p", texte: "**Les 7 sections attendues :**" },
-    { type: "p", texte: "**1. Présentation du porteur**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "CV détaillé",
-        "Diplômes et expériences pertinentes",
-        "Pourquoi vous, pourquoi maintenant",
-      ],
-    },
-    { type: "p", texte: "**2. Description du projet**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["Activité, produits/services", "Clientèle cible", "Localisation envisagée en France"],
-    },
-    { type: "p", texte: "**3. Étude de marché**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["Marché français du secteur", "Concurrents principaux", "Avantage différenciateur"],
-    },
-    { type: "p", texte: "**4. Stratégie commerciale**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["Plan de communication", "Canaux de distribution", "Pricing"],
-    },
-    { type: "p", texte: "**5. Plan financier sur 3 ans**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Investissement initial (≥30 000 €)",
-        "Compte de résultat prévisionnel",
-        "Plan de trésorerie",
-        "Seuil de rentabilité",
-      ],
-    },
-    { type: "p", texte: "**6. Équipe et organisation**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["Embauches prévues", "Partenariats clés"],
-    },
-    { type: "p", texte: "**7. Calendrier de mise en œuvre**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["Étapes mois par mois sur 12-18 mois", "Jalons clés"],
+      texte: "Qu'est-ce que la carte talent création d'entreprise ?",
     },
     {
       type: "p",
-      texte: "**Astuce :** faites relire le business plan par un **expert-comptable français** ou via **BPI France Création**. Ils valident gratuitement les business plans.",
+      texte: "La carte de séjour « talent » est une carte pluriannuelle : elle vaut plusieurs années, jusqu'à 4 ans. On l'appelait avant le « passeport talent ». Son nom officiel, pour un entrepreneur, est « talent-porteur de projet ». Elle vous autorise à séjourner en France et à y exercer ==une activité commerciale en lien avec votre projet== ([F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922)).",
     },
-    { type: "h2", texte: "Comment justifier les 30 000 € d'investissement", id: "investissement-30000" },
-    { type: "p", texte: "**Les 30 000 € peuvent provenir de :**" },
-    { type: "p", texte: "✅ **Apport personnel** sur compte bancaire (relevés des 6 derniers mois)" },
     {
       type: "p",
-      texte: "✅ **Prêt bancaire** ou prêt d'honneur (BPI, France Active, Réseau Entreprendre)",
+      texte: "Cette carte a trois parcours, avec des conditions différentes. Cet article traite du premier, la création d'entreprise. Les deux autres sont résumés plus bas.",
     },
-    { type: "p", texte: "✅ **Apport d'associés** (avec convention d'investissement)" },
+    {
+      type: "h2",
+      texte: "Quelles sont les 4 conditions ?",
+    },
     {
       type: "p",
-      texte: "✅ **Apport en nature** (matériel, brevets, fonds de commerce, évalué par un commissaire aux apports)",
+      texte: "Service-public cite ==4 conditions==, toutes obligatoires ([F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922)) :",
     },
-    { type: "p", texte: "**Justificatifs requis :**" },
     {
       type: "liste",
-      style: "puces",
+      style: "numeros",
       items: [
-        "Relevés bancaires montrant les fonds disponibles",
-        "Lettre d'engagement de la banque (si prêt)",
-        "Statuts de la société avec capital social ≥ 30 000 €",
+        "**Un diplôme au moins équivalent au master**, comme un diplôme d'ingénieur ou un DESS, **ou 5 années d'expérience professionnelle** de niveau comparable.",
+        "**Un projet réel et sérieux** de création d'entreprise en France.",
+        "**Des ressources au moins égales au Smic** pour vous et votre famille. Le Smic est le salaire minimum. Service-public l'indique à 22 404,20 € brut par an.",
+        "**Un financement du projet d'au moins 30 000 €**, en ressources propres ou empruntées.",
       ],
     },
-    { type: "p", texte: "**Pièges à éviter :**" },
-    { type: "p", texte: "❌ Comptes alimentés juste avant la demande (banque France soupçonne fraude)" },
-    { type: "p", texte: "❌ Argent provenant de pays sous sanctions" },
     {
       type: "p",
-      texte: "❌ Capital social ≥ 30 000 € mais inexploité (la préfecture vérifie l'usage réel)",
+      texte: "« Ressources propres ou empruntées » veut dire que les 30 000 € peuvent venir de votre épargne ou d'un prêt. Vous devez seulement le prouver avec un justificatif.",
     },
-    { type: "h2", texte: "Procédure complète : du business plan au visa", id: "procedure-complete" },
-    { type: "p", texte: "**Étape 1 : Préparer le projet (3-6 mois)**" },
     {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Rédaction du business plan",
-        "Validation BPI France Création (gratuit)",
-        "Constitution de la société française (SAS, SARL, SA) ou domiciliation",
-      ],
+      type: "h2",
+      texte: "Qu'est-ce que l'avis du ministère chargé de l'économie ?",
     },
-    { type: "p", texte: "**Étape 2 : Validation du caractère économique sérieux**" },
     {
       type: "p",
-      texte: "Avant la demande de visa, validation par la préfecture du département du futur siège :",
+      texte: "C'est l'étape que beaucoup oublient. Si vous habitez à l'étranger, ==vous devez d'abord demander un avis au ministère chargé de l'économie== sur le caractère réel et sérieux de votre projet. Ce n'est pas la préfecture, le service de l'État qui délivre les titres de séjour, qui juge votre projet ([F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922)).",
     },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Soumission du business plan",
-        "Délai : 1 à 3 mois",
-        "Décision : favorable / défavorable / réservée",
-      ],
-    },
-    { type: "p", texte: "**Étape 3 : Demande de visa long séjour au consulat**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**VLS-TS Passeport Talent Création d'entreprise**",
-        "Documents : décision préfectorale, business plan, justificatifs financiers, passeport",
-        "Coût : **99 €**",
-        "Délai : 15 à 60 jours",
-      ],
-    },
-    { type: "p", texte: "**Étape 4 : Arrivée en France et validation**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Validation VLS-TS sur ANEF dans 3 mois",
-        "Timbre fiscal **200 €**",
-        "Visite médicale OFII",
-      ],
-    },
-    { type: "p", texte: "**Étape 5 : Démarrage effectif de l'activité**" },
     {
       type: "p",
-      texte: "Vous devez **démarrer effectivement l'activité dans les 6 mois** : immatriculation, embauche, clients, factures.",
+      texte: "Cet avis fait partie des pièces de votre dossier. Préparez donc votre projet par écrit avant toute demande de visa : ce que fera l'entreprise, ses clients, son financement. Service-public ne fixe pas de modèle de business plan : méfiez-vous des listes de « sections obligatoires » qui circulent.",
     },
-    { type: "p", texte: "**Étape 6 : Carte 4 ans**" },
-    { type: "p", texte: "Carte Passeport Talent Création d'entreprise valable 4 ans, renouvelable." },
-    { type: "h2", texte: "Renouvellement et naturalisation après création", id: "renouvellement" },
-    { type: "p", texte: "**Pour renouveler à 4 ans :**" },
+    {
+      type: "h2",
+      texte: "Quelles sont les étapes ?",
+    },
+    {
+      type: "p",
+      texte: "Deux mots reviennent souvent. Le VLS-TS est un visa de long séjour qui vaut titre de séjour pendant sa durée. L'ANEF est le site du ministère de l'Intérieur où se font les demandes de titre de séjour.",
+    },
+    {
+      type: "tableau",
+      entetes: ["Votre situation", "Ce qu'il faut faire"],
+      lignes: [
+        ["Vous habitez à l'étranger", "Avis du ministère chargé de l'économie, puis demande de visa au consulat de France de votre pays de résidence"],
+        ["Séjour de moins de 12 mois", "Le consulat délivre un VLS-TS « talent », à valider en ligne dans les 3 mois après votre arrivée"],
+        ["Séjour de 1 an ou plus", "Le consulat délivre un visa « talent » de 3 mois ; vous demandez ensuite la carte en ligne, sur l'ANEF"],
+        ["Vous habitez déjà en France", "Demande en ligne sur l'ANEF, au plus tôt 4 mois et au plus tard 2 mois avant la fin de votre visa ou titre"],
+      ],
+      legende: "Source : service-public F16922 (onglet « Porteur de projet »), lue le 17/11/2026.",
+    },
+    {
+      type: "p",
+      texte: "Au dépôt en ligne, vous recevez une attestation de dépôt. Attention : service-public précise qu'elle ne prouve pas que votre séjour est régulier.",
+    },
+    {
+      type: "h2",
+      texte: "Quelles pièces fournir ?",
+    },
     {
       type: "liste",
-      style: "puces",
+      style: "coches",
       items: [
-        "Société toujours active",
-        "Bilan comptable positif ou en équilibre",
-        "Justificatifs fiscaux (déclarations TVA, IS)",
-        "Création réelle d'emplois (idéal mais pas obligatoire)",
+        "votre visa ou titre de séjour, et votre passeport ;",
+        "un justificatif de domicile de moins de 6 mois et le code de votre e-photo ;",
+        "votre diplôme de niveau master, ou les preuves de 5 ans d'expérience ;",
+        "pour une première carte « talent », un extrait de casier judiciaire de votre pays ;",
+        "le justificatif d'un investissement d'au moins 30 000 € dans le projet ;",
+        "les justificatifs de ressources au moins égales au Smic ;",
+        "l'immatriculation de l'entreprise (statuts, extrait K ou numéro Siren), ou l'affiliation au régime social des indépendants ;",
+        "l'avis du ministère chargé de l'économie ;",
+        "l'engagement signé à respecter les principes de la République.",
       ],
     },
-    { type: "p", texte: "**Si l'entreprise échoue :**" },
     {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Possibilité de basculer sur un autre titre (salarié, vie privée et familiale si lien familial)",
-        "En dernier recours : retour au pays ou nouveau projet",
-      ],
+      type: "p",
+      texte: "Si votre activité est réglementée (artisanat, pharmacie, transports, agence immobilière…), ajoutez les preuves que vous avez le droit de l'exercer : diplôme, autorisation ou inscription ([F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922)).",
     },
-    { type: "p", texte: "**Naturalisation après création d'entreprise :**" },
     {
-      type: "liste",
-      style: "puces",
-      items: [
-        "5 ans de résidence régulière (réduit à 2 si étudiant français Bac+2)",
-        "Niveau B1 français",
-        "Test civique (80%)",
-        "Activité économique stable = forte plus-value pour le dossier",
+      type: "h2",
+      texte: "Combien coûte la carte, et quel est le délai ?",
+    },
+    {
+      type: "p",
+      texte: "Vous payez seulement si la carte vous est attribuée : ==350 €==, soit 50 € de droit de timbre et 300 € de taxe ([F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922)). Ce montant est en vigueur depuis le 1er mai 2026 ([A18881](https://www.service-public.gouv.fr/particuliers/actualites/A18881)). Le timbre fiscal, c'est la taxe payée à l'État. Il s'achète en ligne ou dans un bureau de tabac équipé. Tous les montants sont dans notre article sur les [taxes des titres de séjour](/articles/hausse-taxes-titres-sejour-mai-2026-nouveaux-tarifs-prefecture-loi-finances).",
+    },
+    {
+      type: "p",
+      texte: "Pour le délai de réponse, la fiche F16922 indique encore 4 mois, mais elle est « en cours de mise à jour ». Depuis le 30 octobre 2026, le décret n° 2026-1001 a ramené le délai de refus implicite à ==90 jours==. Un refus implicite, c'est un refus sans lettre, quand la préfecture ne répond pas. Notre article sur le [délai de 90 jours](/articles/delai-reponse-prefecture-titre-de-sejour-90-jours) explique ce changement et les recours.",
+    },
+    {
+      type: "h2",
+      texte: "Et votre famille ?",
+    },
+    {
+      type: "p",
+      texte: "Votre famille n'a pas à passer par le regroupement familial. Votre époux ou épouse et vos enfants mineurs reçoivent une carte de séjour pluriannuelle « talent-famille », selon une procédure simplifiée ([F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922)).",
+    },
+    {
+      type: "h2",
+      texte: "Les deux autres parcours « porteur de projet »",
+    },
+    {
+      type: "tableau",
+      entetes: ["Parcours", "Conditions principales"],
+      lignes: [
+        ["Projet économique innovant", "Un projet innovant reconnu par le ministère chargé de l'économie, et des ressources au moins égales au Smic"],
+        ["Investissement économique direct", "Investir au moins 300 000 € en France, seul ou par une société dont vous détenez au moins 30 % du capital, et créer ou sauvegarder de l'emploi"],
       ],
+      legende: "Source : service-public F16922, lue le 17/11/2026.",
+    },
+    {
+      type: "p",
+      texte: "Pour les autres cartes talent, comme celle du salarié qualifié, lisez notre guide des [conditions de la carte talent](/articles/passeport-talent-2026-conditions-metiers-demarches).",
+    },
+    {
+      type: "h2",
+      texte: "Et plus tard, la naturalisation ?",
+    },
+    {
+      type: "p",
+      texte: "La liste des pièces de la carte talent ne demande pas l'examen civique : seulement l'engagement signé à respecter les principes de la République. L'examen arrive plus tard, si vous demandez la nationalité française.",
+    },
+    {
+      type: "p",
+      texte: "La naturalisation par décret demande en principe ==5 ans de résidence== en France ([F2213](https://www.service-public.gouv.fr/particuliers/vosdroits/F2213)). Votre intégration est vérifiée par « la réussite à l'examen civique et un entretien en préfecture ». La demande coûte 255 €. Le niveau de français demandé est expliqué dans notre article sur les [niveaux A2, B1 et B2](/articles/niveau-francais-a2-b1-b2-2026-titre-sejour-naturalisation).",
+    },
+    {
+      type: "cta",
+      texte: "L'examen civique de la naturalisation se prépare à l'avance. Testez-vous sur 40 questions types : l'inscription à Test Civique France est gratuite.",
+      bouton: "Tester mon niveau",
+    },
+    {
+      type: "p",
+      texte: "Ces règles sont générales. Pour un cas précis, demandez conseil à la préfecture, à un avocat ou à une association spécialisée. Et vérifiez en une minute si l'[examen civique vous concerne](/eligibilite-examen-civique).",
     },
     {
       type: "encadre",
       titre: "À retenir",
-      texte: "Le Passeport Talent Création d'entreprise est une voie d'entrée concrète pour les entrepreneurs étrangers en France, à condition de présenter un projet sérieux : business plan rigoureux, 30 000 € d'investissement justifiés, marché clairement identifié. Anticipez 6 à 12 mois entre la conception du projet et le visa effectif. Une fois en France, démarrer rapidement et tenir une comptabilité propre garantit le renouvellement à 4 ans et l'accès à la naturalisation après 5 ans.",
-      ton: "bleu",
+      texte: "La carte talent création d'entreprise demande ==4 conditions== : master ou 5 ans d'expérience, projet réel et sérieux, ressources au Smic, et ==30 000 €== de financement. Depuis l'étranger, l'avis du ministère chargé de l'économie vient avant le visa. La carte coûte 350 €, et votre famille reçoit une carte « talent-famille ».",
+      ton: "vert",
     },
   ],
   faq: [
     {
-      question: "Peut-on demander un Passeport Talent Création sans diplôme ?",
-      reponse: "Oui, avec 5 ans d'expérience professionnelle dans le secteur du projet et les autres conditions remplies.",
+      question: "Peut-on demander un passeport talent création d'entreprise sans diplôme ?",
+      reponse: "Oui, si vous justifiez de 5 années d'expérience professionnelle d'un niveau comparable à un master, selon service-public (F16922). Les autres conditions restent obligatoires : un projet réel et sérieux, et des ressources au moins égales au Smic. Il faut aussi un financement du projet d'au moins 30 000 €, en ressources propres ou empruntées.",
     },
     {
-      question: "Les 30 000 € d'investissement doivent-ils être en cash ?",
-      reponse: "Non, peuvent inclure apport personnel, prêt bancaire, apport d'associés ou apport en nature évalué par commissaire aux apports.",
+      question: "Les 30 000 € doivent-ils être un apport personnel ?",
+      reponse: "Non. Service-public demande le justificatif d'un investissement d'au moins 30 000 € dans le projet d'entreprise, « en ressources propres ou empruntées ». L'argent peut donc venir de votre épargne ou d'un prêt. Gardez les preuves : relevés, offre de prêt, apports dans la société. Le ministère chargé de l'économie juge aussi le sérieux du projet.",
     },
     {
-      question: "Que se passe-t-il si l'entreprise échoue dans les 4 ans ?",
-      reponse: "Vous pouvez basculer sur un autre titre (salarié, vie privée familiale si lien familial). En dernier recours, retour au pays ou nouveau projet.",
+      question: "Combien coûte la carte talent création d'entreprise ?",
+      reponse: "La carte coûte 350 € depuis le 1er mai 2026 : 50 € de droit de timbre et 300 € de taxe, payés en timbres fiscaux. Vous payez seulement quand la préfecture vous attribue la carte, au moment de la retirer. Le timbre s'achète en ligne ou dans un bureau de tabac équipé.",
     },
     {
-      question: "Quelles formes juridiques sont éligibles ?",
-      reponse: "Toutes : SAS, SARL, SA, EURL, micro-entrepreneur (rare). Le choix dépend de votre projet et fiscal-isé selon votre situation.",
+      question: "Qui donne l'avis sur le projet de création d'entreprise ?",
+      reponse: "C'est le ministère chargé de l'économie, pas la préfecture. Si vous habitez à l'étranger, vous devez demander cet avis avant votre demande de visa au consulat. L'avis porte sur le caractère réel et sérieux de votre projet, et il fait partie des pièces de votre dossier, selon service-public (F16922).",
+    },
+  ],
+  sources: [
+    {
+      titre: "Service-public : Carte talent, carte de séjour pluriannuelle d'un étranger en France, onglet « Porteur de projet » (F16922, vérifiée le 1er juin 2026, en cours de mise à jour)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922",
+      type: "officiel",
+      luLe: "2026-11-17",
+    },
+    {
+      titre: "Service-public : Titres de séjour, augmentation du montant des taxes à compter du 1er mai (A18881, mise à jour le 12 mai 2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/actualites/A18881",
+      type: "officiel",
+      luLe: "2026-11-17",
+    },
+    {
+      titre: "Service-public : Naturalisation française par décret (F2213, vérifiée le 16 juillet 2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2213",
+      type: "officiel",
+      luLe: "2026-11-17",
+    },
+    {
+      titre: "Légifrance : décret n° 2026-1001 du 26 octobre 2026 relatif aux droits des ressortissants étrangers autorisés à travailler en France",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055023061",
+      type: "officiel",
+      description: "Texte intégral et notice, lus dans l'édition open data du Journal officiel (DILA)",
+      luLe: "2026-10-30",
     },
   ],
 };
