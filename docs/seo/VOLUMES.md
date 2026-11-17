@@ -325,3 +325,20 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | laïcité au travail ; signes religieux au travail | 10 à 100 | une section, pas un article |
 | nationalité française par ascendant | 10 à 100 | + 900 % sur trois mois et sur un an |
 | carte de résident 10 ans timbre fiscal ; titre de séjour 10 ans ; recensement naturalisé ; jdc naturalisé | pas de donnée | |
+
+## 17/11/2026 (passage spécial GTA 6)
+
+**« Obtenir le volume de recherche et les prévisions »**, zone **France** seule (libellé lu sur la page des résultats), langue **toutes les langues** (non réglée, comme ce matin). Douze derniers mois : le pic de la semaine de sortie n'y est pas encore.
+
+| Requête | Volume mensuel | Remarque |
+|---|---|---|
+| gta 6 | 100 k à 1 M | YoY + 900 % ; requête de tendance |
+| gta 6 date de sortie | 10 k à 100 k | + 900 % sur trois mois et sur un an |
+| casier judiciaire | 10 k à 100 k | requête de fond, large |
+| retrait titre de séjour | 1 k à 10 k | + 900 % sur trois mois |
+| conduite sans permis ; alcool au volant | 1 k à 10 k chacune | |
+| naturalisation casier judiciaire | 100 à 1 k | YoY - 90 % |
+| gta 6 pegi | 100 à 1 k | YoY + 900 % |
+| peine de mort abolition | 100 à 1 k | |
+| casier judiciaire titre de séjour ; titre de séjour casier judiciaire | 10 à 100 | |
+| naturalisation condamnation ; carte de résident condamnation ; conduite sans permis titre de séjour ; menace ordre public titre de séjour ; bonne vie et moeurs naturalisation ; arme france loi ; pegi 18 loi | pas de donnée | |

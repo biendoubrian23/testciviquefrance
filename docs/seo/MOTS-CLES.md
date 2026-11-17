@@ -193,6 +193,8 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Sujet | Requêtes | Volume | Remarque |
 |---|---|---|---|
+| ~~Condamnation, casier judiciaire et dossier (titre de séjour, naturalisation)~~ → gta-6-casier-judiciaire-titre-de-sejour, 17/11/2026 (passage spécial GTA 6) | casier judiciaire titre de séjour ; naturalisation casier judiciaire ; retrait titre de séjour | 10 à 100 ; 100 à 1 k ; 1 k à 10 k (17/11) | « retrait titre de séjour » (1 k à 10 k, + 900 % sur trois mois) mérite peut-être sa propre page de fond (retrait pour fraude, pour ordre public, pour absence) |
+| L'Amérique et la France : armes, peine de mort, laïcité, police (notions du référentiel) | peine de mort abolition ; arme france loi | 100 à 1 k ; pas de donnée (17/11) | piste GTA 6 non retenue, bonne base pour un article de la famille examen avec `qcm` |
 | ~~Attestation de prolongation d'instruction (APIT) : à quoi elle sert~~ → attestation-prolongation-instruction, 26/10/2026 | attestation prolongation instruction ANEF ; APIT titre de séjour ; attestation ANEF travailler | à mesurer | service-public, ANEF. Distinct du récépissé (/articles/recepisse-titre-de-sejour-droits-duree-voyage) |
 | Attestation de décision favorable : que faire en attendant la carte | attestation décision favorable ANEF ; carte de séjour en fabrication ; retrait titre de séjour SMS | à mesurer | ANEF, service-public |
 | Titre « vie privée et familiale » conjoint de Français : le guide permanent | carte de séjour conjoint de français ; titre de séjour mariage français ; vie privée familiale conjoint | à mesurer | CESEDA L. 423-1. Recoupe /articles/mariage-etranger-france-2026-papiers-visa-conjoint-titre-sejour (angle titre, pas mariage) |
