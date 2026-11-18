@@ -144,6 +144,7 @@ import commissionTitreDeSejour from "./articles/commission-titre-de-sejour";
 import titreDeSejourSalarie from "./articles/titre-de-sejour-salarie";
 import defenseurDesDroits from "./articles/defenseur-des-droits";
 import gta6CasierJudiciaireTitreDeSejour from "./articles/gta-6-casier-judiciaire-titre-de-sejour";
+import allocationsFamilialesEtrangersDelaiUnAn from "./articles/allocations-familiales-etrangers-delai-un-an";
 import examenCiviqueConjointDeFrancais from "./articles/examen-civique-conjoint-de-francais";
 import attestationAccueilInviterFamilleFrance2026MairieConditions from "./articles/attestation-accueil-inviter-famille-france-2026-mairie-conditions";
 import autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour from "./articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour";
@@ -453,6 +454,7 @@ export const ARTICLES: readonly Article[] = [
   titreDeSejourSalarie,
   defenseurDesDroits,
   gta6CasierJudiciaireTitreDeSejour,
+  allocationsFamilialesEtrangersDelaiUnAn,
   autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour,
   avoirEnfantFranceEtranger2026DroitSolNationaliteAllocations,
   binationauxFrancoMaghrebinsObligationsServiceNationalVoteCon,

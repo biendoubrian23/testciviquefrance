@@ -342,3 +342,15 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | peine de mort abolition | 100 à 1 k | |
 | casier judiciaire titre de séjour ; titre de séjour casier judiciaire | 10 à 100 | |
 | naturalisation condamnation ; carte de résident condamnation ; conduite sans permis titre de séjour ; menace ordre public titre de séjour ; bonne vie et moeurs naturalisation ; arme france loi ; pegi 18 loi | pas de donnée | |
+
+## 18/11/2026
+
+**« Obtenir le volume de recherche et les prévisions »**, zone **France** seule (libellé lu sur la page des résultats), langue **toutes les langues** (non réglée, comme depuis le 02/11). Douze derniers mois : le vote du Sénat du 17/11 n'y est pas encore.
+
+| Requête | Volume mensuel | Remarque |
+|---|---|---|
+| apl étranger | 100 à 1 k | YoY - 90 % |
+| passeport talent famille | 100 à 1 k | porte la réécriture du 18/11 |
+| allocations familiales étrangers | 10 à 100 | porte l'article du 18/11 |
+| carte de séjour talent famille ; talent famille ; passeport talent conjoint | 10 à 100 | |
+| allocation familiale étranger 1 an ; caf étranger titre de séjour ; délai de carence prestations familiales ; prestations familiales étrangers | pas de donnée | |

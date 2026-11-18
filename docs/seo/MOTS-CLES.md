@@ -38,7 +38,7 @@ Ces articles portent des affirmations que la recherche n'a pas retrouvées sur u
 
 | Article | Point à vérifier |
 |---|---|
-| /articles/passeport-talent-chercheur-, famille-passeport-talent- (`-creation-entreprise-` corrigé le 17/11 sur F16922 : 30 000 €, Smic à 22 404,20 € brut par an, avis du ministère chargé de l'économie, 350 €) | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
+| /articles/passeport-talent-chercheur- (`famille-passeport-talent-` réécrit le 18/11 sur F35792 : époux ou épouse seulement, 350 €, durée restante de la carte du titulaire ; `-creation-entreprise-` corrigé le 17/11 sur F16922 : 30 000 €, Smic à 22 404,20 € brut par an, avis du ministère chargé de l'économie, 350 €) | Ajoutés le 28/10/2026 : la version migrée du salarié qualifié était fausse sur le seuil, le diplôme et le prix (corrigée le 27/10). Vérifier chaque montant sur service-public F16922 (relue le 08/11 : seuils inchangés) et le délai de refus implicite (90 jours depuis le 30/10, décret n° 2026-1001 ; F35792 dit encore 4 mois) avant tout lien. `passeport-talent-2026-conditions-metiers-demarches` corrigé le 08/11 |
 | /articles/valeurs-republique-francaise-liberte-egalite-fraternite | Ajouté le 01/11/2026 : cité par Copilot sur « liberté égalité fraternité » (260 citations). 619 mots, deux questions de FAQ, sources sans date : remettre au niveau sur la Constitution et formation-civique.interieur.gouv.fr |
 | /articles/anef-etudiant-etranger-2026 ; /articles/frais-inscription-universites-france-etudiants-hors-ue-2026 | Ajoutés le 13/11/2026 : montants à revérifier avant tout lien. Ressources d'un étudiant : 877,5 € par mois et taxe de validation du VLS-TS « étudiant » : 100 € (F2231, vérifiée le 01/08/2026) ; l'ancien seuil de 615 € circule encore |
 | /articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026 | Titre à reformuler sans « que l'État publie discrètement » (les chiffres DSED sont publics) et à recaler sur les chiffres 2025 |
@@ -623,3 +623,12 @@ Rappel : vérifier que chaque fonction citée existe réellement sur la platefor
 | Nationalité française par ascendant | nationalité française par ascendant | 10 à 100 (+ 900 %) | Section d'un article (certificat de nationalité) |
 | Laïcité au travail | laïcité au travail ; signes religieux au travail | 10 à 100 | Section, pas un article |
 | `hausse-taxes-titres-sejour-…` | timbre fiscal titre de séjour | - | Expérience du titre infirmée le 17/11 (taux de clic 2,9 %) : titre de résultat à retravailler à partir du 24/11 |
+
+## Vu le 18/11/2026 (Planificateur, France, toutes les langues, et veille)
+
+| Sujet | Requêtes | Volume | Remarque |
+|---|---|---|---|
+| ~~Allocations familiales et APL : un an de résidence voté par le Sénat (article 37 du PLFSS 2027)~~ → `allocations-familiales-etrangers-delai-un-an`, 18/11/2026 | allocations familiales étrangers ; apl étranger ; prestations familiales étrangers ; délai de carence prestations familiales | 10 à 100 ; 100 à 1 k ; pas de donnée ; pas de donnée | **À mettre à jour** : vote solennel du Sénat sur l'ensemble (18/11), puis CMP ou nouvelle lecture, décision du Conseil constitutionnel, loi au Journal officiel, puis décret (au plus tard le 01/07/2027). Règle des 24 heures le jour de la publication de la loi |
+| ~~Carte talent-famille~~ → réécriture de `famille-passeport-talent-…`, 18/11/2026 | passeport talent famille ; carte de séjour talent famille ; talent famille ; passeport talent conjoint | 100 à 1 k ; 10 à 100 (x3) | F35792 (01/05/2026) dit encore 4 mois pour le refus implicite |
+| Carence d'un an à Mayotte (II de l'article 37) | - | - | Coordination dans l'ordonnance n° 2026-647 (deux → trois) : à comprendre avant toute section outre-mer |
+| Bilan par thématique et prestations des étrangers : 39 conventions bilatérales | - | - | Rapport du Sénat n° 144 : carte du Cleiss des accords de sécurité sociale ; un guide « quels pays ont une convention de sécurité sociale avec la France » est un candidat guide permanent (à mesurer) |
