@@ -354,3 +354,18 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | allocations familiales étrangers | 10 à 100 | porte l'article du 18/11 |
 | carte de séjour talent famille ; talent famille ; passeport talent conjoint | 10 à 100 | |
 | allocation familiale étranger 1 an ; caf étranger titre de séjour ; délai de carence prestations familiales ; prestations familiales étrangers | pas de donnée | |
+
+## 19/11/2026
+
+**« Obtenir le volume de recherche et les prévisions »**, zone **France** seule (libellé lu sur la page des résultats), langue **toutes les langues** (non réglée, comme depuis le 02/11). Douze derniers mois.
+
+| Requête | Volume mensuel | Remarque |
+|---|---|---|
+| laïcité | 10 k à 100 k | + 900 % sur trois mois ; porte l'article du 19/11 |
+| laïcité définition | 10 k à 100 k | YoY - 90 % |
+| ddhc | 10 k à 100 k | + 900 % sur trois mois ; aucune page dédiée chez nous |
+| loi 1905 | 1 k à 10 k | |
+| déclaration des droits de l'homme et du citoyen | 1 k à 10 k | |
+| devise de la france | 1 k à 10 k | + 900 % sur trois mois ; porte la réécriture du 19/11 |
+| laïcité définition simple ; principe de laïcité ; loi de 1905 laïcité ; la marseillaise histoire ; régularisation sans papiers | 100 à 1 k | |
+| examen civique questions laïcité ; laïcité école ; proposition de loi régularisation sans papiers | pas de donnée | |
