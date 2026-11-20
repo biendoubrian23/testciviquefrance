@@ -54,8 +54,9 @@ Consigne de la session lancée par la tâche planifiée « TestCivique Bilan Ver
    limite Hobby, %), le top des routes et des robots comparé à la référence, et la
    marche à suivre. **Écris ce fichier en dernier** : son apparition déclenche la
    fenêtre de notification sur le PC.
-8. **Préviens Brian** par e-mail, à son adresse `brianbiendou@gmail.com` (outil Gmail,
-   `send_message`), objet « Vercel : feu vert pour repasser en gratuit » (ou
+8. **Préviens Brian** par e-mail, à ses deux adresses `brianbiendou@gmail.com` et
+   `clarkybrian@outlook.fr` (outil Gmail, `send_message`, un seul envoi avec les deux
+   destinataires), objet « Vercel : feu vert pour repasser en gratuit » (ou
    « Vercel : prudence » / « Vercel : rester en Pro »). Le corps reprend le verdict, le
    tableau, et la marche à suivre ci-dessous. Si l'outil Gmail n'est pas disponible,
    dis-le dans le rapport : la fenêtre sur le PC suffira.
