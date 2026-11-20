@@ -2,7 +2,6 @@
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
-import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
@@ -281,14 +280,10 @@ export default function RootLayout({
         {/* Favicons multiples */}
         <link rel="icon" type="image/png" href="/fav.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/fav.png" />
-        <link rel="manifest" href="/manifest.json" />
+        {/* Plus de manifeste PWA (20/11/2026) : le site n'est plus une application installable */}
 
         {/* Meta tags supplémentaires pour SEO */}
         <meta name="application-name" content="Test Civique France" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="apple-mobile-web-app-title" content="Test Civique" />
-        <meta name="mobile-web-app-capable" content="yes" />
 
         {/* Dublin Core Metadata */}
         <meta name="DC.title" content="Test Civique France - Préparation Examen Naturalisation" />
@@ -348,7 +343,6 @@ export default function RootLayout({
         <PostHogProvider>
           <AuthProvider>{children}</AuthProvider>
         </PostHogProvider>
-        <Analytics />
 
         {/* AdSense auto-ads — charge après interactivité, respecte Consent Mode v2 */}
         <Script
