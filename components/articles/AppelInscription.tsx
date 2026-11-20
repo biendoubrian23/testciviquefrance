@@ -39,7 +39,7 @@ export function AppelInscription({
   children: ReactNode;
 }) {
   return (
-    <Link
+    <Link prefetch={false}
       href={adresseAppel(slug, emplacement)}
       className={className}
       data-appel={emplacement}

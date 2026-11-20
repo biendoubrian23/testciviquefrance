@@ -35,7 +35,7 @@ export default function DashboardHeader({ onMenuClick }: DashboardHeaderProps) {
 
       {/* Logo mobile (visible uniquement sur mobile) */}
       <div className="lg:hidden flex-shrink-0">
-        <Link href="/dashboard">
+        <Link prefetch={false} href="/dashboard">
           <Image
             src="/logo.png"
             alt="Test Civique France"

@@ -380,7 +380,7 @@ export default function SignupPage() {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Déjà un compte?{' '}
-            <Link
+            <Link prefetch={false}
               href="/login"
               className="text-primary-600 hover:text-primary-700 font-medium"
             >
@@ -390,7 +390,7 @@ export default function SignupPage() {
         </div>
 
         <div className="mt-6 text-center">
-          <Link
+          <Link prefetch={false}
             href="/"
             className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
           >

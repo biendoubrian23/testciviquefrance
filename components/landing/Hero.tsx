@@ -137,14 +137,14 @@ export default function Hero() {
 
             {/* CTA Buttons - Version mobile (après carrousel) */}
             <div className="flex flex-col gap-4 lg:hidden animate-fade-in-up delay-300">
-              <Link
+              <Link prefetch={false}
                 href="/signup"
                 className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg inline-flex items-center justify-center gap-2 rounded-xl"
               >
                 Commencer gratuitement
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/login"
                 className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg hover:border-gray-400 hover:bg-gray-50 transition-colors inline-flex items-center justify-center rounded-xl"
               >
@@ -160,14 +160,14 @@ export default function Hero() {
 
             {/* CTA Buttons - Version desktop */}
             <div className="hidden lg:flex flex-row gap-4 justify-start animate-fade-in-up delay-200">
-              <Link
+              <Link prefetch={false}
                 href="/signup"
                 className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg inline-flex items-center justify-center gap-2 rounded-xl"
               >
                 Commencer gratuitement
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/login"
                 className="px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg hover:border-gray-400 hover:bg-gray-50 transition-colors inline-flex items-center justify-center rounded-xl"
               >

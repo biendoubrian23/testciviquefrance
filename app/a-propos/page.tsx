@@ -119,7 +119,7 @@ export default function AProposPage() {
                   outils interactifs conçus pour vous aider à réussir du premier coup.
                 </p>
 
-                <Link
+                <Link prefetch={false}
                   href="/signup"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors"
                 >
@@ -310,7 +310,7 @@ export default function AProposPage() {
                         </span>
                       ))}
                     </div>
-                    <Link
+                    <Link prefetch={false}
                       href="/auteurs/brian-biendou"
                       className="inline-flex items-center gap-1.5 text-sm text-primary-600 hover:text-primary-700 mt-4"
                     >
@@ -369,7 +369,7 @@ export default function AProposPage() {
                       notification@testciviquefrance.fr
                     </a>
                   </div>
-                  <Link
+                  <Link prefetch={false}
                     href="/contact"
                     className="inline-flex items-center gap-2 mt-4 text-sm text-primary-600 hover:text-primary-700"
                   >
@@ -392,14 +392,14 @@ export default function AProposPage() {
               Rejoignez les milliers de candidats qui ont réussi leur test grâce à notre plateforme.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-              <Link
+              <Link prefetch={false}
                 href="/signup"
                 className="px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors inline-flex items-center justify-center gap-2"
               >
                 Commencer gratuitement
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/tarifs"
                 className="px-8 py-4 border-2 border-gray-600 text-white font-semibold text-lg hover:border-gray-500 hover:bg-gray-800 transition-colors inline-flex items-center justify-center"
               >

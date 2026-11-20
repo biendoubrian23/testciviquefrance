@@ -123,15 +123,15 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
 
           <div className="relative mx-auto flex h-full w-full max-w-6xl flex-col justify-end px-5 pb-10 pt-20 sm:px-8 sm:pb-12 xl:max-w-[88rem] xl:px-10">
             <nav aria-label="Fil d'Ariane" className="text-[13px] text-white/80">
-              <Link href="/" className="hover:text-white">
+              <Link prefetch={false} href="/" className="hover:text-white">
                 Accueil
               </Link>
               <span aria-hidden className="mx-2 text-white/50">›</span>
-              <Link href="/articles" className="hover:text-white">
+              <Link prefetch={false} href="/articles" className="hover:text-white">
                 Articles
               </Link>
               <span aria-hidden className="mx-2 text-white/50">›</span>
-              <Link href={cheminRubrique(article.rubrique)} className="text-white/90 hover:text-white">
+              <Link prefetch={false} href={cheminRubrique(article.rubrique)} className="text-white/90 hover:text-white">
                 {NOM_RUBRIQUE[article.rubrique]}
               </Link>
             </nav>
@@ -152,7 +152,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
               <span>
                 Par{" "}
                 {pageAuteur ? (
-                  <Link href={pageAuteur} className="underline-offset-2 hover:text-white hover:underline">
+                  <Link prefetch={false} href={pageAuteur} className="underline-offset-2 hover:text-white hover:underline">
                     {article.auteur}
                   </Link>
                 ) : (
@@ -161,7 +161,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
               </span>
               <span>{article.minutes} min de lecture</span>
               <ArticleViews slug={article.slug} iconClassName="h-4 w-4" label="long" incrementOnMount />
-              <Link
+              <Link prefetch={false}
                 href={cheminRubrique(article.rubrique)}
                 className={`inline-flex items-center rounded-md px-2 py-1 text-[11px] font-semibold uppercase tracking-wider ring-1 ${COULEUR_RUBRIQUE[article.rubrique]}`}
               >
@@ -174,7 +174,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
         <div className="mx-auto mt-10 grid w-full max-w-3xl gap-10 px-5 sm:px-8 xl:max-w-[88rem] xl:grid-cols-[240px_minmax(0,1fr)_280px] xl:gap-14 xl:px-10">
           {/* Colonne de gauche : le sommaire, collé pendant la lecture. */}
           <aside className="hidden xl:sticky xl:top-24 xl:block xl:self-start">
-            <Link href="/articles" className="mb-3 inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[13px] font-medium text-gray-500 transition hover:bg-gray-100 hover:text-primary-700">
+            <Link prefetch={false} href="/articles" className="mb-3 inline-flex items-center gap-1.5 rounded-lg px-2 py-1.5 text-[13px] font-medium text-gray-500 transition hover:bg-gray-100 hover:text-primary-700">
               <span aria-hidden>←</span> Tous les articles
             </Link>
             {toc.length > 1 && (
@@ -295,7 +295,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
                 <ul className="mt-4 grid gap-2">
                   {aLireAussi.map((l) => (
                     <li key={l.slug}>
-                      <Link href={`/articles/${l.slug}`} className="flex items-center justify-between gap-3 rounded-xl bg-white px-4 py-3 text-[15px] font-medium text-gray-800 ring-1 ring-gray-200 transition hover:text-primary-700 hover:ring-primary-300">
+                      <Link prefetch={false} href={`/articles/${l.slug}`} className="flex items-center justify-between gap-3 rounded-xl bg-white px-4 py-3 text-[15px] font-medium text-gray-800 ring-1 ring-gray-200 transition hover:text-primary-700 hover:ring-primary-300">
                         {l.ancre}
                         <span aria-hidden className="text-gray-400">→</span>
                       </Link>
@@ -324,10 +324,10 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
                 >
                   {TEXTES.finBouton} <span aria-hidden>→</span>
                 </AppelInscription>
-                <Link href="/tarifs" className="text-[14px] font-semibold text-blue-100 underline-offset-2 hover:text-white hover:underline">
+                <Link prefetch={false} href="/tarifs" className="text-[14px] font-semibold text-blue-100 underline-offset-2 hover:text-white hover:underline">
                   Voir les formules
                 </Link>
-                <Link href="/login" className="text-[14px] text-blue-100/90 underline-offset-2 hover:text-white hover:underline">
+                <Link prefetch={false} href="/login" className="text-[14px] text-blue-100/90 underline-offset-2 hover:text-white hover:underline">
                   Déjà inscrit ? Se connecter
                 </Link>
               </div>
@@ -351,7 +351,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
                   <ul className="mt-4 grid gap-5 sm:grid-cols-3 xl:grid-cols-1">
                     {aLire.map((a) => (
                       <li key={a.slug}>
-                        <Link href={`/articles/${a.slug}`} className="group block">
+                        <Link prefetch={false} href={`/articles/${a.slug}`} className="group block">
                           {/* Un fond, pour la même raison que le bandeau : une photo disparue laisse un aplat. */}
                           <span
                             aria-hidden
@@ -378,12 +378,12 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
                 <AppelInscription slug={article.slug} emplacement="colonne" className={`${BOUTON} mt-4 w-full`}>
                   {TEXTES.colonneBouton}
                 </AppelInscription>
-                <Link href="/eligibilite-examen-civique" className="mt-3 block text-center text-[13px] font-medium text-primary-700 hover:underline">
+                <Link prefetch={false} href="/eligibilite-examen-civique" className="mt-3 block text-center text-[13px] font-medium text-primary-700 hover:underline">
                   Êtes-vous concerné par l&apos;examen ?
                 </Link>
               </div>
 
-              <Link href="/articles" className="hidden text-center text-[13px] font-semibold text-primary-700 hover:text-primary-800 xl:block">
+              <Link prefetch={false} href="/articles" className="hidden text-center text-[13px] font-semibold text-primary-700 hover:text-primary-800 xl:block">
                 Tous les articles →
               </Link>
             </div>
@@ -404,7 +404,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
               <h2 id="titre-meme-rubrique" className="text-[20px] font-bold tracking-tight text-gray-900">
                 Dans la même rubrique : {NOM_RUBRIQUE[article.rubrique]}
               </h2>
-              <Link href={cheminRubrique(article.rubrique)} className="text-[13.5px] font-semibold text-primary-700 hover:underline">
+              <Link prefetch={false} href={cheminRubrique(article.rubrique)} className="text-[13.5px] font-semibold text-primary-700 hover:underline">
                 Tous les articles de la rubrique →
               </Link>
             </div>
@@ -412,7 +412,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
               <ul className="mt-5 grid gap-x-8 gap-y-1 sm:grid-cols-2">
                 {rubrique.map((a) => (
                   <li key={a.slug}>
-                    <Link
+                    <Link prefetch={false}
                       href={`/articles/${a.slug}`}
                       className="flex items-start gap-2 rounded-lg px-2 py-2 text-[14.5px] font-medium leading-snug text-gray-800 transition hover:bg-primary-50 hover:text-primary-700"
                     >
@@ -426,7 +426,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
             {(plusRecent || plusAncien) && (
               <nav aria-label="Articles voisins dans la rubrique" className="mt-6 grid gap-3 border-t border-gray-100 pt-5 sm:grid-cols-2">
                 {plusAncien ? (
-                  <Link href={`/articles/${plusAncien.slug}`} className="group rounded-xl px-3 py-2 ring-1 ring-gray-200 transition hover:ring-primary-300">
+                  <Link prefetch={false} href={`/articles/${plusAncien.slug}`} className="group rounded-xl px-3 py-2 ring-1 ring-gray-200 transition hover:ring-primary-300">
                     <span className="block text-[11px] font-semibold uppercase tracking-wider text-gray-500">← Article plus ancien</span>
                     <span className="mt-1 block text-[14px] font-semibold leading-snug text-gray-900 group-hover:text-primary-700">{insecables(plusAncien.titre)}</span>
                   </Link>
@@ -434,7 +434,7 @@ export function PageArticle({ article, liste }: { article: Article; liste: reado
                   <span />
                 )}
                 {plusRecent && (
-                  <Link href={`/articles/${plusRecent.slug}`} className="group rounded-xl px-3 py-2 text-right ring-1 ring-gray-200 transition hover:ring-primary-300">
+                  <Link prefetch={false} href={`/articles/${plusRecent.slug}`} className="group rounded-xl px-3 py-2 text-right ring-1 ring-gray-200 transition hover:ring-primary-300">
                     <span className="block text-[11px] font-semibold uppercase tracking-wider text-gray-500">Article plus récent →</span>
                     <span className="mt-1 block text-[14px] font-semibold leading-snug text-gray-900 group-hover:text-primary-700">{insecables(plusRecent.titre)}</span>
                   </Link>

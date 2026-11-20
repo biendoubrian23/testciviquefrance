@@ -141,7 +141,7 @@ export default async function AuthorPage({ params }: AuthorPageProps) {
 
             <div className="space-y-6">
               {authorArticles.map((article) => (
-                <Link
+                <Link prefetch={false}
                   key={article.slug}
                   href={`/articles/${article.slug}`}
                   className="block group p-5 border border-gray-200 hover:border-primary-300 hover:shadow-md transition-all"

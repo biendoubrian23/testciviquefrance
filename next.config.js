@@ -1,44 +1,7 @@
-const withPWA = require('@ducanh2912/next-pwa').default({
-  dest: 'public',
-  disable: process.env.NODE_ENV === 'development',
-  register: true,
-  skipWaiting: true,
-  sw: 'sw.js',
-  fallbacks: {
-    document: '/offline',
-  },
-  workboxOptions: {
-    runtimeCaching: [
-      {
-        urlPattern: /^https:\/\/fonts\.(?:googleapis|gstatic)\.com\/.*/i,
-        handler: 'CacheFirst',
-        options: {
-          cacheName: 'google-fonts',
-          expiration: {
-            maxEntries: 4,
-            maxAgeSeconds: 365 * 24 * 60 * 60,
-          },
-        },
-      },
-      {
-        urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/i,
-        handler: 'CacheFirst',
-        options: {
-          cacheName: 'images',
-          expiration: {
-            maxEntries: 64,
-            maxAgeSeconds: 30 * 24 * 60 * 60,
-          },
-        },
-      },
-      // Supabase REST : NetworkOnly (pas de cache pour données authentifiées)
-      {
-        urlPattern: /^https:\/\/.*\.supabase\.co\/rest\/.*/i,
-        handler: 'NetworkOnly',
-      },
-    ],
-  },
-});
+// Plus de service worker PWA (20/11/2026) : il téléchargeait d'avance environ 230 fichiers
+// (tous les chunks et les images d'articles) chez chaque visiteur, et de nouveau à chaque
+// déploiement. C'était l'essentiel des 2,2 M de requêtes CDN Vercel sur 30 jours.
+// `public/sw.js` le désinstalle chez les visiteurs qui l'ont encore.
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -269,12 +232,12 @@ const nextConfig = {
         ]
       },
       {
-        // Cache pour les fichiers JS statiques (SW, workbox)
-        source: '/:path(sw|workbox-*).js',
+        // sw.js désinstalle l'ancien service worker : le navigateur doit toujours relire la dernière version
+        source: '/sw.js',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=2592000'
+            value: 'no-cache'
           }
         ]
       },
@@ -318,4 +281,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPWA(nextConfig);
+module.exports = nextConfig;

@@ -247,7 +247,7 @@ export default function EligibilitePage() {
                     titre: "S'inscrire à l'examen officiel",
                   },
                 ].map((lien) => (
-                  <Link
+                  <Link prefetch={false}
                     key={lien.href}
                     href={lien.href}
                     className="group flex items-center justify-between gap-3 p-4 border border-gray-200 hover:border-primary-500 hover:bg-primary-50 transition-all"

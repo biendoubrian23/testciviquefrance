@@ -96,7 +96,7 @@ export default function ReinitialiserMotDePassePage() {
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center py-12 px-4">
         <div className="max-w-md w-full">
           <div className="text-center mb-8">
-            <Link href="/" className="inline-block">
+            <Link prefetch={false} href="/" className="inline-block">
               <Image
                 src="/images/logo.png"
                 alt="Test Civique France"
@@ -117,7 +117,7 @@ export default function ReinitialiserMotDePassePage() {
             <p className="text-gray-600 mb-6">
               Ce lien de réinitialisation n&apos;est plus valide. Veuillez demander un nouveau lien.
             </p>
-            <Link
+            <Link prefetch={false}
               href="/mot-de-passe-oublie"
               className="inline-block w-full py-3 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors text-center"
             >
@@ -143,7 +143,7 @@ export default function ReinitialiserMotDePassePage() {
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block">
+          <Link prefetch={false} href="/" className="inline-block">
             <Image
               src="/images/logo.png"
               alt="Test Civique France"

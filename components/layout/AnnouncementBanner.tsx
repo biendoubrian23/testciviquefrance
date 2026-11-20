@@ -29,7 +29,7 @@ export default function AnnouncementBanner() {
             <span className="font-bold text-pink-900">📋</span>
             <p className="text-pink-900 text-center">
               <span className="font-semibold">La liste des centres agréés pour l'Examen Civique 2026 est maintenant disponible.</span>
-              <Link 
+              <Link prefetch={false} 
                 href="https://francais.cci-paris-idf.fr/candidat"
                 target="_blank"
                 rel="noopener noreferrer"

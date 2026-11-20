@@ -53,7 +53,7 @@ export default function AidePage() {
 
       {/* Cartes d'aide rapide */}
       <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
-        <Link
+        <Link prefetch={false}
           href="/faq"
           className="glass-card p-5 transition-all duration-200 active:scale-[0.98] hover:bg-white/40 group"
           style={{ WebkitTapHighlightColor: 'transparent' }}
@@ -72,7 +72,7 @@ export default function AidePage() {
           </div>
         </Link>
 
-        <Link
+        <Link prefetch={false}
           href="/contact"
           className="glass-card p-5 transition-all duration-200 active:scale-[0.98] hover:bg-white/40 group"
           style={{ WebkitTapHighlightColor: 'transparent' }}

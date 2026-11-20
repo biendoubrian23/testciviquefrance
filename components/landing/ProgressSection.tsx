@@ -80,7 +80,7 @@ export default function ProgressSection() {
 
             {/* CTA */}
             <div className="animate-fade-in-up delay-400">
-              <Link
+              <Link prefetch={false}
                 href="/signup"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors shadow-lg"
               >

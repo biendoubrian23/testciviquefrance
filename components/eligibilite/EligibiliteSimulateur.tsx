@@ -574,7 +574,7 @@ function ResultatContenu({
 
         {concerne || aConfirmer ? (
           <div className="space-y-3">
-            <Link
+            <Link prefetch={false}
               href="/signup"
               className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-700 transition-colors"
             >
@@ -584,7 +584,7 @@ function ResultatContenu({
             <p className="text-center text-sm text-gray-500">
               800+ questions, examens blancs illimités — gratuit pour commencer
             </p>
-            <Link
+            <Link prefetch={false}
               href="/articles/inscription-test-civique-2026-ou-quand-comment-sinscrire"
               className="block text-center text-sm text-primary-600 hover:text-primary-700 font-medium pt-2"
             >
@@ -593,7 +593,7 @@ function ResultatContenu({
           </div>
         ) : (
           <div className="space-y-3">
-            <Link
+            <Link prefetch={false}
               href="/articles/dispense-examen-civique-2026-qui-est-exempte-age-refugie-accords"
               className="flex items-center justify-center gap-2 w-full px-6 py-4 bg-gray-900 text-white font-semibold hover:bg-gray-800 transition-colors"
             >
@@ -603,7 +603,7 @@ function ResultatContenu({
             <p className="text-center text-sm text-gray-500">
               Vous visez la naturalisation un jour&nbsp;? L&apos;examen redeviendra
               obligatoire —{' '}
-              <Link href="/signup" className="text-primary-600 hover:underline font-medium">
+              <Link prefetch={false} href="/signup" className="text-primary-600 hover:underline font-medium">
                 prenez de l&apos;avance
               </Link>
               .

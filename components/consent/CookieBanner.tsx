@@ -86,7 +86,7 @@ export default function CookieBanner() {
               Nous utilisons des cookies pour améliorer votre expérience, mesurer l&apos;audience du site
               et afficher des publicités pertinentes via Google AdSense. Vous pouvez accepter, refuser
               ou personnaliser vos choix à tout moment.{' '}
-              <Link href="/politique-confidentialite" className="text-blue-600 underline hover:text-blue-800">
+              <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 underline hover:text-blue-800">
                 Politique de confidentialité
               </Link>
             </p>

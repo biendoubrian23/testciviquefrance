@@ -28,7 +28,7 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
 
   if (variant === 'featured') {
     return (
-      <Link href={`/articles/${article.slug}`} className="group block">
+      <Link prefetch={false} href={`/articles/${article.slug}`} className="group block">
         <div className="relative h-64 overflow-hidden shadow-lg transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
           {/* Image placeholder avec gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-800">
@@ -57,7 +57,7 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
 
   if (variant === 'compact') {
     return (
-      <Link href={`/articles/${article.slug}`} className="group flex gap-4 p-3 hover:bg-gray-50 transition-colors">
+      <Link prefetch={false} href={`/articles/${article.slug}`} className="group flex gap-4 p-3 hover:bg-gray-50 transition-colors">
         <div className="w-20 h-20 flex-shrink-0 overflow-hidden bg-gradient-to-br from-primary-100 to-primary-200">
         </div>
         <div className="flex-1 min-w-0">
@@ -85,7 +85,7 @@ export default function ArticleCard({ article, variant = 'default' }: ArticleCar
 
   // Default variant
   return (
-    <Link href={`/articles/${article.slug}`} className="group block">
+    <Link prefetch={false} href={`/articles/${article.slug}`} className="group block">
       <article className="bg-white shadow-sm border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
         {/* Image */}
         <div className="relative h-48 overflow-hidden">

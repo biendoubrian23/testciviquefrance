@@ -13,7 +13,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link prefetch={false} href="/" className="flex items-center">
             <Image
               src="/logo.png"
               alt="Test Civique France"
@@ -25,37 +25,37 @@ export default function Header() {
 
           {/* Navigation desktop */}
           <div className="hidden md:flex items-center gap-8">
-            <Link
+            <Link prefetch={false}
               href="/a-propos"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
             >
               À propos
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/tarifs"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
             >
               Tarifs
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/eligibilite-examen-civique"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
             >
               Éligibilité
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/articles"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
             >
               Articles
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/faq"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
             >
               FAQ
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/contact"
               className="text-gray-700 hover:text-primary-600 font-medium transition-colors text-lg"
             >
@@ -65,13 +65,13 @@ export default function Header() {
 
           {/* Auth buttons */}
           <div className="hidden md:flex items-center gap-4">
-            <Link
+            <Link prefetch={false}
               href="/login"
               className="px-4 py-2 text-gray-700 hover:text-primary-600 font-medium transition-colors"
             >
               Connexion
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/signup"
               className="px-6 py-2 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors"
             >
@@ -98,42 +98,42 @@ export default function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-gray-200">
             <div className="flex flex-col gap-4">
-              <Link
+              <Link prefetch={false}
                 href="/a-propos"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 À propos
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/tarifs"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Tarifs
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/eligibilite-examen-civique"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Éligibilité
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/articles"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Articles
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/faq"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 FAQ
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/contact"
                 className="text-gray-700 hover:text-primary-600 font-medium transition-colors py-2"
                 onClick={() => setMobileMenuOpen(false)}
@@ -141,14 +141,14 @@ export default function Header() {
                 Contact
               </Link>
               <div className="flex flex-col gap-2 pt-4 border-t border-gray-200">
-                <Link
+                <Link prefetch={false}
                   href="/login"
                   className="px-4 py-2 text-center border border-gray-300 text-gray-700 font-medium hover:bg-gray-50 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Connexion
                 </Link>
-                <Link
+                <Link prefetch={false}
                   href="/signup"
                   className="px-4 py-2 text-center bg-primary-600 text-white font-medium hover:bg-primary-700 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}

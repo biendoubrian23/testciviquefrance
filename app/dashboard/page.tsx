@@ -394,7 +394,7 @@ export default function DashboardPage() {
           </p>
           <div className="flex flex-col sm:flex-row flex-wrap gap-3">
             {/* Boutons sur le hero : pilule blanche translucide */}
-            <Link
+            <Link prefetch={false}
               href="/dashboard/flashcards"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-emerald-700 font-medium transition-all duration-200 active:scale-95"
               style={{
@@ -408,7 +408,7 @@ export default function DashboardPage() {
             >
               🃏 Flashcards
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/dashboard/entrainement"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-primary-700 font-medium transition-all duration-200 active:scale-95"
               style={{
@@ -423,7 +423,7 @@ export default function DashboardPage() {
               <BookOpen className="w-5 h-5" />
               Quiz thématiques
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/dashboard/examens"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full text-indigo-700 font-medium transition-all duration-200 active:scale-95"
               style={{
@@ -438,7 +438,7 @@ export default function DashboardPage() {
               <FileQuestion className="w-5 h-5" />
               Session d&apos;examen blanc
             </Link>
-            <Link
+            <Link prefetch={false}
               href="/dashboard/credits"
               className="glass-cta-amber !rounded-full !px-5"
               style={{ WebkitTapHighlightColor: 'transparent' }}
@@ -485,7 +485,7 @@ export default function DashboardPage() {
         <div className="lg:col-span-2 glass-card p-4 sm:p-6 overflow-hidden">
           <div className="flex items-center justify-between mb-4 sm:mb-6">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900">Progression par thème</h2>
-            <Link
+            <Link prefetch={false}
               href="/dashboard/statistiques"
               className="text-sm text-primary-600 hover:text-primary-700 active:text-primary-800 font-medium flex items-center gap-1 transition-all duration-200 active:scale-95"
               style={{ WebkitTapHighlightColor: 'transparent' }}
@@ -585,7 +585,7 @@ export default function DashboardPage() {
 
       {/* Actions rapides - cards Liquid Glass */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        <Link
+        <Link prefetch={false}
           href="/dashboard/entrainement"
           className="group glass-card p-5 sm:p-6 transition-all duration-200 active:scale-[0.98] hover:bg-white/40"
           style={{ WebkitTapHighlightColor: 'transparent' }}
@@ -594,7 +594,7 @@ export default function DashboardPage() {
           <p className="text-sm text-gray-700">Répondez à des questions par thème à votre rythme</p>
         </Link>
 
-        <Link
+        <Link prefetch={false}
           href="/dashboard/examens"
           className="group glass-card p-5 sm:p-6 transition-all duration-200 active:scale-[0.98] hover:bg-white/40"
           style={{ WebkitTapHighlightColor: 'transparent' }}
@@ -603,7 +603,7 @@ export default function DashboardPage() {
           <p className="text-sm text-gray-700">Testez-vous dans les conditions réelles (40 questions)</p>
         </Link>
 
-        <Link
+        <Link prefetch={false}
           href="/dashboard/statistiques"
           className="group glass-card p-5 sm:p-6 transition-all duration-200 active:scale-[0.98] hover:bg-white/40 sm:col-span-2 lg:col-span-1"
           style={{ WebkitTapHighlightColor: 'transparent' }}

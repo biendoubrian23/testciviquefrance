@@ -72,7 +72,7 @@ export default function BlogSidebar({ categories, selectedCategory, onCategoryCh
             .filter((category) => category.slug !== 'tous')
             .map((category) => (
               <li key={category.id}>
-                <Link
+                <Link prefetch={false}
                   href={`/articles/rubrique/${category.slug}`}
                   className="block px-4 py-2 text-sm text-primary-700 hover:bg-gray-50 hover:underline"
                 >

@@ -37,7 +37,7 @@ function rendre(texte: string, cle: string): ReactNode[] {
     if (libelle !== undefined) {
       morceaux.push(
         cible.startsWith("/") ? (
-          <Link key={k} href={cible} className={LIEN}>
+          <Link prefetch={false} key={k} href={cible} className={LIEN}>
             {rendre(libelle, k)}
           </Link>
         ) : (

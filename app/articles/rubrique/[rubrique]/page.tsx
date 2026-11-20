@@ -114,11 +114,11 @@ export default function PageRubrique({ params }: Params) {
         <section className="bg-gradient-to-br from-primary-800 to-primary-600 px-5 pb-12 pt-28 text-white sm:px-8">
           <div className="mx-auto max-w-5xl">
             <nav aria-label="Fil d'Ariane" className="text-[13px] text-white/80">
-              <Link href="/" className="hover:text-white">
+              <Link prefetch={false} href="/" className="hover:text-white">
                 Accueil
               </Link>
               <span aria-hidden className="mx-2 text-white/50">›</span>
-              <Link href="/articles" className="hover:text-white">
+              <Link prefetch={false} href="/articles" className="hover:text-white">
                 Articles
               </Link>
               <span aria-hidden className="mx-2 text-white/50">›</span>
@@ -136,7 +136,7 @@ export default function PageRubrique({ params }: Params) {
         <div className="mx-auto mt-10 max-w-5xl px-5 sm:px-8">
           <nav aria-label="Les autres rubriques" className="flex flex-wrap gap-2">
             {RUBRIQUES.filter((x) => x !== r).map((x) => (
-              <Link
+              <Link prefetch={false}
                 key={x}
                 href={cheminRubrique(x)}
                 className="rounded-full bg-white px-3.5 py-1.5 text-[13px] font-medium text-gray-700 ring-1 ring-gray-200 transition hover:text-primary-700 hover:ring-primary-300"
@@ -144,7 +144,7 @@ export default function PageRubrique({ params }: Params) {
                 {NOM_RUBRIQUE[x]}
               </Link>
             ))}
-            <Link href="/articles" className="rounded-full px-3.5 py-1.5 text-[13px] font-semibold text-primary-700 hover:underline">
+            <Link prefetch={false} href="/articles" className="rounded-full px-3.5 py-1.5 text-[13px] font-semibold text-primary-700 hover:underline">
               Tous les articles →
             </Link>
           </nav>
@@ -153,7 +153,7 @@ export default function PageRubrique({ params }: Params) {
           <ul className="mt-5 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((a) => (
               <li key={a.slug}>
-                <Link
+                <Link prefetch={false}
                   href={`/articles/${a.slug}`}
                   className="group flex h-full flex-col overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-gray-200 transition hover:ring-primary-300"
                 >

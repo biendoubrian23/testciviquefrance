@@ -132,7 +132,7 @@ export default function CGUPage() {
                   <li>
                     <p><strong>« Données Personnelles »</strong> : désigne les informations relatives à l'Utilisateur collectées et traitées 
                     dans le cadre de l'utilisation de la Plateforme, conformément à notre 
-                    <Link href="/politique-confidentialite" className="text-blue-600 hover:underline"> Politique de Confidentialité</Link>.</p>
+                    <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 hover:underline"> Politique de Confidentialité</Link>.</p>
                   </li>
                 </ul>
               </div>
@@ -162,9 +162,9 @@ export default function CGUPage() {
                   Elles complètent, sans s'y substituer :
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
-                  <li>Les <Link href="/cgv" className="text-blue-600 hover:underline">Conditions Générales de Vente</Link> pour les utilisateurs souscrivant à un abonnement payant</li>
-                  <li>La <Link href="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de Confidentialité</Link> concernant le traitement des données personnelles</li>
-                  <li>La <Link href="/mentions-legales" className="text-blue-600 hover:underline">politique en matière de cookies</Link></li>
+                  <li>Les <Link prefetch={false} href="/cgv" className="text-blue-600 hover:underline">Conditions Générales de Vente</Link> pour les utilisateurs souscrivant à un abonnement payant</li>
+                  <li>La <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de Confidentialité</Link> concernant le traitement des données personnelles</li>
+                  <li>La <Link prefetch={false} href="/mentions-legales" className="text-blue-600 hover:underline">politique en matière de cookies</Link></li>
                 </ul>
                 
                 <p className="mt-4">
@@ -239,8 +239,8 @@ export default function CGUPage() {
                 
                 <p className="mt-4 text-sm">
                   Les tarifs et modalités de souscription aux formules payantes sont détaillés dans nos 
-                  <Link href="/cgv" className="text-blue-600 hover:underline"> Conditions Générales de Vente</Link> et sur la page 
-                  <Link href="/tarifs" className="text-blue-600 hover:underline"> Tarifs</Link>.
+                  <Link prefetch={false} href="/cgv" className="text-blue-600 hover:underline"> Conditions Générales de Vente</Link> et sur la page 
+                  <Link prefetch={false} href="/tarifs" className="text-blue-600 hover:underline"> Tarifs</Link>.
                 </p>
                 
                 <h3 className="font-semibold mt-6 mb-3">3.3. Maintenance et interruptions :</h3>
@@ -575,7 +575,7 @@ export default function CGUPage() {
                 
                 <p className="mt-4">
                   Les données personnelles collectées dans le cadre de l'utilisation de la Plateforme sont traitées 
-                  conformément à notre <Link href="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de Confidentialité</Link> et dans le respect :
+                  conformément à notre <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de Confidentialité</Link> et dans le respect :
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
                   <li>Du Règlement Général sur la Protection des Données (RGPD) - Règlement UE 2016/679</li>
@@ -585,7 +585,7 @@ export default function CGUPage() {
                 <p className="mt-4">
                   Pour toute information détaillée sur la collecte, l'utilisation, le partage et la protection de vos données, 
                   ainsi que sur vos droits (accès, rectification, effacement, portabilité, opposition), 
-                  veuillez consulter notre <Link href="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de Confidentialité</Link>.
+                  veuillez consulter notre <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de Confidentialité</Link>.
                 </p>
                 
                 <p className="mt-4">
@@ -653,7 +653,7 @@ export default function CGUPage() {
                 <p className="mt-4">
                   L'Utilisateur est invité à nous contacter en priorité à 
                   <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline"> notification@testciviquefrance.fr</a> ou via notre 
-                  <Link href="/contact" className="text-blue-600 hover:underline"> formulaire de contact</Link> pour toute réclamation. 
+                  <Link prefetch={false} href="/contact" className="text-blue-600 hover:underline"> formulaire de contact</Link> pour toute réclamation. 
                   Nous nous engageons à répondre dans les meilleurs délais et à rechercher une solution satisfaisante.
                 </p>
                 
@@ -744,7 +744,7 @@ export default function CGUPage() {
                 <div className="bg-gray-50 p-6 rounded mt-4">
                   <p className="font-semibold mb-3">Test Civique France - Service Client</p>
                   <p><strong>Email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></p>
-                  <p className="mt-2"><strong>Formulaire de contact :</strong> <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
+                  <p className="mt-2"><strong>Formulaire de contact :</strong> <Link prefetch={false} href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
                   <p className="mt-4 text-sm text-gray-600">
                     Nous nous engageons à répondre à toutes vos demandes dans un délai de 48 heures ouvrées.
                   </p>
@@ -752,7 +752,7 @@ export default function CGUPage() {
                 
                 <p className="mt-6">
                   Pour toute réclamation ou question spécifique, n'hésitez pas à consulter également notre 
-                  <Link href="/faq" className="text-blue-600 hover:underline"> page FAQ</Link> qui pourrait répondre rapidement à vos interrogations.
+                  <Link prefetch={false} href="/faq" className="text-blue-600 hover:underline"> page FAQ</Link> qui pourrait répondre rapidement à vos interrogations.
                 </p>
               </div>
             </section>

@@ -123,7 +123,7 @@ export default function Pricing() {
                   ))}
                 </ul>
 
-                <Link
+                <Link prefetch={false}
                   href={plan.ctaLink}
                   className={`block w-full py-4 text-center font-medium transition-all duration-300 mt-auto ${plan.highlighted
                     ? 'bg-white text-primary-600 hover:bg-primary-50'

@@ -31,7 +31,7 @@ export default function RecentArticles() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {recentArticles.map((article) => (
-            <Link
+            <Link prefetch={false}
               key={article.slug}
               href={`/articles/${article.slug}`}
               className="block bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100"
@@ -59,7 +59,7 @@ export default function RecentArticles() {
         </div>
 
         <div className="mt-10 text-center">
-          <Link
+          <Link prefetch={false}
             href="/articles"
             className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
           >

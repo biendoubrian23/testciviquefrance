@@ -48,7 +48,7 @@ export default function MotDePasseOubliePage() {
       <div className="max-w-md w-full">
         {/* Logo */}
         <div className="text-center mb-8">
-          <Link href="/" className="inline-block">
+          <Link prefetch={false} href="/" className="inline-block">
             <Image
               src="/images/logo.png"
               alt="Test Civique France"
@@ -125,7 +125,7 @@ export default function MotDePasseOubliePage() {
               <p className="text-sm text-gray-500 mb-6">
                 Vérifiez votre boîte de réception et vos spams.
               </p>
-              <Link
+              <Link prefetch={false}
                 href="/login"
                 className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium"
               >
@@ -138,7 +138,7 @@ export default function MotDePasseOubliePage() {
 
         {!isSuccess && (
           <div className="mt-6 text-center">
-            <Link
+            <Link prefetch={false}
               href="/login"
               className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 text-sm transition-colors"
             >

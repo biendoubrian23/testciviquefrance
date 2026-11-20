@@ -361,7 +361,7 @@ export default function CategorieDetailPage() {
     return (
       <div className="glass-card p-8 text-center max-w-md mx-auto">
         <p className="text-gray-600 mb-4">Catégorie non trouvée</p>
-        <Link href="/dashboard/entrainement" className="glass-cta">
+        <Link prefetch={false} href="/dashboard/entrainement" className="glass-cta">
           Retour aux catégories
         </Link>
       </div>
@@ -377,7 +377,7 @@ export default function CategorieDetailPage() {
   return (
     <div className="max-w-4xl mx-auto px-0 sm:px-4 py-6 space-y-5">
       {/* Header avec navigation */}
-      <Link
+      <Link prefetch={false}
         href="/dashboard/entrainement"
         className="inline-flex items-center gap-2 text-gray-700 hover:text-primary-600 transition-all duration-200 active:scale-95 font-medium"
         style={{ WebkitTapHighlightColor: 'transparent' }}

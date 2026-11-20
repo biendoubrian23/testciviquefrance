@@ -712,7 +712,7 @@ export default function PolitiqueConfidentialitePage() {
                 <div className="bg-gray-50 p-6 rounded mt-4">
                   <p className="font-semibold mb-3">Test Civique France - Service Protection des Données</p>
                   <p><strong>Email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></p>
-                  <p className="mt-2"><strong>Formulaire de contact :</strong> <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
+                  <p className="mt-2"><strong>Formulaire de contact :</strong> <Link prefetch={false} href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
                   <p className="mt-4 text-sm text-gray-600">
                     Délai de réponse : Nous nous engageons à répondre à toutes vos demandes dans un délai maximum d'un mois.
                   </p>

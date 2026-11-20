@@ -25,7 +25,7 @@ export default function NotFound() {
           <ul className="space-y-3">
             {popularLinks.map((link) => (
               <li key={link.href}>
-                <Link
+                <Link prefetch={false}
                   href={link.href}
                   className="block p-3 bg-white rounded-lg border border-gray-200 hover:border-primary-500 hover:shadow-sm transition-all"
                 >
@@ -37,7 +37,7 @@ export default function NotFound() {
           </ul>
         </div>
 
-        <Link
+        <Link prefetch={false}
           href="/"
           className="inline-block px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors"
         >

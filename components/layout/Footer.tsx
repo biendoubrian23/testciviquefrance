@@ -28,7 +28,7 @@ export default function Footer() {
             <h3 className="font-semibold text-white mb-4">Navigation</h3>
             <ul className="space-y-3">
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/a-propos"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -36,7 +36,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/tarifs"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -44,7 +44,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/articles"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -52,7 +52,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/faq"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -60,7 +60,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/contact"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -75,7 +75,7 @@ export default function Footer() {
             <h3 className="font-semibold text-white mb-4">Légal</h3>
             <ul className="space-y-3">
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/mentions-legales"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -83,7 +83,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/politique-confidentialite"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -91,7 +91,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/cgu"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
@@ -99,7 +99,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                <Link prefetch={false}
                   href="/cgv"
                   className="text-gray-400 hover:text-white transition-colors"
                 >

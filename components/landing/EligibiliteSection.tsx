@@ -40,7 +40,7 @@ export default function EligibiliteSection() {
               ))}
             </ul>
 
-            <Link
+            <Link prefetch={false}
               href="/eligibilite-examen-civique"
               className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary-600 text-white font-semibold text-lg hover:bg-primary-500 transition-colors"
             >

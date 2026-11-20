@@ -231,7 +231,7 @@ export default function FAQPage() {
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Breadcrumb */}
             <nav className="text-sm text-gray-500 mb-6">
-              <Link href="/" className="hover:text-primary-600 transition-colors">Accueil</Link>
+              <Link prefetch={false} href="/" className="hover:text-primary-600 transition-colors">Accueil</Link>
               <span className="mx-2">/</span>
               <span className="text-gray-900">FAQ</span>
             </nav>
@@ -292,13 +292,13 @@ export default function FAQPage() {
               Notre équipe est disponible pour répondre à toutes vos interrogations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up delay-200">
-              <Link
+              <Link prefetch={false}
                 href="/contact"
                 className="inline-flex items-center justify-center px-6 py-3 border border-gray-900 text-gray-900 font-medium hover:bg-gray-900 hover:text-white transition-all duration-300"
               >
                 Nous contacter
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/signup"
                 className="inline-flex items-center justify-center px-6 py-3 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-all duration-300"
               >

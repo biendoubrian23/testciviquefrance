@@ -355,7 +355,7 @@ export default function ExamensPage() {
                     >
                       {examen.passed ? 'Réussi' : 'Échoué'}
                     </span>
-                    <Link
+                    <Link prefetch={false}
                       href={`/dashboard/examens/${examen.id}`}
                       className="text-primary-700 hover:text-primary-800 font-medium text-sm transition-all duration-200 active:scale-95"
                       style={{ WebkitTapHighlightColor: 'transparent' }}

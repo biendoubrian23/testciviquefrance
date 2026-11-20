@@ -122,7 +122,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
         {/* Logo - visible uniquement sur desktop */}
         <div className="hidden lg:flex -mt-6 justify-center">
-          <Link href="/" onClick={handleLinkClick}>
+          <Link prefetch={false} href="/" onClick={handleLinkClick}>
             <Image
               src="/logo.png"
               alt="Test Civique France"
@@ -142,7 +142,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
               return (
                 <li key={item.href}>
-                  <Link
+                  <Link prefetch={false}
                     href={item.href}
                     onClick={handleLinkClick}
                     className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-200 active:scale-95 ${
@@ -177,7 +177,7 @@ export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
 
               return (
                 <li key={item.href}>
-                  <Link
+                  <Link prefetch={false}
                     href={item.href}
                     onClick={handleLinkClick}
                     className={`flex items-center justify-between px-4 py-3 rounded-2xl transition-all duration-200 active:scale-95 ${

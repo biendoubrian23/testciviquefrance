@@ -162,7 +162,7 @@ export default function EntrainementPage() {
             const isComplete = category.niveauxCompletes === 10;
             const fillColor = isComplete ? '#10B981' : hex;
             return (
-              <Link
+              <Link prefetch={false}
                 key={category.id}
                 href={`/dashboard/entrainement/${category.id}`}
                 className="group glass-card p-5 sm:p-6 transition-all duration-200 active:scale-[0.98]"

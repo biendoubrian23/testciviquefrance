@@ -107,7 +107,7 @@ export default function ContactPage() {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             {/* Breadcrumb */}
             <nav className="text-sm text-gray-500 mb-6">
-              <Link href="/" className="hover:text-primary-600 transition-colors">Accueil</Link>
+              <Link prefetch={false} href="/" className="hover:text-primary-600 transition-colors">Accueil</Link>
               <span className="mx-2">/</span>
               <span className="text-gray-900">Contact</span>
             </nav>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">FAQ</h3>
                       <p className="text-gray-600 text-sm mb-2">Trouvez des réponses rapides</p>
-                      <Link href="/faq" className="text-primary-600 font-medium hover:text-primary-700 transition-colors">
+                      <Link prefetch={false} href="/faq" className="text-primary-600 font-medium hover:text-primary-700 transition-colors">
                         Consulter la FAQ →
                       </Link>
                     </div>
@@ -279,7 +279,7 @@ export default function ContactPage() {
                           />
                           <label htmlFor="rgpd" className="text-sm text-gray-600">
                             J'accepte que mes données soient utilisées pour traiter ma demande.{' '}
-                            <Link href="/mentions-legales" className="text-primary-600 hover:underline">
+                            <Link prefetch={false} href="/mentions-legales" className="text-primary-600 hover:underline">
                               Politique de confidentialité
                             </Link>
                           </label>
@@ -355,27 +355,27 @@ export default function ContactPage() {
               <div className="bg-white p-6 border border-gray-200 animate-fade-in-up delay-100 hover:shadow-md transition-shadow">
                 <h3 className="font-semibold text-gray-900 mb-2">L'examen civique</h3>
                 <p className="text-sm text-gray-600 mb-3">Format, durée, thématiques...</p>
-                <Link href="/faq#examen" className="text-primary-600 text-sm font-medium hover:text-primary-700">
+                <Link prefetch={false} href="/faq#examen" className="text-primary-600 text-sm font-medium hover:text-primary-700">
                   En savoir plus →
                 </Link>
               </div>
               <div className="bg-white p-6 border border-gray-200 animate-fade-in-up delay-200 hover:shadow-md transition-shadow">
                 <h3 className="font-semibold text-gray-900 mb-2">Nos tarifs</h3>
                 <p className="text-sm text-gray-600 mb-3">Crédits, Premium, paiement...</p>
-                <Link href="/tarifs" className="text-primary-600 text-sm font-medium hover:text-primary-700">
+                <Link prefetch={false} href="/tarifs" className="text-primary-600 text-sm font-medium hover:text-primary-700">
                   Voir les tarifs →
                 </Link>
               </div>
               <div className="bg-white p-6 border border-gray-200 animate-fade-in-up delay-300 hover:shadow-md transition-shadow">
                 <h3 className="font-semibold text-gray-900 mb-2">Se préparer</h3>
                 <p className="text-sm text-gray-600 mb-3">Conseils, méthodes, durée...</p>
-                <Link href="/faq#preparation" className="text-primary-600 text-sm font-medium hover:text-primary-700">
+                <Link prefetch={false} href="/faq#preparation" className="text-primary-600 text-sm font-medium hover:text-primary-700">
                   Nos conseils →
                 </Link>
               </div>
             </div>
 
-            <Link
+            <Link prefetch={false}
               href="/faq"
               className="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 text-gray-700 font-medium hover:bg-gray-100 transition-all duration-300"
             >

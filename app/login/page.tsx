@@ -241,7 +241,7 @@ export default function LoginPage() {
                 <input type="checkbox" className="w-4 h-4" />
                 <span>Se souvenir de moi</span>
               </label>
-              <Link
+              <Link prefetch={false}
                 href="/mot-de-passe-oublie"
                 className="text-primary-600 hover:text-primary-700 font-medium"
               >
@@ -261,7 +261,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Pas encore de compte?{' '}
-            <Link
+            <Link prefetch={false}
               href="/signup"
               className="text-primary-600 hover:text-primary-700 font-medium"
             >
@@ -271,7 +271,7 @@ export default function LoginPage() {
         </div>
 
         <div className="mt-6 text-center">
-          <Link
+          <Link prefetch={false}
             href="/"
             className="text-gray-600 hover:text-gray-900 text-sm transition-colors"
           >

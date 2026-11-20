@@ -105,7 +105,7 @@ export default function TarifsPage() {
                   </div>
                 </div>
 
-                <Link
+                <Link prefetch={false}
                   href="/signup"
                   className="mt-8 block w-full py-4 text-center border border-emerald-700 text-emerald-700 font-medium hover:bg-emerald-700 hover:text-white transition-all duration-300"
                 >
@@ -160,7 +160,7 @@ export default function TarifsPage() {
                   </div>
                 </div>
 
-                <Link
+                <Link prefetch={false}
                   href="/signup"
                   className="mt-8 block w-full py-4 text-center bg-white text-primary-600 font-medium hover:bg-primary-50 transition-all duration-300"
                 >
@@ -212,7 +212,7 @@ export default function TarifsPage() {
                   </div>
                 </div>
 
-                <Link
+                <Link prefetch={false}
                   href="/signup"
                   className="mt-8 block w-full py-4 text-center border border-primary-600 text-primary-600 font-medium hover:bg-primary-600 hover:text-white transition-all duration-300"
                 >
@@ -249,7 +249,7 @@ export default function TarifsPage() {
                   <span className="text-5xl font-bold text-gray-900">2,50€</span>
                 </div>
                 <p className="text-gray-600 mb-6">Testez-vous dans les conditions réelles</p>
-                <Link href="/signup" className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-all group-hover:gap-3">
+                <Link prefetch={false} href="/signup" className="inline-flex items-center gap-2 px-8 py-4 bg-primary-600 text-white font-medium hover:bg-primary-700 transition-all group-hover:gap-3">
                   Essayer maintenant <ArrowRight className="w-5 h-5" />
                 </Link>
               </div>
@@ -296,7 +296,7 @@ export default function TarifsPage() {
             <p className="text-lg text-gray-600 mb-8">
               Créez votre compte et accédez gratuitement à tous les cours
             </p>
-            <Link
+            <Link prefetch={false}
               href="/signup"
               className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 text-white font-medium hover:bg-gray-800 transition-all duration-300"
             >

@@ -136,7 +136,7 @@ export default function InternalLinks({ currentPage, maxLinks = 3, className = '
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {links.map((link, index) => (
-            <Link
+            <Link prefetch={false}
               key={index}
               href={link.href}
               className="group bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:border-primary-500"

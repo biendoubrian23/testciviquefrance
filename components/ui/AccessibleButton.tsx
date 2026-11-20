@@ -47,7 +47,7 @@ export default function AccessibleButton({
 
   if (href) {
     return (
-      <Link
+      <Link prefetch={false}
         href={href}
         className={classes}
         aria-label={ariaLabel}

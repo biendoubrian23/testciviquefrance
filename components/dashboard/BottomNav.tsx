@@ -56,7 +56,7 @@ export default function BottomNav() {
           const Icon = item.icon;
 
           return (
-            <Link
+            <Link prefetch={false}
               key={item.href}
               href={item.href}
               className={`relative flex flex-col items-center justify-center flex-1 h-12 rounded-2xl transition-all duration-200 active:scale-95 ${

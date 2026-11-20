@@ -50,7 +50,7 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
         className={`flex items-center gap-2 text-sm ${className}`}
       >
         {/* Accueil */}
-        <Link 
+        <Link prefetch={false} 
           href="/" 
           className="flex items-center gap-1 text-gray-500 hover:text-primary-600 transition-colors"
         >
@@ -63,7 +63,7 @@ export default function Breadcrumbs({ items, className = '' }: BreadcrumbsProps)
           <div key={index} className="flex items-center gap-2">
             <ChevronRight className="w-4 h-4 text-gray-400" />
             {item.href && index !== items.length - 1 ? (
-              <Link 
+              <Link prefetch={false} 
                 href={item.href}
                 className="text-gray-500 hover:text-primary-600 transition-colors"
               >

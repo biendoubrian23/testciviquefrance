@@ -106,7 +106,7 @@ export default function MentionsLegalesPage() {
                 
                 <p className="mt-4">
                   Pour toute information détaillée concernant la collecte, l'utilisation, le stockage et la protection de vos données personnelles, 
-                  veuillez consulter notre <Link href="/politique-confidentialite" className="text-blue-600 hover:underline font-semibold">Politique de Confidentialité</Link>.
+                  veuillez consulter notre <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 hover:underline font-semibold">Politique de Confidentialité</Link>.
                 </p>
                 
                 <h3 className="font-semibold mt-6 mb-2">Exercice de vos droits :</h3>
@@ -228,7 +228,7 @@ export default function MentionsLegalesPage() {
                 
                 <ul className="list-none space-y-2 ml-4 mt-4">
                   <li><strong>Par email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></li>
-                  <li><strong>Via notre formulaire de contact :</strong> <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></li>
+                  <li><strong>Via notre formulaire de contact :</strong> <Link prefetch={false} href="/contact" className="text-blue-600 hover:underline">Page contact</Link></li>
                 </ul>
                 
                 <p className="mt-6 text-sm text-gray-600">

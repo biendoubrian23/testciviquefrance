@@ -75,14 +75,14 @@ export default function CoursPage() {
               Nos cours couvrent l&apos;intégralité du programme conforme au décret n°2025-647 du 15 juillet 2025.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
+              <Link prefetch={false}
                 href="/signup"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-xl hover:bg-blue-700 transition-colors shadow-lg"
               >
                 Accéder gratuitement
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <Link
+              <Link prefetch={false}
                 href="/login"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-gray-300 text-gray-700 font-semibold text-lg rounded-xl hover:border-gray-400 hover:bg-gray-50 transition-colors"
               >
@@ -150,7 +150,7 @@ export default function CoursPage() {
               ))}
             </div>
             <div className="text-center">
-              <Link
+              <Link prefetch={false}
                 href="/signup"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 text-white font-semibold text-lg rounded-xl hover:bg-blue-700 transition-colors shadow-lg"
               >

@@ -39,14 +39,14 @@ export default function CGVPage() {
                 
                 <p className="mt-4">
                   Ces CGV s'appliquent exclusivement aux services payants proposés sur la Plateforme. 
-                  Elles complètent les <Link href="/cgu" className="text-blue-600 hover:underline">Conditions Générales d'Utilisation</Link> qui 
+                  Elles complètent les <Link prefetch={false} href="/cgu" className="text-blue-600 hover:underline">Conditions Générales d'Utilisation</Link> qui 
                   régissent l'usage général de la Plateforme.
                 </p>
                 
                 <p className="mt-4">
                   Toute souscription à un abonnement implique l'acceptation pleine et entière des présentes CGV ainsi que des 
-                  <Link href="/cgu" className="text-blue-600 hover:underline"> CGU</Link> et de notre 
-                  <Link href="/politique-confidentialite" className="text-blue-600 hover:underline"> Politique de Confidentialité</Link>.
+                  <Link prefetch={false} href="/cgu" className="text-blue-600 hover:underline"> CGU</Link> et de notre 
+                  <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 hover:underline"> Politique de Confidentialité</Link>.
                 </p>
                 
                 <p className="mt-4">
@@ -153,7 +153,7 @@ export default function CGVPage() {
                       <li>Accès depuis tous vos appareils (ordinateur, tablette, smartphone)</li>
                     </ul>
                     
-                    <p className="mt-4 text-sm"><strong>Tarif :</strong> Voir page <Link href="/tarifs" className="text-blue-600 hover:underline">Tarifs</Link></p>
+                    <p className="mt-4 text-sm"><strong>Tarif :</strong> Voir page <Link prefetch={false} href="/tarifs" className="text-blue-600 hover:underline">Tarifs</Link></p>
                     <p className="text-sm"><strong>Durée :</strong> Abonnement mensuel renouvelable automatiquement</p>
                   </div>
                   
@@ -172,7 +172,7 @@ export default function CGVPage() {
                       <li>Badge Premium visible sur votre profil</li>
                     </ul>
                     
-                    <p className="mt-4 text-sm"><strong>Tarif :</strong> Voir page <Link href="/tarifs" className="text-blue-600 hover:underline">Tarifs</Link></p>
+                    <p className="mt-4 text-sm"><strong>Tarif :</strong> Voir page <Link prefetch={false} href="/tarifs" className="text-blue-600 hover:underline">Tarifs</Link></p>
                     <p className="text-sm"><strong>Durée :</strong> Abonnement mensuel renouvelable automatiquement</p>
                   </div>
                 </div>
@@ -201,7 +201,7 @@ export default function CGVPage() {
                 <h3 className="font-semibold mt-6 mb-3">3.1. Tarifs :</h3>
                 <p>
                   Les prix des abonnements sont indiqués en euros (€) toutes taxes comprises (TTC). 
-                  Ils sont clairement affichés sur la page <Link href="/tarifs" className="text-blue-600 hover:underline">Tarifs</Link> de la Plateforme 
+                  Ils sont clairement affichés sur la page <Link prefetch={false} href="/tarifs" className="text-blue-600 hover:underline">Tarifs</Link> de la Plateforme 
                   et lors du processus de souscription.
                 </p>
                 
@@ -374,7 +374,7 @@ export default function CGVPage() {
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
                   <li>Par email à : <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></li>
-                  <li>Via le formulaire de contact : <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></li>
+                  <li>Via le formulaire de contact : <Link prefetch={false} href="/contact" className="text-blue-600 hover:underline">Page contact</Link></li>
                 </ul>
                 
                 <p className="mt-4">
@@ -519,7 +519,7 @@ export default function CGVPage() {
                   dans les cas suivants :
                 </p>
                 <ul className="list-disc list-inside space-y-1 ml-4 mt-2">
-                  <li>Violation des <Link href="/cgu" className="text-blue-600 hover:underline">Conditions Générales d'Utilisation</Link></li>
+                  <li>Violation des <Link prefetch={false} href="/cgu" className="text-blue-600 hover:underline">Conditions Générales d'Utilisation</Link></li>
                   <li>Violation des présentes CGV</li>
                   <li>Usage frauduleux ou abusif des Services</li>
                   <li>Comportement inapproprié, illégal ou contraire aux bonnes mœurs</li>
@@ -636,7 +636,7 @@ export default function CGVPage() {
               <div className="text-gray-700 space-y-3">
                 <p>
                   Le traitement des données personnelles collectées dans le cadre de la souscription et de l'utilisation 
-                  des abonnements est régi par notre <Link href="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de Confidentialité</Link>, 
+                  des abonnements est régi par notre <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 hover:underline">Politique de Confidentialité</Link>, 
                   conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi Informatique et Libertés.
                 </p>
                 
@@ -653,7 +653,7 @@ export default function CGVPage() {
                 <p className="mt-4">
                   Pour toute information sur vos droits (accès, rectification, effacement, portabilité, opposition) 
                   et sur le traitement de vos données, veuillez consulter notre 
-                  <Link href="/politique-confidentialite" className="text-blue-600 hover:underline"> Politique de Confidentialité</Link>.
+                  <Link prefetch={false} href="/politique-confidentialite" className="text-blue-600 hover:underline"> Politique de Confidentialité</Link>.
                 </p>
               </div>
             </section>
@@ -671,7 +671,7 @@ export default function CGVPage() {
                 
                 <div className="bg-gray-50 p-4 rounded mt-3">
                   <p><strong>Email :</strong> <a href="mailto:notification@testciviquefrance.fr" className="text-blue-600 hover:underline">notification@testciviquefrance.fr</a></p>
-                  <p className="mt-2"><strong>Formulaire :</strong> <Link href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
+                  <p className="mt-2"><strong>Formulaire :</strong> <Link prefetch={false} href="/contact" className="text-blue-600 hover:underline">Page contact</Link></p>
                   <p className="mt-3 text-sm text-gray-600">Délai de réponse : 48 heures ouvrées maximum</p>
                 </div>
                 
