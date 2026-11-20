@@ -2,6 +2,7 @@
 import { Montserrat } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from '@/contexts/AuthContext';
+import { Analytics } from '@vercel/analytics/react';
 import Script from 'next/script';
 import AnnouncementBanner from '@/components/layout/AnnouncementBanner';
 import { PostHogProvider } from '@/components/analytics/PostHogProvider';
@@ -343,6 +344,7 @@ export default function RootLayout({
         <PostHogProvider>
           <AuthProvider>{children}</AuthProvider>
         </PostHogProvider>
+        <Analytics />
 
         {/* AdSense auto-ads — charge après interactivité, respecte Consent Mode v2 */}
         <Script
