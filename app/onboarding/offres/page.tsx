@@ -8,7 +8,7 @@ import {
   Check,
   ChevronRight
 } from 'lucide-react';
-import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { STRIPE_PLANS, lienPaiement } from '@/lib/stripe/plans';
 import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
 
 export default function OnboardingOffersPage() {
@@ -40,7 +40,7 @@ export default function OnboardingOffersPage() {
     // Construire l'URL de checkout avec l'email pré-rempli
     const plan = STRIPE_PLANS[planKey];
     capture('checkout_started', { plan: planKey, price: plan.price });
-    const checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(user.email)}`;
+    const checkoutUrl = lienPaiement(planKey, user.email, user.id);
 
     // Rediriger vers Stripe Checkout
     window.location.href = checkoutUrl;

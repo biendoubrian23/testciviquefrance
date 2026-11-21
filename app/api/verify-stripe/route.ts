@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { STRIPE_PLANS, lienPaiement, type PlanType } from '@/lib/stripe/plans';
 import { createClient } from '@/lib/supabase/server';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder', {
@@ -9,7 +9,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder'
 
 export async function POST(req: NextRequest) {
   try {
-    const { planKey, userEmail, userId } = await req.json();
+    const { planKey, userEmail } = await req.json();
 
     if (!planKey || !userEmail) {
       return NextResponse.json(
@@ -57,27 +57,37 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // Le compte vient de la session, pas du corps de la requête : c'est lui qui
+    // relie le paiement au profil (client_reference_id).
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Vous devez être connecté pour effectuer un achat.'
+        },
+        { status: 401 }
+      );
+    }
+
     // Un abonné actif qui repaie un Payment Link d'abonnement crée un second
     // client et un second abonnement, facturés tous les deux chaque semaine.
     // Le changement de formule passe par le portail Stripe, pas par un nouvel achat.
     if (plan.interval !== 'one_time') {
-      const supabase = await createClient();
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        const { data: profile } = await supabase
-          .from('profiles')
-          .select('subscription_status, stripe_subscription_id')
-          .eq('id', user.id)
-          .single();
-        if (profile?.stripe_subscription_id && ['active', 'trialing', 'past_due'].includes(profile.subscription_status || '')) {
-          return NextResponse.json(
-            {
-              success: false,
-              error: 'Vous avez déjà un abonnement actif. Pour changer de formule, passez par « Gérer mon abonnement ».'
-            },
-            { status: 409 }
-          );
-        }
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('subscription_status, stripe_subscription_id')
+        .eq('id', user.id)
+        .single();
+      if (profile?.stripe_subscription_id && ['active', 'trialing', 'past_due'].includes(profile.subscription_status || '')) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: 'Vous avez déjà un abonnement actif. Pour changer de formule, passez par « Gérer mon abonnement ».'
+          },
+          { status: 409 }
+        );
       }
     }
 
@@ -97,10 +107,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ✅ Stripe est accessible, retourner l'URL de paiement avec client_reference_id
-    let checkoutUrl = `${plan.paymentLink}?prefilled_email=${encodeURIComponent(userEmail)}`;
-    if (userId) {
-      checkoutUrl += `&client_reference_id=${userId}`;
-    }
+    const checkoutUrl = lienPaiement(planKey as PlanType, userEmail, user.id);
 
     return NextResponse.json({
       success: true,

@@ -7,7 +7,6 @@ import Confetti from '@/components/ui/Confetti'
 import CelebrationToast from '@/components/ui/CelebrationToast'
 import ErrorModal from '@/components/ui/ErrorModal'
 import { createClient } from '@/lib/supabase/client'
-import { STRIPE_PLANS } from '@/lib/stripe/plans'
 import { posthog } from '@/components/analytics/PostHogProvider'
 
 // Import des questions locales (hashées) - Principes et valeurs
@@ -552,6 +551,53 @@ export default function QuizPage() {
     router.push('/dashboard/credits')
   }
 
+  // Rediriger vers Stripe pour le Pack Standard (déblocage des niveaux restants).
+  // Passe par /api/verify-stripe pour que le paiement soit relié au compte.
+  const handleStandardPurchase = async () => {
+    setIsLoadingPurchase(true)
+    try {
+      const supabase = createClient()
+      const { data: { user } } = await supabase.auth.getUser()
+
+      if (!user || !user.email) {
+        setErrorModal({
+          isOpen: true,
+          message: 'Vous devez être connecté pour effectuer un achat.'
+        })
+        return
+      }
+
+      const response = await fetch('/api/verify-stripe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          planKey: 'standard',
+          userEmail: user.email
+        })
+      })
+
+      const data = await response.json()
+
+      if (!data.success) {
+        setErrorModal({
+          isOpen: true,
+          message: data.error || 'Une erreur est survenue lors de la vérification du service de paiement.'
+        })
+        return
+      }
+
+      window.location.href = data.checkoutUrl
+    } catch (err) {
+      console.error('Erreur redirection Stripe:', err)
+      setErrorModal({
+        isOpen: true,
+        message: 'Une erreur inattendue est survenue. Veuillez réessayer dans quelques instants.'
+      })
+    } finally {
+      setIsLoadingPurchase(false)
+    }
+  }
+
   // Rediriger vers Stripe pour acheter le mode sans chrono
   const handleNoTimerPurchase = async () => {
     setIsLoadingPurchase(true)
@@ -965,9 +1011,10 @@ export default function QuizPage() {
             <div className="flex flex-col gap-2">
               {/* Bouton déblocage pour membres GRATUITS - redirige vers Stripe 2,99€ */}
               {!hasActiveSubscription && !allLevelsUnlocked && niveau < 10 && (
-                <a
-                  href={STRIPE_PLANS.standard.paymentLink}
-                  className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-3 px-4 font-semibold hover:from-primary-700 hover:to-primary-800 transition-all flex flex-col items-center justify-center gap-1 rounded-xl active:scale-95"
+                <button
+                  onClick={handleStandardPurchase}
+                  disabled={isLoadingPurchase}
+                  className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-3 px-4 font-semibold hover:from-primary-700 hover:to-primary-800 transition-all flex flex-col items-center justify-center gap-1 rounded-xl active:scale-95 disabled:opacity-60"
                   style={{ boxShadow: '0 4px 14px rgba(37,99,235,0.35)', WebkitTapHighlightColor: 'transparent' }}
                 >
                   <span className="text-xs font-medium opacity-90">⚠️ Ne perdez pas votre progression !</span>
@@ -975,7 +1022,7 @@ export default function QuizPage() {
                     <Unlock className="w-4 h-4" />
                     Débloquez les {10 - niveau} niveaux restants →
                   </span>
-                </a>
+                </button>
               )}
 
               {/* Bouton déblocage - uniquement pour membres abonnés avec score 2-7 ET qui n'ont PAS encore l'achat */}

@@ -116,3 +116,11 @@ export const STRIPE_PLANS = {
 };
 
 export type PlanType = keyof typeof STRIPE_PLANS;
+
+// L'adresse de paiement d'un plan pour un compte : `client_reference_id` relie le
+// paiement au compte dans le webhook, même si le client change l'e-mail sur Stripe.
+// Sans lui, un paiement fait sous une autre adresse ne débloque rien (cas du 12/11/2026).
+export function lienPaiement(planKey: PlanType, email: string, userId: string): string {
+  const params = new URLSearchParams({ prefilled_email: email, client_reference_id: userId });
+  return `${STRIPE_PLANS[planKey].paymentLink}?${params}`;
+}
