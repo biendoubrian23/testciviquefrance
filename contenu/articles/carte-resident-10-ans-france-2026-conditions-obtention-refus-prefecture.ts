@@ -16,6 +16,13 @@ import type { Article } from "@/contenu/articles";
  * (service-public : valable 10 ans, renouvelable), et le renouvellement
  * « automatique ».
  *
+ * Revérifié le 22/11/2026 (page citée par Copilot, rapport du 22/11) sur
+ * F2208, F17359, F11201, F39530 et F34501 lues ce jour : montants, conditions
+ * et Smic inchangés. Corrigé : le refus implicite naît au bout de 90 jours,
+ * et non plus de 4 mois, depuis le 30/10/2026 (décret n° 2026-1001) ; les
+ * fiches F2208 et F17359 l'annoncent en bandeau sans avoir encore changé
+ * leur texte.
+ *
  * La couverture vient d'Unsplash (licence Unsplash : usage libre, commercial
  * compris) ; ses dimensions sont nominales.
  */
@@ -26,7 +33,7 @@ const article: Article = {
   resume: "Carte de résident 10 ans : les conditions en 2026 (B1, examen civique, 5 ans de séjour), les cas particuliers, le prix de 350 €, les refus et les recours.",
   chapo: "La carte de résident est un titre de séjour valable ==10 ans== et renouvelable. Depuis le 1er janvier 2026, une première carte demande un niveau de français **B1** et la réussite à l'**examen civique**. On l'obtient après 5 ans de séjour régulier, ou plus tôt dans certains cas : conjoint de Français, parent d'enfant français, réfugié.",
   publieLe: "2026-04-28",
-  modifieLe: "2026-10-20",
+  modifieLe: "2026-11-22",
   minutes: 10,
   theme: "carte de résident 10 ans France 2026",
   motsCles: [
@@ -58,6 +65,12 @@ const article: Article = {
     source: "https://images.unsplash.com/photo-1568992687947-868a62a9f521",
   },
   blocs: [
+    {
+      type: "encadre",
+      titre: "Mise à jour du 22 novembre 2026",
+      texte: "Cette page indiquait qu'un silence de la préfecture (le service de l'État qui gère votre dossier) vaut refus au bout de 4 mois. Depuis le 30 octobre 2026, ce délai est de 90 jours après le dépôt d'une demande complète. Les montants et les conditions ont été revérifiés sur service-public le même jour.",
+      ton: "ambre",
+    },
     {
       type: "h2",
       texte: "Qu'est-ce que la carte de résident de 10 ans ?",
@@ -127,7 +140,7 @@ const article: Article = {
         ["Assurance maladie", "Obligatoire."],
         ["Intégration", "B1, examen civique, engagement à respecter les principes de la République, avis du maire de votre commune."],
       ],
-      legende: "Source : service-public, fiche F17359, vérifiée le 1er juin 2026, lue le 20/10/2026.",
+      legende: "Source : service-public, fiche F17359, vérifiée le 1er juin 2026, lue le 22/11/2026.",
     },
     {
       type: "p",
@@ -155,7 +168,7 @@ const article: Article = {
         ["Rente d'accident du travail", "Taux d'incapacité d'au moins 20 %."],
         ["Victime de violences conjugales, de mariage forcé ou de traite", "Plainte, et condamnation définitive de l'auteur."],
       ],
-      legende: "Source : service-public, fiche F2208, vérifiée le 1er juillet 2026, lue le 20/10/2026.",
+      legende: "Source : service-public, fiche F2208, vérifiée le 1er juillet 2026, lue le 22/11/2026.",
     },
     {
       type: "p",
@@ -184,7 +197,7 @@ const article: Article = {
         ["Entrée sans visa de long séjour", "**300 €** de plus (droit de visa de régularisation), dont 100 € au dépôt, non remboursables."],
         ["Demande déposée en retard", "**180 €** de plus, sauf force majeure."],
       ],
-      legende: "Sources : service-public, fiches F2208 et F17359 et actualité A18881, lues le 20/10/2026.",
+      legende: "Sources : service-public, fiches F2208 et F17359, lues le 22/11/2026, et actualité A18881, lue le 20/10/2026.",
     },
     {
       type: "p",
@@ -225,7 +238,7 @@ const article: Article = {
       items: [
         "Si le préfet envisage un refus, il peut consulter la commission du titre de séjour. Vous êtes convoqué au moins 15 jours avant, et vous pouvez venir avec un avocat et un interprète.",
         "Un refus écrit est en général suivi d'une OQTF : c'est l'ordre de quitter la France. Le délai pour aller au tribunal administratif (le juge des décisions de l'État) est alors de 48 heures, 15 jours ou 30 jours, selon le type d'OQTF.",
-        "Sans réponse au bout de 4 mois, la demande est refusée sans le dire. Vous avez alors 2 mois pour agir.",
+        "Sans réponse 90 jours après le dépôt d'une demande complète, la demande est refusée sans le dire. Ce délai était de 4 mois jusqu'au 29 octobre 2026 ; le [décret n° 2026-1001](/articles/delai-reponse-prefecture-titre-de-sejour-90-jours) l'a raccourci (un décret, c'est un texte du gouvernement). Vous avez alors 2 mois pour agir.",
       ],
     },
     {
@@ -292,34 +305,40 @@ const article: Article = {
   ],
   sources: [
     {
+      titre: "Légifrance : décret n° 2026-1001 du 26 octobre 2026 (délai de réponse de la préfecture ramené à 90 jours, JORF n° 0253 du 29 octobre 2026)",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055023061",
+      type: "officiel",
+      luLe: "2026-10-30",
+    },
+    {
       titre: "Service-public : carte de résident de 10 ans d'un étranger en France (F2208)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2208",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-22",
     },
     {
       titre: "Service-public : carte de résident de longue durée-UE, étranger en France depuis 5 ans (F17359)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F17359",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-22",
     },
     {
       titre: "Service-public : carte de résident permanent d'un étranger en France (F11201)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11201",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-22",
     },
     {
       titre: "Service-public : justifier de sa connaissance du français pour une carte de résident ou une carte pluriannuelle (F34501)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F34501",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-22",
     },
     {
       titre: "Service-public : carte pluriannuelle et carte de résident, comment passer l'examen civique ? (F39530)",
       url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F39530",
       type: "officiel",
-      luLe: "2026-10-20",
+      luLe: "2026-11-22",
     },
     {
       titre: "Service-public : titres de séjour, hausse du montant des taxes à partir du 1er mai 2026 (A18881)",
