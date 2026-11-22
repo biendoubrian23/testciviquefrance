@@ -369,3 +369,18 @@ Libellés lus sous le champ : « French (par défaut) », « France ». Période
 | devise de la france | 1 k à 10 k | + 900 % sur trois mois ; porte la réécriture du 19/11 |
 | laïcité définition simple ; principe de laïcité ; loi de 1905 laïcité ; la marseillaise histoire ; régularisation sans papiers | 100 à 1 k | |
 | examen civique questions laïcité ; laïcité école ; proposition de loi régularisation sans papiers | pas de donnée | |
+
+## Mesure du 22/11/2026 (dimanche, « Trouver de nouveaux mots clés »)
+
+Zone **France**, langue **French** (réglées par défaut, lues sous le champ des mots de départ). Mots de départ (10, famille examen, histoire et institutions) : séparation des pouvoirs, révolution française, constitution 1958, charte de l'environnement, état de droit, ve république, abolition de l'esclavage, droit de vote des femmes, la marseillaise, présidents de la ve république. Seules les 19 premières lignes ont été lues (le tableau ne charge pas plus au défilement par script).
+
+| Requête | Volume mensuel | Évolution sur 3 mois |
+|---|---|---|
+| révolution française ; revolution francaise | 10 k à 100 k | 0 % ; + 900 % |
+| abolition de l'esclavage | 10 k à 100 k | + 900 % |
+| la marseillaise ; la marseillaise paroles ; parole de la marseillaise | 10 k à 100 k | 0 % ; + 900 % ; + 900 % |
+| séparation des pouvoirs | 1 k à 10 k | + 900 % |
+| constitution 1958 | 1 k à 10 k | + 900 % |
+| charte de l'environnement | 1 k à 10 k | + 900 % |
+| état de droit | 1 k à 10 k | + 900 % |
+| ve république ; 5eme république ; cinquième république | 1 k à 10 k | 0 % (sur un an : - 90 %) ; + 900 % pour « cinquième république » |
