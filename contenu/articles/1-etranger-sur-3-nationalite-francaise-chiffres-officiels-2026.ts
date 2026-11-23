@@ -1,232 +1,244 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-buzz-nouveaux-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026, puis réécrit en entier par le robot éditorial le
+ * 23/11/2026 (`docs/seo/ROBOT.md`, liste « à revérifier » de `MOTS-CLES.md`).
+ * La version migrée inventait sa série (taux « estimés » de 78 % à 37 %,
+ * « environ 55 000 » naturalisations en 2025, taux par diplôme, par durée de
+ * résidence et par département, seuil de revenus de 1 200 €), et son titre
+ * parlait de chiffres publiés « discrètement » alors qu'ils sont publics.
+ * Sources lues le 23/11/2026 : DSED (page « L'accès à la nationalité
+ * française pour l'année 2025 », publication du 30/06/2026) ; ministère de
+ * l'Intérieur, « Les étrangers en France, rapport au Parlement 2025 »
+ * (publié le 14/10/2026) ; Assemblée nationale, avis n° 2006, tome IV
+ * (PLF 2026, tableau des décisions favorables) ; Légifrance (code civil,
+ * art. 21-25-1 ; décret n° 93-1362, art. 43 à 45) ; service-public F2213 et
+ * F11926 ; réponse à la question écrite n° 11488.
  */
 const article: Article = {
   slug: "1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026",
-  titre: "Seulement 1 étranger sur 3 obtient la nationalité française : les vrais chiffres que l'État publie discrètement",
-  titreSeo: "Seulement 1 étranger sur 3 obtient la nationalité française : les vrais chiffres que l'État publie discrètement",
-  resume: "Le taux d'acceptation des naturalisations a chuté de 78% à 37% en 4 ans. Quels profils réussissent, pourquoi 2 dossiers sur 3 échouent, et comment faire partie du tiers qui obtient la nationalité française. Les données officielles du Ministère de l'Intérieur décryptées.",
-  chapo: "Chaque année, des centaines de milliers d'étrangers déposent un dossier de naturalisation en France. Et chaque année, l'État publie discrètement des chiffres qui font froid dans le dos : **moins d'un candidat sur trois obtient la nationalité française**. Ces statistiques officielles, publiées par le Ministère de l'Intérieur et l'INSEE, révèlent un système beaucoup plus sélectif que ce que les préfectures laissent entendre. Quels profils réussissent le mieux ? Quelles nationalités ont les meilleurs taux ? Pourquoi tant de dossiers finissent en ajournement ou en refus ? Voici les vrais chiffres, et ce qu'ils signifient pour votre dossier.",
+  titre: "Naturalisation : 1 demande sur 3 acceptée ? Ce que disent vraiment les chiffres officiels",
+  titreSeo: "Taux d'acceptation naturalisation : les chiffres",
+  resume: "Combien de naturalisations par an, d'où vient le « 1 sur 3 », combien de temps attendre et que faire après un refus : les chiffres officiels expliqués.",
+  chapo: "En 2025, ==42 246 personnes sont devenues françaises par décret==, et 98 139 ont acquis la nationalité française en tout, selon le ministère de l'Intérieur. Le chiffre « 1 sur 3 » vient d'un calcul de l'Assemblée nationale. Il compare les décisions favorables d'une année aux demandes de la même année : ce n'est pas un vrai taux d'acceptation. Voici les chiffres, et ce qu'ils veulent dire pour votre démarche.",
   publieLe: "2026-04-25",
-  modifieLe: "2026-04-25",
-  minutes: 18,
-  theme: "taux réussite naturalisation France 2026",
+  modifieLe: "2026-11-23",
+  minutes: 8,
+  theme: "Les chiffres officiels de la naturalisation",
   motsCles: [
-    "taux réussite naturalisation France 2026",
+    "taux d'acceptation naturalisation",
     "statistiques naturalisation française",
-    "combien étrangers deviennent français",
-    "chiffres naturalisation 2026",
-    "taux refus naturalisation France",
-    "délai naturalisation France 2026",
-    "nationalité française probabilité obtention",
-    "nombre naturalisations France par an",
-    "nationalité par décret France chiffres",
-    "taux acceptation naturalisation préfecture",
+    "nombre de naturalisations par an",
+    "chiffres naturalisation 2025",
+    "taux refus naturalisation",
+    "délai naturalisation",
   ],
   rubrique: "cadre-legal",
-  auteur: "Brian B",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1551836022-4c4c79ecde51?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
-    largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1551836022-4c4c79ecde51",
+    src: "/images/articles/naturalisation-chiffres-arles.webp",
+    alt: "Un drapeau tricolore accroché à la façade en pierre de l'hôtel de ville d'Arles",
+    largeur: 1024,
+    hauteur: 768,
+    credit: "ell brown, via Flickr",
+    licence: "CC BY 2.0",
+    source: "https://www.flickr.com/photos/39415781@N06/5800111775",
   },
   blocs: [
-    { type: "h2", texte: "Les chiffres que l'État publie discrètement", id: "les-chiffres-officiels" },
-    {
-      type: "p",
-      texte: "Le Ministère de l'Intérieur publie chaque année un rapport sur l'immigration et l'intégration. Voici ce qu'on y trouve, sans filtre.",
-    },
-    { type: "p", texte: "**Naturalisations accordées ces dernières années :**" },
-    {
-      type: "tableau",
-      entetes: ["Année", "Dossiers déposés (estimé)", "Naturalisations accordées", "Taux d'acceptation"],
-      lignes: [
-        ["2021", "~130 000", "101 341", "~78%"],
-        ["2022", "~135 000", "98 956", "~73%"],
-        ["2023", "~140 000", "82 471", "~59%"],
-        ["2024", "~145 000", "71 200", "~49%"],
-        ["2025 (estimé)", "~150 000", "~55 000", "~37%"],
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Ce que montrent ces chiffres :** le taux d'acceptation **chute depuis 2021**. La politique de naturalisation se durcit progressivement, et ce n'est pas une impression, c'est une tendance documentée.",
-    },
     {
       type: "encadre",
-      texte: "**Attention** : les \"dossiers déposés\" incluent les premières demandes ET les recours après ajournement. Le taux réel de succès à la première tentative est encore plus bas.",
-      ton: "bleu",
-    },
-    { type: "p", texte: "**Les 3 voies de naturalisation et leurs taux :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Par décret** (la voie principale : résidence 5 ans) : taux d'acceptation ~38% en 2025",
-        "**Par mariage** (4 ans de mariage) : taux d'acceptation ~62% en 2025",
-        "**Par droit du sol renforcé** (enfants nés en France) : taux d'acceptation ~85%",
-      ],
-    },
-    { type: "h2", texte: "Quels profils réussissent et pourquoi", id: "qui-reussit" },
-    { type: "p", texte: "Les statistiques révèlent des écarts importants selon le profil du candidat." },
-    { type: "h3", texte: "Par niveau d'études" },
-    {
-      type: "tableau",
-      entetes: ["Niveau", "Taux d'acceptation estimé"],
-      lignes: [
-        ["Bac+3 et plus", "~68%"],
-        ["Bac à Bac+2", "~52%"],
-        ["Inférieur au bac", "~31%"],
-        ["Sans diplôme déclaré", "~22%"],
-      ],
-    },
-    {
-      type: "p",
-      texte: "La corrélation est directe : **plus vous êtes diplômé, plus vos chances sont élevées**. Les préfectures évaluent la capacité d'\"assimilation\", et le niveau d'études influence fortement l'entretien.",
-    },
-    { type: "h3", texte: "Par ancienneté de résidence" },
-    {
-      type: "tableau",
-      entetes: ["Durée en France", "Taux d'acceptation estimé"],
-      lignes: [
-        ["5-7 ans (durée minimale)", "~29%"],
-        ["8-12 ans", "~51%"],
-        ["13-20 ans", "~67%"],
-        ["Plus de 20 ans", "~79%"],
-      ],
-    },
-    {
-      type: "p",
-      texte: "**Ce que ça signifie** : attendre 8-10 ans au lieu de déposer à 5 ans augmente significativement vos chances. La préfecture valorise l'ancienneté comme preuve d'intégration.",
-    },
-    { type: "h3", texte: "Par nationalité d'origine" },
-    {
-      type: "p",
-      texte: "Certaines nationalités ont des taux historiquement plus faibles, pas à cause d'une discrimination explicite, mais parce que les profils moyens diffèrent. Les ressortissants de pays francophones (Maroc, Sénégal, Algérie, Tunisie) représentent **55% des naturalisations** accordées, grâce à l'avantage linguistique.",
-    },
-    { type: "h3", texte: "Par département de résidence" },
-    {
-      type: "p",
-      texte: "Le département de résidence influence fortement les délais et les critères d'examen. Paris, les Bouches-du-Rhône et le Val-de-Marne ont des délais plus longs et des critères plus stricts. Les départements ruraux traitent les dossiers plus rapidement avec souvent des taux d'acceptation plus élevés.",
+      titre: "Article corrigé le 23 novembre 2026",
+      texte: "La version précédente donnait des taux d'acceptation « estimés » (78 % en 2021, 37 % en 2025) et environ 55 000 naturalisations en 2025. Elle donnait aussi des taux par diplôme, par durée de résidence et par département. Aucun de ces chiffres ne venait d'une source officielle. Cet article est réécrit sur les chiffres publiés par le ministère de l'Intérieur et l'Assemblée nationale.",
+      ton: "ambre",
     },
     {
       type: "h2",
-      texte: "Pourquoi 2 dossiers sur 3 échouent : les vraies raisons",
-      id: "pourquoi-refuse",
+      texte: "Combien de personnes deviennent françaises chaque année ?",
     },
     {
       type: "p",
-      texte: "Les refus et ajournements ne sont pas toujours expliqués clairement. Voici les motifs réels les plus fréquents.",
+      texte: "Il y a deux grandes façons de devenir français quand on est étranger. La ==naturalisation par décret== est une demande faite à l'État : il peut l'accepter ou la refuser. La ==déclaration== est un droit ouvert dans certains cas, par exemple après 4 ans de mariage avec une personne française. Les enfants mineurs d'une personne naturalisée deviennent souvent français en même temps qu'elle : c'est l'« effet collectif ».",
     },
-    { type: "h3", texte: "Les 5 motifs de refus les plus fréquents" },
-    { type: "p", texte: "**1. Défaut d'assimilation à la communauté française (le plus fréquent)**" },
-    { type: "p", texte: "Ce motif vague couvre en réalité plusieurs problèmes concrets :" },
     {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Niveau de français insuffisant malgré une attestation B1 obtenue",
-        "Connaissance des institutions françaises jugée insuffisante à l'entretien",
-        "Incapacité à expliquer les valeurs républicaines de façon convaincante",
-        "Mode de vie jugé insuffisamment \"intégré\" (parfois subjectif)",
+      type: "p",
+      texte: "Le service statistique du ministère de l'Intérieur, la DSED, publie les chiffres chaque année ([DSED, publication du 30 juin 2026](https://www.immigration.interieur.gouv.fr/chiffres-de-limmigration-en-france/lacces-a-nationalite-francaise-pour-lannee-2025-moins-dacquisitions-de-nationalite-francaise-par)) :",
+    },
+    {
+      type: "tableau",
+      entetes: ["Année", "Par décret (enfants compris)", "Par mariage", "Toutes les voies"],
+      lignes: [
+        ["2021", "75 249", "17 280", "128 560"],
+        ["2022", "60 556", "16 465", "114 483"],
+        ["2023", "40 064", "19 455", "97 288"],
+        ["2024", "48 829", "15 910", "103 661"],
+        ["2025", "42 246", "17 579", "98 139"],
       ],
     },
-    { type: "p", texte: "**2. Situation fiscale irrégulière**" },
     {
       type: "p",
-      texte: "Tout retard, toute dette fiscale, toute déclaration manquante sur les 3-5 dernières années = refus quasi automatique. L'administration consulte systématiquement la DGFIP.",
-    },
-    { type: "p", texte: "**3. Revenus instables ou insuffisants**" },
-    {
-      type: "p",
-      texte: "Pas de seuil officiel mais en pratique : moins de 1 200 € nets/mois sur les 3 dernières années mène souvent à un ajournement. Les revenus doivent être réguliers, les intermittents du spectacle ou freelances irréguliers sont plus vulnérables.",
-    },
-    { type: "p", texte: "**4. Antécédents judiciaires**" },
-    {
-      type: "p",
-      texte: "Toute condamnation pénale, même ancienne, même pour une infraction légère, est un motif de refus ou d'ajournement. Cela inclut les amendes forfaitaires majorées non payées.",
-    },
-    { type: "p", texte: "**5. Dossier incomplet ou incohérent**" },
-    {
-      type: "p",
-      texte: "Des milliers de dossiers sont rejetés pour des incohérences dans les dates de résidence, des documents manquants, ou des informations non concordantes entre les pièces. C'est évitable avec une préparation sérieuse.",
-    },
-    { type: "h3", texte: "L'ajournement vs le refus : une différence cruciale" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Ajournement** : votre dossier est mis de côté pour 2 ans maximum. Vous pouvez redéposer. C'est la réponse à ~35% des dossiers examinés",
-        "**Refus** : décision négative motivée. Recours possible devant le Tribunal Administratif de Nantes dans un délai de 2 mois",
-      ],
+      texte: "Lecture : en 2025, 42 246 personnes ont acquis la nationalité par décret, dont 9 196 enfants. C'est 13,5 % de moins qu'en 2024. « Toutes les voies » ajoute les déclarations, dont celles des jeunes nés en France, et les jeunes devenus français de plein droit à 18 ans. Le rapport au Parlement de 2025 présente encore les chiffres de 2025 comme provisoires.",
     },
     {
       type: "h2",
-      texte: "Comment faire partie du tiers qui réussit : les leviers concrets",
-      id: "augmenter-chances",
+      texte: "D'où vient le chiffre « 1 demande sur 3 » ?",
     },
     {
       type: "p",
-      texte: "Les candidats qui réussissent ne sont pas plus \"méritants\", ils sont mieux préparés.",
+      texte: "Il vient d'un rapport de l'Assemblée nationale sur le budget 2026 ([avis n° 2006, tome IV, p. 27](https://www.assemblee-nationale.fr/dyn/17/rapports/cion_lois/l17b2006-tiv_rapport-avis.pdf)). La députée rapporteure y compare, pour chaque année, le nombre de décisions favorables au nombre de demandes déposées. Les chiffres viennent du ministère de l'Intérieur.",
     },
-    { type: "h3", texte: "Levier 1 : Attendre le bon moment" },
+    {
+      type: "tableau",
+      entetes: ["Année", "Demandes déposées", "Décisions favorables", "Rapport entre les deux"],
+      lignes: [
+        ["2022", "89 672", "60 556", "67,5 %"],
+        ["2023", "132 248", "40 064", "30,3 %"],
+        ["2024", "131 034", "48 829", "37,3 %"],
+      ],
+    },
     {
       type: "p",
-      texte: "Ne déposez pas à 5 ans si vous n'êtes pas prêt. Chaque année supplémentaire en France améliore statistiquement vos chances. L'idéal est de déposer quand votre situation est **stabilisée sur 3 ans minimum** : même employeur, même logement, mêmes revenus réguliers.",
+      texte: "Ce calcul ==n'est pas un taux d'acceptation==. Un dossier déposé en 2024 reçoit souvent sa réponse en 2025 ou plus tard. Et les décisions favorables comptent aussi les enfants. Le rapport le dit lui-même : la série est très « volatile ». En 2021, le même calcul donne 97,7 %, ce qui montre ses limites.",
     },
-    { type: "h3", texte: "Levier 2 : Soigner absolument le volet fiscal" },
     {
       type: "p",
-      texte: "3 à 5 ans avant de déposer : déclarez vos revenus même si vous n'êtes pas imposable, payez toutes vos amendes, régularisez toute dette fiscale. Une casserole fiscale détruira un dossier parfait par ailleurs.",
-    },
-    { type: "h3", texte: "Levier 3 : Préparer sérieusement l'entretien" },
-    {
-      type: "p",
-      texte: "L'entretien d'assimilation est l'étape où 40% des ajournements se décident. Connaître les institutions françaises, l'histoire de France, la laïcité, les droits et devoirs, ce n'est pas qu'une formalité. Le test civique et l'entretien sont deux étapes liées.",
-    },
-    { type: "h3", texte: "Levier 4 : Un dossier béton dès le premier dépôt" },
-    {
-      type: "p",
-      texte: "Chaque pièce doit être à jour, traduite si nécessaire, cohérente avec les autres. Un dossier complet et cohérent évite les demandes de pièces complémentaires qui font perdre des mois et signalent une fragilité administrative.",
-    },
-    { type: "h3", texte: "Levier 5 : Choisir la bonne période pour déposer" },
-    {
-      type: "p",
-      texte: "Déposez en début d'année (janvier-mars) : les préfectures ont plus de ressources en début d'exercice budgétaire et traitent les dossiers plus rapidement. Évitez l'été et les périodes d'élections.",
+      texte: "Le chiffre le plus proche d'un taux vient du [rapport au Parlement 2025](https://www.immigration.interieur.gouv.fr/documentation/rapports/rapport-au-parlement-sur-donnees-de-2025.html) du ministère de l'Intérieur. Les plateformes, ces services qui instruisent les dossiers pour plusieurs départements, proposaient une décision favorable dans plus de 70 % des cas au début de 2025. Ce taux tombe à ==50 % en moyenne au quatrième trimestre 2025==. Ce sont des propositions, pas encore des décrets. Le même rapport compte plus de 153 850 demandes déposées en ligne en 2025, contre 131 083 en 2024.",
     },
     {
       type: "encadre",
-      titre: "À retenir",
-      texte: "Les chiffres sont clairs : obtenir la nationalité française n'est pas un droit automatique après 5 ans, c'est une démarche qui demande une préparation réelle. Le taux d'acceptation en baisse n'est pas une fatalité pour votre dossier. **Les candidats qui réussissent ont en commun une situation stable, une préparation sérieuse à l'entretien, et un dossier irréprochable.** Si vous prenez ces trois points au sérieux dès aujourd'hui, vos chances dépassent largement la moyenne statistique.",
+      titre: "Ce qu'il faut retenir",
+      texte: "Aucun taux officiel ne dit « votre dossier a 1 chance sur 3 ». Les chiffres publiés montrent deux choses : les demandes augmentent, et la part des propositions favorables a baissé au cours de 2025. Le résultat dépend de votre situation, examinée dossier par dossier.",
       ton: "bleu",
+    },
+    {
+      type: "h2",
+      texte: "Combien de temps faut-il attendre une réponse ?",
+    },
+    {
+      type: "p",
+      texte: "La loi fixe un délai maximum. L'administration doit répondre dans les ==18 mois== qui suivent la remise d'un dossier complet. Le récépissé, le papier qui prouve que le dossier est complet, fait partir ce délai. Il passe à 12 mois si vous résidez en France depuis au moins 10 ans. Il peut être prolongé une fois de 3 mois, par une décision motivée ([code civil, article 21-25-1](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419662)).",
+    },
+    {
+      type: "p",
+      texte: "En pratique, c'est plus long. Selon le rapport de l'Assemblée nationale, il fallait en moyenne 760 jours en 2024 entre le premier dépôt et une décision favorable. Pour une décision défavorable, il fallait 467 jours. Après une réponse favorable, notre article [sur le décret de naturalisation](/articles/decret-de-naturalisation-trouver-et-apres) explique comment le trouver au Journal officiel et la suite. Le Journal officiel est le journal où l'État publie ses lois et ses décrets.",
+    },
+    {
+      type: "h2",
+      texte: "Irrecevabilité, ajournement, refus : quelle différence ?",
+    },
+    {
+      type: "p",
+      texte: "Le [décret n° 93-1362](https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000699753/LEGISCTA000006083937/), articles 43 et 44, prévoit trois réponses négatives :",
+    },
+    {
+      type: "liste",
+      style: "puces",
+      items: [
+        "**L'irrecevabilité** : une condition de la loi manque (la durée de résidence, par exemple). La préfecture n'examine pas le fond du dossier.",
+        "**L'ajournement** : la demande est reportée. La décision fixe un délai ou des conditions à remplir avant de redemander.",
+        "**Le rejet** (ou refus) : la demande est refusée. Une nouvelle demande moins de 5 ans après peut être classée sans suite.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Pour contester, il faut d'abord faire un ==recours auprès du ministre chargé des naturalisations, dans les 2 mois== qui suivent la décision. Ce recours est obligatoire avant d'aller au tribunal. Sans réponse du ministre pendant 4 mois, le recours est considéré comme rejeté. Vous avez alors 2 mois pour saisir le tribunal administratif de Nantes ([service-public, F2213](https://www.service-public.gouv.fr/particuliers/vosdroits/F2213) ; décret n° 93-1362, article 45). Pour votre cas précis, faites-vous aider par un avocat ou une association, comme La Cimade.",
+    },
+    {
+      type: "h2",
+      texte: "Ce qui est demandé aujourd'hui pour être naturalisé",
+    },
+    {
+      type: "p",
+      texte: "Selon la fiche [service-public F2213](https://www.service-public.gouv.fr/particuliers/vosdroits/F2213), vérifiée le 16 juillet 2026, il faut en général :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "5 ans de résidence en France (moins dans certains cas, par exemple après 2 ans d'études supérieures en France).",
+        "Un niveau de français B2, à l'oral et à l'écrit ([F11926](https://www.service-public.gouv.fr/particuliers/vosdroits/F11926)).",
+        "La réussite à l'examen civique, puis un entretien en préfecture qui vérifie votre adhésion aux valeurs de la République.",
+        "Un timbre fiscal de 255 € (127,50 € en Guyane). Le détail est dans notre article [sur le coût de la naturalisation](/articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal).",
+      ],
+    },
+    {
+      type: "p",
+      texte: "L'examen civique et le niveau B2 sont ==exigés depuis le 1er janvier 2026==, selon le rapport au Parlement. L'examen compte 40 questions. Au 26 mai 2026, 71 125 personnes l'avaient passé, avec un taux moyen de réussite de 81 %, tous titres confondus ([réponse à la question écrite n° 11488](https://questions.assemblee-nationale.fr/q17/17-11488QE.htm)). Notre article [examen civique et naturalisation](/articles/examen-civique-naturalisation) explique quand le passer.",
+    },
+    {
+      type: "cta",
+      texte: "L'examen civique est une étape que vous pouvez préparer à l'avance. Sur Test Civique France, les cours des 5 thématiques sont gratuits, et les examens blancs de 40 questions vous donnent votre score et la correction de chaque question. L'inscription est gratuite.",
+    },
+    {
+      type: "p",
+      texte: "Si un enfant mineur vit avec vous, lisez aussi [comment il peut devenir français](/articles/naturalisation-enfant-mineur-france-2026-effet-collectif-declaration). Et si vous ne savez pas encore si l'examen vous concerne, [vérifiez-le en une minute](/eligibilite-examen-civique).",
     },
   ],
   faq: [
     {
       question: "Combien de personnes obtiennent la nationalité française chaque année ?",
-      reponse: "Entre 55 000 et 100 000 selon les années. Le chiffre a fortement baissé depuis 2021, passant d'environ 101 000 naturalisations à environ 55 000 estimées en 2025.",
+      reponse: "En 2025, 98 139 personnes ont acquis la nationalité française, toutes voies confondues, selon le ministère de l'Intérieur. Parmi elles, 42 246 l'ont obtenue par décret de naturalisation, enfants compris, et 17 579 par mariage. En 2024, le total était de 103 661, dont 48 829 par décret.",
     },
     {
-      question: "Quelle est la durée moyenne de traitement d'un dossier de naturalisation ?",
-      reponse: "Entre 12 et 36 mois selon le département. Paris et Île-de-France ont les délais les plus longs (24-36 mois). Les départements ruraux traitent parfois en 12-18 mois.",
+      question: "Quel est le taux d'acceptation des demandes de naturalisation ?",
+      reponse: "Il n'existe pas de taux officiel. Un rapport de l'Assemblée nationale rapporte les décisions favorables aux demandes de la même année : 37,3 % en 2024. Mais un dossier déposé une année est souvent jugé l'année suivante. Selon le rapport au Parlement, les propositions favorables sont passées de plus de 70 % à 50 % au cours de 2025.",
     },
     {
-      question: "Peut-on contester un refus de naturalisation ?",
-      reponse: "Oui. Un refus explicite peut être contesté devant le Tribunal Administratif de Nantes dans un délai de 2 mois. Un ajournement ne se conteste pas mais vous pouvez redéposer après 2 ans.",
+      question: "Quel est le délai pour obtenir la naturalisation ?",
+      reponse: "La loi impose une réponse dans les 18 mois après la remise d'un dossier complet, ou 12 mois si vous résidez en France depuis au moins 10 ans. Ce délai peut être prolongé une fois de 3 mois. En 2024, il fallait en moyenne 760 jours entre le premier dépôt et une décision favorable.",
     },
     {
-      question: "Est-ce que le test civique influence les chances d'obtenir la nationalité ?",
-      reponse: "Oui indirectement. Le test civique est une condition obligatoire pour déposer votre dossier. Mais surtout, la préparation au test civique vous prépare aussi à l'entretien d'assimilation, qui est l'étape où beaucoup de dossiers échouent.",
+      question: "Que faire en cas de refus de naturalisation ?",
+      reponse: "Vous devez d'abord faire un recours auprès du ministre chargé des naturalisations, dans les 2 mois après la décision. Ce recours est obligatoire. Sans réponse pendant 4 mois, il est rejeté, et vous avez 2 mois pour saisir le tribunal administratif de Nantes. Un avocat ou une association peut vous aider pour votre cas.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Ministère de l'Intérieur (DSED) : L'accès à la nationalité française pour l'année 2025 (publication du 30/06/2026)",
+      url: "https://www.immigration.interieur.gouv.fr/chiffres-de-limmigration-en-france/lacces-a-nationalite-francaise-pour-lannee-2025-moins-dacquisitions-de-nationalite-francaise-par",
+      type: "officiel",
+      luLe: "2026-11-23",
+    },
+    {
+      titre: "Ministère de l'Intérieur : Les étrangers en France, rapport au Parlement sur les données de 2025 (publié le 14/10/2026)",
+      url: "https://www.immigration.interieur.gouv.fr/documentation/rapports/rapport-au-parlement-sur-donnees-de-2025.html",
+      type: "officiel",
+      luLe: "2026-11-23",
+    },
+    {
+      titre: "Assemblée nationale : avis n° 2006, tome IV, Immigration, asile et intégration (PLF 2026)",
+      url: "https://www.assemblee-nationale.fr/dyn/17/rapports/cion_lois/l17b2006-tiv_rapport-avis.pdf",
+      type: "officiel",
+      luLe: "2026-11-23",
+    },
+    {
+      titre: "Légifrance : code civil, article 21-25-1 (délai de réponse)",
+      url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419662",
+      type: "juridique",
+      luLe: "2026-11-23",
+    },
+    {
+      titre: "Légifrance : décret n° 93-1362 du 30 décembre 1993, articles 43 à 45 (irrecevabilité, ajournement, rejet, recours)",
+      url: "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000699753/LEGISCTA000006083937/",
+      type: "juridique",
+      luLe: "2026-11-23",
+    },
+    {
+      titre: "Service-public.gouv.fr : Naturalisation par décret (F2213)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2213",
+      type: "officiel",
+      luLe: "2026-11-23",
+    },
+    {
+      titre: "Service-public.gouv.fr : niveau de langue française exigé pour la naturalisation (F11926)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11926",
+      type: "officiel",
+      luLe: "2026-11-23",
+    },
+    {
+      titre: "Assemblée nationale : question écrite n° 11488, réponse du ministère de l'Intérieur (JO du 11/08/2026)",
+      url: "https://questions.assemblee-nationale.fr/q17/17-11488QE.htm",
+      type: "officiel",
+      luLe: "2026-11-23",
     },
   ],
 };
