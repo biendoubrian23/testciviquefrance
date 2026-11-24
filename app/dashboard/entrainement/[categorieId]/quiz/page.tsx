@@ -115,6 +115,7 @@ export default function QuizPage() {
   const hasLoadedRef = useRef(false)
   const timerStartRef = useRef<number>(0) // Pour l'animation fluide
   const isRestoringRef = useRef(false) // Pour éviter de sauvegarder pendant la restauration
+  const finishingRef = useRef(false) // Empêche finishQuiz de s'exécuter deux fois
 
   // Charger le profil utilisateur pour les achats
   useEffect(() => {
@@ -696,6 +697,11 @@ export default function QuizPage() {
 
   // Terminer le quiz et sauvegarder les résultats
   const finishQuiz = async () => {
+    // Un double appui sur « Voir mes résultats » relançait toute la sauvegarde
+    // (session en double, statistiques comptées deux fois, doublon de progression).
+    if (finishingRef.current) return
+    finishingRef.current = true
+
     if (timerRef.current) clearInterval(timerRef.current)
     if (intervalRef.current) clearInterval(intervalRef.current)
 
@@ -807,11 +813,11 @@ export default function QuizPage() {
             // Créer la progression pour cette catégorie
             const { error: createProgressionError } = await supabase
               .from('progression_niveaux')
-              .insert({
+              .upsert({
                 user_id: user.id,
                 categorie_id: categorieId,
                 niveau_actuel: niveau + 1
-              })
+              }, { onConflict: 'user_id,categorie_id', ignoreDuplicates: true })
             if (createProgressionError) console.error('Erreur création progression:', createProgressionError)
           }
         }
