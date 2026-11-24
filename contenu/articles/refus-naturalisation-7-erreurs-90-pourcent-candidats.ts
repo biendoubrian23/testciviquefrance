@@ -1,539 +1,242 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-naturalisation-erreurs-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/refus-naturalisation-7-erreurs-90-pourcent-candidats`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026, sans changer d'adresse. Réécrit en entier par le robot
+ * éditorial le 24/11/2026 (liste « à revérifier » de `docs/seo/MOTS-CLES.md`) :
+ * la version migrée affirmait que « 90 % des candidats » font ces erreurs,
+ * donnait des seuils de revenus (1 200 € par mois), un niveau B1, un
+ * ajournement de « 1 à 2 ans », « 50 questions » et un recours gracieux puis
+ * contentieux, sans aucune source. Tout est réécrit sur le code civil
+ * (21-17, 21-23, 21-24, 21-25-1, 21-27, lus le 24/11), service-public F2213
+ * (lu le 24/11), F11926 et le décret n° 93-1362 (lus le 23/11).
  */
 const article: Article = {
   slug: "refus-naturalisation-7-erreurs-90-pourcent-candidats",
-  titre: "Refus de naturalisation : les 7 erreurs qui détruisent votre dossier (et que 90% des candidats font)",
-  titreSeo: "Refus de naturalisation : les 7 erreurs qui détruisent votre dossier (et que 90% des candidats font)",
-  resume: "90% des dossiers de naturalisation échouent à cause d'erreurs évitables. Découvrez les 7 erreurs fatales (dossier incomplet, situation fiscale irrégulière, niveau de français insuffisant, etc.) et comment les éviter pour maximiser vos chances d'obtenir la nationalité française.",
-  chapo: "Vous avez vécu en France pendant des années. Vous avez appris la langue, travaillé, payé vos impôts, élevé vos enfants ici. Vous avez passé le test civique avec 36 bonnes réponses sur 40. Et pourtant, la préfecture vous répond froidement : \"Votre demande est ajournée pour défaut d'assimilation\" ou pire, \"refusée\". C'est un choc. Mais surtout, ce n'est pas une fatalité, c'est souvent le résultat d'erreurs évitables que 90% des candidats font sans s'en rendre compte. Ce guide dévoile les 7 erreurs les plus fréquentes qui détruisent votre dossier de naturalisation, les raisons cachées derrière les formulations officielles, et surtout comment les éviter pour maximiser vos chances d'obtenir la nationalité française.",
+  titre: "Refus de naturalisation : 7 erreurs à éviter avant de déposer votre dossier",
+  titreSeo: "Refus de naturalisation : 7 erreurs à éviter",
+  resume: "Résidence, français B2, examen civique, ressources, impôts, casier, traductions : les 7 points qui font refuser une naturalisation, et le recours.",
+  chapo: "Une demande de naturalisation est refusée ou reportée quand une ==condition de la loi n'est pas remplie==, ou quand le dossier ne la prouve pas. Les conditions sont écrites dans le code civil : résidence, français, examen civique, ressources, impôts, casier judiciaire. Voici les 7 erreurs à éviter, condition par condition, et ce que vous pouvez faire après une réponse négative.",
   publieLe: "2026-04-30",
-  modifieLe: "2026-04-30",
-  minutes: 25,
-  theme: "refus naturalisation 7 erreurs",
+  modifieLe: "2026-11-24",
+  minutes: 8,
+  theme: "Refus de naturalisation : les erreurs à éviter",
   motsCles: [
-    "refus naturalisation 7 erreurs",
-    "ajournement naturalisation 2026",
-    "naturalisation refusée erreurs éviter",
+    "refus naturalisation",
+    "naturalisation refusée",
+    "ajournement naturalisation",
     "erreurs dossier naturalisation",
-    "90 pourcent candidats refus",
-    "naturalisation refus motif assimilation",
-    "naturalisation ajournée que faire",
-    "erreurs fatales naturalisation",
-    "dossier naturalisation perfectible",
-    "refus naturalisation 2026",
-    "naturalisation refus recours",
-    "naturalisation ajournement raisons",
-    "naturalisation refus correction",
+    "refus naturalisation recours",
+    "naturalisation irrecevable",
   ],
-  rubrique: "conseils",
-  auteur: "Brian B",
+  rubrique: "cadre-legal",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
-    largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f",
+    src: "/images/articles/decret-de-naturalisation-avignon.webp",
+    alt: "Façade en pierre de l'hôtel de ville d'Avignon, avec des drapeaux français aux fenêtres",
+    largeur: 1024,
+    hauteur: 768,
+    credit: "ell brown, via Flickr",
+    licence: "CC BY 2.0",
+    source: "https://www.flickr.com/photos/39415781@N06/5818917417",
   },
   blocs: [
     {
-      type: "h2",
-      texte: "Erreur n°1 : Dossier incomplet ou incohérent (la cause n°1 de refus)",
-      id: "erreur-1-dossier-incomplet",
-    },
-    {
-      type: "p",
-      texte: "90% des dossiers rejetés commencent par la même erreur : des documents manquants ou des incohérences dans les dates. La préfecture ne vous avertit pas, elle rejette simplement le dossier.",
-    },
-    { type: "p", texte: "Ce que la préfecture attend" },
-    {
-      type: "p",
-      texte: "Le dossier de naturalisation est un puzzle de 20 à 30 pièces. Une seule pièce manquante ou incorrecte = dossier incomplet = ajournement ou refus.",
-    },
-    { type: "p", texte: "Les pièces indispensables (liste non exhaustive) :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Carte de séjour en cours de validité (ou récépissé si renouvellement en cours)",
-        "Passeport valide + traduction certifiée si non en français",
-        "Justificatif de résidence continue en France depuis 5 ans (ou 2 ans si marié depuis 4 ans)",
-        "Preuve de ressources suffisantes (bulletins de salaire, avis d'imposition)",
-        "Attestation de réussite au test civique (32/40 minimum)",
-        "Certificat de français (DELF B1 ou TCF B1)",
-        "Acte de naissance traduit et légalisé",
-        "Extraits de casier judiciaire (bulletin n°2) légalisés",
-        "Attestation d'hébergement ou bail de location",
-        "Justificatifs de vie en France (factures EDF, téléphone, CAF, etc.)",
-      ],
-    },
-    {
-      type: "h2",
-      texte: "Erreur n°2 : Problèmes fiscaux non résolus (le piège des années d'avant)",
-      id: "erreur-2-problemes-fiscaux",
-    },
-    {
-      type: "p",
-      texte: "La DGFIP (Direction générale des finances publiques) communique directement avec la préfecture. Si vous avez une dette fiscale, même mineure, ou une année d'impôts non déclarée, la préfecture sera informée.",
-    },
-    {
-      type: "p",
-      texte: "Cela ne signifie pas un refus automatique. Mais cela signifie : ajournement de 6 à 12 mois et obligation de régulariser avant une nouvelle demande.",
-    },
-    { type: "p", texte: "Ce que la préfecture recherche" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Déclarations d'impôts complétées pour les 3-5 dernières années",
-        "Aucune dette active auprès de la DGFIP",
-        "Cohérence entre les revenus déclarés et les ressources justifiées",
-        "Cohérence avec les déclarations aux caisses sociales (Urssaf, etc.)",
-      ],
-    },
-    { type: "p", texte: "Avant de déposer votre dossier :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Demandez un relevé d'identité fiscale (RIF) à votre centre des impôts",
-        "Vérifiez que toutes vos déclarations sont faites pour les 3-5 dernières années",
-        "Si vous êtes non-imposable, obtenez une attestation de non-imposition",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Conseil pro : la DGFIP ne vous préviendra pas si vous avez une erreur. C'est à vous de vérifier. Ne déposez jamais votre dossier de naturalisation sans avoir une attestation de régularité fiscale.",
-    },
-    {
-      type: "h2",
-      texte: "Erreur n°3 : Niveau de français jugé insuffisant (le piège du B1 théorique)",
-      id: "erreur-3-niveau-francais",
-    },
-    {
-      type: "p",
-      texte: "Le décret exige un niveau B1 en français. Mais la préfecture ne se contente pas d'un certificat DELF ou TCF, elle évalue en pratique votre niveau lors de l'entretien d'assimilation.",
-    },
-    { type: "p", texte: "Ce que la préfecture évalue réellement" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Compréhension orale : comprenez-vous les questions complexes ? Parlez-vous trop vite ou trop lentement ?",
-        "Expression orale : êtes-vous à l'aise avec les phrases complexes ? Utilisez-vous le subjonctif, le conditionnel ?",
-        "Expression écrite : votre lettre de motivation est-elle bien structurée, sans fautes graves ?",
-        "Connaissances des valeurs : pouvez-vous expliquer la laïcité, l'égalité homme-femme, les institutions ?",
-      ],
-    },
-    { type: "p", texte: "Les pièges du certificat de français" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "DELF B1 (Diplôme officiel) = Généralement accepté sans vérification (risque faible)",
-        "TCF B1 (Test de français) = Accepté, mais entretien peut révéler un niveau réel inférieur (risque moyen)",
-        "Attestation d'une école de langue = Souvent jugée insuffisante (risque élevé)",
-        "Auto-attestation = Refus quasi automatique (risque très élevé)",
-      ],
-    },
-    { type: "p", texte: "Ce que la préfecture rejette" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Attestations d'écoles de langue non reconnues (surtout si l'école n'a pas de statut officiel)",
-        "Auto-attestations (même signées par un professeur)",
-        "Certificats délivrés à l'étranger (sauf si reconnus par le ministère français de l'Éducation nationale)",
-        "Certificats dépassés (plus de 3 ans)",
-      ],
-    },
-    { type: "p", texte: "Comment éviter cette erreur" },
-    { type: "p", texte: "Avant d'obtenir votre certificat :" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "Passez un DELF B1 ou TCF B1 officiel (ce sont les seuls 100% acceptés)",
-        "Si vous n'avez pas le niveau B1, préparez-vous sérieusement (3-6 mois de cours)",
-        "Ne déposez jamais votre dossier avec une attestation d'école non reconnue",
-      ],
-    },
-    { type: "p", texte: "Si vous avez déjà un certificat :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Vérifiez qu'il est délivré par un organisme officiel (Institut Français, Université, CNED, etc.)",
-        "Vérifiez qu'il est valide (pas plus de 3 ans)",
-        "Si vous avez un doute, passez un DELF B1 ou TCF B1 pour être sûr",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Conseil pro : le niveau B1, c'est la capacité à comprendre les idées principales et à s'exprimer simplement sur des sujets familiers. Si vous ne pouvez pas expliquer la laïcité ou les institutions en français, vous n'avez pas le niveau B1 réel.",
-    },
-    {
-      type: "h2",
-      texte: "Erreur n°4 : Insertion professionnelle insuffisante (le piège du CDI)",
-      id: "erreur-4-insertion-pro",
-    },
-    {
-      type: "p",
-      texte: "La préfecture évalue votre intégration professionnelle. Elle ne cherche pas forcément un CDI, mais une stabilité professionnelle et des revenus suffisants.",
-    },
-    { type: "p", texte: "Ce que la préfecture attend" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "CDI = Stabilité maximale (risque faible)",
-        "CDD multiple mais stable = Accepté si justification (risque moyen)",
-        "Freelance avec revenus stables = Accepté si justificatifs fiscaux solides (risque moyen)",
-        "Chômage sans activité complémentaire = \"Insertion insuffisante\" (risque élevé)",
-        "Revenus inférieurs au SMIC sur 3 ans = \"Stabilité insuffisante\" (risque élevé)",
-        "Travail au noir passé = \"Fraude ou fausse déclaration\" (risque très élevé)",
-      ],
-    },
-    { type: "p", texte: "Les revenus minimums (non officiels mais réels)" },
-    { type: "p", texte: "La préfecture n'a pas de seuil officiel, mais en pratique :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "1 personne seule : revenus nets > 1200 euros/mois (soit > 14400 euros/an)",
-        "Couple : revenus nets > 2000 euros/mois (soit > 24000 euros/an)",
-        "Famille nombreuse : revenus nets > 2500 euros/mois (soit > 30000 euros/an)",
-      ],
-    },
-    { type: "p", texte: "Comment corriger cette erreur" },
-    { type: "p", texte: "Si vous êtes en CDI :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Obtenez une attestation employeur avec l'ancienneté, le salaire, et la stabilité du contrat",
-        "Si vous avez un CDD, demandez une attestation de renouvellement ou un CDI",
-      ],
-    },
-    { type: "p", texte: "Si vous êtes freelance ou auto-entrepreneur :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Présentez vos 3 dernières déclarations de revenus (formulaires 2042)",
-        "Présentez vos 3 derniers avis d'imposition",
-        "Si vos revenus sont variables, justifiez avec des contrats signés et des factures payées",
-      ],
-    },
-    { type: "p", texte: "Si vous êtes au chômage ou sans activité :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Passez une formation professionnelle (certifiante, de 3 mois minimum)",
-        "Faites du bénévolat (attestation de l'association)",
-        "Créez une entreprise (même micro-entreprise)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Conseil pro : la préfecture valorise l'engagement professionnel. Un CDI à temps partiel (25h) avec un projet de stabilisation est mieux qu'un CDD de 3 mois renouvelé 3 fois sans perspective.",
-    },
-    {
-      type: "h2",
-      texte: "Erreur n°5 : Défaut d'assimilation à la communauté française (le motif le plus flou)",
-      id: "erreur-5-assimilation",
-    },
-    {
-      type: "p",
-      texte: "C'est le motif le plus dangereux car le plus subjectif. La préfecture n'a pas de critères officiels, mais elle utilise des critères implicites.",
-    },
-    { type: "p", texte: "Ce que la préfecture évalue" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Participation à la vie locale (associations, clubs, etc.)",
-        "Engagement civique (bénévolat, votes)",
-        "Intégration dans la vie professionnelle et sociale",
-        "Liens familiaux et conjugaux (le fait d'avoir un partenaire français ou des enfants nés en France aide)",
-        "Investissement immobilier (acheter une maison = engagement à rester)",
-        "Liens avec le pays d'origine (voyages fréquents en Algérie, Maroc, etc. peuvent signaler une intention de partir)",
-      ],
-    },
-    { type: "p", texte: "Le piège de l'entretien d'assimilation" },
-    { type: "p", texte: "L'entretien dure 15 à 30 minutes. Le fonctionnaire peut poser :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Des questions sur vos valeurs (laïcité, égalité)",
-        "Des questions sur les institutions françaises",
-        "Des questions sur votre vie en France",
-        "Des questions piégées pour tester votre sincérité",
-      ],
-    },
-    { type: "p", texte: "Comment éviter cette erreur" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Montrez votre engagement en France :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Participez à une association française (culturelle, sportive, civique)",
-        "Attestation de bénévolat ou d'engagement associatif",
-        "Cartes d'adhésion aux clubs ou associations",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Préparez-vous à l'entretien civique :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Apprenez les 50 questions possibles du test civique",
-        "Comprenez vraiment les réponses (pas juste mémoriser)",
-        "Maîtrisez votre français oral et écrit",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Documentez votre vie en France :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Photos de vous en famille en France",
-        "Documents montrant votre participation à la vie locale",
-        "Lettres de recommandation (employeur, voisins, amis français)",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Conseil pro : L'assimilation, c'est surtout montrer que vous avez fait l'effort d'apprendre la langue et la culture française. Les fonctionnaires apprécient l'humilité et l'investissement personnel.",
-    },
-    {
-      type: "h2",
-      texte: "Erreur n°6 : Casier judiciaire non vierge ou omissions dans le dossier",
-      id: "erreur-6-casier-judiciaire",
-    },
-    {
-      type: "p",
-      texte: "Si vous avez une condamnation pénale, c'est très grave pour votre dossier de naturalisation. Même une amende ou un antécédent de 10 ans peut être utilisé contre vous.",
-    },
-    { type: "p", texte: "Ce que la préfecture recherche" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Tout antécédent pénal (crime, délit, contravention grave)",
-        "Arnaque ou fraude (même mineure)",
-        "Violence (même domestique)",
-        "Problèmes avec le séjour (décret d'expulsion, interdiction de territoire)",
-        "Fraude fiscale ou aide sociale",
-        "Dettes envers l'État ou les collectivités",
-      ],
-    },
-    { type: "p", texte: "Le piège de l'omission" },
-    {
-      type: "p",
-      texte: "Si vous omettez un antécédent dans votre dossier, c'est PIRE qu'un antécédent. La préfecture considère cela comme une malhonnêteté et peut rejeter définitivement votre dossier.",
-    },
-    { type: "p", texte: "Comment éviter cette erreur" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Demandez votre casier judiciaire (bulletin n°2) avant de préparer votre dossier :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["Allez sur le site spjn.justice.gouv.fr", "Ou adressez une demande à votre tribunal"],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Si vous avez une condamnation :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Consultez un avocat en droit de l'immigration",
-        "Attendez les délais de prescription (généralement 5-10 ans pour les délits)",
-        "Vous pouvez demander une réhabilitation judiciaire (pour les petites condamnations)",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Soyez honnête dans votre dossier :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Déclarez TOUT (si demande)",
-        "Fournissez des explications et des justificatifs si possible",
-        "Montrez que vous avez changé depuis votre condamnation",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Conseil pro : si vous avez des antécédents et que vous ne savez pas comment les déclarer, consultez un avocat. C'est un investissement qui peut vous sauver.",
-    },
-    {
-      type: "h2",
-      texte: "Erreur n°7 : Dossier mal présenté ou erreurs administratives (les petits détails qui coûtent cher)",
-      id: "erreur-7-dossier-mal-presente",
-    },
-    {
-      type: "p",
-      texte: "Les erreurs de présentation sont souvent sous-estimées. Mais elles peuvent justifier un ajournement ou un refus.",
-    },
-    { type: "p", texte: "Ce que la préfecture cherche dans la présentation" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Dossier complet (rien ne manque)",
-        "Tous les documents traduits (par un traducteur agréé)",
-        "Tous les documents légalisés (apostille)",
-        "Cohérence chronologique (les dates correspondent)",
-        "Lisibilité (photocopies claires, non en noir et blanc horrible)",
-        "Ordre et organisation",
-        "Lettre de motivation structurée et bien écrite",
-        "Aucune erreur typographique ou d'orthographe",
-      ],
-    },
-    { type: "p", texte: "Les erreurs fréquentes" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "Documents non traduits ou mal traduits = ajournement (demande de traduction correcte)",
-        "Documents photocopiés en mauvaise qualité = demande de nouvelles copies",
-        "Ordre chaotique du dossier = le fonctionnaire peut ne pas trouver l'info et conclure qu'elle manque",
-        "Lettre de motivation médiocre = perception négative (\"on dirait qu'il ne fait pas l'effort\")",
-        "Incohérence : dire vivre depuis 5 ans mais avoir des documents qui datent d'il y a 6 ans = soupçon",
-        "Aucune mise à jour des statuts au cours de la procédure (même entre l'envoi et l'entretien) = perception que vous n'êtes pas investi",
-      ],
-    },
-    { type: "p", texte: "Comment éviter cette erreur" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Utilisez un modèle de dossier standardisé :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Télécharger le modèle officiel de votre préfecture",
-        "Suivez exactement l'ordre demandé",
-        "Ne retirez rien, ne réordonnancez rien",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Faites traduire par un traducteur agréé :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Ne faites pas traduire par votre ami ou Google Translate",
-        "Chaque document étrange doit être traduit",
-        "Gardez le timbre du traducteur et son attestation",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Demandez des apostilles si nécessaire :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "L'apostille légalise les documents étrangers en France",
-        "Allez à la cour d'appel pour les documents français antérieurement signés à l'étranger",
-        "Allez au ministère des Affaires étrangères de votre pays d'origine pour les documents étrangers",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Relisez votre lettre de motivation :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Pas d'erreurs d'orthographe",
-        "Structure logique : qui vous êtes, pourquoi la France, ce que vous apportez",
-        "Honnête et humaine (pas un robot)",
-        "1-2 pages maximum",
-      ],
-    },
-    {
-      type: "liste",
-      style: "numeros",
-      items: ["Dossier chronologique et cohérent :"],
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Vérifiez que les dates correspondent",
-        "Si vous avez changé d'adresse, documentez la chronologie",
-        "Si vous avez eu plusieurs emplois, montrez la continuité",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Conseil pro : faire relire votre dossier par un ami français natif ou un avocat peut sauver des mois. C'est un petit coût pour éviter l'ajournement.",
-    },
-    {
       type: "encadre",
-      titre: "À retenir",
-      texte: "Les 7 erreurs que nous avons découvertes : dossier incomplet, problèmes fiscaux, français insuffisant, insertion professionnelle fragile, manque d'assimilation, casier judiciaire, et présentation négligente, représentent 90% des raisons réelles de refus ou d'ajournement. Mais contrairement à ce que vous pensez, la plupart sont évitables. Elles sont le résultat d'une mauvaise préparation, pas d'une malchance. Si vous évitez ces 7 pièges et que vous préparez votre dossier méthodiquement, vos chances de réussite augmentent considérablement. La naturalisation n'est pas une fatalité, c'est une question de préparation intelligente. Commencez par un audit complet de votre situation : données fiscales, certificats, documents, assimilation. Corrigez les lacunes avant de déposer. Si vous êtes déjà en ajournement ou refus, consultez un avocat en droit de l'immigration qui peut analyser les raisons spécifiques et construire un dossier de recours robuste. La deuxième chance existe, mais il faut la préparer sérieusement.",
-      ton: "bleu",
+      titre: "Article corrigé le 24 novembre 2026",
+      texte: "La version précédente disait que « 90 % des candidats » font ces erreurs. Elle donnait aussi des revenus minimum « non officiels », un niveau de français B1 et un recours faux. Aucune de ces affirmations ne venait d'une source officielle, et plusieurs sont fausses. Cet article est réécrit sur le code civil et service-public.",
+      ton: "ambre",
+    },
+    {
+      type: "h2",
+      texte: "Refus, ajournement, irrecevabilité : de quoi parle-t-on ?",
+    },
+    {
+      type: "p",
+      texte: "La naturalisation par décret, c'est la demande que vous faites à l'État pour devenir français. L'État peut l'accepter ou non. Le [décret n° 93-1362](https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000699753/LEGISCTA000006083937/), articles 43 et 44, prévoit trois réponses négatives :",
+    },
+    {
+      type: "liste",
+      style: "puces",
+      items: [
+        "**L'irrecevabilité** : une condition de la loi manque. Le fond du dossier n'est pas examiné.",
+        "**L'ajournement** : la demande est reportée. La décision fixe un délai ou des conditions à remplir avant de redemander.",
+        "**Le rejet** : la demande est refusée.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Aucun chiffre officiel ne dit quelle part des refus vient de quelle erreur. Les chiffres publiés sont dans [notre article sur les naturalisations en chiffres](/articles/1-etranger-sur-3-nationalite-francaise-chiffres-officiels-2026). Ce qui suit reprend donc les conditions de la loi, une par une.",
+    },
+    {
+      type: "h2",
+      texte: "Les 7 erreurs qui font refuser ou reporter une demande",
+    },
+    {
+      type: "h3",
+      texte: "1. Déposer avant d'avoir 5 ans de résidence",
+    },
+    {
+      type: "p",
+      texte: "Il faut en principe une ==résidence habituelle en France pendant les 5 ans== qui précèdent la demande ([code civil, article 21-17](https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165459/)). La résidence habituelle, c'est le lieu où vous vivez vraiment, avec votre famille et votre travail. La durée est réduite à 2 ans dans certains cas, par exemple après 2 ans d'études supérieures réussies en France ([service-public, F2213](https://www.service-public.gouv.fr/particuliers/vosdroits/F2213)). Il faut aussi résider en France le jour où le décret est signé (article 21-16).",
+    },
+    {
+      type: "h3",
+      texte: "2. Ne pas avoir le niveau de français B2",
+    },
+    {
+      type: "p",
+      texte: "Depuis le 1er janvier 2026, l'article 21-24 du code civil demande un niveau qui permet de comprendre un texte complexe et de parler avec spontanéité. Service-public parle du ==niveau B2==, à l'oral et à l'écrit ([F11926](https://www.service-public.gouv.fr/particuliers/vosdroits/F11926)). Il se prouve par un diplôme ou une attestation de test reconnus. Le B1, qui suffisait avant 2026, ne suffit plus.",
+    },
+    {
+      type: "h3",
+      texte: "3. Oublier l'examen civique",
+    },
+    {
+      type: "p",
+      texte: "L'assimilation, c'est-à-dire votre intégration dans la société française, est vérifiée par ==la réussite à l'examen civique et un entretien en préfecture== (F2213). L'attestation de réussite fait partie des pièces du dossier. Notre article [examen civique et naturalisation](/articles/examen-civique-naturalisation) explique quel examen passer, et quand.",
+    },
+    {
+      type: "h3",
+      texte: "4. Ne pas prouver des ressources stables",
+    },
+    {
+      type: "p",
+      texte: "Service-public demande « des revenus stables et suffisants » pour vous et votre foyer fiscal. ==Aucun montant minimum officiel n'existe==. Les chiffres qui circulent sur Internet ne viennent d'aucun texte. Joignez des preuves claires de vos revenus sur plusieurs années : bulletins de salaire, contrat, avis d'imposition.",
+    },
+    {
+      type: "h3",
+      texte: "5. Laisser une dette ou une déclaration d'impôts en retard",
+    },
+    {
+      type: "p",
+      texte: "Une enquête vérifie votre « comportement civique », manifesté par exemple « par le paiement des impôts », selon F2213. Avant de déposer, vérifiez que toutes vos déclarations sont faites et vos impôts payés. Votre espace sur impots.gouv.fr permet de le voir.",
+    },
+    {
+      type: "h3",
+      texte: "6. Cacher ou ignorer une condamnation",
+    },
+    {
+      type: "p",
+      texte: "Il faut être « de bonnes vie et mœurs » (article 21-23). Certaines condamnations ==empêchent la naturalisation== ([article 21-27](https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165744/)). C'est le cas d'une peine de 6 mois de prison ou plus sans sursis, quelle que soit l'infraction. C'est aussi le cas d'une condamnation pour terrorisme ou pour atteinte aux intérêts fondamentaux de la Nation. Cette règle ne s'applique pas après une réhabilitation, ni si la condamnation a été retirée du bulletin n° 2 du casier judiciaire. Le bulletin n° 2 est l'extrait du casier que l'administration peut consulter.",
+    },
+    {
+      type: "p",
+      texte: "Si une condamnation figure à votre casier, ne cachez rien : l'administration consulte le casier. Faites-vous conseiller par un avocat avant de déposer. Nous expliquons aussi [le lien entre casier judiciaire et titre de séjour](/articles/gta-6-casier-judiciaire-titre-de-sejour).",
+    },
+    {
+      type: "h3",
+      texte: "7. Envoyer des pièces non traduites ou incomplètes",
+    },
+    {
+      type: "p",
+      texte: "Chaque document en langue étrangère doit être ==traduit en français par un traducteur agréé==, et parfois légalisé ou apostillé, selon F2213. Légaliser ou apostiller, c'est faire certifier qu'un document étranger est authentique. Le dossier comprend aussi un timbre fiscal de 255 € (127,50 € en Guyane) et une copie de votre titre de séjour. Il faut encore vos actes d'état civil et vos justificatifs de domicile, de ressources et d'impôts. Le détail du budget est dans [notre article sur le coût de la naturalisation](/articles/cout-naturalisation-francaise-2026-budget-complet-timbre-fiscal).",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "Comptez vos 5 ans de résidence à partir de dates que vous pouvez prouver.",
+        "Passez votre test de français B2 et votre examen civique avant le dépôt.",
+        "Vérifiez vos impôts et demandez votre casier judiciaire avant de déposer.",
+        "Faites traduire chaque document étranger par un traducteur agréé.",
+      ],
+    },
+    {
+      type: "h2",
+      texte: "Que vérifie l'entretien en préfecture ?",
+    },
+    {
+      type: "p",
+      texte: "L'entretien vérifie « votre adhésion aux principes et aux valeurs essentiels de la République », selon F2213. À la fin du contrôle, vous signez la charte des droits et devoirs du citoyen français (article 21-24). Les valeurs, la laïcité et les institutions y reviennent souvent : ce sont aussi les thèmes de l'examen civique.",
+    },
+    {
+      type: "cta",
+      texte: "L'examen civique et l'entretien portent sur les mêmes notions. Sur Test Civique France, les cours des 5 thématiques sont gratuits, et les examens blancs de 40 questions vous donnent votre score et la correction de chaque question. L'inscription est gratuite.",
+    },
+    {
+      type: "h2",
+      texte: "Que faire après un refus ou un ajournement ?",
+    },
+    {
+      type: "p",
+      texte: "L'administration doit répondre dans les ==18 mois== après la remise d'un dossier complet, ou 12 mois si vous résidez en France depuis au moins 10 ans ([article 21-25-1](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419662)). Après une réponse négative, vous pouvez la contester.",
+    },
+    {
+      type: "liste",
+      style: "numeros",
+      items: [
+        "Faites d'abord un **recours auprès du ministre chargé des naturalisations, dans les 2 mois** après la notification. Ce recours est obligatoire avant le tribunal (décret n° 93-1362, article 45 ; F2213).",
+        "Sans réponse du ministre pendant 4 mois, le recours est considéré comme rejeté.",
+        "Vous avez alors 2 mois pour saisir le tribunal administratif de Nantes, le tribunal qui juge les litiges avec l'administration.",
+      ],
+    },
+    {
+      type: "liste",
+      style: "alertes",
+      items: [
+        "Un recours « gracieux » à la préfecture ne remplace pas le recours au ministre : c'est le ministre qu'il faut saisir.",
+        "Après un ajournement, lisez bien le délai et les conditions écrits dans la décision : ils disent quand redemander.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Pour votre cas précis, faites-vous aider par un avocat ou une association, comme La Cimade. Et si vous ne savez pas encore si l'examen civique vous concerne, [vérifiez-le en une minute](/eligibilite-examen-civique).",
     },
   ],
   faq: [
     {
-      question: "Si j'ai un ajournement, combien de temps dois-je attendre avant de redemander ?",
-      reponse: "Un ajournement signifie généralement 1-2 ans d'attente obligatoire avant une nouvelle demande. Utilisez ce temps pour : corriger les problèmes identifiés, renforcer votre dossier, lire et préparer l'entretien.",
+      question: "Quelles sont les causes de refus de naturalisation ?",
+      reponse: "La demande est refusée ou reportée quand une condition du code civil manque ou n'est pas prouvée. Il faut 5 ans de résidence habituelle, le français de niveau B2, la réussite à l'examen civique et l'adhésion aux valeurs de la République. Il faut aussi des revenus stables, des impôts payés, et aucune condamnation grave, comme 6 mois de prison ferme ou plus.",
     },
     {
-      question: "Puis-je travailler pendant que mon dossier est examiné ?",
-      reponse: "Oui. Vous pouvez continuer à travailler normalement. Si vous avez un changement majeur (nouvel emploi, changement de salaire), signalez-le à la préfecture.",
+      question: "Quelle est la différence entre ajournement et refus de naturalisation ?",
+      reponse: "Le refus, ou rejet, met fin à la demande. L'ajournement la reporte : la décision fixe un délai ou des conditions à remplir avant de redemander, par exemple améliorer vos ressources. L'irrecevabilité, elle, veut dire qu'une condition de la loi manquait dès le départ, et que le fond du dossier n'a pas été examiné.",
     },
     {
-      question: "Est-ce que l'amende pour stationnement peut affecter ma naturalisation ?",
-      reponse: "Techniquement non. Mais si vous avez un historique d'amende, cela peut suggérer un manque de respect pour les règles. Mieux vaut éviter.",
+      question: "Comment contester un refus de naturalisation ?",
+      reponse: "Vous devez d'abord faire un recours auprès du ministre chargé des naturalisations, dans les 2 mois après la notification. Ce recours est obligatoire. Sans réponse pendant 4 mois, il est rejeté, et vous avez 2 mois pour saisir le tribunal administratif de Nantes. Un avocat ou une association peut vous aider pour votre cas.",
     },
     {
-      question: "Mon cas est refusé - puis-je faire un recours ?",
-      reponse: "Oui. Vous avez 2 mois pour faire un recours gracieux auprès de la préfecture, puis 3 mois pour faire un recours contentieux auprès du tribunal administratif. Consultez un avocat.",
+      question: "Faut-il un salaire minimum pour être naturalisé ?",
+      reponse: "Non, aucun montant minimum n'est fixé par un texte officiel. Service-public demande des revenus stables et suffisants pour subvenir à vos besoins et à ceux de votre foyer fiscal. L'administration regarde votre situation dans son ensemble : la régularité de vos revenus, leur origine, et le paiement de vos impôts.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Service-public.gouv.fr : Naturalisation par décret (F2213), vérifiée le 16/07/2026",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2213",
+      type: "officiel",
+      luLe: "2026-11-24",
+    },
+    {
+      titre: "Légifrance : code civil, articles 21-16, 21-17, 21-23 et 21-24 (conditions de la naturalisation)",
+      url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165459/",
+      type: "juridique",
+      luLe: "2026-11-24",
+    },
+    {
+      titre: "Légifrance : code civil, article 21-27 (condamnations qui empêchent l'acquisition de la nationalité)",
+      url: "https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000006070721/LEGISCTA000006165744/",
+      type: "juridique",
+      luLe: "2026-11-24",
+    },
+    {
+      titre: "Légifrance : code civil, article 21-25-1 (délai de réponse)",
+      url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000006419662",
+      type: "juridique",
+      luLe: "2026-11-24",
+    },
+    {
+      titre: "Légifrance : décret n° 93-1362 du 30 décembre 1993, articles 43 à 45 (irrecevabilité, ajournement, rejet, recours)",
+      url: "https://www.legifrance.gouv.fr/codes/section_lc/JORFTEXT000000699753/LEGISCTA000006083937/",
+      type: "juridique",
+      luLe: "2026-11-23",
+    },
+    {
+      titre: "Service-public.gouv.fr : niveau de langue française exigé pour la naturalisation (F11926)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F11926",
+      type: "officiel",
+      luLe: "2026-11-23",
     },
   ],
 };

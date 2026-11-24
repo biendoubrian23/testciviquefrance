@@ -149,6 +149,7 @@ import laiciteDefinition from "./articles/laicite-definition";
 import ofpraOutreMerConvocationNotification from "./articles/ofpra-outre-mer-convocation-notification";
 import ddhcDeclarationDroitsHommeCitoyen from "./articles/ddhc-declaration-droits-homme-citoyen";
 import laMarseillaise from "./articles/la-marseillaise";
+import separationDesPouvoirs from "./articles/separation-des-pouvoirs";
 import examenCiviqueConjointDeFrancais from "./articles/examen-civique-conjoint-de-francais";
 import attestationAccueilInviterFamilleFrance2026MairieConditions from "./articles/attestation-accueil-inviter-famille-france-2026-mairie-conditions";
 import autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour from "./articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour";
@@ -463,6 +464,7 @@ export const ARTICLES: readonly Article[] = [
   ofpraOutreMerConvocationNotification,
   ddhcDeclarationDroitsHommeCitoyen,
   laMarseillaise,
+  separationDesPouvoirs,
   autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour,
   avoirEnfantFranceEtranger2026DroitSolNationaliteAllocations,
   binationauxFrancoMaghrebinsObligationsServiceNationalVoteCon,
