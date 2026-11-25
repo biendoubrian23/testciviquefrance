@@ -42,10 +42,23 @@ while (-not (Test-NetConnection 'api.anthropic.com' -Port 443 -InformationLevel 
 # d'identifiants (git config --local credential.https://github.com.helper, compte
 # brianbiendou). Ici on envoie d'abord ce qui serait reste en retard ; si GitHub
 # refuse, on previent Brian par une fenetre et on ne lance pas la journee.
+#
+# Avant d'envoyer, on recupere ce que d'autres ont pousse depuis hier : l'agent de
+# La Matinale corrige et pousse sur main depuis son propre worktree a 4 h. Sans ce
+# pull, le depot local avait un commit de retard et le push etait refuse
+# (non-fast-forward) alors qu'il n'y avait rien a envoyer (constate le 25/11/2026).
 $bloque = Join-Path $depot 'docs\seo\PUSH-BLOQUE.txt'
 $ErrorActionPreference = 'Continue'
-$envoi = (git push 2>&1 | Out-String)
+$envoi = (git pull --rebase --autostash 2>&1 | Out-String)
 $codeEnvoi = $LASTEXITCODE
+if ($codeEnvoi -ne 0) {
+  # Conflit : on remet le depot comme avant le pull, rien n'est ecrase.
+  git rebase --abort 2>&1 | Out-Null
+  $envoi = "git pull --rebase a echoue (conflit avec ce qui est sur GitHub ?), le depot est laisse tel quel.`r`n`r`n$envoi"
+} else {
+  $envoi = (git push 2>&1 | Out-String)
+  $codeEnvoi = $LASTEXITCODE
+}
 $ErrorActionPreference = 'Stop'
 if ($codeEnvoi -ne 0) {
   $msg = "Robot SEO Test Civique, $(Get-Date -Format 'dd/MM HH:mm') : GitHub refuse l'envoi des articles, rien ne part en ligne.`r`n`r`n$envoi`r`nCompte utilise par le depot : git config --local --get-all credential.https://github.com.helper"
