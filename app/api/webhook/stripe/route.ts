@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
-import { annulerLesAutres } from '@/lib/stripe/abonnements';
+import { abonnementsDuCompte, annulerLesAutres, niveauDuPrix, seTermineSeul } from '@/lib/stripe/abonnements';
 import { checkRateLimit, RATE_LIMITS, rateLimitResponse, getIdentifier } from '@/lib/utils/rate-limit';
 
 // ✅ CORRECTION 1 : Version API officielle stable
@@ -348,20 +348,31 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
     console.log('🎁 Période d\'essai détectée - Reset des crédits d\'examens');
   }
 
-  await supabase
-    .from('profiles')
-    .update(updateData)
-    .eq('id', profile.id);
+  // Un Premium résilié qui court encore garde le profil jusqu'au bout de sa
+  // semaine : le Standard pris entre-temps prend la suite à sa fin
+  // (handleSubscriptionDeleted).
+  const compte = { customerIds: [customerId, profile.stripe_customer_id], emails: [customerEmail, profile.email] };
+  const premiumQuiFinit = niveauDuPrix(priceId) === 'standard'
+    ? (await abonnementsDuCompte(stripe, compte)).find(
+        (s) => s.id !== subscriptionId && seTermineSeul(s) && niveauDuPrix(s.items.data[0]?.price?.id) === 'premium'
+      )
+    : undefined;
 
-  console.log(`✅ Profil mis à jour (Checkout) - Status: ${subscription.status}${isTrialing ? ' (crédits reset)' : ''}`);
+  if (premiumQuiFinit) {
+    console.log(`⏳ ${subscriptionId} (Standard) attend la fin du Premium ${premiumQuiFinit.id} : profil inchangé.`);
+  } else {
+    await supabase
+      .from('profiles')
+      .update(updateData)
+      .eq('id', profile.id);
+
+    console.log(`✅ Profil mis à jour (Checkout) - Status: ${subscription.status}${isTrialing ? ' (crédits reset)' : ''}`);
+  }
 
   // Un compte n'a jamais deux abonnements : le nouveau annule les autres, sur
-  // tous les clients Stripe du compte (l'ancien du profil, ceux de ses e-mails).
-  // Le profil suit déjà le nouveau : leurs événements de résiliation sont ignorés.
-  const annules = await annulerLesAutres(stripe, subscriptionId, {
-    customerIds: [customerId, profile.stripe_customer_id],
-    emails: [customerEmail, profile.email],
-  });
+  // tous les clients Stripe du compte (l'ancien du profil, ceux de ses e-mails),
+  // sauf ceux déjà résiliés qui vont au bout de leur semaine.
+  const annules = await annulerLesAutres(stripe, subscriptionId, compte);
   if (annules.length) {
     console.log(`🔁 Nouvel abonnement ${subscriptionId} : ${annules.join(', ')} annulé(s).`);
   }
@@ -412,6 +423,28 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription, supa
   if (!profile) return;
   if (concerneUnAutreAbonnement(profile, subscription.id)) {
     console.warn(`⚠️ ${subscription.id} résilié, mais le profil ${profile.id} suit ${profile.stripe_subscription_id} : accès conservé.`);
+    return;
+  }
+
+  // L'abonnement suivi se termine : si le compte en a un autre en cours (un
+  // Standard pris pendant la dernière semaine d'un Premium résilié), le profil
+  // passe dessus au lieu de perdre l'accès.
+  const suivant = (await abonnementsDuCompte(stripe, { customerIds: [customerId], emails: [profile.email] }))
+    .find((s) => s.id !== subscription.id && ['active', 'trialing'].includes(s.status));
+  if (suivant) {
+    await supabase
+      .from('profiles')
+      .update({
+        stripe_customer_id: suivant.customer as string,
+        stripe_subscription_id: suivant.id,
+        stripe_price_id: suivant.items.data[0]?.price?.id,
+        subscription_status: suivant.status,
+        subscription_start_date: getSubscriptionPeriod(suivant).start,
+        subscription_end_date: getSubscriptionPeriod(suivant).end,
+        is_premium: true,
+      })
+      .eq('id', profile.id);
+    console.log(`🔁 ${subscription.id} terminé : le profil ${profile.id} passe sur ${suivant.id}.`);
     return;
   }
 

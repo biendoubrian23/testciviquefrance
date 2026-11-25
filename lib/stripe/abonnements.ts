@@ -9,6 +9,8 @@ import { ALL_PREMIUM_PRICE_IDS, ALL_STANDARD_PRICE_IDS } from '@/lib/stripe/plan
 //   Tant qu'un Premium est en cours, le Standard est bloqué ; il redevient
 //   possible quand le Premium est résilié ou que son prélèvement échoue.
 // - La même formule ne se reprend pas tant qu'elle est en cours.
+// - Un Premium résilié puis remplacé par un Standard va au bout de sa semaine :
+//   le profil reste Premium, puis passe au Standard quand le Premium se termine.
 
 export type Niveau = 'standard' | 'premium';
 
@@ -67,16 +69,22 @@ export function refusAchat(niveau: Niveau, abonnements: Stripe.Subscription[]): 
   return null;
 }
 
+// Un abonnement déjà résilié par le client, qui court jusqu'à la fin de sa période payée.
+export function seTermineSeul(s: Stripe.Subscription): boolean {
+  return s.cancel_at_period_end && ['active', 'trialing'].includes(s.status);
+}
+
 /**
  * Après un nouvel abonnement : annule tout de suite les autres du même compte,
- * sans prorata ni remboursement. Renvoie les ids annulés.
+ * sans prorata ni remboursement. Un abonnement que le client a déjà résilié
+ * n'est pas touché : il va au bout de la semaine payée. Renvoie les ids annulés.
  */
 export async function annulerLesAutres(
   stripe: Stripe,
   nouveau: string,
   compte: { customerIds?: (string | null | undefined)[]; emails?: (string | null | undefined)[] },
 ): Promise<string[]> {
-  const autres = (await abonnementsDuCompte(stripe, compte)).filter((s) => s.id !== nouveau);
+  const autres = (await abonnementsDuCompte(stripe, compte)).filter((s) => s.id !== nouveau && !seTermineSeul(s));
   const annules: string[] = [];
   for (const s of autres) {
     try {
