@@ -1,7 +1,8 @@
 'use client';
 
 import { X } from 'lucide-react';
-import { STRIPE_PLANS, lienPaiement } from '@/lib/stripe/plans';
+import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { ouvrirPaiement } from '@/lib/stripe/ouvrirPaiement';
 import { createClient } from '@/lib/supabase/client';
 import { posthog } from '@/components/analytics/PostHogProvider';
 
@@ -25,8 +26,8 @@ export default function UpgradeModal({ isOpen, onClose, userType }: UpgradeModal
 
     const plan = STRIPE_PLANS[planType];
     posthog.capture('checkout_started', { plan: planType, price: plan.price, source: 'upgrade_modal' });
-    const checkoutUrl = lienPaiement(planType, user.email || '', user.id);
-    window.location.href = checkoutUrl;
+    const erreur = await ouvrirPaiement(planType, user.email || '');
+    if (erreur) alert(erreur);
   };
 
   // Définir quelles offres afficher selon le type d'utilisateur

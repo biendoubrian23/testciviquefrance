@@ -8,7 +8,8 @@ import {
   Check,
   ChevronRight
 } from 'lucide-react';
-import { STRIPE_PLANS, lienPaiement } from '@/lib/stripe/plans';
+import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { ouvrirPaiement } from '@/lib/stripe/ouvrirPaiement';
 import { usePostHogEvent } from '@/components/analytics/PostHogProvider';
 
 export default function OnboardingOffersPage() {
@@ -37,13 +38,13 @@ export default function OnboardingOffersPage() {
       console.error('Erreur mise à jour profil:', error);
     }
 
-    // Construire l'URL de checkout avec l'email pré-rempli
     const plan = STRIPE_PLANS[planKey];
     capture('checkout_started', { plan: planKey, price: plan.price });
-    const checkoutUrl = lienPaiement(planKey, user.email, user.id);
-
-    // Rediriger vers Stripe Checkout
-    window.location.href = checkoutUrl;
+    const erreur = await ouvrirPaiement(planKey, user.email);
+    if (erreur) {
+      alert(erreur);
+      setIsProcessing(false);
+    }
   };
 
   // Continuer avec l'offre par défaut (Premium 6.99€)

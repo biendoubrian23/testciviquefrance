@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { STRIPE_PLANS, lienPaiement, type PlanType } from '@/lib/stripe/plans';
 import { createClient } from '@/lib/supabase/server';
+import { abonnementsDuCompte, niveauDuPrix, refusAchat } from '@/lib/stripe/abonnements';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder', {
   apiVersion: '2024-06-20' as any,
@@ -71,23 +72,23 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Un abonné actif qui repaie un Payment Link d'abonnement crée un second
-    // client et un second abonnement, facturés tous les deux chaque semaine.
-    // Le changement de formule passe par le portail Stripe, pas par un nouvel achat.
-    if (plan.interval !== 'one_time') {
+    // Règles d'abonnement (lib/stripe/abonnements.ts) : pas deux fois la même
+    // formule, pas de Standard pendant un Premium. Lues chez Stripe, sur tous
+    // les clients du compte, et non dans le profil, qui peut être en retard.
+    const niveau = niveauDuPrix(plan.priceId);
+    if (niveau) {
       const { data: profile } = await supabase
         .from('profiles')
-        .select('subscription_status, stripe_subscription_id')
+        .select('stripe_customer_id')
         .eq('id', user.id)
         .single();
-      if (profile?.stripe_subscription_id && ['active', 'trialing', 'past_due'].includes(profile.subscription_status || '')) {
-        return NextResponse.json(
-          {
-            success: false,
-            error: 'Vous avez déjà un abonnement actif. Pour changer de formule, passez par « Gérer mon abonnement ».'
-          },
-          { status: 409 }
-        );
+      const abonnements = await abonnementsDuCompte(stripe, {
+        customerIds: [profile?.stripe_customer_id],
+        emails: [user.email, userEmail],
+      });
+      const refus = refusAchat(niveau, abonnements);
+      if (refus) {
+        return NextResponse.json({ success: false, error: refus }, { status: 409 });
       }
     }
 

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { createClient } from '@supabase/supabase-js';
 import { STRIPE_PLANS } from '@/lib/stripe/plans';
+import { annulerLesAutres } from '@/lib/stripe/abonnements';
 import { checkRateLimit, RATE_LIMITS, rateLimitResponse, getIdentifier } from '@/lib/utils/rate-limit';
 
 // ✅ CORRECTION 1 : Version API officielle stable
@@ -353,6 +354,17 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session, supabas
     .eq('id', profile.id);
 
   console.log(`✅ Profil mis à jour (Checkout) - Status: ${subscription.status}${isTrialing ? ' (crédits reset)' : ''}`);
+
+  // Un compte n'a jamais deux abonnements : le nouveau annule les autres, sur
+  // tous les clients Stripe du compte (l'ancien du profil, ceux de ses e-mails).
+  // Le profil suit déjà le nouveau : leurs événements de résiliation sont ignorés.
+  const annules = await annulerLesAutres(stripe, subscriptionId, {
+    customerIds: [customerId, profile.stripe_customer_id],
+    emails: [customerEmail, profile.email],
+  });
+  if (annules.length) {
+    console.log(`🔁 Nouvel abonnement ${subscriptionId} : ${annules.join(', ')} annulé(s).`);
+  }
 }
 
 async function handleSubscriptionUpdated(subscription: Stripe.Subscription, supabase: ReturnType<typeof getSupabaseClient>) {
@@ -562,12 +574,17 @@ async function handleChargeRefunded(charge: Stripe.Charge, supabase: ReturnType<
 
 async function handleInvoicePaymentFailed(invoice: Stripe.Invoice, supabase: ReturnType<typeof getSupabaseClient>) {
   console.log('❌ Invoice payment failed:', invoice.id);
-  if (!invoice.subscription) return;
+  const invoiceSubscriptionId = getInvoiceSubscriptionId(invoice);
+  if (!invoiceSubscriptionId) return;
 
   const customerId = invoice.customer as string;
   const profile = await findProfile(supabase, customerId, invoice.customer_email);
 
   if (!profile) return;
+  if (concerneUnAutreAbonnement(profile, invoiceSubscriptionId)) {
+    console.warn(`⚠️ Échec de prélèvement sur ${invoiceSubscriptionId}, qui n'est pas l'abonnement courant du profil ${profile.id} : accès conservé.`);
+    return;
+  }
 
   await supabase
     .from('profiles')

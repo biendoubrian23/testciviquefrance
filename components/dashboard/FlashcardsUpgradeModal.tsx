@@ -1,7 +1,7 @@
 'use client';
 
 import { X } from 'lucide-react';
-import { lienPaiement } from '@/lib/stripe/plans';
+import { ouvrirPaiement } from '@/lib/stripe/ouvrirPaiement';
 import { createClient } from '@/lib/supabase/client';
 
 interface FlashcardsUpgradeModalProps {
@@ -30,8 +30,8 @@ export default function FlashcardsUpgradeModal({
       return;
     }
 
-    const checkoutUrl = lienPaiement(planType, user.email || '', user.id);
-    window.location.href = checkoutUrl;
+    const erreur = await ouvrirPaiement(planType, user.email || '');
+    if (erreur) alert(erreur);
   };
 
   return (
