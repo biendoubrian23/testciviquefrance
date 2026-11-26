@@ -1,257 +1,215 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-passeport-impots-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/passeport-talent-chercheur-france-2026-conditions-demarches-salaire`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026 sans changer d'adresse, puis réécrit en entier par le
+ * robot éditorial le 26/11/2026 (`docs/seo/ROBOT.md`, liste « à revérifier »
+ * de `docs/seo/MOTS-CLES.md`).
+ * La version migrée affirmait sans source : « plus de 8 500 chercheurs » par
+ * an, une grille de salaires « réels 2026 », « aucun seuil de salaire », une
+ * convention « validée par la préfecture », une taxe OFII de 200 €, une
+ * famille « mariée ou pacsée » payant 200 € par personne, une carte de
+ * résident « après 4 ans » et une « naturalisation accélérée à 2 ans » pour
+ * tout chercheur. Tout est retiré ou corrigé.
+ * Sources lues le 26/11/2026 : service-public F16922 (vérifiée le 01/06/2026,
+ * page « en cours de mise à jour » après le décret n° 2026-1001), onglet
+ * « Chercheur » ; F35792 (talent-famille, vérifiée le 01/05/2026) ;
+ * Légifrance, code civil, art. 21-18 (lu par Chrome). F2208 lue le 22/11/2026.
  */
 const article: Article = {
   slug: "passeport-talent-chercheur-france-2026-conditions-demarches-salaire",
-  titre: "Passeport Talent Chercheur 2026 : conditions, salaire, convention d'accueil, famille (guide complet)",
-  titreSeo: "Passeport Talent Chercheur 2026 : conditions, salaire, convention d'accueil, famille (guide complet)",
-  resume: "Le titre de séjour le plus avantageux pour les chercheurs étrangers : 4 ans renouvelables, famille incluse, naturalisation accélérée à 2 ans. Convention d'accueil, salaires 2026 par profil, procédure étape par étape.",
-  chapo: "Le **Passeport Talent : Chercheur** est l'un des titres de séjour les plus avantageux de France pour les universitaires, doctorants et post-doctorants étrangers. Valable **jusqu'à 4 ans renouvelables**, il donne le droit au travail à 100%, à l'accès au regroupement familial immédiat et à une procédure simplifiée.",
+  titre: "Passeport talent chercheur : les conditions, le salaire minimum de 2 200 € et la démarche, point par point",
+  titreSeo: "Passeport talent chercheur : conditions et salaire",
+  resume: "La carte talent-chercheur : master, convention d'accueil, seuil de 2 200 € brut, visa, prix de 350 € et carte talent-famille.",
+  chapo: "Le passeport talent chercheur, aujourd'hui appelé carte de séjour « ==talent-chercheur== », est le titre des chercheurs et enseignants du supérieur venus de l'étranger. Il faut un diplôme au moins égal au master et une convention d'accueil signée avec un organisme de recherche. La carte coûte ==350 €== et votre famille peut vous suivre sans regroupement familial.",
   publieLe: "2026-04-28",
-  modifieLe: "2026-04-28",
-  minutes: 20,
-  theme: "passeport talent chercheur",
+  modifieLe: "2026-11-26",
+  minutes: 6,
+  theme: "La carte de séjour talent-chercheur : conditions, convention d'accueil, seuil de rémunération, démarche, prix et famille",
   motsCles: [
     "passeport talent chercheur",
-    "passeport talent recherche",
+    "carte talent chercheur",
+    "talent chercheur convention d'accueil",
+    "passeport talent chercheur salaire",
     "visa chercheur france",
-    "doctorat etranger france",
-    "post-doc france",
-    "convention accueil chercheur",
+    "post-doc france titre de séjour",
   ],
   rubrique: "cadre-legal",
-  auteur: "Brian B",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
+    src: "/images/articles/passeport-talent-chercheur.webp",
+    alt: "Le bâtiment Recherche Nord du campus Condorcet, un immeuble blanc de laboratoires sous un ciel bleu",
     largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1532094349884-543bc11b234d",
+    hauteur: 900,
+    credit: "RT59RC, via Wikimedia Commons",
+    licence: "CC BY-SA 4.0",
+    source: "https://commons.wikimedia.org/wiki/File:B%C3%A2timent_Recherche_Nord,_Campus_Condorcet_2024.jpg",
   },
   blocs: [
     {
-      type: "p",
-      texte: "En 2026, plus de **8 500 chercheurs étrangers** entrent en France chaque année avec ce titre. Voici **toutes les conditions, démarches, salaires et avantages** du Passeport Talent Chercheur 2026.",
-    },
-    {
-      type: "h2",
-      texte: "Conditions d'éligibilité du Passeport Talent Chercheur 2026",
-      id: "conditions-eligibilite",
-    },
-    { type: "p", texte: "**Diplôme requis :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Master (Bac+5) au minimum**",
-        "ou diplôme jugé **équivalent** par l'établissement d'accueil",
-        "Aucune condition d'âge",
-      ],
-    },
-    { type: "p", texte: "**Convention d'accueil obligatoire :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Convention signée avec un **organisme de recherche public ou privé reconnu** en France",
-        "Universités, CNRS, Inserm, INRAE, CEA, Inria, Ifremer, etc.",
-        "Doctorat (cotutelle ou inscription en école doctorale française)",
-        "Post-doctorat avec contrat de recherche",
-      ],
-    },
-    { type: "p", texte: "**Activité visée :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Travaux de recherche",
-        "Enseignement universitaire (en complément de la recherche)",
-        "Doctorat ou post-doctorat",
-      ],
-    },
-    { type: "p", texte: "**Pas de condition de ressources élevées :**" },
-    { type: "p", texte: "La **convention d'accueil** vaut justificatif de prise en charge." },
-    { type: "h2", texte: "Salaire d'un chercheur Passeport Talent en 2026", id: "salaire-2026" },
-    {
-      type: "p",
-      texte: "Contrairement au Passeport Talent salarié qualifié, **aucun seuil de salaire spécifique** n'est exigé pour le chercheur. Cependant, voici les fourchettes réelles 2026 :",
-    },
-    {
-      type: "tableau",
-      entetes: ["Statut", "Salaire brut mensuel"],
-      lignes: [
-        ["Doctorant contrat doctoral", "**2 100 €**"],
-        ["Doctorant CIFRE (entreprise)", "**2 200 à 2 800 €**"],
-        ["Post-doctorant CNRS", "**2 700 à 3 200 €**"],
-        ["Chercheur contractuel", "**2 800 à 4 500 €**"],
-        ["Maître de conférences titulaire", "**2 200 € (début) à 4 800 € (échelon haut)**"],
-        ["Directeur de recherche", "**3 800 à 6 500 €**"],
-      ],
-    },
-    { type: "p", texte: "**Avantages financiers complémentaires :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**Accord SMIC chercheur** (suppression CSG-CRDS sur certaines bourses)",
-        "Exonération impôts sur le revenu pour les chercheurs étrangers (régime impatriés, sous conditions)",
-        "Frais de scolarité doctorat : **380 €/an** uniquement",
-      ],
-    },
-    { type: "h2", texte: "Procédure de demande pas à pas", id: "procedure-demande" },
-    { type: "p", texte: "**Étape 1 : Obtenir la convention d'accueil**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "L'établissement d'accueil français rédige une **convention d'accueil** (formulaire CERFA 16030*02)",
-        "Validée par la préfecture du département de l'établissement",
-        "Délai : 1 à 4 semaines",
-      ],
-    },
-    { type: "p", texte: "**Étape 2 : Demande de visa long séjour**" },
-    { type: "p", texte: "Si vous êtes hors UE :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Visa **VLS-TS Passeport Talent Chercheur**",
-        "Demande au consulat de France de votre pays",
-        "Documents : passeport, convention d'accueil, justificatif de diplôme, CV, photos",
-        "Coût : **99 €** (frais consulaires)",
-        "Délai : 15 à 60 jours",
-      ],
-    },
-    { type: "p", texte: "**Étape 3 : Validation à l'arrivée en France**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Validation VLS-TS sur **ANEF** dans les **3 mois** après l'arrivée",
-        "Taxe OFII : **200 €** (timbre fiscal électronique)",
-        "Pas d'entretien CIR pour les chercheurs (dispense automatique)",
-      ],
-    },
-    { type: "p", texte: "**Étape 4 : Demande de carte 4 ans**" },
-    {
-      type: "p",
-      texte: "Si la convention d'accueil le permet, vous pouvez obtenir directement une carte **Passeport Talent Chercheur valable 4 ans**.",
-    },
-    { type: "p", texte: "**Étape 5 : Renouvellement**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Demande sur ANEF **2 à 4 mois avant expiration**",
-        "Documents : nouvelle convention d'accueil, justificatif d'activité, passeport, photo",
-      ],
-    },
-    {
-      type: "h2",
-      texte: "Faire venir conjoint et enfants : Passeport Talent Famille",
-      id: "famille-conjoint",
-    },
-    {
-      type: "p",
-      texte: "**Avantage majeur du Passeport Talent :** votre famille obtient un titre de séjour **immédiatement, sans regroupement familial classique** (qui dure 12-18 mois).",
-    },
-    { type: "p", texte: "**Qui peut venir ?**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: ["**Conjoint** (marié ou PACS)", "**Enfants mineurs** (-18 ans)"],
-    },
-    { type: "p", texte: "**Titre délivré :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**\"Passeport Talent : Famille\"**",
-        "Valable autant d'années que votre titre",
-        "**Droit de travailler immédiatement** (pour le conjoint)",
-      ],
-    },
-    { type: "p", texte: "**Documents :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Acte de mariage / PACS traduit",
-        "Acte de naissance des enfants",
-        "Passeports",
-        "Justificatif de votre Passeport Talent",
-        "Justificatifs de ressources",
-        "Certificat médical OFII",
-      ],
-    },
-    { type: "p", texte: "**Coût :** 200 € de timbre fiscal par membre de la famille" },
-    {
-      type: "h2",
-      texte: "Que faire après ? Naturalisation et carte de résident",
-      id: "apres-passeport-talent",
-    },
-    {
-      type: "p",
-      texte: "Le Passeport Talent Chercheur est **une voie royale vers la naturalisation** :",
-    },
-    { type: "p", texte: "**Naturalisation accélérée :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "**2 ans de résidence** suffisent (au lieu de 5 ans) pour les titulaires d'un diplôme français Bac+2 minimum",
-        "Encore plus rapide pour les chercheurs ayant accompli un doctorat en France",
-      ],
-    },
-    { type: "p", texte: "**Carte de résident 10 ans :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Après 4 ans de séjour régulier en Passeport Talent (3 si conditions favorables)",
-        "Conditions : ressources, intégration, niveau B1 français",
-      ],
-    },
-    { type: "p", texte: "**Conversion en autres titres :**" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Salarié classique → en cas de fin de mission recherche",
-        "Passeport Talent salarié qualifié → si embauche dans le privé",
-      ],
-    },
-    {
       type: "encadre",
-      titre: "À retenir",
-      texte: "Le Passeport Talent Chercheur reste en 2026 le titre de séjour le plus avantageux pour les universitaires étrangers : 4 ans renouvelables, famille incluse, naturalisation accélérée à 2 ans, dispense d'entretien CIR. Si vous êtes Master ou doctorant et qu'un établissement français vous accueille, c'est la voie la plus rapide et la plus sûre. Anticipez la convention d'accueil, validez votre VLS-TS dans les 3 mois et planifiez dès le début la naturalisation accélérée.",
-      ton: "bleu",
+      titre: "Article corrigé le 26 novembre 2026",
+      texte: "L'ancienne version donnait des chiffres sans source (nombre de chercheurs, grille de salaires). Elle disait qu'aucun salaire minimum n'existait, et annonçait une taxe de 200 € et une carte de résident après 4 ans. Elle a été réécrite sur la fiche officielle de service-public et sur le code civil.",
+      ton: "ambre",
+    },
+    {
+      type: "h2",
+      texte: "Qu'est-ce que la carte talent-chercheur ?",
+    },
+    {
+      type: "p",
+      texte: "C'est une carte de séjour pluriannuelle, c'est-à-dire valable plusieurs années, de la famille « talent ». On l'appelait avant « passeport talent ». Elle vous autorise à séjourner en France et à travailler. Votre employeur n'a pas à demander d'autorisation de travail, et il ne paie pas la taxe due pour l'emploi d'un étranger ([service-public, F16922](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922)).",
+    },
+    {
+      type: "p",
+      texte: "Elle vaut aussi pour un chercheur qui travaille déjà dans un autre pays de l'Union européenne. Il vient alors faire une partie de ses travaux en France, pour plus de 3 mois. Dans ce cas, il n'a pas besoin de visa de long séjour.",
+    },
+    {
+      type: "h2",
+      texte: "Quelles sont les conditions ?",
+    },
+    {
+      type: "p",
+      texte: "Selon [service-public](https://www.service-public.gouv.fr/particuliers/vosdroits/F16922), vous devez remplir ==toutes== ces conditions :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "avoir un diplôme ==au moins équivalent au master== (bac + 5) ;",
+        "venir faire des travaux de recherche ou donner un enseignement de niveau universitaire ;",
+        "avoir une ==convention d'accueil== signée avec un organisme public ou privé agréé, qui a une mission de recherche ou d'enseignement supérieur.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "La convention d'accueil, c'est le document signé par le laboratoire ou l'université qui vous reçoit. Elle doit dire que vous êtes chercheur, et indiquer l'objet et la durée de votre séjour. Si vous comptez aller dans un autre pays de l'Union pour vos recherches, elle doit dire que vous faites partie d'un programme de mobilité. Vous demandez alors la carte « talent-chercheur, programme de mobilité ».",
+    },
+    {
+      type: "h2",
+      texte: "Y a-t-il un salaire minimum ?",
+    },
+    {
+      type: "p",
+      texte: "Oui. Service-public indique un seuil de rémunération minimal de ==2 200 € brut== pour le chercheur qui a signé une convention de séjour de recherche. L'ancienne version de cet article disait le contraire : c'était faux.",
+    },
+    {
+      type: "p",
+      texte: "Les salaires varient beaucoup selon le statut (contrat doctoral, post-doctorat, poste permanent) et l'organisme. Aucune grille officielle commune ne les fixe pour tous : demandez le montant exact à l'organisme qui vous accueille, et vérifiez qu'il figure dans votre convention ou votre contrat.",
+    },
+    {
+      type: "h2",
+      texte: "Comment faire la demande ?",
+    },
+    {
+      type: "liste",
+      style: "numeros",
+      items: [
+        "**Obtenez la convention d'accueil** auprès de l'organisme qui vous reçoit.",
+        "**Demandez le visa au consulat de France** de votre pays. Pour un séjour d'un an ou plus, le consulat délivre un visa de long séjour mention « talent » de 3 mois.",
+        "**Demandez la carte en ligne** dès votre arrivée, sur l'ANEF, le site de l'État pour les titres de séjour ([administration-etrangers-en-france.interieur.gouv.fr](https://administration-etrangers-en-france.interieur.gouv.fr)).",
+        "**Joignez les pièces** : passeport, diplôme au moins équivalent au master, convention d'accueil, justificatif de domicile, e-photo, et le contrat d'engagement à respecter les principes de la République signé.",
+        "**Payez la carte** quand la préfecture vous dit qu'elle est prête : ==350 €== en timbres fiscaux (50 € de droit de timbre et 300 € de taxe).",
+        "**Récupérez la carte** en préfecture, le service de l'État dans votre département, souvent sur rendez-vous.",
+      ],
+    },
+    {
+      type: "liste",
+      style: "alertes",
+      items: [
+        "**Ne laissez pas expirer le visa de 3 mois** sans avoir déposé la demande de carte : c'est lui qui couvre votre arrivée.",
+        "**Le délai de réponse a changé.** Pour le chercheur, service-public indique un refus implicite après 60 jours sans réponse. Mais sa page est « en cours de mise à jour » après le décret n° 2026-1001 du 26 octobre 2026 : vérifiez le délai le jour de votre dépôt. Notre article sur [le délai de 90 jours](/articles/delai-reponse-prefecture-titre-de-sejour-90-jours) explique ce décret.",
+        "**Gardez une copie de la convention.** Elle est la base de votre droit au séjour pendant toute la durée de vos travaux.",
+      ],
+    },
+    {
+      type: "h2",
+      texte: "Votre famille peut-elle vous suivre ?",
+    },
+    {
+      type: "p",
+      texte: "Oui, par une procédure simplifiée : la carte « ==talent-famille== ». Votre famille n'a pas à passer par le regroupement familial ([service-public, F35792](https://www.service-public.gouv.fr/particuliers/vosdroits/F35792)). Elle concerne :",
+    },
+    {
+      type: "liste",
+      style: "puces",
+      items: [
+        "votre époux ou épouse de plus de 18 ans (la fiche parle de mariage, pas de PACS) ;",
+        "vos enfants, à leur majorité s'ils sont entrés en France mineurs, ou dès 16 ans s'ils veulent travailler.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "La carte talent-famille permet de travailler, comme salarié ou à son compte. Elle coûte aussi ==350 €==. Depuis l'étranger, la famille demande un visa au consulat, puis la carte en ligne à l'arrivée. Notre guide sur [la carte talent-famille](/articles/famille-passeport-talent-france-2026-conjoint-enfants-droits-titre) détaille les pièces.",
+    },
+    {
+      type: "h2",
+      texte: "Et après : carte de résident ou naturalisation ?",
+    },
+    {
+      type: "p",
+      texte: "Pour la carte talent, la fiche de service-public ne demande ni examen civique ni niveau de français. Ils reviennent plus tard. La carte de résident de 10 ans et la naturalisation demandent un niveau de français et la réussite à l'examen civique. Nos guides sur [la carte de résident](/articles/carte-resident-10-ans-france-2026-conditions-obtention-refus-prefecture) et sur [l'examen civique de la naturalisation](/articles/examen-civique-naturalisation) donnent les conditions.",
+    },
+    {
+      type: "p",
+      texte: "Pour la naturalisation, il faut en principe 5 ans de résidence en France. Le code civil réduit ce délai à ==2 ans== dans trois cas ([article 21-18](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024197095)). Le premier : deux années d'études supérieures réussies en France, en vue d'un diplôme français. Le deuxième : des services importants rendus à la France par vos capacités et vos talents. Le troisième : un parcours exceptionnel d'intégration, par exemple dans le domaine scientifique. Ce n'est pas automatique : l'administration apprécie chaque dossier.",
+    },
+    {
+      type: "cta",
+      texte: "L'examen civique se prépare bien à l'avance, même pendant vos années de recherche. Sur Test Civique France, les examens blancs de 40 questions vous donnent votre score et la correction de chaque question. L'inscription est gratuite.",
+    },
+    {
+      type: "p",
+      texte: "Pour voir les autres cartes de la famille talent (salarié qualifié, création d'entreprise), lisez notre [guide de la carte talent](/articles/passeport-talent-2026-conditions-metiers-demarches). Et pour savoir en une minute si l'examen civique vous concerne, utilisez le [simulateur d'éligibilité](/eligibilite-examen-civique).",
     },
   ],
   faq: [
     {
-      question: "Combien de temps faut-il pour obtenir un Passeport Talent Chercheur ?",
-      reponse: "Entre 2 et 4 mois entre la signature de la convention d'accueil et l'arrivée en France (incluant 15-60 jours de visa).",
+      question: "Quel est le salaire minimum pour un passeport talent chercheur ?",
+      reponse: "Service-public indique un seuil de rémunération minimal de 2 200 € brut pour le chercheur qui a signé une convention de séjour de recherche. Au-delà de ce seuil, le salaire dépend de votre statut et de l'organisme qui vous accueille. Vérifiez le montant dans votre convention ou votre contrat.",
     },
     {
-      question: "Le Passeport Talent Chercheur est-il renouvelable ?",
-      reponse: "Oui, autant que vos missions de recherche se poursuivent. Au bout de 4 ans, vous pouvez aussi demander une carte de résident 10 ans.",
+      question: "Qu'est-ce que la convention d'accueil d'un chercheur ?",
+      reponse: "C'est le document signé avec un organisme public ou privé agréé, qui a une mission de recherche ou d'enseignement supérieur. Il dit que vous êtes chercheur, et précise l'objet et la durée de votre séjour en France. Sans elle, la carte talent-chercheur ne peut pas être délivrée.",
     },
     {
-      question: "Peut-on travailler en dehors de la recherche avec un Passeport Talent Chercheur ?",
-      reponse: "Oui à 100% mais l'activité principale doit rester la recherche. Activités annexes (consulting, enseignement) sont autorisées.",
+      question: "Combien coûte la carte talent-chercheur ?",
+      reponse: "La carte coûte 350 € en timbres fiscaux : 50 € de droit de timbre et 300 € de taxe, selon service-public. Vous payez quand la préfecture vous dit que la carte est prête. La carte talent-famille de votre époux ou épouse coûte aussi 350 €.",
     },
     {
-      question: "Existe-t-il un Passeport Talent pour les artistes ?",
-      reponse: "Oui : \"Passeport Talent, Profession artistique et culturelle\", conditions différentes (contrats artistiques + ressources SMIC sur 12 mois).",
+      question: "Le conjoint d'un chercheur peut-il travailler en France ?",
+      reponse: "Oui. L'époux ou l'épouse du titulaire d'une carte talent peut obtenir une carte talent-famille, sans passer par le regroupement familial. Cette carte autorise à travailler comme salarié ou à son compte, et l'employeur n'a pas d'autorisation de travail à demander.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Service-public : carte de séjour pluriannuelle « talent » (F16922, vérifiée le 01/06/2026, page en cours de mise à jour), onglet « Chercheur »",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F16922",
+      type: "officiel",
+      luLe: "2026-11-26",
+    },
+    {
+      titre: "Service-public : carte de séjour « talent-famille » (F35792, vérifiée le 01/05/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F35792",
+      type: "officiel",
+      luLe: "2026-11-26",
+    },
+    {
+      titre: "Légifrance : code civil, article 21-18 (stage de naturalisation réduit à deux ans)",
+      url: "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000024197095",
+      type: "officiel",
+      luLe: "2026-11-26",
+    },
+    {
+      titre: "Service-public : carte de résident de 10 ans (F2208)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2208",
+      type: "officiel",
+      luLe: "2026-11-22",
+    },
+    {
+      titre: "ANEF : administration numérique pour les étrangers en France",
+      url: "https://administration-etrangers-en-france.interieur.gouv.fr",
+      type: "officiel",
+      luLe: "2026-11-26",
     },
   ],
 };
