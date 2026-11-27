@@ -152,6 +152,7 @@ import laMarseillaise from "./articles/la-marseillaise";
 import separationDesPouvoirs from "./articles/separation-des-pouvoirs";
 import timbreNaturalisation1000EurosSenat from "./articles/timbre-naturalisation-1000-euros-senat";
 import carteSejourViePriveeEtFamiliale from "./articles/carte-sejour-vie-privee-et-familiale";
+import nationaliteFrancaiseParDeclaration from "./articles/nationalite-francaise-par-declaration";
 import examenCiviqueConjointDeFrancais from "./articles/examen-civique-conjoint-de-francais";
 import attestationAccueilInviterFamilleFrance2026MairieConditions from "./articles/attestation-accueil-inviter-famille-france-2026-mairie-conditions";
 import autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour from "./articles/auto-entrepreneur-etranger-france-2026-creer-entreprise-titre-sejour";
@@ -469,6 +470,7 @@ export const ARTICLES: readonly Article[] = [
   separationDesPouvoirs,
   timbreNaturalisation1000EurosSenat,
   carteSejourViePriveeEtFamiliale,
+  nationaliteFrancaiseParDeclaration,
   autoEntrepreneurEtrangerFrance2026CreerEntrepriseTitreSejour,
   avoirEnfantFranceEtranger2026DroitSolNationaliteAllocations,
   binationauxFrancoMaghrebinsObligationsServiceNationalVoteCon,

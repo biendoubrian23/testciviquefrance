@@ -382,3 +382,7 @@ Gestes possibles : `publie`, `optimise`, `corrige`, `fusionne` (l'ancien slug en
 2026-11-26 | indexation | - | seo:indexation : 180 adresses indexées sur 188, 8 non indexées | fait
 2026-11-26 | indexation | carte-sejour-vie-privee-et-familiale | nouvelle page du jour | demandée
 2026-11-26 | indexation | passeport-talent-chercheur-france-2026-conditions-demarches-salaire | retouché le 26/11, pas encore relu par Google | demandée
+
+2026-11-27 | publie | nationalite-francaise-par-declaration | pas de règle des 24 heures (JORF n° 0276 et 0277 des 26 et 27/11 : aucun texte sur nos sujets ; flux officiels : A19153 et l'avis du Sénat n° 162 t. II, déjà vus) ; guides permanents en retard (1 sur 10) ; « naturalisation par déclaration » 1 k à 10 k (17/11) ; huit fiches service-public lues le 27/11 | fait
+2026-11-27 | corrige | nationalite-francaise-par-mariage-2026-conditions-delai-4-ans-dossier | erreur trouvée en écrivant l'article du jour : niveau B1 (B2 sur F11926), délais « par juridiction » sans source, dépôt « en juridiction », « 800+ questions » ; réécrit sur F2726, F11926, F39426 (165 impressions, position 12) | fait
+2026-11-27 | verifie | timbre-naturalisation-1000-euros-senat | amendement n° I-332 rect. ter relu sur senat.fr : aucun sort affiché ; PLF 2027 en séance publique jusqu'au 09/12 ; « rien n'est voté » reste juste | rien à changer
