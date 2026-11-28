@@ -1,333 +1,206 @@
 import type { Article } from "@/contenu/articles";
 
 /**
- * Migré le 20/10/2026 depuis `lib/data/seo-content/articles-frais-universite-hors-ue-2026.ts` et `lib/data/seo-articles.ts`, sans changer d'adresse
- * (`/articles/frais-inscription-universites-france-etudiants-hors-ue-2026`). Texte d'origine conservé ; seuls les tirets
- * cadratins ont été remplacés. L'image de couverture vient d'Unsplash
- * (licence Unsplash : usage libre, commercial compris) ; ses dimensions sont
- * nominales.
+ * Migré le 20/10/2026, sans changer d'adresse. Réécrit en entier par le robot
+ * éditorial le 28/11/2026 (liste « à revérifier » de `docs/seo/MOTS-CLES.md`).
+ * La version migrée donnait 2 895 € et 3 941 € (2 902 € et 3 950 € sur Campus
+ * France pour 2026-2027), 254 € pour le master (255 €), « 380 € environ » pour
+ * le doctorat (398 €), exonérait les CPGE sans condition et les Andorrans et
+ * Monégasques sans source, oubliait le foyer fiscal en France depuis 2 ans, et
+ * renvoyait vers un guide de 2025.
+ * Sources : Campus France, « Le coût des études supérieures en France » (mis à
+ * jour le 25/06/2026, lu le 28/11/2026) ; service-public F2865 (vérifiée le
+ * 20/08/2026, lue le 28/11/2026) ; F2231 (vérifiée le 01/08/2026, lue le
+ * 28/11/2026) ; décret n° 2026-385 du 19/05/2026 (Légifrance, lu le
+ * 27/11/2026 : plafonds de 30 %, 25 % puis 20 %).
  */
 const article: Article = {
   slug: "frais-inscription-universites-france-etudiants-hors-ue-2026",
-  titre: "Frais université 2026 : 2 895 € en licence pour les étudiants hors-UE, ce que change le décret du 19 mai",
-  titreSeo: "Frais université 2026 : 2 895 € en licence pour les étudiants hors-UE, ce que change le décret du 19 mai",
-  resume: "Le décret n° 2026-385 du 19 mai 2026 met fin aux exonérations massives dans les universités françaises. À partir de septembre 2026, la plupart des étudiants hors UE/EEE/Suisse paieront 2 895 €/an en licence et 3 941 €/an en master. Qui est exonéré automatiquement, comment réduire la facture et quel impact sur votre titre de séjour.",
-  chapo: "**Publié le 25 mai 2026.** Depuis la rentrée 2019, les étudiants hors Union européenne sont officiellement tenus de payer des frais d'inscription beaucoup plus élevés dans les universités françaises : **2 895 € par an en licence** et **3 941 € en master**, contre 178 € et 254 € pour les étudiants européens. Dans les faits, la plupart des universités accordaient des exonérations massives, et la majorité des étudiants extracommunautaires payaient finalement le tarif normal.",
+  titre: "Frais d'université pour un étudiant étranger : 2 902 € ou 178 € ? Qui paie quoi en 2026-2027",
+  titreSeo: "Frais d'université étudiant étranger : 2 902 € ?",
+  resume: "Licence 2 902 €, master 3 950 €, doctorat 398 € : les frais 2026-2027 pour les étudiants hors UE, qui paie le tarif français et les exonérations.",
+  chapo: "Selon Campus France, un étudiant venu d'un pays hors de l'Union européenne paie en principe ==2 902 € par an en licence== et ==3 950 € en master== en 2026-2027. C'est le tarif des universités publiques. Mais beaucoup paient le même tarif que les Français (178 € et 255 €). C'est le cas des résidents de longue durée, des réfugiés, des doctorants et des familles installées en France depuis 2 ans. Depuis le décret du 19 mai 2026, les autres exonérations sont limitées.",
   publieLe: "2026-05-25",
-  modifieLe: "2026-05-25",
-  minutes: 12,
-  theme: "frais inscription étudiants étrangers 2026",
+  modifieLe: "2026-11-28",
+  minutes: 7,
+  theme: "Les droits d'inscription à l'université pour les étudiants étrangers hors Union européenne en 2026-2027 : montants, cas du tarif français, exonérations et décret n° 2026-385",
   motsCles: [
     "frais inscription étudiants étrangers 2026",
     "frais différenciés étudiants extracommunautaires",
-    "prix université France étranger 2026",
+    "prix université france étranger",
     "décret 2026-385 étudiants étrangers",
-    "combien coûte une université en France pour un étranger",
-    "exonération frais université étranger France",
-    "étudiant marocain prix université France 2026",
-    "étudiant algérien frais université France 2026",
-    "Choose France Higher Education décret mai 2026",
-    "droits différenciés université France hors-UE",
-    "frais inscription licence master hors-UE France",
-    "exonération boursiers campus france",
+    "exonération frais université étranger",
+    "droits d'inscription différenciés",
   ],
-  rubrique: "actualites",
-  auteur: "Brian B",
+  rubrique: "conseils",
+  auteur: "Équipe Le Test Civique",
   couverture: {
-    src: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=1200&auto=format&fit=crop",
-    alt: "",
+    src: "/images/articles/frais-inscription-universite.webp",
+    alt: "Le décor peint du grand amphithéâtre de la Sorbonne, avec l'inscription « Université de Paris » entre des feuillages dorés",
     largeur: 1200,
-    hauteur: 800,
-    credit: "Unsplash",
-    licence: "licence Unsplash",
-    source: "https://images.unsplash.com/photo-1541339907198-e08756dedf3f",
+    hauteur: 675,
+    credit: "Sigoise, via Wikimedia Commons",
+    licence: "CC BY-SA 3.0",
+    source: "https://commons.wikimedia.org/wiki/File:Le_grand_amphith%C3%A9%C3%A2tre_-_Universit%C3%A9_de_Paris.jpg",
   },
   blocs: [
     {
-      type: "p",
-      texte: "Ce régime de tolérance s'arrête avec le **décret n° 2026-385 du 19 mai 2026**, publié au Journal officiel le 20 mai. Le texte, qui s'inscrit dans le plan *« Choose France For Higher Education »* du ministre Philippe Baptiste, plafonne désormais les exonérations discrétionnaires à **30 % des étudiants hors-UE** dès la rentrée 2026-2027, avec une réduction progressive les années suivantes.",
-    },
-    {
-      type: "p",
-      texte: "Pour les étudiants marocains, algériens, tunisiens, camerounais, sénégalais et de tous les autres pays hors EEE/Suisse qui candidatent à une université française pour septembre 2026, la question est simple : **vais-je payer 2 895 € ou 178 € ?** Ce guide répond précisément, catégorie par catégorie.",
-    },
-    { type: "h2", texte: "Ce que change le décret du 19 mai 2026", id: "ce-que-dit-le-decret" },
-    { type: "h3", texte: "Un décret, pas de nouveaux tarifs" },
-    {
-      type: "p",
-      texte: "Première précision importante : le décret n° 2026-385 **ne crée pas de nouveaux tarifs**. Les montants de 2 895 € (licence) et 3 941 € (master) existent depuis la circulaire ministérielle de novembre 2019. Ce qui change, c'est que les universités ne peuvent plus les contourner librement.",
-    },
-    {
-      type: "p",
-      texte: "Jusqu'à présent, chaque université fixait elle-même le nombre d'exonérations accordées à ses étudiants extracommunautaires. Beaucoup exonéraient 80 %, 90 %, voire 100 % d'entre eux. Le nouveau décret impose un **plafond légal** à ces exonérations discrétionnaires.",
-    },
-    {
       type: "encadre",
-      texte: "Source : [Légifrance, Décret n° 2026-385 du 19 mai 2026 relatif aux modalités d'exonération des droits d'inscription des étudiants étrangers](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054113646)",
-      ton: "bleu",
+      titre: "Article corrigé le 28 novembre 2026",
+      texte: "La version précédente donnait des montants de l'année passée (2 895 € et 3 941 €, 254 € pour le master, « 380 € environ » pour le doctorat). Elle disait aussi que toutes les classes préparatoires étaient exonérées, et oubliait le cas des familles installées en France depuis 2 ans. Cette page est réécrite sur Campus France et service-public.",
+      ton: "ambre",
     },
-    { type: "h3", texte: "Le tableau des frais en vigueur (rentrée 2026-2027)" },
+    {
+      type: "h2",
+      texte: "Combien coûte une année d'université pour un étudiant étranger ?",
+    },
+    {
+      type: "p",
+      texte: "Les frais d'inscription, ou droits d'inscription, sont la somme que vous payez chaque année à l'université pour suivre un diplôme. Certains étudiants ne sont pas ressortissants de l'Union européenne, de l'Espace économique européen ou de la Suisse. Pour eux, l'État a fixé des ==droits différenciés== : un tarif plus élevé en licence et en master.",
+    },
     {
       type: "tableau",
-      entetes: ["Niveau", "Tarif hors-UE", "Tarif UE/France"],
+      entetes: ["Diplôme (2026-2027)", "Tarif des droits différenciés", "Tarif des étudiants français et européens"],
       lignes: [
-        ["Licence (L1, L2, L3)", "**2 895 €/an**", "178 €/an"],
-        ["Master (M1, M2)", "**3 941 €/an**", "254 €/an"],
-        ["Doctorat", "**Même tarif que les étudiants UE**", "380 €/an env."],
+        ["Licence", "2 902 €", "178 €"],
+        ["Master", "3 950 €", "255 €"],
+        ["Doctorat", "398 € (pas de droits différenciés)", "398 €"],
       ],
     },
     {
       type: "p",
-      texte: "Les doctorants hors-UE sont explicitement exonérés de la différenciation tarifaire : ils paient le même tarif que les doctorants français et européens.",
+      texte: "Ces montants viennent de [Campus France](https://www.campusfrance.org/fr/cout-etudes-superieures-france-frais-inscription) (page mise à jour le 25 juin 2026) et de [service-public (F2865)](https://www.service-public.gouv.fr/particuliers/vosdroits/F2865). Ils valent pour les établissements publics qui dépendent du ministère de l'Enseignement supérieur. Les cycles d'ingénieur ont aussi des droits différenciés. Les écoles qui dépendent d'autres ministères fixent leurs propres tarifs. Et l'inscription dans un BTS public ne coûte rien, selon F2865.",
     },
-    { type: "h3", texte: "Le calendrier des plafonds d'exonération" },
+    {
+      type: "h2",
+      texte: "Qui paie le même tarif que les étudiants français ?",
+    },
+    {
+      type: "p",
+      texte: "Selon Campus France, certains étudiants étrangers ne paient pas les droits différenciés. Ils paient 178 € en licence et 255 € en master, comme les Français :",
+    },
+    {
+      type: "liste",
+      style: "coches",
+      items: [
+        "les titulaires d'une ==carte de résident== de longue durée (la carte de séjour de 10 ans) ;",
+        "les étudiants dont le foyer fiscal est en France ==depuis plus de 2 ans==, ou qui sont rattachés depuis plus de 2 ans à un foyer fiscal en France. Par exemple, ceux dont les parents paient leurs impôts en France ;",
+        "les réfugiés et les bénéficiaires de la protection subsidiaire, et leurs enfants ;",
+        "les étudiants en doctorat et dans certains diplômes de 3e cycle de santé ;",
+        "les étudiants en classe préparatoire aux grandes écoles (CPGE) qui ont aussi une inscription en licence à l'université ;",
+        "les étudiants résidents du Québec.",
+      ],
+    },
+    {
+      type: "p",
+      texte: "La protection subsidiaire est une protection accordée par l'OFPRA, l'office qui étudie les demandes d'asile, à une personne qui risque des menaces graves dans son pays sans être reconnue réfugiée. Un titre de séjour étudiant ou salarié, lui, ne suffit pas pour payer le tarif français.",
+    },
+    {
+      type: "h2",
+      texte: "Qui ne paie rien du tout ?",
+    },
+    {
+      type: "p",
+      texte: "Campus France cite deux exonérations ==automatiques et totales== :",
+    },
+    {
+      type: "liste",
+      style: "puces",
+      items: [
+        "les étudiants qui ont une bourse d'enseignement supérieur de l'État français : les bourses du gouvernement français et les bourses sur critères sociaux. Service-public le confirme pour les boursiers du gouvernement français ;",
+        "les étudiants venus dans le cadre d'un accord qui prévoit que chaque pays exonère les étudiants de l'autre (un accord entre universités, un programme européen ou international).",
+      ],
+    },
+    {
+      type: "p",
+      texte: "Une bourse de votre pays d'origine ou d'une fondation privée n'entre pas dans ce cas. Pour tous les autres, il reste l'exonération demandée à l'université, sur dossier. Campus France cite par exemple un pays en crise, une situation de handicap ou une difficulté financière de la famille.",
+    },
+    {
+      type: "h2",
+      texte: "Ce que change le décret du 19 mai 2026",
+    },
+    {
+      type: "p",
+      texte: "Avant 2026, beaucoup d'universités exonéraient une grande partie de leurs étudiants étrangers. Le [décret n° 2026-385 du 19 mai 2026](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054113646) limite ces exonérations accordées par les universités. Il a été publié le 20 mai au Journal officiel (le journal de l'État qui publie les lois et les décrets). Il ne change pas les montants.",
+    },
     {
       type: "tableau",
-      entetes: ["Rentrée", "Plafond d'exonérations discrétionnaires"],
+      entetes: ["Année universitaire", "Part maximale d'exonérations accordées par l'université"],
       lignes: [
-        ["2026-2027", "30 % des étudiants extracommunautaires"],
+        ["2026-2027", "30 %"],
         ["2027-2028", "25 %"],
-        ["2028-2029 et au-delà", "20 %"],
+        ["À partir de 2028-2029", "20 %"],
       ],
     },
     {
       type: "p",
-      texte: "Concrètement : si une université accueille 1 000 étudiants hors-UE, elle ne pourra exonérer que 300 d'entre eux à la discrétion du président d'université en 2026-2027. Les 700 autres paieront 2 895 € en licence ou 3 941 € en master.",
-    },
-    { type: "h2", texte: "Qui est concerné par ces frais élevés ?", id: "qui-est-concerne" },
-    { type: "h3", texte: "Les étudiants hors UE/EEE/Suisse" },
-    {
-      type: "p",
-      texte: "Ces frais s'appliquent à tout étudiant ressortissant d'un pays **hors Union européenne, hors Espace économique européen (EEE) et hors Suisse**. Concrètement, cela concerne notamment les étudiants du Maghreb (Maroc, Algérie, Tunisie), d'Afrique subsaharienne, du Moyen-Orient, d'Asie, d'Amérique latine, etc.",
-    },
-    { type: "p", texte: "**Ne sont pas concernés** :" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Les citoyens de l'Union européenne (27 États membres) ;",
-        "Les ressortissants de l'Islande, du Liechtenstein, de la Norvège (EEE) ;",
-        "Les ressortissants de la Suisse ;",
-        "Les Andorrans et Monégasques.",
-      ],
-    },
-    { type: "h3", texte: "Et si j'ai déjà un titre de séjour en France ?" },
-    {
-      type: "p",
-      texte: "Avoir un titre de séjour en France ne suffit pas à bénéficier du tarif européen, **sauf** si vous relevez d'une des catégories d'exonération automatique listées ci-dessous. Le statut de **résident de longue durée** (carte de résident 10 ans ou carte UE-longue durée), en revanche, ouvre droit à une exonération automatique.",
-    },
-    { type: "h3", texte: "BTS et IUT : les filières non concernées" },
-    {
-      type: "p",
-      texte: "Les BTS (brevet de technicien supérieur), dispensés dans les lycées publics relevant du ministre de l'Éducation nationale, **ne sont pas soumis aux droits différenciés** : les frais y restent uniformes pour tous les étudiants. Les DUT/BUT dans les IUT, qui font partie des universités, sont en revanche potentiellement concernés si l'université décide d'appliquer les droits différenciés à ces formations.",
+      texte: "Des mesures de transition protègent ceux qui étaient déjà exonérés. Selon Campus France, un étudiant exonéré en 2025-2026 garde les anciennes règles jusqu'à la fin de son cycle (toute la licence ou tout le master). Il doit rester dans le même établissement. C'est la même chose pour une exonération obtenue pour 2026-2027 avant la publication du décret. Si vous changez d'université, cette protection ne vous suit pas.",
     },
     {
       type: "encadre",
-      texte: "Vérifiez toujours auprès de l'établissement visé si votre formation est concernée.",
+      titre: "Le bon réflexe avant de vous inscrire",
+      texte: "Demandez **par écrit** au service des inscriptions de l'université quel tarif vous paierez, et si une exonération est possible, avec quels critères et à quelle date. Gardez la réponse. Les universités peuvent aussi proposer un paiement en 3 fois (F2865).",
       ton: "bleu",
     },
     {
       type: "h2",
-      texte: "Qui est automatiquement exonéré ? Les catégories protégées",
-      id: "categories-exonerees",
+      texte: "Les frais d'inscription et votre titre de séjour étudiant",
     },
     {
       type: "p",
-      texte: "Le décret prévoit plusieurs catégories d'étudiants qui bénéficient d'une **exonération automatique**, indépendante du plafond des 30 %. Ces étudiants paient le tarif européen (178 € en licence, 254 € en master) même s'ils sont hors-UE.",
-    },
-    { type: "h3", texte: "Exonérations automatiques (hors quota)" },
-    {
-      type: "liste",
-      style: "numeros",
-      items: [
-        "**Réfugiés et bénéficiaires de la protection subsidiaire** : statut reconnu par l'OFPRA ou la CNDA.",
-        "**Apatrides** reconnus en France.",
-        "**Résidents de longue durée** : détenteurs d'une carte de résident 10 ans ou d'une carte UE-longue durée délivrée par la France.",
-        "**Doctorants** : quel que soit leur pays d'origine, ils paient le même tarif que les doctorants français.",
-        "**Étudiants en classes préparatoires aux grandes écoles (CPGE)** : exonérés du dispositif.",
-        "**Boursiers du gouvernement français** : lauréats des programmes Campus France, Eiffel Excellence, etc.",
-        "**Étudiants en mobilité d'échange** : dans le cadre d'accords bilatéraux entre établissements avec réciprocité (ex. : accords Erasmus+ pour les partenaires hors-UE, conventions d'échange).",
-      ],
-    },
-    { type: "h3", texte: "Exonérations discrétionnaires (dans la limite du quota)" },
-    {
-      type: "p",
-      texte: "En dehors des catégories ci-dessus, le président d'université peut exonérer d'autres étudiants sur **critères sociaux**, dans la limite du plafond applicable (30 % en 2026-2027). Ces exonérations sont accordées selon les règles internes de chaque établissement, il n'existe pas de critère national unifié.",
-    },
-    { type: "h3", texte: "La protection des étudiants déjà exonérés" },
-    {
-      type: "p",
-      texte: "Si vous bénéficiiez d'une exonération pour l'année 2025-2026, **vous êtes protégé jusqu'à la fin de votre cycle** (licence, master), à condition de rester dans le même établissement et de poursuivre la même formation. Cette protection n'est **pas** automatiquement transférable si vous changez d'université.",
-    },
-    {
-      type: "encadre",
-      texte: "Source : [Légifrance, Décret n° 2026-385 du 19 mai 2026](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054113646)",
-      ton: "bleu",
-    },
-    {
-      type: "h2",
-      texte: "Rentrée 2026-2027 : quand ces règles entrent-elles en vigueur ?",
-      id: "quand-cela-sapplique",
+      texte: "Pour obtenir ou renouveler un titre de séjour étudiant, vous devez prouver des ressources d'au moins ==877,50 € par mois==, selon [service-public (F2231)](https://www.service-public.gouv.fr/particuliers/vosdroits/F2231). Les frais d'inscription s'ajoutent à ce budget : prévoyez-les dès le départ. La validation de votre visa long séjour étudiant coûte aussi 100 €. Notre guide sur [l'ANEF pour les étudiants étrangers](/articles/anef-etudiant-etranger-2026) détaille ces étapes, et celui sur [Campus France](/articles/campus-france-etude-france-2026-visa-inscription-procedure) la procédure pour venir étudier.",
     },
     {
       type: "p",
-      texte: "Le décret est entré en vigueur le **21 mai 2026**. Les nouvelles règles de plafonnement des exonérations s'appliquent à partir de la **rentrée universitaire de septembre 2026**.",
-    },
-    { type: "h3", texte: "Ce que ça signifie concrètement" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Les universités doivent, avant la rentrée 2026, définir et communiquer leur politique d'exonération en respectant le plafond des 30 %.",
-        "Les décisions d'admission et de tarification pour septembre 2026 **peuvent déjà intégrer ce nouveau cadre**.",
-        "Si vous êtes en cours de candidature pour septembre 2026, renseignez-vous **dès maintenant** auprès du service des inscriptions de votre université cible sur votre tarif applicable.",
-      ],
-    },
-    { type: "h3", texte: "Ce que ça ne change pas (encore)" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Les formations hors champ du décret (BTS, CPGE, lycées professionnels) continuent sur l'ancien régime.",
-        "Les étudiants en cycle en cours et déjà exonérés conservent leur exonération jusqu'à la fin de leur cycle.",
-        "Le décret ne modifie pas les frais pour les étudiants UE/EEE/Suisse.",
-      ],
+      texte: "Après vos études, plusieurs voies existent pour rester en France, du [passeport talent](/articles/passeport-talent-salarie-qualifie-2026-salaire-conditions-procedure) au [titre de séjour salarié](/articles/titre-de-sejour-salarie). Une carte de séjour pluriannuelle ou une carte de résident demande ensuite de réussir l'examen civique : le [simulateur d'éligibilité](/eligibilite-examen-civique) vous dit en une minute s'il vous concerne.",
     },
     {
-      type: "h2",
-      texte: "Comment savoir si vous serez concerné par ces frais ?",
-      id: "comment-savoir-si-vous-payez",
-    },
-    { type: "p", texte: "Trois questions permettent de déterminer votre situation :" },
-    { type: "h3", texte: "Étape 1 : Votre nationalité" },
-    {
-      type: "p",
-      texte: "Êtes-vous ressortissant d'un pays hors UE/EEE/Suisse ? Si oui, vous êtes **a priori** soumis aux droits différenciés. Si non, vous payez le tarif normal européen.",
-    },
-    { type: "h3", texte: "Étape 2 : Votre statut" },
-    { type: "p", texte: "Relevez-vous d'une catégorie d'exonération automatique ?" },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Vous êtes réfugié, bénéficiaire de la protection subsidiaire ou apatride → **exonéré automatiquement**.",
-        "Vous êtes résident de longue durée (carte 10 ans ou UE-LD) → **exonéré automatiquement**.",
-        "Vous êtes boursier du gouvernement français → **exonéré automatiquement**.",
-        "Vous êtes en échange dans le cadre d'un accord bilatéral avec réciprocité → **exonéré automatiquement**.",
-        "Vous êtes inscrit en doctorat → **exonéré automatiquement**.",
-      ],
-    },
-    { type: "h3", texte: "Étape 3 : La politique de votre université" },
-    {
-      type: "p",
-      texte: "Si vous n'entrez dans aucune catégorie automatique, votre tarif dépend de la politique d'exonération discrétionnaire de l'université. **Demandez par écrit** au service des inscriptions :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "Si vous serez soumis aux droits différenciés ;",
-        "Si une exonération discrétionnaire est possible et selon quels critères ;",
-        "Le délai de réponse.",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Conservez toujours une **trace écrite** de la réponse. En cas de désaccord, le médiateur académique ou le Défenseur des droits peuvent être saisis.",
-    },
-    {
-      type: "h2",
-      texte: "Comment réduire la facture ? Bourses et alternatives",
-      id: "reduire-la-facture",
-    },
-    { type: "h3", texte: "1. Les bourses du gouvernement français" },
-    {
-      type: "p",
-      texte: "Le programme **Eiffel Excellence** (Campus France) offre des bourses couvrant frais d'inscription, logement et allocation mensuelle pour des masters et doctorats. Concurrence élevée : candidatez dès octobre.",
-    },
-    {
-      type: "p",
-      texte: "Le programme **Bourses du gouvernement français** (BGF) via les ambassades françaises dans votre pays couvre frais d'inscription et frais de vie. Renseignez-vous auprès de l'Institut français ou de l'ambassade dans votre pays d'origine.",
-    },
-    {
-      type: "encadre",
-      texte: "Campus France : [campusfrance.org/fr/bourses-eiffel](https://www.campusfrance.org/fr/bourses-eiffel)",
-      ton: "bleu",
-    },
-    { type: "h3", texte: "2. Les bourses des collectivités et fondations" },
-    {
-      type: "p",
-      texte: "Certaines régions françaises (Île-de-France, Occitanie, etc.) et fondations d'entreprises proposent des aides aux étudiants étrangers méritants. Ces dispositifs varient selon l'université et la formation.",
-    },
-    { type: "h3", texte: "3. Les universités qui maintiennent une politique d'exonération large" },
-    {
-      type: "p",
-      texte: "Toutes les universités ne réduiront pas leurs exonérations au strict minimum. Certaines, notamment celles très tournées vers l'international, pourraient maintenir des taux d'exonération proches du plafond de 30 %. Comparez les politiques d'accueil entre établissements.",
-    },
-    { type: "h3", texte: "4. Les grandes écoles et établissements privés" },
-    {
-      type: "p",
-      texte: "Paradoxalement, certaines grandes écoles ont des frais élevés **pour tous** les étudiants (3 000 € à 15 000 €/an), mais proposent des **bourses sur dossier social** indépendantes du statut UE/hors-UE. Le calcul coût-bourse peut être favorable selon les cas.",
-    },
-    { type: "h3", texte: "5. Le lien avec votre titre de séjour étudiant" },
-    {
-      type: "p",
-      texte: "Attention à un point souvent méconnu : lors du **renouvellement de votre titre de séjour étudiant**, la préfecture vérifie vos ressources financières. Payer 2 895 € de frais d'inscription n'affecte pas directement les conditions de ressources (calculées sur les revenus, non les dépenses). Cela dit, anticiper ce budget dans votre plan de financement est indispensable pour éviter des difficultés.",
-    },
-    {
-      type: "p",
-      texte: "Voir notre guide : [Titre de séjour étudiant : inscription, renouvellement, droits](/articles/titre-sejour-etudiant-france-guide-2025)",
-    },
-    { type: "h2", texte: "Questions fréquentes", id: "faq" },
-    { type: "h2", texte: "Sources officielles", id: "sources" },
-    {
-      type: "p",
-      texte: "Tous les faits de ce guide sont vérifiés sur les sources officielles suivantes, à jour au 25 mai 2026 :",
-    },
-    {
-      type: "liste",
-      style: "puces",
-      items: [
-        "[Légifrance : Décret n° 2026-385 du 19 mai 2026 relatif aux modalités d'exonération des droits d'inscription des étudiants étrangers](https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054113646)",
-        "[Campus France : Bourses Eiffel Excellence](https://www.campusfrance.org/fr/bourses-eiffel)",
-        "Couverture presse : RFI, InfoMigrants, L'Orient-Le Jour, L'Étudiant",
-      ],
-    },
-    {
-      type: "p",
-      texte: "Les politiques d'exonération varient par établissement : vérifiez auprès de votre université avant toute inscription.",
-    },
-    {
-      type: "encadre",
-      titre: "À retenir",
-      texte: "Le décret du 19 mai 2026 marque la fin de la tolérance généralisée vis-à-vis des frais différenciés pour les étudiants hors-UE. À partir de septembre 2026, la majorité des étudiants extracommunautaires paieront effectivement 2 895 € en licence ou 3 941 € en master, sauf s'ils relèvent d'une catégorie d'exonération automatique (réfugiés, résidents de longue durée, boursiers du gouvernement français, doctorants) ou obtiennent une exonération discrétionnaire de leur université. La clé : **demandez par écrit à votre université** quelle sera votre situation avant de vous inscrire, et explorez dès maintenant les dispositifs de bourses disponibles.",
-      ton: "bleu",
+      type: "cta",
+      texte: "Vous visez une carte pluriannuelle ou une carte de résident après vos études ? Découvrez les questions types de l'examen civique, avec la correction. L'inscription sur Test Civique France est gratuite.",
     },
   ],
   faq: [
     {
-      question: "Suis-je concerné si j'ai déjà un titre de séjour en France ?",
-      reponse: "Pas automatiquement. Un titre de séjour temporaire (étudiant, salarié, vie privée et familiale) ne vous exonère pas des droits différenciés. En revanche, si vous êtes détenteur d'une carte de résident 10 ans ou d'une carte UE-longue durée délivrée par la France, vous bénéficiez d'une exonération automatique et payez le tarif UE.",
+      question: "Combien coûte l'université en France pour un étudiant étranger ?",
+      reponse: "En 2026-2027, un étudiant hors Union européenne paie en principe 2 902 € par an en licence et 3 950 € en master dans une université publique, selon Campus France. Le doctorat coûte 398 €, comme pour les Français. Certains étudiants étrangers paient le tarif français (178 € et 255 €), et les boursiers de l'État français ne paient rien.",
     },
     {
-      question: "Les frais s'appliquent-ils en BTS ou en IUT ?",
-      reponse: "Les BTS sont dispensés dans des lycées relevant du ministère de l'Éducation nationale et ne sont pas soumis aux droits différenciés. Les DUT/BUT en IUT (qui font partie des universités) peuvent l'être, selon la politique de l'université. Vérifiez auprès de l'établissement visé.",
+      question: "Qui est exonéré des frais différenciés ?",
+      reponse: "Les titulaires d'une carte de résident et les étudiants dont le foyer fiscal est en France depuis plus de 2 ans ne paient pas les droits différenciés. C'est aussi le cas des réfugiés, des bénéficiaires de la protection subsidiaire, des doctorants et de certains élèves de classe préparatoire. Les boursiers du gouvernement français et les étudiants en échange avec réciprocité sont exonérés en totalité.",
     },
     {
-      question: "Un étudiant marocain ou algérien est-il concerné ?",
-      reponse: "Oui, les ressortissants du Maroc, d'Algérie et de Tunisie sont hors UE/EEE/Suisse et sont donc en principe soumis aux droits différenciés. Ils peuvent bénéficier d'une exonération automatique s'ils sont boursiers du gouvernement français, réfugiés, résidents de longue durée, doctorants ou en échange via un accord bilatéral avec réciprocité. Sinon, ils dépendent de la politique discrétionnaire de leur université.",
-    },
-    {
-      question: "Je suis boursier Campus France : suis-je exonéré ?",
-      reponse: "Si vous bénéficiez d'une bourse du gouvernement français (programme Eiffel, BGF, etc.), vous êtes automatiquement exonéré des droits différenciés et payez le tarif UE. Les bourses accordées par votre gouvernement ou par une fondation privée (qui ne sont pas des bourses du gouvernement français) ne donnent pas droit à cette exonération automatique.",
-    },
-    {
-      question: "Combien coûte un doctorat pour un étudiant hors-UE en France ?",
-      reponse: "Les doctorants hors-UE sont exonérés des droits différenciés : ils paient le même tarif que les doctorants français et européens, soit environ 380 € par an (droits d'inscription en école doctorale). C'est l'une des rares exceptions automatiques prévues par le décret 2026-385.",
+      question: "Un étudiant marocain ou algérien paie-t-il les frais différenciés ?",
+      reponse: "Oui en principe, car le Maroc et l'Algérie sont hors de l'Union européenne. Il paie le tarif français s'il entre dans un cas prévu, par exemple une carte de résident ou un foyer fiscal en France depuis plus de 2 ans. Il peut aussi demander une exonération à son université, dans la limite fixée par le décret du 19 mai 2026.",
     },
     {
       question: "J'étais exonéré en 2025-2026 : vais-je perdre mon exonération ?",
-      reponse: "Non, si vous bénéficiiez d'une exonération pour 2025-2026, vous êtes protégé jusqu'à la fin de votre cycle universitaire (licence ou master), à condition de rester dans le même établissement et de poursuivre la même formation. Si vous changez d'université ou de filière, cette protection ne suit pas.",
+      reponse: "Non, selon Campus France, vous gardez les anciennes règles jusqu'à la fin de votre cycle, c'est-à-dire toute la licence ou tout le master, si vous restez dans le même établissement. Si vous changez d'université, cette protection ne s'applique plus. Demandez une confirmation écrite au service des inscriptions.",
+    },
+  ],
+  sources: [
+    {
+      titre: "Campus France : le coût des études supérieures en France (mis à jour le 25/06/2026), droits 2026-2027, étudiants non concernés et exonérations",
+      url: "https://www.campusfrance.org/fr/cout-etudes-superieures-france-frais-inscription",
+      type: "officiel",
+      luLe: "2026-11-28",
+    },
+    {
+      titre: "Service-public : coût d'une inscription dans l'enseignement supérieur (F2865, vérifiée le 20/08/2026)",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2865",
+      type: "officiel",
+      luLe: "2026-11-28",
+    },
+    {
+      titre: "Légifrance : décret n° 2026-385 du 19 mai 2026 relatif aux modalités d'exonération des droits d'inscription des étudiants étrangers (JORF du 20/05/2026)",
+      url: "https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054113646",
+      type: "juridique",
+      luLe: "2026-11-27",
+    },
+    {
+      titre: "Service-public : carte de séjour temporaire étudiant (F2231, vérifiée le 01/08/2026), ressources de 877,50 € par mois et taxe de validation du visa",
+      url: "https://www.service-public.gouv.fr/particuliers/vosdroits/F2231",
+      type: "officiel",
+      luLe: "2026-11-28",
     },
   ],
 };
