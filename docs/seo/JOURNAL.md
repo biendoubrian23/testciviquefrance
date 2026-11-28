@@ -395,3 +395,7 @@ Gestes possibles : `publie`, `optimise`, `corrige`, `fusionne` (l'ancien slug en
 2026-11-28 | corrige | frais-inscription-universites-france-etudiants-hors-ue-2026 | liste « à revérifier » : 2 895 € et 3 941 € (2 902 € et 3 950 € sur Campus France), 254 € (255 €), « 380 € environ » (398 €), CPGE exonérées sans condition, Andorrans et Monégasques sans source, foyer fiscal en France depuis 2 ans oublié ; réécrit sur Campus France, F2865, F2231 et le décret n° 2026-385, environ 1 900 mots ramenés à environ 1 000
 2026-11-28 | experience | ofpra-outre-mer-convocation-notification | verdict : confirmée (87 impressions, position 4,6, 4 vues sur 7 jours) | fait
 2026-11-28 | verifie | timbre-naturalisation-1000-euros-senat | amendement n° I-332 rect. ter relu sur senat.fr (texte n° 155) : aucun sort ; séance publique à partir du 28/11 ; « rien n'est voté » reste juste | rien à changer
+2026-11-28 | publication | france-services, frais-inscription-universites-france-etudiants-hors-ue-2026 | push accepté (7470938) ; les deux en ligne, IndexNow accepté (200), annoncées séparément | fait
+2026-11-28 | indexation | - | seo:indexation : 182 adresses indexées sur 190, 8 non indexées ; Chrome absent à 7 h 30, revenu après la publication ; propriété ouverte sous /u/2/ | fait
+2026-11-28 | indexation | france-services | nouvelle page du jour | demandée
+2026-11-28 | indexation | frais-inscription-universites-france-etudiants-hors-ue-2026 | retouché le 28/11, pas encore relu par Google | demandée
